@@ -1,0 +1,443 @@
+typedef char __nv_bool;
+# 2074 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/driver_types.h"
+struct CUstream_st;
+# 246 "/usr/include/libio.h" 3
+struct _IO_FILE;
+# 212 "/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stddef.h" 3
+typedef unsigned long size_t;
+#include "crt/device_runtime.h"
+# 48 "/usr/include/stdio.h" 3
+typedef struct _IO_FILE FILE;
+# 21 "target_cuda.h"
+typedef enum cudaFuncCache tdpFuncCache;
+# 28 "target_cuda.h"
+typedef enum cudaMemcpyKind tdpMemcpyKind;
+# 29 "target_cuda.h"
+typedef enum cudaDeviceAttr tdpDeviceAttr;
+# 46 "target_cuda.h"
+typedef struct CUstream_st *tdpStream_t;
+# 47 "target_cuda.h"
+typedef enum cudaError tdpError_t;
+# 123 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/cuda_device_runtime_api.h"
+___device__(extern  __no_sc__) enum cudaError cudaDeviceGetAttribute(int *, enum cudaDeviceAttr, int);
+# 125 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/cuda_device_runtime_api.h"
+___device__(extern  __no_sc__) enum cudaError cudaDeviceGetCacheConfig(enum cudaFuncCache *);
+# 127 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/cuda_device_runtime_api.h"
+___device__(extern  __no_sc__) enum cudaError cudaDeviceSynchronize(void);
+# 128 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/cuda_device_runtime_api.h"
+___device__(extern  __no_sc__) enum cudaError cudaGetLastError(void);
+# 129 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/cuda_device_runtime_api.h"
+___device__(extern  __no_sc__) enum cudaError cudaPeekAtLastError(void);
+# 130 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/cuda_device_runtime_api.h"
+___device__(extern  __no_sc__) const char *cudaGetErrorString(enum cudaError);
+# 131 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/cuda_device_runtime_api.h"
+___device__(extern  __no_sc__) const char *cudaGetErrorName(enum cudaError);
+# 132 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/cuda_device_runtime_api.h"
+___device__(extern  __no_sc__) enum cudaError cudaGetDeviceCount(int *);
+# 133 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/cuda_device_runtime_api.h"
+___device__(extern  __no_sc__) enum cudaError cudaGetDevice(int *);
+# 135 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/cuda_device_runtime_api.h"
+___device__(extern  __no_sc__) enum cudaError cudaStreamDestroy(struct CUstream_st *);
+# 143 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/cuda_device_runtime_api.h"
+___device__(extern  __no_sc__) enum cudaError cudaFree(void *);
+# 144 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/cuda_device_runtime_api.h"
+___device__(extern  __no_sc__) enum cudaError cudaMalloc(void **, size_t);
+# 145 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/cuda_device_runtime_api.h"
+___device__(extern  __no_sc__) enum cudaError cudaMemcpyAsync(void *, const void *, size_t, enum cudaMemcpyKind, struct CUstream_st *);
+#if !defined(__CUDABE__)
+# 145 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+ __device_builtin__ ___device__(extern  __no_sc__) int printf(const char *__restrict__, ...);
+#endif
+# 189 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__noreturn__)) void __assert_fail(const char *, const char *, unsigned, const char *);
+#if !defined(__CUDABE__)
+# 314 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/math_functions.h"
+ __device_builtin__ ___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__const__)) float fminf(float, float);
+#endif
+#if !defined(__CUDABE__)
+# 1181 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/math_functions.h"
+ __device_builtin__ ___device__(extern  __no_sc__) __attribute__((__nothrow__)) double log(double);
+#endif
+#if !defined(__CUDABE__)
+# 2920 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/math_functions.h"
+ __device_builtin__ ___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__const__)) double ceil(double);
+#endif
+#if !defined(__CUDABE__)
+# 4784 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/math_functions.h"
+ __device_builtin__ ___device__(extern  __no_sc__) __attribute__((__nothrow__)) double pow(double, double);
+#endif
+#if !defined(__CUDABE__)
+# 167 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/device_functions.h"
+ __device_builtin__ ___device__(extern  __no_sc__) void __syncthreads(void);
+#endif
+#if !defined(__CUDABE__)
+# 78 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/device_atomic_functions.h"
+ __device_builtin__ ___device__(extern  __no_sc__) int __iAtomicAdd(int *, int);
+#endif
+#if !defined(__CUDABE__)
+# 176 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/device_atomic_functions.h"
+ __device_builtin__ ___device__(extern  __no_sc__) unsigned long long __ullAtomicCAS(unsigned long long *, unsigned long long, unsigned long long);
+#endif
+#if !defined(__CUDABE__)
+# 97 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/device_double_functions.h"
+ __device_builtin__ ___device__(extern  __no_sc__) long long __double_as_longlong(double);
+#endif
+#if !defined(__CUDABE__)
+# 106 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/device_double_functions.h"
+ __device_builtin__ ___device__(extern  __no_sc__) double __longlong_as_double(long long);
+#endif
+# 52 "target_cuda.c"
+___device__(extern  __no_sc__) int _Z15tdpAtomicAddIntPii(int *, int);
+# 68 "target_cuda.c"
+___device__(extern  __no_sc__) double _Z18tdpAtomicAddDoublePdd(double *, double);
+# 97 "target_cuda.c"
+___device__(extern  __no_sc__) double _Z18tdpAtomicMinDoublePdd(double *, double);
+# 121 "target_cuda.c"
+___device__(extern  __no_sc__) int _Z20tdpAtomicBlockAddIntPi(int *);
+# 148 "target_cuda.c"
+___device__(extern  __no_sc__) double _Z23tdpAtomicBlockAddDoublePd(double *);
+# 173 "target_cuda.c"
+___device__(extern  __no_sc__) void _Z15tdpErrorHandler9cudaErrorPKcii(tdpError_t, const char *, int, int);
+# 199 "target_cuda.c"
+___device__(extern  __no_sc__) tdpError_t _Z21tdpDeviceGetAttributePi14cudaDeviceAttri(int *, tdpDeviceAttr, int);
+# 206 "target_cuda.c"
+___device__(extern  __no_sc__) tdpError_t _Z23tdpDeviceGetCacheConfigP13cudaFuncCache(tdpFuncCache *);
+# 215 "target_cuda.c"
+___device__(extern  __no_sc__) tdpError_t _Z20tdpDeviceSynchronizev(void);
+# 231 "target_cuda.c"
+___device__(extern  __no_sc__) tdpError_t _Z12tdpGetDevicePi(int *);
+# 236 "target_cuda.c"
+___device__(extern  __no_sc__) tdpError_t _Z17tdpGetDeviceCountPi(int *);
+# 243 "target_cuda.c"
+___device__(extern  __no_sc__) const char *_Z15tdpGetErrorName9cudaError(tdpError_t);
+# 249 "target_cuda.c"
+___device__(extern  __no_sc__) const char *_Z17tdpGetErrorString9cudaError(tdpError_t);
+# 254 "target_cuda.c"
+___device__(extern  __no_sc__) tdpError_t _Z15tdpGetLastErrorv(void);
+# 259 "target_cuda.c"
+___device__(extern  __no_sc__) tdpError_t _Z18tdpPeekAtLastErrorv(void);
+# 307 "target_cuda.c"
+___device__(extern  __no_sc__) tdpError_t _Z9tdpMallocPPvm(void **, size_t);
+# 317 "target_cuda.c"
+___device__(extern  __no_sc__) tdpError_t _Z7tdpFreePv(void *);
+static  __device__  __var_used__ const char __T1[56];
+#include "common_functions.h"
+static  __device__  __var_used__ const char __T1[56] = "void tdpErrorHandler(cudaError, const char *, int, int)";
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+# 52 "target_cuda.c"
+___device__( __no_sc__) int _Z15tdpAtomicAddIntPii(
+# 52 "target_cuda.c"
+int *sum, 
+# 52 "target_cuda.c"
+int val){
+# 52 "target_cuda.c"
+{
+# 54 "target_cuda.c"
+return __iAtomicAdd(sum, val);
+# 55 "target_cuda.c"
+}}
+# 68 "target_cuda.c"
+___device__( __no_sc__) double _Z18tdpAtomicAddDoublePdd(
+# 68 "target_cuda.c"
+double *sum, 
+# 68 "target_cuda.c"
+double val){
+# 68 "target_cuda.c"
+{
+# 76 "target_cuda.c"
+ unsigned long long *__cuda_local_var_14932_28_non_const_address_as_ull;
+# 77 "target_cuda.c"
+ unsigned long long __cuda_local_var_14933_26_non_const_old;
+# 78 "target_cuda.c"
+ unsigned long long __cuda_local_var_14934_26_non_const_assumed;
+# 76 "target_cuda.c"
+__cuda_local_var_14932_28_non_const_address_as_ull = ((unsigned long long *)sum);
+# 77 "target_cuda.c"
+__cuda_local_var_14933_26_non_const_old = (*__cuda_local_var_14932_28_non_const_address_as_ull);
+# 80 "target_cuda.c"
+do
+# 80 "target_cuda.c"
+{  unsigned long long *__T2;
+ unsigned long long __T3;
+ unsigned long long __T4;
+# 81 "target_cuda.c"
+__cuda_local_var_14934_26_non_const_assumed = __cuda_local_var_14933_26_non_const_old;
+# 82 "target_cuda.c"
+__cuda_local_var_14933_26_non_const_old = ((((__T2 = __cuda_local_var_14932_28_non_const_address_as_ull) , (void)(__T3 = __cuda_local_var_14934_26_non_const_assumed)) , (void)(__T4 = ((unsigned long long)(__double_as_longlong((val + (__longlong_as_double(((long long)__cuda_local_var_14934_26_non_const_assumed))))))))) , (__ullAtomicCAS(__T2, __T3, __T4)));
+# 84 "target_cuda.c"
+} while (__cuda_local_var_14934_26_non_const_assumed != __cuda_local_var_14933_26_non_const_old);
+# 86 "target_cuda.c"
+return __longlong_as_double(((long long)__cuda_local_var_14933_26_non_const_old));
+# 89 "target_cuda.c"
+}}
+# 97 "target_cuda.c"
+___device__( __no_sc__) double _Z18tdpAtomicMinDoublePdd(
+# 97 "target_cuda.c"
+double *minval, 
+# 97 "target_cuda.c"
+double val){
+# 97 "target_cuda.c"
+{
+# 99 "target_cuda.c"
+ unsigned long long *__cuda_local_var_14955_28_non_const_address_as_ull;
+# 100 "target_cuda.c"
+ unsigned long long __cuda_local_var_14956_26_non_const_old;
+# 101 "target_cuda.c"
+ unsigned long long __cuda_local_var_14957_26_non_const_assumed;
+# 99 "target_cuda.c"
+__cuda_local_var_14955_28_non_const_address_as_ull = ((unsigned long long *)minval);
+# 100 "target_cuda.c"
+__cuda_local_var_14956_26_non_const_old = (*__cuda_local_var_14955_28_non_const_address_as_ull);
+# 103 "target_cuda.c"
+do
+# 103 "target_cuda.c"
+{  unsigned long long *__T5;
+ unsigned long long __T6;
+ unsigned long long __T7;
+# 104 "target_cuda.c"
+__cuda_local_var_14957_26_non_const_assumed = __cuda_local_var_14956_26_non_const_old;
+# 105 "target_cuda.c"
+__cuda_local_var_14956_26_non_const_old = ((((__T5 = __cuda_local_var_14955_28_non_const_address_as_ull) , (void)(__T6 = __cuda_local_var_14957_26_non_const_assumed)) , (void)(__T7 = ((unsigned long long)(__double_as_longlong(((double)(fminf(((float)val), ((float)(__longlong_as_double(((long long)__cuda_local_var_14957_26_non_const_assumed)))))))))))) , (__ullAtomicCAS(__T5, __T6, __T7)));
+# 107 "target_cuda.c"
+} while (__cuda_local_var_14957_26_non_const_assumed != __cuda_local_var_14956_26_non_const_old);
+# 109 "target_cuda.c"
+return __longlong_as_double(((long long)__cuda_local_var_14956_26_non_const_old));
+# 110 "target_cuda.c"
+}}
+# 121 "target_cuda.c"
+___device__( __no_sc__) int _Z20tdpAtomicBlockAddIntPi(
+# 121 "target_cuda.c"
+int *partsum){
+# 121 "target_cuda.c"
+{
+# 123 "target_cuda.c"
+ int __cuda_local_var_14970_7_non_const_istr;
+# 124 "target_cuda.c"
+ int __cuda_local_var_14971_7_non_const_nblock;
+# 125 "target_cuda.c"
+ int __cuda_local_var_14972_7_non_const_nthread;
+# 126 "target_cuda.c"
+ int __cuda_local_var_14973_7_non_const_idx;
+# 125 "target_cuda.c"
+__cuda_local_var_14972_7_non_const_nthread = 128;
+# 126 "target_cuda.c"
+__cuda_local_var_14973_7_non_const_idx = ((int)(threadIdx.x));
+# 128 "target_cuda.c"
+__cuda_local_var_14971_7_non_const_nblock = ((int)(pow((2.0), (ceil(( fdivide((log(((1.0) * ((double)__cuda_local_var_14972_7_non_const_nthread)))) , (log((2.0))))))))));
+# 130 "target_cuda.c"
+for (__cuda_local_var_14970_7_non_const_istr = (__cuda_local_var_14971_7_non_const_nblock / 2); (__cuda_local_var_14970_7_non_const_istr > 0); __cuda_local_var_14970_7_non_const_istr /= 2)
+# 130 "target_cuda.c"
+{
+# 131 "target_cuda.c"
+__syncthreads();
+# 132 "target_cuda.c"
+if ((__cuda_local_var_14973_7_non_const_idx < __cuda_local_var_14970_7_non_const_istr) && ((__cuda_local_var_14973_7_non_const_idx + __cuda_local_var_14970_7_non_const_istr) < __cuda_local_var_14972_7_non_const_nthread))
+# 132 "target_cuda.c"
+{
+# 133 "target_cuda.c"
+(partsum[__cuda_local_var_14973_7_non_const_idx]) += (partsum[(__cuda_local_var_14973_7_non_const_idx + __cuda_local_var_14970_7_non_const_istr)]);
+# 134 "target_cuda.c"
+}
+# 135 "target_cuda.c"
+}
+# 137 "target_cuda.c"
+return partsum[0];
+# 138 "target_cuda.c"
+}}
+# 148 "target_cuda.c"
+___device__( __no_sc__) double _Z23tdpAtomicBlockAddDoublePd(
+# 148 "target_cuda.c"
+double *partsum){
+# 148 "target_cuda.c"
+{
+# 150 "target_cuda.c"
+ int __cuda_local_var_14989_7_non_const_istr;
+# 151 "target_cuda.c"
+ int __cuda_local_var_14990_7_non_const_nblock;
+# 152 "target_cuda.c"
+ int __cuda_local_var_14991_7_non_const_nthread;
+# 153 "target_cuda.c"
+ int __cuda_local_var_14992_7_non_const_idx;
+# 152 "target_cuda.c"
+__cuda_local_var_14991_7_non_const_nthread = 128;
+# 153 "target_cuda.c"
+__cuda_local_var_14992_7_non_const_idx = ((int)(threadIdx.x));
+# 155 "target_cuda.c"
+__cuda_local_var_14990_7_non_const_nblock = ((int)(pow((2.0), (ceil(( fdivide((log(((1.0) * ((double)__cuda_local_var_14991_7_non_const_nthread)))) , (log((2.0))))))))));
+# 157 "target_cuda.c"
+for (__cuda_local_var_14989_7_non_const_istr = (__cuda_local_var_14990_7_non_const_nblock / 2); (__cuda_local_var_14989_7_non_const_istr > 0); __cuda_local_var_14989_7_non_const_istr /= 2)
+# 157 "target_cuda.c"
+{
+# 158 "target_cuda.c"
+__syncthreads();
+# 159 "target_cuda.c"
+if ((__cuda_local_var_14992_7_non_const_idx < __cuda_local_var_14989_7_non_const_istr) && ((__cuda_local_var_14992_7_non_const_idx + __cuda_local_var_14989_7_non_const_istr) < __cuda_local_var_14991_7_non_const_nthread))
+# 159 "target_cuda.c"
+{
+# 160 "target_cuda.c"
+(partsum[__cuda_local_var_14992_7_non_const_idx]) += (partsum[(__cuda_local_var_14992_7_non_const_idx + __cuda_local_var_14989_7_non_const_istr)]);
+# 161 "target_cuda.c"
+}
+# 162 "target_cuda.c"
+}
+# 164 "target_cuda.c"
+return partsum[0];
+# 165 "target_cuda.c"
+}}
+# 173 "target_cuda.c"
+___device__( __no_sc__) void _Z15tdpErrorHandler9cudaErrorPKcii(
+# 173 "target_cuda.c"
+tdpError_t ifail, 
+# 173 "target_cuda.c"
+const char *file, 
+# 174 "target_cuda.c"
+int line, 
+# 174 "target_cuda.c"
+int fatal){
+# 174 "target_cuda.c"
+{
+# 177 "target_cuda.c"
+if (((int)ifail) != 0)
+# 177 "target_cuda.c"
+{
+# 178 "target_cuda.c"
+printf(((const char *)"Line %d (%s): %s %s\n"), line, file, (cudaGetErrorName(ifail)), (cudaGetErrorString(ifail)));
+# 180 "target_cuda.c"
+if (fatal) {
+# 180 "target_cuda.c"
+__assert_fail(((const char *)"0"), ((const char *)"target_cuda.c"), 180U, __T1); }
+# 181 "target_cuda.c"
+}
+# 190 "target_cuda.c"
+return;
+# 191 "target_cuda.c"
+}}
+# 199 "target_cuda.c"
+___device__( __no_sc__) tdpError_t _Z21tdpDeviceGetAttributePi14cudaDeviceAttri(
+# 199 "target_cuda.c"
+int *value, 
+# 200 "target_cuda.c"
+tdpDeviceAttr attr, 
+# 201 "target_cuda.c"
+int device){
+# 201 "target_cuda.c"
+{
+# 203 "target_cuda.c"
+return cudaDeviceGetAttribute(value, attr, device);
+# 204 "target_cuda.c"
+}}
+# 206 "target_cuda.c"
+___device__( __no_sc__) tdpError_t _Z23tdpDeviceGetCacheConfigP13cudaFuncCache(
+# 206 "target_cuda.c"
+tdpFuncCache *cache){
+# 206 "target_cuda.c"
+{
+# 207 "target_cuda.c"
+return cudaDeviceGetCacheConfig(cache);
+# 208 "target_cuda.c"
+}}
+# 215 "target_cuda.c"
+___device__( __no_sc__) tdpError_t _Z20tdpDeviceSynchronizev(void){
+# 215 "target_cuda.c"
+{
+# 217 "target_cuda.c"
+return cudaDeviceSynchronize();
+# 218 "target_cuda.c"
+}}
+# 231 "target_cuda.c"
+___device__( __no_sc__) tdpError_t _Z12tdpGetDevicePi(
+# 231 "target_cuda.c"
+int *device){
+# 231 "target_cuda.c"
+{
+# 233 "target_cuda.c"
+return cudaGetDevice(device);
+# 234 "target_cuda.c"
+}}
+# 236 "target_cuda.c"
+___device__( __no_sc__) tdpError_t _Z17tdpGetDeviceCountPi(
+# 236 "target_cuda.c"
+int *count){
+# 236 "target_cuda.c"
+{
+# 238 "target_cuda.c"
+return cudaGetDeviceCount(count);
+# 239 "target_cuda.c"
+}}
+# 243 "target_cuda.c"
+___device__( __no_sc__) const char *_Z15tdpGetErrorName9cudaError(
+# 243 "target_cuda.c"
+tdpError_t error){
+# 243 "target_cuda.c"
+{
+# 245 "target_cuda.c"
+return cudaGetErrorName(error);
+# 246 "target_cuda.c"
+}}
+# 249 "target_cuda.c"
+___device__( __no_sc__) const char *_Z17tdpGetErrorString9cudaError(
+# 249 "target_cuda.c"
+tdpError_t error){
+# 249 "target_cuda.c"
+{
+# 251 "target_cuda.c"
+return cudaGetErrorString(error);
+# 252 "target_cuda.c"
+}}
+# 254 "target_cuda.c"
+___device__( __no_sc__) tdpError_t _Z15tdpGetLastErrorv(void){
+# 254 "target_cuda.c"
+{
+# 256 "target_cuda.c"
+return cudaGetLastError();
+# 257 "target_cuda.c"
+}}
+# 259 "target_cuda.c"
+___device__( __no_sc__) tdpError_t _Z18tdpPeekAtLastErrorv(void){
+# 259 "target_cuda.c"
+{
+# 261 "target_cuda.c"
+return cudaPeekAtLastError();
+# 262 "target_cuda.c"
+}}
+# 307 "target_cuda.c"
+___device__( __no_sc__) tdpError_t _Z9tdpMallocPPvm(
+# 307 "target_cuda.c"
+void **devptr, 
+# 307 "target_cuda.c"
+size_t size){
+# 307 "target_cuda.c"
+{
+# 309 "target_cuda.c"
+return cudaMalloc(devptr, size);
+# 310 "target_cuda.c"
+}}
+# 317 "target_cuda.c"
+___device__( __no_sc__) tdpError_t _Z7tdpFreePv(
+# 317 "target_cuda.c"
+void *devptr){
+# 317 "target_cuda.c"
+{
+# 319 "target_cuda.c"
+return cudaFree(devptr);
+# 320 "target_cuda.c"
+}}

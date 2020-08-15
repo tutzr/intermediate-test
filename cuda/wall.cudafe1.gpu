@@ -1,0 +1,707 @@
+typedef char __nv_bool;
+# 2074 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/driver_types.h"
+struct CUstream_st;
+# 58 ".././mpi_s/mpi.h"
+enum elementary_datatypes {
+# 58 ".././mpi_s/mpi.h"
+MPI_CHAR,
+# 59 ".././mpi_s/mpi.h"
+MPI_SHORT,
+# 60 ".././mpi_s/mpi.h"
+MPI_INT,
+# 61 ".././mpi_s/mpi.h"
+MPI_LONG,
+# 62 ".././mpi_s/mpi.h"
+MPI_UNSIGNED_CHAR,
+# 63 ".././mpi_s/mpi.h"
+MPI_UNSIGNED_SHORT,
+# 64 ".././mpi_s/mpi.h"
+MPI_UNSIGNED,
+# 65 ".././mpi_s/mpi.h"
+MPI_UNSIGNED_LONG,
+# 66 ".././mpi_s/mpi.h"
+MPI_FLOAT,
+# 67 ".././mpi_s/mpi.h"
+MPI_DOUBLE,
+# 68 ".././mpi_s/mpi.h"
+MPI_LONG_DOUBLE,
+# 69 ".././mpi_s/mpi.h"
+MPI_BYTE,
+# 70 ".././mpi_s/mpi.h"
+MPI_PACKED};
+# 72 ".././mpi_s/mpi.h"
+enum collective_operations {
+# 72 ".././mpi_s/mpi.h"
+MPI_MAX,
+# 73 ".././mpi_s/mpi.h"
+MPI_MIN,
+# 74 ".././mpi_s/mpi.h"
+MPI_SUM,
+# 75 ".././mpi_s/mpi.h"
+MPI_PROD,
+# 76 ".././mpi_s/mpi.h"
+MPI_MAXLOC,
+# 77 ".././mpi_s/mpi.h"
+MPI_MINLOC,
+# 78 ".././mpi_s/mpi.h"
+MPI_BAND,
+# 79 ".././mpi_s/mpi.h"
+MPI_BOR,
+# 80 ".././mpi_s/mpi.h"
+MPI_BXOR,
+# 81 ".././mpi_s/mpi.h"
+MPI_LAND,
+# 82 ".././mpi_s/mpi.h"
+MPI_LOR,
+# 83 ".././mpi_s/mpi.h"
+MPI_LXOR};
+# 22 "pe.h"
+struct pe_s;
+# 22 "coords.h"
+struct coords_s;
+# 26 "coords.h"
+enum cartesian_directions {
+# 26 "coords.h"
+X,
+# 26 "coords.h"
+Y,
+# 26 "coords.h"
+Z};
+# 21 "d3q19.h"
+enum _ZUt0_ {
+# 21 "d3q19.h"
+NDIM19 = 3};
+# 22 "d3q19.h"
+enum _ZUt1_ {
+# 22 "d3q19.h"
+NVEL19 = 19};
+# 23 "d3q19.h"
+enum _ZUt2_ {
+# 23 "d3q19.h"
+CVXBLOCK19 = 1};
+# 24 "d3q19.h"
+enum _ZUt3_ {
+# 24 "d3q19.h"
+CVYBLOCK19 = 3};
+# 25 "d3q19.h"
+enum _ZUt4_ {
+# 25 "d3q19.h"
+CVZBLOCK19 = 5};
+# 49 "model.h"
+enum _ZUt5_ {
+# 49 "model.h"
+NDIM = 3,
+# 50 "model.h"
+NVEL = 19,
+# 51 "model.h"
+CVXBLOCK = 1,
+# 52 "model.h"
+CVYBLOCK = 3,
+# 53 "model.h"
+CVZBLOCK = 5};
+# 73 "io_harness.h"
+struct io_info_s;
+# 79 "model.h"
+enum lb_dist_enum_type {
+# 79 "model.h"
+LB_RHO,
+# 79 "model.h"
+LB_PHI};
+# 88 "model.h"
+enum lb_relaxation_enum_t {
+# 88 "model.h"
+LB_RELAXATION_M10,
+# 88 "model.h"
+LB_RELAXATION_BGK,
+# 88 "model.h"
+LB_RELAXATION_TRT};
+# 23 "halo_swap.h"
+struct halo_swap_s;
+# 27 "lb_model_s.h"
+struct lb_collide_param_s;
+# 45 "lb_model_s.h"
+struct lb_data_s;
+# 24 "map.h"
+enum map_status {
+# 24 "map.h"
+MAP_FLUID,
+# 24 "map.h"
+MAP_BOUNDARY,
+# 24 "map.h"
+MAP_COLLOID,
+# 24 "map.h"
+MAP_STATUS_MAX};
+# 22 "map_s.h"
+struct map_s;
+# 18 "physics.h"
+struct physics_s;
+# 27 "wall.h"
+struct wall_param_s;
+# 31 "wall.c"
+enum wall_init_enum {
+# 31 "wall.c"
+WALL_INIT_COUNT_ONLY,
+# 32 "wall.c"
+WALL_INIT_ALLOCATE};
+# 34 "wall.c"
+enum wall_uw_enum {
+# 34 "wall.c"
+WALL_UZERO,
+# 35 "wall.c"
+WALL_UWTOP,
+# 36 "wall.c"
+WALL_UWBOT,
+# 37 "wall.c"
+WALL_UWMAX};
+# 39 "wall.c"
+struct wall_s;
+# 212 "/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stddef.h" 3
+typedef unsigned long size_t;
+#include "crt/device_runtime.h"
+# 194 "/usr/include/sys/types.h" 3
+typedef signed char int8_t;
+# 25 ".././mpi_s/mpi.h"
+typedef int MPI_Handle;
+# 26 ".././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Comm;
+# 28 ".././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Datatype;
+# 30 ".././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Op;
+# 28 ".././target/target_cuda.h"
+typedef enum cudaMemcpyKind tdpMemcpyKind;
+# 47 ".././target/target_cuda.h"
+typedef enum cudaError tdpError_t;
+# 22 "pe.h"
+typedef struct pe_s pe_t;
+# 22 "coords.h"
+typedef struct coords_s cs_t;
+# 36 "io_harness.h"
+typedef struct io_info_s io_info_t;
+# 79 "model.h"
+typedef enum lb_dist_enum_type lb_dist_enum_t;
+# 82 "model.h"
+typedef struct lb_data_s lb_t;
+# 89 "model.h"
+typedef enum lb_relaxation_enum_t lb_relaxation_enum_t;
+# 23 "halo_swap.h"
+typedef struct halo_swap_s halo_swap_t;
+# 25 "lb_model_s.h"
+typedef struct lb_collide_param_s lb_collide_param_t;
+# 27 "lb_model_s.h"
+struct lb_collide_param_s {
+# 28 "lb_model_s.h"
+int8_t isghost;
+# 29 "lb_model_s.h"
+int8_t cv[19][3];
+# 30 "lb_model_s.h"
+int nsite;
+# 31 "lb_model_s.h"
+int ndist;
+# 32 "lb_model_s.h"
+double rho0;
+# 33 "lb_model_s.h"
+double eta_shear;
+# 34 "lb_model_s.h"
+double var_shear;
+# 35 "lb_model_s.h"
+double eta_bulk;
+# 36 "lb_model_s.h"
+double var_bulk;
+# 37 "lb_model_s.h"
+double var_noise[19];
+# 38 "lb_model_s.h"
+double rtau[19];
+# 39 "lb_model_s.h"
+double wv[19];
+# 40 "lb_model_s.h"
+double q[19][3][3];
+# 41 "lb_model_s.h"
+double ma[19][19];
+# 42 "lb_model_s.h"
+double mi[19][19];};
+# 45 "lb_model_s.h"
+struct lb_data_s {
+# 47 "lb_model_s.h"
+int ndist;
+# 48 "lb_model_s.h"
+int nsite;
+# 49 "lb_model_s.h"
+int model;
+# 51 "lb_model_s.h"
+pe_t *pe;
+# 52 "lb_model_s.h"
+cs_t *cs;
+# 53 "lb_model_s.h"
+halo_swap_t *halo;
+# 54 "lb_model_s.h"
+io_info_t *io_info;
+# 55 "lb_model_s.h"
+io_info_t *io_rho;
+# 57 "lb_model_s.h"
+double *f;
+# 58 "lb_model_s.h"
+double *fprime;
+# 60 "lb_model_s.h"
+lb_collide_param_t *param;
+# 61 "lb_model_s.h"
+lb_relaxation_enum_t nrelax;
+# 66 "lb_model_s.h"
+MPI_Datatype plane_xy_full;
+# 67 "lb_model_s.h"
+MPI_Datatype plane_xz_full;
+# 68 "lb_model_s.h"
+MPI_Datatype plane_yz_full;
+# 69 "lb_model_s.h"
+MPI_Datatype plane_xy_reduced[2];
+# 70 "lb_model_s.h"
+MPI_Datatype plane_xz_reduced[2];
+# 71 "lb_model_s.h"
+MPI_Datatype plane_yz_reduced[2];
+# 72 "lb_model_s.h"
+MPI_Datatype plane_xy[2];
+# 73 "lb_model_s.h"
+MPI_Datatype plane_xz[2];
+# 74 "lb_model_s.h"
+MPI_Datatype plane_yz[2];
+# 75 "lb_model_s.h"
+MPI_Datatype site_x[2];
+# 76 "lb_model_s.h"
+MPI_Datatype site_y[2];
+# 77 "lb_model_s.h"
+MPI_Datatype site_z[2];
+# 79 "lb_model_s.h"
+lb_t *target;};
+# 26 "map.h"
+typedef struct map_s map_t;
+# 22 "map_s.h"
+struct map_s {
+# 23 "map_s.h"
+int nsite;
+# 24 "map_s.h"
+int is_porous_media;
+# 25 "map_s.h"
+int ndata;
+# 26 "map_s.h"
+char *status;
+# 27 "map_s.h"
+double *data;
+# 29 "map_s.h"
+pe_t *pe;
+# 30 "map_s.h"
+cs_t *cs;
+# 31 "map_s.h"
+MPI_Datatype halostatus[3];
+# 32 "map_s.h"
+MPI_Datatype halodata[3];
+# 33 "map_s.h"
+io_info_t *info;
+# 35 "map_s.h"
+map_t *target;};
+# 18 "physics.h"
+typedef struct physics_s physics_t;
+# 24 "wall.h"
+typedef struct wall_param_s wall_param_t;
+# 25 "wall.h"
+typedef struct wall_s wall_t;
+# 27 "wall.h"
+struct wall_param_s {
+# 28 "wall.h"
+int iswall;
+# 29 "wall.h"
+int isporousmedia;
+# 30 "wall.h"
+int isboundary[3];
+# 31 "wall.h"
+int initshear;
+# 32 "wall.h"
+double ubot[3];
+# 33 "wall.h"
+double utop[3];
+# 34 "wall.h"
+double lubr_rc[3];};
+# 32 "wall.c"
+typedef enum wall_init_enum wall_init_enum_t;
+# 39 "wall.c"
+struct wall_s {
+# 40 "wall.c"
+pe_t *pe;
+# 41 "wall.c"
+cs_t *cs;
+# 42 "wall.c"
+map_t *map;
+# 43 "wall.c"
+lb_t *lb;
+# 44 "wall.c"
+wall_t *target;
+# 46 "wall.c"
+wall_param_t *param;
+# 47 "wall.c"
+int nlink;
+# 48 "wall.c"
+int *linki;
+# 49 "wall.c"
+int *linkj;
+# 50 "wall.c"
+int *linkp;
+# 51 "wall.c"
+int *linku;
+# 52 "wall.c"
+double fnet[3];};
+# 150 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) void free(void *);
+# 189 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__noreturn__)) void __assert_fail(const char *, const char *, unsigned, const char *);
+# 3296 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/device_functions.h"
+___device__(extern  __no_sc__) unsigned __cudaPushCallConfiguration(struct dim3, struct dim3, size_t, struct CUstream_st *);
+# 44 ".././target/target.h"
+___device__(extern  __no_sc__) tdpError_t _Z20tdpDeviceSynchronizev(void);
+# 46 ".././target/target.h"
+___device__(extern  __no_sc__) tdpError_t _Z17tdpGetDeviceCountPi(int *);
+# 53 ".././target/target.h"
+___device__(extern  __no_sc__) tdpError_t _Z18tdpPeekAtLastErrorv(void);
+# 79 ".././target/target.h"
+___device__(extern  __no_sc__) tdpError_t _Z7tdpFreePv(void *);
+# 80 ".././target/target.h"
+___device__(extern  __no_sc__) tdpError_t _Z9tdpMallocPPvm(void **, size_t);
+# 106 ".././target/target.h"
+___device__(extern  __no_sc__) double _Z18tdpAtomicAddDoublePdd(double *, double);
+# 113 ".././target/target.h"
+___device__(extern  __no_sc__) double _Z23tdpAtomicBlockAddDoublePd(double *);
+# 117 ".././target/target.h"
+___device__(extern  __no_sc__) void _Z15tdpErrorHandler9cudaErrorPKcii(tdpError_t, const char *, int, int);
+# 56 "coords.h"
+___device__(extern  __no_sc__) int _Z7cs_lminP8coords_sPd(cs_t *, double *);
+# 57 "coords.h"
+___device__(extern  __no_sc__) int _Z7cs_ltotP8coords_sPd(cs_t *, double *);
+# 59 "coords.h"
+___device__(extern  __no_sc__) int _Z9cs_nlocalP8coords_sPi(cs_t *, int *);
+# 60 "coords.h"
+___device__(extern  __no_sc__) int _Z16cs_nlocal_offsetP8coords_sPi(cs_t *, int *);
+# 61 "coords.h"
+___device__(extern  __no_sc__) int _Z8cs_nhaloP8coords_sPi(cs_t *, int *);
+# 62 "coords.h"
+___device__(extern  __no_sc__) int _Z8cs_indexP8coords_siii(cs_t *, int, int, int);
+# 63 "coords.h"
+___device__(extern  __no_sc__) int _Z9cs_ntotalP8coords_sPi(cs_t *, int *);
+# 111 "model.h"
+___device__(extern  __no_sc__) int _Z4lb_fP9lb_data_siiiPd(lb_t *, int, int, int, double *);
+# 112 "model.h"
+___device__(extern  __no_sc__) int _Z8lb_f_setP9lb_data_siiid(lb_t *, int, int, int, double);
+# 113 "model.h"
+___device__(extern  __no_sc__) int _Z13lb_0th_momentP9lb_data_si17lb_dist_enum_typePd(lb_t *, int, lb_dist_enum_t, double *);
+# 40 "map.h"
+___device__(extern  __no_sc__) int _Z10map_statusP5map_siPi(map_t *, int, int *);
+# 41 "map.h"
+___device__(extern  __no_sc__) int _Z14map_status_setP5map_sii(map_t *, int, int);
+# 40 "physics.h"
+___device__(extern  __no_sc__) int _Z11physics_refPP9physics_s(physics_t **);
+# 41 "physics.h"
+___device__(extern  __no_sc__) int _Z12physics_rho0P9physics_sPd(physics_t *, double *);
+# 43 "physics.h"
+___device__(extern  __no_sc__) int _Z17physics_eta_shearP9physics_sPd(physics_t *, double *);
+# 48 "util.h"
+___device__(extern  __no_sc__) int _Z4imaxii(const int, const int);
+# 815 "wall.c"
+___device__(extern  __no_sc__) int _Z10wall_is_pmP6wall_sPi(wall_t *, int *);
+# 830 "wall.c"
+___device__(extern  __no_sc__) int _Z12wall_presentP6wall_s(wall_t *);
+# 846 "wall.c"
+___device__(extern  __no_sc__) int _Z16wall_present_dimP6wall_sPi(wall_t *, int *);
+# 512 "wall.c"
+__global__ __var_used__ extern void _Z16wall_setu_kernelP6wall_sP9lb_data_s(wall_t *, lb_t *);
+# 575 "wall.c"
+__global__ __var_used__ extern void _Z15wall_bbl_kernelP6wall_sP9lb_data_sP5map_s(wall_t *, lb_t *, map_t *);
+# 62 "wall.c"
+static  __constant__  __var_used__ wall_param_t __nv_static_25__12_wall_cpp1_ii_6b8ce1bf_static_param;
+static  __device__  __var_used__ const char __T11[45];
+static  __device__  __var_used__ const char __T13[53];
+# 583 "wall.c"
+static  __shared__  __var_used__ double _ZZ15wall_bbl_kernelP6wall_sP9lb_data_sP5map_sE2fx[128];
+# 584 "wall.c"
+static  __shared__  __var_used__ double _ZZ15wall_bbl_kernelP6wall_sP9lb_data_sP5map_sE2fy[128];
+# 585 "wall.c"
+static  __shared__  __var_used__ double _ZZ15wall_bbl_kernelP6wall_sP9lb_data_sP5map_sE2fz[128];
+static  __device__  __var_used__ const char __T17[32];
+static  __device__  __var_used__ const char __T18[27];
+static  __device__  __var_used__ const char __T19[38];
+#include "common_functions.h"
+static  __device__  __var_used__ const char __T11[45] = "void wall_setu_kernel(wall_s *, lb_data_s *)";
+static  __device__  __var_used__ const char __T13[53] = "void wall_bbl_kernel(wall_s *, lb_data_s *, map_s *)";
+static  __device__  __var_used__ const char __T17[32] = "int wall_is_pm(wall_s *, int *)";
+static  __device__  __var_used__ const char __T18[27] = "int wall_present(wall_s *)";
+static  __device__  __var_used__ const char __T19[38] = "int wall_present_dim(wall_s *, int *)";
+# 815 "wall.c"
+___device__( __no_sc__) int _Z10wall_is_pmP6wall_sPi(
+# 815 "wall.c"
+wall_t *wall, 
+# 815 "wall.c"
+int *ispm){
+# 815 "wall.c"
+{
+# 817 "wall.c"
+(wall) ? ((void)0) : (__assert_fail(((const char *)"wall"), ((const char *)"wall.c"), 817U, __T17));
+# 819 "wall.c"
+(*ispm) = ((wall->param)->isporousmedia);
+# 821 "wall.c"
+return 0;
+# 822 "wall.c"
+}}
+# 830 "wall.c"
+___device__( __no_sc__) int _Z12wall_presentP6wall_s(
+# 830 "wall.c"
+wall_t *wall){
+# 830 "wall.c"
+{
+# 832 "wall.c"
+ wall_param_t *__cuda_local_var_16649_18_non_const_wp;
+# 832 "wall.c"
+__cuda_local_var_16649_18_non_const_wp = ((wall_param_t *)0LL);
+# 834 "wall.c"
+(wall) ? ((void)0) : (__assert_fail(((const char *)"wall"), ((const char *)"wall.c"), 834U, __T18));
+# 836 "wall.c"
+__cuda_local_var_16649_18_non_const_wp = (wall->param);
+# 837 "wall.c"
+return (int)(((((__cuda_local_var_16649_18_non_const_wp->isboundary))[X]) || (((__cuda_local_var_16649_18_non_const_wp->isboundary))[Y])) || (((__cuda_local_var_16649_18_non_const_wp->isboundary))[Z]));
+# 838 "wall.c"
+}}
+# 846 "wall.c"
+___device__( __no_sc__) int _Z16wall_present_dimP6wall_sPi(
+# 846 "wall.c"
+wall_t *wall, 
+# 846 "wall.c"
+int *iswall){
+# 846 "wall.c"
+{
+# 848 "wall.c"
+(wall) ? ((void)0) : (__assert_fail(((const char *)"wall"), ((const char *)"wall.c"), 848U, __T19));
+# 850 "wall.c"
+(iswall[X]) = ((((wall->param)->isboundary))[X]);
+# 851 "wall.c"
+(iswall[Y]) = ((((wall->param)->isboundary))[Y]);
+# 852 "wall.c"
+(iswall[Z]) = ((((wall->param)->isboundary))[Z]);
+# 854 "wall.c"
+return 0;
+# 855 "wall.c"
+}}
+# 512 "wall.c"
+__global__ __var_used__ void _Z16wall_setu_kernelP6wall_sP9lb_data_s(
+# 512 "wall.c"
+wall_t *wall, 
+# 512 "wall.c"
+lb_t *lb){
+# 512 "wall.c"
+{
+# 514 "wall.c"
+ int __cuda_local_var_16359_7_non_const_n;
+# 515 "wall.c"
+ int __cuda_local_var_16360_7_non_const_p;
+# 516 "wall.c"
+ double __cuda_local_var_16361_10_non_const_fp;
+# 517 "wall.c"
+ double __cuda_local_var_16362_10_non_const_ux;
+# 518 "wall.c"
+ double __cuda_local_var_16363_16_const_rcs2;
+# 517 "wall.c"
+__cuda_local_var_16362_10_non_const_ux = (0.0);
+# 518 "wall.c"
+__cuda_local_var_16363_16_const_rcs2 = (3.0);
+# 520 "wall.c"
+(wall) ? ((void)0) : (__assert_fail(((const char *)"wall"), ((const char *)"wall.c"), 520U, __T11));
+# 521 "wall.c"
+(lb) ? ((void)0) : (__assert_fail(((const char *)"lb"), ((const char *)"wall.c"), 521U, __T11));
+# 523 "wall.c"
+__cuda_local_var_16359_7_non_const_n = ((int)(1U * (((blockIdx.x) * (blockDim.x)) + (threadIdx.x))));
+# 523 "wall.c"
+if (__cuda_local_var_16359_7_non_const_n < (wall->nlink))
+# 523 "wall.c"
+{
+# 525 "wall.c"
+__cuda_local_var_16360_7_non_const_p = (19 - ((wall->linkp)[__cuda_local_var_16359_7_non_const_n]));
+# 526 "wall.c"
+__cuda_local_var_16361_10_non_const_fp = (((((lb->param)->wv))[__cuda_local_var_16360_7_non_const_p]) * (((lb->param)->rho0) + (((3.0) * __cuda_local_var_16362_10_non_const_ux) * ((double)((((((lb->param)->cv))[__cuda_local_var_16360_7_non_const_p]))[X])))));
+# 527 "wall.c"
+_Z8lb_f_setP9lb_data_siiid(lb, ((wall->linkj)[__cuda_local_var_16359_7_non_const_n]), __cuda_local_var_16360_7_non_const_p, 0, __cuda_local_var_16361_10_non_const_fp);
+# 529 "wall.c"
+}
+# 531 "wall.c"
+return;
+# 532 "wall.c"
+}}
+# 575 "wall.c"
+__global__ __var_used__ void _Z15wall_bbl_kernelP6wall_sP9lb_data_sP5map_s(
+# 575 "wall.c"
+wall_t *wall, 
+# 575 "wall.c"
+lb_t *lb, 
+# 575 "wall.c"
+map_t *map){
+# 575 "wall.c"
+{
+# 577 "wall.c"
+ int __cuda_local_var_16411_7_non_const_n;
+# 578 "wall.c"
+ int __cuda_local_var_16412_7_non_const_ib;
+# 579 "wall.c"
+ int __cuda_local_var_16413_7_non_const_tid;
+# 580 "wall.c"
+ double __cuda_local_var_16414_10_non_const_fxb;
+# 580 "wall.c"
+ double __cuda_local_var_16414_15_non_const_fyb;
+# 580 "wall.c"
+ double __cuda_local_var_16414_20_non_const_fzb;
+# 581 "wall.c"
+ double __cuda_local_var_16415_10_non_const_uw[3][3];
+# 587 "wall.c"
+ double __cuda_local_var_16421_16_const_rcs2;
+# 587 "wall.c"
+__cuda_local_var_16421_16_const_rcs2 = (3.0);
+# 589 "wall.c"
+(wall) ? ((void)0) : (__assert_fail(((const char *)"wall"), ((const char *)"wall.c"), 589U, __T13));
+# 590 "wall.c"
+(lb) ? ((void)0) : (__assert_fail(((const char *)"lb"), ((const char *)"wall.c"), 590U, __T13));
+# 591 "wall.c"
+(map) ? ((void)0) : (__assert_fail(((const char *)"map"), ((const char *)"wall.c"), 591U, __T13));
+# 595 "wall.c"
+for (__cuda_local_var_16412_7_non_const_ib = 0; (__cuda_local_var_16412_7_non_const_ib < 3); __cuda_local_var_16412_7_non_const_ib++)
+# 595 "wall.c"
+{
+# 596 "wall.c"
+((((__cuda_local_var_16415_10_non_const_uw)[WALL_UZERO]))[__cuda_local_var_16412_7_non_const_ib]) = (0.0);
+# 597 "wall.c"
+((((__cuda_local_var_16415_10_non_const_uw)[WALL_UWTOP]))[__cuda_local_var_16412_7_non_const_ib]) = ((((wall->param)->utop))[__cuda_local_var_16412_7_non_const_ib]);
+# 598 "wall.c"
+((((__cuda_local_var_16415_10_non_const_uw)[WALL_UWBOT]))[__cuda_local_var_16412_7_non_const_ib]) = ((((wall->param)->ubot))[__cuda_local_var_16412_7_non_const_ib]);
+# 599 "wall.c"
+}
+# 601 "wall.c"
+__cuda_local_var_16413_7_non_const_tid = ((int)(threadIdx.x));
+# 603 "wall.c"
+((_ZZ15wall_bbl_kernelP6wall_sP9lb_data_sP5map_sE2fx)[__cuda_local_var_16413_7_non_const_tid]) = (0.0);
+# 604 "wall.c"
+((_ZZ15wall_bbl_kernelP6wall_sP9lb_data_sP5map_sE2fy)[__cuda_local_var_16413_7_non_const_tid]) = (0.0);
+# 605 "wall.c"
+((_ZZ15wall_bbl_kernelP6wall_sP9lb_data_sP5map_sE2fz)[__cuda_local_var_16413_7_non_const_tid]) = (0.0);
+# 607 "wall.c"
+__cuda_local_var_16411_7_non_const_n = ((int)(1U * (((blockIdx.x) * (blockDim.x)) + (threadIdx.x))));
+# 607 "wall.c"
+if (__cuda_local_var_16411_7_non_const_n < (wall->nlink))
+# 607 "wall.c"
+{
+# 609 "wall.c"
+ int __cuda_local_var_16443_9_non_const_i;
+# 609 "wall.c"
+ int __cuda_local_var_16443_12_non_const_j;
+# 609 "wall.c"
+ int __cuda_local_var_16443_15_non_const_ij;
+# 609 "wall.c"
+ int __cuda_local_var_16443_19_non_const_ji;
+# 609 "wall.c"
+ int __cuda_local_var_16443_23_non_const_ia;
+# 610 "wall.c"
+ int __cuda_local_var_16444_9_non_const_status;
+# 611 "wall.c"
+ double __cuda_local_var_16445_12_non_const_rho;
+# 611 "wall.c"
+ double __cuda_local_var_16445_17_non_const_cdotu;
+# 612 "wall.c"
+ double __cuda_local_var_16446_12_non_const_fp;
+# 612 "wall.c"
+ double __cuda_local_var_16446_16_non_const_fp0;
+# 612 "wall.c"
+ double __cuda_local_var_16446_21_non_const_fp1;
+# 613 "wall.c"
+ double __cuda_local_var_16447_12_non_const_force;
+# 615 "wall.c"
+__cuda_local_var_16443_9_non_const_i = ((wall->linki)[__cuda_local_var_16411_7_non_const_n]);
+# 616 "wall.c"
+__cuda_local_var_16443_12_non_const_j = ((wall->linkj)[__cuda_local_var_16411_7_non_const_n]);
+# 617 "wall.c"
+__cuda_local_var_16443_15_non_const_ij = ((wall->linkp)[__cuda_local_var_16411_7_non_const_n]);
+# 618 "wall.c"
+__cuda_local_var_16443_19_non_const_ji = (19 - __cuda_local_var_16443_15_non_const_ij);
+# 619 "wall.c"
+__cuda_local_var_16443_23_non_const_ia = ((wall->linku)[__cuda_local_var_16411_7_non_const_n]);
+# 621 "wall.c"
+__cuda_local_var_16445_17_non_const_cdotu = (((((double)((((((lb->param)->cv))[__cuda_local_var_16443_15_non_const_ij]))[X])) * ((((__cuda_local_var_16415_10_non_const_uw)[__cuda_local_var_16443_23_non_const_ia]))[X])) + (((double)((((((lb->param)->cv))[__cuda_local_var_16443_15_non_const_ij]))[Y])) * ((((__cuda_local_var_16415_10_non_const_uw)[__cuda_local_var_16443_23_non_const_ia]))[Y]))) + (((double)((((((lb->param)->cv))[__cuda_local_var_16443_15_non_const_ij]))[Z])) * ((((__cuda_local_var_16415_10_non_const_uw)[__cuda_local_var_16443_23_non_const_ia]))[Z])));
+# 625 "wall.c"
+_Z10map_statusP5map_siPi(map, __cuda_local_var_16443_9_non_const_i, (&__cuda_local_var_16444_9_non_const_status));
+# 627 "wall.c"
+if (__cuda_local_var_16444_9_non_const_status == 2)
+# 627 "wall.c"
+{
+# 632 "wall.c"
+_Z4lb_fP9lb_data_siiiPd(lb, __cuda_local_var_16443_9_non_const_i, __cuda_local_var_16443_15_non_const_ij, 0, (&__cuda_local_var_16446_16_non_const_fp0));
+# 633 "wall.c"
+_Z4lb_fP9lb_data_siiiPd(lb, __cuda_local_var_16443_12_non_const_j, __cuda_local_var_16443_19_non_const_ji, 0, (&__cuda_local_var_16446_21_non_const_fp1));
+# 634 "wall.c"
+__cuda_local_var_16446_12_non_const_fp = (__cuda_local_var_16446_16_non_const_fp0 + __cuda_local_var_16446_21_non_const_fp1);
+# 636 "wall.c"
+((_ZZ15wall_bbl_kernelP6wall_sP9lb_data_sP5map_sE2fx)[__cuda_local_var_16413_7_non_const_tid]) += ((__cuda_local_var_16446_12_non_const_fp - ((2.0) * ((((lb->param)->wv))[__cuda_local_var_16443_15_non_const_ij]))) * ((double)((((((lb->param)->cv))[__cuda_local_var_16443_15_non_const_ij]))[X])));
+# 637 "wall.c"
+((_ZZ15wall_bbl_kernelP6wall_sP9lb_data_sP5map_sE2fy)[__cuda_local_var_16413_7_non_const_tid]) += ((__cuda_local_var_16446_12_non_const_fp - ((2.0) * ((((lb->param)->wv))[__cuda_local_var_16443_15_non_const_ij]))) * ((double)((((((lb->param)->cv))[__cuda_local_var_16443_15_non_const_ij]))[Y])));
+# 638 "wall.c"
+((_ZZ15wall_bbl_kernelP6wall_sP9lb_data_sP5map_sE2fz)[__cuda_local_var_16413_7_non_const_tid]) += ((__cuda_local_var_16446_12_non_const_fp - ((2.0) * ((((lb->param)->wv))[__cuda_local_var_16443_15_non_const_ij]))) * ((double)((((((lb->param)->cv))[__cuda_local_var_16443_15_non_const_ij]))[Z])));
+# 639 "wall.c"
+}
+# 640 "wall.c"
+else 
+# 640 "wall.c"
+{
+# 647 "wall.c"
+_Z4lb_fP9lb_data_siiiPd(lb, __cuda_local_var_16443_9_non_const_i, __cuda_local_var_16443_15_non_const_ij, 0, (&__cuda_local_var_16446_12_non_const_fp));
+# 648 "wall.c"
+_Z13lb_0th_momentP9lb_data_si17lb_dist_enum_typePd(lb, __cuda_local_var_16443_9_non_const_i, LB_RHO, (&__cuda_local_var_16445_12_non_const_rho));
+# 650 "wall.c"
+__cuda_local_var_16447_12_non_const_force = (((2.0) * __cuda_local_var_16446_12_non_const_fp) - ((((6.0) * ((((lb->param)->wv))[__cuda_local_var_16443_15_non_const_ij])) * ((lb->param)->rho0)) * __cuda_local_var_16445_17_non_const_cdotu));
+# 652 "wall.c"
+((_ZZ15wall_bbl_kernelP6wall_sP9lb_data_sP5map_sE2fx)[__cuda_local_var_16413_7_non_const_tid]) += ((__cuda_local_var_16447_12_non_const_force - ((2.0) * ((((lb->param)->wv))[__cuda_local_var_16443_15_non_const_ij]))) * ((double)((((((lb->param)->cv))[__cuda_local_var_16443_15_non_const_ij]))[X])));
+# 653 "wall.c"
+((_ZZ15wall_bbl_kernelP6wall_sP9lb_data_sP5map_sE2fy)[__cuda_local_var_16413_7_non_const_tid]) += ((__cuda_local_var_16447_12_non_const_force - ((2.0) * ((((lb->param)->wv))[__cuda_local_var_16443_15_non_const_ij]))) * ((double)((((((lb->param)->cv))[__cuda_local_var_16443_15_non_const_ij]))[Y])));
+# 654 "wall.c"
+((_ZZ15wall_bbl_kernelP6wall_sP9lb_data_sP5map_sE2fz)[__cuda_local_var_16413_7_non_const_tid]) += ((__cuda_local_var_16447_12_non_const_force - ((2.0) * ((((lb->param)->wv))[__cuda_local_var_16443_15_non_const_ij]))) * ((double)((((((lb->param)->cv))[__cuda_local_var_16443_15_non_const_ij]))[Z])));
+# 656 "wall.c"
+__cuda_local_var_16446_12_non_const_fp = (__cuda_local_var_16446_12_non_const_fp - ((((6.0) * ((((lb->param)->wv))[__cuda_local_var_16443_15_non_const_ij])) * ((lb->param)->rho0)) * __cuda_local_var_16445_17_non_const_cdotu));
+# 657 "wall.c"
+_Z8lb_f_setP9lb_data_siiid(lb, __cuda_local_var_16443_12_non_const_j, __cuda_local_var_16443_19_non_const_ji, 0, __cuda_local_var_16446_12_non_const_fp);
+# 659 "wall.c"
+if (((lb->param)->ndist) > 1)
+# 659 "wall.c"
+{
+# 661 "wall.c"
+_Z4lb_fP9lb_data_siiiPd(lb, __cuda_local_var_16443_9_non_const_i, __cuda_local_var_16443_15_non_const_ij, 1, (&__cuda_local_var_16446_12_non_const_fp));
+# 662 "wall.c"
+_Z13lb_0th_momentP9lb_data_si17lb_dist_enum_typePd(lb, __cuda_local_var_16443_9_non_const_i, LB_PHI, (&__cuda_local_var_16445_12_non_const_rho));
+# 664 "wall.c"
+__cuda_local_var_16446_12_non_const_fp = (__cuda_local_var_16446_12_non_const_fp - ((((6.0) * ((((lb->param)->wv))[__cuda_local_var_16443_15_non_const_ij])) * ((lb->param)->rho0)) * __cuda_local_var_16445_17_non_const_cdotu));
+# 665 "wall.c"
+_Z8lb_f_setP9lb_data_siiid(lb, __cuda_local_var_16443_12_non_const_j, __cuda_local_var_16443_19_non_const_ji, 1, __cuda_local_var_16446_12_non_const_fp);
+# 666 "wall.c"
+}
+# 667 "wall.c"
+}
+# 669 "wall.c"
+}
+# 673 "wall.c"
+__cuda_local_var_16414_10_non_const_fxb = (_Z23tdpAtomicBlockAddDoublePd((_ZZ15wall_bbl_kernelP6wall_sP9lb_data_sP5map_sE2fx)));
+# 674 "wall.c"
+__cuda_local_var_16414_15_non_const_fyb = (_Z23tdpAtomicBlockAddDoublePd((_ZZ15wall_bbl_kernelP6wall_sP9lb_data_sP5map_sE2fy)));
+# 675 "wall.c"
+__cuda_local_var_16414_20_non_const_fzb = (_Z23tdpAtomicBlockAddDoublePd((_ZZ15wall_bbl_kernelP6wall_sP9lb_data_sP5map_sE2fz)));
+# 677 "wall.c"
+if (__cuda_local_var_16413_7_non_const_tid == 0)
+# 677 "wall.c"
+{
+# 678 "wall.c"
+_Z18tdpAtomicAddDoublePdd((((wall->fnet)) + X), __cuda_local_var_16414_10_non_const_fxb);
+# 679 "wall.c"
+_Z18tdpAtomicAddDoublePdd((((wall->fnet)) + Y), __cuda_local_var_16414_15_non_const_fyb);
+# 680 "wall.c"
+_Z18tdpAtomicAddDoublePdd((((wall->fnet)) + Z), __cuda_local_var_16414_20_non_const_fzb);
+# 681 "wall.c"
+}
+# 683 "wall.c"
+return;
+# 684 "wall.c"
+}}

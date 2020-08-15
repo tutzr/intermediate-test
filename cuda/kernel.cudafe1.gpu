@@ -1,0 +1,539 @@
+typedef char __nv_bool;
+# 22 "pe.h"
+struct pe_s;
+# 26 "coords.h"
+enum cartesian_directions {
+# 26 "coords.h"
+X,
+# 26 "coords.h"
+Y,
+# 26 "coords.h"
+Z};
+# 9 "coords_s.h"
+struct coords_param_s;
+# 24 "coords_s.h"
+struct coords_s;
+# 28 "kernel.h"
+struct kernel_ctxt_s;
+# 37 "kernel.h"
+struct kernel_info_s;
+# 28 "kernel.c"
+struct kernel_param_s;
+# 212 "/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stddef.h" 3
+typedef unsigned long size_t;
+#include "crt/device_runtime.h"
+# 25 ".././mpi_s/mpi.h"
+typedef int MPI_Handle;
+# 26 ".././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Comm;
+# 28 ".././target/target_cuda.h"
+typedef enum cudaMemcpyKind tdpMemcpyKind;
+# 47 ".././target/target_cuda.h"
+typedef enum cudaError tdpError_t;
+# 22 "pe.h"
+typedef struct pe_s pe_t;
+# 22 "coords.h"
+typedef struct coords_s cs_t;
+# 7 "coords_s.h"
+typedef struct coords_param_s cs_param_t;
+# 24 "coords_s.h"
+struct coords_s {
+# 25 "coords_s.h"
+pe_t *pe;
+# 26 "coords_s.h"
+int nref;
+# 28 "coords_s.h"
+cs_param_t *param;
+# 31 "coords_s.h"
+int mpi_cartrank;
+# 32 "coords_s.h"
+int reorder;
+# 33 "coords_s.h"
+int mpi_cart_neighbours[2][3];
+# 34 "coords_s.h"
+int *listnlocal[3];
+# 35 "coords_s.h"
+int *listnoffset[3];
+# 37 "coords_s.h"
+MPI_Comm commcart;
+# 38 "coords_s.h"
+MPI_Comm commperiodic;
+# 40 "coords_s.h"
+cs_t *target;};
+# 21 "kernel.h"
+typedef struct kernel_ctxt_s kernel_ctxt_t;
+# 22 "kernel.h"
+typedef struct kernel_info_s kernel_info_t;
+# 23 "kernel.h"
+typedef struct kernel_param_s kernel_param_t;
+# 28 "kernel.h"
+struct kernel_ctxt_s {
+# 29 "kernel.h"
+kernel_param_t *param;
+# 30 "kernel.h"
+kernel_ctxt_t *target;};
+# 37 "kernel.h"
+struct kernel_info_s {
+# 38 "kernel.h"
+int imin;
+# 39 "kernel.h"
+int imax;
+# 40 "kernel.h"
+int jmin;
+# 41 "kernel.h"
+int jmax;
+# 42 "kernel.h"
+int kmin;
+# 43 "kernel.h"
+int kmax;};
+# 28 "kernel.c"
+struct kernel_param_s {
+# 30 "kernel.c"
+int nhalo;
+# 31 "kernel.c"
+int nsites;
+# 32 "kernel.c"
+int nlocal[3];
+# 33 "kernel.c"
+int kindex0;
+# 35 "kernel.c"
+int nklocal[3];
+# 36 "kernel.c"
+int kernel_iterations;
+# 38 "kernel.c"
+int nsimdvl;
+# 39 "kernel.c"
+int kernel_vector_iterations;
+# 40 "kernel.c"
+int nkv_local[3];
+# 41 "kernel.c"
+kernel_info_t lim;};
+# 150 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) void free(void *);
+# 189 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__noreturn__)) void __assert_fail(const char *, const char *, unsigned, const char *);
+# 46 ".././target/target.h"
+___device__(extern  __no_sc__) tdpError_t _Z17tdpGetDeviceCountPi(int *);
+# 117 ".././target/target.h"
+___device__(extern  __no_sc__) void _Z15tdpErrorHandler9cudaErrorPKcii(tdpError_t, const char *, int, int);
+# 59 "coords.h"
+___device__(extern  __no_sc__) int _Z9cs_nlocalP8coords_sPi(cs_t *, int *);
+# 61 "coords.h"
+___device__(extern  __no_sc__) int _Z8cs_nhaloP8coords_sPi(cs_t *, int *);
+# 62 "coords.h"
+___device__(extern  __no_sc__) int _Z8cs_indexP8coords_siii(cs_t *, int, int, int);
+# 64 "coords.h"
+___device__(extern  __no_sc__) int _Z9cs_nsitesP8coords_sPi(cs_t *, int *);
+# 232 "kernel.c"
+___device__(extern  __no_sc__) int _Z16kernel_baseindexP13kernel_ctxt_si(kernel_ctxt_t *, int);
+# 245 "kernel.c"
+___device__(extern  __no_sc__) int _Z16kernel_coords_icP13kernel_ctxt_si(kernel_ctxt_t *, int);
+# 266 "kernel.c"
+___device__(extern  __no_sc__) int _Z16kernel_coords_jcP13kernel_ctxt_si(kernel_ctxt_t *, int);
+# 291 "kernel.c"
+___device__(extern  __no_sc__) int _Z16kernel_coords_kcP13kernel_ctxt_si(kernel_ctxt_t *, int);
+# 316 "kernel.c"
+___device__(extern  __no_sc__) int _Z15kernel_coords_vP13kernel_ctxt_siPiS1_S1_(kernel_ctxt_t *, int, int *, int *, int *);
+# 360 "kernel.c"
+___device__(extern  __no_sc__) int _Z11kernel_maskP13kernel_ctxt_siii(kernel_ctxt_t *, int, int, int);
+# 375 "kernel.c"
+___device__(extern  __no_sc__) int _Z13kernel_mask_vP13kernel_ctxt_sPiS1_S1_S1_(kernel_ctxt_t *, int *, int *, int *, int *);
+# 410 "kernel.c"
+___device__(extern  __no_sc__) int _Z19kernel_coords_indexP13kernel_ctxt_siii(kernel_ctxt_t *, int, int, int);
+# 433 "kernel.c"
+___device__(extern  __no_sc__) int _Z21kernel_coords_index_vP13kernel_ctxt_sPiS1_S1_S1_(kernel_ctxt_t *, int *, int *, int *, int *);
+# 465 "kernel.c"
+___device__(extern  __no_sc__) int _Z17kernel_iterationsP13kernel_ctxt_s(kernel_ctxt_t *);
+# 478 "kernel.c"
+___device__(extern  __no_sc__) int _Z24kernel_vector_iterationsP13kernel_ctxt_s(kernel_ctxt_t *);
+# 47 "kernel.c"
+static  __device__  __var_used__ kernel_ctxt_t __nv_static_27__14_kernel_cpp1_ii_6c28956c_static_ctxt;
+# 48 "kernel.c"
+static  __constant__  __var_used__ kernel_param_t __nv_static_27__14_kernel_cpp1_ii_6c28956c_static_param;
+static  __device__  __var_used__ const char __T5[43];
+static  __device__  __var_used__ const char __T6[43];
+static  __device__  __var_used__ const char __T7[43];
+static  __device__  __var_used__ const char __T8[43];
+static  __device__  __var_used__ const char __T9[63];
+static  __device__  __var_used__ const char __T10[63];
+static  __device__  __var_used__ const char __T11[56];
+static  __device__  __var_used__ const char __T12[71];
+static  __device__  __var_used__ const char __T13[39];
+static  __device__  __var_used__ const char __T14[46];
+#include "common_functions.h"
+static  __device__  __var_used__ const char __T5[43] = "int kernel_baseindex(kernel_ctxt_s *, int)";
+static  __device__  __var_used__ const char __T6[43] = "int kernel_coords_ic(kernel_ctxt_s *, int)";
+static  __device__  __var_used__ const char __T7[43] = "int kernel_coords_jc(kernel_ctxt_s *, int)";
+static  __device__  __var_used__ const char __T8[43] = "int kernel_coords_kc(kernel_ctxt_s *, int)";
+static  __device__  __var_used__ const char __T9[63] = "int kernel_coords_v(kernel_ctxt_s *, int, int *, int *, int *)";
+static  __device__  __var_used__ const char __T10[63] = "int kernel_mask_v(kernel_ctxt_s *, int *, int *, int *, int *)";
+static  __device__  __var_used__ const char __T11[56] = "int kernel_coords_index(kernel_ctxt_s *, int, int, int)";
+static  __device__  __var_used__ const char __T12[71] = "int kernel_coords_index_v(kernel_ctxt_s *, int *, int *, int *, int *)";
+static  __device__  __var_used__ const char __T13[39] = "int kernel_iterations(kernel_ctxt_s *)";
+static  __device__  __var_used__ const char __T14[46] = "int kernel_vector_iterations(kernel_ctxt_s *)";
+# 232 "kernel.c"
+___device__( __no_sc__) int _Z16kernel_baseindexP13kernel_ctxt_si(
+# 232 "kernel.c"
+kernel_ctxt_t *obj, 
+# 232 "kernel.c"
+int kindex){
+# 232 "kernel.c"
+{
+# 234 "kernel.c"
+(obj) ? ((void)0) : (__assert_fail(((const char *)"obj"), ((const char *)"kernel.c"), 234U, __T5));
+# 236 "kernel.c"
+return ((obj->param)->kindex0) + kindex;
+# 237 "kernel.c"
+}}
+# 245 "kernel.c"
+___device__( __no_sc__) int _Z16kernel_coords_icP13kernel_ctxt_si(
+# 245 "kernel.c"
+kernel_ctxt_t *obj, 
+# 245 "kernel.c"
+int kindex){
+# 245 "kernel.c"
+{
+# 247 "kernel.c"
+ int __cuda_local_var_15547_7_non_const_ic;
+# 249 "kernel.c"
+(obj) ? ((void)0) : (__assert_fail(((const char *)"obj"), ((const char *)"kernel.c"), 249U, __T6));
+# 251 "kernel.c"
+__cuda_local_var_15547_7_non_const_ic = ((((obj->param)->lim).imin) + (kindex / (((((obj->param)->nklocal))[Y]) * ((((obj->param)->nklocal))[Z]))));
+# 254 "kernel.c"
+((1 - ((obj->param)->nhalo)) <= __cuda_local_var_15547_7_non_const_ic) ? ((void)0) : (__assert_fail(((const char *)"1 - obj->param->nhalo <= ic"), ((const char *)"kernel.c"), 254U, __T6));
+# 255 "kernel.c"
+(__cuda_local_var_15547_7_non_const_ic <= (((((obj->param)->nlocal))[X]) + ((obj->param)->nhalo))) ? ((void)0) : (__assert_fail(((const char *)"ic <= obj->param->nlocal[X] + obj->param->nhalo"), ((const char *)"kernel.c"), 255U, __T6));
+# 257 "kernel.c"
+return __cuda_local_var_15547_7_non_const_ic;
+# 258 "kernel.c"
+}}
+# 266 "kernel.c"
+___device__( __no_sc__) int _Z16kernel_coords_jcP13kernel_ctxt_si(
+# 266 "kernel.c"
+kernel_ctxt_t *obj, 
+# 266 "kernel.c"
+int kindex){
+# 266 "kernel.c"
+{
+# 268 "kernel.c"
+ int __cuda_local_var_15568_7_non_const_ic;
+# 269 "kernel.c"
+ int __cuda_local_var_15569_7_non_const_jc;
+# 270 "kernel.c"
+ int __cuda_local_var_15570_7_non_const_xs;
+# 272 "kernel.c"
+(obj) ? ((void)0) : (__assert_fail(((const char *)"obj"), ((const char *)"kernel.c"), 272U, __T7));
+# 274 "kernel.c"
+__cuda_local_var_15570_7_non_const_xs = (((((obj->param)->nklocal))[Y]) * ((((obj->param)->nklocal))[Z]));
+# 276 "kernel.c"
+__cuda_local_var_15568_7_non_const_ic = (kindex / __cuda_local_var_15570_7_non_const_xs);
+# 277 "kernel.c"
+__cuda_local_var_15569_7_non_const_jc = ((((obj->param)->lim).jmin) + ((kindex - (__cuda_local_var_15568_7_non_const_ic * __cuda_local_var_15570_7_non_const_xs)) / ((((obj->param)->nklocal))[Z])));
+# 279 "kernel.c"
+((1 - ((obj->param)->nhalo)) <= __cuda_local_var_15569_7_non_const_jc) ? ((void)0) : (__assert_fail(((const char *)"1 - obj->param->nhalo <= jc"), ((const char *)"kernel.c"), 279U, __T7));
+# 280 "kernel.c"
+(__cuda_local_var_15569_7_non_const_jc <= (((((obj->param)->nlocal))[Y]) + ((obj->param)->nhalo))) ? ((void)0) : (__assert_fail(((const char *)"jc <= obj->param->nlocal[Y] + obj->param->nhalo"), ((const char *)"kernel.c"), 280U, __T7));
+# 282 "kernel.c"
+return __cuda_local_var_15569_7_non_const_jc;
+# 283 "kernel.c"
+}}
+# 291 "kernel.c"
+___device__( __no_sc__) int _Z16kernel_coords_kcP13kernel_ctxt_si(
+# 291 "kernel.c"
+kernel_ctxt_t *obj, 
+# 291 "kernel.c"
+int kindex){
+# 291 "kernel.c"
+{
+# 293 "kernel.c"
+ int __cuda_local_var_15593_7_non_const_ic;
+# 294 "kernel.c"
+ int __cuda_local_var_15594_7_non_const_jc;
+# 295 "kernel.c"
+ int __cuda_local_var_15595_7_non_const_kc;
+# 296 "kernel.c"
+ int __cuda_local_var_15596_7_non_const_xs;
+# 298 "kernel.c"
+__cuda_local_var_15596_7_non_const_xs = (((((obj->param)->nklocal))[Y]) * ((((obj->param)->nklocal))[Z]));
+# 300 "kernel.c"
+__cuda_local_var_15593_7_non_const_ic = (kindex / __cuda_local_var_15596_7_non_const_xs);
+# 301 "kernel.c"
+__cuda_local_var_15594_7_non_const_jc = ((kindex - (__cuda_local_var_15593_7_non_const_ic * __cuda_local_var_15596_7_non_const_xs)) / ((((obj->param)->nklocal))[Z]));
+# 302 "kernel.c"
+__cuda_local_var_15595_7_non_const_kc = ((((((obj->param)->lim).kmin) + kindex) - (__cuda_local_var_15593_7_non_const_ic * __cuda_local_var_15596_7_non_const_xs)) - (__cuda_local_var_15594_7_non_const_jc * ((((obj->param)->nklocal))[Z])));
+# 304 "kernel.c"
+((1 - ((obj->param)->nhalo)) <= __cuda_local_var_15595_7_non_const_kc) ? ((void)0) : (__assert_fail(((const char *)"1 - obj->param->nhalo <= kc"), ((const char *)"kernel.c"), 304U, __T8));
+# 305 "kernel.c"
+(__cuda_local_var_15595_7_non_const_kc <= (((((obj->param)->nlocal))[Z]) + ((obj->param)->nhalo))) ? ((void)0) : (__assert_fail(((const char *)"kc <= obj->param->nlocal[Z] + obj->param->nhalo"), ((const char *)"kernel.c"), 305U, __T8));
+# 307 "kernel.c"
+return __cuda_local_var_15595_7_non_const_kc;
+# 308 "kernel.c"
+}}
+# 316 "kernel.c"
+___device__( __no_sc__) int _Z15kernel_coords_vP13kernel_ctxt_siPiS1_S1_(
+# 316 "kernel.c"
+kernel_ctxt_t *obj, 
+# 317 "kernel.c"
+int kindex0, 
+# 318 "kernel.c"
+int *ic, 
+# 319 "kernel.c"
+int *jc, 
+# 319 "kernel.c"
+int *kc){
+# 319 "kernel.c"
+{
+# 320 "kernel.c"
+ int __cuda_local_var_15620_7_non_const_iv;
+# 321 "kernel.c"
+ int __cuda_local_var_15621_7_non_const_index;
+# 322 "kernel.c"
+ int __cuda_local_var_15622_7_non_const_xs;
+# 323 "kernel.c"
+ int *__restrict__ __cuda_local_var_15623_22_non_const_icv;
+# 324 "kernel.c"
+ int *__restrict__ __cuda_local_var_15624_22_non_const_jcv;
+# 325 "kernel.c"
+ int *__restrict__ __cuda_local_var_15625_22_non_const_kcv;
+# 323 "kernel.c"
+__cuda_local_var_15623_22_non_const_icv = ic;
+# 324 "kernel.c"
+__cuda_local_var_15624_22_non_const_jcv = jc;
+# 325 "kernel.c"
+__cuda_local_var_15625_22_non_const_kcv = kc;
+# 327 "kernel.c"
+(obj) ? ((void)0) : (__assert_fail(((const char *)"obj"), ((const char *)"kernel.c"), 327U, __T9));
+# 328 "kernel.c"
+__cuda_local_var_15622_7_non_const_xs = (((((obj->param)->nkv_local))[Y]) * ((((obj->param)->nkv_local))[Z]));
+# 330 "kernel.c"
+for (__cuda_local_var_15620_7_non_const_iv = 0; (__cuda_local_var_15620_7_non_const_iv < 1); __cuda_local_var_15620_7_non_const_iv++)
+# 330 "kernel.c"
+{
+# 331 "kernel.c"
+__cuda_local_var_15621_7_non_const_index = ((((obj->param)->kindex0) + kindex0) + __cuda_local_var_15620_7_non_const_iv);
+# 333 "kernel.c"
+(__cuda_local_var_15623_22_non_const_icv[__cuda_local_var_15620_7_non_const_iv]) = (__cuda_local_var_15621_7_non_const_index / __cuda_local_var_15622_7_non_const_xs);
+# 334 "kernel.c"
+(__cuda_local_var_15624_22_non_const_jcv[__cuda_local_var_15620_7_non_const_iv]) = ((__cuda_local_var_15621_7_non_const_index - ((__cuda_local_var_15623_22_non_const_icv[__cuda_local_var_15620_7_non_const_iv]) * __cuda_local_var_15622_7_non_const_xs)) / ((((obj->param)->nkv_local))[Z]));
+# 335 "kernel.c"
+(__cuda_local_var_15625_22_non_const_kcv[__cuda_local_var_15620_7_non_const_iv]) = ((__cuda_local_var_15621_7_non_const_index - ((__cuda_local_var_15623_22_non_const_icv[__cuda_local_var_15620_7_non_const_iv]) * __cuda_local_var_15622_7_non_const_xs)) - ((__cuda_local_var_15624_22_non_const_jcv[__cuda_local_var_15620_7_non_const_iv]) * ((((obj->param)->nkv_local))[Z])));
+# 336 "kernel.c"
+}
+# 338 "kernel.c"
+for (__cuda_local_var_15620_7_non_const_iv = 0; (__cuda_local_var_15620_7_non_const_iv < 1); __cuda_local_var_15620_7_non_const_iv++)
+# 338 "kernel.c"
+{
+# 339 "kernel.c"
+(__cuda_local_var_15623_22_non_const_icv[__cuda_local_var_15620_7_non_const_iv]) = ((__cuda_local_var_15623_22_non_const_icv[__cuda_local_var_15620_7_non_const_iv]) - (((obj->param)->nhalo) - 1));
+# 340 "kernel.c"
+(__cuda_local_var_15624_22_non_const_jcv[__cuda_local_var_15620_7_non_const_iv]) = ((__cuda_local_var_15624_22_non_const_jcv[__cuda_local_var_15620_7_non_const_iv]) - (((obj->param)->nhalo) - 1));
+# 341 "kernel.c"
+(__cuda_local_var_15625_22_non_const_kcv[__cuda_local_var_15620_7_non_const_iv]) = ((__cuda_local_var_15625_22_non_const_kcv[__cuda_local_var_15620_7_non_const_iv]) - (((obj->param)->nhalo) - 1));
+# 343 "kernel.c"
+((1 - ((obj->param)->nhalo)) <= (__cuda_local_var_15623_22_non_const_icv[__cuda_local_var_15620_7_non_const_iv])) ? ((void)0) : (__assert_fail(((const char *)"1 - obj->param->nhalo <= icv[iv]"), ((const char *)"kernel.c"), 343U, __T9));
+# 344 "kernel.c"
+((1 - ((obj->param)->nhalo)) <= (__cuda_local_var_15624_22_non_const_jcv[__cuda_local_var_15620_7_non_const_iv])) ? ((void)0) : (__assert_fail(((const char *)"1 - obj->param->nhalo <= jcv[iv]"), ((const char *)"kernel.c"), 344U, __T9));
+# 345 "kernel.c"
+((__cuda_local_var_15623_22_non_const_icv[__cuda_local_var_15620_7_non_const_iv]) <= (((((obj->param)->nlocal))[X]) + ((obj->param)->nhalo))) ? ((void)0) : (__assert_fail(((const char *)"icv[iv] <= obj->param->nlocal[X] + obj->param->nhalo"), ((const char *)"kernel.c"), 345U, __T9));
+# 346 "kernel.c"
+((__cuda_local_var_15624_22_non_const_jcv[__cuda_local_var_15620_7_non_const_iv]) <= (((((obj->param)->nlocal))[Y]) + ((obj->param)->nhalo))) ? ((void)0) : (__assert_fail(((const char *)"jcv[iv] <= obj->param->nlocal[Y] + obj->param->nhalo"), ((const char *)"kernel.c"), 346U, __T9));
+# 347 "kernel.c"
+((__cuda_local_var_15625_22_non_const_kcv[__cuda_local_var_15620_7_non_const_iv]) <= (((((obj->param)->nlocal))[Z]) + ((obj->param)->nhalo))) ? ((void)0) : (__assert_fail(((const char *)"kcv[iv] <= obj->param->nlocal[Z] + obj->param->nhalo"), ((const char *)"kernel.c"), 347U, __T9));
+# 348 "kernel.c"
+}
+# 350 "kernel.c"
+return 0;
+# 351 "kernel.c"
+}}
+# 360 "kernel.c"
+___device__( __no_sc__) int _Z11kernel_maskP13kernel_ctxt_siii(
+# 360 "kernel.c"
+kernel_ctxt_t *obj, 
+# 360 "kernel.c"
+int ic, 
+# 360 "kernel.c"
+int jc, 
+# 360 "kernel.c"
+int kc){
+# 360 "kernel.c"
+{
+# 362 "kernel.c"
+if ((((((ic < (((obj->param)->lim).imin)) || (ic > (((obj->param)->lim).imax))) || (jc < (((obj->param)->lim).jmin))) || (jc > (((obj->param)->lim).jmax))) || (kc < (((obj->param)->lim).kmin))) || (kc > (((obj->param)->lim).kmax))) {
+# 364 "kernel.c"
+return 0; }
+# 366 "kernel.c"
+return 1;
+# 367 "kernel.c"
+}}
+# 375 "kernel.c"
+___device__( __no_sc__) int _Z13kernel_mask_vP13kernel_ctxt_sPiS1_S1_S1_(
+# 375 "kernel.c"
+kernel_ctxt_t *obj, 
+# 376 "kernel.c"
+int *ic, 
+# 377 "kernel.c"
+int *jc, 
+# 378 "kernel.c"
+int *kc, 
+# 379 "kernel.c"
+int *mask){
+# 379 "kernel.c"
+{
+# 380 "kernel.c"
+ int __cuda_local_var_15680_7_non_const_iv;
+# 381 "kernel.c"
+ int *__restrict__ __cuda_local_var_15681_22_non_const_icv;
+# 382 "kernel.c"
+ int *__restrict__ __cuda_local_var_15682_22_non_const_jcv;
+# 383 "kernel.c"
+ int *__restrict__ __cuda_local_var_15683_22_non_const_kcv;
+# 384 "kernel.c"
+ int *__restrict__ __cuda_local_var_15684_22_non_const_maskv;
+# 381 "kernel.c"
+__cuda_local_var_15681_22_non_const_icv = ic;
+# 382 "kernel.c"
+__cuda_local_var_15682_22_non_const_jcv = jc;
+# 383 "kernel.c"
+__cuda_local_var_15683_22_non_const_kcv = kc;
+# 384 "kernel.c"
+__cuda_local_var_15684_22_non_const_maskv = mask;
+# 386 "kernel.c"
+(obj) ? ((void)0) : (__assert_fail(((const char *)"obj"), ((const char *)"kernel.c"), 386U, __T10));
+# 388 "kernel.c"
+for (__cuda_local_var_15680_7_non_const_iv = 0; (__cuda_local_var_15680_7_non_const_iv < 1); __cuda_local_var_15680_7_non_const_iv++)
+# 388 "kernel.c"
+{
+# 389 "kernel.c"
+(__cuda_local_var_15684_22_non_const_maskv[__cuda_local_var_15680_7_non_const_iv]) = 1;
+# 390 "kernel.c"
+}
+# 392 "kernel.c"
+for (__cuda_local_var_15680_7_non_const_iv = 0; (__cuda_local_var_15680_7_non_const_iv < 1); __cuda_local_var_15680_7_non_const_iv++)
+# 392 "kernel.c"
+{
+# 393 "kernel.c"
+if (((((((__cuda_local_var_15681_22_non_const_icv[__cuda_local_var_15680_7_non_const_iv]) < (((obj->param)->lim).imin)) || ((__cuda_local_var_15681_22_non_const_icv[__cuda_local_var_15680_7_non_const_iv]) > (((obj->param)->lim).imax))) || ((__cuda_local_var_15682_22_non_const_jcv[__cuda_local_var_15680_7_non_const_iv]) < (((obj->param)->lim).jmin))) || ((__cuda_local_var_15682_22_non_const_jcv[__cuda_local_var_15680_7_non_const_iv]) > (((obj->param)->lim).jmax))) || ((__cuda_local_var_15683_22_non_const_kcv[__cuda_local_var_15680_7_non_const_iv]) < (((obj->param)->lim).kmin))) || ((__cuda_local_var_15683_22_non_const_kcv[__cuda_local_var_15680_7_non_const_iv]) > (((obj->param)->lim).kmax)))
+# 395 "kernel.c"
+{
+# 396 "kernel.c"
+(__cuda_local_var_15684_22_non_const_maskv[__cuda_local_var_15680_7_non_const_iv]) = 0;
+# 397 "kernel.c"
+}
+# 398 "kernel.c"
+}
+# 400 "kernel.c"
+return 0;
+# 401 "kernel.c"
+}}
+# 410 "kernel.c"
+___device__( __no_sc__) int _Z19kernel_coords_indexP13kernel_ctxt_siii(
+# 410 "kernel.c"
+kernel_ctxt_t *obj, 
+# 410 "kernel.c"
+int ic, 
+# 410 "kernel.c"
+int jc, 
+# 410 "kernel.c"
+int kc){
+# 410 "kernel.c"
+{
+# 412 "kernel.c"
+ int __cuda_local_var_15712_7_non_const_index;
+# 413 "kernel.c"
+ int __cuda_local_var_15713_7_non_const_nhalo;
+# 414 "kernel.c"
+ int __cuda_local_var_15714_7_non_const_xfac;
+# 414 "kernel.c"
+ int __cuda_local_var_15714_13_non_const_yfac;
+# 416 "kernel.c"
+(obj) ? ((void)0) : (__assert_fail(((const char *)"obj"), ((const char *)"kernel.c"), 416U, __T11));
+# 418 "kernel.c"
+__cuda_local_var_15713_7_non_const_nhalo = ((obj->param)->nhalo);
+# 419 "kernel.c"
+__cuda_local_var_15714_13_non_const_yfac = (((((obj->param)->nlocal))[Z]) + (2 * __cuda_local_var_15713_7_non_const_nhalo));
+# 420 "kernel.c"
+__cuda_local_var_15714_7_non_const_xfac = (__cuda_local_var_15714_13_non_const_yfac * (((((obj->param)->nlocal))[Y]) + (2 * __cuda_local_var_15713_7_non_const_nhalo)));
+# 422 "kernel.c"
+__cuda_local_var_15712_7_non_const_index = (((((__cuda_local_var_15714_7_non_const_xfac * ((__cuda_local_var_15713_7_non_const_nhalo + ic) - 1)) + (__cuda_local_var_15714_13_non_const_yfac * ((__cuda_local_var_15713_7_non_const_nhalo + jc) - 1))) + __cuda_local_var_15713_7_non_const_nhalo) + kc) - 1);
+# 424 "kernel.c"
+return __cuda_local_var_15712_7_non_const_index;
+# 425 "kernel.c"
+}}
+# 433 "kernel.c"
+___device__( __no_sc__) int _Z21kernel_coords_index_vP13kernel_ctxt_sPiS1_S1_S1_(
+# 433 "kernel.c"
+kernel_ctxt_t *obj, 
+# 434 "kernel.c"
+int *ic, 
+# 435 "kernel.c"
+int *jc, 
+# 436 "kernel.c"
+int *kc, 
+# 437 "kernel.c"
+int *index){
+# 437 "kernel.c"
+{
+# 438 "kernel.c"
+ int __cuda_local_var_15738_7_non_const_iv;
+# 439 "kernel.c"
+ int __cuda_local_var_15739_7_non_const_nhalo;
+# 440 "kernel.c"
+ int __cuda_local_var_15740_7_non_const_xfac;
+# 440 "kernel.c"
+ int __cuda_local_var_15740_13_non_const_yfac;
+# 441 "kernel.c"
+ int *__restrict__ __cuda_local_var_15741_22_non_const_icv;
+# 442 "kernel.c"
+ int *__restrict__ __cuda_local_var_15742_22_non_const_jcv;
+# 443 "kernel.c"
+ int *__restrict__ __cuda_local_var_15743_22_non_const_kcv;
+# 441 "kernel.c"
+__cuda_local_var_15741_22_non_const_icv = ic;
+# 442 "kernel.c"
+__cuda_local_var_15742_22_non_const_jcv = jc;
+# 443 "kernel.c"
+__cuda_local_var_15743_22_non_const_kcv = kc;
+# 445 "kernel.c"
+(obj) ? ((void)0) : (__assert_fail(((const char *)"obj"), ((const char *)"kernel.c"), 445U, __T12));
+# 447 "kernel.c"
+__cuda_local_var_15739_7_non_const_nhalo = ((obj->param)->nhalo);
+# 448 "kernel.c"
+__cuda_local_var_15740_13_non_const_yfac = (((((obj->param)->nlocal))[Z]) + (2 * __cuda_local_var_15739_7_non_const_nhalo));
+# 449 "kernel.c"
+__cuda_local_var_15740_7_non_const_xfac = (__cuda_local_var_15740_13_non_const_yfac * (((((obj->param)->nlocal))[Y]) + (2 * __cuda_local_var_15739_7_non_const_nhalo)));
+# 451 "kernel.c"
+for (__cuda_local_var_15738_7_non_const_iv = 0; (__cuda_local_var_15738_7_non_const_iv < 1); __cuda_local_var_15738_7_non_const_iv++)
+# 451 "kernel.c"
+{
+# 452 "kernel.c"
+(index[__cuda_local_var_15738_7_non_const_iv]) = (((((__cuda_local_var_15740_7_non_const_xfac * ((__cuda_local_var_15739_7_non_const_nhalo + (__cuda_local_var_15741_22_non_const_icv[__cuda_local_var_15738_7_non_const_iv])) - 1)) + (__cuda_local_var_15740_13_non_const_yfac * ((__cuda_local_var_15739_7_non_const_nhalo + (__cuda_local_var_15742_22_non_const_jcv[__cuda_local_var_15738_7_non_const_iv])) - 1))) + __cuda_local_var_15739_7_non_const_nhalo) + (__cuda_local_var_15743_22_non_const_kcv[__cuda_local_var_15738_7_non_const_iv])) - 1);
+# 454 "kernel.c"
+}
+# 456 "kernel.c"
+return 0;
+# 457 "kernel.c"
+}}
+# 465 "kernel.c"
+___device__( __no_sc__) int _Z17kernel_iterationsP13kernel_ctxt_s(
+# 465 "kernel.c"
+kernel_ctxt_t *obj){
+# 465 "kernel.c"
+{
+# 467 "kernel.c"
+(obj) ? ((void)0) : (__assert_fail(((const char *)"obj"), ((const char *)"kernel.c"), 467U, __T13));
+# 469 "kernel.c"
+return (obj->param)->kernel_iterations;
+# 470 "kernel.c"
+}}
+# 478 "kernel.c"
+___device__( __no_sc__) int _Z24kernel_vector_iterationsP13kernel_ctxt_s(
+# 478 "kernel.c"
+kernel_ctxt_t *obj){
+# 478 "kernel.c"
+{
+# 480 "kernel.c"
+(obj) ? ((void)0) : (__assert_fail(((const char *)"obj"), ((const char *)"kernel.c"), 480U, __T14));
+# 482 "kernel.c"
+return (obj->param)->kernel_vector_iterations;
+# 483 "kernel.c"
+}}

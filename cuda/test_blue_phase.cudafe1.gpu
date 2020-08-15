@@ -1,0 +1,229 @@
+typedef char __nv_bool;
+# 2074 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/driver_types.h"
+struct CUstream_st;
+# 92 "../.././mpi_s/mpi.h"
+enum reserved_communicators {
+# 92 "../.././mpi_s/mpi.h"
+MPI_COMM_WORLD,
+# 92 "../.././mpi_s/mpi.h"
+MPI_COMM_SELF};
+# 22 "../.././src/pe.h"
+struct pe_s;
+# 24 "../.././src/pe.h"
+enum pe_enum_t {
+# 24 "../.././src/pe.h"
+PE_QUIET,
+# 24 "../.././src/pe.h"
+PE_VERBOSE,
+# 24 "../.././src/pe.h"
+PE_OPTION_MAX};
+# 22 "../.././src/coords.h"
+struct coords_s;
+# 26 "../.././src/coords.h"
+enum cartesian_directions {
+# 26 "../.././src/coords.h"
+X,
+# 26 "../.././src/coords.h"
+Y,
+# 26 "../.././src/coords.h"
+Z};
+# 18 "../.././src/physics.h"
+struct physics_s;
+# 22 "../.././src/leesedwards.h"
+struct lees_edw_s;
+# 25 "../.././src/leesedwards.h"
+struct lees_edw_info_s;
+# 28 "../.././src/field.h"
+struct field_s;
+# 30 "../.././src/field.h"
+enum field_halo_enum_t {
+# 30 "../.././src/field.h"
+FIELD_HALO_HOST,
+# 30 "../.././src/field.h"
+FIELD_HALO_TARGET};
+# 21 "../.././src/field_grad.h"
+struct field_grad_s;
+# 66 "../.././src/free_energy.h"
+struct fe_s;
+# 34 "../.././src/blue_phase.h"
+struct fe_lc_s;
+# 48 "../.././src/blue_phase.h"
+struct fe_lc_param_s;
+# 212 "/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stddef.h" 3
+typedef unsigned long size_t;
+#include "crt/device_runtime.h"
+# 25 "../.././mpi_s/mpi.h"
+typedef int MPI_Handle;
+# 26 "../.././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Comm;
+# 28 "../.././target/target_cuda.h"
+typedef enum cudaMemcpyKind tdpMemcpyKind;
+# 47 "../.././target/target_cuda.h"
+typedef enum cudaError tdpError_t;
+# 22 "../.././src/pe.h"
+typedef struct pe_s pe_t;
+# 24 "../.././src/pe.h"
+typedef enum pe_enum_t pe_enum_t;
+# 22 "../.././src/coords.h"
+typedef struct coords_s cs_t;
+# 18 "../.././src/physics.h"
+typedef struct physics_s physics_t;
+# 22 "../.././src/leesedwards.h"
+typedef struct lees_edw_s lees_edw_t;
+# 23 "../.././src/leesedwards.h"
+typedef struct lees_edw_info_s lees_edw_info_t;
+# 28 "../.././src/field.h"
+typedef struct field_s field_t;
+# 30 "../.././src/field.h"
+typedef enum field_halo_enum_t field_halo_enum_t;
+# 21 "../.././src/field_grad.h"
+typedef struct field_grad_s field_grad_t;
+# 22 "../.././src/field_grad.h"
+typedef int (*grad_ft)(field_grad_t *);
+# 32 "../.././src/free_energy.h"
+typedef struct fe_s fe_t;
+# 29 "../.././src/blue_phase.h"
+typedef struct fe_lc_s fe_lc_t;
+# 30 "../.././src/blue_phase.h"
+typedef struct fe_lc_param_s fe_lc_param_t;
+# 48 "../.././src/blue_phase.h"
+struct fe_lc_param_s {
+# 49 "../.././src/blue_phase.h"
+double a0;
+# 50 "../.././src/blue_phase.h"
+double q0;
+# 51 "../.././src/blue_phase.h"
+double gamma;
+# 52 "../.././src/blue_phase.h"
+double kappa0;
+# 53 "../.././src/blue_phase.h"
+double kappa1;
+# 55 "../.././src/blue_phase.h"
+double xi;
+# 56 "../.././src/blue_phase.h"
+double zeta0;
+# 57 "../.././src/blue_phase.h"
+double zeta1;
+# 58 "../.././src/blue_phase.h"
+double zeta2;
+# 59 "../.././src/blue_phase.h"
+double redshift;
+# 60 "../.././src/blue_phase.h"
+double rredshift;
+# 61 "../.././src/blue_phase.h"
+double epsilon;
+# 62 "../.././src/blue_phase.h"
+double amplitude0;
+# 63 "../.././src/blue_phase.h"
+double e0coswt[3];
+# 65 "../.././src/blue_phase.h"
+double w1_coll;
+# 66 "../.././src/blue_phase.h"
+double w2_coll;
+# 67 "../.././src/blue_phase.h"
+double w1_wall;
+# 68 "../.././src/blue_phase.h"
+double w2_wall;
+# 69 "../.././src/blue_phase.h"
+double nfix[3];
+# 71 "../.././src/blue_phase.h"
+int anchoring_coll;
+# 72 "../.././src/blue_phase.h"
+int anchoring_wall;
+# 73 "../.././src/blue_phase.h"
+int is_redshift_updated;
+# 74 "../.././src/blue_phase.h"
+int is_active;};
+# 189 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__noreturn__)) void __assert_fail(const char *, const char *, unsigned, const char *);
+#if !defined(__CUDABE__)
+# 244 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/math_functions.h"
+ __device_builtin__ ___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__const__)) double fabs(double);
+#endif
+#if !defined(__CUDABE__)
+# 612 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/math_functions.h"
+ __device_builtin__ ___device__(extern  __no_sc__) __attribute__((__nothrow__)) double sqrt(double);
+#endif
+#if !defined(__CUDABE__)
+# 3066 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/math_functions.h"
+ __device_builtin__ ___device__(extern  __no_sc__) __attribute__((__nothrow__)) double atan(double);
+#endif
+# 3296 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/device_functions.h"
+___device__(extern  __no_sc__) unsigned __cudaPushCallConfiguration(struct dim3, struct dim3, size_t, struct CUstream_st *);
+# 44 "../.././target/target.h"
+___device__(extern  __no_sc__) tdpError_t _Z20tdpDeviceSynchronizev(void);
+# 56 "../.././src/leesedwards.h"
+___device__(extern  __no_sc__) int _Z15lees_edw_nlocalP10lees_edw_sPi(lees_edw_t *, int *);
+# 57 "../.././src/leesedwards.h"
+___device__(extern  __no_sc__) int _Z14lees_edw_indexP10lees_edw_siii(lees_edw_t *, int, int, int);
+# 59 "../.././src/leesedwards.h"
+___device__(extern  __no_sc__) int _Z13lees_edw_ltotP10lees_edw_sPd(lees_edw_t *, double *);
+# 45 "../.././src/field.h"
+___device__(extern  __no_sc__) int _Z8field_nfP7field_sPi(field_t *, int *);
+# 51 "../.././src/field.h"
+___device__(extern  __no_sc__) int _Z12field_tensorP7field_siPA3_d(field_t *, int, double (*)[3]);
+# 41 "../.././src/field_grad.h"
+___device__(extern  __no_sc__) int _Z22field_grad_tensor_gradP12field_grad_siPA3_A3_d(field_grad_t *, int, double (*)[3][3]);
+# 42 "../.././src/field_grad.h"
+___device__(extern  __no_sc__) int _Z23field_grad_tensor_delsqP12field_grad_siPA3_d(field_grad_t *, int, double (*)[3]);
+# 98 "../.././src/blue_phase.h"
+___device__(extern  __no_sc__) int _Z11fe_lc_paramP7fe_lc_sP13fe_lc_param_s(fe_lc_t *, fe_lc_param_t *);
+# 104 "../.././src/blue_phase.h"
+___device__(extern  __no_sc__) int _Z15fe_lc_mol_fieldP7fe_lc_siPA3_d(fe_lc_t *, int, double (*)[3]);
+# 116 "../.././src/blue_phase.h"
+___device__(extern  __no_sc__) int _Z17fe_lc_compute_fedP7fe_lc_sdPA3_dPA3_S1_Pd(fe_lc_t *, double, double (*)[3], double (*)[3][3], double *);
+# 120 "../.././src/blue_phase.h"
+___device__(extern  __no_sc__) int _Z15fe_lc_compute_hP7fe_lc_sdPA3_dPA3_S1_S2_S2_(fe_lc_t *, double, double (*)[3], double (*)[3][3], double (*)[3], double (*)[3]);
+# 124 "../.././src/blue_phase.h"
+___device__(extern  __no_sc__) int _Z20fe_lc_compute_stressP7fe_lc_sPA3_dPA3_S1_S2_S2_(fe_lc_t *, double (*)[3], double (*)[3][3], double (*)[3], double (*)[3]);
+# 131 "../.././src/blue_phase.h"
+___device__(extern  __no_sc__) int _Z15fe_lc_chiralityP7fe_lc_sPd(fe_lc_t *, double *);
+# 134 "../.././src/blue_phase.h"
+___device__(extern  __no_sc__) int _Z25fe_lc_reduced_temperatureP7fe_lc_sPd(fe_lc_t *, double *);
+# 137 "../.././src/blue_phase.h"
+___device__(extern  __no_sc__) int _Z34fe_lc_dimensionless_field_strengthP7fe_lc_sPd(fe_lc_t *, double *);
+# 18 "tests.h"
+___device__(extern  __no_sc__) void _Z16test_assert_infoiiPKc(const int, int, const char *);
+# 944 "test_blue_phase.c"
+__global__ __var_used__ extern void _Z21do_test_fe_lc_kernel1P7fe_lc_s13fe_lc_param_s(fe_lc_t *, fe_lc_param_t);
+static  __device__  __var_used__ const char __T2[53];
+#include "common_functions.h"
+static  __device__  __var_used__ const char __T2[53] = "void do_test_fe_lc_kernel1(fe_lc_s *, fe_lc_param_s)";
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+# 944 "test_blue_phase.c"
+__global__ __var_used__ void _Z21do_test_fe_lc_kernel1P7fe_lc_s13fe_lc_param_s(
+# 944 "test_blue_phase.c"
+fe_lc_t *fe, 
+# 944 "test_blue_phase.c"
+fe_lc_param_t ref){
+# 944 "test_blue_phase.c"
+{
+# 946 "test_blue_phase.c"
+ fe_lc_param_t __cuda_local_var_16891_17_non_const_p;
+# 947 "test_blue_phase.c"
+ double __cuda_local_var_16892_16_const_pi;
+# 947 "test_blue_phase.c"
+__cuda_local_var_16892_16_const_pi = (3.141592653589793116);
+# 949 "test_blue_phase.c"
+(fe) ? ((void)0) : (__assert_fail(((const char *)"fe"), ((const char *)"test_blue_phase.c"), 949U, __T2));
+# 951 "test_blue_phase.c"
+_Z11fe_lc_paramP7fe_lc_sP13fe_lc_param_s(fe, (&__cuda_local_var_16891_17_non_const_p));
+# 955 "test_blue_phase.c"
+_Z16test_assert_infoiiPKc(((int)((fabs(((__cuda_local_var_16891_17_non_const_p.a0) - (ref.a0)))) < (2.220446049250313081e-16))), 955, ((const char *)"test_blue_phase.c"));
+# 956 "test_blue_phase.c"
+_Z16test_assert_infoiiPKc(((int)((fabs(((__cuda_local_var_16891_17_non_const_p.gamma) - (ref.gamma)))) < (2.220446049250313081e-16))), 956, ((const char *)"test_blue_phase.c"));
+# 957 "test_blue_phase.c"
+_Z16test_assert_infoiiPKc(((int)((fabs(((__cuda_local_var_16891_17_non_const_p.kappa0) - (ref.kappa0)))) < (2.220446049250313081e-16))), 957, ((const char *)"test_blue_phase.c"));
+# 958 "test_blue_phase.c"
+_Z16test_assert_infoiiPKc(((int)((fabs((((37.69911184307751739) * (__cuda_local_var_16891_17_non_const_p.epsilon)) - (ref.epsilon)))) < (1.1920928955078125e-07))), 958, ((const char *)"test_blue_phase.c"));
+# 959 "test_blue_phase.c"
+_Z16test_assert_infoiiPKc(((int)((fabs(((__cuda_local_var_16891_17_non_const_p.redshift) - (ref.redshift)))) < (2.220446049250313081e-16))), 959, ((const char *)"test_blue_phase.c"));
+# 961 "test_blue_phase.c"
+return;
+# 962 "test_blue_phase.c"
+}}

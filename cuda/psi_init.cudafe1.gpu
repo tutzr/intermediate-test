@@ -1,0 +1,117 @@
+typedef char __nv_bool;
+# 22 "pe.h"
+struct pe_s;
+# 22 "coords.h"
+struct coords_s;
+# 26 "coords.h"
+enum cartesian_directions {
+# 26 "coords.h"
+X,
+# 26 "coords.h"
+Y,
+# 26 "coords.h"
+Z};
+# 73 "io_harness.h"
+struct io_info_s;
+# 24 "map.h"
+enum map_status {
+# 24 "map.h"
+MAP_FLUID,
+# 24 "map.h"
+MAP_BOUNDARY,
+# 24 "map.h"
+MAP_COLLOID,
+# 24 "map.h"
+MAP_STATUS_MAX};
+# 26 "map.h"
+struct map_s;
+# 39 "psi_s.h"
+struct psi_s;
+# 212 "/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stddef.h" 3
+typedef unsigned long size_t;
+#include "crt/device_runtime.h"
+# 25 ".././mpi_s/mpi.h"
+typedef int MPI_Handle;
+# 28 ".././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Datatype;
+# 22 "pe.h"
+typedef struct pe_s pe_t;
+# 22 "coords.h"
+typedef struct coords_s cs_t;
+# 36 "io_harness.h"
+typedef struct io_info_s io_info_t;
+# 26 "map.h"
+typedef struct map_s map_t;
+# 37 "psi.h"
+typedef struct psi_s psi_t;
+# 39 "psi_s.h"
+struct psi_s {
+# 40 "psi_s.h"
+pe_t *pe;
+# 41 "psi_s.h"
+cs_t *cs;
+# 43 "psi_s.h"
+int nk;
+# 44 "psi_s.h"
+int nsites;
+# 45 "psi_s.h"
+double *psi;
+# 46 "psi_s.h"
+double *rho;
+# 47 "psi_s.h"
+double *diffusivity;
+# 48 "psi_s.h"
+int *valency;
+# 49 "psi_s.h"
+double e;
+# 50 "psi_s.h"
+double epsilon;
+# 51 "psi_s.h"
+double epsilon2;
+# 52 "psi_s.h"
+double beta;
+# 53 "psi_s.h"
+double reltol;
+# 54 "psi_s.h"
+double abstol;
+# 55 "psi_s.h"
+int method;
+# 56 "psi_s.h"
+int maxits;
+# 57 "psi_s.h"
+int multisteps;
+# 58 "psi_s.h"
+int skipsteps;
+# 59 "psi_s.h"
+int nfreq_io;
+# 60 "psi_s.h"
+int nfreq;
+# 61 "psi_s.h"
+double diffacc;
+# 62 "psi_s.h"
+MPI_Datatype psihalo[3];
+# 63 "psi_s.h"
+MPI_Datatype rhohalo[3];
+# 64 "psi_s.h"
+io_info_t *info;};
+# 189 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__noreturn__)) void __assert_fail(const char *, const char *, unsigned, const char *);
+# 54 "coords.h"
+___device__(extern  __no_sc__) int _Z9cs_cartszP8coords_sPi(cs_t *, int *);
+# 55 "coords.h"
+___device__(extern  __no_sc__) int _Z14cs_cart_coordsP8coords_sPi(cs_t *, int *);
+# 57 "coords.h"
+___device__(extern  __no_sc__) int _Z7cs_ltotP8coords_sPd(cs_t *, double *);
+# 59 "coords.h"
+___device__(extern  __no_sc__) int _Z9cs_nlocalP8coords_sPi(cs_t *, int *);
+# 60 "coords.h"
+___device__(extern  __no_sc__) int _Z16cs_nlocal_offsetP8coords_sPi(cs_t *, int *);
+# 62 "coords.h"
+___device__(extern  __no_sc__) int _Z8cs_indexP8coords_siii(cs_t *, int, int, int);
+# 63 "coords.h"
+___device__(extern  __no_sc__) int _Z9cs_ntotalP8coords_sPi(cs_t *, int *);
+# 41 "map.h"
+___device__(extern  __no_sc__) int _Z14map_status_setP5map_sii(map_t *, int, int);
+# 42 "map.h"
+___device__(extern  __no_sc__) int _Z8map_dataP5map_siPd(map_t *, int, double *);
+#include "common_functions.h"

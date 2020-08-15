@@ -1,0 +1,1933 @@
+typedef char __nv_bool;
+# 2074 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/driver_types.h"
+struct CUstream_st;
+# 22 "pe.h"
+struct pe_s;
+# 22 "coords.h"
+struct coords_s;
+# 26 "coords.h"
+enum cartesian_directions {
+# 26 "coords.h"
+X,
+# 26 "coords.h"
+Y,
+# 26 "coords.h"
+Z};
+# 29 "coords.h"
+enum upper_triangle {
+# 29 "coords.h"
+XX,
+# 29 "coords.h"
+XY,
+# 29 "coords.h"
+XZ,
+# 29 "coords.h"
+YY,
+# 29 "coords.h"
+YZ,
+# 29 "coords.h"
+ZZ};
+# 23 "kernel.h"
+struct kernel_param_s;
+# 28 "kernel.h"
+struct kernel_ctxt_s;
+# 37 "kernel.h"
+struct kernel_info_s;
+# 44 "colloid.h"
+struct colloid_state_type;
+# 24 "colloid_link.h"
+struct colloid_link_type;
+# 26 "colloids.h"
+struct colloid;
+# 24 "colloids_s.h"
+struct colloids_info_s;
+# 73 "io_harness.h"
+struct io_info_s;
+# 24 "map.h"
+enum map_status {
+# 24 "map.h"
+MAP_FLUID,
+# 24 "map.h"
+MAP_BOUNDARY,
+# 24 "map.h"
+MAP_COLLOID,
+# 24 "map.h"
+MAP_STATUS_MAX};
+# 22 "map_s.h"
+struct map_s;
+# 23 "halo_swap.h"
+struct halo_swap_s;
+# 22 "leesedwards.h"
+struct lees_edw_s;
+# 21 "field_s.h"
+struct field_s;
+# 22 "field_grad_s.h"
+struct field_grad_s;
+# 48 "free_energy.h"
+struct fe_vt_s;
+# 66 "free_energy.h"
+struct fe_s;
+# 34 "blue_phase.h"
+struct fe_lc_s;
+# 48 "blue_phase.h"
+struct fe_lc_param_s;
+# 78 "blue_phase.h"
+enum lc_anchoring_enum {
+# 78 "blue_phase.h"
+LC_ANCHORING_PLANAR,
+# 79 "blue_phase.h"
+LC_ANCHORING_NORMAL,
+# 80 "blue_phase.h"
+LC_ANCHORING_FIXED,
+# 81 "blue_phase.h"
+LC_ANCHORING_TYPES};
+# 70 "gradient_3d_7pt_solid.c"
+struct grad_lc_anch_s;
+# 81 "gradient_3d_7pt_solid.c"
+struct param_s;
+# 212 "/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stddef.h" 3
+typedef unsigned long size_t;
+#include "crt/device_runtime.h"
+# 194 "/usr/include/sys/types.h" 3
+typedef signed char int8_t;
+# 25 ".././mpi_s/mpi.h"
+typedef int MPI_Handle;
+# 28 ".././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Datatype;
+# 28 ".././target/target_cuda.h"
+typedef enum cudaMemcpyKind tdpMemcpyKind;
+# 47 ".././target/target_cuda.h"
+typedef enum cudaError tdpError_t;
+# 22 "pe.h"
+typedef struct pe_s pe_t;
+# 22 "coords.h"
+typedef struct coords_s cs_t;
+# 21 "kernel.h"
+typedef struct kernel_ctxt_s kernel_ctxt_t;
+# 22 "kernel.h"
+typedef struct kernel_info_s kernel_info_t;
+# 23 "kernel.h"
+typedef struct kernel_param_s kernel_param_t;
+# 28 "kernel.h"
+struct kernel_ctxt_s {
+# 29 "kernel.h"
+kernel_param_t *param;
+# 30 "kernel.h"
+kernel_ctxt_t *target;};
+# 37 "kernel.h"
+struct kernel_info_s {
+# 38 "kernel.h"
+int imin;
+# 39 "kernel.h"
+int imax;
+# 40 "kernel.h"
+int jmin;
+# 41 "kernel.h"
+int jmax;
+# 42 "kernel.h"
+int kmin;
+# 43 "kernel.h"
+int kmax;};
+# 42 "colloid.h"
+typedef struct colloid_state_type colloid_state_t;
+# 44 "colloid.h"
+struct colloid_state_type {
+# 46 "colloid.h"
+int index;
+# 47 "colloid.h"
+int rebuild;
+# 48 "colloid.h"
+int nbonds;
+# 49 "colloid.h"
+int nangles;
+# 51 "colloid.h"
+int isfixedr;
+# 52 "colloid.h"
+int isfixedv;
+# 53 "colloid.h"
+int isfixedw;
+# 54 "colloid.h"
+int isfixeds;
+# 56 "colloid.h"
+int type;
+# 57 "colloid.h"
+int bond[2];
+# 59 "colloid.h"
+int rng;
+# 61 "colloid.h"
+int isfixedrxyz[3];
+# 62 "colloid.h"
+int isfixedvxyz[3];
+# 67 "colloid.h"
+int intpad[14];
+# 71 "colloid.h"
+double a0;
+# 72 "colloid.h"
+double ah;
+# 73 "colloid.h"
+double r[3];
+# 74 "colloid.h"
+double v[3];
+# 75 "colloid.h"
+double w[3];
+# 76 "colloid.h"
+double s[3];
+# 77 "colloid.h"
+double m[3];
+# 78 "colloid.h"
+double b1;
+# 79 "colloid.h"
+double b2;
+# 80 "colloid.h"
+double c;
+# 81 "colloid.h"
+double h;
+# 82 "colloid.h"
+double dr[3];
+# 83 "colloid.h"
+double deltaphi;
+# 92 "colloid.h"
+double q0;
+# 93 "colloid.h"
+double q1;
+# 94 "colloid.h"
+double epsilon;
+# 96 "colloid.h"
+double deltaq0;
+# 97 "colloid.h"
+double deltaq1;
+# 98 "colloid.h"
+double sa;
+# 99 "colloid.h"
+double saf;
+# 101 "colloid.h"
+double dpad[16];};
+# 22 "colloid_link.h"
+typedef struct colloid_link_type colloid_link_t;
+# 24 "colloids.h"
+typedef struct colloid colloid_t;
+# 26 "colloids.h"
+struct colloid {
+# 28 "colloids.h"
+colloid_state_t s;
+# 32 "colloids.h"
+double random[6];
+# 33 "colloids.h"
+double force[3];
+# 34 "colloids.h"
+double torque[3];
+# 35 "colloids.h"
+double f0[3];
+# 36 "colloids.h"
+double t0[3];
+# 37 "colloids.h"
+double cbar[3];
+# 38 "colloids.h"
+double rxcbar[3];
+# 39 "colloids.h"
+double deltam;
+# 40 "colloids.h"
+double sumw;
+# 41 "colloids.h"
+double zeta[21];
+# 42 "colloids.h"
+double stats[3];
+# 43 "colloids.h"
+double fc0[3];
+# 44 "colloids.h"
+double tc0[3];
+# 45 "colloids.h"
+double sump;
+# 46 "colloids.h"
+double dq[2];
+# 48 "colloids.h"
+double fsub[3];
+# 49 "colloids.h"
+double fex[3];
+# 50 "colloids.h"
+double tex[3];
+# 54 "colloids.h"
+colloid_link_t *lnk;
+# 55 "colloids.h"
+colloid_t *next;
+# 57 "colloids.h"
+colloid_t *nextall;
+# 58 "colloids.h"
+colloid_t *nextlocal;
+# 62 "colloids.h"
+colloid_t *bonded[2];};
+# 65 "colloids.h"
+typedef struct colloids_info_s colloids_info_t;
+# 24 "colloids_s.h"
+struct colloids_info_s {
+# 26 "colloids_s.h"
+int nhalo;
+# 27 "colloids_s.h"
+int ntotal;
+# 28 "colloids_s.h"
+int nallocated;
+# 29 "colloids_s.h"
+int ncell[3];
+# 30 "colloids_s.h"
+int str[3];
+# 31 "colloids_s.h"
+int nsites;
+# 32 "colloids_s.h"
+int ncells;
+# 34 "colloids_s.h"
+int rebuild_freq;
+# 36 "colloids_s.h"
+double rho0;
+# 37 "colloids_s.h"
+double drmax;
+# 39 "colloids_s.h"
+colloid_t **clist;
+# 40 "colloids_s.h"
+colloid_t **map_old;
+# 41 "colloids_s.h"
+colloid_t **map_new;
+# 42 "colloids_s.h"
+colloid_t *headall;
+# 43 "colloids_s.h"
+colloid_t *headlocal;
+# 45 "colloids_s.h"
+pe_t *pe;
+# 46 "colloids_s.h"
+cs_t *cs;
+# 47 "colloids_s.h"
+colloids_info_t *target;};
+# 36 "io_harness.h"
+typedef struct io_info_s io_info_t;
+# 26 "map.h"
+typedef struct map_s map_t;
+# 22 "map_s.h"
+struct map_s {
+# 23 "map_s.h"
+int nsite;
+# 24 "map_s.h"
+int is_porous_media;
+# 25 "map_s.h"
+int ndata;
+# 26 "map_s.h"
+char *status;
+# 27 "map_s.h"
+double *data;
+# 29 "map_s.h"
+pe_t *pe;
+# 30 "map_s.h"
+cs_t *cs;
+# 31 "map_s.h"
+MPI_Datatype halostatus[3];
+# 32 "map_s.h"
+MPI_Datatype halodata[3];
+# 33 "map_s.h"
+io_info_t *info;
+# 35 "map_s.h"
+map_t *target;};
+# 23 "halo_swap.h"
+typedef struct halo_swap_s halo_swap_t;
+# 22 "leesedwards.h"
+typedef struct lees_edw_s lees_edw_t;
+# 28 "field.h"
+typedef struct field_s field_t;
+# 21 "field_s.h"
+struct field_s {
+# 22 "field_s.h"
+int nf;
+# 23 "field_s.h"
+int nhcomm;
+# 24 "field_s.h"
+int nsites;
+# 25 "field_s.h"
+double *data;
+# 26 "field_s.h"
+char *name;
+# 28 "field_s.h"
+pe_t *pe;
+# 29 "field_s.h"
+cs_t *cs;
+# 30 "field_s.h"
+lees_edw_t *le;
+# 31 "field_s.h"
+io_info_t *info;
+# 32 "field_s.h"
+halo_swap_t *halo;
+# 34 "field_s.h"
+field_t *target;};
+# 21 "field_grad.h"
+typedef struct field_grad_s field_grad_t;
+# 22 "field_grad_s.h"
+struct field_grad_s {
+# 23 "field_grad_s.h"
+pe_t *pe;
+# 24 "field_grad_s.h"
+field_t *field;
+# 25 "field_grad_s.h"
+int nf;
+# 26 "field_grad_s.h"
+int level;
+# 27 "field_grad_s.h"
+int nsite;
+# 28 "field_grad_s.h"
+double *grad;
+# 29 "field_grad_s.h"
+double *delsq;
+# 30 "field_grad_s.h"
+double *d_ab;
+# 31 "field_grad_s.h"
+double *grad_delsq;
+# 32 "field_grad_s.h"
+double *delsq_delsq;
+# 34 "field_grad_s.h"
+field_grad_t *target;
+# 36 "field_grad_s.h"
+int (*d2)(field_grad_t *);
+# 37 "field_grad_s.h"
+int (*d4)(field_grad_t *);
+# 38 "field_grad_s.h"
+int (*dab)(field_grad_t *);};
+# 32 "free_energy.h"
+typedef struct fe_s fe_t;
+# 33 "free_energy.h"
+typedef struct fe_vt_s fe_vt_t;
+# 66 "free_energy.h"
+struct fe_s {
+# 67 "free_energy.h"
+fe_vt_t *func;
+# 68 "free_energy.h"
+int id;
+# 69 "free_energy.h"
+int use_stress_relaxation;};
+# 29 "blue_phase.h"
+typedef struct fe_lc_s fe_lc_t;
+# 30 "blue_phase.h"
+typedef struct fe_lc_param_s fe_lc_param_t;
+# 34 "blue_phase.h"
+struct fe_lc_s {
+# 35 "blue_phase.h"
+fe_t super;
+# 36 "blue_phase.h"
+pe_t *pe;
+# 37 "blue_phase.h"
+cs_t *cs;
+# 38 "blue_phase.h"
+fe_lc_param_t *param;
+# 39 "blue_phase.h"
+field_t *q;
+# 40 "blue_phase.h"
+field_grad_t *dq;
+# 41 "blue_phase.h"
+field_t *p;
+# 42 "blue_phase.h"
+field_grad_t *dp;
+# 43 "blue_phase.h"
+fe_lc_t *target;};
+# 48 "blue_phase.h"
+struct fe_lc_param_s {
+# 49 "blue_phase.h"
+double a0;
+# 50 "blue_phase.h"
+double q0;
+# 51 "blue_phase.h"
+double gamma;
+# 52 "blue_phase.h"
+double kappa0;
+# 53 "blue_phase.h"
+double kappa1;
+# 55 "blue_phase.h"
+double xi;
+# 56 "blue_phase.h"
+double zeta0;
+# 57 "blue_phase.h"
+double zeta1;
+# 58 "blue_phase.h"
+double zeta2;
+# 59 "blue_phase.h"
+double redshift;
+# 60 "blue_phase.h"
+double rredshift;
+# 61 "blue_phase.h"
+double epsilon;
+# 62 "blue_phase.h"
+double amplitude0;
+# 63 "blue_phase.h"
+double e0coswt[3];
+# 65 "blue_phase.h"
+double w1_coll;
+# 66 "blue_phase.h"
+double w2_coll;
+# 67 "blue_phase.h"
+double w1_wall;
+# 68 "blue_phase.h"
+double w2_wall;
+# 69 "blue_phase.h"
+double nfix[3];
+# 71 "blue_phase.h"
+int anchoring_coll;
+# 72 "blue_phase.h"
+int anchoring_wall;
+# 73 "blue_phase.h"
+int is_redshift_updated;
+# 74 "blue_phase.h"
+int is_active;};
+# 25 "gradient_3d_7pt_solid.h"
+typedef struct grad_lc_anch_s grad_lc_anch_t;
+# 68 "gradient_3d_7pt_solid.c"
+typedef struct param_s param_t;
+# 70 "gradient_3d_7pt_solid.c"
+struct grad_lc_anch_s {
+# 71 "gradient_3d_7pt_solid.c"
+pe_t *pe;
+# 72 "gradient_3d_7pt_solid.c"
+cs_t *cs;
+# 73 "gradient_3d_7pt_solid.c"
+param_t *param;
+# 74 "gradient_3d_7pt_solid.c"
+map_t *map;
+# 75 "gradient_3d_7pt_solid.c"
+field_t *phi;
+# 76 "gradient_3d_7pt_solid.c"
+colloids_info_t *cinfo;
+# 77 "gradient_3d_7pt_solid.c"
+fe_lc_t *fe;
+# 78 "gradient_3d_7pt_solid.c"
+grad_lc_anch_t *target;};
+# 81 "gradient_3d_7pt_solid.c"
+struct param_s {
+# 82 "gradient_3d_7pt_solid.c"
+double a6inv[3][6];
+# 83 "gradient_3d_7pt_solid.c"
+double a12inv[3][12][12];
+# 84 "gradient_3d_7pt_solid.c"
+double a18inv[18][18];};
+# 150 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) void free(void *);
+# 189 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__noreturn__)) void __assert_fail(const char *, const char *, unsigned, const char *);
+#if !defined(__CUDABE__)
+# 612 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/math_functions.h"
+ __device_builtin__ ___device__(extern  __no_sc__) __attribute__((__nothrow__)) double sqrt(double);
+#endif
+# 3296 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/device_functions.h"
+___device__(extern  __no_sc__) unsigned __cudaPushCallConfiguration(struct dim3, struct dim3, size_t, struct CUstream_st *);
+# 44 ".././target/target.h"
+___device__(extern  __no_sc__) tdpError_t _Z20tdpDeviceSynchronizev(void);
+# 46 ".././target/target.h"
+___device__(extern  __no_sc__) tdpError_t _Z17tdpGetDeviceCountPi(int *);
+# 79 ".././target/target.h"
+___device__(extern  __no_sc__) tdpError_t _Z7tdpFreePv(void *);
+# 80 ".././target/target.h"
+___device__(extern  __no_sc__) tdpError_t _Z9tdpMallocPPvm(void **, size_t);
+# 117 ".././target/target.h"
+___device__(extern  __no_sc__) void _Z15tdpErrorHandler9cudaErrorPKcii(tdpError_t, const char *, int, int);
+# 59 "coords.h"
+___device__(extern  __no_sc__) int _Z9cs_nlocalP8coords_sPi(cs_t *, int *);
+# 60 "coords.h"
+___device__(extern  __no_sc__) int _Z16cs_nlocal_offsetP8coords_sPi(cs_t *, int *);
+# 61 "coords.h"
+___device__(extern  __no_sc__) int _Z8cs_nhaloP8coords_sPi(cs_t *, int *);
+# 62 "coords.h"
+___device__(extern  __no_sc__) int _Z8cs_indexP8coords_siii(cs_t *, int, int, int);
+# 64 "coords.h"
+___device__(extern  __no_sc__) int _Z9cs_nsitesP8coords_sPi(cs_t *, int *);
+# 68 "coords.h"
+___device__(extern  __no_sc__) int _Z10cs_stridesP8coords_sPiS1_S1_(cs_t *, int *, int *, int *);
+# 200 "memory.h"
+___device__(extern  __no_sc__) int _Z25reverse_addr_rank0_assertiPKcii(int, const char *, int, int);
+# 203 "memory.h"
+___device__(extern  __no_sc__) int _Z25reverse_addr_rank1_assertiPKciiii(int, const char *, int, int, int, int);
+# 206 "memory.h"
+___device__(extern  __no_sc__) int _Z25reverse_addr_rank2_assertiPKciiiiii(int, const char *, int, int, int, int, int, int);
+# 53 "kernel.h"
+___device__(extern  __no_sc__) int _Z17kernel_iterationsP13kernel_ctxt_s(kernel_ctxt_t *);
+# 56 "kernel.h"
+___device__(extern  __no_sc__) int _Z16kernel_coords_icP13kernel_ctxt_si(kernel_ctxt_t *, int);
+# 57 "kernel.h"
+___device__(extern  __no_sc__) int _Z16kernel_coords_jcP13kernel_ctxt_si(kernel_ctxt_t *, int);
+# 58 "kernel.h"
+___device__(extern  __no_sc__) int _Z16kernel_coords_kcP13kernel_ctxt_si(kernel_ctxt_t *, int);
+# 70 "kernel.h"
+___device__(extern  __no_sc__) int _Z19kernel_coords_indexP13kernel_ctxt_siii(kernel_ctxt_t *, int, int, int);
+# 98 "blue_phase.h"
+___device__(extern  __no_sc__) int _Z11fe_lc_paramP7fe_lc_sP13fe_lc_param_s(fe_lc_t *, fe_lc_param_t *);
+# 168 "blue_phase.h"
+___device__(extern  __no_sc__) int _Z23fe_lc_amplitude_computeP13fe_lc_param_sPd(fe_lc_param_t *, double *);
+# 768 "gradient_3d_7pt_solid.c"
+___device__(extern  __no_sc__) int _Z21gradient_bcs6x6_coeffddPKiPA6_A3_d(double, double, const int *, double (*)[6][3]);
+# 926 "gradient_3d_7pt_solid.c"
+___device__(extern  __no_sc__) int _Z20q_boundary_constantsP8coords_sP13fe_lc_param_sP14grad_lc_anch_siiiPA3_dPKiiS6_P15colloids_info_s(cs_t *, fe_lc_param_t *, grad_lc_anch_t *, int, int, int, double (*)[3], const int *, int, double (*)[3], colloids_info_t *);
+# 1091 "gradient_3d_7pt_solid.c"
+___device__(extern  __no_sc__) int _Z19colloids_q_boundaryP13fe_lc_param_sPKdPA3_dS4_i(fe_lc_param_t *, const double *, double (*)[3], double (*)[3], int);
+# 305 "gradient_3d_7pt_solid.c"
+__global__ __var_used__ extern void _Z19gradient_6x6_kernelP13kernel_ctxt_sP8coords_sP14grad_lc_anch_sP7fe_lc_sP12field_grad_sP5map_sP15colloids_info_s(kernel_ctxt_t *, cs_t *, grad_lc_anch_t *, fe_lc_t *, field_grad_t *, map_t *, colloids_info_t *);
+# 88 "gradient_3d_7pt_solid.c"
+static  __constant__  __var_used__ param_t __nv_static_42__29_gradient_3d_7pt_solid_cpp1_ii_1bb33dd7_static_param;
+static  __device__  __var_used__ const char __T6[127];
+# 310 "gradient_3d_7pt_solid.c"
+static  __shared__  __var_used__ int _ZZ19gradient_6x6_kernelP13kernel_ctxt_sP8coords_sP14grad_lc_anch_sP7fe_lc_sP12field_grad_sP5map_sP15colloids_info_sE11kiterations;
+static  __device__  __var_used__ const char __T8[154];
+static  __device__  __var_used__ const char __T9[92];
+#include "common_functions.h"
+static  __device__  __var_used__ const char __T6[127] = "void gradient_6x6_kernel(kernel_ctxt_s *, coords_s *, grad_lc_anch_s *, fe_lc_s *, field_grad_s *, map_s *, colloids_info_s *)";
+static  __device__  __var_used__ const char __T8[154] = "int q_boundary_constants(coords_s *, fe_lc_param_s *, grad_lc_anch_s *, int, int, int, double (*)[3], const int *, int, double (" "*)[3], colloids_info_s *)";
+static  __device__  __var_used__ const char __T9[92] = "int colloids_q_boundary(fe_lc_param_s *, const double *, double (*)[3], double (*)[3], int)";
+#if !defined(__CUDABE__)
+#endif
+# 768 "gradient_3d_7pt_solid.c"
+___device__( __no_sc__) int _Z21gradient_bcs6x6_coeffddPKiPA6_A3_d(
+# 768 "gradient_3d_7pt_solid.c"
+double kappa0, 
+# 768 "gradient_3d_7pt_solid.c"
+double kappa1, 
+# 768 "gradient_3d_7pt_solid.c"
+const int *dn, 
+# 769 "gradient_3d_7pt_solid.c"
+double (*bc)[6][3]){
+# 769 "gradient_3d_7pt_solid.c"
+{
+# 770 "gradient_3d_7pt_solid.c"
+ double __cuda_local_var_17279_10_non_const_kappa2;
+# 772 "gradient_3d_7pt_solid.c"
+__cuda_local_var_17279_10_non_const_kappa2 = (kappa0 + kappa1);
+# 776 "gradient_3d_7pt_solid.c"
+(((((bc[XX]))[XX]))[X]) = (kappa0 * ((double)(dn[X])));
+# 777 "gradient_3d_7pt_solid.c"
+(((((bc[XX]))[XY]))[X]) = ((-kappa1) * ((double)(dn[Y])));
+# 778 "gradient_3d_7pt_solid.c"
+(((((bc[XX]))[XZ]))[X]) = ((-kappa1) * ((double)(dn[Z])));
+# 779 "gradient_3d_7pt_solid.c"
+(((((bc[XX]))[YY]))[X]) = (0.0);
+# 780 "gradient_3d_7pt_solid.c"
+(((((bc[XX]))[YZ]))[X]) = (0.0);
+# 781 "gradient_3d_7pt_solid.c"
+(((((bc[XX]))[ZZ]))[X]) = (0.0);
+# 783 "gradient_3d_7pt_solid.c"
+(((((bc[XX]))[XX]))[Y]) = (kappa1 * ((double)(dn[Y])));
+# 784 "gradient_3d_7pt_solid.c"
+(((((bc[XX]))[XY]))[Y]) = (kappa0 * ((double)(dn[X])));
+# 785 "gradient_3d_7pt_solid.c"
+(((((bc[XX]))[XZ]))[Y]) = (0.0);
+# 786 "gradient_3d_7pt_solid.c"
+(((((bc[XX]))[YY]))[Y]) = (0.0);
+# 787 "gradient_3d_7pt_solid.c"
+(((((bc[XX]))[YZ]))[Y]) = (0.0);
+# 788 "gradient_3d_7pt_solid.c"
+(((((bc[XX]))[ZZ]))[Y]) = (0.0);
+# 790 "gradient_3d_7pt_solid.c"
+(((((bc[XX]))[XX]))[Z]) = (kappa1 * ((double)(dn[Z])));
+# 791 "gradient_3d_7pt_solid.c"
+(((((bc[XX]))[XY]))[Z]) = (0.0);
+# 792 "gradient_3d_7pt_solid.c"
+(((((bc[XX]))[XZ]))[Z]) = (kappa0 * ((double)(dn[X])));
+# 793 "gradient_3d_7pt_solid.c"
+(((((bc[XX]))[YY]))[Z]) = (0.0);
+# 794 "gradient_3d_7pt_solid.c"
+(((((bc[XX]))[YZ]))[Z]) = (0.0);
+# 795 "gradient_3d_7pt_solid.c"
+(((((bc[XX]))[ZZ]))[Z]) = (0.0);
+# 799 "gradient_3d_7pt_solid.c"
+(((((bc[XY]))[XX]))[X]) = (kappa0 * ((double)(dn[Y])));
+# 800 "gradient_3d_7pt_solid.c"
+(((((bc[XY]))[XY]))[X]) = (__cuda_local_var_17279_10_non_const_kappa2 * ((double)(dn[X])));
+# 801 "gradient_3d_7pt_solid.c"
+(((((bc[XY]))[XZ]))[X]) = (0.0);
+# 802 "gradient_3d_7pt_solid.c"
+(((((bc[XY]))[YY]))[X]) = ((-kappa1) * ((double)(dn[Y])));
+# 803 "gradient_3d_7pt_solid.c"
+(((((bc[XY]))[YZ]))[X]) = ((-kappa1) * ((double)(dn[Z])));
+# 804 "gradient_3d_7pt_solid.c"
+(((((bc[XY]))[ZZ]))[X]) = (0.0);
+# 806 "gradient_3d_7pt_solid.c"
+(((((bc[XY]))[XX]))[Y]) = ((-kappa1) * ((double)(dn[X])));
+# 807 "gradient_3d_7pt_solid.c"
+(((((bc[XY]))[XY]))[Y]) = (__cuda_local_var_17279_10_non_const_kappa2 * ((double)(dn[Y])));
+# 808 "gradient_3d_7pt_solid.c"
+(((((bc[XY]))[XZ]))[Y]) = ((-kappa1) * ((double)(dn[Z])));
+# 809 "gradient_3d_7pt_solid.c"
+(((((bc[XY]))[YY]))[Y]) = (kappa0 * ((double)(dn[X])));
+# 810 "gradient_3d_7pt_solid.c"
+(((((bc[XY]))[YZ]))[Y]) = (0.0);
+# 811 "gradient_3d_7pt_solid.c"
+(((((bc[XY]))[ZZ]))[Y]) = (0.0);
+# 813 "gradient_3d_7pt_solid.c"
+(((((bc[XY]))[XX]))[Z]) = (0.0);
+# 814 "gradient_3d_7pt_solid.c"
+(((((bc[XY]))[XY]))[Z]) = (((2.0) * kappa1) * ((double)(dn[Z])));
+# 815 "gradient_3d_7pt_solid.c"
+(((((bc[XY]))[XZ]))[Z]) = (kappa0 * ((double)(dn[Y])));
+# 816 "gradient_3d_7pt_solid.c"
+(((((bc[XY]))[YY]))[Z]) = (0.0);
+# 817 "gradient_3d_7pt_solid.c"
+(((((bc[XY]))[YZ]))[Z]) = (kappa0 * ((double)(dn[X])));
+# 818 "gradient_3d_7pt_solid.c"
+(((((bc[XY]))[ZZ]))[Z]) = (0.0);
+# 822 "gradient_3d_7pt_solid.c"
+(((((bc[XZ]))[XX]))[X]) = (kappa0 * ((double)(dn[Z])));
+# 823 "gradient_3d_7pt_solid.c"
+(((((bc[XZ]))[XY]))[X]) = (0.0);
+# 824 "gradient_3d_7pt_solid.c"
+(((((bc[XZ]))[XZ]))[X]) = (__cuda_local_var_17279_10_non_const_kappa2 * ((double)(dn[X])));
+# 825 "gradient_3d_7pt_solid.c"
+(((((bc[XZ]))[YY]))[X]) = (0.0);
+# 826 "gradient_3d_7pt_solid.c"
+(((((bc[XZ]))[YZ]))[X]) = ((-kappa1) * ((double)(dn[Y])));
+# 827 "gradient_3d_7pt_solid.c"
+(((((bc[XZ]))[ZZ]))[X]) = ((-kappa1) * ((double)(dn[Z])));
+# 829 "gradient_3d_7pt_solid.c"
+(((((bc[XZ]))[XX]))[Y]) = (0.0);
+# 830 "gradient_3d_7pt_solid.c"
+(((((bc[XZ]))[XY]))[Y]) = (kappa0 * ((double)(dn[Z])));
+# 831 "gradient_3d_7pt_solid.c"
+(((((bc[XZ]))[XZ]))[Y]) = (((2.0) * kappa1) * ((double)(dn[Y])));
+# 832 "gradient_3d_7pt_solid.c"
+(((((bc[XZ]))[YY]))[Y]) = (0.0);
+# 833 "gradient_3d_7pt_solid.c"
+(((((bc[XZ]))[YZ]))[Y]) = (kappa0 * ((double)(dn[X])));
+# 834 "gradient_3d_7pt_solid.c"
+(((((bc[XZ]))[ZZ]))[Y]) = (0.0);
+# 836 "gradient_3d_7pt_solid.c"
+(((((bc[XZ]))[XX]))[Z]) = ((-kappa1) * ((double)(dn[X])));
+# 837 "gradient_3d_7pt_solid.c"
+(((((bc[XZ]))[XY]))[Z]) = ((-kappa1) * ((double)(dn[Y])));
+# 838 "gradient_3d_7pt_solid.c"
+(((((bc[XZ]))[XZ]))[Z]) = (__cuda_local_var_17279_10_non_const_kappa2 * ((double)(dn[Z])));
+# 839 "gradient_3d_7pt_solid.c"
+(((((bc[XZ]))[YY]))[Z]) = (0.0);
+# 840 "gradient_3d_7pt_solid.c"
+(((((bc[XZ]))[YZ]))[Z]) = (0.0);
+# 841 "gradient_3d_7pt_solid.c"
+(((((bc[XZ]))[ZZ]))[Z]) = (kappa0 * ((double)(dn[X])));
+# 845 "gradient_3d_7pt_solid.c"
+(((((bc[YY]))[XX]))[X]) = (0.0);
+# 846 "gradient_3d_7pt_solid.c"
+(((((bc[YY]))[XY]))[X]) = (kappa0 * ((double)(dn[Y])));
+# 847 "gradient_3d_7pt_solid.c"
+(((((bc[YY]))[XZ]))[X]) = (0.0);
+# 848 "gradient_3d_7pt_solid.c"
+(((((bc[YY]))[YY]))[X]) = (kappa1 * ((double)(dn[X])));
+# 849 "gradient_3d_7pt_solid.c"
+(((((bc[YY]))[YZ]))[X]) = (0.0);
+# 850 "gradient_3d_7pt_solid.c"
+(((((bc[YY]))[ZZ]))[X]) = (0.0);
+# 852 "gradient_3d_7pt_solid.c"
+(((((bc[YY]))[XX]))[Y]) = (0.0);
+# 853 "gradient_3d_7pt_solid.c"
+(((((bc[YY]))[XY]))[Y]) = ((-kappa1) * ((double)(dn[X])));
+# 854 "gradient_3d_7pt_solid.c"
+(((((bc[YY]))[XZ]))[Y]) = (0.0);
+# 855 "gradient_3d_7pt_solid.c"
+(((((bc[YY]))[YY]))[Y]) = (kappa0 * ((double)(dn[Y])));
+# 856 "gradient_3d_7pt_solid.c"
+(((((bc[YY]))[YZ]))[Y]) = ((-kappa1) * ((double)(dn[Z])));
+# 857 "gradient_3d_7pt_solid.c"
+(((((bc[YY]))[ZZ]))[Y]) = (0.0);
+# 859 "gradient_3d_7pt_solid.c"
+(((((bc[YY]))[XX]))[Z]) = (0.0);
+# 860 "gradient_3d_7pt_solid.c"
+(((((bc[YY]))[XY]))[Z]) = (0.0);
+# 861 "gradient_3d_7pt_solid.c"
+(((((bc[YY]))[XZ]))[Z]) = (0.0);
+# 862 "gradient_3d_7pt_solid.c"
+(((((bc[YY]))[YY]))[Z]) = (kappa1 * ((double)(dn[Z])));
+# 863 "gradient_3d_7pt_solid.c"
+(((((bc[YY]))[YZ]))[Z]) = (kappa0 * ((double)(dn[Y])));
+# 864 "gradient_3d_7pt_solid.c"
+(((((bc[YY]))[ZZ]))[Z]) = (0.0);
+# 868 "gradient_3d_7pt_solid.c"
+(((((bc[YZ]))[XX]))[X]) = (0.0);
+# 869 "gradient_3d_7pt_solid.c"
+(((((bc[YZ]))[XY]))[X]) = (kappa0 * ((double)(dn[Z])));
+# 870 "gradient_3d_7pt_solid.c"
+(((((bc[YZ]))[XZ]))[X]) = (kappa0 * ((double)(dn[Y])));
+# 871 "gradient_3d_7pt_solid.c"
+(((((bc[YZ]))[YY]))[X]) = (0.0);
+# 872 "gradient_3d_7pt_solid.c"
+(((((bc[YZ]))[YZ]))[X]) = (((2.0) * kappa1) * ((double)(dn[X])));
+# 873 "gradient_3d_7pt_solid.c"
+(((((bc[YZ]))[ZZ]))[X]) = (0.0);
+# 875 "gradient_3d_7pt_solid.c"
+(((((bc[YZ]))[XX]))[Y]) = (0.0);
+# 876 "gradient_3d_7pt_solid.c"
+(((((bc[YZ]))[XY]))[Y]) = (0.0);
+# 877 "gradient_3d_7pt_solid.c"
+(((((bc[YZ]))[XZ]))[Y]) = ((-kappa1) * ((double)(dn[X])));
+# 878 "gradient_3d_7pt_solid.c"
+(((((bc[YZ]))[YY]))[Y]) = (kappa0 * ((double)(dn[Z])));
+# 879 "gradient_3d_7pt_solid.c"
+(((((bc[YZ]))[YZ]))[Y]) = (__cuda_local_var_17279_10_non_const_kappa2 * ((double)(dn[Y])));
+# 880 "gradient_3d_7pt_solid.c"
+(((((bc[YZ]))[ZZ]))[Y]) = ((-kappa1) * ((double)(dn[Z])));
+# 882 "gradient_3d_7pt_solid.c"
+(((((bc[YZ]))[XX]))[Z]) = (0.0);
+# 883 "gradient_3d_7pt_solid.c"
+(((((bc[YZ]))[XY]))[Z]) = ((-kappa1) * ((double)(dn[X])));
+# 884 "gradient_3d_7pt_solid.c"
+(((((bc[YZ]))[XZ]))[Z]) = (0.0);
+# 885 "gradient_3d_7pt_solid.c"
+(((((bc[YZ]))[YY]))[Z]) = ((-kappa1) * ((double)(dn[Y])));
+# 886 "gradient_3d_7pt_solid.c"
+(((((bc[YZ]))[YZ]))[Z]) = (__cuda_local_var_17279_10_non_const_kappa2 * ((double)(dn[Z])));
+# 887 "gradient_3d_7pt_solid.c"
+(((((bc[YZ]))[ZZ]))[Z]) = (kappa0 * ((double)(dn[Y])));
+# 891 "gradient_3d_7pt_solid.c"
+(((((bc[ZZ]))[XX]))[X]) = (0.0);
+# 892 "gradient_3d_7pt_solid.c"
+(((((bc[ZZ]))[XY]))[X]) = (0.0);
+# 893 "gradient_3d_7pt_solid.c"
+(((((bc[ZZ]))[XZ]))[X]) = (kappa0 * ((double)(dn[Z])));
+# 894 "gradient_3d_7pt_solid.c"
+(((((bc[ZZ]))[YY]))[X]) = (0.0);
+# 895 "gradient_3d_7pt_solid.c"
+(((((bc[ZZ]))[YZ]))[X]) = (0.0);
+# 896 "gradient_3d_7pt_solid.c"
+(((((bc[ZZ]))[ZZ]))[X]) = (kappa1 * ((double)(dn[X])));
+# 898 "gradient_3d_7pt_solid.c"
+(((((bc[ZZ]))[XX]))[Y]) = (0.0);
+# 899 "gradient_3d_7pt_solid.c"
+(((((bc[ZZ]))[XY]))[Y]) = (0.0);
+# 900 "gradient_3d_7pt_solid.c"
+(((((bc[ZZ]))[XZ]))[Y]) = (0.0);
+# 901 "gradient_3d_7pt_solid.c"
+(((((bc[ZZ]))[YY]))[Y]) = (0.0);
+# 902 "gradient_3d_7pt_solid.c"
+(((((bc[ZZ]))[YZ]))[Y]) = (kappa0 * ((double)(dn[Z])));
+# 903 "gradient_3d_7pt_solid.c"
+(((((bc[ZZ]))[ZZ]))[Y]) = (kappa1 * ((double)(dn[Y])));
+# 905 "gradient_3d_7pt_solid.c"
+(((((bc[ZZ]))[XX]))[Z]) = (0.0);
+# 906 "gradient_3d_7pt_solid.c"
+(((((bc[ZZ]))[XY]))[Z]) = (0.0);
+# 907 "gradient_3d_7pt_solid.c"
+(((((bc[ZZ]))[XZ]))[Z]) = ((-kappa1) * ((double)(dn[X])));
+# 908 "gradient_3d_7pt_solid.c"
+(((((bc[ZZ]))[YY]))[Z]) = (0.0);
+# 909 "gradient_3d_7pt_solid.c"
+(((((bc[ZZ]))[YZ]))[Z]) = ((-kappa1) * ((double)(dn[Y])));
+# 910 "gradient_3d_7pt_solid.c"
+(((((bc[ZZ]))[ZZ]))[Z]) = (kappa0 * ((double)(dn[Z])));
+# 912 "gradient_3d_7pt_solid.c"
+return 0;
+# 913 "gradient_3d_7pt_solid.c"
+}}
+# 926 "gradient_3d_7pt_solid.c"
+___device__( __no_sc__) int _Z20q_boundary_constantsP8coords_sP13fe_lc_param_sP14grad_lc_anch_siiiPA3_dPKiiS6_P15colloids_info_s(
+# 926 "gradient_3d_7pt_solid.c"
+cs_t *cs, 
+# 927 "gradient_3d_7pt_solid.c"
+fe_lc_param_t *param, 
+# 927 "gradient_3d_7pt_solid.c"
+grad_lc_anch_t *anch, 
+# 928 "gradient_3d_7pt_solid.c"
+int ic, 
+# 928 "gradient_3d_7pt_solid.c"
+int jc, 
+# 928 "gradient_3d_7pt_solid.c"
+int kc, 
+# 929 "gradient_3d_7pt_solid.c"
+double (*qs)[3], 
+# 930 "gradient_3d_7pt_solid.c"
+const int *di, 
+# 930 "gradient_3d_7pt_solid.c"
+int status, 
+# 930 "gradient_3d_7pt_solid.c"
+double (*c)[3], 
+# 931 "gradient_3d_7pt_solid.c"
+colloids_info_t *cinfo){
+# 931 "gradient_3d_7pt_solid.c"
+{
+# 932 "gradient_3d_7pt_solid.c"
+ int __cuda_local_var_17431_7_non_const_index;
+# 933 "gradient_3d_7pt_solid.c"
+ int __cuda_local_var_17432_7_non_const_ia;
+# 933 "gradient_3d_7pt_solid.c"
+ int __cuda_local_var_17432_11_non_const_ib;
+# 933 "gradient_3d_7pt_solid.c"
+ int __cuda_local_var_17432_15_non_const_ig;
+# 933 "gradient_3d_7pt_solid.c"
+ int __cuda_local_var_17432_19_non_const_ih;
+# 934 "gradient_3d_7pt_solid.c"
+ int __cuda_local_var_17433_7_non_const_anchor;
+# 935 "gradient_3d_7pt_solid.c"
+ int __cuda_local_var_17434_7_non_const_noffset[3];
+# 937 "gradient_3d_7pt_solid.c"
+ double __cuda_local_var_17436_10_non_const_w1;
+# 937 "gradient_3d_7pt_solid.c"
+ double __cuda_local_var_17436_14_non_const_w2;
+# 938 "gradient_3d_7pt_solid.c"
+ double __cuda_local_var_17437_10_non_const_dnhat[3];
+# 939 "gradient_3d_7pt_solid.c"
+ double __cuda_local_var_17438_10_non_const_qtilde[3][3];
+# 940 "gradient_3d_7pt_solid.c"
+ double __cuda_local_var_17439_10_non_const_q0[3][3];
+# 941 "gradient_3d_7pt_solid.c"
+ double __cuda_local_var_17440_10_non_const_q2;
+# 942 "gradient_3d_7pt_solid.c"
+ double __cuda_local_var_17441_10_non_const_rd;
+# 943 "gradient_3d_7pt_solid.c"
+ double __cuda_local_var_17442_10_non_const_amp;
+# 944 "gradient_3d_7pt_solid.c"
+ double __cuda_local_var_17443_10_non_const_phi;
+# 944 "gradient_3d_7pt_solid.c"
+ double __cuda_local_var_17443_15_non_const_wphi;
+# 945 "gradient_3d_7pt_solid.c"
+ int8_t __cuda_local_var_17444_16_const_d[3][3];
+# 946 "gradient_3d_7pt_solid.c"
+ int8_t __cuda_local_var_17445_16_const_e[3][3][3];
+# 948 "gradient_3d_7pt_solid.c"
+ colloid_t *__cuda_local_var_17447_15_non_const_pc;
+# 941 "gradient_3d_7pt_solid.c"
+__cuda_local_var_17440_10_non_const_q2 = (0.0);
+# 945 "gradient_3d_7pt_solid.c"
+memset((char *)(const int8_t ( *)[3][3])&__cuda_local_var_17444_16_const_d, 0,sizeof(__cuda_local_var_17444_16_const_d));
+# 945 "gradient_3d_7pt_solid.c"
+__cuda_local_var_17444_16_const_d[0][0] = ((int8_t)1);
+# 945 "gradient_3d_7pt_solid.c"
+__cuda_local_var_17444_16_const_d[0][1] = ((int8_t)0);
+# 945 "gradient_3d_7pt_solid.c"
+__cuda_local_var_17444_16_const_d[0][2] = ((int8_t)0);
+# 945 "gradient_3d_7pt_solid.c"
+__cuda_local_var_17444_16_const_d[1][0] = ((int8_t)0);
+# 945 "gradient_3d_7pt_solid.c"
+__cuda_local_var_17444_16_const_d[1][1] = ((int8_t)1);
+# 945 "gradient_3d_7pt_solid.c"
+__cuda_local_var_17444_16_const_d[1][2] = ((int8_t)0);
+# 945 "gradient_3d_7pt_solid.c"
+__cuda_local_var_17444_16_const_d[2][0] = ((int8_t)0);
+# 945 "gradient_3d_7pt_solid.c"
+__cuda_local_var_17444_16_const_d[2][1] = ((int8_t)0);
+# 945 "gradient_3d_7pt_solid.c"
+__cuda_local_var_17444_16_const_d[2][2] = ((int8_t)1);
+# 946 "gradient_3d_7pt_solid.c"
+memset((char *)(const int8_t ( *)[3][3][3])&__cuda_local_var_17445_16_const_e, 0,sizeof(__cuda_local_var_17445_16_const_e));
+# 946 "gradient_3d_7pt_solid.c"
+__cuda_local_var_17445_16_const_e[0][0][0] = ((int8_t)0);
+# 946 "gradient_3d_7pt_solid.c"
+__cuda_local_var_17445_16_const_e[0][0][1] = ((int8_t)0);
+# 946 "gradient_3d_7pt_solid.c"
+__cuda_local_var_17445_16_const_e[0][0][2] = ((int8_t)0);
+# 946 "gradient_3d_7pt_solid.c"
+__cuda_local_var_17445_16_const_e[0][1][0] = ((int8_t)0);
+# 946 "gradient_3d_7pt_solid.c"
+__cuda_local_var_17445_16_const_e[0][1][1] = ((int8_t)0);
+# 946 "gradient_3d_7pt_solid.c"
+__cuda_local_var_17445_16_const_e[0][1][2] = ((int8_t)1);
+# 946 "gradient_3d_7pt_solid.c"
+__cuda_local_var_17445_16_const_e[0][2][0] = ((int8_t)0);
+# 946 "gradient_3d_7pt_solid.c"
+__cuda_local_var_17445_16_const_e[0][2][1] = ((int8_t)(-1));
+# 946 "gradient_3d_7pt_solid.c"
+__cuda_local_var_17445_16_const_e[0][2][2] = ((int8_t)0);
+# 946 "gradient_3d_7pt_solid.c"
+__cuda_local_var_17445_16_const_e[1][0][0] = ((int8_t)0);
+# 946 "gradient_3d_7pt_solid.c"
+__cuda_local_var_17445_16_const_e[1][0][1] = ((int8_t)0);
+# 946 "gradient_3d_7pt_solid.c"
+__cuda_local_var_17445_16_const_e[1][0][2] = ((int8_t)(-1));
+# 946 "gradient_3d_7pt_solid.c"
+__cuda_local_var_17445_16_const_e[1][1][0] = ((int8_t)0);
+# 946 "gradient_3d_7pt_solid.c"
+__cuda_local_var_17445_16_const_e[1][1][1] = ((int8_t)0);
+# 946 "gradient_3d_7pt_solid.c"
+__cuda_local_var_17445_16_const_e[1][1][2] = ((int8_t)0);
+# 946 "gradient_3d_7pt_solid.c"
+__cuda_local_var_17445_16_const_e[1][2][0] = ((int8_t)1);
+# 946 "gradient_3d_7pt_solid.c"
+__cuda_local_var_17445_16_const_e[1][2][1] = ((int8_t)0);
+# 946 "gradient_3d_7pt_solid.c"
+__cuda_local_var_17445_16_const_e[1][2][2] = ((int8_t)0);
+# 946 "gradient_3d_7pt_solid.c"
+__cuda_local_var_17445_16_const_e[2][0][0] = ((int8_t)0);
+# 946 "gradient_3d_7pt_solid.c"
+__cuda_local_var_17445_16_const_e[2][0][1] = ((int8_t)1);
+# 946 "gradient_3d_7pt_solid.c"
+__cuda_local_var_17445_16_const_e[2][0][2] = ((int8_t)0);
+# 946 "gradient_3d_7pt_solid.c"
+__cuda_local_var_17445_16_const_e[2][1][0] = ((int8_t)(-1));
+# 946 "gradient_3d_7pt_solid.c"
+__cuda_local_var_17445_16_const_e[2][1][1] = ((int8_t)0);
+# 946 "gradient_3d_7pt_solid.c"
+__cuda_local_var_17445_16_const_e[2][1][2] = ((int8_t)0);
+# 946 "gradient_3d_7pt_solid.c"
+__cuda_local_var_17445_16_const_e[2][2][0] = ((int8_t)0);
+# 946 "gradient_3d_7pt_solid.c"
+__cuda_local_var_17445_16_const_e[2][2][1] = ((int8_t)0);
+# 946 "gradient_3d_7pt_solid.c"
+__cuda_local_var_17445_16_const_e[2][2][2] = ((int8_t)0);
+# 948 "gradient_3d_7pt_solid.c"
+__cuda_local_var_17447_15_non_const_pc = ((colloid_t *)0LL);
+# 950 "gradient_3d_7pt_solid.c"
+(cs) ? ((void)0) : (__assert_fail(((const char *)"cs"), ((const char *)"gradient_3d_7pt_solid.c"), 950U, __T8));
+# 951 "gradient_3d_7pt_solid.c"
+(param) ? ((void)0) : (__assert_fail(((const char *)"param"), ((const char *)"gradient_3d_7pt_solid.c"), 951U, __T8));
+# 952 "gradient_3d_7pt_solid.c"
+(cinfo) ? ((void)0) : (__assert_fail(((const char *)"cinfo"), ((const char *)"gradient_3d_7pt_solid.c"), 952U, __T8));
+# 956 "gradient_3d_7pt_solid.c"
+__cuda_local_var_17436_10_non_const_w1 = (param->w1_wall);
+# 957 "gradient_3d_7pt_solid.c"
+__cuda_local_var_17436_14_non_const_w2 = (param->w2_wall);
+# 958 "gradient_3d_7pt_solid.c"
+__cuda_local_var_17433_7_non_const_anchor = (param->anchoring_wall);
+# 960 "gradient_3d_7pt_solid.c"
+((__cuda_local_var_17437_10_non_const_dnhat)[X]) = ((1.0) * ((double)(di[X])));
+# 961 "gradient_3d_7pt_solid.c"
+((__cuda_local_var_17437_10_non_const_dnhat)[Y]) = ((1.0) * ((double)(di[Y])));
+# 962 "gradient_3d_7pt_solid.c"
+((__cuda_local_var_17437_10_non_const_dnhat)[Z]) = ((1.0) * ((double)(di[Z])));
+# 963 "gradient_3d_7pt_solid.c"
+_Z23fe_lc_amplitude_computeP13fe_lc_param_sPd(param, (&__cuda_local_var_17442_10_non_const_amp));
+# 965 "gradient_3d_7pt_solid.c"
+if (status == 2)
+# 965 "gradient_3d_7pt_solid.c"
+{
+# 967 "gradient_3d_7pt_solid.c"
+_Z16cs_nlocal_offsetP8coords_sPi(cs, (__cuda_local_var_17434_7_non_const_noffset));
+# 968 "gradient_3d_7pt_solid.c"
+__cuda_local_var_17431_7_non_const_index = (_Z8cs_indexP8coords_siii(cs, (ic - (di[X])), (jc - (di[Y])), (kc - (di[Z]))));
+# 970 "gradient_3d_7pt_solid.c"
+__cuda_local_var_17447_15_non_const_pc = ((cinfo->map_new)[__cuda_local_var_17431_7_non_const_index]);
+# 971 "gradient_3d_7pt_solid.c"
+(__cuda_local_var_17447_15_non_const_pc) ? ((void)0) : (__assert_fail(((const char *)"pc"), ((const char *)"gradient_3d_7pt_solid.c"), 971U, __T8));
+# 973 "gradient_3d_7pt_solid.c"
+__cuda_local_var_17436_10_non_const_w1 = (param->w1_coll);
+# 974 "gradient_3d_7pt_solid.c"
+__cuda_local_var_17436_14_non_const_w2 = (param->w2_coll);
+# 975 "gradient_3d_7pt_solid.c"
+__cuda_local_var_17433_7_non_const_anchor = (param->anchoring_coll);
+# 977 "gradient_3d_7pt_solid.c"
+((__cuda_local_var_17437_10_non_const_dnhat)[X]) = (((1.0) * ((double)(((__cuda_local_var_17434_7_non_const_noffset)[X]) + ic))) - ((((__cuda_local_var_17447_15_non_const_pc->s).r))[X]));
+# 978 "gradient_3d_7pt_solid.c"
+((__cuda_local_var_17437_10_non_const_dnhat)[Y]) = (((1.0) * ((double)(((__cuda_local_var_17434_7_non_const_noffset)[Y]) + jc))) - ((((__cuda_local_var_17447_15_non_const_pc->s).r))[Y]));
+# 979 "gradient_3d_7pt_solid.c"
+((__cuda_local_var_17437_10_non_const_dnhat)[Z]) = (((1.0) * ((double)(((__cuda_local_var_17434_7_non_const_noffset)[Z]) + kc))) - ((((__cuda_local_var_17447_15_non_const_pc->s).r))[Z]));
+# 982 "gradient_3d_7pt_solid.c"
+__cuda_local_var_17441_10_non_const_rd = ((1.0) / (sqrt((((((__cuda_local_var_17437_10_non_const_dnhat)[X]) * ((__cuda_local_var_17437_10_non_const_dnhat)[X])) + (((__cuda_local_var_17437_10_non_const_dnhat)[Y]) * ((__cuda_local_var_17437_10_non_const_dnhat)[Y]))) + (((__cuda_local_var_17437_10_non_const_dnhat)[Z]) * ((__cuda_local_var_17437_10_non_const_dnhat)[Z]))))));
+# 983 "gradient_3d_7pt_solid.c"
+((__cuda_local_var_17437_10_non_const_dnhat)[X]) *= __cuda_local_var_17441_10_non_const_rd;
+# 984 "gradient_3d_7pt_solid.c"
+((__cuda_local_var_17437_10_non_const_dnhat)[Y]) *= __cuda_local_var_17441_10_non_const_rd;
+# 985 "gradient_3d_7pt_solid.c"
+((__cuda_local_var_17437_10_non_const_dnhat)[Z]) *= __cuda_local_var_17441_10_non_const_rd;
+# 986 "gradient_3d_7pt_solid.c"
+}
+# 988 "gradient_3d_7pt_solid.c"
+if (__cuda_local_var_17433_7_non_const_anchor == 2)
+# 988 "gradient_3d_7pt_solid.c"
+{
+# 989 "gradient_3d_7pt_solid.c"
+for (__cuda_local_var_17432_7_non_const_ia = 0; (__cuda_local_var_17432_7_non_const_ia < 3); __cuda_local_var_17432_7_non_const_ia++)
+# 989 "gradient_3d_7pt_solid.c"
+{
+# 990 "gradient_3d_7pt_solid.c"
+for (__cuda_local_var_17432_11_non_const_ib = 0; (__cuda_local_var_17432_11_non_const_ib < 3); __cuda_local_var_17432_11_non_const_ib++)
+# 990 "gradient_3d_7pt_solid.c"
+{
+# 991 "gradient_3d_7pt_solid.c"
+((((__cuda_local_var_17439_10_non_const_q0)[__cuda_local_var_17432_7_non_const_ia]))[__cuda_local_var_17432_11_non_const_ib]) = (((0.5) * __cuda_local_var_17442_10_non_const_amp) * ((((3.0) * (((param->nfix))[__cuda_local_var_17432_7_non_const_ia])) * (((param->nfix))[__cuda_local_var_17432_11_non_const_ib])) - ((double)(((((const int8_t (*)[3])__cuda_local_var_17444_16_const_d)[__cuda_local_var_17432_7_non_const_ia]))[__cuda_local_var_17432_11_non_const_ib]))));
+# 992 "gradient_3d_7pt_solid.c"
+((((__cuda_local_var_17438_10_non_const_qtilde)[__cuda_local_var_17432_7_non_const_ia]))[__cuda_local_var_17432_11_non_const_ib]) = (0.0);
+# 993 "gradient_3d_7pt_solid.c"
+}
+# 994 "gradient_3d_7pt_solid.c"
+}
+# 995 "gradient_3d_7pt_solid.c"
+}
+# 997 "gradient_3d_7pt_solid.c"
+if (__cuda_local_var_17433_7_non_const_anchor == 1)
+# 997 "gradient_3d_7pt_solid.c"
+{
+# 998 "gradient_3d_7pt_solid.c"
+for (__cuda_local_var_17432_7_non_const_ia = 0; (__cuda_local_var_17432_7_non_const_ia < 3); __cuda_local_var_17432_7_non_const_ia++)
+# 998 "gradient_3d_7pt_solid.c"
+{
+# 999 "gradient_3d_7pt_solid.c"
+for (__cuda_local_var_17432_11_non_const_ib = 0; (__cuda_local_var_17432_11_non_const_ib < 3); __cuda_local_var_17432_11_non_const_ib++)
+# 999 "gradient_3d_7pt_solid.c"
+{
+# 1000 "gradient_3d_7pt_solid.c"
+((((__cuda_local_var_17439_10_non_const_q0)[__cuda_local_var_17432_7_non_const_ia]))[__cuda_local_var_17432_11_non_const_ib]) = (((0.5) * __cuda_local_var_17442_10_non_const_amp) * ((((3.0) * ((__cuda_local_var_17437_10_non_const_dnhat)[__cuda_local_var_17432_7_non_const_ia])) * ((__cuda_local_var_17437_10_non_const_dnhat)[__cuda_local_var_17432_11_non_const_ib])) - ((double)(((((const int8_t (*)[3])__cuda_local_var_17444_16_const_d)[__cuda_local_var_17432_7_non_const_ia]))[__cuda_local_var_17432_11_non_const_ib]))));
+# 1001 "gradient_3d_7pt_solid.c"
+((((__cuda_local_var_17438_10_non_const_qtilde)[__cuda_local_var_17432_7_non_const_ia]))[__cuda_local_var_17432_11_non_const_ib]) = (0.0);
+# 1002 "gradient_3d_7pt_solid.c"
+}
+# 1003 "gradient_3d_7pt_solid.c"
+}
+# 1004 "gradient_3d_7pt_solid.c"
+}
+# 1006 "gradient_3d_7pt_solid.c"
+if (__cuda_local_var_17433_7_non_const_anchor == 0)
+# 1006 "gradient_3d_7pt_solid.c"
+{
+# 1008 "gradient_3d_7pt_solid.c"
+__cuda_local_var_17440_10_non_const_q2 = (0.0);
+# 1009 "gradient_3d_7pt_solid.c"
+for (__cuda_local_var_17432_7_non_const_ia = 0; (__cuda_local_var_17432_7_non_const_ia < 3); __cuda_local_var_17432_7_non_const_ia++)
+# 1009 "gradient_3d_7pt_solid.c"
+{
+# 1010 "gradient_3d_7pt_solid.c"
+for (__cuda_local_var_17432_11_non_const_ib = 0; (__cuda_local_var_17432_11_non_const_ib < 3); __cuda_local_var_17432_11_non_const_ib++)
+# 1010 "gradient_3d_7pt_solid.c"
+{
+# 1011 "gradient_3d_7pt_solid.c"
+((((__cuda_local_var_17438_10_non_const_qtilde)[__cuda_local_var_17432_7_non_const_ia]))[__cuda_local_var_17432_11_non_const_ib]) = ((((qs[__cuda_local_var_17432_7_non_const_ia]))[__cuda_local_var_17432_11_non_const_ib]) + (((0.5) * __cuda_local_var_17442_10_non_const_amp) * ((double)(((((const int8_t (*)[3])__cuda_local_var_17444_16_const_d)[__cuda_local_var_17432_7_non_const_ia]))[__cuda_local_var_17432_11_non_const_ib]))));
+# 1012 "gradient_3d_7pt_solid.c"
+__cuda_local_var_17440_10_non_const_q2 += (((((__cuda_local_var_17438_10_non_const_qtilde)[__cuda_local_var_17432_7_non_const_ia]))[__cuda_local_var_17432_11_non_const_ib]) * ((((__cuda_local_var_17438_10_non_const_qtilde)[__cuda_local_var_17432_7_non_const_ia]))[__cuda_local_var_17432_11_non_const_ib]));
+# 1013 "gradient_3d_7pt_solid.c"
+}
+# 1014 "gradient_3d_7pt_solid.c"
+}
+# 1016 "gradient_3d_7pt_solid.c"
+for (__cuda_local_var_17432_7_non_const_ia = 0; (__cuda_local_var_17432_7_non_const_ia < 3); __cuda_local_var_17432_7_non_const_ia++)
+# 1016 "gradient_3d_7pt_solid.c"
+{
+# 1017 "gradient_3d_7pt_solid.c"
+for (__cuda_local_var_17432_11_non_const_ib = 0; (__cuda_local_var_17432_11_non_const_ib < 3); __cuda_local_var_17432_11_non_const_ib++)
+# 1017 "gradient_3d_7pt_solid.c"
+{
+# 1018 "gradient_3d_7pt_solid.c"
+((((__cuda_local_var_17439_10_non_const_q0)[__cuda_local_var_17432_7_non_const_ia]))[__cuda_local_var_17432_11_non_const_ib]) = (0.0);
+# 1019 "gradient_3d_7pt_solid.c"
+for (__cuda_local_var_17432_15_non_const_ig = 0; (__cuda_local_var_17432_15_non_const_ig < 3); __cuda_local_var_17432_15_non_const_ig++)
+# 1019 "gradient_3d_7pt_solid.c"
+{
+# 1020 "gradient_3d_7pt_solid.c"
+for (__cuda_local_var_17432_19_non_const_ih = 0; (__cuda_local_var_17432_19_non_const_ih < 3); __cuda_local_var_17432_19_non_const_ih++)
+# 1020 "gradient_3d_7pt_solid.c"
+{
+# 1021 "gradient_3d_7pt_solid.c"
+((((__cuda_local_var_17439_10_non_const_q0)[__cuda_local_var_17432_7_non_const_ia]))[__cuda_local_var_17432_11_non_const_ib]) += (((((double)(((((const int8_t (*)[3])__cuda_local_var_17444_16_const_d)[__cuda_local_var_17432_7_non_const_ia]))[__cuda_local_var_17432_15_non_const_ig])) - (((__cuda_local_var_17437_10_non_const_dnhat)[__cuda_local_var_17432_7_non_const_ia]) * ((__cuda_local_var_17437_10_non_const_dnhat)[__cuda_local_var_17432_15_non_const_ig]))) * ((((__cuda_local_var_17438_10_non_const_qtilde)[__cuda_local_var_17432_15_non_const_ig]))[__cuda_local_var_17432_19_non_const_ih])) * (((double)(((((const int8_t (*)[3])__cuda_local_var_17444_16_const_d)[__cuda_local_var_17432_19_non_const_ih]))[__cuda_local_var_17432_11_non_const_ib])) - (((__cuda_local_var_17437_10_non_const_dnhat)[__cuda_local_var_17432_19_non_const_ih]) * ((__cuda_local_var_17437_10_non_const_dnhat)[__cuda_local_var_17432_11_non_const_ib]))));
+# 1023 "gradient_3d_7pt_solid.c"
+}
+# 1024 "gradient_3d_7pt_solid.c"
+}
+# 1025 "gradient_3d_7pt_solid.c"
+((((__cuda_local_var_17439_10_non_const_q0)[__cuda_local_var_17432_7_non_const_ia]))[__cuda_local_var_17432_11_non_const_ib]) -= (((0.5) * __cuda_local_var_17442_10_non_const_amp) * ((double)(((((const int8_t (*)[3])__cuda_local_var_17444_16_const_d)[__cuda_local_var_17432_7_non_const_ia]))[__cuda_local_var_17432_11_non_const_ib])));
+# 1026 "gradient_3d_7pt_solid.c"
+}
+# 1027 "gradient_3d_7pt_solid.c"
+}
+# 1028 "gradient_3d_7pt_solid.c"
+}
+# 1032 "gradient_3d_7pt_solid.c"
+for (__cuda_local_var_17432_7_non_const_ia = 0; (__cuda_local_var_17432_7_non_const_ia < 3); __cuda_local_var_17432_7_non_const_ia++)
+# 1032 "gradient_3d_7pt_solid.c"
+{
+# 1033 "gradient_3d_7pt_solid.c"
+for (__cuda_local_var_17432_11_non_const_ib = 0; (__cuda_local_var_17432_11_non_const_ib < 3); __cuda_local_var_17432_11_non_const_ib++)
+# 1033 "gradient_3d_7pt_solid.c"
+{
+# 1035 "gradient_3d_7pt_solid.c"
+(((c[__cuda_local_var_17432_7_non_const_ia]))[__cuda_local_var_17432_11_non_const_ib]) = (0.0);
+# 1037 "gradient_3d_7pt_solid.c"
+for (__cuda_local_var_17432_15_non_const_ig = 0; (__cuda_local_var_17432_15_non_const_ig < 3); __cuda_local_var_17432_15_non_const_ig++)
+# 1037 "gradient_3d_7pt_solid.c"
+{
+# 1038 "gradient_3d_7pt_solid.c"
+for (__cuda_local_var_17432_19_non_const_ih = 0; (__cuda_local_var_17432_19_non_const_ih < 3); __cuda_local_var_17432_19_non_const_ih++)
+# 1038 "gradient_3d_7pt_solid.c"
+{
+# 1039 "gradient_3d_7pt_solid.c"
+(((c[__cuda_local_var_17432_7_non_const_ia]))[__cuda_local_var_17432_11_non_const_ib]) -= ((((param->kappa1) * (param->q0)) * ((double)(di[__cuda_local_var_17432_15_non_const_ig]))) * ((((double)(((((((const int8_t (*)[3][3])__cuda_local_var_17445_16_const_e)[__cuda_local_var_17432_7_non_const_ia]))[__cuda_local_var_17432_15_non_const_ig]))[__cuda_local_var_17432_19_non_const_ih])) * (((qs[__cuda_local_var_17432_19_non_const_ih]))[__cuda_local_var_17432_11_non_const_ib])) + (((double)(((((((const int8_t (*)[3][3])__cuda_local_var_17445_16_const_e)[__cuda_local_var_17432_11_non_const_ib]))[__cuda_local_var_17432_15_non_const_ig]))[__cuda_local_var_17432_19_non_const_ih])) * (((qs[__cuda_local_var_17432_19_non_const_ih]))[__cuda_local_var_17432_7_non_const_ia]))));
+# 1041 "gradient_3d_7pt_solid.c"
+}
+# 1042 "gradient_3d_7pt_solid.c"
+}
+# 1051 "gradient_3d_7pt_solid.c"
+if ((anch->phi) == ((field_t *)0LL))
+# 1051 "gradient_3d_7pt_solid.c"
+{
+# 1052 "gradient_3d_7pt_solid.c"
+__cuda_local_var_17443_15_non_const_wphi = (1.0);
+# 1053 "gradient_3d_7pt_solid.c"
+}
+# 1054 "gradient_3d_7pt_solid.c"
+else 
+# 1054 "gradient_3d_7pt_solid.c"
+{
+# 1060 "gradient_3d_7pt_solid.c"
+__cuda_local_var_17431_7_non_const_index = (_Z8cs_indexP8coords_siii(cs, ic, jc, kc));
+# 1061 "gradient_3d_7pt_solid.c"
+__cuda_local_var_17443_10_non_const_phi = (((anch->phi)->data)[(_Z25reverse_addr_rank0_assertiPKcii(1061, ((const char *)"gradient_3d_7pt_solid.c"), ((anch->phi)->nsites), __cuda_local_var_17431_7_non_const_index))]);
+# 1062 "gradient_3d_7pt_solid.c"
+__cuda_local_var_17443_15_non_const_wphi = ((0.5) * ((1.0) + __cuda_local_var_17443_10_non_const_phi));
+# 1063 "gradient_3d_7pt_solid.c"
+}
+# 1065 "gradient_3d_7pt_solid.c"
+(((c[__cuda_local_var_17432_7_non_const_ia]))[__cuda_local_var_17432_11_non_const_ib]) += ((((-__cuda_local_var_17436_10_non_const_w1) * __cuda_local_var_17443_15_non_const_wphi) * ((((qs[__cuda_local_var_17432_7_non_const_ia]))[__cuda_local_var_17432_11_non_const_ib]) - ((((__cuda_local_var_17439_10_non_const_q0)[__cuda_local_var_17432_7_non_const_ia]))[__cuda_local_var_17432_11_non_const_ib]))) - (((__cuda_local_var_17436_14_non_const_w2 * __cuda_local_var_17443_15_non_const_wphi) * (((2.0) * __cuda_local_var_17440_10_non_const_q2) - (((4.5) * __cuda_local_var_17442_10_non_const_amp) * __cuda_local_var_17442_10_non_const_amp))) * ((((__cuda_local_var_17438_10_non_const_qtilde)[__cuda_local_var_17432_7_non_const_ia]))[__cuda_local_var_17432_11_non_const_ib])));
+# 1068 "gradient_3d_7pt_solid.c"
+}
+# 1069 "gradient_3d_7pt_solid.c"
+}
+# 1071 "gradient_3d_7pt_solid.c"
+return 0;
+# 1072 "gradient_3d_7pt_solid.c"
+}}
+# 1091 "gradient_3d_7pt_solid.c"
+___device__( __no_sc__) int _Z19colloids_q_boundaryP13fe_lc_param_sPKdPA3_dS4_i(
+# 1091 "gradient_3d_7pt_solid.c"
+fe_lc_param_t *param, 
+# 1092 "gradient_3d_7pt_solid.c"
+const double *nhat, 
+# 1092 "gradient_3d_7pt_solid.c"
+double (*qs)[3], 
+# 1093 "gradient_3d_7pt_solid.c"
+double (*q0)[3], 
+# 1093 "gradient_3d_7pt_solid.c"
+int map_status){
+# 1093 "gradient_3d_7pt_solid.c"
+{
+# 1094 "gradient_3d_7pt_solid.c"
+ int __cuda_local_var_17570_7_non_const_ia;
+# 1094 "gradient_3d_7pt_solid.c"
+ int __cuda_local_var_17570_11_non_const_ib;
+# 1094 "gradient_3d_7pt_solid.c"
+ int __cuda_local_var_17570_15_non_const_ic;
+# 1094 "gradient_3d_7pt_solid.c"
+ int __cuda_local_var_17570_19_non_const_id;
+# 1095 "gradient_3d_7pt_solid.c"
+ int __cuda_local_var_17571_7_non_const_anchoring;
+# 1097 "gradient_3d_7pt_solid.c"
+ double __cuda_local_var_17573_10_non_const_qtilde[3][3];
+# 1098 "gradient_3d_7pt_solid.c"
+ double __cuda_local_var_17574_10_non_const_amp;
+# 1099 "gradient_3d_7pt_solid.c"
+ int8_t __cuda_local_var_17575_16_const_d[3][3];
+# 1099 "gradient_3d_7pt_solid.c"
+memset((char *)(const int8_t ( *)[3][3])&__cuda_local_var_17575_16_const_d, 0,sizeof(__cuda_local_var_17575_16_const_d));
+# 1099 "gradient_3d_7pt_solid.c"
+__cuda_local_var_17575_16_const_d[0][0] = ((int8_t)1);
+# 1099 "gradient_3d_7pt_solid.c"
+__cuda_local_var_17575_16_const_d[0][1] = ((int8_t)0);
+# 1099 "gradient_3d_7pt_solid.c"
+__cuda_local_var_17575_16_const_d[0][2] = ((int8_t)0);
+# 1099 "gradient_3d_7pt_solid.c"
+__cuda_local_var_17575_16_const_d[1][0] = ((int8_t)0);
+# 1099 "gradient_3d_7pt_solid.c"
+__cuda_local_var_17575_16_const_d[1][1] = ((int8_t)1);
+# 1099 "gradient_3d_7pt_solid.c"
+__cuda_local_var_17575_16_const_d[1][2] = ((int8_t)0);
+# 1099 "gradient_3d_7pt_solid.c"
+__cuda_local_var_17575_16_const_d[2][0] = ((int8_t)0);
+# 1099 "gradient_3d_7pt_solid.c"
+__cuda_local_var_17575_16_const_d[2][1] = ((int8_t)0);
+# 1099 "gradient_3d_7pt_solid.c"
+__cuda_local_var_17575_16_const_d[2][2] = ((int8_t)1);
+# 1101 "gradient_3d_7pt_solid.c"
+((map_status == 2) || (map_status == 1)) ? ((void)0) : (__assert_fail(((const char *)"map_status == MAP_COLLOID || map_status == MAP_BOUNDARY"), ((const char *)"gradient_3d_7pt_solid.c"), 1101U, __T9));
+# 1103 "gradient_3d_7pt_solid.c"
+__cuda_local_var_17571_7_non_const_anchoring = (param->anchoring_coll);
+# 1104 "gradient_3d_7pt_solid.c"
+if (map_status == 1) {
+# 1104 "gradient_3d_7pt_solid.c"
+__cuda_local_var_17571_7_non_const_anchoring = (param->anchoring_wall); }
+# 1106 "gradient_3d_7pt_solid.c"
+_Z23fe_lc_amplitude_computeP13fe_lc_param_sPd(param, (&__cuda_local_var_17574_10_non_const_amp));
+# 1108 "gradient_3d_7pt_solid.c"
+if (__cuda_local_var_17571_7_non_const_anchoring == 2)
+# 1108 "gradient_3d_7pt_solid.c"
+{
+# 1109 "gradient_3d_7pt_solid.c"
+for (__cuda_local_var_17570_7_non_const_ia = 0; (__cuda_local_var_17570_7_non_const_ia < 3); __cuda_local_var_17570_7_non_const_ia++)
+# 1109 "gradient_3d_7pt_solid.c"
+{
+# 1110 "gradient_3d_7pt_solid.c"
+for (__cuda_local_var_17570_11_non_const_ib = 0; (__cuda_local_var_17570_11_non_const_ib < 3); __cuda_local_var_17570_11_non_const_ib++)
+# 1110 "gradient_3d_7pt_solid.c"
+{
+# 1111 "gradient_3d_7pt_solid.c"
+(((q0[__cuda_local_var_17570_7_non_const_ia]))[__cuda_local_var_17570_11_non_const_ib]) = (((0.5) * __cuda_local_var_17574_10_non_const_amp) * ((((3.0) * (((param->nfix))[__cuda_local_var_17570_7_non_const_ia])) * (((param->nfix))[__cuda_local_var_17570_11_non_const_ib])) - ((double)(((((const int8_t (*)[3])__cuda_local_var_17575_16_const_d)[__cuda_local_var_17570_7_non_const_ia]))[__cuda_local_var_17570_11_non_const_ib]))));
+# 1112 "gradient_3d_7pt_solid.c"
+}
+# 1113 "gradient_3d_7pt_solid.c"
+}
+# 1114 "gradient_3d_7pt_solid.c"
+}
+# 1116 "gradient_3d_7pt_solid.c"
+if (__cuda_local_var_17571_7_non_const_anchoring == 1)
+# 1116 "gradient_3d_7pt_solid.c"
+{
+# 1117 "gradient_3d_7pt_solid.c"
+for (__cuda_local_var_17570_7_non_const_ia = 0; (__cuda_local_var_17570_7_non_const_ia < 3); __cuda_local_var_17570_7_non_const_ia++)
+# 1117 "gradient_3d_7pt_solid.c"
+{
+# 1118 "gradient_3d_7pt_solid.c"
+for (__cuda_local_var_17570_11_non_const_ib = 0; (__cuda_local_var_17570_11_non_const_ib < 3); __cuda_local_var_17570_11_non_const_ib++)
+# 1118 "gradient_3d_7pt_solid.c"
+{
+# 1119 "gradient_3d_7pt_solid.c"
+(((q0[__cuda_local_var_17570_7_non_const_ia]))[__cuda_local_var_17570_11_non_const_ib]) = (((0.5) * __cuda_local_var_17574_10_non_const_amp) * ((((3.0) * (nhat[__cuda_local_var_17570_7_non_const_ia])) * (nhat[__cuda_local_var_17570_11_non_const_ib])) - ((double)(((((const int8_t (*)[3])__cuda_local_var_17575_16_const_d)[__cuda_local_var_17570_7_non_const_ia]))[__cuda_local_var_17570_11_non_const_ib]))));
+# 1120 "gradient_3d_7pt_solid.c"
+}
+# 1121 "gradient_3d_7pt_solid.c"
+}
+# 1122 "gradient_3d_7pt_solid.c"
+}
+# 1124 "gradient_3d_7pt_solid.c"
+if (__cuda_local_var_17571_7_non_const_anchoring == 0)
+# 1124 "gradient_3d_7pt_solid.c"
+{
+# 1128 "gradient_3d_7pt_solid.c"
+for (__cuda_local_var_17570_7_non_const_ia = 0; (__cuda_local_var_17570_7_non_const_ia < 3); __cuda_local_var_17570_7_non_const_ia++)
+# 1128 "gradient_3d_7pt_solid.c"
+{
+# 1129 "gradient_3d_7pt_solid.c"
+for (__cuda_local_var_17570_11_non_const_ib = 0; (__cuda_local_var_17570_11_non_const_ib < 3); __cuda_local_var_17570_11_non_const_ib++)
+# 1129 "gradient_3d_7pt_solid.c"
+{
+# 1130 "gradient_3d_7pt_solid.c"
+((((__cuda_local_var_17573_10_non_const_qtilde)[__cuda_local_var_17570_7_non_const_ia]))[__cuda_local_var_17570_11_non_const_ib]) = ((((qs[__cuda_local_var_17570_7_non_const_ia]))[__cuda_local_var_17570_11_non_const_ib]) + (((0.5) * __cuda_local_var_17574_10_non_const_amp) * ((double)(((((const int8_t (*)[3])__cuda_local_var_17575_16_const_d)[__cuda_local_var_17570_7_non_const_ia]))[__cuda_local_var_17570_11_non_const_ib]))));
+# 1131 "gradient_3d_7pt_solid.c"
+}
+# 1132 "gradient_3d_7pt_solid.c"
+}
+# 1134 "gradient_3d_7pt_solid.c"
+for (__cuda_local_var_17570_7_non_const_ia = 0; (__cuda_local_var_17570_7_non_const_ia < 3); __cuda_local_var_17570_7_non_const_ia++)
+# 1134 "gradient_3d_7pt_solid.c"
+{
+# 1135 "gradient_3d_7pt_solid.c"
+for (__cuda_local_var_17570_11_non_const_ib = 0; (__cuda_local_var_17570_11_non_const_ib < 3); __cuda_local_var_17570_11_non_const_ib++)
+# 1135 "gradient_3d_7pt_solid.c"
+{
+# 1136 "gradient_3d_7pt_solid.c"
+(((q0[__cuda_local_var_17570_7_non_const_ia]))[__cuda_local_var_17570_11_non_const_ib]) = (0.0);
+# 1137 "gradient_3d_7pt_solid.c"
+for (__cuda_local_var_17570_15_non_const_ic = 0; (__cuda_local_var_17570_15_non_const_ic < 3); __cuda_local_var_17570_15_non_const_ic++)
+# 1137 "gradient_3d_7pt_solid.c"
+{
+# 1138 "gradient_3d_7pt_solid.c"
+for (__cuda_local_var_17570_19_non_const_id = 0; (__cuda_local_var_17570_19_non_const_id < 3); __cuda_local_var_17570_19_non_const_id++)
+# 1138 "gradient_3d_7pt_solid.c"
+{
+# 1139 "gradient_3d_7pt_solid.c"
+(((q0[__cuda_local_var_17570_7_non_const_ia]))[__cuda_local_var_17570_11_non_const_ib]) += (((((double)(((((const int8_t (*)[3])__cuda_local_var_17575_16_const_d)[__cuda_local_var_17570_7_non_const_ia]))[__cuda_local_var_17570_15_non_const_ic])) - ((nhat[__cuda_local_var_17570_7_non_const_ia]) * (nhat[__cuda_local_var_17570_15_non_const_ic]))) * ((((__cuda_local_var_17573_10_non_const_qtilde)[__cuda_local_var_17570_15_non_const_ic]))[__cuda_local_var_17570_19_non_const_id])) * (((double)(((((const int8_t (*)[3])__cuda_local_var_17575_16_const_d)[__cuda_local_var_17570_19_non_const_id]))[__cuda_local_var_17570_11_non_const_ib])) - ((nhat[__cuda_local_var_17570_19_non_const_id]) * (nhat[__cuda_local_var_17570_11_non_const_ib]))));
+# 1141 "gradient_3d_7pt_solid.c"
+}
+# 1142 "gradient_3d_7pt_solid.c"
+}
+# 1144 "gradient_3d_7pt_solid.c"
+(((q0[__cuda_local_var_17570_7_non_const_ia]))[__cuda_local_var_17570_11_non_const_ib]) -= (((0.5) * __cuda_local_var_17574_10_non_const_amp) * ((double)(((((const int8_t (*)[3])__cuda_local_var_17575_16_const_d)[__cuda_local_var_17570_7_non_const_ia]))[__cuda_local_var_17570_11_non_const_ib])));
+# 1145 "gradient_3d_7pt_solid.c"
+}
+# 1146 "gradient_3d_7pt_solid.c"
+}
+# 1148 "gradient_3d_7pt_solid.c"
+}
+# 1150 "gradient_3d_7pt_solid.c"
+return 0;
+# 1151 "gradient_3d_7pt_solid.c"
+}}
+# 305 "gradient_3d_7pt_solid.c"
+__global__ __var_used__ void _Z19gradient_6x6_kernelP13kernel_ctxt_sP8coords_sP14grad_lc_anch_sP7fe_lc_sP12field_grad_sP5map_sP15colloids_info_s(
+# 305 "gradient_3d_7pt_solid.c"
+kernel_ctxt_t *ktx, 
+# 305 "gradient_3d_7pt_solid.c"
+cs_t *cs, 
+# 305 "gradient_3d_7pt_solid.c"
+grad_lc_anch_t *anch, 
+# 306 "gradient_3d_7pt_solid.c"
+fe_lc_t *fe, 
+# 306 "gradient_3d_7pt_solid.c"
+field_grad_t *fg, 
+# 307 "gradient_3d_7pt_solid.c"
+map_t *map, 
+# 307 "gradient_3d_7pt_solid.c"
+colloids_info_t *cinfo){
+# 307 "gradient_3d_7pt_solid.c"
+{
+# 309 "gradient_3d_7pt_solid.c"
+ int __cuda_local_var_16836_7_non_const_kindex;
+# 312 "gradient_3d_7pt_solid.c"
+_ZZ19gradient_6x6_kernelP13kernel_ctxt_sP8coords_sP14grad_lc_anch_sP7fe_lc_sP12field_grad_sP5map_sP15colloids_info_sE11kiterations = (_Z17kernel_iterationsP13kernel_ctxt_s(ktx));
+# 314 "gradient_3d_7pt_solid.c"
+(ktx) ? ((void)0) : (__assert_fail(((const char *)"ktx"), ((const char *)"gradient_3d_7pt_solid.c"), 314U, __T6));
+# 315 "gradient_3d_7pt_solid.c"
+(anch) ? ((void)0) : (__assert_fail(((const char *)"anch"), ((const char *)"gradient_3d_7pt_solid.c"), 315U, __T6));
+# 316 "gradient_3d_7pt_solid.c"
+(fg) ? ((void)0) : (__assert_fail(((const char *)"fg"), ((const char *)"gradient_3d_7pt_solid.c"), 316U, __T6));
+# 317 "gradient_3d_7pt_solid.c"
+(fg->field) ? ((void)0) : (__assert_fail(((const char *)"fg->field"), ((const char *)"gradient_3d_7pt_solid.c"), 317U, __T6));
+# 319 "gradient_3d_7pt_solid.c"
+__cuda_local_var_16836_7_non_const_kindex = ((int)(1U * (((blockIdx.x) * (blockDim.x)) + (threadIdx.x))));
+# 319 "gradient_3d_7pt_solid.c"
+if (__cuda_local_var_16836_7_non_const_kindex < _ZZ19gradient_6x6_kernelP13kernel_ctxt_sP8coords_sP14grad_lc_anch_sP7fe_lc_sP12field_grad_sP5map_sP15colloids_info_sE11kiterations)
+# 319 "gradient_3d_7pt_solid.c"
+{
+# 321 "gradient_3d_7pt_solid.c"
+ int __cuda_local_var_16848_9_non_const_ic;
+# 321 "gradient_3d_7pt_solid.c"
+ int __cuda_local_var_16848_13_non_const_jc;
+# 321 "gradient_3d_7pt_solid.c"
+ int __cuda_local_var_16848_17_non_const_kc;
+# 321 "gradient_3d_7pt_solid.c"
+ int __cuda_local_var_16848_21_non_const_index;
+# 322 "gradient_3d_7pt_solid.c"
+ int __cuda_local_var_16849_9_non_const_str[3];
+# 323 "gradient_3d_7pt_solid.c"
+ int __cuda_local_var_16850_9_non_const_ia;
+# 323 "gradient_3d_7pt_solid.c"
+ int __cuda_local_var_16850_13_non_const_ib;
+# 323 "gradient_3d_7pt_solid.c"
+ int __cuda_local_var_16850_17_non_const_n1;
+# 323 "gradient_3d_7pt_solid.c"
+ int __cuda_local_var_16850_21_non_const_n2;
+# 324 "gradient_3d_7pt_solid.c"
+ int __cuda_local_var_16851_9_non_const_ih;
+# 324 "gradient_3d_7pt_solid.c"
+ int __cuda_local_var_16851_13_non_const_ig;
+# 325 "gradient_3d_7pt_solid.c"
+ int __cuda_local_var_16852_9_non_const_n;
+# 325 "gradient_3d_7pt_solid.c"
+ int __cuda_local_var_16852_12_non_const_nunknown;
+# 326 "gradient_3d_7pt_solid.c"
+ int __cuda_local_var_16853_9_non_const_status[6];
+# 327 "gradient_3d_7pt_solid.c"
+ int __cuda_local_var_16854_9_non_const_normal[3];
+# 328 "gradient_3d_7pt_solid.c"
+ int __cuda_local_var_16855_15_const_bcs[6][3];
+# 329 "gradient_3d_7pt_solid.c"
+ double __cuda_local_var_16856_18_const_bcsign[6];
+# 331 "gradient_3d_7pt_solid.c"
+ double __cuda_local_var_16858_12_non_const_gradn[6][3][2];
+# 332 "gradient_3d_7pt_solid.c"
+ double __cuda_local_var_16859_12_non_const_dq;
+# 333 "gradient_3d_7pt_solid.c"
+ double __cuda_local_var_16860_12_non_const_qs[3][3];
+# 334 "gradient_3d_7pt_solid.c"
+ double __cuda_local_var_16861_12_non_const_c[3][3];
+# 336 "gradient_3d_7pt_solid.c"
+ double __cuda_local_var_16863_12_non_const_bc[6][6][3];
+# 337 "gradient_3d_7pt_solid.c"
+ double __cuda_local_var_16864_12_non_const_b18[18];
+# 338 "gradient_3d_7pt_solid.c"
+ double __cuda_local_var_16865_12_non_const_x18[18];
+# 339 "gradient_3d_7pt_solid.c"
+ double __cuda_local_var_16866_12_non_const_tr;
+# 340 "gradient_3d_7pt_solid.c"
+ double __cuda_local_var_16867_18_const_r3;
+# 342 "gradient_3d_7pt_solid.c"
+ double __cuda_local_var_16869_12_non_const_kappa0;
+# 343 "gradient_3d_7pt_solid.c"
+ double __cuda_local_var_16870_12_non_const_kappa1;
+# 344 "gradient_3d_7pt_solid.c"
+ field_t *__cuda_local_var_16871_15_non_const_q;
+# 328 "gradient_3d_7pt_solid.c"
+memset((char *)(const int ( *)[6][3])&__cuda_local_var_16855_15_const_bcs, 0,sizeof(__cuda_local_var_16855_15_const_bcs));
+# 328 "gradient_3d_7pt_solid.c"
+__cuda_local_var_16855_15_const_bcs[0][0] = (-1);
+# 328 "gradient_3d_7pt_solid.c"
+__cuda_local_var_16855_15_const_bcs[0][1] = 0;
+# 328 "gradient_3d_7pt_solid.c"
+__cuda_local_var_16855_15_const_bcs[0][2] = 0;
+# 328 "gradient_3d_7pt_solid.c"
+__cuda_local_var_16855_15_const_bcs[1][0] = 1;
+# 328 "gradient_3d_7pt_solid.c"
+__cuda_local_var_16855_15_const_bcs[1][1] = 0;
+# 328 "gradient_3d_7pt_solid.c"
+__cuda_local_var_16855_15_const_bcs[1][2] = 0;
+# 328 "gradient_3d_7pt_solid.c"
+__cuda_local_var_16855_15_const_bcs[2][0] = 0;
+# 328 "gradient_3d_7pt_solid.c"
+__cuda_local_var_16855_15_const_bcs[2][1] = (-1);
+# 328 "gradient_3d_7pt_solid.c"
+__cuda_local_var_16855_15_const_bcs[2][2] = 0;
+# 328 "gradient_3d_7pt_solid.c"
+__cuda_local_var_16855_15_const_bcs[3][0] = 0;
+# 328 "gradient_3d_7pt_solid.c"
+__cuda_local_var_16855_15_const_bcs[3][1] = 1;
+# 328 "gradient_3d_7pt_solid.c"
+__cuda_local_var_16855_15_const_bcs[3][2] = 0;
+# 328 "gradient_3d_7pt_solid.c"
+__cuda_local_var_16855_15_const_bcs[4][0] = 0;
+# 328 "gradient_3d_7pt_solid.c"
+__cuda_local_var_16855_15_const_bcs[4][1] = 0;
+# 328 "gradient_3d_7pt_solid.c"
+__cuda_local_var_16855_15_const_bcs[4][2] = (-1);
+# 328 "gradient_3d_7pt_solid.c"
+__cuda_local_var_16855_15_const_bcs[5][0] = 0;
+# 328 "gradient_3d_7pt_solid.c"
+__cuda_local_var_16855_15_const_bcs[5][1] = 0;
+# 328 "gradient_3d_7pt_solid.c"
+__cuda_local_var_16855_15_const_bcs[5][2] = 1;
+# 329 "gradient_3d_7pt_solid.c"
+memset((char *)(const double ( *)[6])&__cuda_local_var_16856_18_const_bcsign, 0,sizeof(__cuda_local_var_16856_18_const_bcsign));
+# 329 "gradient_3d_7pt_solid.c"
+__cuda_local_var_16856_18_const_bcsign[0] = (-1.0);
+# 329 "gradient_3d_7pt_solid.c"
+__cuda_local_var_16856_18_const_bcsign[1] = (1.0);
+# 329 "gradient_3d_7pt_solid.c"
+__cuda_local_var_16856_18_const_bcsign[2] = (-1.0);
+# 329 "gradient_3d_7pt_solid.c"
+__cuda_local_var_16856_18_const_bcsign[3] = (1.0);
+# 329 "gradient_3d_7pt_solid.c"
+__cuda_local_var_16856_18_const_bcsign[4] = (-1.0);
+# 329 "gradient_3d_7pt_solid.c"
+__cuda_local_var_16856_18_const_bcsign[5] = (1.0);
+# 340 "gradient_3d_7pt_solid.c"
+__cuda_local_var_16867_18_const_r3 = (0.3333333333333333148);
+# 346 "gradient_3d_7pt_solid.c"
+__cuda_local_var_16869_12_non_const_kappa0 = ((fe->param)->kappa0);
+# 347 "gradient_3d_7pt_solid.c"
+__cuda_local_var_16870_12_non_const_kappa1 = ((fe->param)->kappa1);
+# 349 "gradient_3d_7pt_solid.c"
+__cuda_local_var_16848_9_non_const_ic = (_Z16kernel_coords_icP13kernel_ctxt_si(ktx, __cuda_local_var_16836_7_non_const_kindex));
+# 350 "gradient_3d_7pt_solid.c"
+__cuda_local_var_16848_13_non_const_jc = (_Z16kernel_coords_jcP13kernel_ctxt_si(ktx, __cuda_local_var_16836_7_non_const_kindex));
+# 351 "gradient_3d_7pt_solid.c"
+__cuda_local_var_16848_17_non_const_kc = (_Z16kernel_coords_kcP13kernel_ctxt_si(ktx, __cuda_local_var_16836_7_non_const_kindex));
+# 352 "gradient_3d_7pt_solid.c"
+__cuda_local_var_16848_21_non_const_index = (_Z19kernel_coords_indexP13kernel_ctxt_siii(ktx, __cuda_local_var_16848_9_non_const_ic, __cuda_local_var_16848_13_non_const_jc, __cuda_local_var_16848_17_non_const_kc));
+# 354 "gradient_3d_7pt_solid.c"
+_Z10cs_stridesP8coords_sPiS1_S1_(cs, ((__cuda_local_var_16849_9_non_const_str) + X), ((__cuda_local_var_16849_9_non_const_str) + Y), ((__cuda_local_var_16849_9_non_const_str) + Z));
+# 356 "gradient_3d_7pt_solid.c"
+if (((int)((map->status)[__cuda_local_var_16848_21_non_const_index])) == 0)
+# 356 "gradient_3d_7pt_solid.c"
+{
+# 358 "gradient_3d_7pt_solid.c"
+__cuda_local_var_16871_15_non_const_q = (fg->field);
+# 364 "gradient_3d_7pt_solid.c"
+__cuda_local_var_16852_12_non_const_nunknown = 0;
+# 366 "gradient_3d_7pt_solid.c"
+for (__cuda_local_var_16850_9_non_const_ia = 0; (__cuda_local_var_16850_9_non_const_ia < 3); __cuda_local_var_16850_9_non_const_ia++)
+# 366 "gradient_3d_7pt_solid.c"
+{
+# 368 "gradient_3d_7pt_solid.c"
+((__cuda_local_var_16854_9_non_const_normal)[__cuda_local_var_16850_9_non_const_ia]) = __cuda_local_var_16850_9_non_const_ia;
+# 372 "gradient_3d_7pt_solid.c"
+__cuda_local_var_16850_13_non_const_ib = ((2 * __cuda_local_var_16850_9_non_const_ia) + 1);
+# 373 "gradient_3d_7pt_solid.c"
+__cuda_local_var_16850_13_non_const_ib = ((((((((const int (*)[3])__cuda_local_var_16855_15_const_bcs)[__cuda_local_var_16850_13_non_const_ib]))[X]) * ((__cuda_local_var_16849_9_non_const_str)[X])) + ((((((const int (*)[3])__cuda_local_var_16855_15_const_bcs)[__cuda_local_var_16850_13_non_const_ib]))[Y]) * ((__cuda_local_var_16849_9_non_const_str)[Y]))) + ((((((const int (*)[3])__cuda_local_var_16855_15_const_bcs)[__cuda_local_var_16850_13_non_const_ib]))[Z]) * ((__cuda_local_var_16849_9_non_const_str)[Z])));
+# 375 "gradient_3d_7pt_solid.c"
+((__cuda_local_var_16853_9_non_const_status)[(2 * __cuda_local_var_16850_9_non_const_ia)]) = ((int)((map->status)[(__cuda_local_var_16848_21_non_const_index + __cuda_local_var_16850_13_non_const_ib)]));
+# 377 "gradient_3d_7pt_solid.c"
+__cuda_local_var_16850_13_non_const_ib = (2 * __cuda_local_var_16850_9_non_const_ia);
+# 378 "gradient_3d_7pt_solid.c"
+__cuda_local_var_16850_13_non_const_ib = ((((((((const int (*)[3])__cuda_local_var_16855_15_const_bcs)[__cuda_local_var_16850_13_non_const_ib]))[X]) * ((__cuda_local_var_16849_9_non_const_str)[X])) + ((((((const int (*)[3])__cuda_local_var_16855_15_const_bcs)[__cuda_local_var_16850_13_non_const_ib]))[Y]) * ((__cuda_local_var_16849_9_non_const_str)[Y]))) + ((((((const int (*)[3])__cuda_local_var_16855_15_const_bcs)[__cuda_local_var_16850_13_non_const_ib]))[Z]) * ((__cuda_local_var_16849_9_non_const_str)[Z])));
+# 380 "gradient_3d_7pt_solid.c"
+((__cuda_local_var_16853_9_non_const_status)[((2 * __cuda_local_var_16850_9_non_const_ia) + 1)]) = ((int)((map->status)[(__cuda_local_var_16848_21_non_const_index + __cuda_local_var_16850_13_non_const_ib)]));
+# 382 "gradient_3d_7pt_solid.c"
+__cuda_local_var_16851_13_non_const_ig = ((int)(((__cuda_local_var_16853_9_non_const_status)[(2 * __cuda_local_var_16850_9_non_const_ia)]) != 0));
+# 383 "gradient_3d_7pt_solid.c"
+__cuda_local_var_16851_9_non_const_ih = ((int)(((__cuda_local_var_16853_9_non_const_status)[((2 * __cuda_local_var_16850_9_non_const_ia) + 1)]) != 0));
+# 387 "gradient_3d_7pt_solid.c"
+for (__cuda_local_var_16850_17_non_const_n1 = 0; (__cuda_local_var_16850_17_non_const_n1 < 5); __cuda_local_var_16850_17_non_const_n1++)
+# 387 "gradient_3d_7pt_solid.c"
+{
+# 389 "gradient_3d_7pt_solid.c"
+((((((__cuda_local_var_16858_12_non_const_gradn)[__cuda_local_var_16850_17_non_const_n1]))[__cuda_local_var_16850_9_non_const_ia]))[0]) = (((__cuda_local_var_16871_15_non_const_q->data)[(_Z25reverse_addr_rank1_assertiPKciiii(390, ((const char *)"gradient_3d_7pt_solid.c"), (__cuda_local_var_16871_15_non_const_q->nsites), 5, (__cuda_local_var_16848_21_non_const_index + ((__cuda_local_var_16849_9_non_const_str)[__cuda_local_var_16850_9_non_const_ia])), __cuda_local_var_16850_17_non_const_n1))]) - ((__cuda_local_var_16871_15_non_const_q->data)[(_Z25reverse_addr_rank1_assertiPKciiii(391, ((const char *)"gradient_3d_7pt_solid.c"), (__cuda_local_var_16871_15_non_const_q->nsites), 5, __cuda_local_var_16848_21_non_const_index, __cuda_local_var_16850_17_non_const_n1))]));
+# 392 "gradient_3d_7pt_solid.c"
+((((((__cuda_local_var_16858_12_non_const_gradn)[__cuda_local_var_16850_17_non_const_n1]))[__cuda_local_var_16850_9_non_const_ia]))[1]) = (((__cuda_local_var_16871_15_non_const_q->data)[(_Z25reverse_addr_rank1_assertiPKciiii(393, ((const char *)"gradient_3d_7pt_solid.c"), (__cuda_local_var_16871_15_non_const_q->nsites), 5, __cuda_local_var_16848_21_non_const_index, __cuda_local_var_16850_17_non_const_n1))]) - ((__cuda_local_var_16871_15_non_const_q->data)[(_Z25reverse_addr_rank1_assertiPKciiii(394, ((const char *)"gradient_3d_7pt_solid.c"), (__cuda_local_var_16871_15_non_const_q->nsites), 5, (__cuda_local_var_16848_21_non_const_index - ((__cuda_local_var_16849_9_non_const_str)[__cuda_local_var_16850_9_non_const_ia])), __cuda_local_var_16850_17_non_const_n1))]));
+# 395 "gradient_3d_7pt_solid.c"
+}
+# 397 "gradient_3d_7pt_solid.c"
+((((((__cuda_local_var_16858_12_non_const_gradn)[ZZ]))[__cuda_local_var_16850_9_non_const_ia]))[0]) = ((-((((((__cuda_local_var_16858_12_non_const_gradn)[XX]))[__cuda_local_var_16850_9_non_const_ia]))[0])) - ((((((__cuda_local_var_16858_12_non_const_gradn)[YY]))[__cuda_local_var_16850_9_non_const_ia]))[0]));
+# 398 "gradient_3d_7pt_solid.c"
+((((((__cuda_local_var_16858_12_non_const_gradn)[ZZ]))[__cuda_local_var_16850_9_non_const_ia]))[1]) = ((-((((((__cuda_local_var_16858_12_non_const_gradn)[XX]))[__cuda_local_var_16850_9_non_const_ia]))[1])) - ((((((__cuda_local_var_16858_12_non_const_gradn)[YY]))[__cuda_local_var_16850_9_non_const_ia]))[1]));
+# 402 "gradient_3d_7pt_solid.c"
+if ((__cuda_local_var_16851_13_non_const_ig + __cuda_local_var_16851_9_non_const_ih) == 1)
+# 402 "gradient_3d_7pt_solid.c"
+{
+# 403 "gradient_3d_7pt_solid.c"
+((__cuda_local_var_16854_9_non_const_normal)[__cuda_local_var_16852_12_non_const_nunknown]) = ((2 * __cuda_local_var_16850_9_non_const_ia) + __cuda_local_var_16851_9_non_const_ih);
+# 404 "gradient_3d_7pt_solid.c"
+__cuda_local_var_16852_12_non_const_nunknown += 1;
+# 405 "gradient_3d_7pt_solid.c"
+} else  {
+# 406 "gradient_3d_7pt_solid.c"
+if ((__cuda_local_var_16851_13_non_const_ig) && (__cuda_local_var_16851_9_non_const_ih))
+# 406 "gradient_3d_7pt_solid.c"
+{
+# 407 "gradient_3d_7pt_solid.c"
+for (__cuda_local_var_16850_17_non_const_n1 = 0; (__cuda_local_var_16850_17_non_const_n1 < 6); __cuda_local_var_16850_17_non_const_n1++)
+# 407 "gradient_3d_7pt_solid.c"
+{
+# 408 "gradient_3d_7pt_solid.c"
+((((((__cuda_local_var_16858_12_non_const_gradn)[__cuda_local_var_16850_17_non_const_n1]))[__cuda_local_var_16850_9_non_const_ia]))[0]) = (0.0);
+# 409 "gradient_3d_7pt_solid.c"
+((((((__cuda_local_var_16858_12_non_const_gradn)[__cuda_local_var_16850_17_non_const_n1]))[__cuda_local_var_16850_9_non_const_ia]))[1]) = (0.0);
+# 410 "gradient_3d_7pt_solid.c"
+}
+# 411 "gradient_3d_7pt_solid.c"
+} }
+# 413 "gradient_3d_7pt_solid.c"
+}
+# 418 "gradient_3d_7pt_solid.c"
+if (__cuda_local_var_16852_12_non_const_nunknown > 0)
+# 418 "gradient_3d_7pt_solid.c"
+{
+# 422 "gradient_3d_7pt_solid.c"
+((((__cuda_local_var_16860_12_non_const_qs)[X]))[X]) = ((__cuda_local_var_16871_15_non_const_q->data)[(_Z25reverse_addr_rank1_assertiPKciiii(422, ((const char *)"gradient_3d_7pt_solid.c"), (__cuda_local_var_16871_15_non_const_q->nsites), 5, __cuda_local_var_16848_21_non_const_index, 0))]);
+# 423 "gradient_3d_7pt_solid.c"
+((((__cuda_local_var_16860_12_non_const_qs)[X]))[Y]) = ((__cuda_local_var_16871_15_non_const_q->data)[(_Z25reverse_addr_rank1_assertiPKciiii(423, ((const char *)"gradient_3d_7pt_solid.c"), (__cuda_local_var_16871_15_non_const_q->nsites), 5, __cuda_local_var_16848_21_non_const_index, 1))]);
+# 424 "gradient_3d_7pt_solid.c"
+((((__cuda_local_var_16860_12_non_const_qs)[X]))[Z]) = ((__cuda_local_var_16871_15_non_const_q->data)[(_Z25reverse_addr_rank1_assertiPKciiii(424, ((const char *)"gradient_3d_7pt_solid.c"), (__cuda_local_var_16871_15_non_const_q->nsites), 5, __cuda_local_var_16848_21_non_const_index, 2))]);
+# 425 "gradient_3d_7pt_solid.c"
+((((__cuda_local_var_16860_12_non_const_qs)[Y]))[X]) = ((__cuda_local_var_16871_15_non_const_q->data)[(_Z25reverse_addr_rank1_assertiPKciiii(425, ((const char *)"gradient_3d_7pt_solid.c"), (__cuda_local_var_16871_15_non_const_q->nsites), 5, __cuda_local_var_16848_21_non_const_index, 1))]);
+# 426 "gradient_3d_7pt_solid.c"
+((((__cuda_local_var_16860_12_non_const_qs)[Y]))[Y]) = ((__cuda_local_var_16871_15_non_const_q->data)[(_Z25reverse_addr_rank1_assertiPKciiii(426, ((const char *)"gradient_3d_7pt_solid.c"), (__cuda_local_var_16871_15_non_const_q->nsites), 5, __cuda_local_var_16848_21_non_const_index, 3))]);
+# 427 "gradient_3d_7pt_solid.c"
+((((__cuda_local_var_16860_12_non_const_qs)[Y]))[Z]) = ((__cuda_local_var_16871_15_non_const_q->data)[(_Z25reverse_addr_rank1_assertiPKciiii(427, ((const char *)"gradient_3d_7pt_solid.c"), (__cuda_local_var_16871_15_non_const_q->nsites), 5, __cuda_local_var_16848_21_non_const_index, 4))]);
+# 428 "gradient_3d_7pt_solid.c"
+((((__cuda_local_var_16860_12_non_const_qs)[Z]))[X]) = ((__cuda_local_var_16871_15_non_const_q->data)[(_Z25reverse_addr_rank1_assertiPKciiii(428, ((const char *)"gradient_3d_7pt_solid.c"), (__cuda_local_var_16871_15_non_const_q->nsites), 5, __cuda_local_var_16848_21_non_const_index, 2))]);
+# 429 "gradient_3d_7pt_solid.c"
+((((__cuda_local_var_16860_12_non_const_qs)[Z]))[Y]) = ((__cuda_local_var_16871_15_non_const_q->data)[(_Z25reverse_addr_rank1_assertiPKciiii(429, ((const char *)"gradient_3d_7pt_solid.c"), (__cuda_local_var_16871_15_non_const_q->nsites), 5, __cuda_local_var_16848_21_non_const_index, 4))]);
+# 430 "gradient_3d_7pt_solid.c"
+((((__cuda_local_var_16860_12_non_const_qs)[Z]))[Z]) = (((0.0) - ((__cuda_local_var_16871_15_non_const_q->data)[(_Z25reverse_addr_rank1_assertiPKciiii(431, ((const char *)"gradient_3d_7pt_solid.c"), (__cuda_local_var_16871_15_non_const_q->nsites), 5, __cuda_local_var_16848_21_non_const_index, 0))])) - ((__cuda_local_var_16871_15_non_const_q->data)[(_Z25reverse_addr_rank1_assertiPKciiii(432, ((const char *)"gradient_3d_7pt_solid.c"), (__cuda_local_var_16871_15_non_const_q->nsites), 5, __cuda_local_var_16848_21_non_const_index, 3))]));
+# 434 "gradient_3d_7pt_solid.c"
+_Z20q_boundary_constantsP8coords_sP13fe_lc_param_sP14grad_lc_anch_siiiPA3_dPKiiS6_P15colloids_info_s(cs, (fe->param), anch, __cuda_local_var_16848_9_non_const_ic, __cuda_local_var_16848_13_non_const_jc, __cuda_local_var_16848_17_non_const_kc, (__cuda_local_var_16860_12_non_const_qs), ((((const int (*)[3])__cuda_local_var_16855_15_const_bcs)[((__cuda_local_var_16854_9_non_const_normal)[0])])), ((__cuda_local_var_16853_9_non_const_status)[((__cuda_local_var_16854_9_non_const_normal)[0])]), (__cuda_local_var_16861_12_non_const_c), cinfo);
+# 440 "gradient_3d_7pt_solid.c"
+((__cuda_local_var_16864_12_non_const_b18)[XX]) = ((-1.0) * ((((__cuda_local_var_16861_12_non_const_c)[X]))[X]));
+# 441 "gradient_3d_7pt_solid.c"
+((__cuda_local_var_16864_12_non_const_b18)[XY]) = ((-2.0) * ((((__cuda_local_var_16861_12_non_const_c)[X]))[Y]));
+# 442 "gradient_3d_7pt_solid.c"
+((__cuda_local_var_16864_12_non_const_b18)[XZ]) = ((-2.0) * ((((__cuda_local_var_16861_12_non_const_c)[X]))[Z]));
+# 443 "gradient_3d_7pt_solid.c"
+((__cuda_local_var_16864_12_non_const_b18)[YY]) = ((-1.0) * ((((__cuda_local_var_16861_12_non_const_c)[Y]))[Y]));
+# 444 "gradient_3d_7pt_solid.c"
+((__cuda_local_var_16864_12_non_const_b18)[YZ]) = ((-2.0) * ((((__cuda_local_var_16861_12_non_const_c)[Y]))[Z]));
+# 445 "gradient_3d_7pt_solid.c"
+((__cuda_local_var_16864_12_non_const_b18)[ZZ]) = ((-1.0) * ((((__cuda_local_var_16861_12_non_const_c)[Z]))[Z]));
+# 449 "gradient_3d_7pt_solid.c"
+__cuda_local_var_16851_13_non_const_ig = (((__cuda_local_var_16854_9_non_const_normal)[0]) / 2);
+# 450 "gradient_3d_7pt_solid.c"
+__cuda_local_var_16851_9_non_const_ih = (((__cuda_local_var_16854_9_non_const_normal)[0]) % 2);
+# 451 "gradient_3d_7pt_solid.c"
+for (__cuda_local_var_16850_17_non_const_n1 = 0; (__cuda_local_var_16850_17_non_const_n1 < 6); __cuda_local_var_16850_17_non_const_n1++)
+# 451 "gradient_3d_7pt_solid.c"
+{
+# 452 "gradient_3d_7pt_solid.c"
+((((((__cuda_local_var_16858_12_non_const_gradn)[__cuda_local_var_16850_17_non_const_n1]))[__cuda_local_var_16851_13_non_const_ig]))[__cuda_local_var_16851_9_non_const_ih]) = ((((((__cuda_local_var_16858_12_non_const_gradn)[__cuda_local_var_16850_17_non_const_n1]))[__cuda_local_var_16851_13_non_const_ig]))[(1 - __cuda_local_var_16851_9_non_const_ih)]);
+# 453 "gradient_3d_7pt_solid.c"
+}
+# 454 "gradient_3d_7pt_solid.c"
+}
+# 456 "gradient_3d_7pt_solid.c"
+if (__cuda_local_var_16852_12_non_const_nunknown > 1)
+# 456 "gradient_3d_7pt_solid.c"
+{
+# 458 "gradient_3d_7pt_solid.c"
+_Z20q_boundary_constantsP8coords_sP13fe_lc_param_sP14grad_lc_anch_siiiPA3_dPKiiS6_P15colloids_info_s(cs, (fe->param), anch, __cuda_local_var_16848_9_non_const_ic, __cuda_local_var_16848_13_non_const_jc, __cuda_local_var_16848_17_non_const_kc, (__cuda_local_var_16860_12_non_const_qs), ((((const int (*)[3])__cuda_local_var_16855_15_const_bcs)[((__cuda_local_var_16854_9_non_const_normal)[1])])), ((__cuda_local_var_16853_9_non_const_status)[((__cuda_local_var_16854_9_non_const_normal)[1])]), (__cuda_local_var_16861_12_non_const_c), cinfo);
+# 461 "gradient_3d_7pt_solid.c"
+((__cuda_local_var_16864_12_non_const_b18)[6]) = ((-1.0) * ((((__cuda_local_var_16861_12_non_const_c)[X]))[X]));
+# 462 "gradient_3d_7pt_solid.c"
+((__cuda_local_var_16864_12_non_const_b18)[7]) = ((-2.0) * ((((__cuda_local_var_16861_12_non_const_c)[X]))[Y]));
+# 463 "gradient_3d_7pt_solid.c"
+((__cuda_local_var_16864_12_non_const_b18)[8]) = ((-2.0) * ((((__cuda_local_var_16861_12_non_const_c)[X]))[Z]));
+# 464 "gradient_3d_7pt_solid.c"
+((__cuda_local_var_16864_12_non_const_b18)[9]) = ((-1.0) * ((((__cuda_local_var_16861_12_non_const_c)[Y]))[Y]));
+# 465 "gradient_3d_7pt_solid.c"
+((__cuda_local_var_16864_12_non_const_b18)[10]) = ((-2.0) * ((((__cuda_local_var_16861_12_non_const_c)[Y]))[Z]));
+# 466 "gradient_3d_7pt_solid.c"
+((__cuda_local_var_16864_12_non_const_b18)[11]) = ((-1.0) * ((((__cuda_local_var_16861_12_non_const_c)[Z]))[Z]));
+# 468 "gradient_3d_7pt_solid.c"
+__cuda_local_var_16851_13_non_const_ig = (((__cuda_local_var_16854_9_non_const_normal)[1]) / 2);
+# 469 "gradient_3d_7pt_solid.c"
+__cuda_local_var_16851_9_non_const_ih = (((__cuda_local_var_16854_9_non_const_normal)[1]) % 2);
+# 470 "gradient_3d_7pt_solid.c"
+for (__cuda_local_var_16850_17_non_const_n1 = 0; (__cuda_local_var_16850_17_non_const_n1 < 6); __cuda_local_var_16850_17_non_const_n1++)
+# 470 "gradient_3d_7pt_solid.c"
+{
+# 471 "gradient_3d_7pt_solid.c"
+((((((__cuda_local_var_16858_12_non_const_gradn)[__cuda_local_var_16850_17_non_const_n1]))[__cuda_local_var_16851_13_non_const_ig]))[__cuda_local_var_16851_9_non_const_ih]) = ((((((__cuda_local_var_16858_12_non_const_gradn)[__cuda_local_var_16850_17_non_const_n1]))[__cuda_local_var_16851_13_non_const_ig]))[(1 - __cuda_local_var_16851_9_non_const_ih)]);
+# 472 "gradient_3d_7pt_solid.c"
+}
+# 474 "gradient_3d_7pt_solid.c"
+}
+# 476 "gradient_3d_7pt_solid.c"
+if (__cuda_local_var_16852_12_non_const_nunknown > 2)
+# 476 "gradient_3d_7pt_solid.c"
+{
+# 478 "gradient_3d_7pt_solid.c"
+_Z20q_boundary_constantsP8coords_sP13fe_lc_param_sP14grad_lc_anch_siiiPA3_dPKiiS6_P15colloids_info_s(cs, (fe->param), anch, __cuda_local_var_16848_9_non_const_ic, __cuda_local_var_16848_13_non_const_jc, __cuda_local_var_16848_17_non_const_kc, (__cuda_local_var_16860_12_non_const_qs), ((((const int (*)[3])__cuda_local_var_16855_15_const_bcs)[((__cuda_local_var_16854_9_non_const_normal)[2])])), ((__cuda_local_var_16853_9_non_const_status)[((__cuda_local_var_16854_9_non_const_normal)[2])]), (__cuda_local_var_16861_12_non_const_c), cinfo);
+# 481 "gradient_3d_7pt_solid.c"
+((__cuda_local_var_16864_12_non_const_b18)[12]) = ((-1.0) * ((((__cuda_local_var_16861_12_non_const_c)[X]))[X]));
+# 482 "gradient_3d_7pt_solid.c"
+((__cuda_local_var_16864_12_non_const_b18)[13]) = ((-2.0) * ((((__cuda_local_var_16861_12_non_const_c)[X]))[Y]));
+# 483 "gradient_3d_7pt_solid.c"
+((__cuda_local_var_16864_12_non_const_b18)[14]) = ((-2.0) * ((((__cuda_local_var_16861_12_non_const_c)[X]))[Z]));
+# 484 "gradient_3d_7pt_solid.c"
+((__cuda_local_var_16864_12_non_const_b18)[15]) = ((-1.0) * ((((__cuda_local_var_16861_12_non_const_c)[Y]))[Y]));
+# 485 "gradient_3d_7pt_solid.c"
+((__cuda_local_var_16864_12_non_const_b18)[16]) = ((-2.0) * ((((__cuda_local_var_16861_12_non_const_c)[Y]))[Z]));
+# 486 "gradient_3d_7pt_solid.c"
+((__cuda_local_var_16864_12_non_const_b18)[17]) = ((-1.0) * ((((__cuda_local_var_16861_12_non_const_c)[Z]))[Z]));
+# 488 "gradient_3d_7pt_solid.c"
+__cuda_local_var_16851_13_non_const_ig = (((__cuda_local_var_16854_9_non_const_normal)[2]) / 2);
+# 489 "gradient_3d_7pt_solid.c"
+__cuda_local_var_16851_9_non_const_ih = (((__cuda_local_var_16854_9_non_const_normal)[2]) % 2);
+# 490 "gradient_3d_7pt_solid.c"
+for (__cuda_local_var_16850_17_non_const_n1 = 0; (__cuda_local_var_16850_17_non_const_n1 < 6); __cuda_local_var_16850_17_non_const_n1++)
+# 490 "gradient_3d_7pt_solid.c"
+{
+# 491 "gradient_3d_7pt_solid.c"
+((((((__cuda_local_var_16858_12_non_const_gradn)[__cuda_local_var_16850_17_non_const_n1]))[__cuda_local_var_16851_13_non_const_ig]))[__cuda_local_var_16851_9_non_const_ih]) = ((((((__cuda_local_var_16858_12_non_const_gradn)[__cuda_local_var_16850_17_non_const_n1]))[__cuda_local_var_16851_13_non_const_ig]))[(1 - __cuda_local_var_16851_9_non_const_ih)]);
+# 492 "gradient_3d_7pt_solid.c"
+}
+# 493 "gradient_3d_7pt_solid.c"
+}
+# 496 "gradient_3d_7pt_solid.c"
+if (__cuda_local_var_16852_12_non_const_nunknown == 1)
+# 496 "gradient_3d_7pt_solid.c"
+{
+# 502 "gradient_3d_7pt_solid.c"
+_Z21gradient_bcs6x6_coeffddPKiPA6_A3_d(__cuda_local_var_16869_12_non_const_kappa0, __cuda_local_var_16870_12_non_const_kappa1, ((((const int (*)[3])__cuda_local_var_16855_15_const_bcs)[((__cuda_local_var_16854_9_non_const_normal)[0])])), (__cuda_local_var_16863_12_non_const_bc));
+# 504 "gradient_3d_7pt_solid.c"
+for (__cuda_local_var_16850_17_non_const_n1 = 0; (__cuda_local_var_16850_17_non_const_n1 < 6); __cuda_local_var_16850_17_non_const_n1++)
+# 504 "gradient_3d_7pt_solid.c"
+{
+# 505 "gradient_3d_7pt_solid.c"
+for (__cuda_local_var_16850_21_non_const_n2 = 0; (__cuda_local_var_16850_21_non_const_n2 < 6); __cuda_local_var_16850_21_non_const_n2++)
+# 505 "gradient_3d_7pt_solid.c"
+{
+# 506 "gradient_3d_7pt_solid.c"
+for (__cuda_local_var_16850_9_non_const_ia = 0; (__cuda_local_var_16850_9_non_const_ia < 3); __cuda_local_var_16850_9_non_const_ia++)
+# 506 "gradient_3d_7pt_solid.c"
+{
+# 507 "gradient_3d_7pt_solid.c"
+__cuda_local_var_16859_12_non_const_dq = ((0.5) * (((((((__cuda_local_var_16858_12_non_const_gradn)[__cuda_local_var_16850_21_non_const_n2]))[__cuda_local_var_16850_9_non_const_ia]))[0]) + ((((((__cuda_local_var_16858_12_non_const_gradn)[__cuda_local_var_16850_21_non_const_n2]))[__cuda_local_var_16850_9_non_const_ia]))[1])));
+# 508 "gradient_3d_7pt_solid.c"
+((__cuda_local_var_16864_12_non_const_b18)[__cuda_local_var_16850_17_non_const_n1]) -= (((((((__cuda_local_var_16863_12_non_const_bc)[__cuda_local_var_16850_17_non_const_n1]))[__cuda_local_var_16850_21_non_const_n2]))[__cuda_local_var_16850_9_non_const_ia]) * __cuda_local_var_16859_12_non_const_dq);
+# 509 "gradient_3d_7pt_solid.c"
+}
+# 510 "gradient_3d_7pt_solid.c"
+__cuda_local_var_16859_12_non_const_dq = ((0.5) * (((((((__cuda_local_var_16858_12_non_const_gradn)[__cuda_local_var_16850_21_non_const_n2]))[(((__cuda_local_var_16854_9_non_const_normal)[0]) / 2)]))[0]) + ((((((__cuda_local_var_16858_12_non_const_gradn)[__cuda_local_var_16850_21_non_const_n2]))[(((__cuda_local_var_16854_9_non_const_normal)[0]) / 2)]))[1])));
+# 511 "gradient_3d_7pt_solid.c"
+((__cuda_local_var_16864_12_non_const_b18)[__cuda_local_var_16850_17_non_const_n1]) += (((((((__cuda_local_var_16863_12_non_const_bc)[__cuda_local_var_16850_17_non_const_n1]))[__cuda_local_var_16850_21_non_const_n2]))[(((__cuda_local_var_16854_9_non_const_normal)[0]) / 2)]) * __cuda_local_var_16859_12_non_const_dq);
+# 512 "gradient_3d_7pt_solid.c"
+}
+# 514 "gradient_3d_7pt_solid.c"
+((__cuda_local_var_16864_12_non_const_b18)[__cuda_local_var_16850_17_non_const_n1]) *= (((const double *)__cuda_local_var_16856_18_const_bcsign)[((__cuda_local_var_16854_9_non_const_normal)[0])]);
+# 515 "gradient_3d_7pt_solid.c"
+((__cuda_local_var_16865_12_non_const_x18)[__cuda_local_var_16850_17_non_const_n1]) = (((((((anch->param)->a6inv))[(((__cuda_local_var_16854_9_non_const_normal)[0]) / 2)]))[__cuda_local_var_16850_17_non_const_n1]) * ((__cuda_local_var_16864_12_non_const_b18)[__cuda_local_var_16850_17_non_const_n1]));
+# 516 "gradient_3d_7pt_solid.c"
+}
+# 517 "gradient_3d_7pt_solid.c"
+}
+# 519 "gradient_3d_7pt_solid.c"
+if (__cuda_local_var_16852_12_non_const_nunknown == 2)
+# 519 "gradient_3d_7pt_solid.c"
+{
+# 521 "gradient_3d_7pt_solid.c"
+if (((((__cuda_local_var_16854_9_non_const_normal)[0]) / 2) == 0) && ((((__cuda_local_var_16854_9_non_const_normal)[1]) / 2) == 1)) {
+# 521 "gradient_3d_7pt_solid.c"
+((__cuda_local_var_16854_9_non_const_normal)[2]) = 2; }
+# 522 "gradient_3d_7pt_solid.c"
+if (((((__cuda_local_var_16854_9_non_const_normal)[0]) / 2) == 0) && ((((__cuda_local_var_16854_9_non_const_normal)[1]) / 2) == 2)) {
+# 522 "gradient_3d_7pt_solid.c"
+((__cuda_local_var_16854_9_non_const_normal)[2]) = 1; }
+# 523 "gradient_3d_7pt_solid.c"
+if (((((__cuda_local_var_16854_9_non_const_normal)[0]) / 2) == 1) && ((((__cuda_local_var_16854_9_non_const_normal)[1]) / 2) == 2)) {
+# 523 "gradient_3d_7pt_solid.c"
+((__cuda_local_var_16854_9_non_const_normal)[2]) = 0; }
+# 527 "gradient_3d_7pt_solid.c"
+_Z21gradient_bcs6x6_coeffddPKiPA6_A3_d(__cuda_local_var_16869_12_non_const_kappa0, __cuda_local_var_16870_12_non_const_kappa1, ((((const int (*)[3])__cuda_local_var_16855_15_const_bcs)[((__cuda_local_var_16854_9_non_const_normal)[0])])), (__cuda_local_var_16863_12_non_const_bc));
+# 529 "gradient_3d_7pt_solid.c"
+for (__cuda_local_var_16850_17_non_const_n1 = 0; (__cuda_local_var_16850_17_non_const_n1 < 6); __cuda_local_var_16850_17_non_const_n1++)
+# 529 "gradient_3d_7pt_solid.c"
+{
+# 530 "gradient_3d_7pt_solid.c"
+for (__cuda_local_var_16850_21_non_const_n2 = 0; (__cuda_local_var_16850_21_non_const_n2 < 6); __cuda_local_var_16850_21_non_const_n2++)
+# 530 "gradient_3d_7pt_solid.c"
+{
+# 532 "gradient_3d_7pt_solid.c"
+__cuda_local_var_16859_12_non_const_dq = ((0.5) * (((((((__cuda_local_var_16858_12_non_const_gradn)[__cuda_local_var_16850_21_non_const_n2]))[(((__cuda_local_var_16854_9_non_const_normal)[1]) / 2)]))[0]) + ((((((__cuda_local_var_16858_12_non_const_gradn)[__cuda_local_var_16850_21_non_const_n2]))[(((__cuda_local_var_16854_9_non_const_normal)[1]) / 2)]))[1])));
+# 533 "gradient_3d_7pt_solid.c"
+((__cuda_local_var_16864_12_non_const_b18)[__cuda_local_var_16850_17_non_const_n1]) -= (((0.5) * ((((((__cuda_local_var_16863_12_non_const_bc)[__cuda_local_var_16850_17_non_const_n1]))[__cuda_local_var_16850_21_non_const_n2]))[(((__cuda_local_var_16854_9_non_const_normal)[1]) / 2)])) * __cuda_local_var_16859_12_non_const_dq);
+# 535 "gradient_3d_7pt_solid.c"
+__cuda_local_var_16859_12_non_const_dq = ((0.5) * (((((((__cuda_local_var_16858_12_non_const_gradn)[__cuda_local_var_16850_21_non_const_n2]))[((__cuda_local_var_16854_9_non_const_normal)[2])]))[0]) + ((((((__cuda_local_var_16858_12_non_const_gradn)[__cuda_local_var_16850_21_non_const_n2]))[((__cuda_local_var_16854_9_non_const_normal)[2])]))[1])));
+# 536 "gradient_3d_7pt_solid.c"
+((__cuda_local_var_16864_12_non_const_b18)[__cuda_local_var_16850_17_non_const_n1]) -= (((((((__cuda_local_var_16863_12_non_const_bc)[__cuda_local_var_16850_17_non_const_n1]))[__cuda_local_var_16850_21_non_const_n2]))[((__cuda_local_var_16854_9_non_const_normal)[2])]) * __cuda_local_var_16859_12_non_const_dq);
+# 538 "gradient_3d_7pt_solid.c"
+}
+# 539 "gradient_3d_7pt_solid.c"
+}
+# 541 "gradient_3d_7pt_solid.c"
+_Z21gradient_bcs6x6_coeffddPKiPA6_A3_d(__cuda_local_var_16869_12_non_const_kappa0, __cuda_local_var_16870_12_non_const_kappa1, ((((const int (*)[3])__cuda_local_var_16855_15_const_bcs)[((__cuda_local_var_16854_9_non_const_normal)[1])])), (__cuda_local_var_16863_12_non_const_bc));
+# 543 "gradient_3d_7pt_solid.c"
+for (__cuda_local_var_16850_17_non_const_n1 = 0; (__cuda_local_var_16850_17_non_const_n1 < 6); __cuda_local_var_16850_17_non_const_n1++)
+# 543 "gradient_3d_7pt_solid.c"
+{
+# 544 "gradient_3d_7pt_solid.c"
+for (__cuda_local_var_16850_21_non_const_n2 = 0; (__cuda_local_var_16850_21_non_const_n2 < 6); __cuda_local_var_16850_21_non_const_n2++)
+# 544 "gradient_3d_7pt_solid.c"
+{
+# 546 "gradient_3d_7pt_solid.c"
+__cuda_local_var_16859_12_non_const_dq = ((0.5) * (((((((__cuda_local_var_16858_12_non_const_gradn)[__cuda_local_var_16850_21_non_const_n2]))[(((__cuda_local_var_16854_9_non_const_normal)[0]) / 2)]))[0]) + ((((((__cuda_local_var_16858_12_non_const_gradn)[__cuda_local_var_16850_21_non_const_n2]))[(((__cuda_local_var_16854_9_non_const_normal)[0]) / 2)]))[1])));
+# 547 "gradient_3d_7pt_solid.c"
+((__cuda_local_var_16864_12_non_const_b18)[(6 + __cuda_local_var_16850_17_non_const_n1)]) -= (((0.5) * ((((((__cuda_local_var_16863_12_non_const_bc)[__cuda_local_var_16850_17_non_const_n1]))[__cuda_local_var_16850_21_non_const_n2]))[(((__cuda_local_var_16854_9_non_const_normal)[0]) / 2)])) * __cuda_local_var_16859_12_non_const_dq);
+# 549 "gradient_3d_7pt_solid.c"
+__cuda_local_var_16859_12_non_const_dq = ((0.5) * (((((((__cuda_local_var_16858_12_non_const_gradn)[__cuda_local_var_16850_21_non_const_n2]))[((__cuda_local_var_16854_9_non_const_normal)[2])]))[0]) + ((((((__cuda_local_var_16858_12_non_const_gradn)[__cuda_local_var_16850_21_non_const_n2]))[((__cuda_local_var_16854_9_non_const_normal)[2])]))[1])));
+# 550 "gradient_3d_7pt_solid.c"
+((__cuda_local_var_16864_12_non_const_b18)[(6 + __cuda_local_var_16850_17_non_const_n1)]) -= (((((((__cuda_local_var_16863_12_non_const_bc)[__cuda_local_var_16850_17_non_const_n1]))[__cuda_local_var_16850_21_non_const_n2]))[((__cuda_local_var_16854_9_non_const_normal)[2])]) * __cuda_local_var_16859_12_non_const_dq);
+# 552 "gradient_3d_7pt_solid.c"
+}
+# 553 "gradient_3d_7pt_solid.c"
+}
+# 558 "gradient_3d_7pt_solid.c"
+__cuda_local_var_16850_9_non_const_ia = (((((__cuda_local_var_16854_9_non_const_normal)[0]) / 2) + (((__cuda_local_var_16854_9_non_const_normal)[1]) / 2)) - 1);
+# 559 "gradient_3d_7pt_solid.c"
+(((__cuda_local_var_16850_9_non_const_ia == 0) || (__cuda_local_var_16850_9_non_const_ia == 1)) || (__cuda_local_var_16850_9_non_const_ia == 2)) ? ((void)0) : (__assert_fail(((const char *)"ia == 0 || ia == 1 || ia == 2"), ((const char *)"gradient_3d_7pt_solid.c"), 559U, __T6));
+# 561 "gradient_3d_7pt_solid.c"
+for (__cuda_local_var_16850_17_non_const_n1 = 0; (__cuda_local_var_16850_17_non_const_n1 < 12); __cuda_local_var_16850_17_non_const_n1++)
+# 561 "gradient_3d_7pt_solid.c"
+{
+# 562 "gradient_3d_7pt_solid.c"
+((__cuda_local_var_16865_12_non_const_x18)[__cuda_local_var_16850_17_non_const_n1]) = (0.0);
+# 563 "gradient_3d_7pt_solid.c"
+for (__cuda_local_var_16850_21_non_const_n2 = 0; (__cuda_local_var_16850_21_non_const_n2 < 6); __cuda_local_var_16850_21_non_const_n2++)
+# 563 "gradient_3d_7pt_solid.c"
+{
+# 564 "gradient_3d_7pt_solid.c"
+((__cuda_local_var_16865_12_non_const_x18)[__cuda_local_var_16850_17_non_const_n1]) += (((((const double *)__cuda_local_var_16856_18_const_bcsign)[((__cuda_local_var_16854_9_non_const_normal)[0])]) * ((((((((anch->param)->a12inv))[__cuda_local_var_16850_9_non_const_ia]))[__cuda_local_var_16850_17_non_const_n1]))[__cuda_local_var_16850_21_non_const_n2])) * ((__cuda_local_var_16864_12_non_const_b18)[__cuda_local_var_16850_21_non_const_n2]));
+# 565 "gradient_3d_7pt_solid.c"
+}
+# 566 "gradient_3d_7pt_solid.c"
+for (__cuda_local_var_16850_21_non_const_n2 = 6; (__cuda_local_var_16850_21_non_const_n2 < 12); __cuda_local_var_16850_21_non_const_n2++)
+# 566 "gradient_3d_7pt_solid.c"
+{
+# 567 "gradient_3d_7pt_solid.c"
+((__cuda_local_var_16865_12_non_const_x18)[__cuda_local_var_16850_17_non_const_n1]) += (((((const double *)__cuda_local_var_16856_18_const_bcsign)[((__cuda_local_var_16854_9_non_const_normal)[1])]) * ((((((((anch->param)->a12inv))[__cuda_local_var_16850_9_non_const_ia]))[__cuda_local_var_16850_17_non_const_n1]))[__cuda_local_var_16850_21_non_const_n2])) * ((__cuda_local_var_16864_12_non_const_b18)[__cuda_local_var_16850_21_non_const_n2]));
+# 568 "gradient_3d_7pt_solid.c"
+}
+# 569 "gradient_3d_7pt_solid.c"
+}
+# 570 "gradient_3d_7pt_solid.c"
+}
+# 572 "gradient_3d_7pt_solid.c"
+if (__cuda_local_var_16852_12_non_const_nunknown == 3)
+# 572 "gradient_3d_7pt_solid.c"
+{
+# 574 "gradient_3d_7pt_solid.c"
+_Z21gradient_bcs6x6_coeffddPKiPA6_A3_d(__cuda_local_var_16869_12_non_const_kappa0, __cuda_local_var_16870_12_non_const_kappa1, ((((const int (*)[3])__cuda_local_var_16855_15_const_bcs)[((__cuda_local_var_16854_9_non_const_normal)[0])])), (__cuda_local_var_16863_12_non_const_bc));
+# 576 "gradient_3d_7pt_solid.c"
+for (__cuda_local_var_16850_17_non_const_n1 = 0; (__cuda_local_var_16850_17_non_const_n1 < 6); __cuda_local_var_16850_17_non_const_n1++)
+# 576 "gradient_3d_7pt_solid.c"
+{
+# 577 "gradient_3d_7pt_solid.c"
+for (__cuda_local_var_16850_21_non_const_n2 = 0; (__cuda_local_var_16850_21_non_const_n2 < 6); __cuda_local_var_16850_21_non_const_n2++)
+# 577 "gradient_3d_7pt_solid.c"
+{
+# 578 "gradient_3d_7pt_solid.c"
+__cuda_local_var_16859_12_non_const_dq = ((0.5) * (((((((__cuda_local_var_16858_12_non_const_gradn)[__cuda_local_var_16850_21_non_const_n2]))[(((__cuda_local_var_16854_9_non_const_normal)[1]) / 2)]))[0]) + ((((((__cuda_local_var_16858_12_non_const_gradn)[__cuda_local_var_16850_21_non_const_n2]))[(((__cuda_local_var_16854_9_non_const_normal)[1]) / 2)]))[1])));
+# 579 "gradient_3d_7pt_solid.c"
+((__cuda_local_var_16864_12_non_const_b18)[__cuda_local_var_16850_17_non_const_n1]) -= (((0.5) * ((((((__cuda_local_var_16863_12_non_const_bc)[__cuda_local_var_16850_17_non_const_n1]))[__cuda_local_var_16850_21_non_const_n2]))[(((__cuda_local_var_16854_9_non_const_normal)[1]) / 2)])) * __cuda_local_var_16859_12_non_const_dq);
+# 581 "gradient_3d_7pt_solid.c"
+__cuda_local_var_16859_12_non_const_dq = ((0.5) * (((((((__cuda_local_var_16858_12_non_const_gradn)[__cuda_local_var_16850_21_non_const_n2]))[(((__cuda_local_var_16854_9_non_const_normal)[2]) / 2)]))[0]) + ((((((__cuda_local_var_16858_12_non_const_gradn)[__cuda_local_var_16850_21_non_const_n2]))[(((__cuda_local_var_16854_9_non_const_normal)[2]) / 2)]))[1])));
+# 582 "gradient_3d_7pt_solid.c"
+((__cuda_local_var_16864_12_non_const_b18)[__cuda_local_var_16850_17_non_const_n1]) -= (((0.5) * ((((((__cuda_local_var_16863_12_non_const_bc)[__cuda_local_var_16850_17_non_const_n1]))[__cuda_local_var_16850_21_non_const_n2]))[(((__cuda_local_var_16854_9_non_const_normal)[2]) / 2)])) * __cuda_local_var_16859_12_non_const_dq);
+# 583 "gradient_3d_7pt_solid.c"
+}
+# 584 "gradient_3d_7pt_solid.c"
+((__cuda_local_var_16864_12_non_const_b18)[__cuda_local_var_16850_17_non_const_n1]) *= (((const double *)__cuda_local_var_16856_18_const_bcsign)[((__cuda_local_var_16854_9_non_const_normal)[0])]);
+# 585 "gradient_3d_7pt_solid.c"
+}
+# 587 "gradient_3d_7pt_solid.c"
+_Z21gradient_bcs6x6_coeffddPKiPA6_A3_d(__cuda_local_var_16869_12_non_const_kappa0, __cuda_local_var_16870_12_non_const_kappa1, ((((const int (*)[3])__cuda_local_var_16855_15_const_bcs)[((__cuda_local_var_16854_9_non_const_normal)[1])])), (__cuda_local_var_16863_12_non_const_bc));
+# 589 "gradient_3d_7pt_solid.c"
+for (__cuda_local_var_16850_17_non_const_n1 = 0; (__cuda_local_var_16850_17_non_const_n1 < 6); __cuda_local_var_16850_17_non_const_n1++)
+# 589 "gradient_3d_7pt_solid.c"
+{
+# 590 "gradient_3d_7pt_solid.c"
+for (__cuda_local_var_16850_21_non_const_n2 = 0; (__cuda_local_var_16850_21_non_const_n2 < 6); __cuda_local_var_16850_21_non_const_n2++)
+# 590 "gradient_3d_7pt_solid.c"
+{
+# 591 "gradient_3d_7pt_solid.c"
+__cuda_local_var_16859_12_non_const_dq = ((0.5) * (((((((__cuda_local_var_16858_12_non_const_gradn)[__cuda_local_var_16850_21_non_const_n2]))[(((__cuda_local_var_16854_9_non_const_normal)[0]) / 2)]))[0]) + ((((((__cuda_local_var_16858_12_non_const_gradn)[__cuda_local_var_16850_21_non_const_n2]))[(((__cuda_local_var_16854_9_non_const_normal)[0]) / 2)]))[1])));
+# 592 "gradient_3d_7pt_solid.c"
+((__cuda_local_var_16864_12_non_const_b18)[(6 + __cuda_local_var_16850_17_non_const_n1)]) -= (((0.5) * ((((((__cuda_local_var_16863_12_non_const_bc)[__cuda_local_var_16850_17_non_const_n1]))[__cuda_local_var_16850_21_non_const_n2]))[(((__cuda_local_var_16854_9_non_const_normal)[0]) / 2)])) * __cuda_local_var_16859_12_non_const_dq);
+# 594 "gradient_3d_7pt_solid.c"
+__cuda_local_var_16859_12_non_const_dq = ((0.5) * (((((((__cuda_local_var_16858_12_non_const_gradn)[__cuda_local_var_16850_21_non_const_n2]))[(((__cuda_local_var_16854_9_non_const_normal)[2]) / 2)]))[0]) + ((((((__cuda_local_var_16858_12_non_const_gradn)[__cuda_local_var_16850_21_non_const_n2]))[(((__cuda_local_var_16854_9_non_const_normal)[2]) / 2)]))[1])));
+# 595 "gradient_3d_7pt_solid.c"
+((__cuda_local_var_16864_12_non_const_b18)[(6 + __cuda_local_var_16850_17_non_const_n1)]) -= (((0.5) * ((((((__cuda_local_var_16863_12_non_const_bc)[__cuda_local_var_16850_17_non_const_n1]))[__cuda_local_var_16850_21_non_const_n2]))[(((__cuda_local_var_16854_9_non_const_normal)[2]) / 2)])) * __cuda_local_var_16859_12_non_const_dq);
+# 596 "gradient_3d_7pt_solid.c"
+}
+# 597 "gradient_3d_7pt_solid.c"
+((__cuda_local_var_16864_12_non_const_b18)[(6 + __cuda_local_var_16850_17_non_const_n1)]) *= (((const double *)__cuda_local_var_16856_18_const_bcsign)[((__cuda_local_var_16854_9_non_const_normal)[1])]);
+# 598 "gradient_3d_7pt_solid.c"
+}
+# 600 "gradient_3d_7pt_solid.c"
+_Z21gradient_bcs6x6_coeffddPKiPA6_A3_d(__cuda_local_var_16869_12_non_const_kappa0, __cuda_local_var_16870_12_non_const_kappa1, ((((const int (*)[3])__cuda_local_var_16855_15_const_bcs)[((__cuda_local_var_16854_9_non_const_normal)[2])])), (__cuda_local_var_16863_12_non_const_bc));
+# 602 "gradient_3d_7pt_solid.c"
+for (__cuda_local_var_16850_17_non_const_n1 = 0; (__cuda_local_var_16850_17_non_const_n1 < 6); __cuda_local_var_16850_17_non_const_n1++)
+# 602 "gradient_3d_7pt_solid.c"
+{
+# 603 "gradient_3d_7pt_solid.c"
+for (__cuda_local_var_16850_21_non_const_n2 = 0; (__cuda_local_var_16850_21_non_const_n2 < 6); __cuda_local_var_16850_21_non_const_n2++)
+# 603 "gradient_3d_7pt_solid.c"
+{
+# 604 "gradient_3d_7pt_solid.c"
+__cuda_local_var_16859_12_non_const_dq = ((0.5) * (((((((__cuda_local_var_16858_12_non_const_gradn)[__cuda_local_var_16850_21_non_const_n2]))[(((__cuda_local_var_16854_9_non_const_normal)[0]) / 2)]))[0]) + ((((((__cuda_local_var_16858_12_non_const_gradn)[__cuda_local_var_16850_21_non_const_n2]))[(((__cuda_local_var_16854_9_non_const_normal)[0]) / 2)]))[1])));
+# 605 "gradient_3d_7pt_solid.c"
+((__cuda_local_var_16864_12_non_const_b18)[(12 + __cuda_local_var_16850_17_non_const_n1)]) -= (((0.5) * ((((((__cuda_local_var_16863_12_non_const_bc)[__cuda_local_var_16850_17_non_const_n1]))[__cuda_local_var_16850_21_non_const_n2]))[(((__cuda_local_var_16854_9_non_const_normal)[0]) / 2)])) * __cuda_local_var_16859_12_non_const_dq);
+# 607 "gradient_3d_7pt_solid.c"
+__cuda_local_var_16859_12_non_const_dq = ((0.5) * (((((((__cuda_local_var_16858_12_non_const_gradn)[__cuda_local_var_16850_21_non_const_n2]))[(((__cuda_local_var_16854_9_non_const_normal)[1]) / 2)]))[0]) + ((((((__cuda_local_var_16858_12_non_const_gradn)[__cuda_local_var_16850_21_non_const_n2]))[(((__cuda_local_var_16854_9_non_const_normal)[1]) / 2)]))[1])));
+# 608 "gradient_3d_7pt_solid.c"
+((__cuda_local_var_16864_12_non_const_b18)[(12 + __cuda_local_var_16850_17_non_const_n1)]) -= (((0.5) * ((((((__cuda_local_var_16863_12_non_const_bc)[__cuda_local_var_16850_17_non_const_n1]))[__cuda_local_var_16850_21_non_const_n2]))[(((__cuda_local_var_16854_9_non_const_normal)[1]) / 2)])) * __cuda_local_var_16859_12_non_const_dq);
+# 609 "gradient_3d_7pt_solid.c"
+}
+# 610 "gradient_3d_7pt_solid.c"
+((__cuda_local_var_16864_12_non_const_b18)[(12 + __cuda_local_var_16850_17_non_const_n1)]) *= (((const double *)__cuda_local_var_16856_18_const_bcsign)[((__cuda_local_var_16854_9_non_const_normal)[2])]);
+# 611 "gradient_3d_7pt_solid.c"
+}
+# 615 "gradient_3d_7pt_solid.c"
+for (__cuda_local_var_16850_17_non_const_n1 = 0; (__cuda_local_var_16850_17_non_const_n1 < 18); __cuda_local_var_16850_17_non_const_n1++)
+# 615 "gradient_3d_7pt_solid.c"
+{
+# 616 "gradient_3d_7pt_solid.c"
+((__cuda_local_var_16865_12_non_const_x18)[__cuda_local_var_16850_17_non_const_n1]) = (0.0);
+# 617 "gradient_3d_7pt_solid.c"
+for (__cuda_local_var_16850_21_non_const_n2 = 0; (__cuda_local_var_16850_21_non_const_n2 < 18); __cuda_local_var_16850_21_non_const_n2++)
+# 617 "gradient_3d_7pt_solid.c"
+{
+# 618 "gradient_3d_7pt_solid.c"
+((__cuda_local_var_16865_12_non_const_x18)[__cuda_local_var_16850_17_non_const_n1]) += (((((((anch->param)->a18inv))[__cuda_local_var_16850_17_non_const_n1]))[__cuda_local_var_16850_21_non_const_n2]) * ((__cuda_local_var_16864_12_non_const_b18)[__cuda_local_var_16850_21_non_const_n2]));
+# 619 "gradient_3d_7pt_solid.c"
+}
+# 620 "gradient_3d_7pt_solid.c"
+}
+# 621 "gradient_3d_7pt_solid.c"
+}
+# 625 "gradient_3d_7pt_solid.c"
+for (__cuda_local_var_16852_9_non_const_n = 0; (__cuda_local_var_16852_9_non_const_n < __cuda_local_var_16852_12_non_const_nunknown); __cuda_local_var_16852_9_non_const_n++)
+# 625 "gradient_3d_7pt_solid.c"
+{
+# 627 "gradient_3d_7pt_solid.c"
+__cuda_local_var_16866_12_non_const_tr = ((0.3333333333333333148) * ((((__cuda_local_var_16865_12_non_const_x18)[((6 * __cuda_local_var_16852_9_non_const_n) + 0)]) + ((__cuda_local_var_16865_12_non_const_x18)[((6 * __cuda_local_var_16852_9_non_const_n) + 3)])) + ((__cuda_local_var_16865_12_non_const_x18)[((6 * __cuda_local_var_16852_9_non_const_n) + 5)])));
+# 628 "gradient_3d_7pt_solid.c"
+((__cuda_local_var_16865_12_non_const_x18)[((6 * __cuda_local_var_16852_9_non_const_n) + 0)]) -= __cuda_local_var_16866_12_non_const_tr;
+# 629 "gradient_3d_7pt_solid.c"
+((__cuda_local_var_16865_12_non_const_x18)[((6 * __cuda_local_var_16852_9_non_const_n) + 3)]) -= __cuda_local_var_16866_12_non_const_tr;
+# 633 "gradient_3d_7pt_solid.c"
+for (__cuda_local_var_16850_17_non_const_n1 = 0; (__cuda_local_var_16850_17_non_const_n1 < 5); __cuda_local_var_16850_17_non_const_n1++)
+# 633 "gradient_3d_7pt_solid.c"
+{
+# 634 "gradient_3d_7pt_solid.c"
+((((((__cuda_local_var_16858_12_non_const_gradn)[__cuda_local_var_16850_17_non_const_n1]))[(((__cuda_local_var_16854_9_non_const_normal)[__cuda_local_var_16852_9_non_const_n]) / 2)]))[(((__cuda_local_var_16854_9_non_const_normal)[__cuda_local_var_16852_9_non_const_n]) % 2)]) = ((__cuda_local_var_16865_12_non_const_x18)[((6 * __cuda_local_var_16852_9_non_const_n) + __cuda_local_var_16850_17_non_const_n1)]);
+# 635 "gradient_3d_7pt_solid.c"
+}
+# 636 "gradient_3d_7pt_solid.c"
+}
+# 640 "gradient_3d_7pt_solid.c"
+for (__cuda_local_var_16850_17_non_const_n1 = 0; (__cuda_local_var_16850_17_non_const_n1 < 5); __cuda_local_var_16850_17_non_const_n1++)
+# 640 "gradient_3d_7pt_solid.c"
+{
+# 641 "gradient_3d_7pt_solid.c"
+((fg->delsq)[(_Z25reverse_addr_rank1_assertiPKciiii(641, ((const char *)"gradient_3d_7pt_solid.c"), (__cuda_local_var_16871_15_non_const_q->nsites), 5, __cuda_local_var_16848_21_non_const_index, __cuda_local_var_16850_17_non_const_n1))]) = (0.0);
+# 642 "gradient_3d_7pt_solid.c"
+for (__cuda_local_var_16850_9_non_const_ia = 0; (__cuda_local_var_16850_9_non_const_ia < 3); __cuda_local_var_16850_9_non_const_ia++)
+# 642 "gradient_3d_7pt_solid.c"
+{
+# 643 "gradient_3d_7pt_solid.c"
+((fg->grad)[(_Z25reverse_addr_rank2_assertiPKciiiiii(643, ((const char *)"gradient_3d_7pt_solid.c"), (__cuda_local_var_16871_15_non_const_q->nsites), 5, 3, __cuda_local_var_16848_21_non_const_index, __cuda_local_var_16850_17_non_const_n1, __cuda_local_var_16850_9_non_const_ia))]) = ((0.5) * (((((((__cuda_local_var_16858_12_non_const_gradn)[__cuda_local_var_16850_17_non_const_n1]))[__cuda_local_var_16850_9_non_const_ia]))[0]) + ((((((__cuda_local_var_16858_12_non_const_gradn)[__cuda_local_var_16850_17_non_const_n1]))[__cuda_local_var_16850_9_non_const_ia]))[1])));
+# 645 "gradient_3d_7pt_solid.c"
+((fg->delsq)[(_Z25reverse_addr_rank1_assertiPKciiii(645, ((const char *)"gradient_3d_7pt_solid.c"), (__cuda_local_var_16871_15_non_const_q->nsites), 5, __cuda_local_var_16848_21_non_const_index, __cuda_local_var_16850_17_non_const_n1))]) += (((((((__cuda_local_var_16858_12_non_const_gradn)[__cuda_local_var_16850_17_non_const_n1]))[__cuda_local_var_16850_9_non_const_ia]))[0]) - ((((((__cuda_local_var_16858_12_non_const_gradn)[__cuda_local_var_16850_17_non_const_n1]))[__cuda_local_var_16850_9_non_const_ia]))[1]));
+# 647 "gradient_3d_7pt_solid.c"
+}
+# 648 "gradient_3d_7pt_solid.c"
+}
+# 650 "gradient_3d_7pt_solid.c"
+}
+# 652 "gradient_3d_7pt_solid.c"
+}
+# 654 "gradient_3d_7pt_solid.c"
+return;
+# 655 "gradient_3d_7pt_solid.c"
+}}

@@ -1,0 +1,451 @@
+typedef char __nv_bool;
+# 22 "pe.h"
+struct pe_s;
+# 33 "physics.c"
+struct physics_s;
+# 212 "/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stddef.h" 3
+typedef unsigned long size_t;
+#include "crt/device_runtime.h"
+# 47 ".././target/target_cuda.h"
+typedef enum cudaError tdpError_t;
+# 22 "pe.h"
+typedef struct pe_s pe_t;
+# 18 "physics.h"
+typedef struct physics_s physics_t;
+# 33 "physics.c"
+struct physics_s {
+# 34 "physics.c"
+double eta_shear;
+# 35 "physics.c"
+double eta_bulk;
+# 36 "physics.c"
+double kt;
+# 37 "physics.c"
+double rho0;
+# 38 "physics.c"
+double phi0;
+# 39 "physics.c"
+double phi_noise0;
+# 40 "physics.c"
+double fbody[3];
+# 41 "physics.c"
+double e0[3];
+# 42 "physics.c"
+double e0_frequency;
+# 43 "physics.c"
+double b0[3];
+# 44 "physics.c"
+double fgravity[3];
+# 45 "physics.c"
+double mobility;
+# 47 "physics.c"
+int t_start;
+# 48 "physics.c"
+int nsteps;
+# 49 "physics.c"
+int t_current;
+# 50 "physics.c"
+int e0_flag;
+# 52 "physics.c"
+double fpulse_frequency;
+# 53 "physics.c"
+double fpulse[3];
+# 55 "physics.c"
+double grad_mu[3];};
+# 150 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) void free(void *);
+# 189 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__noreturn__)) void __assert_fail(const char *, const char *, unsigned, const char *);
+# 117 ".././target/target.h"
+___device__(extern  __no_sc__) void _Z15tdpErrorHandler9cudaErrorPKcii(tdpError_t, const char *, int, int);
+# 71 "physics.c"
+___device__(extern  __no_sc__) int _Z11physics_refPP9physics_s(physics_t **);
+# 162 "physics.c"
+___device__(extern  __no_sc__) int _Z17physics_eta_shearP9physics_sPd(physics_t *, double *);
+# 193 "physics.c"
+___device__(extern  __no_sc__) int _Z16physics_eta_bulkP9physics_sPd(physics_t *, double *);
+# 224 "physics.c"
+___device__(extern  __no_sc__) int _Z12physics_rho0P9physics_sPd(physics_t *, double *);
+# 255 "physics.c"
+___device__(extern  __no_sc__) int _Z10physics_ktP9physics_sPd(physics_t *, double *);
+# 286 "physics.c"
+___device__(extern  __no_sc__) int _Z12physics_phi0P9physics_sPd(physics_t *, double *);
+# 317 "physics.c"
+___device__(extern  __no_sc__) int _Z10physics_b0P9physics_sPd(physics_t *, double *);
+# 351 "physics.c"
+___device__(extern  __no_sc__) int _Z10physics_e0P9physics_sPd(physics_t *, double *);
+# 391 "physics.c"
+___device__(extern  __no_sc__) int _Z15physics_e0_flagP9physics_s(physics_t *);
+# 404 "physics.c"
+___device__(extern  __no_sc__) int _Z20physics_e0_frequencyP9physics_sPd(physics_t *, double *);
+# 435 "physics.c"
+___device__(extern  __no_sc__) int _Z13physics_fbodyP9physics_sPd(physics_t *, double *);
+# 469 "physics.c"
+___device__(extern  __no_sc__) int _Z14physics_fpulseP9physics_sPd(physics_t *, double *);
+# 503 "physics.c"
+___device__(extern  __no_sc__) int _Z24physics_fpulse_frequencyP9physics_sPd(physics_t *, double *);
+# 534 "physics.c"
+___device__(extern  __no_sc__) int _Z16physics_mobilityP9physics_sPd(physics_t *, double *);
+# 565 "physics.c"
+___device__(extern  __no_sc__) int _Z13physics_fgravP9physics_sPd(physics_t *, double *);
+# 599 "physics.c"
+___device__(extern  __no_sc__) int _Z15physics_grad_muP9physics_sPd(physics_t *, double *);
+# 635 "physics.c"
+___device__(extern  __no_sc__) int _Z24physics_control_timestepP9physics_s(physics_t *);
+# 651 "physics.c"
+___device__(extern  __no_sc__) int _Z20physics_control_timeP9physics_sPd(physics_t *, double *);
+# 61 "physics.c"
+static  __constant__  __var_used__ physics_t __nv_static_28__15_physics_cpp1_ii_93368647_const_phys;
+static  __device__  __var_used__ const char __T0[30];
+static  __device__  __var_used__ const char __T4[45];
+static  __device__  __var_used__ const char __T6[44];
+static  __device__  __var_used__ const char __T8[40];
+static  __device__  __var_used__ const char __T10[38];
+static  __device__  __var_used__ const char __T12[40];
+static  __device__  __var_used__ const char __T14[38];
+static  __device__  __var_used__ const char __T16[38];
+static  __device__  __var_used__ const char __T18[33];
+static  __device__  __var_used__ const char __T19[48];
+static  __device__  __var_used__ const char __T21[41];
+static  __device__  __var_used__ const char __T23[42];
+static  __device__  __var_used__ const char __T25[52];
+static  __device__  __var_used__ const char __T27[44];
+static  __device__  __var_used__ const char __T29[41];
+static  __device__  __var_used__ const char __T31[43];
+static  __device__  __var_used__ const char __T33[42];
+static  __device__  __var_used__ const char __T34[48];
+#include "common_functions.h"
+static  __device__  __var_used__ const char __T0[30] = "int physics_ref(physics_s **)";
+static  __device__  __var_used__ const char __T4[45] = "int physics_eta_shear(physics_s *, double *)";
+static  __device__  __var_used__ const char __T6[44] = "int physics_eta_bulk(physics_s *, double *)";
+static  __device__  __var_used__ const char __T8[40] = "int physics_rho0(physics_s *, double *)";
+static  __device__  __var_used__ const char __T10[38] = "int physics_kt(physics_s *, double *)";
+static  __device__  __var_used__ const char __T12[40] = "int physics_phi0(physics_s *, double *)";
+static  __device__  __var_used__ const char __T14[38] = "int physics_b0(physics_s *, double *)";
+static  __device__  __var_used__ const char __T16[38] = "int physics_e0(physics_s *, double *)";
+static  __device__  __var_used__ const char __T18[33] = "int physics_e0_flag(physics_s *)";
+static  __device__  __var_used__ const char __T19[48] = "int physics_e0_frequency(physics_s *, double *)";
+static  __device__  __var_used__ const char __T21[41] = "int physics_fbody(physics_s *, double *)";
+static  __device__  __var_used__ const char __T23[42] = "int physics_fpulse(physics_s *, double *)";
+static  __device__  __var_used__ const char __T25[52] = "int physics_fpulse_frequency(physics_s *, double *)";
+static  __device__  __var_used__ const char __T27[44] = "int physics_mobility(physics_s *, double *)";
+static  __device__  __var_used__ const char __T29[41] = "int physics_fgrav(physics_s *, double *)";
+static  __device__  __var_used__ const char __T31[43] = "int physics_grad_mu(physics_s *, double *)";
+static  __device__  __var_used__ const char __T33[42] = "int physics_control_timestep(physics_s *)";
+static  __device__  __var_used__ const char __T34[48] = "int physics_control_time(physics_s *, double *)";
+# 71 "physics.c"
+___device__( __no_sc__) int _Z11physics_refPP9physics_s(
+# 71 "physics.c"
+physics_t **ref){
+# 71 "physics.c"
+{
+# 73 "physics.c"
+(ref) ? ((void)0) : (__assert_fail(((const char *)"ref"), ((const char *)"physics.c"), 73U, __T0));
+# 76 "physics.c"
+(*ref) = (&__nv_static_28__15_physics_cpp1_ii_93368647_const_phys);
+# 82 "physics.c"
+return 0;
+# 83 "physics.c"
+}}
+# 162 "physics.c"
+___device__( __no_sc__) int _Z17physics_eta_shearP9physics_sPd(
+# 162 "physics.c"
+physics_t *phys, 
+# 162 "physics.c"
+double *eta){
+# 162 "physics.c"
+{
+# 164 "physics.c"
+(phys) ? ((void)0) : (__assert_fail(((const char *)"phys"), ((const char *)"physics.c"), 164U, __T4));
+# 165 "physics.c"
+(eta) ? ((void)0) : (__assert_fail(((const char *)"eta"), ((const char *)"physics.c"), 165U, __T4));
+# 167 "physics.c"
+(*eta) = (phys->eta_shear);
+# 169 "physics.c"
+return 0;
+# 170 "physics.c"
+}}
+# 193 "physics.c"
+___device__( __no_sc__) int _Z16physics_eta_bulkP9physics_sPd(
+# 193 "physics.c"
+physics_t *phys, 
+# 193 "physics.c"
+double *eta){
+# 193 "physics.c"
+{
+# 195 "physics.c"
+(phys) ? ((void)0) : (__assert_fail(((const char *)"phys"), ((const char *)"physics.c"), 195U, __T6));
+# 196 "physics.c"
+(eta) ? ((void)0) : (__assert_fail(((const char *)"eta"), ((const char *)"physics.c"), 196U, __T6));
+# 198 "physics.c"
+(*eta) = (phys->eta_bulk);
+# 200 "physics.c"
+return 0;
+# 201 "physics.c"
+}}
+# 224 "physics.c"
+___device__( __no_sc__) int _Z12physics_rho0P9physics_sPd(
+# 224 "physics.c"
+physics_t *phys, 
+# 224 "physics.c"
+double *rho0){
+# 224 "physics.c"
+{
+# 226 "physics.c"
+(phys) ? ((void)0) : (__assert_fail(((const char *)"phys"), ((const char *)"physics.c"), 226U, __T8));
+# 227 "physics.c"
+(rho0) ? ((void)0) : (__assert_fail(((const char *)"rho0"), ((const char *)"physics.c"), 227U, __T8));
+# 229 "physics.c"
+(*rho0) = (phys->rho0);
+# 231 "physics.c"
+return 0;
+# 232 "physics.c"
+}}
+# 255 "physics.c"
+___device__( __no_sc__) int _Z10physics_ktP9physics_sPd(
+# 255 "physics.c"
+physics_t *phys, 
+# 255 "physics.c"
+double *kt){
+# 255 "physics.c"
+{
+# 257 "physics.c"
+(phys) ? ((void)0) : (__assert_fail(((const char *)"phys"), ((const char *)"physics.c"), 257U, __T10));
+# 258 "physics.c"
+(kt) ? ((void)0) : (__assert_fail(((const char *)"kt"), ((const char *)"physics.c"), 258U, __T10));
+# 260 "physics.c"
+(*kt) = (phys->kt);
+# 262 "physics.c"
+return 0;
+# 263 "physics.c"
+}}
+# 286 "physics.c"
+___device__( __no_sc__) int _Z12physics_phi0P9physics_sPd(
+# 286 "physics.c"
+physics_t *phys, 
+# 286 "physics.c"
+double *phi0){
+# 286 "physics.c"
+{
+# 288 "physics.c"
+(phys) ? ((void)0) : (__assert_fail(((const char *)"phys"), ((const char *)"physics.c"), 288U, __T12));
+# 289 "physics.c"
+(phi0) ? ((void)0) : (__assert_fail(((const char *)"phi0"), ((const char *)"physics.c"), 289U, __T12));
+# 291 "physics.c"
+(*phi0) = (phys->phi0);
+# 293 "physics.c"
+return 0;
+# 294 "physics.c"
+}}
+# 317 "physics.c"
+___device__( __no_sc__) int _Z10physics_b0P9physics_sPd(
+# 317 "physics.c"
+physics_t *phys, 
+# 317 "physics.c"
+double *b0){
+# 317 "physics.c"
+{
+# 319 "physics.c"
+(phys) ? ((void)0) : (__assert_fail(((const char *)"phys"), ((const char *)"physics.c"), 319U, __T14));
+# 321 "physics.c"
+(b0[0]) = (((phys->b0))[0]);
+# 322 "physics.c"
+(b0[1]) = (((phys->b0))[1]);
+# 323 "physics.c"
+(b0[2]) = (((phys->b0))[2]);
+# 325 "physics.c"
+return 0;
+# 326 "physics.c"
+}}
+# 351 "physics.c"
+___device__( __no_sc__) int _Z10physics_e0P9physics_sPd(
+# 351 "physics.c"
+physics_t *phys, 
+# 351 "physics.c"
+double *e0){
+# 351 "physics.c"
+{
+# 353 "physics.c"
+(phys) ? ((void)0) : (__assert_fail(((const char *)"phys"), ((const char *)"physics.c"), 353U, __T16));
+# 355 "physics.c"
+(e0[0]) = (((phys->e0))[0]);
+# 356 "physics.c"
+(e0[1]) = (((phys->e0))[1]);
+# 357 "physics.c"
+(e0[2]) = (((phys->e0))[2]);
+# 359 "physics.c"
+return 0;
+# 360 "physics.c"
+}}
+# 391 "physics.c"
+___device__( __no_sc__) int _Z15physics_e0_flagP9physics_s(
+# 391 "physics.c"
+physics_t *phys){
+# 391 "physics.c"
+{
+# 393 "physics.c"
+(phys) ? ((void)0) : (__assert_fail(((const char *)"phys"), ((const char *)"physics.c"), 393U, __T18));
+# 395 "physics.c"
+return phys->e0_flag;
+# 396 "physics.c"
+}}
+# 404 "physics.c"
+___device__( __no_sc__) int _Z20physics_e0_frequencyP9physics_sPd(
+# 404 "physics.c"
+physics_t *phys, 
+# 405 "physics.c"
+double *e0_frequency){
+# 405 "physics.c"
+{
+# 407 "physics.c"
+(phys) ? ((void)0) : (__assert_fail(((const char *)"phys"), ((const char *)"physics.c"), 407U, __T19));
+# 409 "physics.c"
+(*e0_frequency) = (phys->e0_frequency);
+# 411 "physics.c"
+return 0;
+# 412 "physics.c"
+}}
+# 435 "physics.c"
+___device__( __no_sc__) int _Z13physics_fbodyP9physics_sPd(
+# 435 "physics.c"
+physics_t *phys, 
+# 435 "physics.c"
+double *f){
+# 435 "physics.c"
+{
+# 437 "physics.c"
+(phys) ? ((void)0) : (__assert_fail(((const char *)"phys"), ((const char *)"physics.c"), 437U, __T21));
+# 439 "physics.c"
+(f[0]) = (((phys->fbody))[0]);
+# 440 "physics.c"
+(f[1]) = (((phys->fbody))[1]);
+# 441 "physics.c"
+(f[2]) = (((phys->fbody))[2]);
+# 443 "physics.c"
+return 0;
+# 444 "physics.c"
+}}
+# 469 "physics.c"
+___device__( __no_sc__) int _Z14physics_fpulseP9physics_sPd(
+# 469 "physics.c"
+physics_t *phys, 
+# 469 "physics.c"
+double *fpulse){
+# 469 "physics.c"
+{
+# 471 "physics.c"
+(phys) ? ((void)0) : (__assert_fail(((const char *)"phys"), ((const char *)"physics.c"), 471U, __T23));
+# 473 "physics.c"
+(fpulse[0]) = (((phys->fpulse))[0]);
+# 474 "physics.c"
+(fpulse[1]) = (((phys->fpulse))[1]);
+# 475 "physics.c"
+(fpulse[2]) = (((phys->fpulse))[2]);
+# 477 "physics.c"
+return 0;
+# 478 "physics.c"
+}}
+# 503 "physics.c"
+___device__( __no_sc__) int _Z24physics_fpulse_frequencyP9physics_sPd(
+# 503 "physics.c"
+physics_t *phys, 
+# 504 "physics.c"
+double *fpulse_frequency){
+# 504 "physics.c"
+{
+# 506 "physics.c"
+(phys) ? ((void)0) : (__assert_fail(((const char *)"phys"), ((const char *)"physics.c"), 506U, __T25));
+# 508 "physics.c"
+(*fpulse_frequency) = (phys->fpulse_frequency);
+# 510 "physics.c"
+return 0;
+# 511 "physics.c"
+}}
+# 534 "physics.c"
+___device__( __no_sc__) int _Z16physics_mobilityP9physics_sPd(
+# 534 "physics.c"
+physics_t *phys, 
+# 534 "physics.c"
+double *mobility){
+# 534 "physics.c"
+{
+# 536 "physics.c"
+(phys) ? ((void)0) : (__assert_fail(((const char *)"phys"), ((const char *)"physics.c"), 536U, __T27));
+# 537 "physics.c"
+(mobility) ? ((void)0) : (__assert_fail(((const char *)"mobility"), ((const char *)"physics.c"), 537U, __T27));
+# 539 "physics.c"
+(*mobility) = (phys->mobility);
+# 541 "physics.c"
+return 0;
+# 542 "physics.c"
+}}
+# 565 "physics.c"
+___device__( __no_sc__) int _Z13physics_fgravP9physics_sPd(
+# 565 "physics.c"
+physics_t *phys, 
+# 565 "physics.c"
+double *g){
+# 565 "physics.c"
+{
+# 567 "physics.c"
+(phys) ? ((void)0) : (__assert_fail(((const char *)"phys"), ((const char *)"physics.c"), 567U, __T29));
+# 569 "physics.c"
+(g[0]) = (((phys->fgravity))[0]);
+# 570 "physics.c"
+(g[1]) = (((phys->fgravity))[1]);
+# 571 "physics.c"
+(g[2]) = (((phys->fgravity))[2]);
+# 573 "physics.c"
+return 0;
+# 574 "physics.c"
+}}
+# 599 "physics.c"
+___device__( __no_sc__) int _Z15physics_grad_muP9physics_sPd(
+# 599 "physics.c"
+physics_t *phys, 
+# 599 "physics.c"
+double *gm){
+# 599 "physics.c"
+{
+# 601 "physics.c"
+(phys) ? ((void)0) : (__assert_fail(((const char *)"phys"), ((const char *)"physics.c"), 601U, __T31));
+# 603 "physics.c"
+(gm[0]) = (((phys->grad_mu))[0]);
+# 604 "physics.c"
+(gm[1]) = (((phys->grad_mu))[1]);
+# 605 "physics.c"
+(gm[2]) = (((phys->grad_mu))[2]);
+# 607 "physics.c"
+return 0;
+# 608 "physics.c"
+}}
+# 635 "physics.c"
+___device__( __no_sc__) int _Z24physics_control_timestepP9physics_s(
+# 635 "physics.c"
+physics_t *phys){
+# 635 "physics.c"
+{
+# 637 "physics.c"
+(phys) ? ((void)0) : (__assert_fail(((const char *)"phys"), ((const char *)"physics.c"), 637U, __T33));
+# 638 "physics.c"
+return phys->t_current;
+# 639 "physics.c"
+}}
+# 651 "physics.c"
+___device__( __no_sc__) int _Z20physics_control_timeP9physics_sPd(
+# 651 "physics.c"
+physics_t *phys, 
+# 651 "physics.c"
+double *t){
+# 651 "physics.c"
+{
+# 653 "physics.c"
+(phys) ? ((void)0) : (__assert_fail(((const char *)"phys"), ((const char *)"physics.c"), 653U, __T34));
+# 654 "physics.c"
+(t) ? ((void)0) : (__assert_fail(((const char *)"t"), ((const char *)"physics.c"), 654U, __T34));
+# 656 "physics.c"
+(*t) = ((1.0) * (((double)((phys->t_start) + (phys->t_current))) - (1.0)));
+# 658 "physics.c"
+return 0;
+# 659 "physics.c"
+}}

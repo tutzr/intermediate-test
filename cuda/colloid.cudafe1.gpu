@@ -1,0 +1,87 @@
+typedef char __nv_bool;
+# 246 "/usr/include/libio.h" 3
+struct _IO_FILE;
+# 44 "colloid.h"
+struct colloid_state_type;
+# 212 "/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stddef.h" 3
+typedef unsigned long size_t;
+#include "crt/device_runtime.h"
+# 48 "/usr/include/stdio.h" 3
+typedef struct _IO_FILE FILE;
+# 42 "colloid.h"
+typedef struct colloid_state_type colloid_state_t;
+# 44 "colloid.h"
+struct colloid_state_type {
+# 46 "colloid.h"
+int index;
+# 47 "colloid.h"
+int rebuild;
+# 48 "colloid.h"
+int nbonds;
+# 49 "colloid.h"
+int nangles;
+# 51 "colloid.h"
+int isfixedr;
+# 52 "colloid.h"
+int isfixedv;
+# 53 "colloid.h"
+int isfixedw;
+# 54 "colloid.h"
+int isfixeds;
+# 56 "colloid.h"
+int type;
+# 57 "colloid.h"
+int bond[2];
+# 59 "colloid.h"
+int rng;
+# 61 "colloid.h"
+int isfixedrxyz[3];
+# 62 "colloid.h"
+int isfixedvxyz[3];
+# 67 "colloid.h"
+int intpad[14];
+# 71 "colloid.h"
+double a0;
+# 72 "colloid.h"
+double ah;
+# 73 "colloid.h"
+double r[3];
+# 74 "colloid.h"
+double v[3];
+# 75 "colloid.h"
+double w[3];
+# 76 "colloid.h"
+double s[3];
+# 77 "colloid.h"
+double m[3];
+# 78 "colloid.h"
+double b1;
+# 79 "colloid.h"
+double b2;
+# 80 "colloid.h"
+double c;
+# 81 "colloid.h"
+double h;
+# 82 "colloid.h"
+double dr[3];
+# 83 "colloid.h"
+double deltaphi;
+# 92 "colloid.h"
+double q0;
+# 93 "colloid.h"
+double q1;
+# 94 "colloid.h"
+double epsilon;
+# 96 "colloid.h"
+double deltaq0;
+# 97 "colloid.h"
+double deltaq1;
+# 98 "colloid.h"
+double sa;
+# 99 "colloid.h"
+double saf;
+# 101 "colloid.h"
+double dpad[16];};
+# 189 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__noreturn__)) void __assert_fail(const char *, const char *, unsigned, const char *);
+#include "common_functions.h"

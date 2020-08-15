@@ -1,0 +1,203 @@
+typedef char __nv_bool;
+# 22 "pe.h"
+struct pe_s;
+# 18 "physics.h"
+struct physics_s;
+# 22 "coords.h"
+struct coords_s;
+# 73 "io_harness.h"
+struct io_info_s;
+# 39 "psi_s.h"
+struct psi_s;
+# 24 "free_energy.h"
+enum fe_id_enum {
+# 24 "free_energy.h"
+FE_SYMMETRIC,
+# 25 "free_energy.h"
+FE_BRAZOVSKII,
+# 26 "free_energy.h"
+FE_POLAR,
+# 27 "free_energy.h"
+FE_LC,
+# 28 "free_energy.h"
+FE_ELECTRO,
+# 29 "free_energy.h"
+FE_ELECTRO_SYMMETRIC,
+# 30 "free_energy.h"
+FE_LC_DROPLET};
+# 48 "free_energy.h"
+struct fe_vt_s;
+# 66 "free_energy.h"
+struct fe_s;
+# 50 "fe_electro.c"
+struct fe_electro_s;
+# 212 "/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stddef.h" 3
+typedef unsigned long size_t;
+#include "crt/device_runtime.h"
+# 194 "/usr/include/sys/types.h" 3
+typedef signed char int8_t;
+# 25 ".././mpi_s/mpi.h"
+typedef int MPI_Handle;
+# 28 ".././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Datatype;
+# 47 ".././target/target_cuda.h"
+typedef enum cudaError tdpError_t;
+# 22 "pe.h"
+typedef struct pe_s pe_t;
+# 18 "physics.h"
+typedef struct physics_s physics_t;
+# 22 "coords.h"
+typedef struct coords_s cs_t;
+# 36 "io_harness.h"
+typedef struct io_info_s io_info_t;
+# 37 "psi.h"
+typedef struct psi_s psi_t;
+# 39 "psi_s.h"
+struct psi_s {
+# 40 "psi_s.h"
+pe_t *pe;
+# 41 "psi_s.h"
+cs_t *cs;
+# 43 "psi_s.h"
+int nk;
+# 44 "psi_s.h"
+int nsites;
+# 45 "psi_s.h"
+double *psi;
+# 46 "psi_s.h"
+double *rho;
+# 47 "psi_s.h"
+double *diffusivity;
+# 48 "psi_s.h"
+int *valency;
+# 49 "psi_s.h"
+double e;
+# 50 "psi_s.h"
+double epsilon;
+# 51 "psi_s.h"
+double epsilon2;
+# 52 "psi_s.h"
+double beta;
+# 53 "psi_s.h"
+double reltol;
+# 54 "psi_s.h"
+double abstol;
+# 55 "psi_s.h"
+int method;
+# 56 "psi_s.h"
+int maxits;
+# 57 "psi_s.h"
+int multisteps;
+# 58 "psi_s.h"
+int skipsteps;
+# 59 "psi_s.h"
+int nfreq_io;
+# 60 "psi_s.h"
+int nfreq;
+# 61 "psi_s.h"
+double diffacc;
+# 62 "psi_s.h"
+MPI_Datatype psihalo[3];
+# 63 "psi_s.h"
+MPI_Datatype rhohalo[3];
+# 64 "psi_s.h"
+io_info_t *info;};
+# 32 "free_energy.h"
+typedef struct fe_s fe_t;
+# 33 "free_energy.h"
+typedef struct fe_vt_s fe_vt_t;
+# 35 "free_energy.h"
+typedef int (*fe_free_ft)(fe_t *);
+# 37 "free_energy.h"
+typedef int (*fe_target_ft)(fe_t *, fe_t **);
+# 38 "free_energy.h"
+typedef int (*fe_fed_ft)(fe_t *, int, double *);
+# 39 "free_energy.h"
+typedef int (*fe_mu_ft)(fe_t *, int, double *);
+# 40 "free_energy.h"
+typedef int (*fe_str_ft)(fe_t *, int, double (*)[3]);
+# 41 "free_energy.h"
+typedef int (*fe_mu_solv_ft)(fe_t *, int, int, double *);
+# 42 "free_energy.h"
+typedef int (*fe_hvector_ft)(fe_t *, int, double *);
+# 43 "free_energy.h"
+typedef int (*fe_htensor_ft)(fe_t *, int, double (*)[3]);
+# 45 "free_energy.h"
+typedef void (*fe_htensor_v_ft)(fe_t *, int, double (*)[3][1]);
+# 46 "free_energy.h"
+typedef void (*fe_stress_v_ft)(fe_t *, int, double (*)[3][1]);
+# 48 "free_energy.h"
+struct fe_vt_s {
+# 50 "free_energy.h"
+fe_free_ft free;
+# 51 "free_energy.h"
+fe_target_ft target;
+# 52 "free_energy.h"
+fe_fed_ft fed;
+# 53 "free_energy.h"
+fe_mu_ft mu;
+# 54 "free_energy.h"
+fe_mu_solv_ft mu_solv;
+# 55 "free_energy.h"
+fe_str_ft stress;
+# 56 "free_energy.h"
+fe_str_ft str_symm;
+# 57 "free_energy.h"
+fe_str_ft str_anti;
+# 58 "free_energy.h"
+fe_hvector_ft hvector;
+# 59 "free_energy.h"
+fe_htensor_ft htensor;
+# 60 "free_energy.h"
+fe_htensor_v_ft htensor_v;
+# 61 "free_energy.h"
+fe_stress_v_ft stress_v;
+# 62 "free_energy.h"
+fe_stress_v_ft str_symm_v;
+# 63 "free_energy.h"
+fe_stress_v_ft str_anti_v;};
+# 66 "free_energy.h"
+struct fe_s {
+# 67 "free_energy.h"
+fe_vt_t *func;
+# 68 "free_energy.h"
+int id;
+# 69 "free_energy.h"
+int use_stress_relaxation;};
+# 24 "fe_electro.h"
+typedef struct fe_electro_s fe_electro_t;
+# 50 "fe_electro.c"
+struct fe_electro_s {
+# 51 "fe_electro.c"
+fe_t super;
+# 52 "fe_electro.c"
+pe_t *pe;
+# 53 "fe_electro.c"
+psi_t *psi;
+# 54 "fe_electro.c"
+double *mu_ref;
+# 55 "fe_electro.c"
+fe_electro_t *target;};
+# 150 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) void free(void *);
+# 189 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__noreturn__)) void __assert_fail(const char *, const char *, unsigned, const char *);
+#if !defined(__CUDABE__)
+# 1181 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/math_functions.h"
+ __device_builtin__ ___device__(extern  __no_sc__) __attribute__((__nothrow__)) double log(double);
+#endif
+# 46 ".././target/target.h"
+___device__(extern  __no_sc__) tdpError_t _Z17tdpGetDeviceCountPi(int *);
+# 117 ".././target/target.h"
+___device__(extern  __no_sc__) void _Z15tdpErrorHandler9cudaErrorPKcii(tdpError_t, const char *, int, int);
+# 40 "physics.h"
+___device__(extern  __no_sc__) int _Z11physics_refPP9physics_s(physics_t **);
+# 45 "physics.h"
+___device__(extern  __no_sc__) int _Z10physics_ktP9physics_sPd(physics_t *, double *);
+# 74 "fe_electro.c"
+static  __constant__  __var_used__ fe_vt_t __nv_static_31__18_fe_electro_cpp1_ii_6038c4f8_fe_electro_dvt;
+#include "common_functions.h"
+# 74 "fe_electro.c"
+static  __constant__  __var_used__ fe_vt_t __nv_static_31__18_fe_electro_cpp1_ii_6038c4f8_fe_electro_dvt = {((fe_free_ft)0LL),((fe_target_ft)0LL),((fe_fed_ft)0LL),((fe_mu_ft)0LL),((fe_mu_solv_ft)0LL),((fe_str_ft)0LL),((fe_str_ft)0LL),((fe_str_ft)0LL),((fe_hvector_ft)0LL),((fe_htensor_ft)0LL),((fe_htensor_v_ft)0LL),((fe_stress_v_ft)0LL),((fe_stress_v_ft)0LL),((fe_stress_v_ft)0LL)};
+#if !defined(__CUDABE__)
+#endif

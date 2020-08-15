@@ -1,0 +1,107 @@
+typedef char __nv_bool;
+# 92 "../.././mpi_s/mpi.h"
+enum reserved_communicators {
+# 92 "../.././mpi_s/mpi.h"
+MPI_COMM_WORLD,
+# 92 "../.././mpi_s/mpi.h"
+MPI_COMM_SELF};
+# 22 "../.././src/pe.h"
+struct pe_s;
+# 24 "../.././src/pe.h"
+enum pe_enum_t {
+# 24 "../.././src/pe.h"
+PE_QUIET,
+# 24 "../.././src/pe.h"
+PE_VERBOSE,
+# 24 "../.././src/pe.h"
+PE_OPTION_MAX};
+# 30 "../.././src/timer.h"
+enum timer_id {
+# 30 "../.././src/timer.h"
+TIMER_TOTAL,
+# 31 "../.././src/timer.h"
+TIMER_STEPS,
+# 32 "../.././src/timer.h"
+TIMER_PROPAGATE,
+# 33 "../.././src/timer.h"
+TIMER_PROP_KERNEL,
+# 34 "../.././src/timer.h"
+TIMER_COLLIDE,
+# 35 "../.././src/timer.h"
+TIMER_COLLIDE_KERNEL,
+# 36 "../.././src/timer.h"
+TIMER_HALO_LATTICE,
+# 37 "../.././src/timer.h"
+TIMER_PHI_GRADIENTS,
+# 38 "../.././src/timer.h"
+TIMER_PHI_GRAD_KERNEL,
+# 39 "../.././src/timer.h"
+TIMER_PHI_HALO,
+# 40 "../.././src/timer.h"
+TIMER_LE,
+# 41 "../.././src/timer.h"
+TIMER_IO,
+# 42 "../.././src/timer.h"
+TIMER_FORCES,
+# 43 "../.././src/timer.h"
+TIMER_REBUILD,
+# 44 "../.././src/timer.h"
+TIMER_BBL,
+# 45 "../.././src/timer.h"
+TIMER_PARTICLE_UPDATE,
+# 46 "../.././src/timer.h"
+TIMER_PARTICLE_HALO,
+# 47 "../.././src/timer.h"
+TIMER_FLUCTUATIONS,
+# 48 "../.././src/timer.h"
+TIMER_EWALD_TOTAL,
+# 49 "../.././src/timer.h"
+TIMER_EWALD_REAL_SPACE,
+# 50 "../.././src/timer.h"
+TIMER_EWALD_FOURIER_SPACE,
+# 51 "../.././src/timer.h"
+TIMER_FORCE_CALCULATION,
+# 52 "../.././src/timer.h"
+TIMER_CHEMICAL_STRESS_KERNEL,
+# 53 "../.././src/timer.h"
+TIMER_PHI_FORCE_CALC,
+# 54 "../.././src/timer.h"
+TIMER_ORDER_PARAMETER_UPDATE,
+# 55 "../.././src/timer.h"
+TIMER_U_HALO,
+# 56 "../.././src/timer.h"
+TIMER_BE_MOL_FIELD,
+# 57 "../.././src/timer.h"
+BP_BE_UPDATE_KERNEL,
+# 58 "../.././src/timer.h"
+ADVECTION_X_KERNEL,
+# 59 "../.././src/timer.h"
+ADVECTION_BCS_KERNEL,
+# 60 "../.././src/timer.h"
+ADVECTION_BCS_MEM,
+# 61 "../.././src/timer.h"
+TIMER_ELECTRO_TOTAL,
+# 62 "../.././src/timer.h"
+TIMER_ELECTRO_POISSON,
+# 63 "../.././src/timer.h"
+TIMER_ELECTRO_NPEQ,
+# 64 "../.././src/timer.h"
+TIMER_FREE1,
+# 65 "../.././src/timer.h"
+TIMER_FREE2,
+# 66 "../.././src/timer.h"
+TIMER_FREE3,
+# 67 "../.././src/timer.h"
+TIMER_NTIMERS};
+# 212 "/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stddef.h" 3
+typedef unsigned long size_t;
+#include "crt/device_runtime.h"
+# 25 "../.././mpi_s/mpi.h"
+typedef int MPI_Handle;
+# 26 "../.././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Comm;
+# 22 "../.././src/pe.h"
+typedef struct pe_s pe_t;
+# 24 "../.././src/pe.h"
+typedef enum pe_enum_t pe_enum_t;
+#include "common_functions.h"

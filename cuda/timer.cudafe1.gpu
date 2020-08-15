@@ -1,0 +1,171 @@
+typedef char __nv_bool;
+# 58 ".././mpi_s/mpi.h"
+enum elementary_datatypes {
+# 58 ".././mpi_s/mpi.h"
+MPI_CHAR,
+# 59 ".././mpi_s/mpi.h"
+MPI_SHORT,
+# 60 ".././mpi_s/mpi.h"
+MPI_INT,
+# 61 ".././mpi_s/mpi.h"
+MPI_LONG,
+# 62 ".././mpi_s/mpi.h"
+MPI_UNSIGNED_CHAR,
+# 63 ".././mpi_s/mpi.h"
+MPI_UNSIGNED_SHORT,
+# 64 ".././mpi_s/mpi.h"
+MPI_UNSIGNED,
+# 65 ".././mpi_s/mpi.h"
+MPI_UNSIGNED_LONG,
+# 66 ".././mpi_s/mpi.h"
+MPI_FLOAT,
+# 67 ".././mpi_s/mpi.h"
+MPI_DOUBLE,
+# 68 ".././mpi_s/mpi.h"
+MPI_LONG_DOUBLE,
+# 69 ".././mpi_s/mpi.h"
+MPI_BYTE,
+# 70 ".././mpi_s/mpi.h"
+MPI_PACKED};
+# 72 ".././mpi_s/mpi.h"
+enum collective_operations {
+# 72 ".././mpi_s/mpi.h"
+MPI_MAX,
+# 73 ".././mpi_s/mpi.h"
+MPI_MIN,
+# 74 ".././mpi_s/mpi.h"
+MPI_SUM,
+# 75 ".././mpi_s/mpi.h"
+MPI_PROD,
+# 76 ".././mpi_s/mpi.h"
+MPI_MAXLOC,
+# 77 ".././mpi_s/mpi.h"
+MPI_MINLOC,
+# 78 ".././mpi_s/mpi.h"
+MPI_BAND,
+# 79 ".././mpi_s/mpi.h"
+MPI_BOR,
+# 80 ".././mpi_s/mpi.h"
+MPI_BXOR,
+# 81 ".././mpi_s/mpi.h"
+MPI_LAND,
+# 82 ".././mpi_s/mpi.h"
+MPI_LOR,
+# 83 ".././mpi_s/mpi.h"
+MPI_LXOR};
+# 22 "pe.h"
+struct pe_s;
+# 30 "timer.h"
+enum timer_id {
+# 30 "timer.h"
+TIMER_TOTAL,
+# 31 "timer.h"
+TIMER_STEPS,
+# 32 "timer.h"
+TIMER_PROPAGATE,
+# 33 "timer.h"
+TIMER_PROP_KERNEL,
+# 34 "timer.h"
+TIMER_COLLIDE,
+# 35 "timer.h"
+TIMER_COLLIDE_KERNEL,
+# 36 "timer.h"
+TIMER_HALO_LATTICE,
+# 37 "timer.h"
+TIMER_PHI_GRADIENTS,
+# 38 "timer.h"
+TIMER_PHI_GRAD_KERNEL,
+# 39 "timer.h"
+TIMER_PHI_HALO,
+# 40 "timer.h"
+TIMER_LE,
+# 41 "timer.h"
+TIMER_IO,
+# 42 "timer.h"
+TIMER_FORCES,
+# 43 "timer.h"
+TIMER_REBUILD,
+# 44 "timer.h"
+TIMER_BBL,
+# 45 "timer.h"
+TIMER_PARTICLE_UPDATE,
+# 46 "timer.h"
+TIMER_PARTICLE_HALO,
+# 47 "timer.h"
+TIMER_FLUCTUATIONS,
+# 48 "timer.h"
+TIMER_EWALD_TOTAL,
+# 49 "timer.h"
+TIMER_EWALD_REAL_SPACE,
+# 50 "timer.h"
+TIMER_EWALD_FOURIER_SPACE,
+# 51 "timer.h"
+TIMER_FORCE_CALCULATION,
+# 52 "timer.h"
+TIMER_CHEMICAL_STRESS_KERNEL,
+# 53 "timer.h"
+TIMER_PHI_FORCE_CALC,
+# 54 "timer.h"
+TIMER_ORDER_PARAMETER_UPDATE,
+# 55 "timer.h"
+TIMER_U_HALO,
+# 56 "timer.h"
+TIMER_BE_MOL_FIELD,
+# 57 "timer.h"
+BP_BE_UPDATE_KERNEL,
+# 58 "timer.h"
+ADVECTION_X_KERNEL,
+# 59 "timer.h"
+ADVECTION_BCS_KERNEL,
+# 60 "timer.h"
+ADVECTION_BCS_MEM,
+# 61 "timer.h"
+TIMER_ELECTRO_TOTAL,
+# 62 "timer.h"
+TIMER_ELECTRO_POISSON,
+# 63 "timer.h"
+TIMER_ELECTRO_NPEQ,
+# 64 "timer.h"
+TIMER_FREE1,
+# 65 "timer.h"
+TIMER_FREE2,
+# 66 "timer.h"
+TIMER_FREE3,
+# 67 "timer.h"
+TIMER_NTIMERS};
+# 30 "timer.c"
+struct timer_struct;
+# 212 "/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stddef.h" 3
+typedef unsigned long size_t;
+#include "crt/device_runtime.h"
+# 25 ".././mpi_s/mpi.h"
+typedef int MPI_Handle;
+# 26 ".././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Comm;
+# 28 ".././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Datatype;
+# 30 ".././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Op;
+# 22 "pe.h"
+typedef struct pe_s pe_t;
+# 30 "timer.c"
+struct timer_struct {
+# 31 "timer.c"
+double t_start;
+# 32 "timer.c"
+double t_sum;
+# 33 "timer.c"
+double t_max;
+# 34 "timer.c"
+double t_min;
+# 35 "timer.c"
+unsigned active;
+# 36 "timer.c"
+unsigned nsteps;};
+# 189 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__noreturn__)) void __assert_fail(const char *, const char *, unsigned, const char *);
+# 49 "util.h"
+___device__(extern  __no_sc__) double _Z4dmindd(const double, const double);
+# 50 "util.h"
+___device__(extern  __no_sc__) double _Z4dmaxdd(const double, const double);
+#include "common_functions.h"

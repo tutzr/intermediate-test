@@ -1,0 +1,33 @@
+typedef char __nv_bool;
+# 22 "runtime.h"
+struct rt_s;
+# 25 "leesedwards.h"
+struct lees_edw_info_s;
+# 33 "leesedwards.h"
+enum lees_edw_enum {
+# 33 "leesedwards.h"
+LE_SHEAR_TYPE_STEADY,
+# 34 "leesedwards.h"
+LE_SHEAR_TYPE_OSCILLATORY};
+# 212 "/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stddef.h" 3
+typedef unsigned long size_t;
+#include "crt/device_runtime.h"
+# 22 "runtime.h"
+typedef struct rt_s rt_t;
+# 23 "leesedwards.h"
+typedef struct lees_edw_info_s lees_edw_info_t;
+# 25 "leesedwards.h"
+struct lees_edw_info_s {
+# 26 "leesedwards.h"
+int nplanes;
+# 27 "leesedwards.h"
+int type;
+# 28 "leesedwards.h"
+int period;
+# 29 "leesedwards.h"
+int nt0;
+# 30 "leesedwards.h"
+double uy;};
+# 189 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__noreturn__)) void __assert_fail(const char *, const char *, unsigned, const char *);
+#include "common_functions.h"

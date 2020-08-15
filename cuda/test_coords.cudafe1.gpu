@@ -1,0 +1,231 @@
+typedef char __nv_bool;
+# 2074 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/driver_types.h"
+struct CUstream_st;
+# 33 "../.././mpi_s/mpi.h"
+struct MPI_Status;
+# 58 "../.././mpi_s/mpi.h"
+enum elementary_datatypes {
+# 58 "../.././mpi_s/mpi.h"
+MPI_CHAR,
+# 59 "../.././mpi_s/mpi.h"
+MPI_SHORT,
+# 60 "../.././mpi_s/mpi.h"
+MPI_INT,
+# 61 "../.././mpi_s/mpi.h"
+MPI_LONG,
+# 62 "../.././mpi_s/mpi.h"
+MPI_UNSIGNED_CHAR,
+# 63 "../.././mpi_s/mpi.h"
+MPI_UNSIGNED_SHORT,
+# 64 "../.././mpi_s/mpi.h"
+MPI_UNSIGNED,
+# 65 "../.././mpi_s/mpi.h"
+MPI_UNSIGNED_LONG,
+# 66 "../.././mpi_s/mpi.h"
+MPI_FLOAT,
+# 67 "../.././mpi_s/mpi.h"
+MPI_DOUBLE,
+# 68 "../.././mpi_s/mpi.h"
+MPI_LONG_DOUBLE,
+# 69 "../.././mpi_s/mpi.h"
+MPI_BYTE,
+# 70 "../.././mpi_s/mpi.h"
+MPI_PACKED};
+# 92 "../.././mpi_s/mpi.h"
+enum reserved_communicators {
+# 92 "../.././mpi_s/mpi.h"
+MPI_COMM_WORLD,
+# 92 "../.././mpi_s/mpi.h"
+MPI_COMM_SELF};
+# 22 "../.././src/pe.h"
+struct pe_s;
+# 24 "../.././src/pe.h"
+enum pe_enum_t {
+# 24 "../.././src/pe.h"
+PE_QUIET,
+# 24 "../.././src/pe.h"
+PE_VERBOSE,
+# 24 "../.././src/pe.h"
+PE_OPTION_MAX};
+# 22 "../.././src/coords.h"
+struct coords_s;
+# 26 "../.././src/coords.h"
+enum cartesian_directions {
+# 26 "../.././src/coords.h"
+X,
+# 26 "../.././src/coords.h"
+Y,
+# 26 "../.././src/coords.h"
+Z};
+# 27 "../.././src/coords.h"
+enum cartesian_neighbours {
+# 27 "../.././src/coords.h"
+FORWARD,
+# 27 "../.././src/coords.h"
+BACKWARD};
+# 28 "../.././src/coords.h"
+enum cs_mpi_cart_neighbours {
+# 28 "../.././src/coords.h"
+CS_FORW,
+# 28 "../.././src/coords.h"
+CS_BACK};
+# 29 "../.././src/coords.h"
+enum upper_triangle {
+# 29 "../.././src/coords.h"
+XX,
+# 29 "../.././src/coords.h"
+XY,
+# 29 "../.././src/coords.h"
+XZ,
+# 29 "../.././src/coords.h"
+YY,
+# 29 "../.././src/coords.h"
+YZ,
+# 29 "../.././src/coords.h"
+ZZ};
+# 212 "/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stddef.h" 3
+typedef unsigned long size_t;
+#include "crt/device_runtime.h"
+# 25 "../.././mpi_s/mpi.h"
+typedef int MPI_Handle;
+# 26 "../.././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Comm;
+# 28 "../.././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Datatype;
+# 33 "../.././mpi_s/mpi.h"
+struct MPI_Status {
+# 34 "../.././mpi_s/mpi.h"
+int MPI_SOURCE;
+# 35 "../.././mpi_s/mpi.h"
+int MPI_TAG;};
+# 36 "../.././mpi_s/mpi.h"
+typedef struct MPI_Status MPI_Status;
+# 47 "../.././target/target_cuda.h"
+typedef enum cudaError tdpError_t;
+# 22 "../.././src/pe.h"
+typedef struct pe_s pe_t;
+# 24 "../.././src/pe.h"
+typedef enum pe_enum_t pe_enum_t;
+# 22 "../.././src/coords.h"
+typedef struct coords_s cs_t;
+# 189 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__noreturn__)) void __assert_fail(const char *, const char *, unsigned, const char *);
+#if !defined(__CUDABE__)
+# 244 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/math_functions.h"
+ __device_builtin__ ___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__const__)) double fabs(double);
+#endif
+# 3296 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/device_functions.h"
+___device__(extern  __no_sc__) unsigned __cudaPushCallConfiguration(struct dim3, struct dim3, size_t, struct CUstream_st *);
+# 44 "../.././target/target.h"
+___device__(extern  __no_sc__) tdpError_t _Z20tdpDeviceSynchronizev(void);
+# 54 "../.././src/coords.h"
+___device__(extern  __no_sc__) int _Z9cs_cartszP8coords_sPi(cs_t *, int *);
+# 55 "../.././src/coords.h"
+___device__(extern  __no_sc__) int _Z14cs_cart_coordsP8coords_sPi(cs_t *, int *);
+# 56 "../.././src/coords.h"
+___device__(extern  __no_sc__) int _Z7cs_lminP8coords_sPd(cs_t *, double *);
+# 57 "../.././src/coords.h"
+___device__(extern  __no_sc__) int _Z7cs_ltotP8coords_sPd(cs_t *, double *);
+# 58 "../.././src/coords.h"
+___device__(extern  __no_sc__) int _Z11cs_periodicP8coords_sPi(cs_t *, int *);
+# 59 "../.././src/coords.h"
+___device__(extern  __no_sc__) int _Z9cs_nlocalP8coords_sPi(cs_t *, int *);
+# 60 "../.././src/coords.h"
+___device__(extern  __no_sc__) int _Z16cs_nlocal_offsetP8coords_sPi(cs_t *, int *);
+# 61 "../.././src/coords.h"
+___device__(extern  __no_sc__) int _Z8cs_nhaloP8coords_sPi(cs_t *, int *);
+# 63 "../.././src/coords.h"
+___device__(extern  __no_sc__) int _Z9cs_ntotalP8coords_sPi(cs_t *, int *);
+# 64 "../.././src/coords.h"
+___device__(extern  __no_sc__) int _Z9cs_nsitesP8coords_sPi(cs_t *, int *);
+# 18 "tests.h"
+___device__(extern  __no_sc__) void _Z16test_assert_infoiiPKc(const int, int, const char *);
+# 591 "test_coords.c"
+__global__ __var_used__ extern void _Z22do_test_coords_kernel1P8coords_s(cs_t *);
+static  __device__  __var_used__ const char __T8[40];
+#include "common_functions.h"
+static  __device__  __var_used__ const char __T8[40] = "void do_test_coords_kernel1(coords_s *)";
+#if !defined(__CUDABE__)
+#endif
+# 591 "test_coords.c"
+__global__ __var_used__ void _Z22do_test_coords_kernel1P8coords_s(
+# 591 "test_coords.c"
+cs_t *cs){
+# 591 "test_coords.c"
+{
+# 593 "test_coords.c"
+ int __cuda_local_var_15800_7_non_const_nhalo;
+# 594 "test_coords.c"
+ int __cuda_local_var_15801_7_non_const_nsites;
+# 595 "test_coords.c"
+ int __cuda_local_var_15802_7_non_const_mpisz[3];
+# 596 "test_coords.c"
+ int __cuda_local_var_15803_7_non_const_mpicoords[3];
+# 597 "test_coords.c"
+ int __cuda_local_var_15804_7_non_const_ntotal[3];
+# 598 "test_coords.c"
+ int __cuda_local_var_15805_7_non_const_nlocal[3];
+# 599 "test_coords.c"
+ int __cuda_local_var_15806_7_non_const_noffset[3];
+# 600 "test_coords.c"
+ double __cuda_local_var_15807_10_non_const_lmin[3];
+# 601 "test_coords.c"
+ double __cuda_local_var_15808_10_non_const_ltot[3];
+# 603 "test_coords.c"
+(cs) ? ((void)0) : (__assert_fail(((const char *)"cs"), ((const char *)"test_coords.c"), 603U, __T8));
+# 605 "test_coords.c"
+_Z8cs_nhaloP8coords_sPi(cs, (&__cuda_local_var_15800_7_non_const_nhalo));
+# 606 "test_coords.c"
+_Z16test_assert_infoiiPKc(((int)(__cuda_local_var_15800_7_non_const_nhalo == 1)), 606, ((const char *)"test_coords.c"));
+# 608 "test_coords.c"
+_Z9cs_ntotalP8coords_sPi(cs, (__cuda_local_var_15804_7_non_const_ntotal));
+# 609 "test_coords.c"
+_Z16test_assert_infoiiPKc(((int)(((__cuda_local_var_15804_7_non_const_ntotal)[X]) == 64)), 609, ((const char *)"test_coords.c"));
+# 610 "test_coords.c"
+_Z16test_assert_infoiiPKc(((int)(((__cuda_local_var_15804_7_non_const_ntotal)[Y]) == 64)), 610, ((const char *)"test_coords.c"));
+# 611 "test_coords.c"
+_Z16test_assert_infoiiPKc(((int)(((__cuda_local_var_15804_7_non_const_ntotal)[Z]) == 64)), 611, ((const char *)"test_coords.c"));
+# 613 "test_coords.c"
+_Z9cs_nlocalP8coords_sPi(cs, (__cuda_local_var_15805_7_non_const_nlocal));
+# 614 "test_coords.c"
+_Z9cs_cartszP8coords_sPi(cs, (__cuda_local_var_15802_7_non_const_mpisz));
+# 616 "test_coords.c"
+_Z16test_assert_infoiiPKc(((int)(((__cuda_local_var_15805_7_non_const_nlocal)[X]) == (((__cuda_local_var_15804_7_non_const_ntotal)[X]) / ((__cuda_local_var_15802_7_non_const_mpisz)[X])))), 616, ((const char *)"test_coords.c"));
+# 617 "test_coords.c"
+_Z16test_assert_infoiiPKc(((int)(((__cuda_local_var_15805_7_non_const_nlocal)[Y]) == (((__cuda_local_var_15804_7_non_const_ntotal)[Y]) / ((__cuda_local_var_15802_7_non_const_mpisz)[Y])))), 617, ((const char *)"test_coords.c"));
+# 618 "test_coords.c"
+_Z16test_assert_infoiiPKc(((int)(((__cuda_local_var_15805_7_non_const_nlocal)[Z]) == (((__cuda_local_var_15804_7_non_const_ntotal)[Z]) / ((__cuda_local_var_15802_7_non_const_mpisz)[Z])))), 618, ((const char *)"test_coords.c"));
+# 620 "test_coords.c"
+_Z9cs_nsitesP8coords_sPi(cs, (&__cuda_local_var_15801_7_non_const_nsites));
+# 622 "test_coords.c"
+_Z16test_assert_infoiiPKc(((int)(__cuda_local_var_15801_7_non_const_nsites == (((((__cuda_local_var_15805_7_non_const_nlocal)[X]) + (2 * __cuda_local_var_15800_7_non_const_nhalo)) * (((__cuda_local_var_15805_7_non_const_nlocal)[Y]) + (2 * __cuda_local_var_15800_7_non_const_nhalo))) * (((__cuda_local_var_15805_7_non_const_nlocal)[Z]) + (2 * __cuda_local_var_15800_7_non_const_nhalo))))), 622, ((const char *)"test_coords.c"));
+# 624 "test_coords.c"
+_Z14cs_cart_coordsP8coords_sPi(cs, (__cuda_local_var_15803_7_non_const_mpicoords));
+# 625 "test_coords.c"
+_Z16cs_nlocal_offsetP8coords_sPi(cs, (__cuda_local_var_15806_7_non_const_noffset));
+# 627 "test_coords.c"
+_Z16test_assert_infoiiPKc(((int)(((__cuda_local_var_15806_7_non_const_noffset)[X]) == (((__cuda_local_var_15803_7_non_const_mpicoords)[X]) * ((__cuda_local_var_15805_7_non_const_nlocal)[X])))), 627, ((const char *)"test_coords.c"));
+# 628 "test_coords.c"
+_Z16test_assert_infoiiPKc(((int)(((__cuda_local_var_15806_7_non_const_noffset)[Y]) == (((__cuda_local_var_15803_7_non_const_mpicoords)[Y]) * ((__cuda_local_var_15805_7_non_const_nlocal)[Y])))), 628, ((const char *)"test_coords.c"));
+# 629 "test_coords.c"
+_Z16test_assert_infoiiPKc(((int)(((__cuda_local_var_15806_7_non_const_noffset)[Z]) == (((__cuda_local_var_15803_7_non_const_mpicoords)[Z]) * ((__cuda_local_var_15805_7_non_const_nlocal)[Z])))), 629, ((const char *)"test_coords.c"));
+# 631 "test_coords.c"
+_Z7cs_lminP8coords_sPd(cs, (__cuda_local_var_15807_10_non_const_lmin));
+# 632 "test_coords.c"
+_Z7cs_ltotP8coords_sPd(cs, (__cuda_local_var_15808_10_non_const_ltot));
+# 634 "test_coords.c"
+_Z16test_assert_infoiiPKc(((int)((fabs((((__cuda_local_var_15807_10_non_const_lmin)[X]) - (0.5)))) < (2.220446049250313081e-16))), 634, ((const char *)"test_coords.c"));
+# 635 "test_coords.c"
+_Z16test_assert_infoiiPKc(((int)((fabs((((__cuda_local_var_15807_10_non_const_lmin)[Y]) - (0.5)))) < (2.220446049250313081e-16))), 635, ((const char *)"test_coords.c"));
+# 636 "test_coords.c"
+_Z16test_assert_infoiiPKc(((int)((fabs((((__cuda_local_var_15807_10_non_const_lmin)[Z]) - (0.5)))) < (2.220446049250313081e-16))), 636, ((const char *)"test_coords.c"));
+# 638 "test_coords.c"
+_Z16test_assert_infoiiPKc(((int)((fabs((((__cuda_local_var_15808_10_non_const_ltot)[X]) - ((double)((__cuda_local_var_15804_7_non_const_ntotal)[X]))))) < (2.220446049250313081e-16))), 638, ((const char *)"test_coords.c"));
+# 639 "test_coords.c"
+_Z16test_assert_infoiiPKc(((int)((fabs((((__cuda_local_var_15808_10_non_const_ltot)[Y]) - ((double)((__cuda_local_var_15804_7_non_const_ntotal)[Y]))))) < (2.220446049250313081e-16))), 639, ((const char *)"test_coords.c"));
+# 640 "test_coords.c"
+_Z16test_assert_infoiiPKc(((int)((fabs((((__cuda_local_var_15808_10_non_const_ltot)[Z]) - ((double)((__cuda_local_var_15804_7_non_const_ntotal)[Z]))))) < (2.220446049250313081e-16))), 640, ((const char *)"test_coords.c"));
+# 642 "test_coords.c"
+return;
+# 643 "test_coords.c"
+}}

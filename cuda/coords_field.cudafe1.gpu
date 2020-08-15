@@ -1,0 +1,147 @@
+typedef char __nv_bool;
+# 33 ".././mpi_s/mpi.h"
+struct MPI_Status;
+# 58 ".././mpi_s/mpi.h"
+enum elementary_datatypes {
+# 58 ".././mpi_s/mpi.h"
+MPI_CHAR,
+# 59 ".././mpi_s/mpi.h"
+MPI_SHORT,
+# 60 ".././mpi_s/mpi.h"
+MPI_INT,
+# 61 ".././mpi_s/mpi.h"
+MPI_LONG,
+# 62 ".././mpi_s/mpi.h"
+MPI_UNSIGNED_CHAR,
+# 63 ".././mpi_s/mpi.h"
+MPI_UNSIGNED_SHORT,
+# 64 ".././mpi_s/mpi.h"
+MPI_UNSIGNED,
+# 65 ".././mpi_s/mpi.h"
+MPI_UNSIGNED_LONG,
+# 66 ".././mpi_s/mpi.h"
+MPI_FLOAT,
+# 67 ".././mpi_s/mpi.h"
+MPI_DOUBLE,
+# 68 ".././mpi_s/mpi.h"
+MPI_LONG_DOUBLE,
+# 69 ".././mpi_s/mpi.h"
+MPI_BYTE,
+# 70 ".././mpi_s/mpi.h"
+MPI_PACKED};
+# 22 "pe.h"
+struct pe_s;
+# 26 "coords.h"
+enum cartesian_directions {
+# 26 "coords.h"
+X,
+# 26 "coords.h"
+Y,
+# 26 "coords.h"
+Z};
+# 28 "coords.h"
+enum cs_mpi_cart_neighbours {
+# 28 "coords.h"
+CS_FORW,
+# 28 "coords.h"
+CS_BACK};
+# 9 "coords_s.h"
+struct coords_param_s;
+# 24 "coords_s.h"
+struct coords_s;
+# 212 "/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stddef.h" 3
+typedef unsigned long size_t;
+#include "crt/device_runtime.h"
+# 25 ".././mpi_s/mpi.h"
+typedef int MPI_Handle;
+# 26 ".././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Comm;
+# 28 ".././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Datatype;
+# 29 ".././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Request;
+# 33 ".././mpi_s/mpi.h"
+struct MPI_Status {
+# 34 ".././mpi_s/mpi.h"
+int MPI_SOURCE;
+# 35 ".././mpi_s/mpi.h"
+int MPI_TAG;};
+# 36 ".././mpi_s/mpi.h"
+typedef struct MPI_Status MPI_Status;
+# 22 "pe.h"
+typedef struct pe_s pe_t;
+# 22 "coords.h"
+typedef struct coords_s cs_t;
+# 7 "coords_s.h"
+typedef struct coords_param_s cs_param_t;
+# 9 "coords_s.h"
+struct coords_param_s {
+# 10 "coords_s.h"
+int nhalo;
+# 11 "coords_s.h"
+int nsites;
+# 12 "coords_s.h"
+int ntotal[3];
+# 13 "coords_s.h"
+int nlocal[3];
+# 14 "coords_s.h"
+int noffset[3];
+# 15 "coords_s.h"
+int str[3];
+# 16 "coords_s.h"
+int periodic[3];
+# 18 "coords_s.h"
+int mpi_cartsz[3];
+# 19 "coords_s.h"
+int mpi_cartcoords[3];
+# 21 "coords_s.h"
+double lmin[3];};
+# 24 "coords_s.h"
+struct coords_s {
+# 25 "coords_s.h"
+pe_t *pe;
+# 26 "coords_s.h"
+int nref;
+# 28 "coords_s.h"
+cs_param_t *param;
+# 31 "coords_s.h"
+int mpi_cartrank;
+# 32 "coords_s.h"
+int reorder;
+# 33 "coords_s.h"
+int mpi_cart_neighbours[2][3];
+# 34 "coords_s.h"
+int *listnlocal[3];
+# 35 "coords_s.h"
+int *listnoffset[3];
+# 37 "coords_s.h"
+MPI_Comm commcart;
+# 38 "coords_s.h"
+MPI_Comm commperiodic;
+# 40 "coords_s.h"
+cs_t *target;};
+#if !defined(__CUDABE__)
+# 89 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+ __device_builtin__ ___device__(extern  __no_sc__) __attribute__((__nothrow__)) void *memcpy(void *__restrict__, const void *__restrict__, size_t);
+#endif
+# 149 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__malloc__)) __attribute__((__nothrow__)) void *malloc(size_t);
+# 150 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) void free(void *);
+# 189 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__noreturn__)) void __assert_fail(const char *, const char *, unsigned, const char *);
+# 59 "coords.h"
+___device__(extern  __no_sc__) int _Z9cs_nlocalP8coords_sPi(cs_t *, int *);
+# 61 "coords.h"
+___device__(extern  __no_sc__) int _Z8cs_nhaloP8coords_sPi(cs_t *, int *);
+# 62 "coords.h"
+___device__(extern  __no_sc__) int _Z8cs_indexP8coords_siii(cs_t *, int, int, int);
+# 47 "util.h"
+___device__(extern  __no_sc__) int _Z4iminii(const int, const int);
+# 48 "util.h"
+___device__(extern  __no_sc__) int _Z4imaxii(const int, const int);
+# 203 "memory.h"
+___device__(extern  __no_sc__) int _Z25reverse_addr_rank1_assertiPKciiii(int, const char *, int, int, int, int);
+#include "common_functions.h"
+#if !defined(__CUDABE__)
+#endif

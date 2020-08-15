@@ -1,0 +1,249 @@
+typedef char __nv_bool;
+# 58 "../.././mpi_s/mpi.h"
+enum elementary_datatypes {
+# 58 "../.././mpi_s/mpi.h"
+MPI_CHAR,
+# 59 "../.././mpi_s/mpi.h"
+MPI_SHORT,
+# 60 "../.././mpi_s/mpi.h"
+MPI_INT,
+# 61 "../.././mpi_s/mpi.h"
+MPI_LONG,
+# 62 "../.././mpi_s/mpi.h"
+MPI_UNSIGNED_CHAR,
+# 63 "../.././mpi_s/mpi.h"
+MPI_UNSIGNED_SHORT,
+# 64 "../.././mpi_s/mpi.h"
+MPI_UNSIGNED,
+# 65 "../.././mpi_s/mpi.h"
+MPI_UNSIGNED_LONG,
+# 66 "../.././mpi_s/mpi.h"
+MPI_FLOAT,
+# 67 "../.././mpi_s/mpi.h"
+MPI_DOUBLE,
+# 68 "../.././mpi_s/mpi.h"
+MPI_LONG_DOUBLE,
+# 69 "../.././mpi_s/mpi.h"
+MPI_BYTE,
+# 70 "../.././mpi_s/mpi.h"
+MPI_PACKED};
+# 72 "../.././mpi_s/mpi.h"
+enum collective_operations {
+# 72 "../.././mpi_s/mpi.h"
+MPI_MAX,
+# 73 "../.././mpi_s/mpi.h"
+MPI_MIN,
+# 74 "../.././mpi_s/mpi.h"
+MPI_SUM,
+# 75 "../.././mpi_s/mpi.h"
+MPI_PROD,
+# 76 "../.././mpi_s/mpi.h"
+MPI_MAXLOC,
+# 77 "../.././mpi_s/mpi.h"
+MPI_MINLOC,
+# 78 "../.././mpi_s/mpi.h"
+MPI_BAND,
+# 79 "../.././mpi_s/mpi.h"
+MPI_BOR,
+# 80 "../.././mpi_s/mpi.h"
+MPI_BXOR,
+# 81 "../.././mpi_s/mpi.h"
+MPI_LAND,
+# 82 "../.././mpi_s/mpi.h"
+MPI_LOR,
+# 83 "../.././mpi_s/mpi.h"
+MPI_LXOR};
+# 92 "../.././mpi_s/mpi.h"
+enum reserved_communicators {
+# 92 "../.././mpi_s/mpi.h"
+MPI_COMM_WORLD,
+# 92 "../.././mpi_s/mpi.h"
+MPI_COMM_SELF};
+# 22 "../.././src/pe.h"
+struct pe_s;
+# 24 "../.././src/pe.h"
+enum pe_enum_t {
+# 24 "../.././src/pe.h"
+PE_QUIET,
+# 24 "../.././src/pe.h"
+PE_VERBOSE,
+# 24 "../.././src/pe.h"
+PE_OPTION_MAX};
+# 22 "../.././src/coords.h"
+struct coords_s;
+# 26 "../.././src/coords.h"
+enum cartesian_directions {
+# 26 "../.././src/coords.h"
+X,
+# 26 "../.././src/coords.h"
+Y,
+# 26 "../.././src/coords.h"
+Z};
+# 44 "../.././src/colloid.h"
+struct colloid_state_type;
+# 24 "../.././src/colloid_link.h"
+struct colloid_link_type;
+# 26 "../.././src/colloids.h"
+struct colloid;
+# 65 "../.././src/colloids.h"
+struct colloids_info_s;
+# 212 "/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stddef.h" 3
+typedef unsigned long size_t;
+#include "crt/device_runtime.h"
+# 25 "../.././mpi_s/mpi.h"
+typedef int MPI_Handle;
+# 26 "../.././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Comm;
+# 28 "../.././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Datatype;
+# 30 "../.././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Op;
+# 22 "../.././src/pe.h"
+typedef struct pe_s pe_t;
+# 24 "../.././src/pe.h"
+typedef enum pe_enum_t pe_enum_t;
+# 22 "../.././src/coords.h"
+typedef struct coords_s cs_t;
+# 42 "../.././src/colloid.h"
+typedef struct colloid_state_type colloid_state_t;
+# 44 "../.././src/colloid.h"
+struct colloid_state_type {
+# 46 "../.././src/colloid.h"
+int index;
+# 47 "../.././src/colloid.h"
+int rebuild;
+# 48 "../.././src/colloid.h"
+int nbonds;
+# 49 "../.././src/colloid.h"
+int nangles;
+# 51 "../.././src/colloid.h"
+int isfixedr;
+# 52 "../.././src/colloid.h"
+int isfixedv;
+# 53 "../.././src/colloid.h"
+int isfixedw;
+# 54 "../.././src/colloid.h"
+int isfixeds;
+# 56 "../.././src/colloid.h"
+int type;
+# 57 "../.././src/colloid.h"
+int bond[2];
+# 59 "../.././src/colloid.h"
+int rng;
+# 61 "../.././src/colloid.h"
+int isfixedrxyz[3];
+# 62 "../.././src/colloid.h"
+int isfixedvxyz[3];
+# 67 "../.././src/colloid.h"
+int intpad[14];
+# 71 "../.././src/colloid.h"
+double a0;
+# 72 "../.././src/colloid.h"
+double ah;
+# 73 "../.././src/colloid.h"
+double r[3];
+# 74 "../.././src/colloid.h"
+double v[3];
+# 75 "../.././src/colloid.h"
+double w[3];
+# 76 "../.././src/colloid.h"
+double s[3];
+# 77 "../.././src/colloid.h"
+double m[3];
+# 78 "../.././src/colloid.h"
+double b1;
+# 79 "../.././src/colloid.h"
+double b2;
+# 80 "../.././src/colloid.h"
+double c;
+# 81 "../.././src/colloid.h"
+double h;
+# 82 "../.././src/colloid.h"
+double dr[3];
+# 83 "../.././src/colloid.h"
+double deltaphi;
+# 92 "../.././src/colloid.h"
+double q0;
+# 93 "../.././src/colloid.h"
+double q1;
+# 94 "../.././src/colloid.h"
+double epsilon;
+# 96 "../.././src/colloid.h"
+double deltaq0;
+# 97 "../.././src/colloid.h"
+double deltaq1;
+# 98 "../.././src/colloid.h"
+double sa;
+# 99 "../.././src/colloid.h"
+double saf;
+# 101 "../.././src/colloid.h"
+double dpad[16];};
+# 22 "../.././src/colloid_link.h"
+typedef struct colloid_link_type colloid_link_t;
+# 24 "../.././src/colloids.h"
+typedef struct colloid colloid_t;
+# 26 "../.././src/colloids.h"
+struct colloid {
+# 28 "../.././src/colloids.h"
+colloid_state_t s;
+# 32 "../.././src/colloids.h"
+double random[6];
+# 33 "../.././src/colloids.h"
+double force[3];
+# 34 "../.././src/colloids.h"
+double torque[3];
+# 35 "../.././src/colloids.h"
+double f0[3];
+# 36 "../.././src/colloids.h"
+double t0[3];
+# 37 "../.././src/colloids.h"
+double cbar[3];
+# 38 "../.././src/colloids.h"
+double rxcbar[3];
+# 39 "../.././src/colloids.h"
+double deltam;
+# 40 "../.././src/colloids.h"
+double sumw;
+# 41 "../.././src/colloids.h"
+double zeta[21];
+# 42 "../.././src/colloids.h"
+double stats[3];
+# 43 "../.././src/colloids.h"
+double fc0[3];
+# 44 "../.././src/colloids.h"
+double tc0[3];
+# 45 "../.././src/colloids.h"
+double sump;
+# 46 "../.././src/colloids.h"
+double dq[2];
+# 48 "../.././src/colloids.h"
+double fsub[3];
+# 49 "../.././src/colloids.h"
+double fex[3];
+# 50 "../.././src/colloids.h"
+double tex[3];
+# 54 "../.././src/colloids.h"
+colloid_link_t *lnk;
+# 55 "../.././src/colloids.h"
+colloid_t *next;
+# 57 "../.././src/colloids.h"
+colloid_t *nextall;
+# 58 "../.././src/colloids.h"
+colloid_t *nextlocal;
+# 62 "../.././src/colloids.h"
+colloid_t *bonded[2];};
+# 65 "../.././src/colloids.h"
+typedef struct colloids_info_s colloids_info_t;
+# 150 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) void free(void *);
+# 189 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__noreturn__)) void __assert_fail(const char *, const char *, unsigned, const char *);
+# 54 "../.././src/coords.h"
+___device__(extern  __no_sc__) int _Z9cs_cartszP8coords_sPi(cs_t *, int *);
+# 57 "../.././src/coords.h"
+___device__(extern  __no_sc__) int _Z7cs_ltotP8coords_sPd(cs_t *, double *);
+# 47 "../.././src/util.h"
+___device__(extern  __no_sc__) int _Z4iminii(const int, const int);
+# 48 "../.././src/util.h"
+___device__(extern  __no_sc__) int _Z4imaxii(const int, const int);
+#include "common_functions.h"

@@ -1,0 +1,235 @@
+typedef char __nv_bool;
+# 58 ".././mpi_s/mpi.h"
+enum elementary_datatypes {
+# 58 ".././mpi_s/mpi.h"
+MPI_CHAR,
+# 59 ".././mpi_s/mpi.h"
+MPI_SHORT,
+# 60 ".././mpi_s/mpi.h"
+MPI_INT,
+# 61 ".././mpi_s/mpi.h"
+MPI_LONG,
+# 62 ".././mpi_s/mpi.h"
+MPI_UNSIGNED_CHAR,
+# 63 ".././mpi_s/mpi.h"
+MPI_UNSIGNED_SHORT,
+# 64 ".././mpi_s/mpi.h"
+MPI_UNSIGNED,
+# 65 ".././mpi_s/mpi.h"
+MPI_UNSIGNED_LONG,
+# 66 ".././mpi_s/mpi.h"
+MPI_FLOAT,
+# 67 ".././mpi_s/mpi.h"
+MPI_DOUBLE,
+# 68 ".././mpi_s/mpi.h"
+MPI_LONG_DOUBLE,
+# 69 ".././mpi_s/mpi.h"
+MPI_BYTE,
+# 70 ".././mpi_s/mpi.h"
+MPI_PACKED};
+# 72 ".././mpi_s/mpi.h"
+enum collective_operations {
+# 72 ".././mpi_s/mpi.h"
+MPI_MAX,
+# 73 ".././mpi_s/mpi.h"
+MPI_MIN,
+# 74 ".././mpi_s/mpi.h"
+MPI_SUM,
+# 75 ".././mpi_s/mpi.h"
+MPI_PROD,
+# 76 ".././mpi_s/mpi.h"
+MPI_MAXLOC,
+# 77 ".././mpi_s/mpi.h"
+MPI_MINLOC,
+# 78 ".././mpi_s/mpi.h"
+MPI_BAND,
+# 79 ".././mpi_s/mpi.h"
+MPI_BOR,
+# 80 ".././mpi_s/mpi.h"
+MPI_BXOR,
+# 81 ".././mpi_s/mpi.h"
+MPI_LAND,
+# 82 ".././mpi_s/mpi.h"
+MPI_LOR,
+# 83 ".././mpi_s/mpi.h"
+MPI_LXOR};
+# 22 "pe.h"
+struct pe_s;
+# 22 "coords.h"
+struct coords_s;
+# 26 "coords.h"
+enum cartesian_directions {
+# 26 "coords.h"
+X,
+# 26 "coords.h"
+Y,
+# 26 "coords.h"
+Z};
+# 48 "free_energy.h"
+struct fe_vt_s;
+# 66 "free_energy.h"
+struct fe_s;
+# 28 "field.h"
+struct field_s;
+# 21 "field_grad.h"
+struct field_grad_s;
+# 34 "blue_phase.h"
+struct fe_lc_s;
+# 48 "blue_phase.h"
+struct fe_lc_param_s;
+# 24 "map.h"
+enum map_status {
+# 24 "map.h"
+MAP_FLUID,
+# 24 "map.h"
+MAP_BOUNDARY,
+# 24 "map.h"
+MAP_COLLOID,
+# 24 "map.h"
+MAP_STATUS_MAX};
+# 26 "map.h"
+struct map_s;
+# 25 "wall.h"
+struct wall_s;
+# 65 "colloids.h"
+struct colloids_info_s;
+# 212 "/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stddef.h" 3
+typedef unsigned long size_t;
+#include "crt/device_runtime.h"
+# 194 "/usr/include/sys/types.h" 3
+typedef signed char int8_t;
+# 25 ".././mpi_s/mpi.h"
+typedef int MPI_Handle;
+# 26 ".././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Comm;
+# 28 ".././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Datatype;
+# 30 ".././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Op;
+# 22 "pe.h"
+typedef struct pe_s pe_t;
+# 22 "coords.h"
+typedef struct coords_s cs_t;
+# 32 "free_energy.h"
+typedef struct fe_s fe_t;
+# 33 "free_energy.h"
+typedef struct fe_vt_s fe_vt_t;
+# 66 "free_energy.h"
+struct fe_s {
+# 67 "free_energy.h"
+fe_vt_t *func;
+# 68 "free_energy.h"
+int id;
+# 69 "free_energy.h"
+int use_stress_relaxation;};
+# 28 "field.h"
+typedef struct field_s field_t;
+# 21 "field_grad.h"
+typedef struct field_grad_s field_grad_t;
+# 29 "blue_phase.h"
+typedef struct fe_lc_s fe_lc_t;
+# 30 "blue_phase.h"
+typedef struct fe_lc_param_s fe_lc_param_t;
+# 34 "blue_phase.h"
+struct fe_lc_s {
+# 35 "blue_phase.h"
+fe_t super;
+# 36 "blue_phase.h"
+pe_t *pe;
+# 37 "blue_phase.h"
+cs_t *cs;
+# 38 "blue_phase.h"
+fe_lc_param_t *param;
+# 39 "blue_phase.h"
+field_t *q;
+# 40 "blue_phase.h"
+field_grad_t *dq;
+# 41 "blue_phase.h"
+field_t *p;
+# 42 "blue_phase.h"
+field_grad_t *dp;
+# 43 "blue_phase.h"
+fe_lc_t *target;};
+# 48 "blue_phase.h"
+struct fe_lc_param_s {
+# 49 "blue_phase.h"
+double a0;
+# 50 "blue_phase.h"
+double q0;
+# 51 "blue_phase.h"
+double gamma;
+# 52 "blue_phase.h"
+double kappa0;
+# 53 "blue_phase.h"
+double kappa1;
+# 55 "blue_phase.h"
+double xi;
+# 56 "blue_phase.h"
+double zeta0;
+# 57 "blue_phase.h"
+double zeta1;
+# 58 "blue_phase.h"
+double zeta2;
+# 59 "blue_phase.h"
+double redshift;
+# 60 "blue_phase.h"
+double rredshift;
+# 61 "blue_phase.h"
+double epsilon;
+# 62 "blue_phase.h"
+double amplitude0;
+# 63 "blue_phase.h"
+double e0coswt[3];
+# 65 "blue_phase.h"
+double w1_coll;
+# 66 "blue_phase.h"
+double w2_coll;
+# 67 "blue_phase.h"
+double w1_wall;
+# 68 "blue_phase.h"
+double w2_wall;
+# 69 "blue_phase.h"
+double nfix[3];
+# 71 "blue_phase.h"
+int anchoring_coll;
+# 72 "blue_phase.h"
+int anchoring_wall;
+# 73 "blue_phase.h"
+int is_redshift_updated;
+# 74 "blue_phase.h"
+int is_active;};
+# 26 "map.h"
+typedef struct map_s map_t;
+# 25 "wall.h"
+typedef struct wall_s wall_t;
+# 65 "colloids.h"
+typedef struct colloids_info_s colloids_info_t;
+# 189 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__noreturn__)) void __assert_fail(const char *, const char *, unsigned, const char *);
+# 54 "coords.h"
+___device__(extern  __no_sc__) int _Z9cs_cartszP8coords_sPi(cs_t *, int *);
+# 55 "coords.h"
+___device__(extern  __no_sc__) int _Z14cs_cart_coordsP8coords_sPi(cs_t *, int *);
+# 59 "coords.h"
+___device__(extern  __no_sc__) int _Z9cs_nlocalP8coords_sPi(cs_t *, int *);
+# 62 "coords.h"
+___device__(extern  __no_sc__) int _Z8cs_indexP8coords_siii(cs_t *, int, int, int);
+# 51 "field.h"
+___device__(extern  __no_sc__) int _Z12field_tensorP7field_siPA3_d(field_t *, int, double (*)[3]);
+# 41 "field_grad.h"
+___device__(extern  __no_sc__) int _Z22field_grad_tensor_gradP12field_grad_siPA3_A3_d(field_grad_t *, int, double (*)[3][3]);
+# 42 "field_grad.h"
+___device__(extern  __no_sc__) int _Z23field_grad_tensor_delsqP12field_grad_siPA3_d(field_grad_t *, int, double (*)[3]);
+# 101 "blue_phase.h"
+___device__(extern  __no_sc__) int _Z9fe_lc_fedP7fe_lc_siPd(fe_lc_t *, int, double *);
+# 120 "blue_phase.h"
+___device__(extern  __no_sc__) int _Z15fe_lc_compute_hP7fe_lc_sdPA3_dPA3_S1_S2_S2_(fe_lc_t *, double, double (*)[3], double (*)[3][3], double (*)[3], double (*)[3]);
+# 168 "blue_phase.h"
+___device__(extern  __no_sc__) int _Z23fe_lc_amplitude_computeP13fe_lc_param_sPd(fe_lc_param_t *, double *);
+# 40 "map.h"
+___device__(extern  __no_sc__) int _Z10map_statusP5map_siPi(map_t *, int, int *);
+# 57 "wall.h"
+___device__(extern  __no_sc__) int _Z12wall_presentP6wall_s(wall_t *);
+# 58 "wall.h"
+___device__(extern  __no_sc__) int _Z16wall_present_dimP6wall_sPi(wall_t *, int *);
+#include "common_functions.h"

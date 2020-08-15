@@ -1,0 +1,29 @@
+typedef char __nv_bool;
+# 22 "pe.h"
+struct pe_s;
+# 22 "runtime.h"
+struct rt_s;
+# 21 "field_grad.h"
+struct field_grad_s;
+# 65 "colloids.h"
+struct colloids_info_s;
+# 22 "map_s.h"
+struct map_s;
+# 212 "/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stddef.h" 3
+typedef unsigned long size_t;
+#include "crt/device_runtime.h"
+# 22 "pe.h"
+typedef struct pe_s pe_t;
+# 22 "runtime.h"
+typedef struct rt_s rt_t;
+# 21 "field_grad.h"
+typedef struct field_grad_s field_grad_t;
+# 22 "field_grad.h"
+typedef int (*grad_ft)(field_grad_t *);
+# 26 "map.h"
+typedef struct map_s map_t;
+# 65 "colloids.h"
+typedef struct colloids_info_s colloids_info_t;
+# 189 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__noreturn__)) void __assert_fail(const char *, const char *, unsigned, const char *);
+#include "common_functions.h"

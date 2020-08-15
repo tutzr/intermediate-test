@@ -1,0 +1,215 @@
+typedef char __nv_bool;
+# 22 "pe.h"
+struct pe_s;
+# 22 "coords.h"
+struct coords_s;
+# 18 "physics.h"
+struct physics_s;
+# 37 "psi.h"
+struct psi_s;
+# 24 "free_energy.h"
+enum fe_id_enum {
+# 24 "free_energy.h"
+FE_SYMMETRIC,
+# 25 "free_energy.h"
+FE_BRAZOVSKII,
+# 26 "free_energy.h"
+FE_POLAR,
+# 27 "free_energy.h"
+FE_LC,
+# 28 "free_energy.h"
+FE_ELECTRO,
+# 29 "free_energy.h"
+FE_ELECTRO_SYMMETRIC,
+# 30 "free_energy.h"
+FE_LC_DROPLET};
+# 48 "free_energy.h"
+struct fe_vt_s;
+# 66 "free_energy.h"
+struct fe_s;
+# 28 "field.h"
+struct field_s;
+# 21 "field_grad.h"
+struct field_grad_s;
+# 28 "symmetric.h"
+struct fe_symm_s;
+# 40 "symmetric.h"
+struct fe_symm_param_s;
+# 24 "fe_electro.h"
+struct fe_electro_s;
+# 29 "fe_electro_symmetric.h"
+struct fe_electro_symmetric_param_s;
+# 52 "fe_electro_symmetric.c"
+struct fe_electro_symmetric_s;
+# 212 "/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stddef.h" 3
+typedef unsigned long size_t;
+#include "crt/device_runtime.h"
+# 194 "/usr/include/sys/types.h" 3
+typedef signed char int8_t;
+# 28 ".././target/target_cuda.h"
+typedef enum cudaMemcpyKind tdpMemcpyKind;
+# 47 ".././target/target_cuda.h"
+typedef enum cudaError tdpError_t;
+# 22 "pe.h"
+typedef struct pe_s pe_t;
+# 22 "coords.h"
+typedef struct coords_s cs_t;
+# 18 "physics.h"
+typedef struct physics_s physics_t;
+# 37 "psi.h"
+typedef struct psi_s psi_t;
+# 32 "free_energy.h"
+typedef struct fe_s fe_t;
+# 33 "free_energy.h"
+typedef struct fe_vt_s fe_vt_t;
+# 35 "free_energy.h"
+typedef int (*fe_free_ft)(fe_t *);
+# 37 "free_energy.h"
+typedef int (*fe_target_ft)(fe_t *, fe_t **);
+# 38 "free_energy.h"
+typedef int (*fe_fed_ft)(fe_t *, int, double *);
+# 39 "free_energy.h"
+typedef int (*fe_mu_ft)(fe_t *, int, double *);
+# 40 "free_energy.h"
+typedef int (*fe_str_ft)(fe_t *, int, double (*)[3]);
+# 41 "free_energy.h"
+typedef int (*fe_mu_solv_ft)(fe_t *, int, int, double *);
+# 42 "free_energy.h"
+typedef int (*fe_hvector_ft)(fe_t *, int, double *);
+# 43 "free_energy.h"
+typedef int (*fe_htensor_ft)(fe_t *, int, double (*)[3]);
+# 45 "free_energy.h"
+typedef void (*fe_htensor_v_ft)(fe_t *, int, double (*)[3][1]);
+# 46 "free_energy.h"
+typedef void (*fe_stress_v_ft)(fe_t *, int, double (*)[3][1]);
+# 48 "free_energy.h"
+struct fe_vt_s {
+# 50 "free_energy.h"
+fe_free_ft free;
+# 51 "free_energy.h"
+fe_target_ft target;
+# 52 "free_energy.h"
+fe_fed_ft fed;
+# 53 "free_energy.h"
+fe_mu_ft mu;
+# 54 "free_energy.h"
+fe_mu_solv_ft mu_solv;
+# 55 "free_energy.h"
+fe_str_ft stress;
+# 56 "free_energy.h"
+fe_str_ft str_symm;
+# 57 "free_energy.h"
+fe_str_ft str_anti;
+# 58 "free_energy.h"
+fe_hvector_ft hvector;
+# 59 "free_energy.h"
+fe_htensor_ft htensor;
+# 60 "free_energy.h"
+fe_htensor_v_ft htensor_v;
+# 61 "free_energy.h"
+fe_stress_v_ft stress_v;
+# 62 "free_energy.h"
+fe_stress_v_ft str_symm_v;
+# 63 "free_energy.h"
+fe_stress_v_ft str_anti_v;};
+# 66 "free_energy.h"
+struct fe_s {
+# 67 "free_energy.h"
+fe_vt_t *func;
+# 68 "free_energy.h"
+int id;
+# 69 "free_energy.h"
+int use_stress_relaxation;};
+# 28 "field.h"
+typedef struct field_s field_t;
+# 21 "field_grad.h"
+typedef struct field_grad_s field_grad_t;
+# 23 "symmetric.h"
+typedef struct fe_symm_param_s fe_symm_param_t;
+# 24 "symmetric.h"
+typedef struct fe_symm_s fe_symm_t;
+# 28 "symmetric.h"
+struct fe_symm_s {
+# 29 "symmetric.h"
+fe_t super;
+# 30 "symmetric.h"
+pe_t *pe;
+# 31 "symmetric.h"
+cs_t *cs;
+# 32 "symmetric.h"
+fe_symm_param_t *param;
+# 33 "symmetric.h"
+field_t *phi;
+# 34 "symmetric.h"
+field_grad_t *dphi;
+# 35 "symmetric.h"
+fe_symm_t *target;};
+# 24 "fe_electro.h"
+typedef struct fe_electro_s fe_electro_t;
+# 26 "fe_electro_symmetric.h"
+typedef struct fe_electro_symmetric_s fe_es_t;
+# 27 "fe_electro_symmetric.h"
+typedef struct fe_electro_symmetric_param_s fe_es_param_t;
+# 29 "fe_electro_symmetric.h"
+struct fe_electro_symmetric_param_s {
+# 31 "fe_electro_symmetric.h"
+double epsilon1;
+# 32 "fe_electro_symmetric.h"
+double epsilon2;
+# 33 "fe_electro_symmetric.h"
+double epsilonbar;
+# 34 "fe_electro_symmetric.h"
+double gamma;
+# 36 "fe_electro_symmetric.h"
+double deltamu[4];
+# 37 "fe_electro_symmetric.h"
+int nk;char __nv_no_debug_dummy_end_padding_0[4];};
+# 52 "fe_electro_symmetric.c"
+struct fe_electro_symmetric_s {
+# 53 "fe_electro_symmetric.c"
+fe_t super;
+# 54 "fe_electro_symmetric.c"
+pe_t *pe;
+# 55 "fe_electro_symmetric.c"
+cs_t *cs;
+# 56 "fe_electro_symmetric.c"
+psi_t *psi;
+# 57 "fe_electro_symmetric.c"
+fe_symm_t *fe_symm;
+# 58 "fe_electro_symmetric.c"
+fe_electro_t *fe_elec;
+# 59 "fe_electro_symmetric.c"
+fe_es_param_t *param;
+# 61 "fe_electro_symmetric.c"
+fe_es_t *target;};
+# 150 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) void free(void *);
+# 189 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__noreturn__)) void __assert_fail(const char *, const char *, unsigned, const char *);
+# 46 ".././target/target.h"
+___device__(extern  __no_sc__) tdpError_t _Z17tdpGetDeviceCountPi(int *);
+# 79 ".././target/target.h"
+___device__(extern  __no_sc__) tdpError_t _Z7tdpFreePv(void *);
+# 80 ".././target/target.h"
+___device__(extern  __no_sc__) tdpError_t _Z9tdpMallocPPvm(void **, size_t);
+# 117 ".././target/target.h"
+___device__(extern  __no_sc__) void _Z15tdpErrorHandler9cudaErrorPKcii(tdpError_t, const char *, int, int);
+# 40 "physics.h"
+___device__(extern  __no_sc__) int _Z11physics_refPP9physics_s(physics_t **);
+# 45 "physics.h"
+___device__(extern  __no_sc__) int _Z10physics_ktP9physics_sPd(physics_t *, double *);
+# 46 "field.h"
+___device__(extern  __no_sc__) int _Z12field_scalarP7field_siPd(field_t *, int, double *);
+# 55 "symmetric.h"
+___device__(extern  __no_sc__) int _Z11fe_symm_fedP9fe_symm_siPd(fe_symm_t *, int, double *);
+# 56 "symmetric.h"
+___device__(extern  __no_sc__) int _Z10fe_symm_muP9fe_symm_siPd(fe_symm_t *, int, double *);
+# 58 "symmetric.h"
+___device__(extern  __no_sc__) int _Z11fe_symm_strP9fe_symm_siPA3_d(fe_symm_t *, int, double (*)[3]);
+# 64 "fe_electro_symmetric.c"
+static  __constant__  __var_used__ fe_es_param_t __nv_static_41__28_fe_electro_symmetric_cpp1_ii_9cafb0b1_const_param;
+# 82 "fe_electro_symmetric.c"
+static  __constant__  __var_used__ fe_vt_t __nv_static_41__28_fe_electro_symmetric_cpp1_ii_9cafb0b1_fe_es_dvt;
+#include "common_functions.h"
+# 82 "fe_electro_symmetric.c"
+static  __constant__  __var_used__ fe_vt_t __nv_static_41__28_fe_electro_symmetric_cpp1_ii_9cafb0b1_fe_es_dvt = {((fe_free_ft)0LL),((fe_target_ft)0LL),((fe_fed_ft)0LL),((fe_mu_ft)0LL),((fe_mu_solv_ft)0LL),((fe_str_ft)0LL),((fe_str_ft)0LL),((fe_str_ft)0LL),((fe_hvector_ft)0LL),((fe_htensor_ft)0LL),((fe_htensor_v_ft)0LL),((fe_stress_v_ft)0LL),((fe_stress_v_ft)0LL)};

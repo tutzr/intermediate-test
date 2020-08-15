@@ -1,0 +1,23 @@
+# 1 "util.c"
+static const char __T0[49];
+static const char __T1[56];
+static const char __T2[60];
+static const char __T3[47];
+static const char __T4[45];
+static const char __T5[38];
+static const char __T6[55];
+static const char __T7[39];
+static const char __T8[47];
+static const char __T9[46];
+static const char __T10[44];
+static const char __T0[49] = "int util_reverse_byte_order(void *, void *, int)";
+static const char __T1[56] = "int util_jacobi(double (*)[3], double *, double (*)[3])";
+static const char __T2[60] = "int util_discrete_volume_sphere(double *, double, double *)";
+static const char __T3[47] = "int util_gauss_jordan(int, double *, double *)";
+static const char __T4[45] = "int util_matrix_create(int, int, double ***)";
+static const char __T5[38] = "int util_matrix_free(int, double ***)";
+static const char __T6[55] = "int util_svd(int, int, double **, double *, double **)";
+static const char __T7[39] = "int util_matrix_invert(int, double **)";
+static const char __T8[47] = "int util_ranlcg_reap_gaussian(int *, double *)";
+static const char __T9[46] = "int util_ranlcg_reap_uniform(int *, double *)";
+static const char __T10[44] = "int util_str_tolower(char *, unsigned long)";

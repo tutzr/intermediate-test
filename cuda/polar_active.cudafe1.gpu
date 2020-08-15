@@ -1,0 +1,605 @@
+typedef char __nv_bool;
+# 22 "pe.h"
+struct pe_s;
+# 22 "coords.h"
+struct coords_s;
+# 23 "halo_swap.h"
+struct halo_swap_s;
+# 73 "io_harness.h"
+struct io_info_s;
+# 22 "leesedwards.h"
+struct lees_edw_s;
+# 21 "field_s.h"
+struct field_s;
+# 22 "field_grad_s.h"
+struct field_grad_s;
+# 24 "free_energy.h"
+enum fe_id_enum {
+# 24 "free_energy.h"
+FE_SYMMETRIC,
+# 25 "free_energy.h"
+FE_BRAZOVSKII,
+# 26 "free_energy.h"
+FE_POLAR,
+# 27 "free_energy.h"
+FE_LC,
+# 28 "free_energy.h"
+FE_ELECTRO,
+# 29 "free_energy.h"
+FE_ELECTRO_SYMMETRIC,
+# 30 "free_energy.h"
+FE_LC_DROPLET};
+# 48 "free_energy.h"
+struct fe_vt_s;
+# 66 "free_energy.h"
+struct fe_s;
+# 29 "polar_active.h"
+struct fe_polar_param_s;
+# 56 "polar_active.c"
+struct fe_polar_s;
+# 212 "/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stddef.h" 3
+typedef unsigned long size_t;
+#include "crt/device_runtime.h"
+# 194 "/usr/include/sys/types.h" 3
+typedef signed char int8_t;
+# 28 ".././target/target_cuda.h"
+typedef enum cudaMemcpyKind tdpMemcpyKind;
+# 47 ".././target/target_cuda.h"
+typedef enum cudaError tdpError_t;
+# 22 "pe.h"
+typedef struct pe_s pe_t;
+# 22 "coords.h"
+typedef struct coords_s cs_t;
+# 23 "halo_swap.h"
+typedef struct halo_swap_s halo_swap_t;
+# 36 "io_harness.h"
+typedef struct io_info_s io_info_t;
+# 22 "leesedwards.h"
+typedef struct lees_edw_s lees_edw_t;
+# 28 "field.h"
+typedef struct field_s field_t;
+# 21 "field_s.h"
+struct field_s {
+# 22 "field_s.h"
+int nf;
+# 23 "field_s.h"
+int nhcomm;
+# 24 "field_s.h"
+int nsites;
+# 25 "field_s.h"
+double *data;
+# 26 "field_s.h"
+char *name;
+# 28 "field_s.h"
+pe_t *pe;
+# 29 "field_s.h"
+cs_t *cs;
+# 30 "field_s.h"
+lees_edw_t *le;
+# 31 "field_s.h"
+io_info_t *info;
+# 32 "field_s.h"
+halo_swap_t *halo;
+# 34 "field_s.h"
+field_t *target;};
+# 21 "field_grad.h"
+typedef struct field_grad_s field_grad_t;
+# 22 "field_grad_s.h"
+struct field_grad_s {
+# 23 "field_grad_s.h"
+pe_t *pe;
+# 24 "field_grad_s.h"
+field_t *field;
+# 25 "field_grad_s.h"
+int nf;
+# 26 "field_grad_s.h"
+int level;
+# 27 "field_grad_s.h"
+int nsite;
+# 28 "field_grad_s.h"
+double *grad;
+# 29 "field_grad_s.h"
+double *delsq;
+# 30 "field_grad_s.h"
+double *d_ab;
+# 31 "field_grad_s.h"
+double *grad_delsq;
+# 32 "field_grad_s.h"
+double *delsq_delsq;
+# 34 "field_grad_s.h"
+field_grad_t *target;
+# 36 "field_grad_s.h"
+int (*d2)(field_grad_t *);
+# 37 "field_grad_s.h"
+int (*d4)(field_grad_t *);
+# 38 "field_grad_s.h"
+int (*dab)(field_grad_t *);};
+# 32 "free_energy.h"
+typedef struct fe_s fe_t;
+# 33 "free_energy.h"
+typedef struct fe_vt_s fe_vt_t;
+# 35 "free_energy.h"
+typedef int (*fe_free_ft)(fe_t *);
+# 37 "free_energy.h"
+typedef int (*fe_target_ft)(fe_t *, fe_t **);
+# 38 "free_energy.h"
+typedef int (*fe_fed_ft)(fe_t *, int, double *);
+# 39 "free_energy.h"
+typedef int (*fe_mu_ft)(fe_t *, int, double *);
+# 40 "free_energy.h"
+typedef int (*fe_str_ft)(fe_t *, int, double (*)[3]);
+# 41 "free_energy.h"
+typedef int (*fe_mu_solv_ft)(fe_t *, int, int, double *);
+# 42 "free_energy.h"
+typedef int (*fe_hvector_ft)(fe_t *, int, double *);
+# 43 "free_energy.h"
+typedef int (*fe_htensor_ft)(fe_t *, int, double (*)[3]);
+# 45 "free_energy.h"
+typedef void (*fe_htensor_v_ft)(fe_t *, int, double (*)[3][1]);
+# 46 "free_energy.h"
+typedef void (*fe_stress_v_ft)(fe_t *, int, double (*)[3][1]);
+# 48 "free_energy.h"
+struct fe_vt_s {
+# 50 "free_energy.h"
+fe_free_ft free;
+# 51 "free_energy.h"
+fe_target_ft target;
+# 52 "free_energy.h"
+fe_fed_ft fed;
+# 53 "free_energy.h"
+fe_mu_ft mu;
+# 54 "free_energy.h"
+fe_mu_solv_ft mu_solv;
+# 55 "free_energy.h"
+fe_str_ft stress;
+# 56 "free_energy.h"
+fe_str_ft str_symm;
+# 57 "free_energy.h"
+fe_str_ft str_anti;
+# 58 "free_energy.h"
+fe_hvector_ft hvector;
+# 59 "free_energy.h"
+fe_htensor_ft htensor;
+# 60 "free_energy.h"
+fe_htensor_v_ft htensor_v;
+# 61 "free_energy.h"
+fe_stress_v_ft stress_v;
+# 62 "free_energy.h"
+fe_stress_v_ft str_symm_v;
+# 63 "free_energy.h"
+fe_stress_v_ft str_anti_v;};
+# 66 "free_energy.h"
+struct fe_s {
+# 67 "free_energy.h"
+fe_vt_t *func;
+# 68 "free_energy.h"
+int id;
+# 69 "free_energy.h"
+int use_stress_relaxation;};
+# 24 "polar_active.h"
+typedef struct fe_polar_s fe_polar_t;
+# 25 "polar_active.h"
+typedef struct fe_polar_param_s fe_polar_param_t;
+# 29 "polar_active.h"
+struct fe_polar_param_s {
+# 30 "polar_active.h"
+double a;
+# 31 "polar_active.h"
+double b;
+# 32 "polar_active.h"
+double kappa1;
+# 33 "polar_active.h"
+double delta;
+# 34 "polar_active.h"
+double kappa2;
+# 35 "polar_active.h"
+double zeta;
+# 36 "polar_active.h"
+double lambda;
+# 37 "polar_active.h"
+double radius;};
+# 56 "polar_active.c"
+struct fe_polar_s {
+# 57 "polar_active.c"
+fe_t super;
+# 58 "polar_active.c"
+pe_t *pe;
+# 59 "polar_active.c"
+cs_t *cs;
+# 60 "polar_active.c"
+fe_polar_param_t *param;
+# 61 "polar_active.c"
+field_t *p;
+# 62 "polar_active.c"
+field_grad_t *dp;
+# 63 "polar_active.c"
+fe_polar_t *target;};
+# 150 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) void free(void *);
+# 189 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__noreturn__)) void __assert_fail(const char *, const char *, unsigned, const char *);
+# 46 ".././target/target.h"
+___device__(extern  __no_sc__) tdpError_t _Z17tdpGetDeviceCountPi(int *);
+# 79 ".././target/target.h"
+___device__(extern  __no_sc__) tdpError_t _Z7tdpFreePv(void *);
+# 80 ".././target/target.h"
+___device__(extern  __no_sc__) tdpError_t _Z9tdpMallocPPvm(void **, size_t);
+# 117 ".././target/target.h"
+___device__(extern  __no_sc__) void _Z15tdpErrorHandler9cudaErrorPKcii(tdpError_t, const char *, int, int);
+# 48 "field.h"
+___device__(extern  __no_sc__) int _Z12field_vectorP7field_siPd(field_t *, int, double *);
+# 38 "field_grad.h"
+___device__(extern  __no_sc__) int _Z22field_grad_vector_gradP12field_grad_siPA3_d(field_grad_t *, int, double (*)[3]);
+# 39 "field_grad.h"
+___device__(extern  __no_sc__) int _Z23field_grad_vector_delsqP12field_grad_siPd(field_grad_t *, int, double *);
+# 263 "polar_active.c"
+___device__(extern  __no_sc__) int _Z12fe_polar_fedP10fe_polar_siPd(fe_polar_t *, int, double *);
+# 320 "polar_active.c"
+___device__(extern  __no_sc__) int _Z15fe_polar_stressP10fe_polar_siPA3_d(fe_polar_t *, int, double (*)[3]);
+# 386 "polar_active.c"
+___device__(extern  __no_sc__) void _Z17fe_polar_stress_vP10fe_polar_siPA3_A1_d(fe_polar_t *, int, double (*)[3][1]);
+# 415 "polar_active.c"
+___device__(extern  __no_sc__) int _Z18fe_polar_mol_fieldP10fe_polar_siPd(fe_polar_t *, int, double *);
+# 66 "polar_active.c"
+static  __constant__  __var_used__ fe_polar_param_t __nv_static_33__20_polar_active_cpp1_ii_adcab0a1_const_param;
+# 85 "polar_active.c"
+static  __constant__  __var_used__ fe_vt_t __nv_static_33__20_polar_active_cpp1_ii_adcab0a1_fe_polar_dvt;
+static  __device__  __var_used__ const char __T6[46];
+static  __device__  __var_used__ const char __T7[54];
+static  __device__  __var_used__ const char __T8[60];
+static  __device__  __var_used__ const char __T9[52];
+#include "common_functions.h"
+# 85 "polar_active.c"
+static  __constant__  __var_used__ fe_vt_t __nv_static_33__20_polar_active_cpp1_ii_adcab0a1_fe_polar_dvt = {((fe_free_ft)0LL),((fe_target_ft)0LL),((int (*)(fe_t *, int, double *))_Z12fe_polar_fedP10fe_polar_siPd),((fe_mu_ft)0LL),((fe_mu_solv_ft)0LL),((int (*)(fe_t *, int, double (*)[3]))_Z15fe_polar_stressP10fe_polar_siPA3_d),((int (*)(fe_t *, int, double (*)[3]))_Z15fe_polar_stressP10fe_polar_siPA3_d),((fe_str_ft)0LL),((int (*)(fe_t *, int, double *))_Z18fe_polar_mol_fieldP10fe_polar_siPd),((fe_htensor_ft)0LL),((fe_htensor_v_ft)0LL),((void (*)(fe_t *, int, double (*)[3][1]))_Z17fe_polar_stress_vP10fe_polar_siPA3_A1_d),((void (*)(fe_t *, int, double (*)[3][1]))_Z17fe_polar_stress_vP10fe_polar_siPA3_A1_d),((fe_stress_v_ft)0LL)};
+static  __device__  __var_used__ const char __T6[46] = "int fe_polar_fed(fe_polar_s *, int, double *)";
+static  __device__  __var_used__ const char __T7[54] = "int fe_polar_stress(fe_polar_s *, int, double (*)[3])";
+static  __device__  __var_used__ const char __T8[60] = "void fe_polar_stress_v(fe_polar_s *, int, double (*)[3][1])";
+static  __device__  __var_used__ const char __T9[52] = "int fe_polar_mol_field(fe_polar_s *, int, double *)";
+# 263 "polar_active.c"
+___device__( __no_sc__) int _Z12fe_polar_fedP10fe_polar_siPd(
+# 263 "polar_active.c"
+fe_polar_t *fe, 
+# 263 "polar_active.c"
+int index, 
+# 263 "polar_active.c"
+double *fed){
+# 263 "polar_active.c"
+{
+# 265 "polar_active.c"
+ int __cuda_local_var_16103_7_non_const_ia;
+# 265 "polar_active.c"
+ int __cuda_local_var_16103_11_non_const_ib;
+# 265 "polar_active.c"
+ int __cuda_local_var_16103_15_non_const_ic;
+# 267 "polar_active.c"
+ double __cuda_local_var_16105_10_non_const_p2;
+# 268 "polar_active.c"
+ double __cuda_local_var_16106_10_non_const_dp1;
+# 268 "polar_active.c"
+ double __cuda_local_var_16106_15_non_const_dp3;
+# 269 "polar_active.c"
+ double __cuda_local_var_16107_10_non_const_p[3];
+# 270 "polar_active.c"
+ double __cuda_local_var_16108_10_non_const_dp[3][3];
+# 271 "polar_active.c"
+ double __cuda_local_var_16109_10_non_const_sum;
+# 272 "polar_active.c"
+ int8_t __cuda_local_var_16110_16_const_e[3][3][3];
+# 272 "polar_active.c"
+memset((char *)(const int8_t ( *)[3][3][3])&__cuda_local_var_16110_16_const_e, 0,sizeof(__cuda_local_var_16110_16_const_e));
+# 272 "polar_active.c"
+__cuda_local_var_16110_16_const_e[0][0][0] = ((int8_t)0);
+# 272 "polar_active.c"
+__cuda_local_var_16110_16_const_e[0][0][1] = ((int8_t)0);
+# 272 "polar_active.c"
+__cuda_local_var_16110_16_const_e[0][0][2] = ((int8_t)0);
+# 272 "polar_active.c"
+__cuda_local_var_16110_16_const_e[0][1][0] = ((int8_t)0);
+# 272 "polar_active.c"
+__cuda_local_var_16110_16_const_e[0][1][1] = ((int8_t)0);
+# 272 "polar_active.c"
+__cuda_local_var_16110_16_const_e[0][1][2] = ((int8_t)1);
+# 272 "polar_active.c"
+__cuda_local_var_16110_16_const_e[0][2][0] = ((int8_t)0);
+# 272 "polar_active.c"
+__cuda_local_var_16110_16_const_e[0][2][1] = ((int8_t)(-1));
+# 272 "polar_active.c"
+__cuda_local_var_16110_16_const_e[0][2][2] = ((int8_t)0);
+# 272 "polar_active.c"
+__cuda_local_var_16110_16_const_e[1][0][0] = ((int8_t)0);
+# 272 "polar_active.c"
+__cuda_local_var_16110_16_const_e[1][0][1] = ((int8_t)0);
+# 272 "polar_active.c"
+__cuda_local_var_16110_16_const_e[1][0][2] = ((int8_t)(-1));
+# 272 "polar_active.c"
+__cuda_local_var_16110_16_const_e[1][1][0] = ((int8_t)0);
+# 272 "polar_active.c"
+__cuda_local_var_16110_16_const_e[1][1][1] = ((int8_t)0);
+# 272 "polar_active.c"
+__cuda_local_var_16110_16_const_e[1][1][2] = ((int8_t)0);
+# 272 "polar_active.c"
+__cuda_local_var_16110_16_const_e[1][2][0] = ((int8_t)1);
+# 272 "polar_active.c"
+__cuda_local_var_16110_16_const_e[1][2][1] = ((int8_t)0);
+# 272 "polar_active.c"
+__cuda_local_var_16110_16_const_e[1][2][2] = ((int8_t)0);
+# 272 "polar_active.c"
+__cuda_local_var_16110_16_const_e[2][0][0] = ((int8_t)0);
+# 272 "polar_active.c"
+__cuda_local_var_16110_16_const_e[2][0][1] = ((int8_t)1);
+# 272 "polar_active.c"
+__cuda_local_var_16110_16_const_e[2][0][2] = ((int8_t)0);
+# 272 "polar_active.c"
+__cuda_local_var_16110_16_const_e[2][1][0] = ((int8_t)(-1));
+# 272 "polar_active.c"
+__cuda_local_var_16110_16_const_e[2][1][1] = ((int8_t)0);
+# 272 "polar_active.c"
+__cuda_local_var_16110_16_const_e[2][1][2] = ((int8_t)0);
+# 272 "polar_active.c"
+__cuda_local_var_16110_16_const_e[2][2][0] = ((int8_t)0);
+# 272 "polar_active.c"
+__cuda_local_var_16110_16_const_e[2][2][1] = ((int8_t)0);
+# 272 "polar_active.c"
+__cuda_local_var_16110_16_const_e[2][2][2] = ((int8_t)0);
+# 274 "polar_active.c"
+(fe) ? ((void)0) : (__assert_fail(((const char *)"fe"), ((const char *)"polar_active.c"), 274U, __T6));
+# 276 "polar_active.c"
+_Z12field_vectorP7field_siPd((fe->p), index, (__cuda_local_var_16107_10_non_const_p));
+# 277 "polar_active.c"
+_Z22field_grad_vector_gradP12field_grad_siPA3_d((fe->dp), index, (__cuda_local_var_16108_10_non_const_dp));
+# 279 "polar_active.c"
+__cuda_local_var_16105_10_non_const_p2 = (0.0);
+# 280 "polar_active.c"
+__cuda_local_var_16106_10_non_const_dp1 = (0.0);
+# 281 "polar_active.c"
+__cuda_local_var_16106_15_non_const_dp3 = (0.0);
+# 283 "polar_active.c"
+for (__cuda_local_var_16103_7_non_const_ia = 0; (__cuda_local_var_16103_7_non_const_ia < 3); __cuda_local_var_16103_7_non_const_ia++)
+# 283 "polar_active.c"
+{
+# 284 "polar_active.c"
+__cuda_local_var_16105_10_non_const_p2 += (((__cuda_local_var_16107_10_non_const_p)[__cuda_local_var_16103_7_non_const_ia]) * ((__cuda_local_var_16107_10_non_const_p)[__cuda_local_var_16103_7_non_const_ia]));
+# 285 "polar_active.c"
+__cuda_local_var_16109_10_non_const_sum = (0.0);
+# 286 "polar_active.c"
+for (__cuda_local_var_16103_11_non_const_ib = 0; (__cuda_local_var_16103_11_non_const_ib < 3); __cuda_local_var_16103_11_non_const_ib++)
+# 286 "polar_active.c"
+{
+# 287 "polar_active.c"
+__cuda_local_var_16106_10_non_const_dp1 += (((((__cuda_local_var_16108_10_non_const_dp)[__cuda_local_var_16103_7_non_const_ia]))[__cuda_local_var_16103_11_non_const_ib]) * ((((__cuda_local_var_16108_10_non_const_dp)[__cuda_local_var_16103_7_non_const_ia]))[__cuda_local_var_16103_11_non_const_ib]));
+# 288 "polar_active.c"
+for (__cuda_local_var_16103_15_non_const_ic = 0; (__cuda_local_var_16103_15_non_const_ic < 3); __cuda_local_var_16103_15_non_const_ic++)
+# 288 "polar_active.c"
+{
+# 289 "polar_active.c"
+__cuda_local_var_16109_10_non_const_sum += (((double)(((((((const int8_t (*)[3][3])__cuda_local_var_16110_16_const_e)[__cuda_local_var_16103_7_non_const_ia]))[__cuda_local_var_16103_11_non_const_ib]))[__cuda_local_var_16103_15_non_const_ic])) * ((((__cuda_local_var_16108_10_non_const_dp)[__cuda_local_var_16103_11_non_const_ib]))[__cuda_local_var_16103_15_non_const_ic]));
+# 290 "polar_active.c"
+}
+# 291 "polar_active.c"
+}
+# 292 "polar_active.c"
+__cuda_local_var_16106_15_non_const_dp3 += (__cuda_local_var_16109_10_non_const_sum * __cuda_local_var_16109_10_non_const_sum);
+# 293 "polar_active.c"
+}
+# 295 "polar_active.c"
+(*fed) = ((((((0.5) * ((fe->param)->a)) * __cuda_local_var_16105_10_non_const_p2) + ((((0.25) * ((fe->param)->b)) * __cuda_local_var_16105_10_non_const_p2) * __cuda_local_var_16105_10_non_const_p2)) + (((0.5) * ((fe->param)->kappa1)) * __cuda_local_var_16106_10_non_const_dp1)) + ((((0.5) * ((fe->param)->delta)) * ((fe->param)->kappa1)) * __cuda_local_var_16106_15_non_const_dp3));
+# 299 "polar_active.c"
+return 0;
+# 300 "polar_active.c"
+}}
+# 320 "polar_active.c"
+___device__( __no_sc__) int _Z15fe_polar_stressP10fe_polar_siPA3_d(
+# 320 "polar_active.c"
+fe_polar_t *fe, 
+# 320 "polar_active.c"
+int index, 
+# 320 "polar_active.c"
+double (*s)[3]){
+# 320 "polar_active.c"
+{
+# 322 "polar_active.c"
+ int __cuda_local_var_16143_7_non_const_ia;
+# 322 "polar_active.c"
+ int __cuda_local_var_16143_11_non_const_ib;
+# 322 "polar_active.c"
+ int __cuda_local_var_16143_15_non_const_ic;
+# 324 "polar_active.c"
+ double __cuda_local_var_16145_10_non_const_sum;
+# 325 "polar_active.c"
+ double __cuda_local_var_16146_10_non_const_pdoth;
+# 326 "polar_active.c"
+ double __cuda_local_var_16147_10_non_const_p2;
+# 327 "polar_active.c"
+ double __cuda_local_var_16148_10_non_const_p[3];
+# 328 "polar_active.c"
+ double __cuda_local_var_16149_10_non_const_h[3];
+# 329 "polar_active.c"
+ double __cuda_local_var_16150_10_non_const_dp[3][3];
+# 331 "polar_active.c"
+ double __cuda_local_var_16152_16_const_r3;
+# 332 "polar_active.c"
+ int8_t __cuda_local_var_16153_16_const_d[3][3];
+# 331 "polar_active.c"
+__cuda_local_var_16152_16_const_r3 = (0.3333333333333333148);
+# 332 "polar_active.c"
+memset((char *)(const int8_t ( *)[3][3])&__cuda_local_var_16153_16_const_d, 0,sizeof(__cuda_local_var_16153_16_const_d));
+# 332 "polar_active.c"
+__cuda_local_var_16153_16_const_d[0][0] = ((int8_t)1);
+# 332 "polar_active.c"
+__cuda_local_var_16153_16_const_d[0][1] = ((int8_t)0);
+# 332 "polar_active.c"
+__cuda_local_var_16153_16_const_d[0][2] = ((int8_t)0);
+# 332 "polar_active.c"
+__cuda_local_var_16153_16_const_d[1][0] = ((int8_t)0);
+# 332 "polar_active.c"
+__cuda_local_var_16153_16_const_d[1][1] = ((int8_t)1);
+# 332 "polar_active.c"
+__cuda_local_var_16153_16_const_d[1][2] = ((int8_t)0);
+# 332 "polar_active.c"
+__cuda_local_var_16153_16_const_d[2][0] = ((int8_t)0);
+# 332 "polar_active.c"
+__cuda_local_var_16153_16_const_d[2][1] = ((int8_t)0);
+# 332 "polar_active.c"
+__cuda_local_var_16153_16_const_d[2][2] = ((int8_t)1);
+# 334 "polar_active.c"
+(fe) ? ((void)0) : (__assert_fail(((const char *)"fe"), ((const char *)"polar_active.c"), 334U, __T7));
+# 335 "polar_active.c"
+(fe->p) ? ((void)0) : (__assert_fail(((const char *)"fe->p"), ((const char *)"polar_active.c"), 335U, __T7));
+# 336 "polar_active.c"
+(fe->dp) ? ((void)0) : (__assert_fail(((const char *)"fe->dp"), ((const char *)"polar_active.c"), 336U, __T7));
+# 337 "polar_active.c"
+(fe->param) ? ((void)0) : (__assert_fail(((const char *)"fe->param"), ((const char *)"polar_active.c"), 337U, __T7));
+# 339 "polar_active.c"
+_Z12field_vectorP7field_siPd((fe->p), index, (__cuda_local_var_16148_10_non_const_p));
+# 340 "polar_active.c"
+_Z22field_grad_vector_gradP12field_grad_siPA3_d((fe->dp), index, (__cuda_local_var_16150_10_non_const_dp));
+# 341 "polar_active.c"
+_Z18fe_polar_mol_fieldP10fe_polar_siPd(fe, index, (__cuda_local_var_16149_10_non_const_h));
+# 343 "polar_active.c"
+__cuda_local_var_16147_10_non_const_p2 = (0.0);
+# 344 "polar_active.c"
+__cuda_local_var_16146_10_non_const_pdoth = (0.0);
+# 346 "polar_active.c"
+for (__cuda_local_var_16143_7_non_const_ia = 0; (__cuda_local_var_16143_7_non_const_ia < 3); __cuda_local_var_16143_7_non_const_ia++)
+# 346 "polar_active.c"
+{
+# 347 "polar_active.c"
+__cuda_local_var_16147_10_non_const_p2 += (((__cuda_local_var_16148_10_non_const_p)[__cuda_local_var_16143_7_non_const_ia]) * ((__cuda_local_var_16148_10_non_const_p)[__cuda_local_var_16143_7_non_const_ia]));
+# 348 "polar_active.c"
+__cuda_local_var_16146_10_non_const_pdoth += (((__cuda_local_var_16148_10_non_const_p)[__cuda_local_var_16143_7_non_const_ia]) * ((__cuda_local_var_16149_10_non_const_h)[__cuda_local_var_16143_7_non_const_ia]));
+# 349 "polar_active.c"
+}
+# 351 "polar_active.c"
+for (__cuda_local_var_16143_7_non_const_ia = 0; (__cuda_local_var_16143_7_non_const_ia < 3); __cuda_local_var_16143_7_non_const_ia++)
+# 351 "polar_active.c"
+{
+# 352 "polar_active.c"
+for (__cuda_local_var_16143_11_non_const_ib = 0; (__cuda_local_var_16143_11_non_const_ib < 3); __cuda_local_var_16143_11_non_const_ib++)
+# 352 "polar_active.c"
+{
+# 353 "polar_active.c"
+__cuda_local_var_16145_10_non_const_sum = (0.0);
+# 354 "polar_active.c"
+for (__cuda_local_var_16143_15_non_const_ic = 0; (__cuda_local_var_16143_15_non_const_ic < 3); __cuda_local_var_16143_15_non_const_ic++)
+# 354 "polar_active.c"
+{
+# 355 "polar_active.c"
+__cuda_local_var_16145_10_non_const_sum += (((((__cuda_local_var_16150_10_non_const_dp)[__cuda_local_var_16143_7_non_const_ia]))[__cuda_local_var_16143_15_non_const_ic]) * ((((__cuda_local_var_16150_10_non_const_dp)[__cuda_local_var_16143_11_non_const_ib]))[__cuda_local_var_16143_15_non_const_ic]));
+# 356 "polar_active.c"
+}
+# 357 "polar_active.c"
+(((s[__cuda_local_var_16143_7_non_const_ia]))[__cuda_local_var_16143_11_non_const_ib]) = (((((0.5) * ((((__cuda_local_var_16148_10_non_const_p)[__cuda_local_var_16143_7_non_const_ia]) * ((__cuda_local_var_16149_10_non_const_h)[__cuda_local_var_16143_11_non_const_ib])) - (((__cuda_local_var_16148_10_non_const_p)[__cuda_local_var_16143_11_non_const_ib]) * ((__cuda_local_var_16149_10_non_const_h)[__cuda_local_var_16143_7_non_const_ia])))) - (((fe->param)->lambda) * (((0.5) * ((((__cuda_local_var_16148_10_non_const_p)[__cuda_local_var_16143_7_non_const_ia]) * ((__cuda_local_var_16149_10_non_const_h)[__cuda_local_var_16143_11_non_const_ib])) + (((__cuda_local_var_16148_10_non_const_p)[__cuda_local_var_16143_11_non_const_ib]) * ((__cuda_local_var_16149_10_non_const_h)[__cuda_local_var_16143_7_non_const_ia])))) - (((0.3333333333333333148) * ((double)(((((const int8_t (*)[3])__cuda_local_var_16153_16_const_d)[__cuda_local_var_16143_7_non_const_ia]))[__cuda_local_var_16143_11_non_const_ib]))) * __cuda_local_var_16146_10_non_const_pdoth)))) - (((fe->param)->kappa1) * __cuda_local_var_16145_10_non_const_sum)) - (((fe->param)->zeta) * ((((__cuda_local_var_16148_10_non_const_p)[__cuda_local_var_16143_7_non_const_ia]) * ((__cuda_local_var_16148_10_non_const_p)[__cuda_local_var_16143_11_non_const_ib])) - (((0.3333333333333333148) * ((double)(((((const int8_t (*)[3])__cuda_local_var_16153_16_const_d)[__cuda_local_var_16143_7_non_const_ia]))[__cuda_local_var_16143_11_non_const_ib]))) * __cuda_local_var_16147_10_non_const_p2))));
+# 362 "polar_active.c"
+}
+# 363 "polar_active.c"
+}
+# 368 "polar_active.c"
+for (__cuda_local_var_16143_7_non_const_ia = 0; (__cuda_local_var_16143_7_non_const_ia < 3); __cuda_local_var_16143_7_non_const_ia++)
+# 368 "polar_active.c"
+{
+# 369 "polar_active.c"
+for (__cuda_local_var_16143_11_non_const_ib = 0; (__cuda_local_var_16143_11_non_const_ib < 3); __cuda_local_var_16143_11_non_const_ib++)
+# 369 "polar_active.c"
+{
+# 370 "polar_active.c"
+(((s[__cuda_local_var_16143_7_non_const_ia]))[__cuda_local_var_16143_11_non_const_ib]) = (-(((s[__cuda_local_var_16143_7_non_const_ia]))[__cuda_local_var_16143_11_non_const_ib]));
+# 371 "polar_active.c"
+}
+# 372 "polar_active.c"
+}
+# 374 "polar_active.c"
+return 0;
+# 375 "polar_active.c"
+}}
+# 386 "polar_active.c"
+___device__( __no_sc__) void _Z17fe_polar_stress_vP10fe_polar_siPA3_A1_d(
+# 386 "polar_active.c"
+fe_polar_t *fe, 
+# 386 "polar_active.c"
+int index, 
+# 386 "polar_active.c"
+double (*s)[3][1]){
+# 386 "polar_active.c"
+{
+# 388 "polar_active.c"
+ int __cuda_local_var_16201_7_non_const_ia;
+# 388 "polar_active.c"
+ int __cuda_local_var_16201_11_non_const_ib;
+# 388 "polar_active.c"
+ int __cuda_local_var_16201_15_non_const_iv;
+# 389 "polar_active.c"
+ double __cuda_local_var_16202_10_non_const_s1[3][3];
+# 391 "polar_active.c"
+(fe) ? ((void)0) : (__assert_fail(((const char *)"fe"), ((const char *)"polar_active.c"), 391U, __T8));
+# 393 "polar_active.c"
+for (__cuda_local_var_16201_15_non_const_iv = 0; (__cuda_local_var_16201_15_non_const_iv < 1); __cuda_local_var_16201_15_non_const_iv++)
+# 393 "polar_active.c"
+{
+# 394 "polar_active.c"
+_Z15fe_polar_stressP10fe_polar_siPA3_d(fe, (index + __cuda_local_var_16201_15_non_const_iv), (__cuda_local_var_16202_10_non_const_s1));
+# 395 "polar_active.c"
+for (__cuda_local_var_16201_7_non_const_ia = 0; (__cuda_local_var_16201_7_non_const_ia < 3); __cuda_local_var_16201_7_non_const_ia++)
+# 395 "polar_active.c"
+{
+# 396 "polar_active.c"
+for (__cuda_local_var_16201_11_non_const_ib = 0; (__cuda_local_var_16201_11_non_const_ib < 3); __cuda_local_var_16201_11_non_const_ib++)
+# 396 "polar_active.c"
+{
+# 397 "polar_active.c"
+(((((s[__cuda_local_var_16201_7_non_const_ia]))[__cuda_local_var_16201_11_non_const_ib]))[__cuda_local_var_16201_15_non_const_iv]) = ((((__cuda_local_var_16202_10_non_const_s1)[__cuda_local_var_16201_7_non_const_ia]))[__cuda_local_var_16201_11_non_const_ib]);
+# 398 "polar_active.c"
+}
+# 399 "polar_active.c"
+}
+# 400 "polar_active.c"
+}
+# 402 "polar_active.c"
+return;
+# 403 "polar_active.c"
+}}
+# 415 "polar_active.c"
+___device__( __no_sc__) int _Z18fe_polar_mol_fieldP10fe_polar_siPd(
+# 415 "polar_active.c"
+fe_polar_t *fe, 
+# 415 "polar_active.c"
+int index, 
+# 415 "polar_active.c"
+double *h){
+# 415 "polar_active.c"
+{
+# 417 "polar_active.c"
+ int __cuda_local_var_16221_7_non_const_ia;
+# 419 "polar_active.c"
+ double __cuda_local_var_16223_10_non_const_p2;
+# 420 "polar_active.c"
+ double __cuda_local_var_16224_10_non_const_p[3];
+# 421 "polar_active.c"
+ double __cuda_local_var_16225_10_non_const_dsqp[3];
+# 423 "polar_active.c"
+(fe) ? ((void)0) : (__assert_fail(((const char *)"fe"), ((const char *)"polar_active.c"), 423U, __T9));
+# 425 "polar_active.c"
+_Z12field_vectorP7field_siPd((fe->p), index, (__cuda_local_var_16224_10_non_const_p));
+# 426 "polar_active.c"
+_Z23field_grad_vector_delsqP12field_grad_siPd((fe->dp), index, (__cuda_local_var_16225_10_non_const_dsqp));
+# 428 "polar_active.c"
+__cuda_local_var_16223_10_non_const_p2 = (0.0);
+# 430 "polar_active.c"
+for (__cuda_local_var_16221_7_non_const_ia = 0; (__cuda_local_var_16221_7_non_const_ia < 3); __cuda_local_var_16221_7_non_const_ia++)
+# 430 "polar_active.c"
+{
+# 431 "polar_active.c"
+__cuda_local_var_16223_10_non_const_p2 += (((__cuda_local_var_16224_10_non_const_p)[__cuda_local_var_16221_7_non_const_ia]) * ((__cuda_local_var_16224_10_non_const_p)[__cuda_local_var_16221_7_non_const_ia]));
+# 432 "polar_active.c"
+}
+# 434 "polar_active.c"
+for (__cuda_local_var_16221_7_non_const_ia = 0; (__cuda_local_var_16221_7_non_const_ia < 3); __cuda_local_var_16221_7_non_const_ia++)
+# 434 "polar_active.c"
+{
+# 435 "polar_active.c"
+(h[__cuda_local_var_16221_7_non_const_ia]) = ((((-((fe->param)->a)) * ((__cuda_local_var_16224_10_non_const_p)[__cuda_local_var_16221_7_non_const_ia])) + (((-((fe->param)->b)) * __cuda_local_var_16223_10_non_const_p2) * ((__cuda_local_var_16224_10_non_const_p)[__cuda_local_var_16221_7_non_const_ia]))) + (((fe->param)->kappa1) * ((__cuda_local_var_16225_10_non_const_dsqp)[__cuda_local_var_16221_7_non_const_ia])));
+# 437 "polar_active.c"
+}
+# 439 "polar_active.c"
+return 0;
+# 440 "polar_active.c"
+}}

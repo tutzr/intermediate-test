@@ -1,0 +1,509 @@
+typedef char __nv_bool;
+# 22 "pe.h"
+struct pe_s;
+# 26 "coords.h"
+enum cartesian_directions {
+# 26 "coords.h"
+X,
+# 26 "coords.h"
+Y,
+# 26 "coords.h"
+Z};
+# 27 "coords.h"
+enum cartesian_neighbours {
+# 27 "coords.h"
+FORWARD,
+# 27 "coords.h"
+BACKWARD};
+# 28 "coords.h"
+enum cs_mpi_cart_neighbours {
+# 28 "coords.h"
+CS_FORW,
+# 28 "coords.h"
+CS_BACK};
+# 9 "coords_s.h"
+struct coords_param_s;
+# 24 "coords_s.h"
+struct coords_s;
+# 212 "/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stddef.h" 3
+typedef unsigned long size_t;
+#include "crt/device_runtime.h"
+# 25 ".././mpi_s/mpi.h"
+typedef int MPI_Handle;
+# 26 ".././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Comm;
+# 28 ".././target/target_cuda.h"
+typedef enum cudaMemcpyKind tdpMemcpyKind;
+# 47 ".././target/target_cuda.h"
+typedef enum cudaError tdpError_t;
+# 22 "pe.h"
+typedef struct pe_s pe_t;
+# 22 "coords.h"
+typedef struct coords_s cs_t;
+# 7 "coords_s.h"
+typedef struct coords_param_s cs_param_t;
+# 9 "coords_s.h"
+struct coords_param_s {
+# 10 "coords_s.h"
+int nhalo;
+# 11 "coords_s.h"
+int nsites;
+# 12 "coords_s.h"
+int ntotal[3];
+# 13 "coords_s.h"
+int nlocal[3];
+# 14 "coords_s.h"
+int noffset[3];
+# 15 "coords_s.h"
+int str[3];
+# 16 "coords_s.h"
+int periodic[3];
+# 18 "coords_s.h"
+int mpi_cartsz[3];
+# 19 "coords_s.h"
+int mpi_cartcoords[3];
+# 21 "coords_s.h"
+double lmin[3];};
+# 24 "coords_s.h"
+struct coords_s {
+# 25 "coords_s.h"
+pe_t *pe;
+# 26 "coords_s.h"
+int nref;
+# 28 "coords_s.h"
+cs_param_t *param;
+# 31 "coords_s.h"
+int mpi_cartrank;
+# 32 "coords_s.h"
+int reorder;
+# 33 "coords_s.h"
+int mpi_cart_neighbours[2][3];
+# 34 "coords_s.h"
+int *listnlocal[3];
+# 35 "coords_s.h"
+int *listnoffset[3];
+# 37 "coords_s.h"
+MPI_Comm commcart;
+# 38 "coords_s.h"
+MPI_Comm commperiodic;
+# 40 "coords_s.h"
+cs_t *target;};
+# 150 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) void free(void *);
+# 189 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__noreturn__)) void __assert_fail(const char *, const char *, unsigned, const char *);
+# 46 ".././target/target.h"
+___device__(extern  __no_sc__) tdpError_t _Z17tdpGetDeviceCountPi(int *);
+# 79 ".././target/target.h"
+___device__(extern  __no_sc__) tdpError_t _Z7tdpFreePv(void *);
+# 80 ".././target/target.h"
+___device__(extern  __no_sc__) tdpError_t _Z9tdpMallocPPvm(void **, size_t);
+# 117 ".././target/target.h"
+___device__(extern  __no_sc__) void _Z15tdpErrorHandler9cudaErrorPKcii(tdpError_t, const char *, int, int);
+# 47 "util.h"
+___device__(extern  __no_sc__) int _Z4iminii(const int, const int);
+# 48 "util.h"
+___device__(extern  __no_sc__) int _Z4imaxii(const int, const int);
+# 329 "coords.c"
+___device__(extern  __no_sc__) int _Z9cs_cartszP8coords_sPi(cs_t *, int *);
+# 347 "coords.c"
+___device__(extern  __no_sc__) int _Z14cs_cart_coordsP8coords_sPi(cs_t *, int *);
+# 401 "coords.c"
+___device__(extern  __no_sc__) int _Z11cs_periodicP8coords_sPi(cs_t *, int *);
+# 419 "coords.c"
+___device__(extern  __no_sc__) int _Z7cs_ltotP8coords_sPd(cs_t *, double *);
+# 437 "coords.c"
+___device__(extern  __no_sc__) int _Z7cs_lminP8coords_sPd(cs_t *, double *);
+# 459 "coords.c"
+___device__(extern  __no_sc__) int _Z9cs_nlocalP8coords_sPi(cs_t *, int *);
+# 480 "coords.c"
+___device__(extern  __no_sc__) int _Z9cs_nsitesP8coords_sPi(cs_t *, int *);
+# 499 "coords.c"
+___device__(extern  __no_sc__) int _Z16cs_nlocal_offsetP8coords_sPi(cs_t *, int *);
+# 610 "coords.c"
+___device__(extern  __no_sc__) int _Z8cs_indexP8coords_siii(cs_t *, int, int, int);
+# 649 "coords.c"
+___device__(extern  __no_sc__) int _Z8cs_nhaloP8coords_sPi(cs_t *, int *);
+# 666 "coords.c"
+___device__(extern  __no_sc__) int _Z9cs_ntotalP8coords_sPi(cs_t *, int *);
+# 753 "coords.c"
+___device__(extern  __no_sc__) int _Z19cs_minimum_distanceP8coords_sPKdS2_Pd(cs_t *, const double *, const double *, double *);
+# 783 "coords.c"
+___device__(extern  __no_sc__) int _Z15cs_index_to_ijkP8coords_siPi(cs_t *, int, int *);
+# 803 "coords.c"
+___device__(extern  __no_sc__) int _Z10cs_stridesP8coords_sPiS1_S1_(cs_t *, int *, int *, int *);
+# 883 "coords.c"
+___device__(extern  __no_sc__) int _Z7cs_nallP8coords_sPi(cs_t *, int *);
+# 27 "coords.c"
+static  __constant__  __var_used__ cs_param_t __nv_static_27__14_coords_cpp1_ii_7126c51d_const_param;
+static  __device__  __var_used__ const char __T7[33];
+static  __device__  __var_used__ const char __T8[38];
+static  __device__  __var_used__ const char __T11[35];
+static  __device__  __var_used__ const char __T12[34];
+static  __device__  __var_used__ const char __T13[34];
+static  __device__  __var_used__ const char __T14[33];
+static  __device__  __var_used__ const char __T15[33];
+static  __device__  __var_used__ const char __T16[40];
+static  __device__  __var_used__ const char __T19[40];
+static  __device__  __var_used__ const char __T21[32];
+static  __device__  __var_used__ const char __T22[33];
+static  __device__  __var_used__ const char __T27[78];
+static  __device__  __var_used__ const char __T28[44];
+static  __device__  __var_used__ const char __T29[48];
+static  __device__  __var_used__ const char __T33[31];
+#include "common_functions.h"
+static  __device__  __var_used__ const char __T7[33] = "int cs_cartsz(coords_s *, int *)";
+static  __device__  __var_used__ const char __T8[38] = "int cs_cart_coords(coords_s *, int *)";
+static  __device__  __var_used__ const char __T11[35] = "int cs_periodic(coords_s *, int *)";
+static  __device__  __var_used__ const char __T12[34] = "int cs_ltot(coords_s *, double *)";
+static  __device__  __var_used__ const char __T13[34] = "int cs_lmin(coords_s *, double *)";
+static  __device__  __var_used__ const char __T14[33] = "int cs_nlocal(coords_s *, int *)";
+static  __device__  __var_used__ const char __T15[33] = "int cs_nsites(coords_s *, int *)";
+static  __device__  __var_used__ const char __T16[40] = "int cs_nlocal_offset(coords_s *, int *)";
+static  __device__  __var_used__ const char __T19[40] = "int cs_index(coords_s *, int, int, int)";
+static  __device__  __var_used__ const char __T21[32] = "int cs_nhalo(coords_s *, int *)";
+static  __device__  __var_used__ const char __T22[33] = "int cs_ntotal(coords_s *, int *)";
+static  __device__  __var_used__ const char __T27[78] = "int cs_minimum_distance(coords_s *, const double *, const double *, double *)";
+static  __device__  __var_used__ const char __T28[44] = "int cs_index_to_ijk(coords_s *, int, int *)";
+static  __device__  __var_used__ const char __T29[48] = "int cs_strides(coords_s *, int *, int *, int *)";
+static  __device__  __var_used__ const char __T33[31] = "int cs_nall(coords_s *, int *)";
+# 329 "coords.c"
+___device__( __no_sc__) int _Z9cs_cartszP8coords_sPi(
+# 329 "coords.c"
+cs_t *cs, 
+# 329 "coords.c"
+int *sz){
+# 329 "coords.c"
+{
+# 331 "coords.c"
+(cs) ? ((void)0) : (__assert_fail(((const char *)"cs"), ((const char *)"coords.c"), 331U, __T7));
+# 333 "coords.c"
+(sz[X]) = ((((cs->param)->mpi_cartsz))[X]);
+# 334 "coords.c"
+(sz[Y]) = ((((cs->param)->mpi_cartsz))[Y]);
+# 335 "coords.c"
+(sz[Z]) = ((((cs->param)->mpi_cartsz))[Z]);
+# 337 "coords.c"
+return 0;
+# 338 "coords.c"
+}}
+# 347 "coords.c"
+___device__( __no_sc__) int _Z14cs_cart_coordsP8coords_sPi(
+# 347 "coords.c"
+cs_t *cs, 
+# 347 "coords.c"
+int *coords){
+# 347 "coords.c"
+{
+# 349 "coords.c"
+(cs) ? ((void)0) : (__assert_fail(((const char *)"cs"), ((const char *)"coords.c"), 349U, __T8));
+# 351 "coords.c"
+(coords[X]) = ((((cs->param)->mpi_cartcoords))[X]);
+# 352 "coords.c"
+(coords[Y]) = ((((cs->param)->mpi_cartcoords))[Y]);
+# 353 "coords.c"
+(coords[Z]) = ((((cs->param)->mpi_cartcoords))[Z]);
+# 355 "coords.c"
+return 0;
+# 356 "coords.c"
+}}
+# 401 "coords.c"
+___device__( __no_sc__) int _Z11cs_periodicP8coords_sPi(
+# 401 "coords.c"
+cs_t *cs, 
+# 401 "coords.c"
+int *periodic){
+# 401 "coords.c"
+{
+# 403 "coords.c"
+(cs) ? ((void)0) : (__assert_fail(((const char *)"cs"), ((const char *)"coords.c"), 403U, __T11));
+# 405 "coords.c"
+(periodic[X]) = ((((cs->param)->periodic))[X]);
+# 406 "coords.c"
+(periodic[Y]) = ((((cs->param)->periodic))[Y]);
+# 407 "coords.c"
+(periodic[Z]) = ((((cs->param)->periodic))[Z]);
+# 409 "coords.c"
+return 0;
+# 410 "coords.c"
+}}
+# 419 "coords.c"
+___device__( __no_sc__) int _Z7cs_ltotP8coords_sPd(
+# 419 "coords.c"
+cs_t *cs, 
+# 419 "coords.c"
+double *ltotal){
+# 419 "coords.c"
+{
+# 421 "coords.c"
+(cs) ? ((void)0) : (__assert_fail(((const char *)"cs"), ((const char *)"coords.c"), 421U, __T12));
+# 423 "coords.c"
+(ltotal[X]) = ((double)((((cs->param)->ntotal))[X]));
+# 424 "coords.c"
+(ltotal[Y]) = ((double)((((cs->param)->ntotal))[Y]));
+# 425 "coords.c"
+(ltotal[Z]) = ((double)((((cs->param)->ntotal))[Z]));
+# 427 "coords.c"
+return 0;
+# 428 "coords.c"
+}}
+# 437 "coords.c"
+___device__( __no_sc__) int _Z7cs_lminP8coords_sPd(
+# 437 "coords.c"
+cs_t *cs, 
+# 437 "coords.c"
+double *lmin){
+# 437 "coords.c"
+{
+# 439 "coords.c"
+(cs) ? ((void)0) : (__assert_fail(((const char *)"cs"), ((const char *)"coords.c"), 439U, __T13));
+# 441 "coords.c"
+(lmin[X]) = ((((cs->param)->lmin))[X]);
+# 442 "coords.c"
+(lmin[Y]) = ((((cs->param)->lmin))[Y]);
+# 443 "coords.c"
+(lmin[Z]) = ((((cs->param)->lmin))[Z]);
+# 445 "coords.c"
+return 0;
+# 446 "coords.c"
+}}
+# 459 "coords.c"
+___device__( __no_sc__) int _Z9cs_nlocalP8coords_sPi(
+# 459 "coords.c"
+cs_t *cs, 
+# 459 "coords.c"
+int *n){
+# 459 "coords.c"
+{
+# 461 "coords.c"
+(cs) ? ((void)0) : (__assert_fail(((const char *)"cs"), ((const char *)"coords.c"), 461U, __T14));
+# 463 "coords.c"
+(n[X]) = ((((cs->param)->nlocal))[X]);
+# 464 "coords.c"
+(n[Y]) = ((((cs->param)->nlocal))[Y]);
+# 465 "coords.c"
+(n[Z]) = ((((cs->param)->nlocal))[Z]);
+# 467 "coords.c"
+return 0;
+# 468 "coords.c"
+}}
+# 480 "coords.c"
+___device__( __no_sc__) int _Z9cs_nsitesP8coords_sPi(
+# 480 "coords.c"
+cs_t *cs, 
+# 480 "coords.c"
+int *nsites){
+# 480 "coords.c"
+{
+# 482 "coords.c"
+(cs) ? ((void)0) : (__assert_fail(((const char *)"cs"), ((const char *)"coords.c"), 482U, __T15));
+# 484 "coords.c"
+(*nsites) = ((cs->param)->nsites);
+# 486 "coords.c"
+return 0;
+# 487 "coords.c"
+}}
+# 499 "coords.c"
+___device__( __no_sc__) int _Z16cs_nlocal_offsetP8coords_sPi(
+# 499 "coords.c"
+cs_t *cs, 
+# 499 "coords.c"
+int *n){
+# 499 "coords.c"
+{
+# 501 "coords.c"
+(cs) ? ((void)0) : (__assert_fail(((const char *)"cs"), ((const char *)"coords.c"), 501U, __T16));
+# 503 "coords.c"
+(n[X]) = ((((cs->param)->noffset))[X]);
+# 504 "coords.c"
+(n[Y]) = ((((cs->param)->noffset))[Y]);
+# 505 "coords.c"
+(n[Z]) = ((((cs->param)->noffset))[Z]);
+# 507 "coords.c"
+return 0;
+# 508 "coords.c"
+}}
+# 610 "coords.c"
+___device__( __no_sc__) int _Z8cs_indexP8coords_siii(
+# 610 "coords.c"
+cs_t *cs, 
+# 610 "coords.c"
+int ic, 
+# 610 "coords.c"
+int jc, 
+# 610 "coords.c"
+int kc){
+# 610 "coords.c"
+{
+# 612 "coords.c"
+(cs) ? ((void)0) : (__assert_fail(((const char *)"cs"), ((const char *)"coords.c"), 612U, __T19));
+# 614 "coords.c"
+(ic >= (1 - ((cs->param)->nhalo))) ? ((void)0) : (__assert_fail(((const char *)"ic >= 1 - cs->param->nhalo"), ((const char *)"coords.c"), 614U, __T19));
+# 615 "coords.c"
+(jc >= (1 - ((cs->param)->nhalo))) ? ((void)0) : (__assert_fail(((const char *)"jc >= 1 - cs->param->nhalo"), ((const char *)"coords.c"), 615U, __T19));
+# 616 "coords.c"
+(kc >= (1 - ((cs->param)->nhalo))) ? ((void)0) : (__assert_fail(((const char *)"kc >= 1 - cs->param->nhalo"), ((const char *)"coords.c"), 616U, __T19));
+# 617 "coords.c"
+(ic <= (((((cs->param)->nlocal))[X]) + ((cs->param)->nhalo))) ? ((void)0) : (__assert_fail(((const char *)"ic <= cs->param->nlocal[X] + cs->param->nhalo"), ((const char *)"coords.c"), 617U, __T19));
+# 618 "coords.c"
+(jc <= (((((cs->param)->nlocal))[Y]) + ((cs->param)->nhalo))) ? ((void)0) : (__assert_fail(((const char *)"jc <= cs->param->nlocal[Y] + cs->param->nhalo"), ((const char *)"coords.c"), 618U, __T19));
+# 619 "coords.c"
+(kc <= (((((cs->param)->nlocal))[Z]) + ((cs->param)->nhalo))) ? ((void)0) : (__assert_fail(((const char *)"kc <= cs->param->nlocal[Z] + cs->param->nhalo"), ((const char *)"coords.c"), 619U, __T19));
+# 621 "coords.c"
+return ((((((cs->param)->str))[X]) * ((((cs->param)->nhalo) + ic) - 1)) + (((((cs->param)->str))[Y]) * ((((cs->param)->nhalo) + jc) - 1))) + (((((cs->param)->str))[Z]) * ((((cs->param)->nhalo) + kc) - 1));
+# 624 "coords.c"
+}}
+# 649 "coords.c"
+___device__( __no_sc__) int _Z8cs_nhaloP8coords_sPi(
+# 649 "coords.c"
+cs_t *cs, 
+# 649 "coords.c"
+int *nhalo){
+# 649 "coords.c"
+{
+# 651 "coords.c"
+(cs) ? ((void)0) : (__assert_fail(((const char *)"cs"), ((const char *)"coords.c"), 651U, __T21));
+# 652 "coords.c"
+(nhalo) ? ((void)0) : (__assert_fail(((const char *)"nhalo"), ((const char *)"coords.c"), 652U, __T21));
+# 654 "coords.c"
+(*nhalo) = ((cs->param)->nhalo);
+# 656 "coords.c"
+return 0;
+# 657 "coords.c"
+}}
+# 666 "coords.c"
+___device__( __no_sc__) int _Z9cs_ntotalP8coords_sPi(
+# 666 "coords.c"
+cs_t *cs, 
+# 666 "coords.c"
+int *ntotal){
+# 666 "coords.c"
+{
+# 668 "coords.c"
+(cs) ? ((void)0) : (__assert_fail(((const char *)"cs"), ((const char *)"coords.c"), 668U, __T22));
+# 670 "coords.c"
+(ntotal[X]) = ((((cs->param)->ntotal))[X]);
+# 671 "coords.c"
+(ntotal[Y]) = ((((cs->param)->ntotal))[Y]);
+# 672 "coords.c"
+(ntotal[Z]) = ((((cs->param)->ntotal))[Z]);
+# 674 "coords.c"
+return 0;
+# 675 "coords.c"
+}}
+# 753 "coords.c"
+___device__( __no_sc__) int _Z19cs_minimum_distanceP8coords_sPKdS2_Pd(
+# 753 "coords.c"
+cs_t *cs, 
+# 753 "coords.c"
+const double *r1, 
+# 754 "coords.c"
+const double *r2, 
+# 755 "coords.c"
+double *r12){
+# 755 "coords.c"
+{
+# 757 "coords.c"
+(cs) ? ((void)0) : (__assert_fail(((const char *)"cs"), ((const char *)"coords.c"), 757U, __T27));
+# 759 "coords.c"
+(r12[X]) = ((r2[X]) - (r1[X]));
+# 760 "coords.c"
+(r12[Y]) = ((r2[Y]) - (r1[Y]));
+# 761 "coords.c"
+(r12[Z]) = ((r2[Z]) - (r1[Z]));
+# 763 "coords.c"
+if ((r12[X]) > ((0.5) * ((double)((((cs->param)->ntotal))[X])))) {
+# 763 "coords.c"
+(r12[X]) -= (((1.0) * ((double)((((cs->param)->ntotal))[X]))) * ((double)((((cs->param)->periodic))[X]))); }
+# 764 "coords.c"
+if ((r12[X]) < ((-0.5) * ((double)((((cs->param)->ntotal))[X])))) {
+# 764 "coords.c"
+(r12[X]) += (((1.0) * ((double)((((cs->param)->ntotal))[X]))) * ((double)((((cs->param)->periodic))[X]))); }
+# 765 "coords.c"
+if ((r12[Y]) > ((0.5) * ((double)((((cs->param)->ntotal))[Y])))) {
+# 765 "coords.c"
+(r12[Y]) -= (((1.0) * ((double)((((cs->param)->ntotal))[Y]))) * ((double)((((cs->param)->periodic))[Y]))); }
+# 766 "coords.c"
+if ((r12[Y]) < ((-0.5) * ((double)((((cs->param)->ntotal))[Y])))) {
+# 766 "coords.c"
+(r12[Y]) += (((1.0) * ((double)((((cs->param)->ntotal))[Y]))) * ((double)((((cs->param)->periodic))[Y]))); }
+# 767 "coords.c"
+if ((r12[Z]) > ((0.5) * ((double)((((cs->param)->ntotal))[Z])))) {
+# 767 "coords.c"
+(r12[Z]) -= (((1.0) * ((double)((((cs->param)->ntotal))[Z]))) * ((double)((((cs->param)->periodic))[Z]))); }
+# 768 "coords.c"
+if ((r12[Z]) < ((-0.5) * ((double)((((cs->param)->ntotal))[Z])))) {
+# 768 "coords.c"
+(r12[Z]) += (((1.0) * ((double)((((cs->param)->ntotal))[Z]))) * ((double)((((cs->param)->periodic))[Z]))); }
+# 770 "coords.c"
+return 0;
+# 771 "coords.c"
+}}
+# 783 "coords.c"
+___device__( __no_sc__) int _Z15cs_index_to_ijkP8coords_siPi(
+# 783 "coords.c"
+cs_t *cs, 
+# 783 "coords.c"
+int index, 
+# 783 "coords.c"
+int *coords){
+# 783 "coords.c"
+{
+# 785 "coords.c"
+(cs) ? ((void)0) : (__assert_fail(((const char *)"cs"), ((const char *)"coords.c"), 785U, __T28));
+# 787 "coords.c"
+(coords[X]) = ((1 - ((cs->param)->nhalo)) + (index / ((((cs->param)->str))[X])));
+# 788 "coords.c"
+(coords[Y]) = ((1 - ((cs->param)->nhalo)) + ((index % ((((cs->param)->str))[X])) / ((((cs->param)->str))[Y])));
+# 789 "coords.c"
+(coords[Z]) = ((1 - ((cs->param)->nhalo)) + (index % ((((cs->param)->str))[Y])));
+# 791 "coords.c"
+((_Z8cs_indexP8coords_siii(cs, (coords[X]), (coords[Y]), (coords[Z]))) == index) ? ((void)0) : (__assert_fail(((const char *)"cs_index(cs, coords[X], coords[Y], coords[Z]) == index"), ((const char *)"coords.c"), 791U, __T28));
+# 793 "coords.c"
+return 0;
+# 794 "coords.c"
+}}
+# 803 "coords.c"
+___device__( __no_sc__) int _Z10cs_stridesP8coords_sPiS1_S1_(
+# 803 "coords.c"
+cs_t *cs, 
+# 803 "coords.c"
+int *xs, 
+# 803 "coords.c"
+int *ys, 
+# 803 "coords.c"
+int *zs){
+# 803 "coords.c"
+{
+# 805 "coords.c"
+(cs) ? ((void)0) : (__assert_fail(((const char *)"cs"), ((const char *)"coords.c"), 805U, __T29));
+# 807 "coords.c"
+(*xs) = ((((cs->param)->str))[X]);
+# 808 "coords.c"
+(*ys) = ((((cs->param)->str))[Y]);
+# 809 "coords.c"
+(*zs) = ((((cs->param)->str))[Z]);
+# 811 "coords.c"
+return 0;
+# 812 "coords.c"
+}}
+# 883 "coords.c"
+___device__( __no_sc__) int _Z7cs_nallP8coords_sPi(
+# 883 "coords.c"
+cs_t *cs, 
+# 883 "coords.c"
+int *nall){
+# 883 "coords.c"
+{
+# 885 "coords.c"
+(cs) ? ((void)0) : (__assert_fail(((const char *)"cs"), ((const char *)"coords.c"), 885U, __T33));
+# 887 "coords.c"
+(nall[X]) = (((((cs->param)->nlocal))[X]) + (2 * ((cs->param)->nhalo)));
+# 888 "coords.c"
+(nall[Y]) = (((((cs->param)->nlocal))[Y]) + (2 * ((cs->param)->nhalo)));
+# 889 "coords.c"
+(nall[Z]) = (((((cs->param)->nlocal))[Z]) + (2 * ((cs->param)->nhalo)));
+# 891 "coords.c"
+return 0;
+# 892 "coords.c"
+}}

@@ -1,0 +1,51 @@
+typedef char __nv_bool;
+# 22 "pe.h"
+struct pe_s;
+# 22 "coords.h"
+struct coords_s;
+# 22 "runtime.h"
+struct rt_s;
+# 28 "field.h"
+struct field_s;
+# 21 "field_grad.h"
+struct field_grad_s;
+# 25 "surfactant.h"
+struct fe_surfactant1_s;
+# 28 "surfactant.h"
+struct fe_surfactant1_param_s;
+# 212 "/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stddef.h" 3
+typedef unsigned long size_t;
+#include "crt/device_runtime.h"
+# 22 "pe.h"
+typedef struct pe_s pe_t;
+# 22 "coords.h"
+typedef struct coords_s cs_t;
+# 22 "runtime.h"
+typedef struct rt_s rt_t;
+# 28 "field.h"
+typedef struct field_s field_t;
+# 21 "field_grad.h"
+typedef struct field_grad_s field_grad_t;
+# 25 "surfactant.h"
+typedef struct fe_surfactant1_s fe_surfactant1_t;
+# 26 "surfactant.h"
+typedef struct fe_surfactant1_param_s fe_surfactant1_param_t;
+# 28 "surfactant.h"
+struct fe_surfactant1_param_s {
+# 29 "surfactant.h"
+double a;
+# 30 "surfactant.h"
+double b;
+# 31 "surfactant.h"
+double kappa;
+# 33 "surfactant.h"
+double kt;
+# 34 "surfactant.h"
+double epsilon;
+# 35 "surfactant.h"
+double beta;
+# 36 "surfactant.h"
+double w;};
+# 189 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__noreturn__)) void __assert_fail(const char *, const char *, unsigned, const char *);
+#include "common_functions.h"

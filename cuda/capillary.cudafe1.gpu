@@ -1,0 +1,83 @@
+typedef char __nv_bool;
+# 246 "/usr/include/libio.h" 3
+struct _IO_FILE;
+# 49 "capillary.c"
+enum map_status {
+# 49 "capillary.c"
+MAP_FLUID,
+# 49 "capillary.c"
+MAP_BOUNDARY,
+# 49 "capillary.c"
+MAP_COLLOID,
+# 49 "capillary.c"
+MAP_STATUS_MAX};
+# 62 "capillary.c"
+enum _ZUt0_ {
+# 62 "capillary.c"
+CIRCLE,
+# 62 "capillary.c"
+SQUARE,
+# 62 "capillary.c"
+XWALL,
+# 62 "capillary.c"
+YWALL,
+# 62 "capillary.c"
+ZWALL,
+# 62 "capillary.c"
+XWALL_OBSTACLES,
+# 62 "capillary.c"
+XWALL_BOTTOM,
+# 63 "capillary.c"
+SPECIAL_CROSS};
+# 103 "capillary.c"
+enum _ZUt1_ {
+# 103 "capillary.c"
+STATUS_ONLY,
+# 103 "capillary.c"
+STATUS_WITH_H,
+# 103 "capillary.c"
+STATUS_WITH_C_H,
+# 103 "capillary.c"
+STATUS_WITH_SIGMA};
+# 212 "/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stddef.h" 3
+typedef unsigned long size_t;
+#include "crt/device_runtime.h"
+# 48 "/usr/include/stdio.h" 3
+typedef struct _IO_FILE FILE;
+#if !defined(__CUDABE__)
+# 145 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+ __device_builtin__ ___device__(extern  __no_sc__) int printf(const char *__restrict__, ...);
+#endif
+# 149 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__malloc__)) __attribute__((__nothrow__)) void *malloc(size_t);
+# 150 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) void free(void *);
+# 189 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__noreturn__)) void __assert_fail(const char *, const char *, unsigned, const char *);
+#if !defined(__CUDABE__)
+# 612 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/math_functions.h"
+ __device_builtin__ ___device__(extern  __no_sc__) __attribute__((__nothrow__)) double sqrt(double);
+#endif
+#if !defined(__CUDABE__)
+# 3066 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/math_functions.h"
+ __device_builtin__ ___device__(extern  __no_sc__) __attribute__((__nothrow__)) double atan(double);
+#endif
+#if !defined(__CUDABE__)
+# 3089 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/math_functions.h"
+ __device_builtin__ ___device__(extern  __no_sc__) __attribute__((__nothrow__)) double acos(double);
+#endif
+#if !defined(__CUDABE__)
+# 4784 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/math_functions.h"
+ __device_builtin__ ___device__(extern  __no_sc__) __attribute__((__nothrow__)) double pow(double, double);
+#endif
+#include "common_functions.h"
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif

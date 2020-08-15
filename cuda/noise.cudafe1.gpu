@@ -1,0 +1,363 @@
+typedef char __nv_bool;
+# 246 "/usr/include/libio.h" 3
+struct _IO_FILE;
+# 22 "pe.h"
+struct pe_s;
+# 22 "coords.h"
+struct coords_s;
+# 26 "coords.h"
+enum cartesian_directions {
+# 26 "coords.h"
+X,
+# 26 "coords.h"
+Y,
+# 26 "coords.h"
+Z};
+# 28 "io_harness.h"
+enum io_format_enum {
+# 28 "io_harness.h"
+IO_FORMAT_NULL,
+# 29 "io_harness.h"
+IO_FORMAT_ASCII,
+# 30 "io_harness.h"
+IO_FORMAT_BINARY,
+# 31 "io_harness.h"
+IO_FORMAT_ASCII_SERIAL,
+# 32 "io_harness.h"
+IO_FORMAT_BINARY_SERIAL,
+# 33 "io_harness.h"
+IO_FORMAT_DEFAULT};
+# 44 "io_harness.h"
+struct io_info_arg_s;
+# 73 "io_harness.h"
+struct io_info_s;
+# 25 "noise.h"
+enum noise_enum_t {
+# 25 "noise.h"
+NOISE_RHO,
+# 26 "noise.h"
+NOISE_PHI,
+# 27 "noise.h"
+NOISE_QAB,
+# 28 "noise.h"
+NOISE_END};
+# 38 "noise.h"
+struct noise_s;
+# 212 "/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stddef.h" 3
+typedef unsigned long size_t;
+#include "crt/device_runtime.h"
+# 48 "/usr/include/stdio.h" 3
+typedef struct _IO_FILE FILE;
+# 28 ".././target/target_cuda.h"
+typedef enum cudaMemcpyKind tdpMemcpyKind;
+# 47 ".././target/target_cuda.h"
+typedef enum cudaError tdpError_t;
+# 22 "pe.h"
+typedef struct pe_s pe_t;
+# 22 "coords.h"
+typedef struct coords_s cs_t;
+# 33 "io_harness.h"
+typedef enum io_format_enum io_format_enum_t;
+# 36 "io_harness.h"
+typedef struct io_info_s io_info_t;
+# 39 "io_harness.h"
+typedef int (*io_rw_cb_ft)(FILE *, int, void *);
+# 42 "io_harness.h"
+typedef struct io_info_arg_s io_info_arg_t;
+# 44 "io_harness.h"
+struct io_info_arg_s {
+# 45 "io_harness.h"
+int grid[3];};
+# 29 "noise.h"
+typedef enum noise_enum_t noise_enum_t;
+# 31 "noise.h"
+typedef struct noise_s noise_t;
+# 38 "noise.h"
+struct noise_s {
+# 39 "noise.h"
+pe_t *pe;
+# 40 "noise.h"
+cs_t *cs;
+# 41 "noise.h"
+int master_seed;
+# 42 "noise.h"
+int nsites;
+# 43 "noise.h"
+int on[3];
+# 44 "noise.h"
+unsigned *state;
+# 45 "noise.h"
+double rtable[8];
+# 46 "noise.h"
+io_info_t *info;
+# 47 "noise.h"
+noise_t *target;};
+# 150 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) void free(void *);
+# 189 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__noreturn__)) void __assert_fail(const char *, const char *, unsigned, const char *);
+#if !defined(__CUDABE__)
+# 612 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/math_functions.h"
+ __device_builtin__ ___device__(extern  __no_sc__) __attribute__((__nothrow__)) double sqrt(double);
+#endif
+# 46 ".././target/target.h"
+___device__(extern  __no_sc__) tdpError_t _Z17tdpGetDeviceCountPi(int *);
+# 79 ".././target/target.h"
+___device__(extern  __no_sc__) tdpError_t _Z7tdpFreePv(void *);
+# 80 ".././target/target.h"
+___device__(extern  __no_sc__) tdpError_t _Z9tdpMallocPPvm(void **, size_t);
+# 59 "coords.h"
+___device__(extern  __no_sc__) int _Z9cs_nlocalP8coords_sPi(cs_t *, int *);
+# 60 "coords.h"
+___device__(extern  __no_sc__) int _Z16cs_nlocal_offsetP8coords_sPi(cs_t *, int *);
+# 62 "coords.h"
+___device__(extern  __no_sc__) int _Z8cs_indexP8coords_siii(cs_t *, int, int, int);
+# 63 "coords.h"
+___device__(extern  __no_sc__) int _Z9cs_ntotalP8coords_sPi(cs_t *, int *);
+# 64 "coords.h"
+___device__(extern  __no_sc__) int _Z9cs_nsitesP8coords_sPi(cs_t *, int *);
+# 203 "memory.h"
+___device__(extern  __no_sc__) int _Z25reverse_addr_rank1_assertiPKciiii(int, const char *, int, int, int, int);
+# 330 "noise.c"
+___device__(extern  __no_sc__) int _Z15noise_state_setP7noise_siPj(noise_t *, int, unsigned *);
+# 353 "noise.c"
+___device__(extern  __no_sc__) int _Z11noise_stateP7noise_siPj(noise_t *, int, unsigned *);
+# 377 "noise.c"
+___device__(extern  __no_sc__) int _Z10noise_reapP7noise_siPd(noise_t *, int, double *);
+# 398 "noise.c"
+___device__(extern  __no_sc__) int _Z12noise_reap_nP7noise_siiPd(noise_t *, int, int, double *);
+# 435 "noise.c"
+___device__(extern  __no_sc__) int _Z25noise_uniform_double_reapP7noise_siPd(noise_t *, int, double *);
+# 468 "noise.c"
+___device__(extern  __no_sc__) unsigned _Z13noise_uniformPj(unsigned *);
+# 542 "noise.c"
+___device__(extern  __no_sc__) int _Z13noise_presentP7noise_s12noise_enum_tPi(noise_t *, noise_enum_t, int *);
+static  __device__  __var_used__ const char __T6[52];
+static  __device__  __var_used__ const char __T7[48];
+static  __device__  __var_used__ const char __T8[41];
+static  __device__  __var_used__ const char __T9[48];
+static  __device__  __var_used__ const char __T10[56];
+static  __device__  __var_used__ const char __T11[43];
+static  __device__  __var_used__ const char __T14[50];
+#include "common_functions.h"
+static  __device__  __var_used__ const char __T6[52] = "int noise_state_set(noise_s *, int, unsigned int *)";
+static  __device__  __var_used__ const char __T7[48] = "int noise_state(noise_s *, int, unsigned int *)";
+static  __device__  __var_used__ const char __T8[41] = "int noise_reap(noise_s *, int, double *)";
+static  __device__  __var_used__ const char __T9[48] = "int noise_reap_n(noise_s *, int, int, double *)";
+static  __device__  __var_used__ const char __T10[56] = "int noise_uniform_double_reap(noise_s *, int, double *)";
+static  __device__  __var_used__ const char __T11[43] = "unsigned int noise_uniform(unsigned int *)";
+static  __device__  __var_used__ const char __T14[50] = "int noise_present(noise_s *, noise_enum_t, int *)";
+#if !defined(__CUDABE__)
+#endif
+# 330 "noise.c"
+___device__( __no_sc__) int _Z15noise_state_setP7noise_siPj(
+# 330 "noise.c"
+noise_t *obj, 
+# 330 "noise.c"
+int index, 
+# 331 "noise.c"
+unsigned *newstate){
+# 331 "noise.c"
+{
+# 332 "noise.c"
+ int __cuda_local_var_15734_7_non_const_ia;
+# 334 "noise.c"
+(obj) ? ((void)0) : (__assert_fail(((const char *)"obj"), ((const char *)"noise.c"), 334U, __T6));
+# 335 "noise.c"
+(index >= 0) ? ((void)0) : (__assert_fail(((const char *)"index >= 0"), ((const char *)"noise.c"), 335U, __T6));
+# 336 "noise.c"
+(index < (obj->nsites)) ? ((void)0) : (__assert_fail(((const char *)"index < obj->nsites"), ((const char *)"noise.c"), 336U, __T6));
+# 338 "noise.c"
+for (__cuda_local_var_15734_7_non_const_ia = 0; (__cuda_local_var_15734_7_non_const_ia < 4); __cuda_local_var_15734_7_non_const_ia++)
+# 338 "noise.c"
+{
+# 339 "noise.c"
+((obj->state)[(_Z25reverse_addr_rank1_assertiPKciiii(339, ((const char *)"noise.c"), (obj->nsites), 4, index, __cuda_local_var_15734_7_non_const_ia))]) = (newstate[__cuda_local_var_15734_7_non_const_ia]);
+# 340 "noise.c"
+}
+# 342 "noise.c"
+return 0;
+# 343 "noise.c"
+}}
+# 353 "noise.c"
+___device__( __no_sc__) int _Z11noise_stateP7noise_siPj(
+# 353 "noise.c"
+noise_t *obj, 
+# 353 "noise.c"
+int index, 
+# 354 "noise.c"
+unsigned *state){
+# 354 "noise.c"
+{
+# 355 "noise.c"
+ int __cuda_local_var_15749_7_non_const_ia;
+# 357 "noise.c"
+(obj) ? ((void)0) : (__assert_fail(((const char *)"obj"), ((const char *)"noise.c"), 357U, __T7));
+# 358 "noise.c"
+(index >= 0) ? ((void)0) : (__assert_fail(((const char *)"index >= 0"), ((const char *)"noise.c"), 358U, __T7));
+# 359 "noise.c"
+(index < (obj->nsites)) ? ((void)0) : (__assert_fail(((const char *)"index < obj->nsites"), ((const char *)"noise.c"), 359U, __T7));
+# 361 "noise.c"
+for (__cuda_local_var_15749_7_non_const_ia = 0; (__cuda_local_var_15749_7_non_const_ia < 4); __cuda_local_var_15749_7_non_const_ia++)
+# 361 "noise.c"
+{
+# 362 "noise.c"
+(state[__cuda_local_var_15749_7_non_const_ia]) = ((obj->state)[(_Z25reverse_addr_rank1_assertiPKciiii(362, ((const char *)"noise.c"), (obj->nsites), 4, index, __cuda_local_var_15749_7_non_const_ia))]);
+# 363 "noise.c"
+}
+# 365 "noise.c"
+return 0;
+# 366 "noise.c"
+}}
+# 377 "noise.c"
+___device__( __no_sc__) int _Z10noise_reapP7noise_siPd(
+# 377 "noise.c"
+noise_t *obj, 
+# 377 "noise.c"
+int index, 
+# 377 "noise.c"
+double *reap){
+# 377 "noise.c"
+{
+# 379 "noise.c"
+(obj) ? ((void)0) : (__assert_fail(((const char *)"obj"), ((const char *)"noise.c"), 379U, __T8));
+# 380 "noise.c"
+(index >= 0) ? ((void)0) : (__assert_fail(((const char *)"index >= 0"), ((const char *)"noise.c"), 380U, __T8));
+# 381 "noise.c"
+(index < (obj->nsites)) ? ((void)0) : (__assert_fail(((const char *)"index < obj->nsites"), ((const char *)"noise.c"), 381U, __T8));
+# 383 "noise.c"
+_Z12noise_reap_nP7noise_siiPd(obj, index, 10, reap);
+# 385 "noise.c"
+return 0;
+# 386 "noise.c"
+}}
+# 398 "noise.c"
+___device__( __no_sc__) int _Z12noise_reap_nP7noise_siiPd(
+# 398 "noise.c"
+noise_t *obj, 
+# 398 "noise.c"
+int index, 
+# 398 "noise.c"
+int nmax, 
+# 398 "noise.c"
+double *reap){
+# 398 "noise.c"
+{
+# 400 "noise.c"
+ unsigned __cuda_local_var_15777_16_non_const_iuniform;
+# 401 "noise.c"
+ unsigned __cuda_local_var_15778_16_non_const_state[4];
+# 402 "noise.c"
+ int __cuda_local_var_15779_7_non_const_ia;
+# 404 "noise.c"
+(obj) ? ((void)0) : (__assert_fail(((const char *)"obj"), ((const char *)"noise.c"), 404U, __T9));
+# 405 "noise.c"
+(index >= 0) ? ((void)0) : (__assert_fail(((const char *)"index >= 0"), ((const char *)"noise.c"), 405U, __T9));
+# 406 "noise.c"
+(index < (obj->nsites)) ? ((void)0) : (__assert_fail(((const char *)"index < obj->nsites"), ((const char *)"noise.c"), 406U, __T9));
+# 407 "noise.c"
+(nmax <= 10) ? ((void)0) : (__assert_fail(((const char *)"nmax <= 10"), ((const char *)"noise.c"), 407U, __T9));
+# 409 "noise.c"
+_Z11noise_stateP7noise_siPj(obj, index, (__cuda_local_var_15778_16_non_const_state));
+# 410 "noise.c"
+__cuda_local_var_15777_16_non_const_iuniform = (_Z13noise_uniformPj((__cuda_local_var_15778_16_non_const_state)));
+# 411 "noise.c"
+_Z15noise_state_setP7noise_siPj(obj, index, (__cuda_local_var_15778_16_non_const_state));
+# 416 "noise.c"
+__cuda_local_var_15777_16_non_const_iuniform >>= 2;
+# 418 "noise.c"
+for (__cuda_local_var_15779_7_non_const_ia = 0; (__cuda_local_var_15779_7_non_const_ia < nmax); __cuda_local_var_15779_7_non_const_ia++)
+# 418 "noise.c"
+{
+# 419 "noise.c"
+(reap[__cuda_local_var_15779_7_non_const_ia]) = (((obj->rtable))[(__cuda_local_var_15777_16_non_const_iuniform & 7U)]);
+# 420 "noise.c"
+__cuda_local_var_15777_16_non_const_iuniform >>= 3;
+# 421 "noise.c"
+}
+# 423 "noise.c"
+return 0;
+# 424 "noise.c"
+}}
+# 435 "noise.c"
+___device__( __no_sc__) int _Z25noise_uniform_double_reapP7noise_siPd(
+# 435 "noise.c"
+noise_t *obj, 
+# 435 "noise.c"
+int index, 
+# 435 "noise.c"
+double *reap){
+# 435 "noise.c"
+{
+# 437 "noise.c"
+ unsigned __cuda_local_var_15806_16_non_const_iuniform;
+# 438 "noise.c"
+ unsigned __cuda_local_var_15807_16_non_const_state[4];
+# 440 "noise.c"
+(obj) ? ((void)0) : (__assert_fail(((const char *)"obj"), ((const char *)"noise.c"), 440U, __T10));
+# 441 "noise.c"
+(index >= 0) ? ((void)0) : (__assert_fail(((const char *)"index >= 0"), ((const char *)"noise.c"), 441U, __T10));
+# 442 "noise.c"
+(index < (obj->nsites)) ? ((void)0) : (__assert_fail(((const char *)"index < obj->nsites"), ((const char *)"noise.c"), 442U, __T10));
+# 444 "noise.c"
+_Z11noise_stateP7noise_siPj(obj, index, (__cuda_local_var_15807_16_non_const_state));
+# 445 "noise.c"
+__cuda_local_var_15806_16_non_const_iuniform = (_Z13noise_uniformPj((__cuda_local_var_15807_16_non_const_state)));
+# 446 "noise.c"
+_Z15noise_state_setP7noise_siPj(obj, index, (__cuda_local_var_15807_16_non_const_state));
+# 448 "noise.c"
+(*reap) = ((2.328306437080797375e-10) * ((double)__cuda_local_var_15806_16_non_const_iuniform));
+# 450 "noise.c"
+return 0;
+# 451 "noise.c"
+}}
+# 468 "noise.c"
+___device__( __no_sc__) unsigned _Z13noise_uniformPj(
+# 468 "noise.c"
+unsigned *state){
+# 468 "noise.c"
+{
+# 470 "noise.c"
+ unsigned __cuda_local_var_15825_16_non_const_b;
+# 472 "noise.c"
+(void)0;
+# 474 "noise.c"
+(state[0]) = ((69069U * (state[0])) + 1234567U);
+# 475 "noise.c"
+__cuda_local_var_15825_16_non_const_b = ((state[1]) ^ ((state[1]) << 17));
+# 476 "noise.c"
+__cuda_local_var_15825_16_non_const_b ^= (__cuda_local_var_15825_16_non_const_b >> 13);
+# 477 "noise.c"
+(state[1]) = (__cuda_local_var_15825_16_non_const_b ^ (__cuda_local_var_15825_16_non_const_b << 5));
+# 478 "noise.c"
+(state[2]) = ((36969U * ((state[2]) & 65535U)) + ((state[2]) >> 16));
+# 479 "noise.c"
+(state[3]) = ((18000U * ((state[3]) & 65535U)) + ((state[3]) >> 16));
+# 480 "noise.c"
+__cuda_local_var_15825_16_non_const_b = (((state[2]) << 16) + (state[3]));
+# 482 "noise.c"
+return (state[1]) + ((state[0]) ^ __cuda_local_var_15825_16_non_const_b);
+# 483 "noise.c"
+}}
+# 542 "noise.c"
+___device__( __no_sc__) int _Z13noise_presentP7noise_s12noise_enum_tPi(
+# 542 "noise.c"
+noise_t *noise, 
+# 542 "noise.c"
+noise_enum_t type, 
+# 542 "noise.c"
+int *present){
+# 542 "noise.c"
+{
+# 544 "noise.c"
+(noise) ? ((void)0) : (__assert_fail(((const char *)"noise"), ((const char *)"noise.c"), 544U, __T14));
+# 545 "noise.c"
+(((int)type) < 3) ? ((void)0) : (__assert_fail(((const char *)"type < NOISE_END"), ((const char *)"noise.c"), 545U, __T14));
+# 546 "noise.c"
+(present) ? ((void)0) : (__assert_fail(((const char *)"present"), ((const char *)"noise.c"), 546U, __T14));
+# 548 "noise.c"
+(*present) = (((noise->on))[type]);
+# 550 "noise.c"
+return 0;
+# 551 "noise.c"
+}}

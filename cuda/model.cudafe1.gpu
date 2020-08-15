@@ -1,0 +1,835 @@
+typedef char __nv_bool;
+# 246 "/usr/include/libio.h" 3
+struct _IO_FILE;
+# 33 ".././mpi_s/mpi.h"
+struct MPI_Status;
+# 58 ".././mpi_s/mpi.h"
+enum elementary_datatypes {
+# 58 ".././mpi_s/mpi.h"
+MPI_CHAR,
+# 59 ".././mpi_s/mpi.h"
+MPI_SHORT,
+# 60 ".././mpi_s/mpi.h"
+MPI_INT,
+# 61 ".././mpi_s/mpi.h"
+MPI_LONG,
+# 62 ".././mpi_s/mpi.h"
+MPI_UNSIGNED_CHAR,
+# 63 ".././mpi_s/mpi.h"
+MPI_UNSIGNED_SHORT,
+# 64 ".././mpi_s/mpi.h"
+MPI_UNSIGNED,
+# 65 ".././mpi_s/mpi.h"
+MPI_UNSIGNED_LONG,
+# 66 ".././mpi_s/mpi.h"
+MPI_FLOAT,
+# 67 ".././mpi_s/mpi.h"
+MPI_DOUBLE,
+# 68 ".././mpi_s/mpi.h"
+MPI_LONG_DOUBLE,
+# 69 ".././mpi_s/mpi.h"
+MPI_BYTE,
+# 70 ".././mpi_s/mpi.h"
+MPI_PACKED};
+# 22 "pe.h"
+struct pe_s;
+# 22 "coords.h"
+struct coords_s;
+# 26 "coords.h"
+enum cartesian_directions {
+# 26 "coords.h"
+X,
+# 26 "coords.h"
+Y,
+# 26 "coords.h"
+Z};
+# 27 "coords.h"
+enum cartesian_neighbours {
+# 27 "coords.h"
+FORWARD,
+# 27 "coords.h"
+BACKWARD};
+# 28 "coords.h"
+enum cs_mpi_cart_neighbours {
+# 28 "coords.h"
+CS_FORW,
+# 28 "coords.h"
+CS_BACK};
+# 21 "d3q19.h"
+enum _ZUt0_ {
+# 21 "d3q19.h"
+NDIM19 = 3};
+# 22 "d3q19.h"
+enum _ZUt1_ {
+# 22 "d3q19.h"
+NVEL19 = 19};
+# 23 "d3q19.h"
+enum _ZUt2_ {
+# 23 "d3q19.h"
+CVXBLOCK19 = 1};
+# 24 "d3q19.h"
+enum _ZUt3_ {
+# 24 "d3q19.h"
+CVYBLOCK19 = 3};
+# 25 "d3q19.h"
+enum _ZUt4_ {
+# 25 "d3q19.h"
+CVZBLOCK19 = 5};
+# 49 "model.h"
+enum _ZUt5_ {
+# 49 "model.h"
+NDIM = 3,
+# 50 "model.h"
+NVEL = 19,
+# 51 "model.h"
+CVXBLOCK = 1,
+# 52 "model.h"
+CVYBLOCK = 3,
+# 53 "model.h"
+CVZBLOCK = 5};
+# 32 "io_options.h"
+enum io_mode_enum {
+# 32 "io_options.h"
+IO_MODE_INVALID,
+# 32 "io_options.h"
+IO_MODE_SINGLE,
+# 32 "io_options.h"
+IO_MODE_MULTIPLE};
+# 36 "io_options.h"
+enum io_record_format_enum {
+# 36 "io_options.h"
+IO_RECORD_INVALID,
+# 37 "io_options.h"
+IO_RECORD_ASCII,
+# 38 "io_options.h"
+IO_RECORD_BINARY};
+# 42 "io_options.h"
+enum io_metadata_version_enum {
+# 42 "io_options.h"
+IO_METADATA_INVALID,
+# 43 "io_options.h"
+IO_METADATA_SINGLE_V1,
+# 44 "io_options.h"
+IO_METADATA_MULTI_V1};
+# 52 "io_options.h"
+struct io_options_s;
+# 36 "io_info_args.h"
+struct io_info_args_s;
+# 28 "io_harness.h"
+enum io_format_enum {
+# 28 "io_harness.h"
+IO_FORMAT_NULL,
+# 29 "io_harness.h"
+IO_FORMAT_ASCII,
+# 30 "io_harness.h"
+IO_FORMAT_BINARY,
+# 31 "io_harness.h"
+IO_FORMAT_ASCII_SERIAL,
+# 32 "io_harness.h"
+IO_FORMAT_BINARY_SERIAL,
+# 33 "io_harness.h"
+IO_FORMAT_DEFAULT};
+# 48 "io_harness.h"
+struct io_implementation_s;
+# 73 "io_harness.h"
+struct io_info_s;
+# 115 "memory.h"
+enum data_model_enum_type {
+# 115 "memory.h"
+DATA_MODEL_AOS,
+# 116 "memory.h"
+DATA_MODEL_SOA,
+# 117 "memory.h"
+DATA_MODEL_AOSOA};
+# 79 "model.h"
+enum lb_dist_enum_type {
+# 79 "model.h"
+LB_RHO,
+# 79 "model.h"
+LB_PHI};
+# 83 "model.h"
+enum lb_halo_enum_type {
+# 83 "model.h"
+LB_HALO_FULL,
+# 84 "model.h"
+LB_HALO_REDUCED,
+# 85 "model.h"
+LB_HALO_HOST,
+# 86 "model.h"
+LB_HALO_TARGET};
+# 88 "model.h"
+enum lb_relaxation_enum_t {
+# 88 "model.h"
+LB_RELAXATION_M10,
+# 88 "model.h"
+LB_RELAXATION_BGK,
+# 88 "model.h"
+LB_RELAXATION_TRT};
+# 23 "halo_swap.h"
+struct halo_swap_s;
+# 27 "lb_model_s.h"
+struct lb_collide_param_s;
+# 45 "lb_model_s.h"
+struct lb_data_s;
+# 212 "/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stddef.h" 3
+typedef unsigned long size_t;
+#include "crt/device_runtime.h"
+# 48 "/usr/include/stdio.h" 3
+typedef struct _IO_FILE FILE;
+# 194 "/usr/include/sys/types.h" 3
+typedef signed char int8_t;
+# 25 ".././mpi_s/mpi.h"
+typedef int MPI_Handle;
+# 26 ".././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Comm;
+# 28 ".././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Datatype;
+# 29 ".././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Request;
+# 33 ".././mpi_s/mpi.h"
+struct MPI_Status {
+# 34 ".././mpi_s/mpi.h"
+int MPI_SOURCE;
+# 35 ".././mpi_s/mpi.h"
+int MPI_TAG;};
+# 36 ".././mpi_s/mpi.h"
+typedef struct MPI_Status MPI_Status;
+# 38 ".././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Aint;
+# 28 ".././target/target_cuda.h"
+typedef enum cudaMemcpyKind tdpMemcpyKind;
+# 47 ".././target/target_cuda.h"
+typedef enum cudaError tdpError_t;
+# 22 "pe.h"
+typedef struct pe_s pe_t;
+# 22 "coords.h"
+typedef struct coords_s cs_t;
+# 48 "io_options.h"
+typedef enum io_mode_enum io_mode_enum_t;
+# 49 "io_options.h"
+typedef enum io_record_format_enum io_record_format_enum_t;
+# 50 "io_options.h"
+typedef enum io_metadata_version_enum io_metadata_version_enum_t;
+# 52 "io_options.h"
+struct io_options_s {
+# 53 "io_options.h"
+io_mode_enum_t mode;
+# 54 "io_options.h"
+io_record_format_enum_t iorformat;
+# 55 "io_options.h"
+io_metadata_version_enum_t metadata_version;
+# 56 "io_options.h"
+int report;
+# 57 "io_options.h"
+int asynchronous;};
+# 60 "io_options.h"
+typedef struct io_options_s io_options_t;
+# 32 "io_info_args.h"
+typedef struct io_info_args_s io_info_args_t;
+# 36 "io_info_args.h"
+struct io_info_args_s {
+# 37 "io_info_args.h"
+io_options_t input;
+# 38 "io_info_args.h"
+io_options_t output;
+# 39 "io_info_args.h"
+int grid[3];
+# 40 "io_info_args.h"
+int nfreq;};
+# 33 "io_harness.h"
+typedef enum io_format_enum io_format_enum_t;
+# 35 "io_harness.h"
+typedef struct io_implementation_s io_implementation_t;
+# 36 "io_harness.h"
+typedef struct io_info_s io_info_t;
+# 39 "io_harness.h"
+typedef int (*io_rw_cb_ft)(FILE *, int, void *);
+# 48 "io_harness.h"
+struct io_implementation_s {
+# 49 "io_harness.h"
+char name[8192];
+# 50 "io_harness.h"
+io_rw_cb_ft write_ascii;
+# 51 "io_harness.h"
+io_rw_cb_ft write_binary;
+# 52 "io_harness.h"
+io_rw_cb_ft read_ascii;
+# 53 "io_harness.h"
+io_rw_cb_ft read_binary;
+# 54 "io_harness.h"
+size_t bytesize_ascii;
+# 55 "io_harness.h"
+size_t bytesize_binary;};
+# 79 "model.h"
+typedef enum lb_dist_enum_type lb_dist_enum_t;
+# 82 "model.h"
+typedef struct lb_data_s lb_t;
+# 86 "model.h"
+typedef enum lb_halo_enum_type lb_halo_enum_t;
+# 89 "model.h"
+typedef enum lb_relaxation_enum_t lb_relaxation_enum_t;
+# 23 "halo_swap.h"
+typedef struct halo_swap_s halo_swap_t;
+# 27 "halo_swap.h"
+typedef void (*f_pack_t)(halo_swap_t *, int, double *);
+# 28 "halo_swap.h"
+typedef void (*f_unpack_t)(halo_swap_t *, int, double *);
+# 25 "lb_model_s.h"
+typedef struct lb_collide_param_s lb_collide_param_t;
+# 27 "lb_model_s.h"
+struct lb_collide_param_s {
+# 28 "lb_model_s.h"
+int8_t isghost;
+# 29 "lb_model_s.h"
+int8_t cv[19][3];
+# 30 "lb_model_s.h"
+int nsite;
+# 31 "lb_model_s.h"
+int ndist;
+# 32 "lb_model_s.h"
+double rho0;
+# 33 "lb_model_s.h"
+double eta_shear;
+# 34 "lb_model_s.h"
+double var_shear;
+# 35 "lb_model_s.h"
+double eta_bulk;
+# 36 "lb_model_s.h"
+double var_bulk;
+# 37 "lb_model_s.h"
+double var_noise[19];
+# 38 "lb_model_s.h"
+double rtau[19];
+# 39 "lb_model_s.h"
+double wv[19];
+# 40 "lb_model_s.h"
+double q[19][3][3];
+# 41 "lb_model_s.h"
+double ma[19][19];
+# 42 "lb_model_s.h"
+double mi[19][19];};
+# 45 "lb_model_s.h"
+struct lb_data_s {
+# 47 "lb_model_s.h"
+int ndist;
+# 48 "lb_model_s.h"
+int nsite;
+# 49 "lb_model_s.h"
+int model;
+# 51 "lb_model_s.h"
+pe_t *pe;
+# 52 "lb_model_s.h"
+cs_t *cs;
+# 53 "lb_model_s.h"
+halo_swap_t *halo;
+# 54 "lb_model_s.h"
+io_info_t *io_info;
+# 55 "lb_model_s.h"
+io_info_t *io_rho;
+# 57 "lb_model_s.h"
+double *f;
+# 58 "lb_model_s.h"
+double *fprime;
+# 60 "lb_model_s.h"
+lb_collide_param_t *param;
+# 61 "lb_model_s.h"
+lb_relaxation_enum_t nrelax;
+# 66 "lb_model_s.h"
+MPI_Datatype plane_xy_full;
+# 67 "lb_model_s.h"
+MPI_Datatype plane_xz_full;
+# 68 "lb_model_s.h"
+MPI_Datatype plane_yz_full;
+# 69 "lb_model_s.h"
+MPI_Datatype plane_xy_reduced[2];
+# 70 "lb_model_s.h"
+MPI_Datatype plane_xz_reduced[2];
+# 71 "lb_model_s.h"
+MPI_Datatype plane_yz_reduced[2];
+# 72 "lb_model_s.h"
+MPI_Datatype plane_xy[2];
+# 73 "lb_model_s.h"
+MPI_Datatype plane_xz[2];
+# 74 "lb_model_s.h"
+MPI_Datatype plane_yz[2];
+# 75 "lb_model_s.h"
+MPI_Datatype site_x[2];
+# 76 "lb_model_s.h"
+MPI_Datatype site_y[2];
+# 77 "lb_model_s.h"
+MPI_Datatype site_z[2];
+# 79 "lb_model_s.h"
+lb_t *target;};
+#if !defined(__CUDABE__)
+# 89 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+ __device_builtin__ ___device__(extern  __no_sc__) __attribute__((__nothrow__)) void *memcpy(void *__restrict__, const void *__restrict__, size_t);
+#endif
+#if !defined(__CUDABE__)
+# 88 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+ __device_builtin__ ___device__(extern  __no_sc__) __attribute__((__nothrow__)) void *memset(void *, int, size_t);
+#endif
+# 149 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__malloc__)) __attribute__((__nothrow__)) void *malloc(size_t);
+# 150 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) void free(void *);
+# 189 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__noreturn__)) void __assert_fail(const char *, const char *, unsigned, const char *);
+# 46 ".././target/target.h"
+___device__(extern  __no_sc__) tdpError_t _Z17tdpGetDeviceCountPi(int *);
+# 79 ".././target/target.h"
+___device__(extern  __no_sc__) tdpError_t _Z7tdpFreePv(void *);
+# 80 ".././target/target.h"
+___device__(extern  __no_sc__) tdpError_t _Z9tdpMallocPPvm(void **, size_t);
+# 117 ".././target/target.h"
+___device__(extern  __no_sc__) void _Z15tdpErrorHandler9cudaErrorPKcii(tdpError_t, const char *, int, int);
+# 54 "coords.h"
+___device__(extern  __no_sc__) int _Z9cs_cartszP8coords_sPi(cs_t *, int *);
+# 58 "coords.h"
+___device__(extern  __no_sc__) int _Z11cs_periodicP8coords_sPi(cs_t *, int *);
+# 59 "coords.h"
+___device__(extern  __no_sc__) int _Z9cs_nlocalP8coords_sPi(cs_t *, int *);
+# 60 "coords.h"
+___device__(extern  __no_sc__) int _Z16cs_nlocal_offsetP8coords_sPi(cs_t *, int *);
+# 61 "coords.h"
+___device__(extern  __no_sc__) int _Z8cs_nhaloP8coords_sPi(cs_t *, int *);
+# 62 "coords.h"
+___device__(extern  __no_sc__) int _Z8cs_indexP8coords_siii(cs_t *, int, int, int);
+# 67 "coords.h"
+___device__(extern  __no_sc__) int _Z15cs_index_to_ijkP8coords_siPi(cs_t *, int, int *);
+# 206 "memory.h"
+___device__(extern  __no_sc__) int _Z25reverse_addr_rank2_assertiPKciiiiii(int, const char *, int, int, int, int, int, int);
+# 41 "halo_swap.h"
+__global__ __var_used__ extern void _Z20halo_swap_pack_rank1P11halo_swap_siPd(halo_swap_t *, int, double *);
+# 42 "halo_swap.h"
+__global__ __var_used__ extern void _Z22halo_swap_unpack_rank1P11halo_swap_siPd(halo_swap_t *, int, double *);
+# 372 "model.c"
+___device__(extern  __no_sc__) int _Z7lb_nvelP9lb_data_sPi(lb_t *, int *);
+# 389 "model.c"
+___device__(extern  __no_sc__) int _Z7lb_ndimP9lb_data_sPi(lb_t *, int *);
+# 1214 "model.c"
+___device__(extern  __no_sc__) int _Z8lb_ndistP9lb_data_sPi(lb_t *, int *);
+# 1253 "model.c"
+___device__(extern  __no_sc__) int _Z4lb_fP9lb_data_siiiPd(lb_t *, int, int, int, double *);
+# 1274 "model.c"
+___device__(extern  __no_sc__) int _Z8lb_f_setP9lb_data_siiid(lb_t *, int, int, int, double);
+# 1295 "model.c"
+___device__(extern  __no_sc__) int _Z13lb_0th_momentP9lb_data_si17lb_dist_enum_typePd(lb_t *, int, lb_dist_enum_t, double *);
+# 1450 "model.c"
+___device__(extern  __no_sc__) int _Z10lb_f_indexP9lb_data_siiPd(lb_t *, int, int, double *);
+# 1476 "model.c"
+___device__(extern  __no_sc__) int _Z16lb_f_multi_indexP9lb_data_siiPA1_d(lb_t *, int, int, double (*)[1]);
+# 1503 "model.c"
+___device__(extern  __no_sc__) int _Z21lb_f_multi_index_partP9lb_data_siiPA1_di(lb_t *, int, int, double (*)[1], int);
+# 1532 "model.c"
+___device__(extern  __no_sc__) int _Z14lb_f_index_setP9lb_data_siiPd(lb_t *, int, int, double *);
+# 1558 "model.c"
+___device__(extern  __no_sc__) int _Z20lb_f_multi_index_setP9lb_data_siiPA1_d(lb_t *, int, int, double (*)[1]);
+# 1585 "model.c"
+___device__(extern  __no_sc__) int _Z25lb_f_multi_index_set_partP9lb_data_siiPA1_di(lb_t *, int, int, double (*)[1], int);
+# 50 "model.c"
+static  __constant__  __var_used__ lb_collide_param_t __nv_static_21__13_model_cpp1_ii_cs2_static_param;
+static  __device__  __var_used__ const char __T7[32];
+static  __device__  __var_used__ const char __T8[32];
+static  __device__  __var_used__ const char __T29[33];
+static  __device__  __var_used__ const char __T31[47];
+static  __device__  __var_used__ const char __T32[49];
+static  __device__  __var_used__ const char __T33[65];
+static  __device__  __var_used__ const char __T38[48];
+static  __device__  __var_used__ const char __T39[59];
+static  __device__  __var_used__ const char __T40[69];
+static  __device__  __var_used__ const char __T41[52];
+static  __device__  __var_used__ const char __T42[63];
+static  __device__  __var_used__ const char __T43[73];
+#include "common_functions.h"
+static  __device__  __var_used__ const char __T7[32] = "int lb_nvel(lb_data_s *, int *)";
+static  __device__  __var_used__ const char __T8[32] = "int lb_ndim(lb_data_s *, int *)";
+static  __device__  __var_used__ const char __T29[33] = "int lb_ndist(lb_data_s *, int *)";
+static  __device__  __var_used__ const char __T31[47] = "int lb_f(lb_data_s *, int, int, int, double *)";
+static  __device__  __var_used__ const char __T32[49] = "int lb_f_set(lb_data_s *, int, int, int, double)";
+static  __device__  __var_used__ const char __T33[65] = "int lb_0th_moment(lb_data_s *, int, lb_dist_enum_type, double *)";
+static  __device__  __var_used__ const char __T38[48] = "int lb_f_index(lb_data_s *, int, int, double *)";
+static  __device__  __var_used__ const char __T39[59] = "int lb_f_multi_index(lb_data_s *, int, int, double (*)[1])";
+static  __device__  __var_used__ const char __T40[69] = "int lb_f_multi_index_part(lb_data_s *, int, int, double (*)[1], int)";
+static  __device__  __var_used__ const char __T41[52] = "int lb_f_index_set(lb_data_s *, int, int, double *)";
+static  __device__  __var_used__ const char __T42[63] = "int lb_f_multi_index_set(lb_data_s *, int, int, double (*)[1])";
+static  __device__  __var_used__ const char __T43[73] = "int lb_f_multi_index_set_part(lb_data_s *, int, int, double (*)[1], int)";
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+# 372 "model.c"
+___device__( __no_sc__) int _Z7lb_nvelP9lb_data_sPi(
+# 372 "model.c"
+lb_t *lb, 
+# 372 "model.c"
+int *nvel){
+# 372 "model.c"
+{
+# 374 "model.c"
+(nvel) ? ((void)0) : (__assert_fail(((const char *)"nvel"), ((const char *)"model.c"), 374U, __T7));
+# 376 "model.c"
+(*nvel) = 19;
+# 378 "model.c"
+return 0;
+# 379 "model.c"
+}}
+# 389 "model.c"
+___device__( __no_sc__) int _Z7lb_ndimP9lb_data_sPi(
+# 389 "model.c"
+lb_t *lb, 
+# 389 "model.c"
+int *ndim){
+# 389 "model.c"
+{
+# 391 "model.c"
+(ndim) ? ((void)0) : (__assert_fail(((const char *)"ndim"), ((const char *)"model.c"), 391U, __T8));
+# 393 "model.c"
+(*ndim) = 3;
+# 395 "model.c"
+return 0;
+# 396 "model.c"
+}}
+# 1214 "model.c"
+___device__( __no_sc__) int _Z8lb_ndistP9lb_data_sPi(
+# 1214 "model.c"
+lb_t *lb, 
+# 1214 "model.c"
+int *ndist){
+# 1214 "model.c"
+{
+# 1216 "model.c"
+(lb) ? ((void)0) : (__assert_fail(((const char *)"lb"), ((const char *)"model.c"), 1216U, __T29));
+# 1217 "model.c"
+(ndist) ? ((void)0) : (__assert_fail(((const char *)"ndist"), ((const char *)"model.c"), 1217U, __T29));
+# 1219 "model.c"
+(*ndist) = (lb->ndist);
+# 1221 "model.c"
+return 0;
+# 1222 "model.c"
+}}
+# 1253 "model.c"
+___device__( __no_sc__) int _Z4lb_fP9lb_data_siiiPd(
+# 1253 "model.c"
+lb_t *lb, 
+# 1253 "model.c"
+int index, 
+# 1253 "model.c"
+int p, 
+# 1253 "model.c"
+int n, 
+# 1253 "model.c"
+double *f){
+# 1253 "model.c"
+{
+# 1255 "model.c"
+(lb) ? ((void)0) : (__assert_fail(((const char *)"lb"), ((const char *)"model.c"), 1255U, __T31));
+# 1256 "model.c"
+((index >= 0) && (index < (lb->nsite))) ? ((void)0) : (__assert_fail(((const char *)"index >= 0 && index < lb->nsite"), ((const char *)"model.c"), 1256U, __T31));
+# 1257 "model.c"
+((p >= 0) && (p < 19)) ? ((void)0) : (__assert_fail(((const char *)"p >= 0 && p < NVEL"), ((const char *)"model.c"), 1257U, __T31));
+# 1258 "model.c"
+((n >= 0) && (n < (lb->ndist))) ? ((void)0) : (__assert_fail(((const char *)"n >= 0 && n < lb->ndist"), ((const char *)"model.c"), 1258U, __T31));
+# 1260 "model.c"
+(*f) = ((lb->f)[(_Z25reverse_addr_rank2_assertiPKciiiiii(1260, ((const char *)"model.c"), (lb->nsite), (lb->ndist), 19, index, n, p))]);
+# 1262 "model.c"
+return 0;
+# 1263 "model.c"
+}}
+# 1274 "model.c"
+___device__( __no_sc__) int _Z8lb_f_setP9lb_data_siiid(
+# 1274 "model.c"
+lb_t *lb, 
+# 1274 "model.c"
+int index, 
+# 1274 "model.c"
+int p, 
+# 1274 "model.c"
+int n, 
+# 1274 "model.c"
+double fvalue){
+# 1274 "model.c"
+{
+# 1276 "model.c"
+(lb) ? ((void)0) : (__assert_fail(((const char *)"lb"), ((const char *)"model.c"), 1276U, __T32));
+# 1277 "model.c"
+((index >= 0) && (index < (lb->nsite))) ? ((void)0) : (__assert_fail(((const char *)"index >= 0 && index < lb->nsite"), ((const char *)"model.c"), 1277U, __T32));
+# 1278 "model.c"
+((p >= 0) && (p < 19)) ? ((void)0) : (__assert_fail(((const char *)"p >= 0 && p < NVEL"), ((const char *)"model.c"), 1278U, __T32));
+# 1279 "model.c"
+((n >= 0) && (n < (lb->ndist))) ? ((void)0) : (__assert_fail(((const char *)"n >= 0 && n < lb->ndist"), ((const char *)"model.c"), 1279U, __T32));
+# 1281 "model.c"
+((lb->f)[(_Z25reverse_addr_rank2_assertiPKciiiiii(1281, ((const char *)"model.c"), (lb->nsite), (lb->ndist), 19, index, n, p))]) = fvalue;
+# 1283 "model.c"
+return 0;
+# 1284 "model.c"
+}}
+# 1295 "model.c"
+___device__( __no_sc__) int _Z13lb_0th_momentP9lb_data_si17lb_dist_enum_typePd(
+# 1295 "model.c"
+lb_t *lb, 
+# 1295 "model.c"
+int index, 
+# 1295 "model.c"
+lb_dist_enum_t nd, 
+# 1295 "model.c"
+double *rho){
+# 1295 "model.c"
+{
+# 1297 "model.c"
+ int __cuda_local_var_16787_7_non_const_p;
+# 1299 "model.c"
+(lb) ? ((void)0) : (__assert_fail(((const char *)"lb"), ((const char *)"model.c"), 1299U, __T33));
+# 1300 "model.c"
+(rho) ? ((void)0) : (__assert_fail(((const char *)"rho"), ((const char *)"model.c"), 1300U, __T33));
+# 1301 "model.c"
+((index >= 0) && (index < (lb->nsite))) ? ((void)0) : (__assert_fail(((const char *)"index >= 0 && index < lb->nsite"), ((const char *)"model.c"), 1301U, __T33));
+# 1302 "model.c"
+(((int)nd) < (lb->ndist)) ? ((void)0) : (__assert_fail(((const char *)"nd < lb->ndist"), ((const char *)"model.c"), 1302U, __T33));
+# 1304 "model.c"
+(*rho) = (0.0);
+# 1306 "model.c"
+for (__cuda_local_var_16787_7_non_const_p = 0; (__cuda_local_var_16787_7_non_const_p < 19); __cuda_local_var_16787_7_non_const_p++)
+# 1306 "model.c"
+{
+# 1307 "model.c"
+(*rho) += ((lb->f)[(_Z25reverse_addr_rank2_assertiPKciiiiii(1307, ((const char *)"model.c"), (lb->nsite), (lb->ndist), 19, index, ((int)nd), __cuda_local_var_16787_7_non_const_p))]);
+# 1308 "model.c"
+}
+# 1310 "model.c"
+return 0;
+# 1311 "model.c"
+}}
+# 1450 "model.c"
+___device__( __no_sc__) int _Z10lb_f_indexP9lb_data_siiPd(
+# 1450 "model.c"
+lb_t *lb, 
+# 1450 "model.c"
+int index, 
+# 1450 "model.c"
+int n, 
+# 1450 "model.c"
+double *f){
+# 1450 "model.c"
+{
+# 1452 "model.c"
+ int __cuda_local_var_16900_7_non_const_p;
+# 1454 "model.c"
+(lb) ? ((void)0) : (__assert_fail(((const char *)"lb"), ((const char *)"model.c"), 1454U, __T38));
+# 1455 "model.c"
+((n >= 0) && (n < (lb->ndist))) ? ((void)0) : (__assert_fail(((const char *)"n >= 0 && n < lb->ndist"), ((const char *)"model.c"), 1455U, __T38));
+# 1456 "model.c"
+((index >= 0) && (index < (lb->nsite))) ? ((void)0) : (__assert_fail(((const char *)"index >= 0 && index < lb->nsite"), ((const char *)"model.c"), 1456U, __T38));
+# 1458 "model.c"
+for (__cuda_local_var_16900_7_non_const_p = 0; (__cuda_local_var_16900_7_non_const_p < 19); __cuda_local_var_16900_7_non_const_p++)
+# 1458 "model.c"
+{
+# 1459 "model.c"
+(f[__cuda_local_var_16900_7_non_const_p]) = ((lb->f)[(_Z25reverse_addr_rank2_assertiPKciiiiii(1459, ((const char *)"model.c"), (lb->nsite), (lb->ndist), 19, index, n, __cuda_local_var_16900_7_non_const_p))]);
+# 1460 "model.c"
+}
+# 1462 "model.c"
+return 0;
+# 1463 "model.c"
+}}
+# 1476 "model.c"
+___device__( __no_sc__) int _Z16lb_f_multi_indexP9lb_data_siiPA1_d(
+# 1476 "model.c"
+lb_t *lb, 
+# 1476 "model.c"
+int index, 
+# 1476 "model.c"
+int n, 
+# 1476 "model.c"
+double (*fv)[1]){
+# 1476 "model.c"
+{
+# 1478 "model.c"
+ int __cuda_local_var_16916_7_non_const_p;
+# 1478 "model.c"
+ int __cuda_local_var_16916_10_non_const_iv;
+# 1480 "model.c"
+(lb) ? ((void)0) : (__assert_fail(((const char *)"lb"), ((const char *)"model.c"), 1480U, __T39));
+# 1481 "model.c"
+((n >= 0) && (n < (lb->ndist))) ? ((void)0) : (__assert_fail(((const char *)"n >= 0 && n < lb->ndist"), ((const char *)"model.c"), 1481U, __T39));
+# 1482 "model.c"
+((index >= 0) && (index < (lb->nsite))) ? ((void)0) : (__assert_fail(((const char *)"index >= 0 && index < lb->nsite"), ((const char *)"model.c"), 1482U, __T39));
+# 1484 "model.c"
+for (__cuda_local_var_16916_7_non_const_p = 0; (__cuda_local_var_16916_7_non_const_p < 19); __cuda_local_var_16916_7_non_const_p++)
+# 1484 "model.c"
+{
+# 1485 "model.c"
+for (__cuda_local_var_16916_10_non_const_iv = 0; (__cuda_local_var_16916_10_non_const_iv < 1); __cuda_local_var_16916_10_non_const_iv++)
+# 1485 "model.c"
+{
+# 1486 "model.c"
+(((fv[__cuda_local_var_16916_7_non_const_p]))[__cuda_local_var_16916_10_non_const_iv]) = ((lb->f)[(_Z25reverse_addr_rank2_assertiPKciiiiii(1486, ((const char *)"model.c"), (lb->nsite), (lb->ndist), 19, (index + __cuda_local_var_16916_10_non_const_iv), n, __cuda_local_var_16916_7_non_const_p))]);
+# 1487 "model.c"
+}
+# 1488 "model.c"
+}
+# 1490 "model.c"
+return 0;
+# 1491 "model.c"
+}}
+# 1503 "model.c"
+___device__( __no_sc__) int _Z21lb_f_multi_index_partP9lb_data_siiPA1_di(
+# 1503 "model.c"
+lb_t *lb, 
+# 1503 "model.c"
+int index, 
+# 1503 "model.c"
+int n, 
+# 1503 "model.c"
+double (*fv)[1], 
+# 1504 "model.c"
+int nv){
+# 1504 "model.c"
+{
+# 1506 "model.c"
+ int __cuda_local_var_16935_7_non_const_p;
+# 1506 "model.c"
+ int __cuda_local_var_16935_10_non_const_iv;
+# 1508 "model.c"
+(lb) ? ((void)0) : (__assert_fail(((const char *)"lb"), ((const char *)"model.c"), 1508U, __T40));
+# 1509 "model.c"
+((n >= 0) && (n < (lb->ndist))) ? ((void)0) : (__assert_fail(((const char *)"n >= 0 && n < lb->ndist"), ((const char *)"model.c"), 1509U, __T40));
+# 1510 "model.c"
+((index >= 0) && (index < (lb->nsite))) ? ((void)0) : (__assert_fail(((const char *)"index >= 0 && index < lb->nsite"), ((const char *)"model.c"), 1510U, __T40));
+# 1511 "model.c"
+__assert_fail(((const char *)"0"), ((const char *)"model.c"), 1511U, __T40);
+# 1513 "model.c"
+for (__cuda_local_var_16935_7_non_const_p = 0; (__cuda_local_var_16935_7_non_const_p < 19); __cuda_local_var_16935_7_non_const_p++)
+# 1513 "model.c"
+{
+# 1514 "model.c"
+for (__cuda_local_var_16935_10_non_const_iv = 0; (__cuda_local_var_16935_10_non_const_iv < nv); __cuda_local_var_16935_10_non_const_iv++)
+# 1514 "model.c"
+{
+# 1515 "model.c"
+(((fv[__cuda_local_var_16935_7_non_const_p]))[__cuda_local_var_16935_10_non_const_iv]) = ((lb->f)[(_Z25reverse_addr_rank2_assertiPKciiiiii(1515, ((const char *)"model.c"), (lb->nsite), (lb->ndist), 19, (index + __cuda_local_var_16935_10_non_const_iv), n, __cuda_local_var_16935_7_non_const_p))]);
+# 1516 "model.c"
+}
+# 1517 "model.c"
+}
+# 1519 "model.c"
+return 0;
+# 1520 "model.c"
+}}
+# 1532 "model.c"
+___device__( __no_sc__) int _Z14lb_f_index_setP9lb_data_siiPd(
+# 1532 "model.c"
+lb_t *lb, 
+# 1532 "model.c"
+int index, 
+# 1532 "model.c"
+int n, 
+# 1532 "model.c"
+double *f){
+# 1532 "model.c"
+{
+# 1534 "model.c"
+ int __cuda_local_var_16954_7_non_const_p;
+# 1536 "model.c"
+(lb) ? ((void)0) : (__assert_fail(((const char *)"lb"), ((const char *)"model.c"), 1536U, __T41));
+# 1537 "model.c"
+((n >= 0) && (n < (lb->ndist))) ? ((void)0) : (__assert_fail(((const char *)"n >= 0 && n < lb->ndist"), ((const char *)"model.c"), 1537U, __T41));
+# 1538 "model.c"
+((index >= 0) && (index < (lb->nsite))) ? ((void)0) : (__assert_fail(((const char *)"index >= 0 && index < lb->nsite"), ((const char *)"model.c"), 1538U, __T41));
+# 1540 "model.c"
+for (__cuda_local_var_16954_7_non_const_p = 0; (__cuda_local_var_16954_7_non_const_p < 19); __cuda_local_var_16954_7_non_const_p++)
+# 1540 "model.c"
+{
+# 1541 "model.c"
+((lb->f)[(_Z25reverse_addr_rank2_assertiPKciiiiii(1541, ((const char *)"model.c"), (lb->nsite), (lb->ndist), 19, index, n, __cuda_local_var_16954_7_non_const_p))]) = (f[__cuda_local_var_16954_7_non_const_p]);
+# 1542 "model.c"
+}
+# 1544 "model.c"
+return 0;
+# 1545 "model.c"
+}}
+# 1558 "model.c"
+___device__( __no_sc__) int _Z20lb_f_multi_index_setP9lb_data_siiPA1_d(
+# 1558 "model.c"
+lb_t *lb, 
+# 1558 "model.c"
+int index, 
+# 1558 "model.c"
+int n, 
+# 1558 "model.c"
+double (*fv)[1]){
+# 1558 "model.c"
+{
+# 1560 "model.c"
+ int __cuda_local_var_16970_7_non_const_p;
+# 1560 "model.c"
+ int __cuda_local_var_16970_10_non_const_iv;
+# 1562 "model.c"
+(lb) ? ((void)0) : (__assert_fail(((const char *)"lb"), ((const char *)"model.c"), 1562U, __T42));
+# 1563 "model.c"
+((n >= 0) && (n < (lb->ndist))) ? ((void)0) : (__assert_fail(((const char *)"n >= 0 && n < lb->ndist"), ((const char *)"model.c"), 1563U, __T42));
+# 1564 "model.c"
+((index >= 0) && (index < (lb->nsite))) ? ((void)0) : (__assert_fail(((const char *)"index >= 0 && index < lb->nsite"), ((const char *)"model.c"), 1564U, __T42));
+# 1565 "model.c"
+__assert_fail(((const char *)"0"), ((const char *)"model.c"), 1565U, __T42);
+# 1566 "model.c"
+for (__cuda_local_var_16970_7_non_const_p = 0; (__cuda_local_var_16970_7_non_const_p < 19); __cuda_local_var_16970_7_non_const_p++)
+# 1566 "model.c"
+{
+# 1567 "model.c"
+for (__cuda_local_var_16970_10_non_const_iv = 0; (__cuda_local_var_16970_10_non_const_iv < 1); __cuda_local_var_16970_10_non_const_iv++)
+# 1567 "model.c"
+{
+# 1568 "model.c"
+((lb->f)[(_Z25reverse_addr_rank2_assertiPKciiiiii(1568, ((const char *)"model.c"), (lb->nsite), (lb->ndist), 19, (index + __cuda_local_var_16970_10_non_const_iv), n, __cuda_local_var_16970_7_non_const_p))]) = (((fv[__cuda_local_var_16970_7_non_const_p]))[__cuda_local_var_16970_10_non_const_iv]);
+# 1569 "model.c"
+}
+# 1570 "model.c"
+}
+# 1572 "model.c"
+return 0;
+# 1573 "model.c"
+}}
+# 1585 "model.c"
+___device__( __no_sc__) int _Z25lb_f_multi_index_set_partP9lb_data_siiPA1_di(
+# 1585 "model.c"
+lb_t *lb, 
+# 1585 "model.c"
+int index, 
+# 1585 "model.c"
+int n, 
+# 1586 "model.c"
+double (*fv)[1], 
+# 1586 "model.c"
+int nv){
+# 1586 "model.c"
+{
+# 1587 "model.c"
+ int __cuda_local_var_16988_7_non_const_p;
+# 1587 "model.c"
+ int __cuda_local_var_16988_10_non_const_iv;
+# 1589 "model.c"
+(lb) ? ((void)0) : (__assert_fail(((const char *)"lb"), ((const char *)"model.c"), 1589U, __T43));
+# 1590 "model.c"
+((n >= 0) && (n < (lb->ndist))) ? ((void)0) : (__assert_fail(((const char *)"n >= 0 && n < lb->ndist"), ((const char *)"model.c"), 1590U, __T43));
+# 1591 "model.c"
+((index >= 0) && (index < (lb->nsite))) ? ((void)0) : (__assert_fail(((const char *)"index >= 0 && index < lb->nsite"), ((const char *)"model.c"), 1591U, __T43));
+# 1592 "model.c"
+__assert_fail(((const char *)"0"), ((const char *)"model.c"), 1592U, __T43);
+# 1593 "model.c"
+for (__cuda_local_var_16988_7_non_const_p = 0; (__cuda_local_var_16988_7_non_const_p < 19); __cuda_local_var_16988_7_non_const_p++)
+# 1593 "model.c"
+{
+# 1594 "model.c"
+for (__cuda_local_var_16988_10_non_const_iv = 0; (__cuda_local_var_16988_10_non_const_iv < nv); __cuda_local_var_16988_10_non_const_iv++)
+# 1594 "model.c"
+{
+# 1595 "model.c"
+((lb->f)[(_Z25reverse_addr_rank2_assertiPKciiiiii(1595, ((const char *)"model.c"), (lb->nsite), (lb->ndist), 19, (index + __cuda_local_var_16988_10_non_const_iv), n, __cuda_local_var_16988_7_non_const_p))]) = (((fv[__cuda_local_var_16988_7_non_const_p]))[__cuda_local_var_16988_10_non_const_iv]);
+# 1596 "model.c"
+}
+# 1597 "model.c"
+}
+# 1599 "model.c"
+return 0;
+# 1600 "model.c"
+}}

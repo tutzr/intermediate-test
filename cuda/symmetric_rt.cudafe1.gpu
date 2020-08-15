@@ -1,0 +1,59 @@
+typedef char __nv_bool;
+# 22 "pe.h"
+struct pe_s;
+# 22 "runtime.h"
+struct rt_s;
+# 18 "physics.h"
+struct physics_s;
+# 28 "field.h"
+struct field_s;
+# 22 "field_phi_init.h"
+struct field_phi_info_s;
+# 28 "symmetric.h"
+struct fe_symm_s;
+# 40 "symmetric.h"
+struct fe_symm_param_s;
+# 212 "/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stddef.h" 3
+typedef unsigned long size_t;
+#include "crt/device_runtime.h"
+# 22 "pe.h"
+typedef struct pe_s pe_t;
+# 22 "runtime.h"
+typedef struct rt_s rt_t;
+# 18 "physics.h"
+typedef struct physics_s physics_t;
+# 28 "field.h"
+typedef struct field_s field_t;
+# 20 "field_phi_init.h"
+typedef struct field_phi_info_s field_phi_info_t;
+# 22 "field_phi_init.h"
+struct field_phi_info_s {
+# 23 "field_phi_init.h"
+double xi0;
+# 24 "field_phi_init.h"
+double phi0;
+# 25 "field_phi_init.h"
+double phistar;};
+# 23 "symmetric.h"
+typedef struct fe_symm_param_s fe_symm_param_t;
+# 24 "symmetric.h"
+typedef struct fe_symm_s fe_symm_t;
+# 40 "symmetric.h"
+struct fe_symm_param_s {
+# 41 "symmetric.h"
+double a;
+# 42 "symmetric.h"
+double b;
+# 43 "symmetric.h"
+double kappa;};
+# 189 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__noreturn__)) void __assert_fail(const char *, const char *, unsigned, const char *);
+# 40 "physics.h"
+___device__(extern  __no_sc__) int _Z11physics_refPP9physics_s(physics_t **);
+# 42 "physics.h"
+___device__(extern  __no_sc__) int _Z12physics_phi0P9physics_sPd(physics_t *, double *);
+# 53 "symmetric.h"
+___device__(extern  __no_sc__) int _Z27fe_symm_interfacial_tensionP9fe_symm_sPd(fe_symm_t *, double *);
+# 54 "symmetric.h"
+___device__(extern  __no_sc__) int _Z25fe_symm_interfacial_widthP9fe_symm_sPd(fe_symm_t *, double *);
+#include "common_functions.h"

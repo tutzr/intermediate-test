@@ -1,0 +1,81 @@
+typedef char __nv_bool;
+# 92 "../.././mpi_s/mpi.h"
+enum reserved_communicators {
+# 92 "../.././mpi_s/mpi.h"
+MPI_COMM_WORLD,
+# 92 "../.././mpi_s/mpi.h"
+MPI_COMM_SELF};
+# 22 "../.././src/pe.h"
+struct pe_s;
+# 24 "../.././src/pe.h"
+enum pe_enum_t {
+# 24 "../.././src/pe.h"
+PE_QUIET,
+# 24 "../.././src/pe.h"
+PE_VERBOSE,
+# 24 "../.././src/pe.h"
+PE_OPTION_MAX};
+# 22 "../.././src/runtime.h"
+struct rt_s;
+# 32 "../.././src/io_options.h"
+enum io_mode_enum {
+# 32 "../.././src/io_options.h"
+IO_MODE_INVALID,
+# 32 "../.././src/io_options.h"
+IO_MODE_SINGLE,
+# 32 "../.././src/io_options.h"
+IO_MODE_MULTIPLE};
+# 36 "../.././src/io_options.h"
+enum io_record_format_enum {
+# 36 "../.././src/io_options.h"
+IO_RECORD_INVALID,
+# 37 "../.././src/io_options.h"
+IO_RECORD_ASCII,
+# 38 "../.././src/io_options.h"
+IO_RECORD_BINARY};
+# 42 "../.././src/io_options.h"
+enum io_metadata_version_enum {
+# 42 "../.././src/io_options.h"
+IO_METADATA_INVALID,
+# 43 "../.././src/io_options.h"
+IO_METADATA_SINGLE_V1,
+# 44 "../.././src/io_options.h"
+IO_METADATA_MULTI_V1};
+# 52 "../.././src/io_options.h"
+struct io_options_s;
+# 212 "/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stddef.h" 3
+typedef unsigned long size_t;
+#include "crt/device_runtime.h"
+# 25 "../.././mpi_s/mpi.h"
+typedef int MPI_Handle;
+# 26 "../.././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Comm;
+# 22 "../.././src/pe.h"
+typedef struct pe_s pe_t;
+# 24 "../.././src/pe.h"
+typedef enum pe_enum_t pe_enum_t;
+# 22 "../.././src/runtime.h"
+typedef struct rt_s rt_t;
+# 48 "../.././src/io_options.h"
+typedef enum io_mode_enum io_mode_enum_t;
+# 49 "../.././src/io_options.h"
+typedef enum io_record_format_enum io_record_format_enum_t;
+# 50 "../.././src/io_options.h"
+typedef enum io_metadata_version_enum io_metadata_version_enum_t;
+# 52 "../.././src/io_options.h"
+struct io_options_s {
+# 53 "../.././src/io_options.h"
+io_mode_enum_t mode;
+# 54 "../.././src/io_options.h"
+io_record_format_enum_t iorformat;
+# 55 "../.././src/io_options.h"
+io_metadata_version_enum_t metadata_version;
+# 56 "../.././src/io_options.h"
+int report;
+# 57 "../.././src/io_options.h"
+int asynchronous;};
+# 60 "../.././src/io_options.h"
+typedef struct io_options_s io_options_t;
+# 189 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__noreturn__)) void __assert_fail(const char *, const char *, unsigned, const char *);
+#include "common_functions.h"

@@ -1,0 +1,65 @@
+typedef char __nv_bool;
+# 32 "io_options.h"
+enum io_mode_enum {
+# 32 "io_options.h"
+IO_MODE_INVALID,
+# 32 "io_options.h"
+IO_MODE_SINGLE,
+# 32 "io_options.h"
+IO_MODE_MULTIPLE};
+# 36 "io_options.h"
+enum io_record_format_enum {
+# 36 "io_options.h"
+IO_RECORD_INVALID,
+# 37 "io_options.h"
+IO_RECORD_ASCII,
+# 38 "io_options.h"
+IO_RECORD_BINARY};
+# 42 "io_options.h"
+enum io_metadata_version_enum {
+# 42 "io_options.h"
+IO_METADATA_INVALID,
+# 43 "io_options.h"
+IO_METADATA_SINGLE_V1,
+# 44 "io_options.h"
+IO_METADATA_MULTI_V1};
+# 52 "io_options.h"
+struct io_options_s;
+# 36 "io_info_args.h"
+struct io_info_args_s;
+# 212 "/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stddef.h" 3
+typedef unsigned long size_t;
+#include "crt/device_runtime.h"
+# 48 "io_options.h"
+typedef enum io_mode_enum io_mode_enum_t;
+# 49 "io_options.h"
+typedef enum io_record_format_enum io_record_format_enum_t;
+# 50 "io_options.h"
+typedef enum io_metadata_version_enum io_metadata_version_enum_t;
+# 52 "io_options.h"
+struct io_options_s {
+# 53 "io_options.h"
+io_mode_enum_t mode;
+# 54 "io_options.h"
+io_record_format_enum_t iorformat;
+# 55 "io_options.h"
+io_metadata_version_enum_t metadata_version;
+# 56 "io_options.h"
+int report;
+# 57 "io_options.h"
+int asynchronous;};
+# 60 "io_options.h"
+typedef struct io_options_s io_options_t;
+# 32 "io_info_args.h"
+typedef struct io_info_args_s io_info_args_t;
+# 36 "io_info_args.h"
+struct io_info_args_s {
+# 37 "io_info_args.h"
+io_options_t input;
+# 38 "io_info_args.h"
+io_options_t output;
+# 39 "io_info_args.h"
+int grid[3];
+# 40 "io_info_args.h"
+int nfreq;};
+#include "common_functions.h"

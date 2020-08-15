@@ -1,0 +1,159 @@
+typedef char __nv_bool;
+# 92 "../.././mpi_s/mpi.h"
+enum reserved_communicators {
+# 92 "../.././mpi_s/mpi.h"
+MPI_COMM_WORLD,
+# 92 "../.././mpi_s/mpi.h"
+MPI_COMM_SELF};
+# 22 "../.././src/pe.h"
+struct pe_s;
+# 24 "../.././src/pe.h"
+enum pe_enum_t {
+# 24 "../.././src/pe.h"
+PE_QUIET,
+# 24 "../.././src/pe.h"
+PE_VERBOSE,
+# 24 "../.././src/pe.h"
+PE_OPTION_MAX};
+# 22 "../.././src/coords.h"
+struct coords_s;
+# 26 "../.././src/coords.h"
+enum cartesian_directions {
+# 26 "../.././src/coords.h"
+X,
+# 26 "../.././src/coords.h"
+Y,
+# 26 "../.././src/coords.h"
+Z};
+# 73 "../.././src/io_harness.h"
+struct io_info_s;
+# 22 "../.././src/leesedwards.h"
+struct lees_edw_s;
+# 28 "../.././src/field.h"
+struct field_s;
+# 23 "../.././src/halo_swap.h"
+struct halo_swap_s;
+# 32 "../.././src/hydro.h"
+struct hydro_s;
+# 31 "../.././src/visc.h"
+struct visc_vt_s;
+# 37 "../.././src/visc.h"
+struct visc_s;
+# 31 "../.././src/visc_arrhenius.h"
+struct visc_arrhenius_s;
+# 41 "../.././src/visc_arrhenius.h"
+struct visc_arrhenius_param_s;
+# 212 "/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stddef.h" 3
+typedef unsigned long size_t;
+#include "crt/device_runtime.h"
+# 25 "../.././mpi_s/mpi.h"
+typedef int MPI_Handle;
+# 26 "../.././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Comm;
+# 28 "../.././target/target_cuda.h"
+typedef enum cudaMemcpyKind tdpMemcpyKind;
+# 47 "../.././target/target_cuda.h"
+typedef enum cudaError tdpError_t;
+# 22 "../.././src/pe.h"
+typedef struct pe_s pe_t;
+# 24 "../.././src/pe.h"
+typedef enum pe_enum_t pe_enum_t;
+# 22 "../.././src/coords.h"
+typedef struct coords_s cs_t;
+# 36 "../.././src/io_harness.h"
+typedef struct io_info_s io_info_t;
+# 22 "../.././src/leesedwards.h"
+typedef struct lees_edw_s lees_edw_t;
+# 28 "../.././src/field.h"
+typedef struct field_s field_t;
+# 23 "../.././src/halo_swap.h"
+typedef struct halo_swap_s halo_swap_t;
+# 26 "../.././src/hydro.h"
+typedef struct hydro_s hydro_t;
+# 32 "../.././src/hydro.h"
+struct hydro_s {
+# 33 "../.././src/hydro.h"
+int nsite;
+# 34 "../.././src/hydro.h"
+int nhcomm;
+# 35 "../.././src/hydro.h"
+double *u;
+# 36 "../.././src/hydro.h"
+double *f;
+# 37 "../.././src/hydro.h"
+double *eta;
+# 39 "../.././src/hydro.h"
+pe_t *pe;
+# 40 "../.././src/hydro.h"
+cs_t *cs;
+# 41 "../.././src/hydro.h"
+lees_edw_t *le;
+# 42 "../.././src/hydro.h"
+io_info_t *info;
+# 43 "../.././src/hydro.h"
+halo_swap_t *halo;
+# 44 "../.././src/hydro.h"
+hydro_t *target;};
+# 24 "../.././src/visc.h"
+typedef struct visc_vt_s visc_vt_t;
+# 25 "../.././src/visc.h"
+typedef struct visc_s visc_t;
+# 37 "../.././src/visc.h"
+struct visc_s {
+# 38 "../.././src/visc.h"
+const visc_vt_t *func;
+# 39 "../.././src/visc.h"
+int id;char __nv_no_debug_dummy_end_padding_0[4];};
+# 26 "../.././src/visc_arrhenius.h"
+typedef struct visc_arrhenius_param_s visc_arrhenius_param_t;
+# 27 "../.././src/visc_arrhenius.h"
+typedef struct visc_arrhenius_s visc_arrhenius_t;
+# 31 "../.././src/visc_arrhenius.h"
+struct visc_arrhenius_s {
+# 32 "../.././src/visc_arrhenius.h"
+visc_t super;
+# 33 "../.././src/visc_arrhenius.h"
+pe_t *pe;
+# 34 "../.././src/visc_arrhenius.h"
+cs_t *cs;
+# 35 "../.././src/visc_arrhenius.h"
+field_t *phi;
+# 36 "../.././src/visc_arrhenius.h"
+visc_arrhenius_param_t *param;};
+# 41 "../.././src/visc_arrhenius.h"
+struct visc_arrhenius_param_s {
+# 42 "../.././src/visc_arrhenius.h"
+double eta_minus;
+# 43 "../.././src/visc_arrhenius.h"
+double eta_plus;
+# 44 "../.././src/visc_arrhenius.h"
+double phistar;};
+# 189 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__noreturn__)) void __assert_fail(const char *, const char *, unsigned, const char *);
+#if !defined(__CUDABE__)
+# 244 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/math_functions.h"
+ __device_builtin__ ___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__const__)) double fabs(double);
+#endif
+#if !defined(__CUDABE__)
+# 612 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/math_functions.h"
+ __device_builtin__ ___device__(extern  __no_sc__) __attribute__((__nothrow__)) double sqrt(double);
+#endif
+#if !defined(__CUDABE__)
+# 4784 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/math_functions.h"
+ __device_builtin__ ___device__(extern  __no_sc__) __attribute__((__nothrow__)) double pow(double, double);
+#endif
+# 46 "../.././target/target.h"
+___device__(extern  __no_sc__) tdpError_t _Z17tdpGetDeviceCountPi(int *);
+# 59 "../.././src/coords.h"
+___device__(extern  __no_sc__) int _Z9cs_nlocalP8coords_sPi(cs_t *, int *);
+# 62 "../.././src/coords.h"
+___device__(extern  __no_sc__) int _Z8cs_indexP8coords_siii(cs_t *, int, int, int);
+# 200 "../.././src/memory.h"
+___device__(extern  __no_sc__) int _Z25reverse_addr_rank0_assertiPKcii(int, const char *, int, int);
+#include "common_functions.h"
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif

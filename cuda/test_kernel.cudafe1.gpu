@@ -1,0 +1,325 @@
+typedef char __nv_bool;
+# 2074 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/driver_types.h"
+struct CUstream_st;
+# 92 "../.././mpi_s/mpi.h"
+enum reserved_communicators {
+# 92 "../.././mpi_s/mpi.h"
+MPI_COMM_WORLD,
+# 92 "../.././mpi_s/mpi.h"
+MPI_COMM_SELF};
+# 22 "../.././src/pe.h"
+struct pe_s;
+# 24 "../.././src/pe.h"
+enum pe_enum_t {
+# 24 "../.././src/pe.h"
+PE_QUIET,
+# 24 "../.././src/pe.h"
+PE_VERBOSE,
+# 24 "../.././src/pe.h"
+PE_OPTION_MAX};
+# 22 "../.././src/coords.h"
+struct coords_s;
+# 26 "../.././src/coords.h"
+enum cartesian_directions {
+# 26 "../.././src/coords.h"
+X,
+# 26 "../.././src/coords.h"
+Y,
+# 26 "../.././src/coords.h"
+Z};
+# 23 "../.././src/kernel.h"
+struct kernel_param_s;
+# 28 "../.././src/kernel.h"
+struct kernel_ctxt_s;
+# 37 "../.././src/kernel.h"
+struct kernel_info_s;
+# 31 "test_kernel.c"
+struct data_s;
+# 212 "/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stddef.h" 3
+typedef unsigned long size_t;
+#include "crt/device_runtime.h"
+# 25 "../.././mpi_s/mpi.h"
+typedef int MPI_Handle;
+# 26 "../.././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Comm;
+# 28 "../.././target/target_cuda.h"
+typedef enum cudaMemcpyKind tdpMemcpyKind;
+# 29 "../.././target/target_cuda.h"
+typedef enum cudaDeviceAttr tdpDeviceAttr;
+# 47 "../.././target/target_cuda.h"
+typedef enum cudaError tdpError_t;
+# 22 "../.././src/pe.h"
+typedef struct pe_s pe_t;
+# 24 "../.././src/pe.h"
+typedef enum pe_enum_t pe_enum_t;
+# 22 "../.././src/coords.h"
+typedef struct coords_s cs_t;
+# 21 "../.././src/kernel.h"
+typedef struct kernel_ctxt_s kernel_ctxt_t;
+# 22 "../.././src/kernel.h"
+typedef struct kernel_info_s kernel_info_t;
+# 23 "../.././src/kernel.h"
+typedef struct kernel_param_s kernel_param_t;
+# 28 "../.././src/kernel.h"
+struct kernel_ctxt_s {
+# 29 "../.././src/kernel.h"
+kernel_param_t *param;
+# 30 "../.././src/kernel.h"
+kernel_ctxt_t *target;};
+# 37 "../.././src/kernel.h"
+struct kernel_info_s {
+# 38 "../.././src/kernel.h"
+int imin;
+# 39 "../.././src/kernel.h"
+int imax;
+# 40 "../.././src/kernel.h"
+int jmin;
+# 41 "../.././src/kernel.h"
+int jmax;
+# 42 "../.././src/kernel.h"
+int kmin;
+# 43 "../.././src/kernel.h"
+int kmax;};
+# 29 "test_kernel.c"
+typedef struct data_s data_t;
+# 31 "test_kernel.c"
+struct data_s {
+# 32 "test_kernel.c"
+int nsites;
+# 33 "test_kernel.c"
+int isum;
+# 34 "test_kernel.c"
+int *idata;
+# 35 "test_kernel.c"
+data_t *target;};
+#if !defined(__CUDABE__)
+# 145 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+ __device_builtin__ ___device__(extern  __no_sc__) int printf(const char *__restrict__, ...);
+#endif
+# 150 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) void free(void *);
+# 189 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__noreturn__)) void __assert_fail(const char *, const char *, unsigned, const char *);
+# 3296 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/device_functions.h"
+___device__(extern  __no_sc__) unsigned __cudaPushCallConfiguration(struct dim3, struct dim3, size_t, struct CUstream_st *);
+# 40 "../.././target/target.h"
+___device__(extern  __no_sc__) tdpError_t _Z21tdpDeviceGetAttributePi14cudaDeviceAttri(int *, tdpDeviceAttr, int);
+# 44 "../.././target/target.h"
+___device__(extern  __no_sc__) tdpError_t _Z20tdpDeviceSynchronizev(void);
+# 45 "../.././target/target.h"
+___device__(extern  __no_sc__) tdpError_t _Z12tdpGetDevicePi(int *);
+# 46 "../.././target/target.h"
+___device__(extern  __no_sc__) tdpError_t _Z17tdpGetDeviceCountPi(int *);
+# 53 "../.././target/target.h"
+___device__(extern  __no_sc__) tdpError_t _Z18tdpPeekAtLastErrorv(void);
+# 79 "../.././target/target.h"
+___device__(extern  __no_sc__) tdpError_t _Z7tdpFreePv(void *);
+# 80 "../.././target/target.h"
+___device__(extern  __no_sc__) tdpError_t _Z9tdpMallocPPvm(void **, size_t);
+# 103 "../.././target/target.h"
+___device__(extern  __no_sc__) int _Z15tdpAtomicAddIntPii(int *, int);
+# 112 "../.././target/target.h"
+___device__(extern  __no_sc__) int _Z20tdpAtomicBlockAddIntPi(int *);
+# 117 "../.././target/target.h"
+___device__(extern  __no_sc__) void _Z15tdpErrorHandler9cudaErrorPKcii(tdpError_t, const char *, int, int);
+# 59 "../.././src/coords.h"
+___device__(extern  __no_sc__) int _Z9cs_nlocalP8coords_sPi(cs_t *, int *);
+# 61 "../.././src/coords.h"
+___device__(extern  __no_sc__) int _Z8cs_nhaloP8coords_sPi(cs_t *, int *);
+# 62 "../.././src/coords.h"
+___device__(extern  __no_sc__) int _Z8cs_indexP8coords_siii(cs_t *, int, int, int);
+# 64 "../.././src/coords.h"
+___device__(extern  __no_sc__) int _Z9cs_nsitesP8coords_sPi(cs_t *, int *);
+# 60 "../.././src/memory.h"
+___device__(extern  __no_sc__) int _Z14mem_addr_rank0ii(int, int);
+# 53 "../.././src/kernel.h"
+___device__(extern  __no_sc__) int _Z17kernel_iterationsP13kernel_ctxt_s(kernel_ctxt_t *);
+# 54 "../.././src/kernel.h"
+___device__(extern  __no_sc__) int _Z24kernel_vector_iterationsP13kernel_ctxt_s(kernel_ctxt_t *);
+# 56 "../.././src/kernel.h"
+___device__(extern  __no_sc__) int _Z16kernel_coords_icP13kernel_ctxt_si(kernel_ctxt_t *, int);
+# 57 "../.././src/kernel.h"
+___device__(extern  __no_sc__) int _Z16kernel_coords_jcP13kernel_ctxt_si(kernel_ctxt_t *, int);
+# 58 "../.././src/kernel.h"
+___device__(extern  __no_sc__) int _Z16kernel_coords_kcP13kernel_ctxt_si(kernel_ctxt_t *, int);
+# 59 "../.././src/kernel.h"
+___device__(extern  __no_sc__) int _Z15kernel_coords_vP13kernel_ctxt_siPiS1_S1_(kernel_ctxt_t *, int, int *, int *, int *);
+# 66 "../.././src/kernel.h"
+___device__(extern  __no_sc__) int _Z13kernel_mask_vP13kernel_ctxt_sPiS1_S1_S1_(kernel_ctxt_t *, int *, int *, int *, int *);
+# 70 "../.././src/kernel.h"
+___device__(extern  __no_sc__) int _Z19kernel_coords_indexP13kernel_ctxt_siii(kernel_ctxt_t *, int, int, int);
+# 72 "../.././src/kernel.h"
+___device__(extern  __no_sc__) int _Z21kernel_coords_index_vP13kernel_ctxt_sPiS1_S1_S1_(kernel_ctxt_t *, int *, int *, int *, int *);
+# 18 "tests.h"
+___device__(extern  __no_sc__) void _Z16test_assert_infoiiPKc(const int, int, const char *);
+# 250 "test_kernel.c"
+__global__ __var_used__ extern void _Z17do_target_kernel1P13kernel_ctxt_sP6data_s(kernel_ctxt_t *, data_t *);
+# 284 "test_kernel.c"
+__global__ __var_used__ extern void _Z18do_target_kernel1rP13kernel_ctxt_sP6data_s(kernel_ctxt_t *, data_t *);
+# 329 "test_kernel.c"
+__global__ __var_used__ extern void _Z17do_target_kernel2P13kernel_ctxt_sP6data_s(kernel_ctxt_t *, data_t *);
+# 291 "test_kernel.c"
+static  __shared__  __var_used__ int _ZZ18do_target_kernel1rP13kernel_ctxt_sP6data_sE4psum[128];
+static  __device__  __var_used__ const char __T2[50];
+#include "common_functions.h"
+static  __device__  __var_used__ const char __T2[50] = "void do_target_kernel2(kernel_ctxt_s *, data_s *)";
+#if !defined(__CUDABE__)
+#endif
+# 250 "test_kernel.c"
+__global__ __var_used__ void _Z17do_target_kernel1P13kernel_ctxt_sP6data_s(
+# 250 "test_kernel.c"
+kernel_ctxt_t *ktx, 
+# 250 "test_kernel.c"
+data_t *data){
+# 250 "test_kernel.c"
+{
+# 252 "test_kernel.c"
+ int __cuda_local_var_15547_7_non_const_kiter;
+# 253 "test_kernel.c"
+ int __cuda_local_var_15548_7_non_const_kindex;
+# 255 "test_kernel.c"
+__cuda_local_var_15547_7_non_const_kiter = (_Z17kernel_iterationsP13kernel_ctxt_s(ktx));
+# 257 "test_kernel.c"
+__cuda_local_var_15548_7_non_const_kindex = ((int)(1U * (((blockIdx.x) * (blockDim.x)) + (threadIdx.x))));
+# 257 "test_kernel.c"
+if (__cuda_local_var_15548_7_non_const_kindex < __cuda_local_var_15547_7_non_const_kiter)
+# 257 "test_kernel.c"
+{
+# 259 "test_kernel.c"
+ int __cuda_local_var_15554_9_non_const_ic;
+# 259 "test_kernel.c"
+ int __cuda_local_var_15554_13_non_const_jc;
+# 259 "test_kernel.c"
+ int __cuda_local_var_15554_17_non_const_kc;
+# 260 "test_kernel.c"
+ int __cuda_local_var_15555_9_non_const_index;
+# 262 "test_kernel.c"
+__cuda_local_var_15554_9_non_const_ic = (_Z16kernel_coords_icP13kernel_ctxt_si(ktx, __cuda_local_var_15548_7_non_const_kindex));
+# 263 "test_kernel.c"
+__cuda_local_var_15554_13_non_const_jc = (_Z16kernel_coords_jcP13kernel_ctxt_si(ktx, __cuda_local_var_15548_7_non_const_kindex));
+# 264 "test_kernel.c"
+__cuda_local_var_15554_17_non_const_kc = (_Z16kernel_coords_kcP13kernel_ctxt_si(ktx, __cuda_local_var_15548_7_non_const_kindex));
+# 268 "test_kernel.c"
+__cuda_local_var_15555_9_non_const_index = (_Z19kernel_coords_indexP13kernel_ctxt_siii(ktx, __cuda_local_var_15554_9_non_const_ic, __cuda_local_var_15554_13_non_const_jc, __cuda_local_var_15554_17_non_const_kc));
+# 270 "test_kernel.c"
+((data->idata)[(_Z14mem_addr_rank0ii((data->nsites), __cuda_local_var_15555_9_non_const_index))]) = __cuda_local_var_15555_9_non_const_index;
+# 271 "test_kernel.c"
+}
+# 273 "test_kernel.c"
+return;
+# 274 "test_kernel.c"
+}}
+# 284 "test_kernel.c"
+__global__ __var_used__ void _Z18do_target_kernel1rP13kernel_ctxt_sP6data_s(
+# 284 "test_kernel.c"
+kernel_ctxt_t *ktx, 
+# 284 "test_kernel.c"
+data_t *data){
+# 284 "test_kernel.c"
+{
+# 286 "test_kernel.c"
+ int __cuda_local_var_15573_7_non_const_kiter;
+# 287 "test_kernel.c"
+ int __cuda_local_var_15574_7_non_const_kindex;
+# 288 "test_kernel.c"
+ int __cuda_local_var_15575_7_non_const_ic;
+# 288 "test_kernel.c"
+ int __cuda_local_var_15575_11_non_const_jc;
+# 288 "test_kernel.c"
+ int __cuda_local_var_15575_15_non_const_kc;
+# 289 "test_kernel.c"
+ int __cuda_local_var_15576_7_non_const_index;
+# 290 "test_kernel.c"
+ int __cuda_local_var_15577_7_non_const_block_sum;
+# 293 "test_kernel.c"
+((_ZZ18do_target_kernel1rP13kernel_ctxt_sP6data_sE4psum)[(threadIdx.x)]) = 0;
+# 294 "test_kernel.c"
+__cuda_local_var_15573_7_non_const_kiter = (_Z17kernel_iterationsP13kernel_ctxt_s(ktx));
+# 296 "test_kernel.c"
+__cuda_local_var_15574_7_non_const_kindex = ((int)(1U * (((blockIdx.x) * (blockDim.x)) + (threadIdx.x))));
+# 296 "test_kernel.c"
+if (__cuda_local_var_15574_7_non_const_kindex < __cuda_local_var_15573_7_non_const_kiter)
+# 296 "test_kernel.c"
+{
+# 298 "test_kernel.c"
+__cuda_local_var_15575_7_non_const_ic = (_Z16kernel_coords_icP13kernel_ctxt_si(ktx, __cuda_local_var_15574_7_non_const_kindex));
+# 299 "test_kernel.c"
+__cuda_local_var_15575_11_non_const_jc = (_Z16kernel_coords_jcP13kernel_ctxt_si(ktx, __cuda_local_var_15574_7_non_const_kindex));
+# 300 "test_kernel.c"
+__cuda_local_var_15575_15_non_const_kc = (_Z16kernel_coords_kcP13kernel_ctxt_si(ktx, __cuda_local_var_15574_7_non_const_kindex));
+# 304 "test_kernel.c"
+__cuda_local_var_15576_7_non_const_index = (_Z19kernel_coords_indexP13kernel_ctxt_siii(ktx, __cuda_local_var_15575_7_non_const_ic, __cuda_local_var_15575_11_non_const_jc, __cuda_local_var_15575_15_non_const_kc));
+# 306 "test_kernel.c"
+((data->idata)[(_Z14mem_addr_rank0ii((data->nsites), __cuda_local_var_15576_7_non_const_index))]) = __cuda_local_var_15576_7_non_const_index;
+# 307 "test_kernel.c"
+((_ZZ18do_target_kernel1rP13kernel_ctxt_sP6data_sE4psum)[(threadIdx.x)]) += 1;
+# 308 "test_kernel.c"
+}
+# 312 "test_kernel.c"
+__cuda_local_var_15577_7_non_const_block_sum = (_Z20tdpAtomicBlockAddIntPi((_ZZ18do_target_kernel1rP13kernel_ctxt_sP6data_sE4psum)));
+# 314 "test_kernel.c"
+if ((threadIdx.x) == 0U)
+# 314 "test_kernel.c"
+{
+# 315 "test_kernel.c"
+_Z15tdpAtomicAddIntPii((&(data->isum)), __cuda_local_var_15577_7_non_const_block_sum);
+# 316 "test_kernel.c"
+}
+# 318 "test_kernel.c"
+return;
+# 319 "test_kernel.c"
+}}
+# 329 "test_kernel.c"
+__global__ __var_used__ void _Z17do_target_kernel2P13kernel_ctxt_sP6data_s(
+# 329 "test_kernel.c"
+kernel_ctxt_t *ktx, 
+# 329 "test_kernel.c"
+data_t *data){
+# 329 "test_kernel.c"
+{
+# 331 "test_kernel.c"
+ int __cuda_local_var_15610_7_non_const_kindex;
+# 332 "test_kernel.c"
+ int __cuda_local_var_15611_7_non_const_kiter;
+# 334 "test_kernel.c"
+ int __cuda_local_var_15613_7_non_const_iv;
+# 335 "test_kernel.c"
+ int __cuda_local_var_15614_7_non_const_ic[1];
+# 336 "test_kernel.c"
+ int __cuda_local_var_15615_7_non_const_jc[1];
+# 337 "test_kernel.c"
+ int __cuda_local_var_15616_7_non_const_kc[1];
+# 338 "test_kernel.c"
+ int __cuda_local_var_15617_7_non_const_index[1];
+# 339 "test_kernel.c"
+ int __cuda_local_var_15618_7_non_const_kmask[1];
+# 341 "test_kernel.c"
+(ktx) ? ((void)0) : (__assert_fail(((const char *)"ktx"), ((const char *)"test_kernel.c"), 341U, __T2));
+# 343 "test_kernel.c"
+__cuda_local_var_15611_7_non_const_kiter = (_Z24kernel_vector_iterationsP13kernel_ctxt_s(ktx));
+# 345 "test_kernel.c"
+__cuda_local_var_15610_7_non_const_kindex = ((int)(1U * (((blockIdx.x) * (blockDim.x)) + (threadIdx.x))));
+# 345 "test_kernel.c"
+if (__cuda_local_var_15610_7_non_const_kindex < __cuda_local_var_15611_7_non_const_kiter)
+# 345 "test_kernel.c"
+{
+# 347 "test_kernel.c"
+_Z15kernel_coords_vP13kernel_ctxt_siPiS1_S1_(ktx, __cuda_local_var_15610_7_non_const_kindex, (__cuda_local_var_15614_7_non_const_ic), (__cuda_local_var_15615_7_non_const_jc), (__cuda_local_var_15616_7_non_const_kc));
+# 348 "test_kernel.c"
+_Z21kernel_coords_index_vP13kernel_ctxt_sPiS1_S1_S1_(ktx, (__cuda_local_var_15614_7_non_const_ic), (__cuda_local_var_15615_7_non_const_jc), (__cuda_local_var_15616_7_non_const_kc), (__cuda_local_var_15617_7_non_const_index));
+# 349 "test_kernel.c"
+_Z13kernel_mask_vP13kernel_ctxt_sPiS1_S1_S1_(ktx, (__cuda_local_var_15614_7_non_const_ic), (__cuda_local_var_15615_7_non_const_jc), (__cuda_local_var_15616_7_non_const_kc), (__cuda_local_var_15618_7_non_const_kmask));
+# 351 "test_kernel.c"
+for (__cuda_local_var_15613_7_non_const_iv = 0; (__cuda_local_var_15613_7_non_const_iv < 1); __cuda_local_var_15613_7_non_const_iv++)
+# 351 "test_kernel.c"
+{
+# 352 "test_kernel.c"
+((data->idata)[(_Z14mem_addr_rank0ii((data->nsites), ((__cuda_local_var_15617_7_non_const_index)[__cuda_local_var_15613_7_non_const_iv])))]) = (((__cuda_local_var_15618_7_non_const_kmask)[__cuda_local_var_15613_7_non_const_iv]) * ((__cuda_local_var_15617_7_non_const_index)[__cuda_local_var_15613_7_non_const_iv]));
+# 353 "test_kernel.c"
+}
+# 354 "test_kernel.c"
+}
+# 356 "test_kernel.c"
+return;
+# 357 "test_kernel.c"
+}}

@@ -1,0 +1,137 @@
+typedef char __nv_bool;
+# 58 "../.././mpi_s/mpi.h"
+enum elementary_datatypes {
+# 58 "../.././mpi_s/mpi.h"
+MPI_CHAR,
+# 59 "../.././mpi_s/mpi.h"
+MPI_SHORT,
+# 60 "../.././mpi_s/mpi.h"
+MPI_INT,
+# 61 "../.././mpi_s/mpi.h"
+MPI_LONG,
+# 62 "../.././mpi_s/mpi.h"
+MPI_UNSIGNED_CHAR,
+# 63 "../.././mpi_s/mpi.h"
+MPI_UNSIGNED_SHORT,
+# 64 "../.././mpi_s/mpi.h"
+MPI_UNSIGNED,
+# 65 "../.././mpi_s/mpi.h"
+MPI_UNSIGNED_LONG,
+# 66 "../.././mpi_s/mpi.h"
+MPI_FLOAT,
+# 67 "../.././mpi_s/mpi.h"
+MPI_DOUBLE,
+# 68 "../.././mpi_s/mpi.h"
+MPI_LONG_DOUBLE,
+# 69 "../.././mpi_s/mpi.h"
+MPI_BYTE,
+# 70 "../.././mpi_s/mpi.h"
+MPI_PACKED};
+# 72 "../.././mpi_s/mpi.h"
+enum collective_operations {
+# 72 "../.././mpi_s/mpi.h"
+MPI_MAX,
+# 73 "../.././mpi_s/mpi.h"
+MPI_MIN,
+# 74 "../.././mpi_s/mpi.h"
+MPI_SUM,
+# 75 "../.././mpi_s/mpi.h"
+MPI_PROD,
+# 76 "../.././mpi_s/mpi.h"
+MPI_MAXLOC,
+# 77 "../.././mpi_s/mpi.h"
+MPI_MINLOC,
+# 78 "../.././mpi_s/mpi.h"
+MPI_BAND,
+# 79 "../.././mpi_s/mpi.h"
+MPI_BOR,
+# 80 "../.././mpi_s/mpi.h"
+MPI_BXOR,
+# 81 "../.././mpi_s/mpi.h"
+MPI_LAND,
+# 82 "../.././mpi_s/mpi.h"
+MPI_LOR,
+# 83 "../.././mpi_s/mpi.h"
+MPI_LXOR};
+# 92 "../.././mpi_s/mpi.h"
+enum reserved_communicators {
+# 92 "../.././mpi_s/mpi.h"
+MPI_COMM_WORLD,
+# 92 "../.././mpi_s/mpi.h"
+MPI_COMM_SELF};
+# 22 "../.././src/pe.h"
+struct pe_s;
+# 24 "../.././src/pe.h"
+enum pe_enum_t {
+# 24 "../.././src/pe.h"
+PE_QUIET,
+# 24 "../.././src/pe.h"
+PE_VERBOSE,
+# 24 "../.././src/pe.h"
+PE_OPTION_MAX};
+# 22 "../.././src/coords.h"
+struct coords_s;
+# 26 "../.././src/coords.h"
+enum cartesian_directions {
+# 26 "../.././src/coords.h"
+X,
+# 26 "../.././src/coords.h"
+Y,
+# 26 "../.././src/coords.h"
+Z};
+# 38 "../.././src/noise.h"
+struct noise_s;
+# 212 "/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stddef.h" 3
+typedef unsigned long size_t;
+#include "crt/device_runtime.h"
+# 25 "../.././mpi_s/mpi.h"
+typedef int MPI_Handle;
+# 26 "../.././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Comm;
+# 28 "../.././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Datatype;
+# 30 "../.././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Op;
+# 22 "../.././src/pe.h"
+typedef struct pe_s pe_t;
+# 24 "../.././src/pe.h"
+typedef enum pe_enum_t pe_enum_t;
+# 22 "../.././src/coords.h"
+typedef struct coords_s cs_t;
+# 31 "../.././src/noise.h"
+typedef struct noise_s noise_t;
+# 150 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) void free(void *);
+# 189 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__noreturn__)) void __assert_fail(const char *, const char *, unsigned, const char *);
+#if !defined(__CUDABE__)
+# 244 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/math_functions.h"
+ __device_builtin__ ___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__const__)) double fabs(double);
+#endif
+#if !defined(__CUDABE__)
+# 612 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/math_functions.h"
+ __device_builtin__ ___device__(extern  __no_sc__) __attribute__((__nothrow__)) double sqrt(double);
+#endif
+# 57 "../.././src/coords.h"
+___device__(extern  __no_sc__) int _Z7cs_ltotP8coords_sPd(cs_t *, double *);
+# 59 "../.././src/coords.h"
+___device__(extern  __no_sc__) int _Z9cs_nlocalP8coords_sPi(cs_t *, int *);
+# 62 "../.././src/coords.h"
+___device__(extern  __no_sc__) int _Z8cs_indexP8coords_siii(cs_t *, int, int, int);
+# 64 "../.././src/coords.h"
+___device__(extern  __no_sc__) int _Z9cs_nsitesP8coords_sPi(cs_t *, int *);
+# 58 "../.././src/noise.h"
+___device__(extern  __no_sc__) int _Z15noise_state_setP7noise_siPj(noise_t *, int, unsigned *);
+# 59 "../.././src/noise.h"
+___device__(extern  __no_sc__) int _Z11noise_stateP7noise_siPj(noise_t *, int, unsigned *);
+# 60 "../.././src/noise.h"
+___device__(extern  __no_sc__) int _Z10noise_reapP7noise_siPd(noise_t *, int, double *);
+# 65 "../.././src/noise.h"
+___device__(extern  __no_sc__) unsigned _Z13noise_uniformPj(unsigned *);
+# 18 "tests.h"
+___device__(extern  __no_sc__) void _Z16test_assert_infoiiPKc(const int, int, const char *);
+#include "common_functions.h"
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif

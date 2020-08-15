@@ -1,0 +1,43 @@
+# 1 "physics.c"
+# 60 "physics.c"
+static physics_t *__nv_static_28__15_physics_cpp1_ii_93368647_stat_phys;
+static const char __T1[41];
+static const char __T2[30];
+static const char __T3[32];
+static const char __T5[47];
+static const char __T7[46];
+static const char __T9[42];
+static const char __T11[40];
+static const char __T13[42];
+static const char __T15[42];
+static const char __T17[42];
+static const char __T20[50];
+static const char __T22[45];
+static const char __T24[46];
+static const char __T26[54];
+static const char __T28[46];
+static const char __T30[45];
+static const char __T32[47];
+static const char __T35[43];
+static const char __T36[53];
+# 60 "physics.c"
+static physics_t *__nv_static_28__15_physics_cpp1_ii_93368647_stat_phys = ((physics_t *)0LL);
+static const char __T1[41] = "int physics_create(pe_s *, physics_s **)";
+static const char __T2[30] = "int physics_free(physics_s *)";
+static const char __T3[32] = "int physics_commit(physics_s *)";
+static const char __T5[47] = "int physics_eta_shear_set(physics_s *, double)";
+static const char __T7[46] = "int physics_eta_bulk_set(physics_s *, double)";
+static const char __T9[42] = "int physics_rho0_set(physics_s *, double)";
+static const char __T11[40] = "int physics_kt_set(physics_s *, double)";
+static const char __T13[42] = "int physics_phi0_set(physics_s *, double)";
+static const char __T15[42] = "int physics_b0_set(physics_s *, double *)";
+static const char __T17[42] = "int physics_e0_set(physics_s *, double *)";
+static const char __T20[50] = "int physics_e0_frequency_set(physics_s *, double)";
+static const char __T22[45] = "int physics_fbody_set(physics_s *, double *)";
+static const char __T24[46] = "int physics_fpulse_set(physics_s *, double *)";
+static const char __T26[54] = "int physics_fpulse_frequency_set(physics_s *, double)";
+static const char __T28[46] = "int physics_mobility_set(physics_s *, double)";
+static const char __T30[45] = "int physics_fgrav_set(physics_s *, double *)";
+static const char __T32[47] = "int physics_grad_mu_set(physics_s *, double *)";
+static const char __T35[43] = "int physics_control_next_step(physics_s *)";
+static const char __T36[53] = "int physics_control_init_time(physics_s *, int, int)";

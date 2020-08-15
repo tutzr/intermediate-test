@@ -1,0 +1,123 @@
+typedef char __nv_bool;
+# 92 "../.././mpi_s/mpi.h"
+enum reserved_communicators {
+# 92 "../.././mpi_s/mpi.h"
+MPI_COMM_WORLD,
+# 92 "../.././mpi_s/mpi.h"
+MPI_COMM_SELF};
+# 22 "../.././src/pe.h"
+struct pe_s;
+# 24 "../.././src/pe.h"
+enum pe_enum_t {
+# 24 "../.././src/pe.h"
+PE_QUIET,
+# 24 "../.././src/pe.h"
+PE_VERBOSE,
+# 24 "../.././src/pe.h"
+PE_OPTION_MAX};
+# 22 "../.././src/coords.h"
+struct coords_s;
+# 26 "../.././src/coords.h"
+enum cartesian_directions {
+# 26 "../.././src/coords.h"
+X,
+# 26 "../.././src/coords.h"
+Y,
+# 26 "../.././src/coords.h"
+Z};
+# 22 "../.././src/leesedwards.h"
+struct lees_edw_s;
+# 25 "../.././src/leesedwards.h"
+struct lees_edw_info_s;
+# 28 "../.././src/field.h"
+struct field_s;
+# 30 "../.././src/field.h"
+enum field_halo_enum_t {
+# 30 "../.././src/field.h"
+FIELD_HALO_HOST,
+# 30 "../.././src/field.h"
+FIELD_HALO_TARGET};
+# 21 "../.././src/field_grad.h"
+struct field_grad_s;
+# 24 "../.././src/polar_active.h"
+struct fe_polar_s;
+# 29 "../.././src/polar_active.h"
+struct fe_polar_param_s;
+# 212 "/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stddef.h" 3
+typedef unsigned long size_t;
+#include "crt/device_runtime.h"
+# 25 "../.././mpi_s/mpi.h"
+typedef int MPI_Handle;
+# 26 "../.././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Comm;
+# 22 "../.././src/pe.h"
+typedef struct pe_s pe_t;
+# 24 "../.././src/pe.h"
+typedef enum pe_enum_t pe_enum_t;
+# 22 "../.././src/coords.h"
+typedef struct coords_s cs_t;
+# 22 "../.././src/leesedwards.h"
+typedef struct lees_edw_s lees_edw_t;
+# 23 "../.././src/leesedwards.h"
+typedef struct lees_edw_info_s lees_edw_info_t;
+# 28 "../.././src/field.h"
+typedef struct field_s field_t;
+# 30 "../.././src/field.h"
+typedef enum field_halo_enum_t field_halo_enum_t;
+# 21 "../.././src/field_grad.h"
+typedef struct field_grad_s field_grad_t;
+# 22 "../.././src/field_grad.h"
+typedef int (*grad_ft)(field_grad_t *);
+# 24 "../.././src/polar_active.h"
+typedef struct fe_polar_s fe_polar_t;
+# 25 "../.././src/polar_active.h"
+typedef struct fe_polar_param_s fe_polar_param_t;
+# 29 "../.././src/polar_active.h"
+struct fe_polar_param_s {
+# 30 "../.././src/polar_active.h"
+double a;
+# 31 "../.././src/polar_active.h"
+double b;
+# 32 "../.././src/polar_active.h"
+double kappa1;
+# 33 "../.././src/polar_active.h"
+double delta;
+# 34 "../.././src/polar_active.h"
+double kappa2;
+# 35 "../.././src/polar_active.h"
+double zeta;
+# 36 "../.././src/polar_active.h"
+double lambda;
+# 37 "../.././src/polar_active.h"
+double radius;};
+#if !defined(__CUDABE__)
+# 244 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/math_functions.h"
+ __device_builtin__ ___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__const__)) double fabs(double);
+#endif
+#if !defined(__CUDABE__)
+# 612 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/math_functions.h"
+ __device_builtin__ ___device__(extern  __no_sc__) __attribute__((__nothrow__)) double sqrt(double);
+#endif
+# 18 "tests.h"
+___device__(extern  __no_sc__) void _Z16test_assert_infoiiPKc(const int, int, const char *);
+# 57 "../.././src/coords.h"
+___device__(extern  __no_sc__) int _Z7cs_ltotP8coords_sPd(cs_t *, double *);
+# 59 "../.././src/coords.h"
+___device__(extern  __no_sc__) int _Z9cs_nlocalP8coords_sPi(cs_t *, int *);
+# 62 "../.././src/coords.h"
+___device__(extern  __no_sc__) int _Z8cs_indexP8coords_siii(cs_t *, int, int, int);
+# 48 "../.././src/field.h"
+___device__(extern  __no_sc__) int _Z12field_vectorP7field_siPd(field_t *, int, double *);
+# 49 "../.././src/field.h"
+___device__(extern  __no_sc__) int _Z16field_vector_setP7field_siPKd(field_t *, int, const double *);
+# 49 "../.././src/polar_active.h"
+___device__(extern  __no_sc__) int _Z12fe_polar_fedP10fe_polar_siPd(fe_polar_t *, int, double *);
+# 50 "../.././src/polar_active.h"
+___device__(extern  __no_sc__) int _Z18fe_polar_mol_fieldP10fe_polar_siPd(fe_polar_t *, int, double *);
+# 51 "../.././src/polar_active.h"
+___device__(extern  __no_sc__) int _Z15fe_polar_stressP10fe_polar_siPA3_d(fe_polar_t *, int, double (*)[3]);
+#include "common_functions.h"
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif

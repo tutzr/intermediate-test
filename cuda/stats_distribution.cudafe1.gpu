@@ -1,0 +1,203 @@
+typedef char __nv_bool;
+# 58 ".././mpi_s/mpi.h"
+enum elementary_datatypes {
+# 58 ".././mpi_s/mpi.h"
+MPI_CHAR,
+# 59 ".././mpi_s/mpi.h"
+MPI_SHORT,
+# 60 ".././mpi_s/mpi.h"
+MPI_INT,
+# 61 ".././mpi_s/mpi.h"
+MPI_LONG,
+# 62 ".././mpi_s/mpi.h"
+MPI_UNSIGNED_CHAR,
+# 63 ".././mpi_s/mpi.h"
+MPI_UNSIGNED_SHORT,
+# 64 ".././mpi_s/mpi.h"
+MPI_UNSIGNED,
+# 65 ".././mpi_s/mpi.h"
+MPI_UNSIGNED_LONG,
+# 66 ".././mpi_s/mpi.h"
+MPI_FLOAT,
+# 67 ".././mpi_s/mpi.h"
+MPI_DOUBLE,
+# 68 ".././mpi_s/mpi.h"
+MPI_LONG_DOUBLE,
+# 69 ".././mpi_s/mpi.h"
+MPI_BYTE,
+# 70 ".././mpi_s/mpi.h"
+MPI_PACKED};
+# 72 ".././mpi_s/mpi.h"
+enum collective_operations {
+# 72 ".././mpi_s/mpi.h"
+MPI_MAX,
+# 73 ".././mpi_s/mpi.h"
+MPI_MIN,
+# 74 ".././mpi_s/mpi.h"
+MPI_SUM,
+# 75 ".././mpi_s/mpi.h"
+MPI_PROD,
+# 76 ".././mpi_s/mpi.h"
+MPI_MAXLOC,
+# 77 ".././mpi_s/mpi.h"
+MPI_MINLOC,
+# 78 ".././mpi_s/mpi.h"
+MPI_BAND,
+# 79 ".././mpi_s/mpi.h"
+MPI_BOR,
+# 80 ".././mpi_s/mpi.h"
+MPI_BXOR,
+# 81 ".././mpi_s/mpi.h"
+MPI_LAND,
+# 82 ".././mpi_s/mpi.h"
+MPI_LOR,
+# 83 ".././mpi_s/mpi.h"
+MPI_LXOR};
+# 22 "pe.h"
+struct pe_s;
+# 22 "coords.h"
+struct coords_s;
+# 26 "coords.h"
+enum cartesian_directions {
+# 26 "coords.h"
+X,
+# 26 "coords.h"
+Y,
+# 26 "coords.h"
+Z};
+# 73 "io_harness.h"
+struct io_info_s;
+# 79 "model.h"
+enum lb_dist_enum_type {
+# 79 "model.h"
+LB_RHO,
+# 79 "model.h"
+LB_PHI};
+# 88 "model.h"
+enum lb_relaxation_enum_t {
+# 88 "model.h"
+LB_RELAXATION_M10,
+# 88 "model.h"
+LB_RELAXATION_BGK,
+# 88 "model.h"
+LB_RELAXATION_TRT};
+# 23 "halo_swap.h"
+struct halo_swap_s;
+# 27 "lb_model_s.h"
+struct lb_collide_param_s;
+# 45 "lb_model_s.h"
+struct lb_data_s;
+# 24 "map.h"
+enum map_status {
+# 24 "map.h"
+MAP_FLUID,
+# 24 "map.h"
+MAP_BOUNDARY,
+# 24 "map.h"
+MAP_COLLOID,
+# 24 "map.h"
+MAP_STATUS_MAX};
+# 26 "map.h"
+struct map_s;
+# 212 "/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stddef.h" 3
+typedef unsigned long size_t;
+#include "crt/device_runtime.h"
+# 25 ".././mpi_s/mpi.h"
+typedef int MPI_Handle;
+# 26 ".././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Comm;
+# 28 ".././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Datatype;
+# 30 ".././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Op;
+# 22 "pe.h"
+typedef struct pe_s pe_t;
+# 22 "coords.h"
+typedef struct coords_s cs_t;
+# 36 "io_harness.h"
+typedef struct io_info_s io_info_t;
+# 79 "model.h"
+typedef enum lb_dist_enum_type lb_dist_enum_t;
+# 82 "model.h"
+typedef struct lb_data_s lb_t;
+# 89 "model.h"
+typedef enum lb_relaxation_enum_t lb_relaxation_enum_t;
+# 23 "halo_swap.h"
+typedef struct halo_swap_s halo_swap_t;
+# 25 "lb_model_s.h"
+typedef struct lb_collide_param_s lb_collide_param_t;
+# 45 "lb_model_s.h"
+struct lb_data_s {
+# 47 "lb_model_s.h"
+int ndist;
+# 48 "lb_model_s.h"
+int nsite;
+# 49 "lb_model_s.h"
+int model;
+# 51 "lb_model_s.h"
+pe_t *pe;
+# 52 "lb_model_s.h"
+cs_t *cs;
+# 53 "lb_model_s.h"
+halo_swap_t *halo;
+# 54 "lb_model_s.h"
+io_info_t *io_info;
+# 55 "lb_model_s.h"
+io_info_t *io_rho;
+# 57 "lb_model_s.h"
+double *f;
+# 58 "lb_model_s.h"
+double *fprime;
+# 60 "lb_model_s.h"
+lb_collide_param_t *param;
+# 61 "lb_model_s.h"
+lb_relaxation_enum_t nrelax;
+# 66 "lb_model_s.h"
+MPI_Datatype plane_xy_full;
+# 67 "lb_model_s.h"
+MPI_Datatype plane_xz_full;
+# 68 "lb_model_s.h"
+MPI_Datatype plane_yz_full;
+# 69 "lb_model_s.h"
+MPI_Datatype plane_xy_reduced[2];
+# 70 "lb_model_s.h"
+MPI_Datatype plane_xz_reduced[2];
+# 71 "lb_model_s.h"
+MPI_Datatype plane_yz_reduced[2];
+# 72 "lb_model_s.h"
+MPI_Datatype plane_xy[2];
+# 73 "lb_model_s.h"
+MPI_Datatype plane_xz[2];
+# 74 "lb_model_s.h"
+MPI_Datatype plane_yz[2];
+# 75 "lb_model_s.h"
+MPI_Datatype site_x[2];
+# 76 "lb_model_s.h"
+MPI_Datatype site_y[2];
+# 77 "lb_model_s.h"
+MPI_Datatype site_z[2];
+# 79 "lb_model_s.h"
+lb_t *target;};
+# 26 "map.h"
+typedef struct map_s map_t;
+# 189 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__noreturn__)) void __assert_fail(const char *, const char *, unsigned, const char *);
+#if !defined(__CUDABE__)
+# 244 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/math_functions.h"
+ __device_builtin__ ___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__const__)) double fabs(double);
+#endif
+# 59 "coords.h"
+___device__(extern  __no_sc__) int _Z9cs_nlocalP8coords_sPi(cs_t *, int *);
+# 62 "coords.h"
+___device__(extern  __no_sc__) int _Z8cs_indexP8coords_siii(cs_t *, int, int, int);
+# 113 "model.h"
+___device__(extern  __no_sc__) int _Z13lb_0th_momentP9lb_data_si17lb_dist_enum_typePd(lb_t *, int, lb_dist_enum_t, double *);
+# 49 "util.h"
+___device__(extern  __no_sc__) double _Z4dmindd(const double, const double);
+# 50 "util.h"
+___device__(extern  __no_sc__) double _Z4dmaxdd(const double, const double);
+# 40 "map.h"
+___device__(extern  __no_sc__) int _Z10map_statusP5map_siPi(map_t *, int, int *);
+#include "common_functions.h"
+#if !defined(__CUDABE__)
+#endif

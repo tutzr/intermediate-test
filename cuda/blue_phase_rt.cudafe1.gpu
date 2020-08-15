@@ -1,0 +1,137 @@
+typedef char __nv_bool;
+# 22 "pe.h"
+struct pe_s;
+# 22 "coords.h"
+struct coords_s;
+# 26 "coords.h"
+enum cartesian_directions {
+# 26 "coords.h"
+X,
+# 26 "coords.h"
+Y,
+# 26 "coords.h"
+Z};
+# 22 "runtime.h"
+struct rt_s;
+# 28 "field.h"
+struct field_s;
+# 34 "blue_phase.h"
+struct fe_lc_s;
+# 48 "blue_phase.h"
+struct fe_lc_param_s;
+# 78 "blue_phase.h"
+enum lc_anchoring_enum {
+# 78 "blue_phase.h"
+LC_ANCHORING_PLANAR,
+# 79 "blue_phase.h"
+LC_ANCHORING_NORMAL,
+# 80 "blue_phase.h"
+LC_ANCHORING_FIXED,
+# 81 "blue_phase.h"
+LC_ANCHORING_TYPES};
+# 27 "blue_phase_beris_edwards.h"
+struct beris_edw_s;
+# 30 "blue_phase_beris_edwards.h"
+struct beris_edw_param_s;
+# 212 "/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stddef.h" 3
+typedef unsigned long size_t;
+#include "crt/device_runtime.h"
+# 22 "pe.h"
+typedef struct pe_s pe_t;
+# 22 "coords.h"
+typedef struct coords_s cs_t;
+# 22 "runtime.h"
+typedef struct rt_s rt_t;
+# 28 "field.h"
+typedef struct field_s field_t;
+# 29 "blue_phase.h"
+typedef struct fe_lc_s fe_lc_t;
+# 30 "blue_phase.h"
+typedef struct fe_lc_param_s fe_lc_param_t;
+# 48 "blue_phase.h"
+struct fe_lc_param_s {
+# 49 "blue_phase.h"
+double a0;
+# 50 "blue_phase.h"
+double q0;
+# 51 "blue_phase.h"
+double gamma;
+# 52 "blue_phase.h"
+double kappa0;
+# 53 "blue_phase.h"
+double kappa1;
+# 55 "blue_phase.h"
+double xi;
+# 56 "blue_phase.h"
+double zeta0;
+# 57 "blue_phase.h"
+double zeta1;
+# 58 "blue_phase.h"
+double zeta2;
+# 59 "blue_phase.h"
+double redshift;
+# 60 "blue_phase.h"
+double rredshift;
+# 61 "blue_phase.h"
+double epsilon;
+# 62 "blue_phase.h"
+double amplitude0;
+# 63 "blue_phase.h"
+double e0coswt[3];
+# 65 "blue_phase.h"
+double w1_coll;
+# 66 "blue_phase.h"
+double w2_coll;
+# 67 "blue_phase.h"
+double w1_wall;
+# 68 "blue_phase.h"
+double w2_wall;
+# 69 "blue_phase.h"
+double nfix[3];
+# 71 "blue_phase.h"
+int anchoring_coll;
+# 72 "blue_phase.h"
+int anchoring_wall;
+# 73 "blue_phase.h"
+int is_redshift_updated;
+# 74 "blue_phase.h"
+int is_active;};
+# 27 "blue_phase_beris_edwards.h"
+typedef struct beris_edw_s beris_edw_t;
+# 28 "blue_phase_beris_edwards.h"
+typedef struct beris_edw_param_s beris_edw_param_t;
+# 30 "blue_phase_beris_edwards.h"
+struct beris_edw_param_s {
+# 31 "blue_phase_beris_edwards.h"
+double xi;
+# 32 "blue_phase_beris_edwards.h"
+double gamma;
+# 33 "blue_phase_beris_edwards.h"
+double var;
+# 35 "blue_phase_beris_edwards.h"
+double tmatrix[3][3][5];};
+# 189 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__noreturn__)) void __assert_fail(const char *, const char *, unsigned, const char *);
+#if !defined(__CUDABE__)
+# 612 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/math_functions.h"
+ __device_builtin__ ___device__(extern  __no_sc__) __attribute__((__nothrow__)) double sqrt(double);
+#endif
+#if !defined(__CUDABE__)
+# 3066 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/math_functions.h"
+ __device_builtin__ ___device__(extern  __no_sc__) __attribute__((__nothrow__)) double atan(double);
+#endif
+# 98 "blue_phase.h"
+___device__(extern  __no_sc__) int _Z11fe_lc_paramP7fe_lc_sP13fe_lc_param_s(fe_lc_t *, fe_lc_param_t *);
+# 131 "blue_phase.h"
+___device__(extern  __no_sc__) int _Z15fe_lc_chiralityP7fe_lc_sPd(fe_lc_t *, double *);
+# 134 "blue_phase.h"
+___device__(extern  __no_sc__) int _Z25fe_lc_reduced_temperatureP7fe_lc_sPd(fe_lc_t *, double *);
+# 137 "blue_phase.h"
+___device__(extern  __no_sc__) int _Z34fe_lc_dimensionless_field_strengthP7fe_lc_sPd(fe_lc_t *, double *);
+# 168 "blue_phase.h"
+___device__(extern  __no_sc__) int _Z23fe_lc_amplitude_computeP13fe_lc_param_sPd(fe_lc_param_t *, double *);
+#include "common_functions.h"
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif

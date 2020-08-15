@@ -1,0 +1,177 @@
+typedef char __nv_bool;
+# 58 ".././mpi_s/mpi.h"
+enum elementary_datatypes {
+# 58 ".././mpi_s/mpi.h"
+MPI_CHAR,
+# 59 ".././mpi_s/mpi.h"
+MPI_SHORT,
+# 60 ".././mpi_s/mpi.h"
+MPI_INT,
+# 61 ".././mpi_s/mpi.h"
+MPI_LONG,
+# 62 ".././mpi_s/mpi.h"
+MPI_UNSIGNED_CHAR,
+# 63 ".././mpi_s/mpi.h"
+MPI_UNSIGNED_SHORT,
+# 64 ".././mpi_s/mpi.h"
+MPI_UNSIGNED,
+# 65 ".././mpi_s/mpi.h"
+MPI_UNSIGNED_LONG,
+# 66 ".././mpi_s/mpi.h"
+MPI_FLOAT,
+# 67 ".././mpi_s/mpi.h"
+MPI_DOUBLE,
+# 68 ".././mpi_s/mpi.h"
+MPI_LONG_DOUBLE,
+# 69 ".././mpi_s/mpi.h"
+MPI_BYTE,
+# 70 ".././mpi_s/mpi.h"
+MPI_PACKED};
+# 72 ".././mpi_s/mpi.h"
+enum collective_operations {
+# 72 ".././mpi_s/mpi.h"
+MPI_MAX,
+# 73 ".././mpi_s/mpi.h"
+MPI_MIN,
+# 74 ".././mpi_s/mpi.h"
+MPI_SUM,
+# 75 ".././mpi_s/mpi.h"
+MPI_PROD,
+# 76 ".././mpi_s/mpi.h"
+MPI_MAXLOC,
+# 77 ".././mpi_s/mpi.h"
+MPI_MINLOC,
+# 78 ".././mpi_s/mpi.h"
+MPI_BAND,
+# 79 ".././mpi_s/mpi.h"
+MPI_BOR,
+# 80 ".././mpi_s/mpi.h"
+MPI_BXOR,
+# 81 ".././mpi_s/mpi.h"
+MPI_LAND,
+# 82 ".././mpi_s/mpi.h"
+MPI_LOR,
+# 83 ".././mpi_s/mpi.h"
+MPI_LXOR};
+# 22 "pe.h"
+struct pe_s;
+# 22 "coords.h"
+struct coords_s;
+# 26 "coords.h"
+enum cartesian_directions {
+# 26 "coords.h"
+X,
+# 26 "coords.h"
+Y,
+# 26 "coords.h"
+Z};
+# 18 "physics.h"
+struct physics_s;
+# 28 "field.h"
+struct field_s;
+# 28 "symmetric.h"
+struct fe_symm_s;
+# 40 "symmetric.h"
+struct fe_symm_param_s;
+# 34 "stats_sigma.c"
+struct drop_type;
+# 45 "stats_sigma.c"
+struct stats_sigma_s;
+# 212 "/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stddef.h" 3
+typedef unsigned long size_t;
+#include "crt/device_runtime.h"
+# 25 ".././mpi_s/mpi.h"
+typedef int MPI_Handle;
+# 26 ".././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Comm;
+# 28 ".././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Datatype;
+# 30 ".././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Op;
+# 22 "pe.h"
+typedef struct pe_s pe_t;
+# 22 "coords.h"
+typedef struct coords_s cs_t;
+# 18 "physics.h"
+typedef struct physics_s physics_t;
+# 28 "field.h"
+typedef struct field_s field_t;
+# 23 "symmetric.h"
+typedef struct fe_symm_param_s fe_symm_param_t;
+# 24 "symmetric.h"
+typedef struct fe_symm_s fe_symm_t;
+# 40 "symmetric.h"
+struct fe_symm_param_s {
+# 41 "symmetric.h"
+double a;
+# 42 "symmetric.h"
+double b;
+# 43 "symmetric.h"
+double kappa;};
+# 25 "stats_sigma.h"
+typedef struct stats_sigma_s stats_sigma_t;
+# 34 "stats_sigma.c"
+struct drop_type {
+# 35 "stats_sigma.c"
+fe_symm_t *fe;
+# 36 "stats_sigma.c"
+double radius;
+# 37 "stats_sigma.c"
+double xi0;
+# 38 "stats_sigma.c"
+double centre[3];
+# 39 "stats_sigma.c"
+double phimax;
+# 40 "stats_sigma.c"
+double sigma;};
+# 43 "stats_sigma.c"
+typedef struct drop_type drop_t;
+# 45 "stats_sigma.c"
+struct stats_sigma_s {
+# 46 "stats_sigma.c"
+pe_t *pe;
+# 47 "stats_sigma.c"
+cs_t *cs;
+# 48 "stats_sigma.c"
+drop_t drop;
+# 49 "stats_sigma.c"
+field_t *phi;};
+# 150 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) void free(void *);
+# 189 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__noreturn__)) void __assert_fail(const char *, const char *, unsigned, const char *);
+#if !defined(__CUDABE__)
+# 612 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/math_functions.h"
+ __device_builtin__ ___device__(extern  __no_sc__) __attribute__((__nothrow__)) double sqrt(double);
+#endif
+#if !defined(__CUDABE__)
+# 1577 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/math_functions.h"
+ __device_builtin__ ___device__(extern  __no_sc__) __attribute__((__nothrow__)) double tanh(double);
+#endif
+# 59 "coords.h"
+___device__(extern  __no_sc__) int _Z9cs_nlocalP8coords_sPi(cs_t *, int *);
+# 60 "coords.h"
+___device__(extern  __no_sc__) int _Z16cs_nlocal_offsetP8coords_sPi(cs_t *, int *);
+# 62 "coords.h"
+___device__(extern  __no_sc__) int _Z8cs_indexP8coords_siii(cs_t *, int, int, int);
+# 63 "coords.h"
+___device__(extern  __no_sc__) int _Z9cs_ntotalP8coords_sPi(cs_t *, int *);
+# 44 "util.h"
+___device__(extern  __no_sc__) double _Z7modulusPKd(const double *);
+# 40 "physics.h"
+___device__(extern  __no_sc__) int _Z11physics_refPP9physics_s(physics_t **);
+# 52 "physics.h"
+___device__(extern  __no_sc__) int _Z16physics_mobilityP9physics_sPd(physics_t *, double *);
+# 46 "field.h"
+___device__(extern  __no_sc__) int _Z12field_scalarP7field_siPd(field_t *, int, double *);
+# 52 "symmetric.h"
+___device__(extern  __no_sc__) int _Z13fe_symm_paramP9fe_symm_sP15fe_symm_param_s(fe_symm_t *, fe_symm_param_t *);
+# 54 "symmetric.h"
+___device__(extern  __no_sc__) int _Z25fe_symm_interfacial_widthP9fe_symm_sPd(fe_symm_t *, double *);
+# 55 "symmetric.h"
+___device__(extern  __no_sc__) int _Z11fe_symm_fedP9fe_symm_siPd(fe_symm_t *, int, double *);
+#include "common_functions.h"
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif

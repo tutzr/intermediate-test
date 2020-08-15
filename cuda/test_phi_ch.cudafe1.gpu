@@ -1,0 +1,177 @@
+typedef char __nv_bool;
+# 58 "../.././mpi_s/mpi.h"
+enum elementary_datatypes {
+# 58 "../.././mpi_s/mpi.h"
+MPI_CHAR,
+# 59 "../.././mpi_s/mpi.h"
+MPI_SHORT,
+# 60 "../.././mpi_s/mpi.h"
+MPI_INT,
+# 61 "../.././mpi_s/mpi.h"
+MPI_LONG,
+# 62 "../.././mpi_s/mpi.h"
+MPI_UNSIGNED_CHAR,
+# 63 "../.././mpi_s/mpi.h"
+MPI_UNSIGNED_SHORT,
+# 64 "../.././mpi_s/mpi.h"
+MPI_UNSIGNED,
+# 65 "../.././mpi_s/mpi.h"
+MPI_UNSIGNED_LONG,
+# 66 "../.././mpi_s/mpi.h"
+MPI_FLOAT,
+# 67 "../.././mpi_s/mpi.h"
+MPI_DOUBLE,
+# 68 "../.././mpi_s/mpi.h"
+MPI_LONG_DOUBLE,
+# 69 "../.././mpi_s/mpi.h"
+MPI_BYTE,
+# 70 "../.././mpi_s/mpi.h"
+MPI_PACKED};
+# 72 "../.././mpi_s/mpi.h"
+enum collective_operations {
+# 72 "../.././mpi_s/mpi.h"
+MPI_MAX,
+# 73 "../.././mpi_s/mpi.h"
+MPI_MIN,
+# 74 "../.././mpi_s/mpi.h"
+MPI_SUM,
+# 75 "../.././mpi_s/mpi.h"
+MPI_PROD,
+# 76 "../.././mpi_s/mpi.h"
+MPI_MAXLOC,
+# 77 "../.././mpi_s/mpi.h"
+MPI_MINLOC,
+# 78 "../.././mpi_s/mpi.h"
+MPI_BAND,
+# 79 "../.././mpi_s/mpi.h"
+MPI_BOR,
+# 80 "../.././mpi_s/mpi.h"
+MPI_BXOR,
+# 81 "../.././mpi_s/mpi.h"
+MPI_LAND,
+# 82 "../.././mpi_s/mpi.h"
+MPI_LOR,
+# 83 "../.././mpi_s/mpi.h"
+MPI_LXOR};
+# 92 "../.././mpi_s/mpi.h"
+enum reserved_communicators {
+# 92 "../.././mpi_s/mpi.h"
+MPI_COMM_WORLD,
+# 92 "../.././mpi_s/mpi.h"
+MPI_COMM_SELF};
+# 22 "../.././src/pe.h"
+struct pe_s;
+# 24 "../.././src/pe.h"
+enum pe_enum_t {
+# 24 "../.././src/pe.h"
+PE_QUIET,
+# 24 "../.././src/pe.h"
+PE_VERBOSE,
+# 24 "../.././src/pe.h"
+PE_OPTION_MAX};
+# 22 "../.././src/coords.h"
+struct coords_s;
+# 26 "../.././src/coords.h"
+enum cartesian_directions {
+# 26 "../.././src/coords.h"
+X,
+# 26 "../.././src/coords.h"
+Y,
+# 26 "../.././src/coords.h"
+Z};
+# 18 "../.././src/physics.h"
+struct physics_s;
+# 22 "../.././src/leesedwards.h"
+struct lees_edw_s;
+# 25 "../.././src/leesedwards.h"
+struct lees_edw_info_s;
+# 32 "../.././src/hydro.h"
+struct hydro_s;
+# 26 "../.././src/map.h"
+struct map_s;
+# 28 "../.././src/field.h"
+struct field_s;
+# 66 "../.././src/free_energy.h"
+struct fe_s;
+# 38 "../.././src/noise.h"
+struct noise_s;
+# 25 "../.././src/phi_cahn_hilliard.h"
+struct phi_ch_s;
+# 26 "../.././src/phi_cahn_hilliard.h"
+struct phi_ch_info_s;
+# 212 "/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stddef.h" 3
+typedef unsigned long size_t;
+#include "crt/device_runtime.h"
+# 25 "../.././mpi_s/mpi.h"
+typedef int MPI_Handle;
+# 26 "../.././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Comm;
+# 28 "../.././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Datatype;
+# 30 "../.././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Op;
+# 22 "../.././src/pe.h"
+typedef struct pe_s pe_t;
+# 24 "../.././src/pe.h"
+typedef enum pe_enum_t pe_enum_t;
+# 22 "../.././src/coords.h"
+typedef struct coords_s cs_t;
+# 18 "../.././src/physics.h"
+typedef struct physics_s physics_t;
+# 22 "../.././src/leesedwards.h"
+typedef struct lees_edw_s lees_edw_t;
+# 23 "../.././src/leesedwards.h"
+typedef struct lees_edw_info_s lees_edw_info_t;
+# 26 "../.././src/hydro.h"
+typedef struct hydro_s hydro_t;
+# 26 "../.././src/map.h"
+typedef struct map_s map_t;
+# 28 "../.././src/field.h"
+typedef struct field_s field_t;
+# 32 "../.././src/free_energy.h"
+typedef struct fe_s fe_t;
+# 31 "../.././src/noise.h"
+typedef struct noise_s noise_t;
+# 25 "../.././src/phi_cahn_hilliard.h"
+typedef struct phi_ch_s phi_ch_t;
+# 26 "../.././src/phi_cahn_hilliard.h"
+typedef struct phi_ch_info_s phi_ch_info_t;
+# 189 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__noreturn__)) void __assert_fail(const char *, const char *, unsigned, const char *);
+#if !defined(__CUDABE__)
+# 244 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/math_functions.h"
+ __device_builtin__ ___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__const__)) double fabs(double);
+#endif
+#if !defined(__CUDABE__)
+# 612 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/math_functions.h"
+ __device_builtin__ ___device__(extern  __no_sc__) __attribute__((__nothrow__)) double sqrt(double);
+#endif
+#if !defined(__CUDABE__)
+# 1577 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/math_functions.h"
+ __device_builtin__ ___device__(extern  __no_sc__) __attribute__((__nothrow__)) double tanh(double);
+#endif
+# 56 "../.././src/coords.h"
+___device__(extern  __no_sc__) int _Z7cs_lminP8coords_sPd(cs_t *, double *);
+# 57 "../.././src/coords.h"
+___device__(extern  __no_sc__) int _Z7cs_ltotP8coords_sPd(cs_t *, double *);
+# 59 "../.././src/coords.h"
+___device__(extern  __no_sc__) int _Z9cs_nlocalP8coords_sPi(cs_t *, int *);
+# 60 "../.././src/coords.h"
+___device__(extern  __no_sc__) int _Z16cs_nlocal_offsetP8coords_sPi(cs_t *, int *);
+# 62 "../.././src/coords.h"
+___device__(extern  __no_sc__) int _Z8cs_indexP8coords_siii(cs_t *, int, int, int);
+# 71 "../.././src/hydro.h"
+___device__(extern  __no_sc__) int _Z11hydro_u_setP7hydro_siPKd(hydro_t *, int, const double *);
+# 46 "../.././src/field.h"
+___device__(extern  __no_sc__) int _Z12field_scalarP7field_siPd(field_t *, int, double *);
+# 47 "../.././src/field.h"
+___device__(extern  __no_sc__) int _Z16field_scalar_setP7field_sid(field_t *, int, double);
+# 41 "../.././src/util.h"
+___device__(extern  __no_sc__) double _Z11dot_productPKdS0_(const double *, const double *);
+#include "common_functions.h"
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif

@@ -1,0 +1,31 @@
+typedef char __nv_bool;
+# 24 "colloid_link.h"
+struct colloid_link_type;
+# 212 "/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stddef.h" 3
+typedef unsigned long size_t;
+#include "crt/device_runtime.h"
+# 22 "colloid_link.h"
+typedef struct colloid_link_type colloid_link_t;
+# 24 "colloid_link.h"
+struct colloid_link_type {
+# 26 "colloid_link.h"
+int i;
+# 27 "colloid_link.h"
+int j;
+# 28 "colloid_link.h"
+int p;
+# 29 "colloid_link.h"
+int status;
+# 30 "colloid_link.h"
+double rb[3];
+# 33 "colloid_link.h"
+colloid_link_t *spare;
+# 34 "colloid_link.h"
+colloid_link_t *next;};
+# 149 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__malloc__)) __attribute__((__nothrow__)) void *malloc(size_t);
+# 150 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) void free(void *);
+# 189 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__noreturn__)) void __assert_fail(const char *, const char *, unsigned, const char *);
+#include "common_functions.h"

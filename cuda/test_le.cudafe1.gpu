@@ -1,0 +1,109 @@
+typedef char __nv_bool;
+# 92 "../.././mpi_s/mpi.h"
+enum reserved_communicators {
+# 92 "../.././mpi_s/mpi.h"
+MPI_COMM_WORLD,
+# 92 "../.././mpi_s/mpi.h"
+MPI_COMM_SELF};
+# 22 "../.././src/pe.h"
+struct pe_s;
+# 24 "../.././src/pe.h"
+enum pe_enum_t {
+# 24 "../.././src/pe.h"
+PE_QUIET,
+# 24 "../.././src/pe.h"
+PE_VERBOSE,
+# 24 "../.././src/pe.h"
+PE_OPTION_MAX};
+# 22 "../.././src/coords.h"
+struct coords_s;
+# 26 "../.././src/coords.h"
+enum cartesian_directions {
+# 26 "../.././src/coords.h"
+X,
+# 26 "../.././src/coords.h"
+Y,
+# 26 "../.././src/coords.h"
+Z};
+# 18 "../.././src/physics.h"
+struct physics_s;
+# 22 "../.././src/leesedwards.h"
+struct lees_edw_s;
+# 25 "../.././src/leesedwards.h"
+struct lees_edw_info_s;
+# 212 "/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stddef.h" 3
+typedef unsigned long size_t;
+#include "crt/device_runtime.h"
+# 25 "../.././mpi_s/mpi.h"
+typedef int MPI_Handle;
+# 26 "../.././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Comm;
+# 22 "../.././src/pe.h"
+typedef struct pe_s pe_t;
+# 24 "../.././src/pe.h"
+typedef enum pe_enum_t pe_enum_t;
+# 22 "../.././src/coords.h"
+typedef struct coords_s cs_t;
+# 18 "../.././src/physics.h"
+typedef struct physics_s physics_t;
+# 22 "../.././src/leesedwards.h"
+typedef struct lees_edw_s lees_edw_t;
+# 23 "../.././src/leesedwards.h"
+typedef struct lees_edw_info_s lees_edw_info_t;
+# 25 "../.././src/leesedwards.h"
+struct lees_edw_info_s {
+# 26 "../.././src/leesedwards.h"
+int nplanes;
+# 27 "../.././src/leesedwards.h"
+int type;
+# 28 "../.././src/leesedwards.h"
+int period;
+# 29 "../.././src/leesedwards.h"
+int nt0;
+# 30 "../.././src/leesedwards.h"
+double uy;};
+# 189 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__noreturn__)) void __assert_fail(const char *, const char *, unsigned, const char *);
+#if !defined(__CUDABE__)
+# 244 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/math_functions.h"
+ __device_builtin__ ___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__const__)) double fabs(double);
+#endif
+#if !defined(__CUDABE__)
+# 1447 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/math_functions.h"
+ __device_builtin__ ___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__const__)) double floor(double);
+#endif
+#if !defined(__CUDABE__)
+# 4899 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/math_functions.h"
+ __device_builtin__ ___device__(extern  __no_sc__) __attribute__((__nothrow__)) double fmod(double, double);
+#endif
+# 54 "../.././src/coords.h"
+___device__(extern  __no_sc__) int _Z9cs_cartszP8coords_sPi(cs_t *, int *);
+# 57 "../.././src/coords.h"
+___device__(extern  __no_sc__) int _Z7cs_ltotP8coords_sPd(cs_t *, double *);
+# 59 "../.././src/coords.h"
+___device__(extern  __no_sc__) int _Z9cs_nlocalP8coords_sPi(cs_t *, int *);
+# 60 "../.././src/coords.h"
+___device__(extern  __no_sc__) int _Z16cs_nlocal_offsetP8coords_sPi(cs_t *, int *);
+# 61 "../.././src/coords.h"
+___device__(extern  __no_sc__) int _Z8cs_nhaloP8coords_sPi(cs_t *, int *);
+# 63 "../.././src/coords.h"
+___device__(extern  __no_sc__) int _Z9cs_ntotalP8coords_sPi(cs_t *, int *);
+# 66 "../.././src/leesedwards.h"
+___device__(extern  __no_sc__) int _Z21lees_edw_nplane_totalP10lees_edw_s(lees_edw_t *);
+# 67 "../.././src/leesedwards.h"
+___device__(extern  __no_sc__) int _Z21lees_edw_nplane_localP10lees_edw_s(lees_edw_t *);
+# 68 "../.././src/leesedwards.h"
+___device__(extern  __no_sc__) int _Z17lees_edw_plane_uyP10lees_edw_sPd(lees_edw_t *, double *);
+# 47 "../.././src/util.h"
+___device__(extern  __no_sc__) int _Z4iminii(const int, const int);
+# 48 "../.././src/util.h"
+___device__(extern  __no_sc__) int _Z4imaxii(const int, const int);
+# 18 "tests.h"
+___device__(extern  __no_sc__) void _Z16test_assert_infoiiPKc(const int, int, const char *);
+#include "common_functions.h"
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif

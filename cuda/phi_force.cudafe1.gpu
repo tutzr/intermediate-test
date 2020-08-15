@@ -1,0 +1,281 @@
+typedef char __nv_bool;
+# 58 ".././mpi_s/mpi.h"
+enum elementary_datatypes {
+# 58 ".././mpi_s/mpi.h"
+MPI_CHAR,
+# 59 ".././mpi_s/mpi.h"
+MPI_SHORT,
+# 60 ".././mpi_s/mpi.h"
+MPI_INT,
+# 61 ".././mpi_s/mpi.h"
+MPI_LONG,
+# 62 ".././mpi_s/mpi.h"
+MPI_UNSIGNED_CHAR,
+# 63 ".././mpi_s/mpi.h"
+MPI_UNSIGNED_SHORT,
+# 64 ".././mpi_s/mpi.h"
+MPI_UNSIGNED,
+# 65 ".././mpi_s/mpi.h"
+MPI_UNSIGNED_LONG,
+# 66 ".././mpi_s/mpi.h"
+MPI_FLOAT,
+# 67 ".././mpi_s/mpi.h"
+MPI_DOUBLE,
+# 68 ".././mpi_s/mpi.h"
+MPI_LONG_DOUBLE,
+# 69 ".././mpi_s/mpi.h"
+MPI_BYTE,
+# 70 ".././mpi_s/mpi.h"
+MPI_PACKED};
+# 72 ".././mpi_s/mpi.h"
+enum collective_operations {
+# 72 ".././mpi_s/mpi.h"
+MPI_MAX,
+# 73 ".././mpi_s/mpi.h"
+MPI_MIN,
+# 74 ".././mpi_s/mpi.h"
+MPI_SUM,
+# 75 ".././mpi_s/mpi.h"
+MPI_PROD,
+# 76 ".././mpi_s/mpi.h"
+MPI_MAXLOC,
+# 77 ".././mpi_s/mpi.h"
+MPI_MINLOC,
+# 78 ".././mpi_s/mpi.h"
+MPI_BAND,
+# 79 ".././mpi_s/mpi.h"
+MPI_BOR,
+# 80 ".././mpi_s/mpi.h"
+MPI_BXOR,
+# 81 ".././mpi_s/mpi.h"
+MPI_LAND,
+# 82 ".././mpi_s/mpi.h"
+MPI_LOR,
+# 83 ".././mpi_s/mpi.h"
+MPI_LXOR};
+# 22 "pe.h"
+struct pe_s;
+# 22 "coords.h"
+struct coords_s;
+# 26 "coords.h"
+enum cartesian_directions {
+# 26 "coords.h"
+X,
+# 26 "coords.h"
+Y,
+# 26 "coords.h"
+Z};
+# 18 "physics.h"
+struct physics_s;
+# 22 "leesedwards.h"
+struct lees_edw_s;
+# 73 "io_harness.h"
+struct io_info_s;
+# 23 "halo_swap.h"
+struct halo_swap_s;
+# 21 "field_s.h"
+struct field_s;
+# 32 "hydro.h"
+struct hydro_s;
+# 48 "free_energy.h"
+struct fe_vt_s;
+# 66 "free_energy.h"
+struct fe_s;
+# 26 "phi_force_stress.h"
+enum _ZUt0_ {
+# 26 "phi_force_stress.h"
+PTH_METHOD_NO_FORCE,
+# 26 "phi_force_stress.h"
+PTH_METHOD_DIVERGENCE,
+# 26 "phi_force_stress.h"
+PTH_METHOD_GRADMU};
+# 10 "pth_s.h"
+struct pth_s;
+# 26 "map.h"
+struct map_s;
+# 25 "wall.h"
+struct wall_s;
+# 212 "/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stddef.h" 3
+typedef unsigned long size_t;
+#include "crt/device_runtime.h"
+# 25 ".././mpi_s/mpi.h"
+typedef int MPI_Handle;
+# 26 ".././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Comm;
+# 28 ".././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Datatype;
+# 30 ".././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Op;
+# 22 "pe.h"
+typedef struct pe_s pe_t;
+# 22 "coords.h"
+typedef struct coords_s cs_t;
+# 18 "physics.h"
+typedef struct physics_s physics_t;
+# 22 "leesedwards.h"
+typedef struct lees_edw_s lees_edw_t;
+# 36 "io_harness.h"
+typedef struct io_info_s io_info_t;
+# 28 "field.h"
+typedef struct field_s field_t;
+# 23 "halo_swap.h"
+typedef struct halo_swap_s halo_swap_t;
+# 26 "hydro.h"
+typedef struct hydro_s hydro_t;
+# 32 "hydro.h"
+struct hydro_s {
+# 33 "hydro.h"
+int nsite;
+# 34 "hydro.h"
+int nhcomm;
+# 35 "hydro.h"
+double *u;
+# 36 "hydro.h"
+double *f;
+# 37 "hydro.h"
+double *eta;
+# 39 "hydro.h"
+pe_t *pe;
+# 40 "hydro.h"
+cs_t *cs;
+# 41 "hydro.h"
+lees_edw_t *le;
+# 42 "hydro.h"
+io_info_t *info;
+# 43 "hydro.h"
+halo_swap_t *halo;
+# 44 "hydro.h"
+hydro_t *target;};
+# 32 "free_energy.h"
+typedef struct fe_s fe_t;
+# 33 "free_energy.h"
+typedef struct fe_vt_s fe_vt_t;
+# 35 "free_energy.h"
+typedef int (*fe_free_ft)(fe_t *);
+# 37 "free_energy.h"
+typedef int (*fe_target_ft)(fe_t *, fe_t **);
+# 38 "free_energy.h"
+typedef int (*fe_fed_ft)(fe_t *, int, double *);
+# 39 "free_energy.h"
+typedef int (*fe_mu_ft)(fe_t *, int, double *);
+# 40 "free_energy.h"
+typedef int (*fe_str_ft)(fe_t *, int, double (*)[3]);
+# 41 "free_energy.h"
+typedef int (*fe_mu_solv_ft)(fe_t *, int, int, double *);
+# 42 "free_energy.h"
+typedef int (*fe_hvector_ft)(fe_t *, int, double *);
+# 43 "free_energy.h"
+typedef int (*fe_htensor_ft)(fe_t *, int, double (*)[3]);
+# 45 "free_energy.h"
+typedef void (*fe_htensor_v_ft)(fe_t *, int, double (*)[3][1]);
+# 46 "free_energy.h"
+typedef void (*fe_stress_v_ft)(fe_t *, int, double (*)[3][1]);
+# 48 "free_energy.h"
+struct fe_vt_s {
+# 50 "free_energy.h"
+fe_free_ft free;
+# 51 "free_energy.h"
+fe_target_ft target;
+# 52 "free_energy.h"
+fe_fed_ft fed;
+# 53 "free_energy.h"
+fe_mu_ft mu;
+# 54 "free_energy.h"
+fe_mu_solv_ft mu_solv;
+# 55 "free_energy.h"
+fe_str_ft stress;
+# 56 "free_energy.h"
+fe_str_ft str_symm;
+# 57 "free_energy.h"
+fe_str_ft str_anti;
+# 58 "free_energy.h"
+fe_hvector_ft hvector;
+# 59 "free_energy.h"
+fe_htensor_ft htensor;
+# 60 "free_energy.h"
+fe_htensor_v_ft htensor_v;
+# 61 "free_energy.h"
+fe_stress_v_ft stress_v;
+# 62 "free_energy.h"
+fe_stress_v_ft str_symm_v;
+# 63 "free_energy.h"
+fe_stress_v_ft str_anti_v;};
+# 66 "free_energy.h"
+struct fe_s {
+# 67 "free_energy.h"
+fe_vt_t *func;
+# 68 "free_energy.h"
+int id;
+# 69 "free_energy.h"
+int use_stress_relaxation;};
+# 28 "phi_force_stress.h"
+typedef struct pth_s pth_t;
+# 10 "pth_s.h"
+struct pth_s {
+# 11 "pth_s.h"
+pe_t *pe;
+# 12 "pth_s.h"
+cs_t *cs;
+# 13 "pth_s.h"
+int method;
+# 14 "pth_s.h"
+int nsites;
+# 15 "pth_s.h"
+double *str;
+# 16 "pth_s.h"
+pth_t *target;};
+# 26 "map.h"
+typedef struct map_s map_t;
+# 25 "wall.h"
+typedef struct wall_s wall_t;
+# 149 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__malloc__)) __attribute__((__nothrow__)) void *malloc(size_t);
+# 150 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) void free(void *);
+# 189 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__noreturn__)) void __assert_fail(const char *, const char *, unsigned, const char *);
+# 54 "coords.h"
+___device__(extern  __no_sc__) int _Z9cs_cartszP8coords_sPi(cs_t *, int *);
+# 55 "coords.h"
+___device__(extern  __no_sc__) int _Z14cs_cart_coordsP8coords_sPi(cs_t *, int *);
+# 57 "coords.h"
+___device__(extern  __no_sc__) int _Z7cs_ltotP8coords_sPd(cs_t *, double *);
+# 59 "coords.h"
+___device__(extern  __no_sc__) int _Z9cs_nlocalP8coords_sPi(cs_t *, int *);
+# 62 "coords.h"
+___device__(extern  __no_sc__) int _Z8cs_indexP8coords_siii(cs_t *, int, int, int);
+# 64 "coords.h"
+___device__(extern  __no_sc__) int _Z9cs_nsitesP8coords_sPi(cs_t *, int *);
+# 203 "memory.h"
+___device__(extern  __no_sc__) int _Z25reverse_addr_rank1_assertiPKciiii(int, const char *, int, int, int, int);
+# 40 "physics.h"
+___device__(extern  __no_sc__) int _Z11physics_refPP9physics_s(physics_t **);
+# 58 "physics.h"
+___device__(extern  __no_sc__) int _Z15physics_grad_muP9physics_sPd(physics_t *, double *);
+# 54 "leesedwards.h"
+___device__(extern  __no_sc__) int _Z14lees_edw_nhaloP10lees_edw_sPi(lees_edw_t *, int *);
+# 56 "leesedwards.h"
+___device__(extern  __no_sc__) int _Z15lees_edw_nlocalP10lees_edw_sPi(lees_edw_t *, int *);
+# 57 "leesedwards.h"
+___device__(extern  __no_sc__) int _Z14lees_edw_indexP10lees_edw_siii(lees_edw_t *, int, int, int);
+# 59 "leesedwards.h"
+___device__(extern  __no_sc__) int _Z13lees_edw_ltotP10lees_edw_sPd(lees_edw_t *, double *);
+# 66 "leesedwards.h"
+___device__(extern  __no_sc__) int _Z21lees_edw_nplane_totalP10lees_edw_s(lees_edw_t *);
+# 67 "leesedwards.h"
+___device__(extern  __no_sc__) int _Z21lees_edw_nplane_localP10lees_edw_s(lees_edw_t *);
+# 74 "leesedwards.h"
+___device__(extern  __no_sc__) int _Z23lees_edw_plane_locationP10lees_edw_si(lees_edw_t *, int);
+# 79 "leesedwards.h"
+___device__(extern  __no_sc__) int _Z19lees_edw_ic_to_buffP10lees_edw_sii(lees_edw_t *, int, int);
+# 46 "field.h"
+___device__(extern  __no_sc__) int _Z12field_scalarP7field_siPd(field_t *, int, double *);
+# 69 "hydro.h"
+___device__(extern  __no_sc__) int _Z17hydro_f_local_addP7hydro_siPKd(hydro_t *, int, const double *);
+# 56 "wall.h"
+___device__(extern  __no_sc__) int _Z10wall_is_pmP6wall_sPi(wall_t *, int *);
+# 57 "wall.h"
+___device__(extern  __no_sc__) int _Z12wall_presentP6wall_s(wall_t *);
+# 58 "wall.h"
+___device__(extern  __no_sc__) int _Z16wall_present_dimP6wall_sPi(wall_t *, int *);
+#include "common_functions.h"

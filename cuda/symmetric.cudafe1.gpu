@@ -1,0 +1,557 @@
+typedef char __nv_bool;
+# 22 "pe.h"
+struct pe_s;
+# 22 "coords.h"
+struct coords_s;
+# 26 "coords.h"
+enum cartesian_directions {
+# 26 "coords.h"
+X,
+# 26 "coords.h"
+Y,
+# 26 "coords.h"
+Z};
+# 23 "halo_swap.h"
+struct halo_swap_s;
+# 73 "io_harness.h"
+struct io_info_s;
+# 22 "leesedwards.h"
+struct lees_edw_s;
+# 21 "field_s.h"
+struct field_s;
+# 22 "field_grad_s.h"
+struct field_grad_s;
+# 24 "free_energy.h"
+enum fe_id_enum {
+# 24 "free_energy.h"
+FE_SYMMETRIC,
+# 25 "free_energy.h"
+FE_BRAZOVSKII,
+# 26 "free_energy.h"
+FE_POLAR,
+# 27 "free_energy.h"
+FE_LC,
+# 28 "free_energy.h"
+FE_ELECTRO,
+# 29 "free_energy.h"
+FE_ELECTRO_SYMMETRIC,
+# 30 "free_energy.h"
+FE_LC_DROPLET};
+# 48 "free_energy.h"
+struct fe_vt_s;
+# 66 "free_energy.h"
+struct fe_s;
+# 28 "symmetric.h"
+struct fe_symm_s;
+# 40 "symmetric.h"
+struct fe_symm_param_s;
+# 212 "/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stddef.h" 3
+typedef unsigned long size_t;
+#include "crt/device_runtime.h"
+# 194 "/usr/include/sys/types.h" 3
+typedef signed char int8_t;
+# 28 ".././target/target_cuda.h"
+typedef enum cudaMemcpyKind tdpMemcpyKind;
+# 47 ".././target/target_cuda.h"
+typedef enum cudaError tdpError_t;
+# 22 "pe.h"
+typedef struct pe_s pe_t;
+# 22 "coords.h"
+typedef struct coords_s cs_t;
+# 23 "halo_swap.h"
+typedef struct halo_swap_s halo_swap_t;
+# 36 "io_harness.h"
+typedef struct io_info_s io_info_t;
+# 22 "leesedwards.h"
+typedef struct lees_edw_s lees_edw_t;
+# 28 "field.h"
+typedef struct field_s field_t;
+# 21 "field_s.h"
+struct field_s {
+# 22 "field_s.h"
+int nf;
+# 23 "field_s.h"
+int nhcomm;
+# 24 "field_s.h"
+int nsites;
+# 25 "field_s.h"
+double *data;
+# 26 "field_s.h"
+char *name;
+# 28 "field_s.h"
+pe_t *pe;
+# 29 "field_s.h"
+cs_t *cs;
+# 30 "field_s.h"
+lees_edw_t *le;
+# 31 "field_s.h"
+io_info_t *info;
+# 32 "field_s.h"
+halo_swap_t *halo;
+# 34 "field_s.h"
+field_t *target;};
+# 21 "field_grad.h"
+typedef struct field_grad_s field_grad_t;
+# 22 "field_grad_s.h"
+struct field_grad_s {
+# 23 "field_grad_s.h"
+pe_t *pe;
+# 24 "field_grad_s.h"
+field_t *field;
+# 25 "field_grad_s.h"
+int nf;
+# 26 "field_grad_s.h"
+int level;
+# 27 "field_grad_s.h"
+int nsite;
+# 28 "field_grad_s.h"
+double *grad;
+# 29 "field_grad_s.h"
+double *delsq;
+# 30 "field_grad_s.h"
+double *d_ab;
+# 31 "field_grad_s.h"
+double *grad_delsq;
+# 32 "field_grad_s.h"
+double *delsq_delsq;
+# 34 "field_grad_s.h"
+field_grad_t *target;
+# 36 "field_grad_s.h"
+int (*d2)(field_grad_t *);
+# 37 "field_grad_s.h"
+int (*d4)(field_grad_t *);
+# 38 "field_grad_s.h"
+int (*dab)(field_grad_t *);};
+# 32 "free_energy.h"
+typedef struct fe_s fe_t;
+# 33 "free_energy.h"
+typedef struct fe_vt_s fe_vt_t;
+# 35 "free_energy.h"
+typedef int (*fe_free_ft)(fe_t *);
+# 37 "free_energy.h"
+typedef int (*fe_target_ft)(fe_t *, fe_t **);
+# 38 "free_energy.h"
+typedef int (*fe_fed_ft)(fe_t *, int, double *);
+# 39 "free_energy.h"
+typedef int (*fe_mu_ft)(fe_t *, int, double *);
+# 40 "free_energy.h"
+typedef int (*fe_str_ft)(fe_t *, int, double (*)[3]);
+# 41 "free_energy.h"
+typedef int (*fe_mu_solv_ft)(fe_t *, int, int, double *);
+# 42 "free_energy.h"
+typedef int (*fe_hvector_ft)(fe_t *, int, double *);
+# 43 "free_energy.h"
+typedef int (*fe_htensor_ft)(fe_t *, int, double (*)[3]);
+# 45 "free_energy.h"
+typedef void (*fe_htensor_v_ft)(fe_t *, int, double (*)[3][1]);
+# 46 "free_energy.h"
+typedef void (*fe_stress_v_ft)(fe_t *, int, double (*)[3][1]);
+# 48 "free_energy.h"
+struct fe_vt_s {
+# 50 "free_energy.h"
+fe_free_ft free;
+# 51 "free_energy.h"
+fe_target_ft target;
+# 52 "free_energy.h"
+fe_fed_ft fed;
+# 53 "free_energy.h"
+fe_mu_ft mu;
+# 54 "free_energy.h"
+fe_mu_solv_ft mu_solv;
+# 55 "free_energy.h"
+fe_str_ft stress;
+# 56 "free_energy.h"
+fe_str_ft str_symm;
+# 57 "free_energy.h"
+fe_str_ft str_anti;
+# 58 "free_energy.h"
+fe_hvector_ft hvector;
+# 59 "free_energy.h"
+fe_htensor_ft htensor;
+# 60 "free_energy.h"
+fe_htensor_v_ft htensor_v;
+# 61 "free_energy.h"
+fe_stress_v_ft stress_v;
+# 62 "free_energy.h"
+fe_stress_v_ft str_symm_v;
+# 63 "free_energy.h"
+fe_stress_v_ft str_anti_v;};
+# 66 "free_energy.h"
+struct fe_s {
+# 67 "free_energy.h"
+fe_vt_t *func;
+# 68 "free_energy.h"
+int id;
+# 69 "free_energy.h"
+int use_stress_relaxation;};
+# 23 "symmetric.h"
+typedef struct fe_symm_param_s fe_symm_param_t;
+# 24 "symmetric.h"
+typedef struct fe_symm_s fe_symm_t;
+# 28 "symmetric.h"
+struct fe_symm_s {
+# 29 "symmetric.h"
+fe_t super;
+# 30 "symmetric.h"
+pe_t *pe;
+# 31 "symmetric.h"
+cs_t *cs;
+# 32 "symmetric.h"
+fe_symm_param_t *param;
+# 33 "symmetric.h"
+field_t *phi;
+# 34 "symmetric.h"
+field_grad_t *dphi;
+# 35 "symmetric.h"
+fe_symm_t *target;};
+# 40 "symmetric.h"
+struct fe_symm_param_s {
+# 41 "symmetric.h"
+double a;
+# 42 "symmetric.h"
+double b;
+# 43 "symmetric.h"
+double kappa;};
+# 150 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) void free(void *);
+# 189 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__noreturn__)) void __assert_fail(const char *, const char *, unsigned, const char *);
+#if !defined(__CUDABE__)
+# 612 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/math_functions.h"
+ __device_builtin__ ___device__(extern  __no_sc__) __attribute__((__nothrow__)) double sqrt(double);
+#endif
+# 46 ".././target/target.h"
+___device__(extern  __no_sc__) tdpError_t _Z17tdpGetDeviceCountPi(int *);
+# 79 ".././target/target.h"
+___device__(extern  __no_sc__) tdpError_t _Z7tdpFreePv(void *);
+# 80 ".././target/target.h"
+___device__(extern  __no_sc__) tdpError_t _Z9tdpMallocPPvm(void **, size_t);
+# 117 ".././target/target.h"
+___device__(extern  __no_sc__) void _Z15tdpErrorHandler9cudaErrorPKcii(tdpError_t, const char *, int, int);
+# 41 "util.h"
+___device__(extern  __no_sc__) double _Z11dot_productPKdS0_(const double *, const double *);
+# 200 "memory.h"
+___device__(extern  __no_sc__) int _Z25reverse_addr_rank0_assertiPKcii(int, const char *, int, int);
+# 203 "memory.h"
+___device__(extern  __no_sc__) int _Z25reverse_addr_rank1_assertiPKciiii(int, const char *, int, int, int, int);
+# 206 "memory.h"
+___device__(extern  __no_sc__) int _Z25reverse_addr_rank2_assertiPKciiiiii(int, const char *, int, int, int, int, int, int);
+# 46 "field.h"
+___device__(extern  __no_sc__) int _Z12field_scalarP7field_siPd(field_t *, int, double *);
+# 32 "field_grad.h"
+___device__(extern  __no_sc__) int _Z22field_grad_scalar_gradP12field_grad_siPd(field_grad_t *, int, double *);
+# 33 "field_grad.h"
+___device__(extern  __no_sc__) int _Z23field_grad_scalar_delsqP12field_grad_siPd(field_grad_t *, int, double *);
+# 227 "symmetric.c"
+___device__(extern  __no_sc__) int _Z13fe_symm_paramP9fe_symm_sP15fe_symm_param_s(fe_symm_t *, fe_symm_param_t *);
+# 245 "symmetric.c"
+___device__(extern  __no_sc__) int _Z27fe_symm_interfacial_tensionP9fe_symm_sPd(fe_symm_t *, double *);
+# 267 "symmetric.c"
+___device__(extern  __no_sc__) int _Z25fe_symm_interfacial_widthP9fe_symm_sPd(fe_symm_t *, double *);
+# 285 "symmetric.c"
+___device__(extern  __no_sc__) int _Z11fe_symm_fedP9fe_symm_siPd(fe_symm_t *, int, double *);
+# 308 "symmetric.c"
+___device__(extern  __no_sc__) int _Z10fe_symm_muP9fe_symm_siPd(fe_symm_t *, int, double *);
+# 334 "symmetric.c"
+___device__(extern  __no_sc__) int _Z11fe_symm_strP9fe_symm_siPA3_d(fe_symm_t *, int, double (*)[3]);
+# 372 "symmetric.c"
+___device__(extern  __no_sc__) void _Z13fe_symm_str_vP9fe_symm_siPA3_A1_d(fe_symm_t *, int, double (*)[3][1]);
+# 44 "symmetric.c"
+static  __constant__  __var_used__ fe_symm_param_t __nv_static_30__17_symmetric_cpp1_ii_26b9708b_const_param;
+# 63 "symmetric.c"
+static  __constant__  __var_used__ fe_vt_t __nv_static_30__17_symmetric_cpp1_ii_26b9708b_fe_symm_dvt;
+static  __device__  __var_used__ const char __T5[50];
+static  __device__  __var_used__ const char __T6[55];
+static  __device__  __var_used__ const char __T7[53];
+static  __device__  __var_used__ const char __T8[44];
+static  __device__  __var_used__ const char __T9[49];
+static  __device__  __var_used__ const char __T10[55];
+#include "common_functions.h"
+# 63 "symmetric.c"
+static  __constant__  __var_used__ fe_vt_t __nv_static_30__17_symmetric_cpp1_ii_26b9708b_fe_symm_dvt = {((fe_free_ft)0LL),((fe_target_ft)0LL),((int (*)(fe_t *, int, double *))_Z11fe_symm_fedP9fe_symm_siPd),((int (*)(fe_t *, int, double *))_Z10fe_symm_muP9fe_symm_siPd),((fe_mu_solv_ft)0LL),((int (*)(fe_t *, int, double (*)[3]))_Z11fe_symm_strP9fe_symm_siPA3_d),((int (*)(fe_t *, int, double (*)[3]))_Z11fe_symm_strP9fe_symm_siPA3_d),((fe_str_ft)0LL),((fe_hvector_ft)0LL),((fe_htensor_ft)0LL),((fe_htensor_v_ft)0LL),((void (*)(fe_t *, int, double (*)[3][1]))_Z13fe_symm_str_vP9fe_symm_siPA3_A1_d),((void (*)(fe_t *, int, double (*)[3][1]))_Z13fe_symm_str_vP9fe_symm_siPA3_A1_d),((fe_stress_v_ft)0LL)};
+static  __device__  __var_used__ const char __T5[50] = "int fe_symm_param(fe_symm_s *, fe_symm_param_s *)";
+static  __device__  __var_used__ const char __T6[55] = "int fe_symm_interfacial_tension(fe_symm_s *, double *)";
+static  __device__  __var_used__ const char __T7[53] = "int fe_symm_interfacial_width(fe_symm_s *, double *)";
+static  __device__  __var_used__ const char __T8[44] = "int fe_symm_fed(fe_symm_s *, int, double *)";
+static  __device__  __var_used__ const char __T9[49] = "int fe_symm_str(fe_symm_s *, int, double (*)[3])";
+static  __device__  __var_used__ const char __T10[55] = "void fe_symm_str_v(fe_symm_s *, int, double (*)[3][1])";
+#if !defined(__CUDABE__)
+#endif
+# 227 "symmetric.c"
+___device__( __no_sc__) int _Z13fe_symm_paramP9fe_symm_sP15fe_symm_param_s(
+# 227 "symmetric.c"
+fe_symm_t *fe, 
+# 227 "symmetric.c"
+fe_symm_param_t *values){
+# 227 "symmetric.c"
+{
+# 229 "symmetric.c"
+(fe) ? ((void)0) : (__assert_fail(((const char *)"fe"), ((const char *)"symmetric.c"), 229U, __T5));
+# 231 "symmetric.c"
+(*values) = (*(fe->param));
+# 233 "symmetric.c"
+return 0;
+# 234 "symmetric.c"
+}}
+# 245 "symmetric.c"
+___device__( __no_sc__) int _Z27fe_symm_interfacial_tensionP9fe_symm_sPd(
+# 245 "symmetric.c"
+fe_symm_t *fe, 
+# 245 "symmetric.c"
+double *sigma){
+# 245 "symmetric.c"
+{
+# 247 "symmetric.c"
+ double __cuda_local_var_16099_10_non_const_a;
+# 247 "symmetric.c"
+ double __cuda_local_var_16099_13_non_const_b;
+# 247 "symmetric.c"
+ double __cuda_local_var_16099_16_non_const_kappa;
+# 249 "symmetric.c"
+(fe) ? ((void)0) : (__assert_fail(((const char *)"fe"), ((const char *)"symmetric.c"), 249U, __T6));
+# 251 "symmetric.c"
+__cuda_local_var_16099_10_non_const_a = ((fe->param)->a);
+# 252 "symmetric.c"
+__cuda_local_var_16099_13_non_const_b = ((fe->param)->b);
+# 253 "symmetric.c"
+__cuda_local_var_16099_16_non_const_kappa = ((fe->param)->kappa);
+# 255 "symmetric.c"
+(*sigma) = (sqrt(( fdivide((((((-8.0) * __cuda_local_var_16099_16_non_const_kappa) * __cuda_local_var_16099_10_non_const_a) * __cuda_local_var_16099_10_non_const_a) * __cuda_local_var_16099_10_non_const_a) , (((9.0) * __cuda_local_var_16099_13_non_const_b) * __cuda_local_var_16099_13_non_const_b)))));
+# 257 "symmetric.c"
+return 0;
+# 258 "symmetric.c"
+}}
+# 267 "symmetric.c"
+___device__( __no_sc__) int _Z25fe_symm_interfacial_widthP9fe_symm_sPd(
+# 267 "symmetric.c"
+fe_symm_t *fe, 
+# 267 "symmetric.c"
+double *xi){
+# 267 "symmetric.c"
+{
+# 269 "symmetric.c"
+(fe) ? ((void)0) : (__assert_fail(((const char *)"fe"), ((const char *)"symmetric.c"), 269U, __T7));
+# 271 "symmetric.c"
+(*xi) = (sqrt(( fdivide(((-2.0) * ((fe->param)->kappa)) , ((fe->param)->a)))));
+# 273 "symmetric.c"
+return 0;
+# 274 "symmetric.c"
+}}
+# 285 "symmetric.c"
+___device__( __no_sc__) int _Z11fe_symm_fedP9fe_symm_siPd(
+# 285 "symmetric.c"
+fe_symm_t *fe, 
+# 285 "symmetric.c"
+int index, 
+# 285 "symmetric.c"
+double *fed){
+# 285 "symmetric.c"
+{
+# 287 "symmetric.c"
+ double __cuda_local_var_16131_10_non_const_phi;
+# 288 "symmetric.c"
+ double __cuda_local_var_16132_10_non_const_dphi[3];
+# 290 "symmetric.c"
+(fe) ? ((void)0) : (__assert_fail(((const char *)"fe"), ((const char *)"symmetric.c"), 290U, __T8));
+# 292 "symmetric.c"
+_Z12field_scalarP7field_siPd((fe->phi), index, (&__cuda_local_var_16131_10_non_const_phi));
+# 293 "symmetric.c"
+_Z22field_grad_scalar_gradP12field_grad_siPd((fe->dphi), index, (__cuda_local_var_16132_10_non_const_dphi));
+# 295 "symmetric.c"
+(*fed) = ((((((0.5) * ((fe->param)->a)) + ((((0.25) * ((fe->param)->b)) * __cuda_local_var_16131_10_non_const_phi) * __cuda_local_var_16131_10_non_const_phi)) * __cuda_local_var_16131_10_non_const_phi) * __cuda_local_var_16131_10_non_const_phi) + (((0.5) * ((fe->param)->kappa)) * (_Z11dot_productPKdS0_(((const double *)(__cuda_local_var_16132_10_non_const_dphi)), ((const double *)(__cuda_local_var_16132_10_non_const_dphi))))));
+# 298 "symmetric.c"
+return 0;
+# 299 "symmetric.c"
+}}
+# 308 "symmetric.c"
+___device__( __no_sc__) int _Z10fe_symm_muP9fe_symm_siPd(
+# 308 "symmetric.c"
+fe_symm_t *fe, 
+# 308 "symmetric.c"
+int index, 
+# 308 "symmetric.c"
+double *mu){
+# 308 "symmetric.c"
+{
+# 310 "symmetric.c"
+ double __cuda_local_var_16154_10_non_const_phi;
+# 311 "symmetric.c"
+ double __cuda_local_var_16155_10_non_const_delsq;
+# 313 "symmetric.c"
+__cuda_local_var_16154_10_non_const_phi = (((fe->phi)->data)[(_Z25reverse_addr_rank0_assertiPKcii(313, ((const char *)"symmetric.c"), ((fe->phi)->nsites), index))]);
+# 314 "symmetric.c"
+__cuda_local_var_16155_10_non_const_delsq = (((fe->dphi)->delsq)[(_Z25reverse_addr_rank0_assertiPKcii(314, ((const char *)"symmetric.c"), ((fe->phi)->nsites), index))]);
+# 316 "symmetric.c"
+(*mu) = (((((fe->param)->a) * __cuda_local_var_16154_10_non_const_phi) + (((((fe->param)->b) * __cuda_local_var_16154_10_non_const_phi) * __cuda_local_var_16154_10_non_const_phi) * __cuda_local_var_16154_10_non_const_phi)) - (((fe->param)->kappa) * __cuda_local_var_16155_10_non_const_delsq));
+# 318 "symmetric.c"
+return 0;
+# 319 "symmetric.c"
+}}
+# 334 "symmetric.c"
+___device__( __no_sc__) int _Z11fe_symm_strP9fe_symm_siPA3_d(
+# 334 "symmetric.c"
+fe_symm_t *fe, 
+# 334 "symmetric.c"
+int index, 
+# 334 "symmetric.c"
+double (*s)[3]){
+# 334 "symmetric.c"
+{
+# 336 "symmetric.c"
+ int __cuda_local_var_16168_7_non_const_ia;
+# 336 "symmetric.c"
+ int __cuda_local_var_16168_11_non_const_ib;
+# 337 "symmetric.c"
+ double __cuda_local_var_16169_10_non_const_kappa;
+# 338 "symmetric.c"
+ double __cuda_local_var_16170_10_non_const_phi;
+# 339 "symmetric.c"
+ double __cuda_local_var_16171_10_non_const_delsq_phi;
+# 340 "symmetric.c"
+ double __cuda_local_var_16172_10_non_const_grad_phi[3];
+# 341 "symmetric.c"
+ double __cuda_local_var_16173_10_non_const_p0;
+# 342 "symmetric.c"
+ double __cuda_local_var_16174_10_non_const_d_ab;
+# 344 "symmetric.c"
+(fe) ? ((void)0) : (__assert_fail(((const char *)"fe"), ((const char *)"symmetric.c"), 344U, __T9));
+# 346 "symmetric.c"
+__cuda_local_var_16169_10_non_const_kappa = ((fe->param)->kappa);
+# 348 "symmetric.c"
+_Z12field_scalarP7field_siPd((fe->phi), index, (&__cuda_local_var_16170_10_non_const_phi));
+# 349 "symmetric.c"
+_Z22field_grad_scalar_gradP12field_grad_siPd((fe->dphi), index, (__cuda_local_var_16172_10_non_const_grad_phi));
+# 350 "symmetric.c"
+_Z23field_grad_scalar_delsqP12field_grad_siPd((fe->dphi), index, (&__cuda_local_var_16171_10_non_const_delsq_phi));
+# 352 "symmetric.c"
+__cuda_local_var_16173_10_non_const_p0 = (((((((0.5) * ((fe->param)->a)) * __cuda_local_var_16170_10_non_const_phi) * __cuda_local_var_16170_10_non_const_phi) + ((((((0.75) * ((fe->param)->b)) * __cuda_local_var_16170_10_non_const_phi) * __cuda_local_var_16170_10_non_const_phi) * __cuda_local_var_16170_10_non_const_phi) * __cuda_local_var_16170_10_non_const_phi)) - ((__cuda_local_var_16169_10_non_const_kappa * __cuda_local_var_16170_10_non_const_phi) * __cuda_local_var_16171_10_non_const_delsq_phi)) - (((0.5) * __cuda_local_var_16169_10_non_const_kappa) * (_Z11dot_productPKdS0_(((const double *)(__cuda_local_var_16172_10_non_const_grad_phi)), ((const double *)(__cuda_local_var_16172_10_non_const_grad_phi))))));
+# 355 "symmetric.c"
+for (__cuda_local_var_16168_7_non_const_ia = 0; (__cuda_local_var_16168_7_non_const_ia < 3); __cuda_local_var_16168_7_non_const_ia++)
+# 355 "symmetric.c"
+{
+# 356 "symmetric.c"
+for (__cuda_local_var_16168_11_non_const_ib = 0; (__cuda_local_var_16168_11_non_const_ib < 3); __cuda_local_var_16168_11_non_const_ib++)
+# 356 "symmetric.c"
+{
+# 357 "symmetric.c"
+__cuda_local_var_16174_10_non_const_d_ab = ((double)(__cuda_local_var_16168_7_non_const_ia == __cuda_local_var_16168_11_non_const_ib));
+# 358 "symmetric.c"
+(((s[__cuda_local_var_16168_7_non_const_ia]))[__cuda_local_var_16168_11_non_const_ib]) = ((__cuda_local_var_16173_10_non_const_p0 * __cuda_local_var_16174_10_non_const_d_ab) + ((__cuda_local_var_16169_10_non_const_kappa * ((__cuda_local_var_16172_10_non_const_grad_phi)[__cuda_local_var_16168_7_non_const_ia])) * ((__cuda_local_var_16172_10_non_const_grad_phi)[__cuda_local_var_16168_11_non_const_ib])));
+# 359 "symmetric.c"
+}
+# 360 "symmetric.c"
+}
+# 362 "symmetric.c"
+return 0;
+# 363 "symmetric.c"
+}}
+# 372 "symmetric.c"
+___device__( __no_sc__) void _Z13fe_symm_str_vP9fe_symm_siPA3_A1_d(
+# 372 "symmetric.c"
+fe_symm_t *fe, 
+# 372 "symmetric.c"
+int index, 
+# 372 "symmetric.c"
+double (*s)[3][1]){
+# 372 "symmetric.c"
+{
+# 374 "symmetric.c"
+ int __cuda_local_var_16206_7_non_const_ia;
+# 374 "symmetric.c"
+ int __cuda_local_var_16206_11_non_const_ib;
+# 375 "symmetric.c"
+ int __cuda_local_var_16207_7_non_const_iv;
+# 376 "symmetric.c"
+ double __cuda_local_var_16208_10_non_const_a;
+# 377 "symmetric.c"
+ double __cuda_local_var_16209_10_non_const_b;
+# 378 "symmetric.c"
+ double __cuda_local_var_16210_10_non_const_kappa;
+# 379 "symmetric.c"
+ double __cuda_local_var_16211_10_non_const_phi;
+# 380 "symmetric.c"
+ double __cuda_local_var_16212_10_non_const_delsq;
+# 381 "symmetric.c"
+ double __cuda_local_var_16213_10_non_const_grad[3][1];
+# 382 "symmetric.c"
+ double __cuda_local_var_16214_10_non_const_p0;
+# 383 "symmetric.c"
+ int8_t __cuda_local_var_16215_16_const_d[3][3];
+# 383 "symmetric.c"
+memset((char *)(const int8_t ( *)[3][3])&__cuda_local_var_16215_16_const_d, 0,sizeof(__cuda_local_var_16215_16_const_d));
+# 383 "symmetric.c"
+__cuda_local_var_16215_16_const_d[0][0] = ((int8_t)1);
+# 383 "symmetric.c"
+__cuda_local_var_16215_16_const_d[0][1] = ((int8_t)0);
+# 383 "symmetric.c"
+__cuda_local_var_16215_16_const_d[0][2] = ((int8_t)0);
+# 383 "symmetric.c"
+__cuda_local_var_16215_16_const_d[1][0] = ((int8_t)0);
+# 383 "symmetric.c"
+__cuda_local_var_16215_16_const_d[1][1] = ((int8_t)1);
+# 383 "symmetric.c"
+__cuda_local_var_16215_16_const_d[1][2] = ((int8_t)0);
+# 383 "symmetric.c"
+__cuda_local_var_16215_16_const_d[2][0] = ((int8_t)0);
+# 383 "symmetric.c"
+__cuda_local_var_16215_16_const_d[2][1] = ((int8_t)0);
+# 383 "symmetric.c"
+__cuda_local_var_16215_16_const_d[2][2] = ((int8_t)1);
+# 385 "symmetric.c"
+(fe) ? ((void)0) : (__assert_fail(((const char *)"fe"), ((const char *)"symmetric.c"), 385U, __T10));
+# 386 "symmetric.c"
+(fe->phi) ? ((void)0) : (__assert_fail(((const char *)"fe->phi"), ((const char *)"symmetric.c"), 386U, __T10));
+# 387 "symmetric.c"
+(fe->dphi) ? ((void)0) : (__assert_fail(((const char *)"fe->dphi"), ((const char *)"symmetric.c"), 387U, __T10));
+# 388 "symmetric.c"
+(fe->param) ? ((void)0) : (__assert_fail(((const char *)"fe->param"), ((const char *)"symmetric.c"), 388U, __T10));
+# 390 "symmetric.c"
+__cuda_local_var_16208_10_non_const_a = ((fe->param)->a);
+# 391 "symmetric.c"
+__cuda_local_var_16209_10_non_const_b = ((fe->param)->b);
+# 392 "symmetric.c"
+__cuda_local_var_16210_10_non_const_kappa = ((fe->param)->kappa);
+# 394 "symmetric.c"
+for (__cuda_local_var_16206_7_non_const_ia = 0; (__cuda_local_var_16206_7_non_const_ia < 3); __cuda_local_var_16206_7_non_const_ia++)
+# 394 "symmetric.c"
+{
+# 395 "symmetric.c"
+for (__cuda_local_var_16207_7_non_const_iv = 0; (__cuda_local_var_16207_7_non_const_iv < 1); __cuda_local_var_16207_7_non_const_iv++)
+# 395 "symmetric.c"
+{
+# 396 "symmetric.c"
+((((__cuda_local_var_16213_10_non_const_grad)[__cuda_local_var_16206_7_non_const_ia]))[__cuda_local_var_16207_7_non_const_iv]) = (((fe->dphi)->grad)[(_Z25reverse_addr_rank2_assertiPKciiiiii(396, ((const char *)"symmetric.c"), ((fe->dphi)->nsite), 1, 3, (index + __cuda_local_var_16207_7_non_const_iv), 0, __cuda_local_var_16206_7_non_const_ia))]);
+# 397 "symmetric.c"
+}
+# 398 "symmetric.c"
+}
+# 400 "symmetric.c"
+for (__cuda_local_var_16207_7_non_const_iv = 0; (__cuda_local_var_16207_7_non_const_iv < 1); __cuda_local_var_16207_7_non_const_iv++)
+# 400 "symmetric.c"
+{
+# 401 "symmetric.c"
+__cuda_local_var_16211_10_non_const_phi = (((fe->phi)->data)[(_Z25reverse_addr_rank1_assertiPKciiii(401, ((const char *)"symmetric.c"), ((fe->phi)->nsites), 1, (index + __cuda_local_var_16207_7_non_const_iv), 0))]);
+# 402 "symmetric.c"
+__cuda_local_var_16212_10_non_const_delsq = (((fe->dphi)->delsq)[(_Z25reverse_addr_rank1_assertiPKciiii(402, ((const char *)"symmetric.c"), ((fe->dphi)->nsite), 1, (index + __cuda_local_var_16207_7_non_const_iv), 0))]);
+# 404 "symmetric.c"
+__cuda_local_var_16214_10_non_const_p0 = (((((((0.5) * __cuda_local_var_16208_10_non_const_a) * __cuda_local_var_16211_10_non_const_phi) * __cuda_local_var_16211_10_non_const_phi) + ((((((0.75) * __cuda_local_var_16209_10_non_const_b) * __cuda_local_var_16211_10_non_const_phi) * __cuda_local_var_16211_10_non_const_phi) * __cuda_local_var_16211_10_non_const_phi) * __cuda_local_var_16211_10_non_const_phi)) - ((__cuda_local_var_16210_10_non_const_kappa * __cuda_local_var_16211_10_non_const_phi) * __cuda_local_var_16212_10_non_const_delsq)) - (((0.5) * __cuda_local_var_16210_10_non_const_kappa) * (((((((__cuda_local_var_16213_10_non_const_grad)[X]))[__cuda_local_var_16207_7_non_const_iv]) * ((((__cuda_local_var_16213_10_non_const_grad)[X]))[__cuda_local_var_16207_7_non_const_iv])) + (((((__cuda_local_var_16213_10_non_const_grad)[Y]))[__cuda_local_var_16207_7_non_const_iv]) * ((((__cuda_local_var_16213_10_non_const_grad)[Y]))[__cuda_local_var_16207_7_non_const_iv]))) + (((((__cuda_local_var_16213_10_non_const_grad)[Z]))[__cuda_local_var_16207_7_non_const_iv]) * ((((__cuda_local_var_16213_10_non_const_grad)[Z]))[__cuda_local_var_16207_7_non_const_iv])))));
+# 408 "symmetric.c"
+for (__cuda_local_var_16206_7_non_const_ia = 0; (__cuda_local_var_16206_7_non_const_ia < 3); __cuda_local_var_16206_7_non_const_ia++)
+# 408 "symmetric.c"
+{
+# 409 "symmetric.c"
+for (__cuda_local_var_16206_11_non_const_ib = 0; (__cuda_local_var_16206_11_non_const_ib < 3); __cuda_local_var_16206_11_non_const_ib++)
+# 409 "symmetric.c"
+{
+# 410 "symmetric.c"
+(((((s[__cuda_local_var_16206_7_non_const_ia]))[__cuda_local_var_16206_11_non_const_ib]))[__cuda_local_var_16207_7_non_const_iv]) = ((__cuda_local_var_16214_10_non_const_p0 * ((double)(((((const int8_t (*)[3])__cuda_local_var_16215_16_const_d)[__cuda_local_var_16206_7_non_const_ia]))[__cuda_local_var_16206_11_non_const_ib]))) + ((__cuda_local_var_16210_10_non_const_kappa * ((((__cuda_local_var_16213_10_non_const_grad)[__cuda_local_var_16206_7_non_const_ia]))[__cuda_local_var_16207_7_non_const_iv])) * ((((__cuda_local_var_16213_10_non_const_grad)[__cuda_local_var_16206_11_non_const_ib]))[__cuda_local_var_16207_7_non_const_iv])));
+# 411 "symmetric.c"
+}
+# 412 "symmetric.c"
+}
+# 413 "symmetric.c"
+}
+# 415 "symmetric.c"
+return;
+# 416 "symmetric.c"
+}}

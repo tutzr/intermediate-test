@@ -1,0 +1,233 @@
+typedef char __nv_bool;
+# 2074 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/driver_types.h"
+struct CUstream_st;
+# 58 "../.././mpi_s/mpi.h"
+enum elementary_datatypes {
+# 58 "../.././mpi_s/mpi.h"
+MPI_CHAR,
+# 59 "../.././mpi_s/mpi.h"
+MPI_SHORT,
+# 60 "../.././mpi_s/mpi.h"
+MPI_INT,
+# 61 "../.././mpi_s/mpi.h"
+MPI_LONG,
+# 62 "../.././mpi_s/mpi.h"
+MPI_UNSIGNED_CHAR,
+# 63 "../.././mpi_s/mpi.h"
+MPI_UNSIGNED_SHORT,
+# 64 "../.././mpi_s/mpi.h"
+MPI_UNSIGNED,
+# 65 "../.././mpi_s/mpi.h"
+MPI_UNSIGNED_LONG,
+# 66 "../.././mpi_s/mpi.h"
+MPI_FLOAT,
+# 67 "../.././mpi_s/mpi.h"
+MPI_DOUBLE,
+# 68 "../.././mpi_s/mpi.h"
+MPI_LONG_DOUBLE,
+# 69 "../.././mpi_s/mpi.h"
+MPI_BYTE,
+# 70 "../.././mpi_s/mpi.h"
+MPI_PACKED};
+# 92 "../.././mpi_s/mpi.h"
+enum reserved_communicators {
+# 92 "../.././mpi_s/mpi.h"
+MPI_COMM_WORLD,
+# 92 "../.././mpi_s/mpi.h"
+MPI_COMM_SELF};
+# 22 "../.././src/pe.h"
+struct pe_s;
+# 24 "../.././src/pe.h"
+enum pe_enum_t {
+# 24 "../.././src/pe.h"
+PE_QUIET,
+# 24 "../.././src/pe.h"
+PE_VERBOSE,
+# 24 "../.././src/pe.h"
+PE_OPTION_MAX};
+# 22 "../.././src/coords.h"
+struct coords_s;
+# 26 "../.././src/coords.h"
+enum cartesian_directions {
+# 26 "../.././src/coords.h"
+X,
+# 26 "../.././src/coords.h"
+Y,
+# 26 "../.././src/coords.h"
+Z};
+# 29 "../.././src/coords.h"
+enum upper_triangle {
+# 29 "../.././src/coords.h"
+XX,
+# 29 "../.././src/coords.h"
+XY,
+# 29 "../.././src/coords.h"
+XZ,
+# 29 "../.././src/coords.h"
+YY,
+# 29 "../.././src/coords.h"
+YZ,
+# 29 "../.././src/coords.h"
+ZZ};
+# 22 "../.././src/leesedwards.h"
+struct lees_edw_s;
+# 23 "../.././src/halo_swap.h"
+struct halo_swap_s;
+# 28 "../.././src/io_harness.h"
+enum io_format_enum {
+# 28 "../.././src/io_harness.h"
+IO_FORMAT_NULL,
+# 29 "../.././src/io_harness.h"
+IO_FORMAT_ASCII,
+# 30 "../.././src/io_harness.h"
+IO_FORMAT_BINARY,
+# 31 "../.././src/io_harness.h"
+IO_FORMAT_ASCII_SERIAL,
+# 32 "../.././src/io_harness.h"
+IO_FORMAT_BINARY_SERIAL,
+# 33 "../.././src/io_harness.h"
+IO_FORMAT_DEFAULT};
+# 73 "../.././src/io_harness.h"
+struct io_info_s;
+# 30 "../.././src/field.h"
+enum field_halo_enum_t {
+# 30 "../.././src/field.h"
+FIELD_HALO_HOST,
+# 30 "../.././src/field.h"
+FIELD_HALO_TARGET};
+# 21 "../.././src/field_s.h"
+struct field_s;
+# 212 "/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stddef.h" 3
+typedef unsigned long size_t;
+#include "crt/device_runtime.h"
+# 25 "../.././mpi_s/mpi.h"
+typedef int MPI_Handle;
+# 26 "../.././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Comm;
+# 28 "../.././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Datatype;
+# 28 "../.././target/target_cuda.h"
+typedef enum cudaMemcpyKind tdpMemcpyKind;
+# 47 "../.././target/target_cuda.h"
+typedef enum cudaError tdpError_t;
+# 22 "../.././src/pe.h"
+typedef struct pe_s pe_t;
+# 24 "../.././src/pe.h"
+typedef enum pe_enum_t pe_enum_t;
+# 22 "../.././src/coords.h"
+typedef struct coords_s cs_t;
+# 22 "../.././src/leesedwards.h"
+typedef struct lees_edw_s lees_edw_t;
+# 23 "../.././src/halo_swap.h"
+typedef struct halo_swap_s halo_swap_t;
+# 36 "../.././src/io_harness.h"
+typedef struct io_info_s io_info_t;
+# 28 "../.././src/field.h"
+typedef struct field_s field_t;
+# 30 "../.././src/field.h"
+typedef enum field_halo_enum_t field_halo_enum_t;
+# 21 "../.././src/field_s.h"
+struct field_s {
+# 22 "../.././src/field_s.h"
+int nf;
+# 23 "../.././src/field_s.h"
+int nhcomm;
+# 24 "../.././src/field_s.h"
+int nsites;
+# 25 "../.././src/field_s.h"
+double *data;
+# 26 "../.././src/field_s.h"
+char *name;
+# 28 "../.././src/field_s.h"
+pe_t *pe;
+# 29 "../.././src/field_s.h"
+cs_t *cs;
+# 30 "../.././src/field_s.h"
+lees_edw_t *le;
+# 31 "../.././src/field_s.h"
+io_info_t *info;
+# 32 "../.././src/field_s.h"
+halo_swap_t *halo;
+# 34 "../.././src/field_s.h"
+field_t *target;};
+# 23 "test_coords_field.h"
+typedef int (*halo_ft)(cs_t *, int, int, int, int, void *);
+# 189 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__noreturn__)) void __assert_fail(const char *, const char *, unsigned, const char *);
+#if !defined(__CUDABE__)
+# 244 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/math_functions.h"
+ __device_builtin__ ___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__const__)) double fabs(double);
+#endif
+# 3296 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/device_functions.h"
+___device__(extern  __no_sc__) unsigned __cudaPushCallConfiguration(struct dim3, struct dim3, size_t, struct CUstream_st *);
+# 44 "../.././target/target.h"
+___device__(extern  __no_sc__) tdpError_t _Z20tdpDeviceSynchronizev(void);
+# 61 "../.././src/coords.h"
+___device__(extern  __no_sc__) int _Z8cs_nhaloP8coords_sPi(cs_t *, int *);
+# 64 "../.././src/coords.h"
+___device__(extern  __no_sc__) int _Z9cs_nsitesP8coords_sPi(cs_t *, int *);
+# 45 "../.././src/field.h"
+___device__(extern  __no_sc__) int _Z8field_nfP7field_sPi(field_t *, int *);
+# 46 "../.././src/field.h"
+___device__(extern  __no_sc__) int _Z12field_scalarP7field_siPd(field_t *, int, double *);
+# 47 "../.././src/field.h"
+___device__(extern  __no_sc__) int _Z16field_scalar_setP7field_sid(field_t *, int, double);
+# 48 "../.././src/field.h"
+___device__(extern  __no_sc__) int _Z12field_vectorP7field_siPd(field_t *, int, double *);
+# 49 "../.././src/field.h"
+___device__(extern  __no_sc__) int _Z16field_vector_setP7field_siPKd(field_t *, int, const double *);
+# 51 "../.././src/field.h"
+___device__(extern  __no_sc__) int _Z12field_tensorP7field_siPA3_d(field_t *, int, double (*)[3]);
+# 52 "../.././src/field.h"
+___device__(extern  __no_sc__) int _Z16field_tensor_setP7field_siPA3_d(field_t *, int, double (*)[3]);
+# 54 "../.././src/field.h"
+___device__(extern  __no_sc__) int _Z18field_scalar_arrayP7field_siPd(field_t *, int, double *);
+# 56 "../.././src/field.h"
+___device__(extern  __no_sc__) int _Z22field_scalar_array_setP7field_siPKd(field_t *, int, const double *);
+# 214 "test_field.c"
+__global__ __var_used__ extern void _Z21do_test_field_kernel1P7field_s(field_t *);
+static  __device__  __var_used__ const char __T3[38];
+#include "common_functions.h"
+static  __device__  __var_used__ const char __T3[38] = "void do_test_field_kernel1(field_s *)";
+#if !defined(__CUDABE__)
+#endif
+# 214 "test_field.c"
+__global__ __var_used__ void _Z21do_test_field_kernel1P7field_s(
+# 214 "test_field.c"
+field_t *phi){
+# 214 "test_field.c"
+{
+# 216 "test_field.c"
+ int __cuda_local_var_15925_7_non_const_nf;
+# 217 "test_field.c"
+ int __cuda_local_var_15926_7_non_const_index;
+# 218 "test_field.c"
+ int __cuda_local_var_15927_7_non_const_nsites;
+# 219 "test_field.c"
+ double __cuda_local_var_15928_10_non_const_q;
+# 220 "test_field.c"
+ double __cuda_local_var_15929_10_non_const_qref;
+# 217 "test_field.c"
+__cuda_local_var_15926_7_non_const_index = 1;
+# 220 "test_field.c"
+__cuda_local_var_15929_10_non_const_qref = (1.199999999999999956);
+# 222 "test_field.c"
+(phi) ? ((void)0) : (__assert_fail(((const char *)"phi"), ((const char *)"test_field.c"), 222U, __T3));
+# 224 "test_field.c"
+_Z8field_nfP7field_sPi(phi, (&__cuda_local_var_15925_7_non_const_nf));
+# 225 "test_field.c"
+(__cuda_local_var_15925_7_non_const_nf == 1) ? ((void)0) : (__assert_fail(((const char *)"nf == 1"), ((const char *)"test_field.c"), 225U, __T3));
+# 227 "test_field.c"
+_Z9cs_nsitesP8coords_sPi((phi->cs), (&__cuda_local_var_15927_7_non_const_nsites));
+# 228 "test_field.c"
+((phi->nsites) == __cuda_local_var_15927_7_non_const_nsites) ? ((void)0) : (__assert_fail(((const char *)"phi->nsites == nsites"), ((const char *)"test_field.c"), 228U, __T3));
+# 230 "test_field.c"
+_Z16field_scalar_setP7field_sid(phi, __cuda_local_var_15926_7_non_const_index, __cuda_local_var_15929_10_non_const_qref);
+# 231 "test_field.c"
+_Z12field_scalarP7field_siPd(phi, __cuda_local_var_15926_7_non_const_index, (&__cuda_local_var_15928_10_non_const_q));
+# 232 "test_field.c"
+((fabs((__cuda_local_var_15928_10_non_const_q - __cuda_local_var_15929_10_non_const_qref))) < (2.220446049250313081e-16)) ? ((void)0) : (__assert_fail(((const char *)"fabs(q - qref) < double(2.22044604925031308085e-16L)"), ((const char *)"test_field.c"), 232U, __T3));
+# 234 "test_field.c"
+return;
+# 235 "test_field.c"
+}}

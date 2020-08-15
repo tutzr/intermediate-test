@@ -1,0 +1,29 @@
+# 1 "control.c"
+# 25 "control.c"
+static int __nv_static_28__15_control_cpp1_ii_933053d7_freq_statistics;
+static int __nv_static_28__15_control_cpp1_ii_933053d7_freq_measure;
+static int __nv_static_28__15_control_cpp1_ii_933053d7_freq_config;
+static int __nv_static_28__15_control_cpp1_ii_933053d7_freq_phi;
+static int __nv_static_28__15_control_cpp1_ii_933053d7_freq_psi;
+static int __nv_static_28__15_control_cpp1_ii_933053d7_freq_vel;
+static int __nv_static_28__15_control_cpp1_ii_933053d7_freq_fed;
+static int __nv_static_28__15_control_cpp1_ii_933053d7_freq_shear_io;
+static int __nv_static_28__15_control_cpp1_ii_933053d7_freq_shear_meas;
+static int __nv_static_28__15_control_cpp1_ii_933053d7_freq_colloid_io;
+static int __nv_static_28__15_control_cpp1_ii_933053d7_rho_nfreq;
+static int __nv_static_28__15_control_cpp1_ii_933053d7_config_at_end;
+static const char __T0[33];
+# 25 "control.c"
+static int __nv_static_28__15_control_cpp1_ii_933053d7_freq_statistics = 100;
+static int __nv_static_28__15_control_cpp1_ii_933053d7_freq_measure = 100000000;
+static int __nv_static_28__15_control_cpp1_ii_933053d7_freq_config = 100000000;
+static int __nv_static_28__15_control_cpp1_ii_933053d7_freq_phi = 100000000;
+static int __nv_static_28__15_control_cpp1_ii_933053d7_freq_psi = 100000000;
+static int __nv_static_28__15_control_cpp1_ii_933053d7_freq_vel = 100000000;
+static int __nv_static_28__15_control_cpp1_ii_933053d7_freq_fed = 100000000;
+static int __nv_static_28__15_control_cpp1_ii_933053d7_freq_shear_io = 100000000;
+static int __nv_static_28__15_control_cpp1_ii_933053d7_freq_shear_meas = 100000000;
+static int __nv_static_28__15_control_cpp1_ii_933053d7_freq_colloid_io = 100000000;
+static int __nv_static_28__15_control_cpp1_ii_933053d7_rho_nfreq = 100000000;
+static int __nv_static_28__15_control_cpp1_ii_933053d7_config_at_end = 1;
+static const char __T0[33] = "int init_control(pe_s *, rt_s *)";

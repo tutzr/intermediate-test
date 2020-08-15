@@ -1,0 +1,227 @@
+typedef char __nv_bool;
+# 246 "/usr/include/libio.h" 3
+struct _IO_FILE;
+# 92 "../.././mpi_s/mpi.h"
+enum reserved_communicators {
+# 92 "../.././mpi_s/mpi.h"
+MPI_COMM_WORLD,
+# 92 "../.././mpi_s/mpi.h"
+MPI_COMM_SELF};
+# 22 "../.././src/pe.h"
+struct pe_s;
+# 24 "../.././src/pe.h"
+enum pe_enum_t {
+# 24 "../.././src/pe.h"
+PE_QUIET,
+# 24 "../.././src/pe.h"
+PE_VERBOSE,
+# 24 "../.././src/pe.h"
+PE_OPTION_MAX};
+# 22 "../.././src/coords.h"
+struct coords_s;
+# 26 "../.././src/coords.h"
+enum cartesian_directions {
+# 26 "../.././src/coords.h"
+X,
+# 26 "../.././src/coords.h"
+Y,
+# 26 "../.././src/coords.h"
+Z};
+# 32 "../.././src/io_options.h"
+enum io_mode_enum {
+# 32 "../.././src/io_options.h"
+IO_MODE_INVALID,
+# 32 "../.././src/io_options.h"
+IO_MODE_SINGLE,
+# 32 "../.././src/io_options.h"
+IO_MODE_MULTIPLE};
+# 36 "../.././src/io_options.h"
+enum io_record_format_enum {
+# 36 "../.././src/io_options.h"
+IO_RECORD_INVALID,
+# 37 "../.././src/io_options.h"
+IO_RECORD_ASCII,
+# 38 "../.././src/io_options.h"
+IO_RECORD_BINARY};
+# 42 "../.././src/io_options.h"
+enum io_metadata_version_enum {
+# 42 "../.././src/io_options.h"
+IO_METADATA_INVALID,
+# 43 "../.././src/io_options.h"
+IO_METADATA_SINGLE_V1,
+# 44 "../.././src/io_options.h"
+IO_METADATA_MULTI_V1};
+# 52 "../.././src/io_options.h"
+struct io_options_s;
+# 36 "../.././src/io_info_args.h"
+struct io_info_args_s;
+# 28 "../.././src/io_harness.h"
+enum io_format_enum {
+# 28 "../.././src/io_harness.h"
+IO_FORMAT_NULL,
+# 29 "../.././src/io_harness.h"
+IO_FORMAT_ASCII,
+# 30 "../.././src/io_harness.h"
+IO_FORMAT_BINARY,
+# 31 "../.././src/io_harness.h"
+IO_FORMAT_ASCII_SERIAL,
+# 32 "../.././src/io_harness.h"
+IO_FORMAT_BINARY_SERIAL,
+# 33 "../.././src/io_harness.h"
+IO_FORMAT_DEFAULT};
+# 44 "../.././src/io_harness.h"
+struct io_info_arg_s;
+# 48 "../.././src/io_harness.h"
+struct io_implementation_s;
+# 60 "../.././src/io_harness.h"
+struct io_decomposition_s;
+# 73 "../.././src/io_harness.h"
+struct io_info_s;
+# 28 "test_io.c"
+struct test_io_s;
+# 212 "/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stddef.h" 3
+typedef unsigned long size_t;
+#include "crt/device_runtime.h"
+# 48 "/usr/include/stdio.h" 3
+typedef struct _IO_FILE FILE;
+# 25 "../.././mpi_s/mpi.h"
+typedef int MPI_Handle;
+# 26 "../.././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Comm;
+# 22 "../.././src/pe.h"
+typedef struct pe_s pe_t;
+# 24 "../.././src/pe.h"
+typedef enum pe_enum_t pe_enum_t;
+# 22 "../.././src/coords.h"
+typedef struct coords_s cs_t;
+# 48 "../.././src/io_options.h"
+typedef enum io_mode_enum io_mode_enum_t;
+# 49 "../.././src/io_options.h"
+typedef enum io_record_format_enum io_record_format_enum_t;
+# 50 "../.././src/io_options.h"
+typedef enum io_metadata_version_enum io_metadata_version_enum_t;
+# 52 "../.././src/io_options.h"
+struct io_options_s {
+# 53 "../.././src/io_options.h"
+io_mode_enum_t mode;
+# 54 "../.././src/io_options.h"
+io_record_format_enum_t iorformat;
+# 55 "../.././src/io_options.h"
+io_metadata_version_enum_t metadata_version;
+# 56 "../.././src/io_options.h"
+int report;
+# 57 "../.././src/io_options.h"
+int asynchronous;};
+# 60 "../.././src/io_options.h"
+typedef struct io_options_s io_options_t;
+# 32 "../.././src/io_info_args.h"
+typedef struct io_info_args_s io_info_args_t;
+# 36 "../.././src/io_info_args.h"
+struct io_info_args_s {
+# 37 "../.././src/io_info_args.h"
+io_options_t input;
+# 38 "../.././src/io_info_args.h"
+io_options_t output;
+# 39 "../.././src/io_info_args.h"
+int grid[3];
+# 40 "../.././src/io_info_args.h"
+int nfreq;};
+# 33 "../.././src/io_harness.h"
+typedef enum io_format_enum io_format_enum_t;
+# 35 "../.././src/io_harness.h"
+typedef struct io_implementation_s io_implementation_t;
+# 36 "../.././src/io_harness.h"
+typedef struct io_info_s io_info_t;
+# 39 "../.././src/io_harness.h"
+typedef int (*io_rw_cb_ft)(FILE *, int, void *);
+# 42 "../.././src/io_harness.h"
+typedef struct io_info_arg_s io_info_arg_t;
+# 44 "../.././src/io_harness.h"
+struct io_info_arg_s {
+# 45 "../.././src/io_harness.h"
+int grid[3];};
+# 48 "../.././src/io_harness.h"
+struct io_implementation_s {
+# 49 "../.././src/io_harness.h"
+char name[8192];
+# 50 "../.././src/io_harness.h"
+io_rw_cb_ft write_ascii;
+# 51 "../.././src/io_harness.h"
+io_rw_cb_ft write_binary;
+# 52 "../.././src/io_harness.h"
+io_rw_cb_ft read_ascii;
+# 53 "../.././src/io_harness.h"
+io_rw_cb_ft read_binary;
+# 54 "../.././src/io_harness.h"
+size_t bytesize_ascii;
+# 55 "../.././src/io_harness.h"
+size_t bytesize_binary;};
+# 58 "../.././src/io_harness.h"
+typedef struct io_decomposition_s io_decomposition_t;
+# 73 "../.././src/io_harness.h"
+struct io_info_s {
+# 74 "../.././src/io_harness.h"
+pe_t *pe;
+# 75 "../.././src/io_harness.h"
+cs_t *cs;
+# 77 "../.././src/io_harness.h"
+io_info_args_t args;
+# 78 "../.././src/io_harness.h"
+io_implementation_t impl;
+# 79 "../.././src/io_harness.h"
+io_decomposition_t *comm;
+# 81 "../.././src/io_harness.h"
+io_decomposition_t *io_comm;
+# 82 "../.././src/io_harness.h"
+size_t bytesize;
+# 83 "../.././src/io_harness.h"
+size_t bytesize_ascii;
+# 84 "../.././src/io_harness.h"
+size_t bytesize_binary;
+# 85 "../.././src/io_harness.h"
+int nsites;
+# 86 "../.././src/io_harness.h"
+int maxlocal;
+# 87 "../.././src/io_harness.h"
+int metadata_written;
+# 88 "../.././src/io_harness.h"
+int processor_independent;
+# 89 "../.././src/io_harness.h"
+int single_file_read;
+# 90 "../.././src/io_harness.h"
+int report;
+# 91 "../.././src/io_harness.h"
+char metadata_stub[4096];
+# 92 "../.././src/io_harness.h"
+char name[4096];
+# 93 "../.././src/io_harness.h"
+io_rw_cb_ft write_data;
+# 94 "../.././src/io_harness.h"
+io_rw_cb_ft write_ascii;
+# 95 "../.././src/io_harness.h"
+io_rw_cb_ft write_binary;
+# 96 "../.././src/io_harness.h"
+io_rw_cb_ft read_data;
+# 97 "../.././src/io_harness.h"
+io_rw_cb_ft read_ascii;
+# 98 "../.././src/io_harness.h"
+io_rw_cb_ft read_binary;};
+# 27 "test_io.c"
+typedef struct test_io_s test_io_t;
+# 28 "test_io.c"
+struct test_io_s {
+# 29 "test_io.c"
+int iref;
+# 30 "test_io.c"
+double dref;};
+# 189 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__noreturn__)) void __assert_fail(const char *, const char *, unsigned, const char *);
+#if !defined(__CUDABE__)
+# 244 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/math_functions.h"
+ __device_builtin__ ___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__const__)) double fabs(double);
+#endif
+# 18 "tests.h"
+___device__(extern  __no_sc__) void _Z16test_assert_infoiiPKc(const int, int, const char *);
+#include "common_functions.h"
+#if !defined(__CUDABE__)
+#endif

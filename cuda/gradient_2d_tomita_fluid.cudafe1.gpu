@@ -1,0 +1,111 @@
+typedef char __nv_bool;
+# 22 "pe.h"
+struct pe_s;
+# 22 "coords.h"
+struct coords_s;
+# 26 "coords.h"
+enum cartesian_directions {
+# 26 "coords.h"
+X,
+# 26 "coords.h"
+Y,
+# 26 "coords.h"
+Z};
+# 22 "leesedwards.h"
+struct lees_edw_s;
+# 73 "io_harness.h"
+struct io_info_s;
+# 23 "halo_swap.h"
+struct halo_swap_s;
+# 21 "field_s.h"
+struct field_s;
+# 22 "field_grad_s.h"
+struct field_grad_s;
+# 212 "/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stddef.h" 3
+typedef unsigned long size_t;
+#include "crt/device_runtime.h"
+# 22 "pe.h"
+typedef struct pe_s pe_t;
+# 22 "coords.h"
+typedef struct coords_s cs_t;
+# 22 "leesedwards.h"
+typedef struct lees_edw_s lees_edw_t;
+# 36 "io_harness.h"
+typedef struct io_info_s io_info_t;
+# 23 "halo_swap.h"
+typedef struct halo_swap_s halo_swap_t;
+# 28 "field.h"
+typedef struct field_s field_t;
+# 21 "field_s.h"
+struct field_s {
+# 22 "field_s.h"
+int nf;
+# 23 "field_s.h"
+int nhcomm;
+# 24 "field_s.h"
+int nsites;
+# 25 "field_s.h"
+double *data;
+# 26 "field_s.h"
+char *name;
+# 28 "field_s.h"
+pe_t *pe;
+# 29 "field_s.h"
+cs_t *cs;
+# 30 "field_s.h"
+lees_edw_t *le;
+# 31 "field_s.h"
+io_info_t *info;
+# 32 "field_s.h"
+halo_swap_t *halo;
+# 34 "field_s.h"
+field_t *target;};
+# 21 "field_grad.h"
+typedef struct field_grad_s field_grad_t;
+# 22 "field_grad_s.h"
+struct field_grad_s {
+# 23 "field_grad_s.h"
+pe_t *pe;
+# 24 "field_grad_s.h"
+field_t *field;
+# 25 "field_grad_s.h"
+int nf;
+# 26 "field_grad_s.h"
+int level;
+# 27 "field_grad_s.h"
+int nsite;
+# 28 "field_grad_s.h"
+double *grad;
+# 29 "field_grad_s.h"
+double *delsq;
+# 30 "field_grad_s.h"
+double *d_ab;
+# 31 "field_grad_s.h"
+double *grad_delsq;
+# 32 "field_grad_s.h"
+double *delsq_delsq;
+# 34 "field_grad_s.h"
+field_grad_t *target;
+# 36 "field_grad_s.h"
+int (*d2)(field_grad_t *);
+# 37 "field_grad_s.h"
+int (*d4)(field_grad_t *);
+# 38 "field_grad_s.h"
+int (*dab)(field_grad_t *);};
+# 189 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__noreturn__)) void __assert_fail(const char *, const char *, unsigned, const char *);
+# 61 "coords.h"
+___device__(extern  __no_sc__) int _Z8cs_nhaloP8coords_sPi(cs_t *, int *);
+# 54 "leesedwards.h"
+___device__(extern  __no_sc__) int _Z14lees_edw_nhaloP10lees_edw_sPi(lees_edw_t *, int *);
+# 56 "leesedwards.h"
+___device__(extern  __no_sc__) int _Z15lees_edw_nlocalP10lees_edw_sPi(lees_edw_t *, int *);
+# 57 "leesedwards.h"
+___device__(extern  __no_sc__) int _Z14lees_edw_indexP10lees_edw_siii(lees_edw_t *, int, int, int);
+# 67 "leesedwards.h"
+___device__(extern  __no_sc__) int _Z21lees_edw_nplane_localP10lees_edw_s(lees_edw_t *);
+# 74 "leesedwards.h"
+___device__(extern  __no_sc__) int _Z23lees_edw_plane_locationP10lees_edw_si(lees_edw_t *, int);
+# 79 "leesedwards.h"
+___device__(extern  __no_sc__) int _Z19lees_edw_ic_to_buffP10lees_edw_sii(lees_edw_t *, int, int);
+#include "common_functions.h"

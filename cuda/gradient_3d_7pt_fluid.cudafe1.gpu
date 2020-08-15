@@ -1,0 +1,533 @@
+typedef char __nv_bool;
+# 2074 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/driver_types.h"
+struct CUstream_st;
+# 22 "pe.h"
+struct pe_s;
+# 22 "coords.h"
+struct coords_s;
+# 26 "coords.h"
+enum cartesian_directions {
+# 26 "coords.h"
+X,
+# 26 "coords.h"
+Y,
+# 26 "coords.h"
+Z};
+# 29 "coords.h"
+enum upper_triangle {
+# 29 "coords.h"
+XX,
+# 29 "coords.h"
+XY,
+# 29 "coords.h"
+XZ,
+# 29 "coords.h"
+YY,
+# 29 "coords.h"
+YZ,
+# 29 "coords.h"
+ZZ};
+# 22 "leesedwards.h"
+struct lees_edw_s;
+# 23 "kernel.h"
+struct kernel_param_s;
+# 28 "kernel.h"
+struct kernel_ctxt_s;
+# 37 "kernel.h"
+struct kernel_info_s;
+# 23 "halo_swap.h"
+struct halo_swap_s;
+# 73 "io_harness.h"
+struct io_info_s;
+# 21 "field_s.h"
+struct field_s;
+# 22 "field_grad_s.h"
+struct field_grad_s;
+# 30 "timer.h"
+enum timer_id {
+# 30 "timer.h"
+TIMER_TOTAL,
+# 31 "timer.h"
+TIMER_STEPS,
+# 32 "timer.h"
+TIMER_PROPAGATE,
+# 33 "timer.h"
+TIMER_PROP_KERNEL,
+# 34 "timer.h"
+TIMER_COLLIDE,
+# 35 "timer.h"
+TIMER_COLLIDE_KERNEL,
+# 36 "timer.h"
+TIMER_HALO_LATTICE,
+# 37 "timer.h"
+TIMER_PHI_GRADIENTS,
+# 38 "timer.h"
+TIMER_PHI_GRAD_KERNEL,
+# 39 "timer.h"
+TIMER_PHI_HALO,
+# 40 "timer.h"
+TIMER_LE,
+# 41 "timer.h"
+TIMER_IO,
+# 42 "timer.h"
+TIMER_FORCES,
+# 43 "timer.h"
+TIMER_REBUILD,
+# 44 "timer.h"
+TIMER_BBL,
+# 45 "timer.h"
+TIMER_PARTICLE_UPDATE,
+# 46 "timer.h"
+TIMER_PARTICLE_HALO,
+# 47 "timer.h"
+TIMER_FLUCTUATIONS,
+# 48 "timer.h"
+TIMER_EWALD_TOTAL,
+# 49 "timer.h"
+TIMER_EWALD_REAL_SPACE,
+# 50 "timer.h"
+TIMER_EWALD_FOURIER_SPACE,
+# 51 "timer.h"
+TIMER_FORCE_CALCULATION,
+# 52 "timer.h"
+TIMER_CHEMICAL_STRESS_KERNEL,
+# 53 "timer.h"
+TIMER_PHI_FORCE_CALC,
+# 54 "timer.h"
+TIMER_ORDER_PARAMETER_UPDATE,
+# 55 "timer.h"
+TIMER_U_HALO,
+# 56 "timer.h"
+TIMER_BE_MOL_FIELD,
+# 57 "timer.h"
+BP_BE_UPDATE_KERNEL,
+# 58 "timer.h"
+ADVECTION_X_KERNEL,
+# 59 "timer.h"
+ADVECTION_BCS_KERNEL,
+# 60 "timer.h"
+ADVECTION_BCS_MEM,
+# 61 "timer.h"
+TIMER_ELECTRO_TOTAL,
+# 62 "timer.h"
+TIMER_ELECTRO_POISSON,
+# 63 "timer.h"
+TIMER_ELECTRO_NPEQ,
+# 64 "timer.h"
+TIMER_FREE1,
+# 65 "timer.h"
+TIMER_FREE2,
+# 66 "timer.h"
+TIMER_FREE3,
+# 67 "timer.h"
+TIMER_NTIMERS};
+# 212 "/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stddef.h" 3
+typedef unsigned long size_t;
+#include "crt/device_runtime.h"
+# 47 ".././target/target_cuda.h"
+typedef enum cudaError tdpError_t;
+# 22 "pe.h"
+typedef struct pe_s pe_t;
+# 22 "coords.h"
+typedef struct coords_s cs_t;
+# 22 "leesedwards.h"
+typedef struct lees_edw_s lees_edw_t;
+# 21 "kernel.h"
+typedef struct kernel_ctxt_s kernel_ctxt_t;
+# 22 "kernel.h"
+typedef struct kernel_info_s kernel_info_t;
+# 23 "kernel.h"
+typedef struct kernel_param_s kernel_param_t;
+# 28 "kernel.h"
+struct kernel_ctxt_s {
+# 29 "kernel.h"
+kernel_param_t *param;
+# 30 "kernel.h"
+kernel_ctxt_t *target;};
+# 37 "kernel.h"
+struct kernel_info_s {
+# 38 "kernel.h"
+int imin;
+# 39 "kernel.h"
+int imax;
+# 40 "kernel.h"
+int jmin;
+# 41 "kernel.h"
+int jmax;
+# 42 "kernel.h"
+int kmin;
+# 43 "kernel.h"
+int kmax;};
+# 23 "halo_swap.h"
+typedef struct halo_swap_s halo_swap_t;
+# 36 "io_harness.h"
+typedef struct io_info_s io_info_t;
+# 28 "field.h"
+typedef struct field_s field_t;
+# 21 "field_s.h"
+struct field_s {
+# 22 "field_s.h"
+int nf;
+# 23 "field_s.h"
+int nhcomm;
+# 24 "field_s.h"
+int nsites;
+# 25 "field_s.h"
+double *data;
+# 26 "field_s.h"
+char *name;
+# 28 "field_s.h"
+pe_t *pe;
+# 29 "field_s.h"
+cs_t *cs;
+# 30 "field_s.h"
+lees_edw_t *le;
+# 31 "field_s.h"
+io_info_t *info;
+# 32 "field_s.h"
+halo_swap_t *halo;
+# 34 "field_s.h"
+field_t *target;};
+# 21 "field_grad.h"
+typedef struct field_grad_s field_grad_t;
+# 22 "field_grad_s.h"
+struct field_grad_s {
+# 23 "field_grad_s.h"
+pe_t *pe;
+# 24 "field_grad_s.h"
+field_t *field;
+# 25 "field_grad_s.h"
+int nf;
+# 26 "field_grad_s.h"
+int level;
+# 27 "field_grad_s.h"
+int nsite;
+# 28 "field_grad_s.h"
+double *grad;
+# 29 "field_grad_s.h"
+double *delsq;
+# 30 "field_grad_s.h"
+double *d_ab;
+# 31 "field_grad_s.h"
+double *grad_delsq;
+# 32 "field_grad_s.h"
+double *delsq_delsq;
+# 34 "field_grad_s.h"
+field_grad_t *target;
+# 36 "field_grad_s.h"
+int (*d2)(field_grad_t *);
+# 37 "field_grad_s.h"
+int (*d4)(field_grad_t *);
+# 38 "field_grad_s.h"
+int (*dab)(field_grad_t *);};
+# 189 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__noreturn__)) void __assert_fail(const char *, const char *, unsigned, const char *);
+# 3296 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/device_functions.h"
+___device__(extern  __no_sc__) unsigned __cudaPushCallConfiguration(struct dim3, struct dim3, size_t, struct CUstream_st *);
+# 44 ".././target/target.h"
+___device__(extern  __no_sc__) tdpError_t _Z20tdpDeviceSynchronizev(void);
+# 53 ".././target/target.h"
+___device__(extern  __no_sc__) tdpError_t _Z18tdpPeekAtLastErrorv(void);
+# 117 ".././target/target.h"
+___device__(extern  __no_sc__) void _Z15tdpErrorHandler9cudaErrorPKcii(tdpError_t, const char *, int, int);
+# 200 "memory.h"
+___device__(extern  __no_sc__) int _Z25reverse_addr_rank0_assertiPKcii(int, const char *, int, int);
+# 203 "memory.h"
+___device__(extern  __no_sc__) int _Z25reverse_addr_rank1_assertiPKciiii(int, const char *, int, int, int, int);
+# 206 "memory.h"
+___device__(extern  __no_sc__) int _Z25reverse_addr_rank2_assertiPKciiiiii(int, const char *, int, int, int, int, int, int);
+# 54 "leesedwards.h"
+___device__(extern  __no_sc__) int _Z14lees_edw_nhaloP10lees_edw_sPi(lees_edw_t *, int *);
+# 55 "leesedwards.h"
+___device__(extern  __no_sc__) int _Z15lees_edw_nsitesP10lees_edw_sPi(lees_edw_t *, int *);
+# 56 "leesedwards.h"
+___device__(extern  __no_sc__) int _Z15lees_edw_nlocalP10lees_edw_sPi(lees_edw_t *, int *);
+# 57 "leesedwards.h"
+___device__(extern  __no_sc__) int _Z14lees_edw_indexP10lees_edw_siii(lees_edw_t *, int, int, int);
+# 58 "leesedwards.h"
+___device__(extern  __no_sc__) int _Z16lees_edw_stridesP10lees_edw_sPiS1_S1_(lees_edw_t *, int *, int *, int *);
+# 67 "leesedwards.h"
+___device__(extern  __no_sc__) int _Z21lees_edw_nplane_localP10lees_edw_s(lees_edw_t *);
+# 74 "leesedwards.h"
+___device__(extern  __no_sc__) int _Z23lees_edw_plane_locationP10lees_edw_si(lees_edw_t *, int);
+# 79 "leesedwards.h"
+___device__(extern  __no_sc__) int _Z19lees_edw_ic_to_buffP10lees_edw_sii(lees_edw_t *, int, int);
+# 54 "kernel.h"
+___device__(extern  __no_sc__) int _Z24kernel_vector_iterationsP13kernel_ctxt_s(kernel_ctxt_t *);
+# 55 "kernel.h"
+___device__(extern  __no_sc__) int _Z16kernel_baseindexP13kernel_ctxt_si(kernel_ctxt_t *, int);
+# 59 "kernel.h"
+___device__(extern  __no_sc__) int _Z15kernel_coords_vP13kernel_ctxt_siPiS1_S1_(kernel_ctxt_t *, int, int *, int *, int *);
+# 66 "kernel.h"
+___device__(extern  __no_sc__) int _Z13kernel_mask_vP13kernel_ctxt_sPiS1_S1_S1_(kernel_ctxt_t *, int *, int *, int *, int *);
+# 72 "kernel.h"
+___device__(extern  __no_sc__) int _Z21kernel_coords_index_vP13kernel_ctxt_sPiS1_S1_S1_(kernel_ctxt_t *, int *, int *, int *, int *);
+# 235 "gradient_3d_7pt_fluid.c"
+__global__ __var_used__ extern void _Z26grad_3d_7pt_fluid_kernel_vP13kernel_ctxt_siiP10lees_edw_sP7field_sP12field_grad_s(kernel_ctxt_t *, int, int, lees_edw_t *, field_t *, field_grad_t *);
+# 495 "gradient_3d_7pt_fluid.c"
+__global__ __var_used__ extern void _Z24grad_3d_7pt_dab_kernel_vP13kernel_ctxt_sP10lees_edw_sP12field_grad_sii(kernel_ctxt_t *, lees_edw_t *, field_grad_t *, int, int);
+static  __device__  __var_used__ const char __T4[100];
+static  __device__  __var_used__ const char __T7[87];
+#include "common_functions.h"
+static  __device__  __var_used__ const char __T4[100] = "void grad_3d_7pt_fluid_kernel_v(kernel_ctxt_s *, int, int, lees_edw_s *, field_s *, field_grad_s *)";
+static  __device__  __var_used__ const char __T7[87] = "void grad_3d_7pt_dab_kernel_v(kernel_ctxt_s *, lees_edw_s *, field_grad_s *, int, int)";
+# 235 "gradient_3d_7pt_fluid.c"
+__global__ __var_used__ void _Z26grad_3d_7pt_fluid_kernel_vP13kernel_ctxt_siiP10lees_edw_sP7field_sP12field_grad_s(
+# 235 "gradient_3d_7pt_fluid.c"
+kernel_ctxt_t *ktx, 
+# 235 "gradient_3d_7pt_fluid.c"
+int nf, 
+# 235 "gradient_3d_7pt_fluid.c"
+int ys, 
+# 236 "gradient_3d_7pt_fluid.c"
+lees_edw_t *le, 
+# 237 "gradient_3d_7pt_fluid.c"
+field_t *field, 
+# 238 "gradient_3d_7pt_fluid.c"
+field_grad_t *fgrad){
+# 238 "gradient_3d_7pt_fluid.c"
+{
+# 240 "gradient_3d_7pt_fluid.c"
+ int __cuda_local_var_15932_7_non_const_kindex;
+# 241 "gradient_3d_7pt_fluid.c"
+ int __cuda_local_var_15933_7_non_const_kiterations;
+# 243 "gradient_3d_7pt_fluid.c"
+(ktx) ? ((void)0) : (__assert_fail(((const char *)"ktx"), ((const char *)"gradient_3d_7pt_fluid.c"), 243U, __T4));
+# 244 "gradient_3d_7pt_fluid.c"
+(le) ? ((void)0) : (__assert_fail(((const char *)"le"), ((const char *)"gradient_3d_7pt_fluid.c"), 244U, __T4));
+# 245 "gradient_3d_7pt_fluid.c"
+(field) ? ((void)0) : (__assert_fail(((const char *)"field"), ((const char *)"gradient_3d_7pt_fluid.c"), 245U, __T4));
+# 246 "gradient_3d_7pt_fluid.c"
+(fgrad) ? ((void)0) : (__assert_fail(((const char *)"fgrad"), ((const char *)"gradient_3d_7pt_fluid.c"), 246U, __T4));
+# 248 "gradient_3d_7pt_fluid.c"
+__cuda_local_var_15933_7_non_const_kiterations = (_Z24kernel_vector_iterationsP13kernel_ctxt_s(ktx));
+# 250 "gradient_3d_7pt_fluid.c"
+__cuda_local_var_15932_7_non_const_kindex = ((int)(1U * (((blockIdx.x) * (blockDim.x)) + (threadIdx.x))));
+# 250 "gradient_3d_7pt_fluid.c"
+if (__cuda_local_var_15932_7_non_const_kindex < __cuda_local_var_15933_7_non_const_kiterations)
+# 250 "gradient_3d_7pt_fluid.c"
+{
+# 252 "gradient_3d_7pt_fluid.c"
+ int __cuda_local_var_15944_9_non_const_n;
+# 253 "gradient_3d_7pt_fluid.c"
+ int __cuda_local_var_15945_9_non_const_iv;
+# 254 "gradient_3d_7pt_fluid.c"
+ int __cuda_local_var_15946_9_non_const_index;
+# 256 "gradient_3d_7pt_fluid.c"
+ int __cuda_local_var_15948_9_non_const_ic[1];
+# 256 "gradient_3d_7pt_fluid.c"
+ int __cuda_local_var_15948_16_non_const_jc[1];
+# 256 "gradient_3d_7pt_fluid.c"
+ int __cuda_local_var_15948_23_non_const_kc[1];
+# 257 "gradient_3d_7pt_fluid.c"
+ int __cuda_local_var_15949_9_non_const_im1[1];
+# 258 "gradient_3d_7pt_fluid.c"
+ int __cuda_local_var_15950_9_non_const_ip1[1];
+# 259 "gradient_3d_7pt_fluid.c"
+ int __cuda_local_var_15951_9_non_const_indexm1[1];
+# 260 "gradient_3d_7pt_fluid.c"
+ int __cuda_local_var_15952_9_non_const_indexp1[1];
+# 261 "gradient_3d_7pt_fluid.c"
+ int __cuda_local_var_15953_9_non_const_maskv[1];
+# 263 "gradient_3d_7pt_fluid.c"
+_Z15kernel_coords_vP13kernel_ctxt_siPiS1_S1_(ktx, __cuda_local_var_15932_7_non_const_kindex, (__cuda_local_var_15948_9_non_const_ic), (__cuda_local_var_15948_16_non_const_jc), (__cuda_local_var_15948_23_non_const_kc));
+# 264 "gradient_3d_7pt_fluid.c"
+__cuda_local_var_15946_9_non_const_index = (_Z16kernel_baseindexP13kernel_ctxt_si(ktx, __cuda_local_var_15932_7_non_const_kindex));
+# 265 "gradient_3d_7pt_fluid.c"
+_Z13kernel_mask_vP13kernel_ctxt_sPiS1_S1_S1_(ktx, (__cuda_local_var_15948_9_non_const_ic), (__cuda_local_var_15948_16_non_const_jc), (__cuda_local_var_15948_23_non_const_kc), (__cuda_local_var_15953_9_non_const_maskv));
+# 267 "gradient_3d_7pt_fluid.c"
+for (__cuda_local_var_15945_9_non_const_iv = 0; (__cuda_local_var_15945_9_non_const_iv < 1); __cuda_local_var_15945_9_non_const_iv++) {
+# 267 "gradient_3d_7pt_fluid.c"
+((__cuda_local_var_15949_9_non_const_im1)[__cuda_local_var_15945_9_non_const_iv]) = (_Z19lees_edw_ic_to_buffP10lees_edw_sii(le, ((__cuda_local_var_15948_9_non_const_ic)[__cuda_local_var_15945_9_non_const_iv]), (-1))); }
+# 268 "gradient_3d_7pt_fluid.c"
+for (__cuda_local_var_15945_9_non_const_iv = 0; (__cuda_local_var_15945_9_non_const_iv < 1); __cuda_local_var_15945_9_non_const_iv++) {
+# 268 "gradient_3d_7pt_fluid.c"
+((__cuda_local_var_15950_9_non_const_ip1)[__cuda_local_var_15945_9_non_const_iv]) = (_Z19lees_edw_ic_to_buffP10lees_edw_sii(le, ((__cuda_local_var_15948_9_non_const_ic)[__cuda_local_var_15945_9_non_const_iv]), 1)); }
+# 270 "gradient_3d_7pt_fluid.c"
+_Z21kernel_coords_index_vP13kernel_ctxt_sPiS1_S1_S1_(ktx, (__cuda_local_var_15949_9_non_const_im1), (__cuda_local_var_15948_16_non_const_jc), (__cuda_local_var_15948_23_non_const_kc), (__cuda_local_var_15951_9_non_const_indexm1));
+# 271 "gradient_3d_7pt_fluid.c"
+_Z21kernel_coords_index_vP13kernel_ctxt_sPiS1_S1_S1_(ktx, (__cuda_local_var_15950_9_non_const_ip1), (__cuda_local_var_15948_16_non_const_jc), (__cuda_local_var_15948_23_non_const_kc), (__cuda_local_var_15952_9_non_const_indexp1));
+# 273 "gradient_3d_7pt_fluid.c"
+for (__cuda_local_var_15944_9_non_const_n = 0; (__cuda_local_var_15944_9_non_const_n < nf); __cuda_local_var_15944_9_non_const_n++)
+# 273 "gradient_3d_7pt_fluid.c"
+{
+# 274 "gradient_3d_7pt_fluid.c"
+for (__cuda_local_var_15945_9_non_const_iv = 0; (__cuda_local_var_15945_9_non_const_iv < 1); __cuda_local_var_15945_9_non_const_iv++)
+# 274 "gradient_3d_7pt_fluid.c"
+{
+# 275 "gradient_3d_7pt_fluid.c"
+if ((__cuda_local_var_15953_9_non_const_maskv)[__cuda_local_var_15945_9_non_const_iv])
+# 275 "gradient_3d_7pt_fluid.c"
+{
+# 276 "gradient_3d_7pt_fluid.c"
+((fgrad->grad)[(_Z25reverse_addr_rank2_assertiPKciiiiii(276, ((const char *)"gradient_3d_7pt_fluid.c"), (fgrad->nsite), nf, 3, (__cuda_local_var_15946_9_non_const_index + __cuda_local_var_15945_9_non_const_iv), __cuda_local_var_15944_9_non_const_n, 0))]) = ((0.5) * (((field->data)[(_Z25reverse_addr_rank1_assertiPKciiii(277, ((const char *)"gradient_3d_7pt_fluid.c"), (field->nsites), nf, ((__cuda_local_var_15952_9_non_const_indexp1)[__cuda_local_var_15945_9_non_const_iv]), __cuda_local_var_15944_9_non_const_n))]) - ((field->data)[(_Z25reverse_addr_rank1_assertiPKciiii(278, ((const char *)"gradient_3d_7pt_fluid.c"), (field->nsites), nf, ((__cuda_local_var_15951_9_non_const_indexm1)[__cuda_local_var_15945_9_non_const_iv]), __cuda_local_var_15944_9_non_const_n))])));
+# 279 "gradient_3d_7pt_fluid.c"
+}
+# 280 "gradient_3d_7pt_fluid.c"
+}
+# 282 "gradient_3d_7pt_fluid.c"
+for (__cuda_local_var_15945_9_non_const_iv = 0; (__cuda_local_var_15945_9_non_const_iv < 1); __cuda_local_var_15945_9_non_const_iv++)
+# 282 "gradient_3d_7pt_fluid.c"
+{
+# 283 "gradient_3d_7pt_fluid.c"
+if ((__cuda_local_var_15953_9_non_const_maskv)[__cuda_local_var_15945_9_non_const_iv])
+# 283 "gradient_3d_7pt_fluid.c"
+{
+# 284 "gradient_3d_7pt_fluid.c"
+((fgrad->grad)[(_Z25reverse_addr_rank2_assertiPKciiiiii(284, ((const char *)"gradient_3d_7pt_fluid.c"), (fgrad->nsite), nf, 3, (__cuda_local_var_15946_9_non_const_index + __cuda_local_var_15945_9_non_const_iv), __cuda_local_var_15944_9_non_const_n, 1))]) = ((0.5) * (((field->data)[(_Z25reverse_addr_rank1_assertiPKciiii(285, ((const char *)"gradient_3d_7pt_fluid.c"), (field->nsites), nf, ((__cuda_local_var_15946_9_non_const_index + __cuda_local_var_15945_9_non_const_iv) + ys), __cuda_local_var_15944_9_non_const_n))]) - ((field->data)[(_Z25reverse_addr_rank1_assertiPKciiii(286, ((const char *)"gradient_3d_7pt_fluid.c"), (field->nsites), nf, ((__cuda_local_var_15946_9_non_const_index + __cuda_local_var_15945_9_non_const_iv) - ys), __cuda_local_var_15944_9_non_const_n))])));
+# 287 "gradient_3d_7pt_fluid.c"
+}
+# 288 "gradient_3d_7pt_fluid.c"
+}
+# 290 "gradient_3d_7pt_fluid.c"
+for (__cuda_local_var_15945_9_non_const_iv = 0; (__cuda_local_var_15945_9_non_const_iv < 1); __cuda_local_var_15945_9_non_const_iv++)
+# 290 "gradient_3d_7pt_fluid.c"
+{
+# 291 "gradient_3d_7pt_fluid.c"
+if ((__cuda_local_var_15953_9_non_const_maskv)[__cuda_local_var_15945_9_non_const_iv])
+# 291 "gradient_3d_7pt_fluid.c"
+{
+# 292 "gradient_3d_7pt_fluid.c"
+((fgrad->grad)[(_Z25reverse_addr_rank2_assertiPKciiiiii(292, ((const char *)"gradient_3d_7pt_fluid.c"), (fgrad->nsite), nf, 3, (__cuda_local_var_15946_9_non_const_index + __cuda_local_var_15945_9_non_const_iv), __cuda_local_var_15944_9_non_const_n, 2))]) = ((0.5) * (((field->data)[(_Z25reverse_addr_rank1_assertiPKciiii(293, ((const char *)"gradient_3d_7pt_fluid.c"), (field->nsites), nf, ((__cuda_local_var_15946_9_non_const_index + __cuda_local_var_15945_9_non_const_iv) + 1), __cuda_local_var_15944_9_non_const_n))]) - ((field->data)[(_Z25reverse_addr_rank1_assertiPKciiii(294, ((const char *)"gradient_3d_7pt_fluid.c"), (field->nsites), nf, ((__cuda_local_var_15946_9_non_const_index + __cuda_local_var_15945_9_non_const_iv) - 1), __cuda_local_var_15944_9_non_const_n))])));
+# 295 "gradient_3d_7pt_fluid.c"
+}
+# 296 "gradient_3d_7pt_fluid.c"
+}
+# 298 "gradient_3d_7pt_fluid.c"
+for (__cuda_local_var_15945_9_non_const_iv = 0; (__cuda_local_var_15945_9_non_const_iv < 1); __cuda_local_var_15945_9_non_const_iv++)
+# 298 "gradient_3d_7pt_fluid.c"
+{
+# 299 "gradient_3d_7pt_fluid.c"
+if ((__cuda_local_var_15953_9_non_const_maskv)[__cuda_local_var_15945_9_non_const_iv])
+# 299 "gradient_3d_7pt_fluid.c"
+{
+# 300 "gradient_3d_7pt_fluid.c"
+((fgrad->delsq)[(_Z25reverse_addr_rank1_assertiPKciiii(300, ((const char *)"gradient_3d_7pt_fluid.c"), (fgrad->nsite), nf, (__cuda_local_var_15946_9_non_const_index + __cuda_local_var_15945_9_non_const_iv), __cuda_local_var_15944_9_non_const_n))]) = ((((((((field->data)[(_Z25reverse_addr_rank1_assertiPKciiii(301, ((const char *)"gradient_3d_7pt_fluid.c"), (field->nsites), nf, ((__cuda_local_var_15952_9_non_const_indexp1)[__cuda_local_var_15945_9_non_const_iv]), __cuda_local_var_15944_9_non_const_n))]) + ((field->data)[(_Z25reverse_addr_rank1_assertiPKciiii(302, ((const char *)"gradient_3d_7pt_fluid.c"), (field->nsites), nf, ((__cuda_local_var_15951_9_non_const_indexm1)[__cuda_local_var_15945_9_non_const_iv]), __cuda_local_var_15944_9_non_const_n))])) + ((field->data)[(_Z25reverse_addr_rank1_assertiPKciiii(303, ((const char *)"gradient_3d_7pt_fluid.c"), (field->nsites), nf, ((__cuda_local_var_15946_9_non_const_index + __cuda_local_var_15945_9_non_const_iv) + ys), __cuda_local_var_15944_9_non_const_n))])) + ((field->data)[(_Z25reverse_addr_rank1_assertiPKciiii(304, ((const char *)"gradient_3d_7pt_fluid.c"), (field->nsites), nf, ((__cuda_local_var_15946_9_non_const_index + __cuda_local_var_15945_9_non_const_iv) - ys), __cuda_local_var_15944_9_non_const_n))])) + ((field->data)[(_Z25reverse_addr_rank1_assertiPKciiii(305, ((const char *)"gradient_3d_7pt_fluid.c"), (field->nsites), nf, ((__cuda_local_var_15946_9_non_const_index + __cuda_local_var_15945_9_non_const_iv) + 1), __cuda_local_var_15944_9_non_const_n))])) + ((field->data)[(_Z25reverse_addr_rank1_assertiPKciiii(306, ((const char *)"gradient_3d_7pt_fluid.c"), (field->nsites), nf, ((__cuda_local_var_15946_9_non_const_index + __cuda_local_var_15945_9_non_const_iv) - 1), __cuda_local_var_15944_9_non_const_n))])) - ((6.0) * ((field->data)[(_Z25reverse_addr_rank1_assertiPKciiii(307, ((const char *)"gradient_3d_7pt_fluid.c"), (field->nsites), nf, (__cuda_local_var_15946_9_non_const_index + __cuda_local_var_15945_9_non_const_iv), __cuda_local_var_15944_9_non_const_n))])));
+# 308 "gradient_3d_7pt_fluid.c"
+}
+# 309 "gradient_3d_7pt_fluid.c"
+}
+# 310 "gradient_3d_7pt_fluid.c"
+}
+# 312 "gradient_3d_7pt_fluid.c"
+}
+# 314 "gradient_3d_7pt_fluid.c"
+return;
+# 315 "gradient_3d_7pt_fluid.c"
+}}
+# 495 "gradient_3d_7pt_fluid.c"
+__global__ __var_used__ void _Z24grad_3d_7pt_dab_kernel_vP13kernel_ctxt_sP10lees_edw_sP12field_grad_sii(
+# 495 "gradient_3d_7pt_fluid.c"
+kernel_ctxt_t *ktx, 
+# 495 "gradient_3d_7pt_fluid.c"
+lees_edw_t *le, 
+# 496 "gradient_3d_7pt_fluid.c"
+field_grad_t *df, 
+# 496 "gradient_3d_7pt_fluid.c"
+int nsites, 
+# 497 "gradient_3d_7pt_fluid.c"
+int ys){
+# 497 "gradient_3d_7pt_fluid.c"
+{
+# 498 "gradient_3d_7pt_fluid.c"
+ int __cuda_local_var_16164_7_non_const_kindex;
+# 499 "gradient_3d_7pt_fluid.c"
+ int __cuda_local_var_16165_7_non_const_kiterations;
+# 500 "gradient_3d_7pt_fluid.c"
+ int __cuda_local_var_16166_7_non_const_index;
+# 501 "gradient_3d_7pt_fluid.c"
+ double *__restrict__ __cuda_local_var_16167_25_non_const_dab;
+# 502 "gradient_3d_7pt_fluid.c"
+ double *__restrict__ __cuda_local_var_16168_25_non_const_field;
+# 504 "gradient_3d_7pt_fluid.c"
+(ktx) ? ((void)0) : (__assert_fail(((const char *)"ktx"), ((const char *)"gradient_3d_7pt_fluid.c"), 504U, __T7));
+# 505 "gradient_3d_7pt_fluid.c"
+(le) ? ((void)0) : (__assert_fail(((const char *)"le"), ((const char *)"gradient_3d_7pt_fluid.c"), 505U, __T7));
+# 506 "gradient_3d_7pt_fluid.c"
+(df) ? ((void)0) : (__assert_fail(((const char *)"df"), ((const char *)"gradient_3d_7pt_fluid.c"), 506U, __T7));
+# 508 "gradient_3d_7pt_fluid.c"
+__cuda_local_var_16168_25_non_const_field = ((df->field)->data);
+# 509 "gradient_3d_7pt_fluid.c"
+__cuda_local_var_16167_25_non_const_dab = (df->d_ab);
+# 511 "gradient_3d_7pt_fluid.c"
+__cuda_local_var_16165_7_non_const_kiterations = (_Z24kernel_vector_iterationsP13kernel_ctxt_s(ktx));
+# 513 "gradient_3d_7pt_fluid.c"
+__cuda_local_var_16164_7_non_const_kindex = ((int)(1U * (((blockIdx.x) * (blockDim.x)) + (threadIdx.x))));
+# 513 "gradient_3d_7pt_fluid.c"
+if (__cuda_local_var_16164_7_non_const_kindex < __cuda_local_var_16165_7_non_const_kiterations)
+# 513 "gradient_3d_7pt_fluid.c"
+{
+# 515 "gradient_3d_7pt_fluid.c"
+ int __cuda_local_var_16181_9_non_const_iv;
+# 516 "gradient_3d_7pt_fluid.c"
+ int __cuda_local_var_16182_9_non_const_ic[1];
+# 516 "gradient_3d_7pt_fluid.c"
+ int __cuda_local_var_16182_16_non_const_jc[1];
+# 516 "gradient_3d_7pt_fluid.c"
+ int __cuda_local_var_16182_23_non_const_kc[1];
+# 517 "gradient_3d_7pt_fluid.c"
+ int __cuda_local_var_16183_9_non_const_im1[1];
+# 518 "gradient_3d_7pt_fluid.c"
+ int __cuda_local_var_16184_9_non_const_ip1[1];
+# 519 "gradient_3d_7pt_fluid.c"
+ int __cuda_local_var_16185_9_non_const_indexm1[1];
+# 520 "gradient_3d_7pt_fluid.c"
+ int __cuda_local_var_16186_9_non_const_indexp1[1];
+# 521 "gradient_3d_7pt_fluid.c"
+ int __cuda_local_var_16187_9_non_const_maskv[1];
+# 523 "gradient_3d_7pt_fluid.c"
+_Z15kernel_coords_vP13kernel_ctxt_siPiS1_S1_(ktx, __cuda_local_var_16164_7_non_const_kindex, (__cuda_local_var_16182_9_non_const_ic), (__cuda_local_var_16182_16_non_const_jc), (__cuda_local_var_16182_23_non_const_kc));
+# 524 "gradient_3d_7pt_fluid.c"
+__cuda_local_var_16166_7_non_const_index = (_Z16kernel_baseindexP13kernel_ctxt_si(ktx, __cuda_local_var_16164_7_non_const_kindex));
+# 525 "gradient_3d_7pt_fluid.c"
+_Z13kernel_mask_vP13kernel_ctxt_sPiS1_S1_S1_(ktx, (__cuda_local_var_16182_9_non_const_ic), (__cuda_local_var_16182_16_non_const_jc), (__cuda_local_var_16182_23_non_const_kc), (__cuda_local_var_16187_9_non_const_maskv));
+# 527 "gradient_3d_7pt_fluid.c"
+for (__cuda_local_var_16181_9_non_const_iv = 0; (__cuda_local_var_16181_9_non_const_iv < 1); __cuda_local_var_16181_9_non_const_iv++)
+# 527 "gradient_3d_7pt_fluid.c"
+{
+# 528 "gradient_3d_7pt_fluid.c"
+((__cuda_local_var_16183_9_non_const_im1)[__cuda_local_var_16181_9_non_const_iv]) = (_Z19lees_edw_ic_to_buffP10lees_edw_sii(le, ((__cuda_local_var_16182_9_non_const_ic)[__cuda_local_var_16181_9_non_const_iv]), (-1)));
+# 529 "gradient_3d_7pt_fluid.c"
+}
+# 530 "gradient_3d_7pt_fluid.c"
+for (__cuda_local_var_16181_9_non_const_iv = 0; (__cuda_local_var_16181_9_non_const_iv < 1); __cuda_local_var_16181_9_non_const_iv++)
+# 530 "gradient_3d_7pt_fluid.c"
+{
+# 531 "gradient_3d_7pt_fluid.c"
+((__cuda_local_var_16184_9_non_const_ip1)[__cuda_local_var_16181_9_non_const_iv]) = (_Z19lees_edw_ic_to_buffP10lees_edw_sii(le, ((__cuda_local_var_16182_9_non_const_ic)[__cuda_local_var_16181_9_non_const_iv]), 1));
+# 532 "gradient_3d_7pt_fluid.c"
+}
+# 534 "gradient_3d_7pt_fluid.c"
+_Z21kernel_coords_index_vP13kernel_ctxt_sPiS1_S1_S1_(ktx, (__cuda_local_var_16183_9_non_const_im1), (__cuda_local_var_16182_16_non_const_jc), (__cuda_local_var_16182_23_non_const_kc), (__cuda_local_var_16185_9_non_const_indexm1));
+# 535 "gradient_3d_7pt_fluid.c"
+_Z21kernel_coords_index_vP13kernel_ctxt_sPiS1_S1_S1_(ktx, (__cuda_local_var_16184_9_non_const_ip1), (__cuda_local_var_16182_16_non_const_jc), (__cuda_local_var_16182_23_non_const_kc), (__cuda_local_var_16186_9_non_const_indexp1));
+# 537 "gradient_3d_7pt_fluid.c"
+for (__cuda_local_var_16181_9_non_const_iv = 0; (__cuda_local_var_16181_9_non_const_iv < 1); __cuda_local_var_16181_9_non_const_iv++)
+# 537 "gradient_3d_7pt_fluid.c"
+{
+# 538 "gradient_3d_7pt_fluid.c"
+if ((__cuda_local_var_16187_9_non_const_maskv)[__cuda_local_var_16181_9_non_const_iv])
+# 538 "gradient_3d_7pt_fluid.c"
+{
+# 539 "gradient_3d_7pt_fluid.c"
+(__cuda_local_var_16167_25_non_const_dab[(_Z25reverse_addr_rank1_assertiPKciiii(539, ((const char *)"gradient_3d_7pt_fluid.c"), nsites, 6, (__cuda_local_var_16166_7_non_const_index + __cuda_local_var_16181_9_non_const_iv), 0))]) = ((((1.0) * (__cuda_local_var_16168_25_non_const_field[(_Z25reverse_addr_rank0_assertiPKcii(540, ((const char *)"gradient_3d_7pt_fluid.c"), nsites, ((__cuda_local_var_16186_9_non_const_indexp1)[__cuda_local_var_16181_9_non_const_iv])))])) + ((1.0) * (__cuda_local_var_16168_25_non_const_field[(_Z25reverse_addr_rank0_assertiPKcii(541, ((const char *)"gradient_3d_7pt_fluid.c"), nsites, ((__cuda_local_var_16185_9_non_const_indexm1)[__cuda_local_var_16181_9_non_const_iv])))]))) - ((2.0) * (__cuda_local_var_16168_25_non_const_field[(_Z25reverse_addr_rank0_assertiPKcii(542, ((const char *)"gradient_3d_7pt_fluid.c"), nsites, (__cuda_local_var_16166_7_non_const_index + __cuda_local_var_16181_9_non_const_iv)))])));
+# 544 "gradient_3d_7pt_fluid.c"
+(__cuda_local_var_16167_25_non_const_dab[(_Z25reverse_addr_rank1_assertiPKciiii(544, ((const char *)"gradient_3d_7pt_fluid.c"), nsites, 6, (__cuda_local_var_16166_7_non_const_index + __cuda_local_var_16181_9_non_const_iv), 1))]) = ((0.25) * ((((__cuda_local_var_16168_25_non_const_field[(_Z25reverse_addr_rank0_assertiPKcii(545, ((const char *)"gradient_3d_7pt_fluid.c"), nsites, (((__cuda_local_var_16186_9_non_const_indexp1)[__cuda_local_var_16181_9_non_const_iv]) + ys)))]) - (__cuda_local_var_16168_25_non_const_field[(_Z25reverse_addr_rank0_assertiPKcii(546, ((const char *)"gradient_3d_7pt_fluid.c"), nsites, (((__cuda_local_var_16186_9_non_const_indexp1)[__cuda_local_var_16181_9_non_const_iv]) - ys)))])) - (__cuda_local_var_16168_25_non_const_field[(_Z25reverse_addr_rank0_assertiPKcii(547, ((const char *)"gradient_3d_7pt_fluid.c"), nsites, (((__cuda_local_var_16185_9_non_const_indexm1)[__cuda_local_var_16181_9_non_const_iv]) + ys)))])) + (__cuda_local_var_16168_25_non_const_field[(_Z25reverse_addr_rank0_assertiPKcii(548, ((const char *)"gradient_3d_7pt_fluid.c"), nsites, (((__cuda_local_var_16185_9_non_const_indexm1)[__cuda_local_var_16181_9_non_const_iv]) - ys)))])));
+# 550 "gradient_3d_7pt_fluid.c"
+(__cuda_local_var_16167_25_non_const_dab[(_Z25reverse_addr_rank1_assertiPKciiii(550, ((const char *)"gradient_3d_7pt_fluid.c"), nsites, 6, (__cuda_local_var_16166_7_non_const_index + __cuda_local_var_16181_9_non_const_iv), 2))]) = ((0.25) * ((((__cuda_local_var_16168_25_non_const_field[(_Z25reverse_addr_rank0_assertiPKcii(551, ((const char *)"gradient_3d_7pt_fluid.c"), nsites, (((__cuda_local_var_16186_9_non_const_indexp1)[__cuda_local_var_16181_9_non_const_iv]) + 1)))]) - (__cuda_local_var_16168_25_non_const_field[(_Z25reverse_addr_rank0_assertiPKcii(552, ((const char *)"gradient_3d_7pt_fluid.c"), nsites, (((__cuda_local_var_16186_9_non_const_indexp1)[__cuda_local_var_16181_9_non_const_iv]) - 1)))])) - (__cuda_local_var_16168_25_non_const_field[(_Z25reverse_addr_rank0_assertiPKcii(553, ((const char *)"gradient_3d_7pt_fluid.c"), nsites, (((__cuda_local_var_16185_9_non_const_indexm1)[__cuda_local_var_16181_9_non_const_iv]) + 1)))])) + (__cuda_local_var_16168_25_non_const_field[(_Z25reverse_addr_rank0_assertiPKcii(554, ((const char *)"gradient_3d_7pt_fluid.c"), nsites, (((__cuda_local_var_16185_9_non_const_indexm1)[__cuda_local_var_16181_9_non_const_iv]) - 1)))])));
+# 556 "gradient_3d_7pt_fluid.c"
+(__cuda_local_var_16167_25_non_const_dab[(_Z25reverse_addr_rank1_assertiPKciiii(556, ((const char *)"gradient_3d_7pt_fluid.c"), nsites, 6, (__cuda_local_var_16166_7_non_const_index + __cuda_local_var_16181_9_non_const_iv), 3))]) = ((((1.0) * (__cuda_local_var_16168_25_non_const_field[(_Z25reverse_addr_rank0_assertiPKcii(557, ((const char *)"gradient_3d_7pt_fluid.c"), nsites, ((__cuda_local_var_16166_7_non_const_index + __cuda_local_var_16181_9_non_const_iv) + ys)))])) + ((1.0) * (__cuda_local_var_16168_25_non_const_field[(_Z25reverse_addr_rank0_assertiPKcii(558, ((const char *)"gradient_3d_7pt_fluid.c"), nsites, ((__cuda_local_var_16166_7_non_const_index + __cuda_local_var_16181_9_non_const_iv) - ys)))]))) - ((2.0) * (__cuda_local_var_16168_25_non_const_field[(_Z25reverse_addr_rank0_assertiPKcii(559, ((const char *)"gradient_3d_7pt_fluid.c"), nsites, (__cuda_local_var_16166_7_non_const_index + __cuda_local_var_16181_9_non_const_iv)))])));
+# 561 "gradient_3d_7pt_fluid.c"
+(__cuda_local_var_16167_25_non_const_dab[(_Z25reverse_addr_rank1_assertiPKciiii(561, ((const char *)"gradient_3d_7pt_fluid.c"), nsites, 6, (__cuda_local_var_16166_7_non_const_index + __cuda_local_var_16181_9_non_const_iv), 4))]) = ((0.25) * ((((__cuda_local_var_16168_25_non_const_field[(_Z25reverse_addr_rank0_assertiPKcii(562, ((const char *)"gradient_3d_7pt_fluid.c"), nsites, (((__cuda_local_var_16166_7_non_const_index + __cuda_local_var_16181_9_non_const_iv) + ys) + 1)))]) - (__cuda_local_var_16168_25_non_const_field[(_Z25reverse_addr_rank0_assertiPKcii(563, ((const char *)"gradient_3d_7pt_fluid.c"), nsites, (((__cuda_local_var_16166_7_non_const_index + __cuda_local_var_16181_9_non_const_iv) + ys) - 1)))])) - (__cuda_local_var_16168_25_non_const_field[(_Z25reverse_addr_rank0_assertiPKcii(564, ((const char *)"gradient_3d_7pt_fluid.c"), nsites, (((__cuda_local_var_16166_7_non_const_index + __cuda_local_var_16181_9_non_const_iv) - ys) + 1)))])) + (__cuda_local_var_16168_25_non_const_field[(_Z25reverse_addr_rank0_assertiPKcii(565, ((const char *)"gradient_3d_7pt_fluid.c"), nsites, (((__cuda_local_var_16166_7_non_const_index + __cuda_local_var_16181_9_non_const_iv) - ys) - 1)))])));
+# 567 "gradient_3d_7pt_fluid.c"
+(__cuda_local_var_16167_25_non_const_dab[(_Z25reverse_addr_rank1_assertiPKciiii(567, ((const char *)"gradient_3d_7pt_fluid.c"), nsites, 6, (__cuda_local_var_16166_7_non_const_index + __cuda_local_var_16181_9_non_const_iv), 5))]) = ((((1.0) * (__cuda_local_var_16168_25_non_const_field[(_Z25reverse_addr_rank0_assertiPKcii(568, ((const char *)"gradient_3d_7pt_fluid.c"), nsites, ((__cuda_local_var_16166_7_non_const_index + __cuda_local_var_16181_9_non_const_iv) + 1)))])) + ((1.0) * (__cuda_local_var_16168_25_non_const_field[(_Z25reverse_addr_rank0_assertiPKcii(569, ((const char *)"gradient_3d_7pt_fluid.c"), nsites, ((__cuda_local_var_16166_7_non_const_index + __cuda_local_var_16181_9_non_const_iv) - 1)))]))) - ((2.0) * (__cuda_local_var_16168_25_non_const_field[(_Z25reverse_addr_rank0_assertiPKcii(570, ((const char *)"gradient_3d_7pt_fluid.c"), nsites, (__cuda_local_var_16166_7_non_const_index + __cuda_local_var_16181_9_non_const_iv)))])));
+# 571 "gradient_3d_7pt_fluid.c"
+}
+# 572 "gradient_3d_7pt_fluid.c"
+}
+# 574 "gradient_3d_7pt_fluid.c"
+}
+# 576 "gradient_3d_7pt_fluid.c"
+return;
+# 577 "gradient_3d_7pt_fluid.c"
+}}

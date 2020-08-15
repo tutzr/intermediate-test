@@ -1,0 +1,155 @@
+typedef char __nv_bool;
+# 58 "../.././mpi_s/mpi.h"
+enum elementary_datatypes {
+# 58 "../.././mpi_s/mpi.h"
+MPI_CHAR,
+# 59 "../.././mpi_s/mpi.h"
+MPI_SHORT,
+# 60 "../.././mpi_s/mpi.h"
+MPI_INT,
+# 61 "../.././mpi_s/mpi.h"
+MPI_LONG,
+# 62 "../.././mpi_s/mpi.h"
+MPI_UNSIGNED_CHAR,
+# 63 "../.././mpi_s/mpi.h"
+MPI_UNSIGNED_SHORT,
+# 64 "../.././mpi_s/mpi.h"
+MPI_UNSIGNED,
+# 65 "../.././mpi_s/mpi.h"
+MPI_UNSIGNED_LONG,
+# 66 "../.././mpi_s/mpi.h"
+MPI_FLOAT,
+# 67 "../.././mpi_s/mpi.h"
+MPI_DOUBLE,
+# 68 "../.././mpi_s/mpi.h"
+MPI_LONG_DOUBLE,
+# 69 "../.././mpi_s/mpi.h"
+MPI_BYTE,
+# 70 "../.././mpi_s/mpi.h"
+MPI_PACKED};
+# 92 "../.././mpi_s/mpi.h"
+enum reserved_communicators {
+# 92 "../.././mpi_s/mpi.h"
+MPI_COMM_WORLD,
+# 92 "../.././mpi_s/mpi.h"
+MPI_COMM_SELF};
+# 22 "../.././src/pe.h"
+struct pe_s;
+# 24 "../.././src/pe.h"
+enum pe_enum_t {
+# 24 "../.././src/pe.h"
+PE_QUIET,
+# 24 "../.././src/pe.h"
+PE_VERBOSE,
+# 24 "../.././src/pe.h"
+PE_OPTION_MAX};
+# 22 "../.././src/coords.h"
+struct coords_s;
+# 26 "../.././src/coords.h"
+enum cartesian_directions {
+# 26 "../.././src/coords.h"
+X,
+# 26 "../.././src/coords.h"
+Y,
+# 26 "../.././src/coords.h"
+Z};
+# 28 "../.././src/io_harness.h"
+enum io_format_enum {
+# 28 "../.././src/io_harness.h"
+IO_FORMAT_NULL,
+# 29 "../.././src/io_harness.h"
+IO_FORMAT_ASCII,
+# 30 "../.././src/io_harness.h"
+IO_FORMAT_BINARY,
+# 31 "../.././src/io_harness.h"
+IO_FORMAT_ASCII_SERIAL,
+# 32 "../.././src/io_harness.h"
+IO_FORMAT_BINARY_SERIAL,
+# 33 "../.././src/io_harness.h"
+IO_FORMAT_DEFAULT};
+# 73 "../.././src/io_harness.h"
+struct io_info_s;
+# 24 "../.././src/map.h"
+enum map_status {
+# 24 "../.././src/map.h"
+MAP_FLUID,
+# 24 "../.././src/map.h"
+MAP_BOUNDARY,
+# 24 "../.././src/map.h"
+MAP_COLLOID,
+# 24 "../.././src/map.h"
+MAP_STATUS_MAX};
+# 22 "../.././src/map_s.h"
+struct map_s;
+# 212 "/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stddef.h" 3
+typedef unsigned long size_t;
+#include "crt/device_runtime.h"
+# 25 "../.././mpi_s/mpi.h"
+typedef int MPI_Handle;
+# 26 "../.././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Comm;
+# 28 "../.././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Datatype;
+# 22 "../.././src/pe.h"
+typedef struct pe_s pe_t;
+# 24 "../.././src/pe.h"
+typedef enum pe_enum_t pe_enum_t;
+# 22 "../.././src/coords.h"
+typedef struct coords_s cs_t;
+# 36 "../.././src/io_harness.h"
+typedef struct io_info_s io_info_t;
+# 26 "../.././src/map.h"
+typedef struct map_s map_t;
+# 22 "../.././src/map_s.h"
+struct map_s {
+# 23 "../.././src/map_s.h"
+int nsite;
+# 24 "../.././src/map_s.h"
+int is_porous_media;
+# 25 "../.././src/map_s.h"
+int ndata;
+# 26 "../.././src/map_s.h"
+char *status;
+# 27 "../.././src/map_s.h"
+double *data;
+# 29 "../.././src/map_s.h"
+pe_t *pe;
+# 30 "../.././src/map_s.h"
+cs_t *cs;
+# 31 "../.././src/map_s.h"
+MPI_Datatype halostatus[3];
+# 32 "../.././src/map_s.h"
+MPI_Datatype halodata[3];
+# 33 "../.././src/map_s.h"
+io_info_t *info;
+# 35 "../.././src/map_s.h"
+map_t *target;};
+# 23 "test_coords_field.h"
+typedef int (*halo_ft)(cs_t *, int, int, int, int, void *);
+# 189 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__noreturn__)) void __assert_fail(const char *, const char *, unsigned, const char *);
+#if !defined(__CUDABE__)
+# 244 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/math_functions.h"
+ __device_builtin__ ___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__const__)) double fabs(double);
+#endif
+# 59 "../.././src/coords.h"
+___device__(extern  __no_sc__) int _Z9cs_nlocalP8coords_sPi(cs_t *, int *);
+# 61 "../.././src/coords.h"
+___device__(extern  __no_sc__) int _Z8cs_nhaloP8coords_sPi(cs_t *, int *);
+# 62 "../.././src/coords.h"
+___device__(extern  __no_sc__) int _Z8cs_indexP8coords_siii(cs_t *, int, int, int);
+# 63 "../.././src/coords.h"
+___device__(extern  __no_sc__) int _Z9cs_ntotalP8coords_sPi(cs_t *, int *);
+# 40 "../.././src/map.h"
+___device__(extern  __no_sc__) int _Z10map_statusP5map_siPi(map_t *, int, int *);
+# 41 "../.././src/map.h"
+___device__(extern  __no_sc__) int _Z14map_status_setP5map_sii(map_t *, int, int);
+# 42 "../.././src/map.h"
+___device__(extern  __no_sc__) int _Z8map_dataP5map_siPd(map_t *, int, double *);
+# 43 "../.././src/map.h"
+___device__(extern  __no_sc__) int _Z12map_data_setP5map_siPd(map_t *, int, double *);
+# 44 "../.././src/map.h"
+___device__(extern  __no_sc__) int _Z9map_ndataP5map_sPi(map_t *, int *);
+#include "common_functions.h"
+#if !defined(__CUDABE__)
+#endif

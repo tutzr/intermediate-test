@@ -1,0 +1,217 @@
+typedef char __nv_bool;
+# 246 "/usr/include/libio.h" 3
+struct _IO_FILE;
+# 58 "../.././mpi_s/mpi.h"
+enum elementary_datatypes {
+# 58 "../.././mpi_s/mpi.h"
+MPI_CHAR,
+# 59 "../.././mpi_s/mpi.h"
+MPI_SHORT,
+# 60 "../.././mpi_s/mpi.h"
+MPI_INT,
+# 61 "../.././mpi_s/mpi.h"
+MPI_LONG,
+# 62 "../.././mpi_s/mpi.h"
+MPI_UNSIGNED_CHAR,
+# 63 "../.././mpi_s/mpi.h"
+MPI_UNSIGNED_SHORT,
+# 64 "../.././mpi_s/mpi.h"
+MPI_UNSIGNED,
+# 65 "../.././mpi_s/mpi.h"
+MPI_UNSIGNED_LONG,
+# 66 "../.././mpi_s/mpi.h"
+MPI_FLOAT,
+# 67 "../.././mpi_s/mpi.h"
+MPI_DOUBLE,
+# 68 "../.././mpi_s/mpi.h"
+MPI_LONG_DOUBLE,
+# 69 "../.././mpi_s/mpi.h"
+MPI_BYTE,
+# 70 "../.././mpi_s/mpi.h"
+MPI_PACKED};
+# 72 "../.././mpi_s/mpi.h"
+enum collective_operations {
+# 72 "../.././mpi_s/mpi.h"
+MPI_MAX,
+# 73 "../.././mpi_s/mpi.h"
+MPI_MIN,
+# 74 "../.././mpi_s/mpi.h"
+MPI_SUM,
+# 75 "../.././mpi_s/mpi.h"
+MPI_PROD,
+# 76 "../.././mpi_s/mpi.h"
+MPI_MAXLOC,
+# 77 "../.././mpi_s/mpi.h"
+MPI_MINLOC,
+# 78 "../.././mpi_s/mpi.h"
+MPI_BAND,
+# 79 "../.././mpi_s/mpi.h"
+MPI_BOR,
+# 80 "../.././mpi_s/mpi.h"
+MPI_BXOR,
+# 81 "../.././mpi_s/mpi.h"
+MPI_LAND,
+# 82 "../.././mpi_s/mpi.h"
+MPI_LOR,
+# 83 "../.././mpi_s/mpi.h"
+MPI_LXOR};
+# 92 "../.././mpi_s/mpi.h"
+enum reserved_communicators {
+# 92 "../.././mpi_s/mpi.h"
+MPI_COMM_WORLD,
+# 92 "../.././mpi_s/mpi.h"
+MPI_COMM_SELF};
+# 22 "../.././src/pe.h"
+struct pe_s;
+# 24 "../.././src/pe.h"
+enum pe_enum_t {
+# 24 "../.././src/pe.h"
+PE_QUIET,
+# 24 "../.././src/pe.h"
+PE_VERBOSE,
+# 24 "../.././src/pe.h"
+PE_OPTION_MAX};
+# 22 "../.././src/coords.h"
+struct coords_s;
+# 26 "../.././src/coords.h"
+enum cartesian_directions {
+# 26 "../.././src/coords.h"
+X,
+# 26 "../.././src/coords.h"
+Y,
+# 26 "../.././src/coords.h"
+Z};
+# 18 "../.././src/physics.h"
+struct physics_s;
+# 73 "../.././src/io_harness.h"
+struct io_info_s;
+# 24 "../.././src/map.h"
+enum map_status {
+# 24 "../.././src/map.h"
+MAP_FLUID,
+# 24 "../.././src/map.h"
+MAP_BOUNDARY,
+# 24 "../.././src/map.h"
+MAP_COLLOID,
+# 24 "../.././src/map.h"
+MAP_STATUS_MAX};
+# 26 "../.././src/map.h"
+struct map_s;
+# 39 "../.././src/psi_s.h"
+struct psi_s;
+# 66 "../.././src/free_energy.h"
+struct fe_s;
+# 24 "../.././src/fe_electro.h"
+struct fe_electro_s;
+# 32 "../.././src/hydro.h"
+struct hydro_s;
+# 212 "/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stddef.h" 3
+typedef unsigned long size_t;
+#include "crt/device_runtime.h"
+# 48 "/usr/include/stdio.h" 3
+typedef struct _IO_FILE FILE;
+# 25 "../.././mpi_s/mpi.h"
+typedef int MPI_Handle;
+# 26 "../.././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Comm;
+# 28 "../.././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Datatype;
+# 30 "../.././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Op;
+# 22 "../.././src/pe.h"
+typedef struct pe_s pe_t;
+# 24 "../.././src/pe.h"
+typedef enum pe_enum_t pe_enum_t;
+# 22 "../.././src/coords.h"
+typedef struct coords_s cs_t;
+# 18 "../.././src/physics.h"
+typedef struct physics_s physics_t;
+# 36 "../.././src/io_harness.h"
+typedef struct io_info_s io_info_t;
+# 26 "../.././src/map.h"
+typedef struct map_s map_t;
+# 37 "../.././src/psi.h"
+typedef struct psi_s psi_t;
+# 39 "../.././src/psi_s.h"
+struct psi_s {
+# 40 "../.././src/psi_s.h"
+pe_t *pe;
+# 41 "../.././src/psi_s.h"
+cs_t *cs;
+# 43 "../.././src/psi_s.h"
+int nk;
+# 44 "../.././src/psi_s.h"
+int nsites;
+# 45 "../.././src/psi_s.h"
+double *psi;
+# 46 "../.././src/psi_s.h"
+double *rho;
+# 47 "../.././src/psi_s.h"
+double *diffusivity;
+# 48 "../.././src/psi_s.h"
+int *valency;
+# 49 "../.././src/psi_s.h"
+double e;
+# 50 "../.././src/psi_s.h"
+double epsilon;
+# 51 "../.././src/psi_s.h"
+double epsilon2;
+# 52 "../.././src/psi_s.h"
+double beta;
+# 53 "../.././src/psi_s.h"
+double reltol;
+# 54 "../.././src/psi_s.h"
+double abstol;
+# 55 "../.././src/psi_s.h"
+int method;
+# 56 "../.././src/psi_s.h"
+int maxits;
+# 57 "../.././src/psi_s.h"
+int multisteps;
+# 58 "../.././src/psi_s.h"
+int skipsteps;
+# 59 "../.././src/psi_s.h"
+int nfreq_io;
+# 60 "../.././src/psi_s.h"
+int nfreq;
+# 61 "../.././src/psi_s.h"
+double diffacc;
+# 62 "../.././src/psi_s.h"
+MPI_Datatype psihalo[3];
+# 63 "../.././src/psi_s.h"
+MPI_Datatype rhohalo[3];
+# 64 "../.././src/psi_s.h"
+io_info_t *info;};
+# 32 "../.././src/free_energy.h"
+typedef struct fe_s fe_t;
+# 24 "../.././src/fe_electro.h"
+typedef struct fe_electro_s fe_electro_t;
+# 26 "../.././src/hydro.h"
+typedef struct hydro_s hydro_t;
+# 150 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) void free(void *);
+# 189 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__noreturn__)) void __assert_fail(const char *, const char *, unsigned, const char *);
+#if !defined(__CUDABE__)
+# 244 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/math_functions.h"
+ __device_builtin__ ___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__const__)) double fabs(double);
+#endif
+# 54 "../.././src/coords.h"
+___device__(extern  __no_sc__) int _Z9cs_cartszP8coords_sPi(cs_t *, int *);
+# 55 "../.././src/coords.h"
+___device__(extern  __no_sc__) int _Z14cs_cart_coordsP8coords_sPi(cs_t *, int *);
+# 57 "../.././src/coords.h"
+___device__(extern  __no_sc__) int _Z7cs_ltotP8coords_sPd(cs_t *, double *);
+# 59 "../.././src/coords.h"
+___device__(extern  __no_sc__) int _Z9cs_nlocalP8coords_sPi(cs_t *, int *);
+# 60 "../.././src/coords.h"
+___device__(extern  __no_sc__) int _Z16cs_nlocal_offsetP8coords_sPi(cs_t *, int *);
+# 62 "../.././src/coords.h"
+___device__(extern  __no_sc__) int _Z8cs_indexP8coords_siii(cs_t *, int, int, int);
+# 63 "../.././src/coords.h"
+___device__(extern  __no_sc__) int _Z9cs_ntotalP8coords_sPi(cs_t *, int *);
+# 41 "../.././src/map.h"
+___device__(extern  __no_sc__) int _Z14map_status_setP5map_sii(map_t *, int, int);
+#include "common_functions.h"
+#if !defined(__CUDABE__)
+#endif

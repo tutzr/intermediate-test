@@ -1,0 +1,59 @@
+typedef char __nv_bool;
+# 22 "pe.h"
+struct pe_s;
+# 22 "runtime.h"
+struct rt_s;
+# 22 "coords.h"
+struct coords_s;
+# 26 "coords.h"
+enum cartesian_directions {
+# 26 "coords.h"
+X,
+# 26 "coords.h"
+Y,
+# 26 "coords.h"
+Z};
+# 82 "model.h"
+struct lb_data_s;
+# 26 "map.h"
+struct map_s;
+# 25 "wall.h"
+struct wall_s;
+# 27 "wall.h"
+struct wall_param_s;
+# 212 "/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stddef.h" 3
+typedef unsigned long size_t;
+#include "crt/device_runtime.h"
+# 22 "pe.h"
+typedef struct pe_s pe_t;
+# 22 "runtime.h"
+typedef struct rt_s rt_t;
+# 22 "coords.h"
+typedef struct coords_s cs_t;
+# 82 "model.h"
+typedef struct lb_data_s lb_t;
+# 26 "map.h"
+typedef struct map_s map_t;
+# 24 "wall.h"
+typedef struct wall_param_s wall_param_t;
+# 25 "wall.h"
+typedef struct wall_s wall_t;
+# 27 "wall.h"
+struct wall_param_s {
+# 28 "wall.h"
+int iswall;
+# 29 "wall.h"
+int isporousmedia;
+# 30 "wall.h"
+int isboundary[3];
+# 31 "wall.h"
+int initshear;
+# 32 "wall.h"
+double ubot[3];
+# 33 "wall.h"
+double utop[3];
+# 34 "wall.h"
+double lubr_rc[3];};
+# 189 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__noreturn__)) void __assert_fail(const char *, const char *, unsigned, const char *);
+#include "common_functions.h"

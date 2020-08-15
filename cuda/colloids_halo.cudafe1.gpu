@@ -1,0 +1,339 @@
+typedef char __nv_bool;
+# 33 ".././mpi_s/mpi.h"
+struct MPI_Status;
+# 58 ".././mpi_s/mpi.h"
+enum elementary_datatypes {
+# 58 ".././mpi_s/mpi.h"
+MPI_CHAR,
+# 59 ".././mpi_s/mpi.h"
+MPI_SHORT,
+# 60 ".././mpi_s/mpi.h"
+MPI_INT,
+# 61 ".././mpi_s/mpi.h"
+MPI_LONG,
+# 62 ".././mpi_s/mpi.h"
+MPI_UNSIGNED_CHAR,
+# 63 ".././mpi_s/mpi.h"
+MPI_UNSIGNED_SHORT,
+# 64 ".././mpi_s/mpi.h"
+MPI_UNSIGNED,
+# 65 ".././mpi_s/mpi.h"
+MPI_UNSIGNED_LONG,
+# 66 ".././mpi_s/mpi.h"
+MPI_FLOAT,
+# 67 ".././mpi_s/mpi.h"
+MPI_DOUBLE,
+# 68 ".././mpi_s/mpi.h"
+MPI_LONG_DOUBLE,
+# 69 ".././mpi_s/mpi.h"
+MPI_BYTE,
+# 70 ".././mpi_s/mpi.h"
+MPI_PACKED};
+# 22 "pe.h"
+struct pe_s;
+# 26 "coords.h"
+enum cartesian_directions {
+# 26 "coords.h"
+X,
+# 26 "coords.h"
+Y,
+# 26 "coords.h"
+Z};
+# 27 "coords.h"
+enum cartesian_neighbours {
+# 27 "coords.h"
+FORWARD,
+# 27 "coords.h"
+BACKWARD};
+# 28 "coords.h"
+enum cs_mpi_cart_neighbours {
+# 28 "coords.h"
+CS_FORW,
+# 28 "coords.h"
+CS_BACK};
+# 9 "coords_s.h"
+struct coords_param_s;
+# 24 "coords_s.h"
+struct coords_s;
+# 44 "colloid.h"
+struct colloid_state_type;
+# 24 "colloid_link.h"
+struct colloid_link_type;
+# 26 "colloids.h"
+struct colloid;
+# 24 "colloids_s.h"
+struct colloids_info_s;
+# 29 "colloids_halo.c"
+struct colloid_halo_s;
+# 212 "/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stddef.h" 3
+typedef unsigned long size_t;
+#include "crt/device_runtime.h"
+# 25 ".././mpi_s/mpi.h"
+typedef int MPI_Handle;
+# 26 ".././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Comm;
+# 28 ".././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Datatype;
+# 29 ".././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Request;
+# 33 ".././mpi_s/mpi.h"
+struct MPI_Status {
+# 34 ".././mpi_s/mpi.h"
+int MPI_SOURCE;
+# 35 ".././mpi_s/mpi.h"
+int MPI_TAG;};
+# 36 ".././mpi_s/mpi.h"
+typedef struct MPI_Status MPI_Status;
+# 22 "pe.h"
+typedef struct pe_s pe_t;
+# 22 "coords.h"
+typedef struct coords_s cs_t;
+# 7 "coords_s.h"
+typedef struct coords_param_s cs_param_t;
+# 9 "coords_s.h"
+struct coords_param_s {
+# 10 "coords_s.h"
+int nhalo;
+# 11 "coords_s.h"
+int nsites;
+# 12 "coords_s.h"
+int ntotal[3];
+# 13 "coords_s.h"
+int nlocal[3];
+# 14 "coords_s.h"
+int noffset[3];
+# 15 "coords_s.h"
+int str[3];
+# 16 "coords_s.h"
+int periodic[3];
+# 18 "coords_s.h"
+int mpi_cartsz[3];
+# 19 "coords_s.h"
+int mpi_cartcoords[3];
+# 21 "coords_s.h"
+double lmin[3];};
+# 24 "coords_s.h"
+struct coords_s {
+# 25 "coords_s.h"
+pe_t *pe;
+# 26 "coords_s.h"
+int nref;
+# 28 "coords_s.h"
+cs_param_t *param;
+# 31 "coords_s.h"
+int mpi_cartrank;
+# 32 "coords_s.h"
+int reorder;
+# 33 "coords_s.h"
+int mpi_cart_neighbours[2][3];
+# 34 "coords_s.h"
+int *listnlocal[3];
+# 35 "coords_s.h"
+int *listnoffset[3];
+# 37 "coords_s.h"
+MPI_Comm commcart;
+# 38 "coords_s.h"
+MPI_Comm commperiodic;
+# 40 "coords_s.h"
+cs_t *target;};
+# 42 "colloid.h"
+typedef struct colloid_state_type colloid_state_t;
+# 44 "colloid.h"
+struct colloid_state_type {
+# 46 "colloid.h"
+int index;
+# 47 "colloid.h"
+int rebuild;
+# 48 "colloid.h"
+int nbonds;
+# 49 "colloid.h"
+int nangles;
+# 51 "colloid.h"
+int isfixedr;
+# 52 "colloid.h"
+int isfixedv;
+# 53 "colloid.h"
+int isfixedw;
+# 54 "colloid.h"
+int isfixeds;
+# 56 "colloid.h"
+int type;
+# 57 "colloid.h"
+int bond[2];
+# 59 "colloid.h"
+int rng;
+# 61 "colloid.h"
+int isfixedrxyz[3];
+# 62 "colloid.h"
+int isfixedvxyz[3];
+# 67 "colloid.h"
+int intpad[14];
+# 71 "colloid.h"
+double a0;
+# 72 "colloid.h"
+double ah;
+# 73 "colloid.h"
+double r[3];
+# 74 "colloid.h"
+double v[3];
+# 75 "colloid.h"
+double w[3];
+# 76 "colloid.h"
+double s[3];
+# 77 "colloid.h"
+double m[3];
+# 78 "colloid.h"
+double b1;
+# 79 "colloid.h"
+double b2;
+# 80 "colloid.h"
+double c;
+# 81 "colloid.h"
+double h;
+# 82 "colloid.h"
+double dr[3];
+# 83 "colloid.h"
+double deltaphi;
+# 92 "colloid.h"
+double q0;
+# 93 "colloid.h"
+double q1;
+# 94 "colloid.h"
+double epsilon;
+# 96 "colloid.h"
+double deltaq0;
+# 97 "colloid.h"
+double deltaq1;
+# 98 "colloid.h"
+double sa;
+# 99 "colloid.h"
+double saf;
+# 101 "colloid.h"
+double dpad[16];};
+# 22 "colloid_link.h"
+typedef struct colloid_link_type colloid_link_t;
+# 24 "colloids.h"
+typedef struct colloid colloid_t;
+# 26 "colloids.h"
+struct colloid {
+# 28 "colloids.h"
+colloid_state_t s;
+# 32 "colloids.h"
+double random[6];
+# 33 "colloids.h"
+double force[3];
+# 34 "colloids.h"
+double torque[3];
+# 35 "colloids.h"
+double f0[3];
+# 36 "colloids.h"
+double t0[3];
+# 37 "colloids.h"
+double cbar[3];
+# 38 "colloids.h"
+double rxcbar[3];
+# 39 "colloids.h"
+double deltam;
+# 40 "colloids.h"
+double sumw;
+# 41 "colloids.h"
+double zeta[21];
+# 42 "colloids.h"
+double stats[3];
+# 43 "colloids.h"
+double fc0[3];
+# 44 "colloids.h"
+double tc0[3];
+# 45 "colloids.h"
+double sump;
+# 46 "colloids.h"
+double dq[2];
+# 48 "colloids.h"
+double fsub[3];
+# 49 "colloids.h"
+double fex[3];
+# 50 "colloids.h"
+double tex[3];
+# 54 "colloids.h"
+colloid_link_t *lnk;
+# 55 "colloids.h"
+colloid_t *next;
+# 57 "colloids.h"
+colloid_t *nextall;
+# 58 "colloids.h"
+colloid_t *nextlocal;
+# 62 "colloids.h"
+colloid_t *bonded[2];};
+# 65 "colloids.h"
+typedef struct colloids_info_s colloids_info_t;
+# 24 "colloids_s.h"
+struct colloids_info_s {
+# 26 "colloids_s.h"
+int nhalo;
+# 27 "colloids_s.h"
+int ntotal;
+# 28 "colloids_s.h"
+int nallocated;
+# 29 "colloids_s.h"
+int ncell[3];
+# 30 "colloids_s.h"
+int str[3];
+# 31 "colloids_s.h"
+int nsites;
+# 32 "colloids_s.h"
+int ncells;
+# 34 "colloids_s.h"
+int rebuild_freq;
+# 36 "colloids_s.h"
+double rho0;
+# 37 "colloids_s.h"
+double drmax;
+# 39 "colloids_s.h"
+colloid_t **clist;
+# 40 "colloids_s.h"
+colloid_t **map_old;
+# 41 "colloids_s.h"
+colloid_t **map_new;
+# 42 "colloids_s.h"
+colloid_t *headall;
+# 43 "colloids_s.h"
+colloid_t *headlocal;
+# 45 "colloids_s.h"
+pe_t *pe;
+# 46 "colloids_s.h"
+cs_t *cs;
+# 47 "colloids_s.h"
+colloids_info_t *target;};
+# 20 "colloids_halo.h"
+typedef struct colloid_halo_s colloid_halo_t;
+# 29 "colloids_halo.c"
+struct colloid_halo_s {
+# 30 "colloids_halo.c"
+pe_t *pe;
+# 31 "colloids_halo.c"
+cs_t *cs;
+# 32 "colloids_halo.c"
+colloids_info_t *cinfo;
+# 33 "colloids_halo.c"
+colloid_state_t *send;
+# 34 "colloids_halo.c"
+colloid_state_t *recv;
+# 35 "colloids_halo.c"
+int nsend[2];
+# 36 "colloids_halo.c"
+int nrecv[2];};
+#if !defined(__CUDABE__)
+# 89 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+ __device_builtin__ ___device__(extern  __no_sc__) __attribute__((__nothrow__)) void *memcpy(void *__restrict__, const void *__restrict__, size_t);
+#endif
+# 149 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__malloc__)) __attribute__((__nothrow__)) void *malloc(size_t);
+# 150 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) void free(void *);
+# 189 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__noreturn__)) void __assert_fail(const char *, const char *, unsigned, const char *);
+# 48 "util.h"
+___device__(extern  __no_sc__) int _Z4imaxii(const int, const int);
+#include "common_functions.h"
+#if !defined(__CUDABE__)
+#endif

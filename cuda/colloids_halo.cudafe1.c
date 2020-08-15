@@ -1,0 +1,23 @@
+# 1 "colloids_halo.c"
+static const char __T0[63];
+static const char __T1[42];
+static const char __T2[43];
+static const char __T3[45];
+static const char __T4[59];
+static const char __T5[46];
+static const char __T6[82];
+static const char __T7[48];
+static const char __T8[54];
+static const char __T9[54];
+static const char __T10[48];
+static const char __T0[63] = "int colloids_halo_create(colloids_info_s *, colloid_halo_s **)";
+static const char __T1[42] = "void colloids_halo_free(colloid_halo_s *)";
+static const char __T2[43] = "int colloids_halo_state(colloids_info_s *)";
+static const char __T3[45] = "int colloids_halo_dim(colloid_halo_s *, int)";
+static const char __T4[59] = "int colloids_halo_send_count(colloid_halo_s *, int, int *)";
+static const char __T5[46] = "int colloids_halo_load(colloid_halo_s *, int)";
+static const char __T6[82] = "int colloids_halo_load_list(colloid_halo_s *, int, int, int, const double *, int)";
+static const char __T7[48] = "int colloids_halo_unload(colloid_halo_s *, int)";
+static const char __T8[54] = "int colloids_halo_irecv(colloid_halo_s *, int, int *)";
+static const char __T9[54] = "int colloids_halo_isend(colloid_halo_s *, int, int *)";
+static const char __T10[48] = "int colloids_halo_number(colloid_halo_s *, int)";

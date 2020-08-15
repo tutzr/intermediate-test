@@ -1,0 +1,179 @@
+typedef char __nv_bool;
+# 92 "../.././mpi_s/mpi.h"
+enum reserved_communicators {
+# 92 "../.././mpi_s/mpi.h"
+MPI_COMM_WORLD,
+# 92 "../.././mpi_s/mpi.h"
+MPI_COMM_SELF};
+# 22 "../.././src/pe.h"
+struct pe_s;
+# 24 "../.././src/pe.h"
+enum pe_enum_t {
+# 24 "../.././src/pe.h"
+PE_QUIET,
+# 24 "../.././src/pe.h"
+PE_VERBOSE,
+# 24 "../.././src/pe.h"
+PE_OPTION_MAX};
+# 22 "../.././src/coords.h"
+struct coords_s;
+# 26 "../.././src/coords.h"
+enum cartesian_directions {
+# 26 "../.././src/coords.h"
+X,
+# 26 "../.././src/coords.h"
+Y,
+# 26 "../.././src/coords.h"
+Z};
+# 29 "../.././src/coords.h"
+enum upper_triangle {
+# 29 "../.././src/coords.h"
+XX,
+# 29 "../.././src/coords.h"
+XY,
+# 29 "../.././src/coords.h"
+XZ,
+# 29 "../.././src/coords.h"
+YY,
+# 29 "../.././src/coords.h"
+YZ,
+# 29 "../.././src/coords.h"
+ZZ};
+# 22 "../.././src/leesedwards.h"
+struct lees_edw_s;
+# 25 "../.././src/leesedwards.h"
+struct lees_edw_info_s;
+# 23 "../.././src/halo_swap.h"
+struct halo_swap_s;
+# 73 "../.././src/io_harness.h"
+struct io_info_s;
+# 21 "../.././src/field_s.h"
+struct field_s;
+# 22 "../.././src/field_grad_s.h"
+struct field_grad_s;
+# 31 "test_field_grad.c"
+enum encode {
+# 31 "test_field_grad.c"
+ENCODE_GRAD = 1,
+# 31 "test_field_grad.c"
+ENCODE_DELSQ,
+# 31 "test_field_grad.c"
+ENCODE_GRAD4,
+# 31 "test_field_grad.c"
+ENCODE_DELSQ4,
+# 32 "test_field_grad.c"
+ENCODE_DAB};
+# 212 "/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stddef.h" 3
+typedef unsigned long size_t;
+#include "crt/device_runtime.h"
+# 25 "../.././mpi_s/mpi.h"
+typedef int MPI_Handle;
+# 26 "../.././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Comm;
+# 22 "../.././src/pe.h"
+typedef struct pe_s pe_t;
+# 24 "../.././src/pe.h"
+typedef enum pe_enum_t pe_enum_t;
+# 22 "../.././src/coords.h"
+typedef struct coords_s cs_t;
+# 22 "../.././src/leesedwards.h"
+typedef struct lees_edw_s lees_edw_t;
+# 23 "../.././src/leesedwards.h"
+typedef struct lees_edw_info_s lees_edw_info_t;
+# 23 "../.././src/halo_swap.h"
+typedef struct halo_swap_s halo_swap_t;
+# 36 "../.././src/io_harness.h"
+typedef struct io_info_s io_info_t;
+# 28 "../.././src/field.h"
+typedef struct field_s field_t;
+# 21 "../.././src/field_s.h"
+struct field_s {
+# 22 "../.././src/field_s.h"
+int nf;
+# 23 "../.././src/field_s.h"
+int nhcomm;
+# 24 "../.././src/field_s.h"
+int nsites;
+# 25 "../.././src/field_s.h"
+double *data;
+# 26 "../.././src/field_s.h"
+char *name;
+# 28 "../.././src/field_s.h"
+pe_t *pe;
+# 29 "../.././src/field_s.h"
+cs_t *cs;
+# 30 "../.././src/field_s.h"
+lees_edw_t *le;
+# 31 "../.././src/field_s.h"
+io_info_t *info;
+# 32 "../.././src/field_s.h"
+halo_swap_t *halo;
+# 34 "../.././src/field_s.h"
+field_t *target;};
+# 21 "../.././src/field_grad.h"
+typedef struct field_grad_s field_grad_t;
+# 22 "../.././src/field_grad.h"
+typedef int (*grad_ft)(field_grad_t *);
+# 22 "../.././src/field_grad_s.h"
+struct field_grad_s {
+# 23 "../.././src/field_grad_s.h"
+pe_t *pe;
+# 24 "../.././src/field_grad_s.h"
+field_t *field;
+# 25 "../.././src/field_grad_s.h"
+int nf;
+# 26 "../.././src/field_grad_s.h"
+int level;
+# 27 "../.././src/field_grad_s.h"
+int nsite;
+# 28 "../.././src/field_grad_s.h"
+double *grad;
+# 29 "../.././src/field_grad_s.h"
+double *delsq;
+# 30 "../.././src/field_grad_s.h"
+double *d_ab;
+# 31 "../.././src/field_grad_s.h"
+double *grad_delsq;
+# 32 "../.././src/field_grad_s.h"
+double *delsq_delsq;
+# 34 "../.././src/field_grad_s.h"
+field_grad_t *target;
+# 36 "../.././src/field_grad_s.h"
+int (*d2)(field_grad_t *);
+# 37 "../.././src/field_grad_s.h"
+int (*d4)(field_grad_t *);
+# 38 "../.././src/field_grad_s.h"
+int (*dab)(field_grad_t *);};
+# 189 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__noreturn__)) void __assert_fail(const char *, const char *, unsigned, const char *);
+#if !defined(__CUDABE__)
+# 244 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/math_functions.h"
+ __device_builtin__ ___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__const__)) double fabs(double);
+#endif
+# 62 "../.././src/memory.h"
+___device__(extern  __no_sc__) int _Z14mem_addr_rank1iiii(int, int, int, int);
+# 64 "../.././src/memory.h"
+___device__(extern  __no_sc__) int _Z14mem_addr_rank2iiiiii(int, int, int, int, int, int);
+# 45 "../.././src/field.h"
+___device__(extern  __no_sc__) int _Z8field_nfP7field_sPi(field_t *, int *);
+# 32 "../.././src/field_grad.h"
+___device__(extern  __no_sc__) int _Z22field_grad_scalar_gradP12field_grad_siPd(field_grad_t *, int, double *);
+# 33 "../.././src/field_grad.h"
+___device__(extern  __no_sc__) int _Z23field_grad_scalar_delsqP12field_grad_siPd(field_grad_t *, int, double *);
+# 34 "../.././src/field_grad.h"
+___device__(extern  __no_sc__) int _Z28field_grad_scalar_grad_delsqP12field_grad_siPd(field_grad_t *, int, double *);
+# 35 "../.././src/field_grad.h"
+___device__(extern  __no_sc__) int _Z29field_grad_scalar_delsq_delsqP12field_grad_siPd(field_grad_t *, int, double *);
+# 36 "../.././src/field_grad.h"
+___device__(extern  __no_sc__) int _Z21field_grad_scalar_dabP12field_grad_siPA3_d(field_grad_t *, int, double (*)[3]);
+# 38 "../.././src/field_grad.h"
+___device__(extern  __no_sc__) int _Z22field_grad_vector_gradP12field_grad_siPA3_d(field_grad_t *, int, double (*)[3]);
+# 39 "../.././src/field_grad.h"
+___device__(extern  __no_sc__) int _Z23field_grad_vector_delsqP12field_grad_siPd(field_grad_t *, int, double *);
+# 41 "../.././src/field_grad.h"
+___device__(extern  __no_sc__) int _Z22field_grad_tensor_gradP12field_grad_siPA3_A3_d(field_grad_t *, int, double (*)[3][3]);
+# 42 "../.././src/field_grad.h"
+___device__(extern  __no_sc__) int _Z23field_grad_tensor_delsqP12field_grad_siPA3_d(field_grad_t *, int, double (*)[3]);
+#include "common_functions.h"
+#if !defined(__CUDABE__)
+#endif

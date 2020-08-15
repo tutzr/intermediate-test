@@ -1,0 +1,459 @@
+typedef char __nv_bool;
+# 22 "pe.h"
+struct pe_s;
+# 22 "coords.h"
+struct coords_s;
+# 26 "coords.h"
+enum cartesian_directions {
+# 26 "coords.h"
+X,
+# 26 "coords.h"
+Y,
+# 26 "coords.h"
+Z};
+# 29 "coords.h"
+enum upper_triangle {
+# 29 "coords.h"
+XX,
+# 29 "coords.h"
+XY,
+# 29 "coords.h"
+XZ,
+# 29 "coords.h"
+YY,
+# 29 "coords.h"
+YZ,
+# 29 "coords.h"
+ZZ};
+# 22 "leesedwards.h"
+struct lees_edw_s;
+# 23 "halo_swap.h"
+struct halo_swap_s;
+# 73 "io_harness.h"
+struct io_info_s;
+# 21 "field_s.h"
+struct field_s;
+# 22 "field_grad_s.h"
+struct field_grad_s;
+# 212 "/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stddef.h" 3
+typedef unsigned long size_t;
+#include "crt/device_runtime.h"
+# 28 ".././target/target_cuda.h"
+typedef enum cudaMemcpyKind tdpMemcpyKind;
+# 47 ".././target/target_cuda.h"
+typedef enum cudaError tdpError_t;
+# 22 "pe.h"
+typedef struct pe_s pe_t;
+# 22 "coords.h"
+typedef struct coords_s cs_t;
+# 22 "leesedwards.h"
+typedef struct lees_edw_s lees_edw_t;
+# 23 "halo_swap.h"
+typedef struct halo_swap_s halo_swap_t;
+# 36 "io_harness.h"
+typedef struct io_info_s io_info_t;
+# 28 "field.h"
+typedef struct field_s field_t;
+# 21 "field_s.h"
+struct field_s {
+# 22 "field_s.h"
+int nf;
+# 23 "field_s.h"
+int nhcomm;
+# 24 "field_s.h"
+int nsites;
+# 25 "field_s.h"
+double *data;
+# 26 "field_s.h"
+char *name;
+# 28 "field_s.h"
+pe_t *pe;
+# 29 "field_s.h"
+cs_t *cs;
+# 30 "field_s.h"
+lees_edw_t *le;
+# 31 "field_s.h"
+io_info_t *info;
+# 32 "field_s.h"
+halo_swap_t *halo;
+# 34 "field_s.h"
+field_t *target;};
+# 21 "field_grad.h"
+typedef struct field_grad_s field_grad_t;
+# 22 "field_grad.h"
+typedef int (*grad_ft)(field_grad_t *);
+# 22 "field_grad_s.h"
+struct field_grad_s {
+# 23 "field_grad_s.h"
+pe_t *pe;
+# 24 "field_grad_s.h"
+field_t *field;
+# 25 "field_grad_s.h"
+int nf;
+# 26 "field_grad_s.h"
+int level;
+# 27 "field_grad_s.h"
+int nsite;
+# 28 "field_grad_s.h"
+double *grad;
+# 29 "field_grad_s.h"
+double *delsq;
+# 30 "field_grad_s.h"
+double *d_ab;
+# 31 "field_grad_s.h"
+double *grad_delsq;
+# 32 "field_grad_s.h"
+double *delsq_delsq;
+# 34 "field_grad_s.h"
+field_grad_t *target;
+# 36 "field_grad_s.h"
+int (*d2)(field_grad_t *);
+# 37 "field_grad_s.h"
+int (*d4)(field_grad_t *);
+# 38 "field_grad_s.h"
+int (*dab)(field_grad_t *);};
+# 150 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) void free(void *);
+# 189 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__noreturn__)) void __assert_fail(const char *, const char *, unsigned, const char *);
+# 46 ".././target/target.h"
+___device__(extern  __no_sc__) tdpError_t _Z17tdpGetDeviceCountPi(int *);
+# 79 ".././target/target.h"
+___device__(extern  __no_sc__) tdpError_t _Z7tdpFreePv(void *);
+# 80 ".././target/target.h"
+___device__(extern  __no_sc__) tdpError_t _Z9tdpMallocPPvm(void **, size_t);
+# 203 "memory.h"
+___device__(extern  __no_sc__) int _Z25reverse_addr_rank1_assertiPKciiii(int, const char *, int, int, int, int);
+# 206 "memory.h"
+___device__(extern  __no_sc__) int _Z25reverse_addr_rank2_assertiPKciiiiii(int, const char *, int, int, int, int, int, int);
+# 45 "field.h"
+___device__(extern  __no_sc__) int _Z8field_nfP7field_sPi(field_t *, int *);
+# 319 "field_grad.c"
+___device__(extern  __no_sc__) int _Z22field_grad_scalar_gradP12field_grad_siPd(field_grad_t *, int, double *);
+# 341 "field_grad.c"
+___device__(extern  __no_sc__) int _Z23field_grad_scalar_delsqP12field_grad_siPd(field_grad_t *, int, double *);
+# 359 "field_grad.c"
+___device__(extern  __no_sc__) int _Z28field_grad_scalar_grad_delsqP12field_grad_siPd(field_grad_t *, int, double *);
+# 381 "field_grad.c"
+___device__(extern  __no_sc__) int _Z29field_grad_scalar_delsq_delsqP12field_grad_siPd(field_grad_t *, int, double *);
+# 401 "field_grad.c"
+___device__(extern  __no_sc__) int _Z21field_grad_scalar_dabP12field_grad_siPA3_d(field_grad_t *, int, double (*)[3]);
+# 428 "field_grad.c"
+___device__(extern  __no_sc__) int _Z22field_grad_vector_gradP12field_grad_siPA3_d(field_grad_t *, int, double (*)[3]);
+# 452 "field_grad.c"
+___device__(extern  __no_sc__) int _Z23field_grad_vector_delsqP12field_grad_siPd(field_grad_t *, int, double *);
+# 476 "field_grad.c"
+___device__(extern  __no_sc__) int _Z22field_grad_tensor_gradP12field_grad_siPA3_A3_d(field_grad_t *, int, double (*)[3][3]);
+# 508 "field_grad.c"
+___device__(extern  __no_sc__) int _Z23field_grad_tensor_delsqP12field_grad_siPA3_d(field_grad_t *, int, double (*)[3]);
+static  __device__  __var_used__ const char __T7[58];
+static  __device__  __var_used__ const char __T8[59];
+static  __device__  __var_used__ const char __T9[64];
+static  __device__  __var_used__ const char __T10[65];
+static  __device__  __var_used__ const char __T11[62];
+static  __device__  __var_used__ const char __T12[63];
+static  __device__  __var_used__ const char __T13[59];
+static  __device__  __var_used__ const char __T14[66];
+static  __device__  __var_used__ const char __T15[64];
+#include "common_functions.h"
+static  __device__  __var_used__ const char __T7[58] = "int field_grad_scalar_grad(field_grad_s *, int, double *)";
+static  __device__  __var_used__ const char __T8[59] = "int field_grad_scalar_delsq(field_grad_s *, int, double *)";
+static  __device__  __var_used__ const char __T9[64] = "int field_grad_scalar_grad_delsq(field_grad_s *, int, double *)";
+static  __device__  __var_used__ const char __T10[65] = "int field_grad_scalar_delsq_delsq(field_grad_s *, int, double *)";
+static  __device__  __var_used__ const char __T11[62] = "int field_grad_scalar_dab(field_grad_s *, int, double (*)[3])";
+static  __device__  __var_used__ const char __T12[63] = "int field_grad_vector_grad(field_grad_s *, int, double (*)[3])";
+static  __device__  __var_used__ const char __T13[59] = "int field_grad_vector_delsq(field_grad_s *, int, double *)";
+static  __device__  __var_used__ const char __T14[66] = "int field_grad_tensor_grad(field_grad_s *, int, double (*)[3][3])";
+static  __device__  __var_used__ const char __T15[64] = "int field_grad_tensor_delsq(field_grad_s *, int, double (*)[3])";
+# 319 "field_grad.c"
+___device__( __no_sc__) int _Z22field_grad_scalar_gradP12field_grad_siPd(
+# 319 "field_grad.c"
+field_grad_t *obj, 
+# 319 "field_grad.c"
+int index, 
+# 319 "field_grad.c"
+double *grad){
+# 319 "field_grad.c"
+{
+# 321 "field_grad.c"
+ int __cuda_local_var_15992_7_non_const_ia;
+# 323 "field_grad.c"
+(obj) ? ((void)0) : (__assert_fail(((const char *)"obj"), ((const char *)"field_grad.c"), 323U, __T7));
+# 324 "field_grad.c"
+((obj->nf) == 1) ? ((void)0) : (__assert_fail(((const char *)"obj->nf == 1"), ((const char *)"field_grad.c"), 324U, __T7));
+# 325 "field_grad.c"
+(grad) ? ((void)0) : (__assert_fail(((const char *)"grad"), ((const char *)"field_grad.c"), 325U, __T7));
+# 327 "field_grad.c"
+for (__cuda_local_var_15992_7_non_const_ia = 0; (__cuda_local_var_15992_7_non_const_ia < 3); __cuda_local_var_15992_7_non_const_ia++)
+# 327 "field_grad.c"
+{
+# 328 "field_grad.c"
+(grad[__cuda_local_var_15992_7_non_const_ia]) = ((obj->grad)[(_Z25reverse_addr_rank2_assertiPKciiiiii(328, ((const char *)"field_grad.c"), (obj->nsite), 1, 3, index, 0, __cuda_local_var_15992_7_non_const_ia))]);
+# 329 "field_grad.c"
+}
+# 331 "field_grad.c"
+return 0;
+# 332 "field_grad.c"
+}}
+# 341 "field_grad.c"
+___device__( __no_sc__) int _Z23field_grad_scalar_delsqP12field_grad_siPd(
+# 341 "field_grad.c"
+field_grad_t *obj, 
+# 341 "field_grad.c"
+int index, 
+# 341 "field_grad.c"
+double *delsq){
+# 341 "field_grad.c"
+{
+# 343 "field_grad.c"
+(obj) ? ((void)0) : (__assert_fail(((const char *)"obj"), ((const char *)"field_grad.c"), 343U, __T8));
+# 344 "field_grad.c"
+((obj->nf) == 1) ? ((void)0) : (__assert_fail(((const char *)"obj->nf == 1"), ((const char *)"field_grad.c"), 344U, __T8));
+# 345 "field_grad.c"
+(delsq) ? ((void)0) : (__assert_fail(((const char *)"delsq"), ((const char *)"field_grad.c"), 345U, __T8));
+# 347 "field_grad.c"
+(*delsq) = ((obj->delsq)[(_Z25reverse_addr_rank1_assertiPKciiii(347, ((const char *)"field_grad.c"), (obj->nsite), 1, index, 0))]);
+# 349 "field_grad.c"
+return 0;
+# 350 "field_grad.c"
+}}
+# 359 "field_grad.c"
+___device__( __no_sc__) int _Z28field_grad_scalar_grad_delsqP12field_grad_siPd(
+# 359 "field_grad.c"
+field_grad_t *obj, 
+# 359 "field_grad.c"
+int index, 
+# 360 "field_grad.c"
+double *grad){
+# 360 "field_grad.c"
+{
+# 361 "field_grad.c"
+ int __cuda_local_var_16032_7_non_const_ia;
+# 363 "field_grad.c"
+(obj) ? ((void)0) : (__assert_fail(((const char *)"obj"), ((const char *)"field_grad.c"), 363U, __T9));
+# 364 "field_grad.c"
+((obj->nf) == 1) ? ((void)0) : (__assert_fail(((const char *)"obj->nf == 1"), ((const char *)"field_grad.c"), 364U, __T9));
+# 365 "field_grad.c"
+(grad) ? ((void)0) : (__assert_fail(((const char *)"grad"), ((const char *)"field_grad.c"), 365U, __T9));
+# 367 "field_grad.c"
+for (__cuda_local_var_16032_7_non_const_ia = 0; (__cuda_local_var_16032_7_non_const_ia < 3); __cuda_local_var_16032_7_non_const_ia++)
+# 367 "field_grad.c"
+{
+# 368 "field_grad.c"
+(grad[__cuda_local_var_16032_7_non_const_ia]) = ((obj->grad_delsq)[(_Z25reverse_addr_rank1_assertiPKciiii(368, ((const char *)"field_grad.c"), (obj->nsite), 3, index, __cuda_local_var_16032_7_non_const_ia))]);
+# 369 "field_grad.c"
+}
+# 371 "field_grad.c"
+return 0;
+# 372 "field_grad.c"
+}}
+# 381 "field_grad.c"
+___device__( __no_sc__) int _Z29field_grad_scalar_delsq_delsqP12field_grad_siPd(
+# 381 "field_grad.c"
+field_grad_t *obj, 
+# 381 "field_grad.c"
+int index, 
+# 381 "field_grad.c"
+double *dd){
+# 381 "field_grad.c"
+{
+# 383 "field_grad.c"
+(obj) ? ((void)0) : (__assert_fail(((const char *)"obj"), ((const char *)"field_grad.c"), 383U, __T10));
+# 384 "field_grad.c"
+((obj->nf) == 1) ? ((void)0) : (__assert_fail(((const char *)"obj->nf == 1"), ((const char *)"field_grad.c"), 384U, __T10));
+# 385 "field_grad.c"
+(dd) ? ((void)0) : (__assert_fail(((const char *)"dd"), ((const char *)"field_grad.c"), 385U, __T10));
+# 387 "field_grad.c"
+(*dd) = ((obj->delsq_delsq)[(_Z25reverse_addr_rank1_assertiPKciiii(387, ((const char *)"field_grad.c"), (obj->nsite), 1, index, 0))]);
+# 389 "field_grad.c"
+return 0;
+# 390 "field_grad.c"
+}}
+# 401 "field_grad.c"
+___device__( __no_sc__) int _Z21field_grad_scalar_dabP12field_grad_siPA3_d(
+# 401 "field_grad.c"
+field_grad_t *obj, 
+# 401 "field_grad.c"
+int index, 
+# 401 "field_grad.c"
+double (*dab)[3]){
+# 401 "field_grad.c"
+{
+# 403 "field_grad.c"
+(obj) ? ((void)0) : (__assert_fail(((const char *)"obj"), ((const char *)"field_grad.c"), 403U, __T11));
+# 404 "field_grad.c"
+((obj->nf) == 1) ? ((void)0) : (__assert_fail(((const char *)"obj->nf == 1"), ((const char *)"field_grad.c"), 404U, __T11));
+# 406 "field_grad.c"
+(((dab[X]))[X]) = ((obj->d_ab)[(_Z25reverse_addr_rank1_assertiPKciiii(406, ((const char *)"field_grad.c"), (obj->nsite), 6, index, 0))]);
+# 407 "field_grad.c"
+(((dab[X]))[Y]) = ((obj->d_ab)[(_Z25reverse_addr_rank1_assertiPKciiii(407, ((const char *)"field_grad.c"), (obj->nsite), 6, index, 1))]);
+# 408 "field_grad.c"
+(((dab[X]))[Z]) = ((obj->d_ab)[(_Z25reverse_addr_rank1_assertiPKciiii(408, ((const char *)"field_grad.c"), (obj->nsite), 6, index, 2))]);
+# 409 "field_grad.c"
+(((dab[Y]))[X]) = (((dab[X]))[Y]);
+# 410 "field_grad.c"
+(((dab[Y]))[Y]) = ((obj->d_ab)[(_Z25reverse_addr_rank1_assertiPKciiii(410, ((const char *)"field_grad.c"), (obj->nsite), 6, index, 3))]);
+# 411 "field_grad.c"
+(((dab[Y]))[Z]) = ((obj->d_ab)[(_Z25reverse_addr_rank1_assertiPKciiii(411, ((const char *)"field_grad.c"), (obj->nsite), 6, index, 4))]);
+# 412 "field_grad.c"
+(((dab[Z]))[X]) = (((dab[X]))[Z]);
+# 413 "field_grad.c"
+(((dab[Z]))[Y]) = (((dab[Y]))[Z]);
+# 414 "field_grad.c"
+(((dab[Z]))[Z]) = ((obj->d_ab)[(_Z25reverse_addr_rank1_assertiPKciiii(414, ((const char *)"field_grad.c"), (obj->nsite), 6, index, 5))]);
+# 416 "field_grad.c"
+return 0;
+# 417 "field_grad.c"
+}}
+# 428 "field_grad.c"
+___device__( __no_sc__) int _Z22field_grad_vector_gradP12field_grad_siPA3_d(
+# 428 "field_grad.c"
+field_grad_t *obj, 
+# 428 "field_grad.c"
+int index, 
+# 428 "field_grad.c"
+double (*dp)[3]){
+# 428 "field_grad.c"
+{
+# 430 "field_grad.c"
+ int __cuda_local_var_16085_7_non_const_ia;
+# 430 "field_grad.c"
+ int __cuda_local_var_16085_11_non_const_ib;
+# 432 "field_grad.c"
+(obj) ? ((void)0) : (__assert_fail(((const char *)"obj"), ((const char *)"field_grad.c"), 432U, __T12));
+# 433 "field_grad.c"
+((obj->nf) == 3) ? ((void)0) : (__assert_fail(((const char *)"obj->nf == 3"), ((const char *)"field_grad.c"), 433U, __T12));
+# 434 "field_grad.c"
+(dp) ? ((void)0) : (__assert_fail(((const char *)"dp"), ((const char *)"field_grad.c"), 434U, __T12));
+# 436 "field_grad.c"
+for (__cuda_local_var_16085_7_non_const_ia = 0; (__cuda_local_var_16085_7_non_const_ia < 3); __cuda_local_var_16085_7_non_const_ia++)
+# 436 "field_grad.c"
+{
+# 437 "field_grad.c"
+for (__cuda_local_var_16085_11_non_const_ib = 0; (__cuda_local_var_16085_11_non_const_ib < (obj->nf)); __cuda_local_var_16085_11_non_const_ib++)
+# 437 "field_grad.c"
+{
+# 438 "field_grad.c"
+(((dp[__cuda_local_var_16085_7_non_const_ia]))[__cuda_local_var_16085_11_non_const_ib]) = ((obj->grad)[(_Z25reverse_addr_rank2_assertiPKciiiiii(438, ((const char *)"field_grad.c"), (obj->nsite), (obj->nf), 3, index, __cuda_local_var_16085_11_non_const_ib, __cuda_local_var_16085_7_non_const_ia))]);
+# 439 "field_grad.c"
+}
+# 440 "field_grad.c"
+}
+# 442 "field_grad.c"
+return 0;
+# 443 "field_grad.c"
+}}
+# 452 "field_grad.c"
+___device__( __no_sc__) int _Z23field_grad_vector_delsqP12field_grad_siPd(
+# 452 "field_grad.c"
+field_grad_t *obj, 
+# 452 "field_grad.c"
+int index, 
+# 452 "field_grad.c"
+double *delsq){
+# 452 "field_grad.c"
+{
+# 454 "field_grad.c"
+ int __cuda_local_var_16109_7_non_const_ia;
+# 456 "field_grad.c"
+(obj) ? ((void)0) : (__assert_fail(((const char *)"obj"), ((const char *)"field_grad.c"), 456U, __T13));
+# 457 "field_grad.c"
+((obj->nf) == 3) ? ((void)0) : (__assert_fail(((const char *)"obj->nf == 3"), ((const char *)"field_grad.c"), 457U, __T13));
+# 458 "field_grad.c"
+(delsq) ? ((void)0) : (__assert_fail(((const char *)"delsq"), ((const char *)"field_grad.c"), 458U, __T13));
+# 460 "field_grad.c"
+for (__cuda_local_var_16109_7_non_const_ia = 0; (__cuda_local_var_16109_7_non_const_ia < 3); __cuda_local_var_16109_7_non_const_ia++)
+# 460 "field_grad.c"
+{
+# 461 "field_grad.c"
+(delsq[__cuda_local_var_16109_7_non_const_ia]) = ((obj->delsq)[(_Z25reverse_addr_rank1_assertiPKciiii(461, ((const char *)"field_grad.c"), (obj->nsite), 3, index, __cuda_local_var_16109_7_non_const_ia))]);
+# 462 "field_grad.c"
+}
+# 464 "field_grad.c"
+return 0;
+# 465 "field_grad.c"
+}}
+# 476 "field_grad.c"
+___device__( __no_sc__) int _Z22field_grad_tensor_gradP12field_grad_siPA3_A3_d(
+# 476 "field_grad.c"
+field_grad_t *obj, 
+# 476 "field_grad.c"
+int index, 
+# 476 "field_grad.c"
+double (*dq)[3][3]){
+# 476 "field_grad.c"
+{
+# 478 "field_grad.c"
+ int __cuda_local_var_16125_7_non_const_ia;
+# 480 "field_grad.c"
+(obj) ? ((void)0) : (__assert_fail(((const char *)"obj"), ((const char *)"field_grad.c"), 480U, __T14));
+# 481 "field_grad.c"
+((obj->nf) == 5) ? ((void)0) : (__assert_fail(((const char *)"obj->nf == 5"), ((const char *)"field_grad.c"), 481U, __T14));
+# 482 "field_grad.c"
+(dq) ? ((void)0) : (__assert_fail(((const char *)"dq"), ((const char *)"field_grad.c"), 482U, __T14));
+# 484 "field_grad.c"
+for (__cuda_local_var_16125_7_non_const_ia = 0; (__cuda_local_var_16125_7_non_const_ia < 3); __cuda_local_var_16125_7_non_const_ia++)
+# 484 "field_grad.c"
+{
+# 485 "field_grad.c"
+(((((dq[__cuda_local_var_16125_7_non_const_ia]))[X]))[X]) = ((obj->grad)[(_Z25reverse_addr_rank2_assertiPKciiiiii(485, ((const char *)"field_grad.c"), (obj->nsite), 5, 3, index, 0, __cuda_local_var_16125_7_non_const_ia))]);
+# 486 "field_grad.c"
+(((((dq[__cuda_local_var_16125_7_non_const_ia]))[X]))[Y]) = ((obj->grad)[(_Z25reverse_addr_rank2_assertiPKciiiiii(486, ((const char *)"field_grad.c"), (obj->nsite), 5, 3, index, 1, __cuda_local_var_16125_7_non_const_ia))]);
+# 487 "field_grad.c"
+(((((dq[__cuda_local_var_16125_7_non_const_ia]))[X]))[Z]) = ((obj->grad)[(_Z25reverse_addr_rank2_assertiPKciiiiii(487, ((const char *)"field_grad.c"), (obj->nsite), 5, 3, index, 2, __cuda_local_var_16125_7_non_const_ia))]);
+# 488 "field_grad.c"
+(((((dq[__cuda_local_var_16125_7_non_const_ia]))[Y]))[X]) = (((((dq[__cuda_local_var_16125_7_non_const_ia]))[X]))[Y]);
+# 489 "field_grad.c"
+(((((dq[__cuda_local_var_16125_7_non_const_ia]))[Y]))[Y]) = ((obj->grad)[(_Z25reverse_addr_rank2_assertiPKciiiiii(489, ((const char *)"field_grad.c"), (obj->nsite), 5, 3, index, 3, __cuda_local_var_16125_7_non_const_ia))]);
+# 490 "field_grad.c"
+(((((dq[__cuda_local_var_16125_7_non_const_ia]))[Y]))[Z]) = ((obj->grad)[(_Z25reverse_addr_rank2_assertiPKciiiiii(490, ((const char *)"field_grad.c"), (obj->nsite), 5, 3, index, 4, __cuda_local_var_16125_7_non_const_ia))]);
+# 491 "field_grad.c"
+(((((dq[__cuda_local_var_16125_7_non_const_ia]))[Z]))[X]) = (((((dq[__cuda_local_var_16125_7_non_const_ia]))[X]))[Z]);
+# 492 "field_grad.c"
+(((((dq[__cuda_local_var_16125_7_non_const_ia]))[Z]))[Y]) = (((((dq[__cuda_local_var_16125_7_non_const_ia]))[Y]))[Z]);
+# 493 "field_grad.c"
+(((((dq[__cuda_local_var_16125_7_non_const_ia]))[Z]))[Z]) = (((0.0) - (((((dq[__cuda_local_var_16125_7_non_const_ia]))[X]))[X])) - (((((dq[__cuda_local_var_16125_7_non_const_ia]))[Y]))[Y]));
+# 494 "field_grad.c"
+}
+# 496 "field_grad.c"
+return 0;
+# 497 "field_grad.c"
+}}
+# 508 "field_grad.c"
+___device__( __no_sc__) int _Z23field_grad_tensor_delsqP12field_grad_siPA3_d(
+# 508 "field_grad.c"
+field_grad_t *obj, 
+# 508 "field_grad.c"
+int index, 
+# 508 "field_grad.c"
+double (*dsq)[3]){
+# 508 "field_grad.c"
+{
+# 510 "field_grad.c"
+(obj) ? ((void)0) : (__assert_fail(((const char *)"obj"), ((const char *)"field_grad.c"), 510U, __T15));
+# 511 "field_grad.c"
+((obj->nf) == 5) ? ((void)0) : (__assert_fail(((const char *)"obj->nf == 5"), ((const char *)"field_grad.c"), 511U, __T15));
+# 512 "field_grad.c"
+(dsq) ? ((void)0) : (__assert_fail(((const char *)"dsq"), ((const char *)"field_grad.c"), 512U, __T15));
+# 514 "field_grad.c"
+(((dsq[X]))[X]) = ((obj->delsq)[(_Z25reverse_addr_rank1_assertiPKciiii(514, ((const char *)"field_grad.c"), (obj->nsite), 5, index, 0))]);
+# 515 "field_grad.c"
+(((dsq[X]))[Y]) = ((obj->delsq)[(_Z25reverse_addr_rank1_assertiPKciiii(515, ((const char *)"field_grad.c"), (obj->nsite), 5, index, 1))]);
+# 516 "field_grad.c"
+(((dsq[X]))[Z]) = ((obj->delsq)[(_Z25reverse_addr_rank1_assertiPKciiii(516, ((const char *)"field_grad.c"), (obj->nsite), 5, index, 2))]);
+# 517 "field_grad.c"
+(((dsq[Y]))[X]) = (((dsq[X]))[Y]);
+# 518 "field_grad.c"
+(((dsq[Y]))[Y]) = ((obj->delsq)[(_Z25reverse_addr_rank1_assertiPKciiii(518, ((const char *)"field_grad.c"), (obj->nsite), 5, index, 3))]);
+# 519 "field_grad.c"
+(((dsq[Y]))[Z]) = ((obj->delsq)[(_Z25reverse_addr_rank1_assertiPKciiii(519, ((const char *)"field_grad.c"), (obj->nsite), 5, index, 4))]);
+# 520 "field_grad.c"
+(((dsq[Z]))[X]) = (((dsq[X]))[Z]);
+# 521 "field_grad.c"
+(((dsq[Z]))[Y]) = (((dsq[Y]))[Z]);
+# 522 "field_grad.c"
+(((dsq[Z]))[Z]) = (((0.0) - (((dsq[X]))[X])) - (((dsq[Y]))[Y]));
+# 524 "field_grad.c"
+return 0;
+# 525 "field_grad.c"
+}}

@@ -1,0 +1,1379 @@
+typedef char __nv_bool;
+# 2074 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/driver_types.h"
+struct CUstream_st;
+# 22 "pe.h"
+struct pe_s;
+# 22 "coords.h"
+struct coords_s;
+# 26 "coords.h"
+enum cartesian_directions {
+# 26 "coords.h"
+X,
+# 26 "coords.h"
+Y,
+# 26 "coords.h"
+Z};
+# 22 "leesedwards.h"
+struct lees_edw_s;
+# 24 "free_energy.h"
+enum fe_id_enum {
+# 24 "free_energy.h"
+FE_SYMMETRIC,
+# 25 "free_energy.h"
+FE_BRAZOVSKII,
+# 26 "free_energy.h"
+FE_POLAR,
+# 27 "free_energy.h"
+FE_LC,
+# 28 "free_energy.h"
+FE_ELECTRO,
+# 29 "free_energy.h"
+FE_ELECTRO_SYMMETRIC,
+# 30 "free_energy.h"
+FE_LC_DROPLET};
+# 48 "free_energy.h"
+struct fe_vt_s;
+# 66 "free_energy.h"
+struct fe_s;
+# 73 "io_harness.h"
+struct io_info_s;
+# 28 "field.h"
+struct field_s;
+# 21 "field_grad.h"
+struct field_grad_s;
+# 34 "blue_phase.h"
+struct fe_lc_s;
+# 48 "blue_phase.h"
+struct fe_lc_param_s;
+# 28 "symmetric.h"
+struct fe_symm_s;
+# 40 "symmetric.h"
+struct fe_symm_param_s;
+# 23 "kernel.h"
+struct kernel_param_s;
+# 28 "kernel.h"
+struct kernel_ctxt_s;
+# 37 "kernel.h"
+struct kernel_info_s;
+# 23 "halo_swap.h"
+struct halo_swap_s;
+# 32 "hydro.h"
+struct hydro_s;
+# 24 "map.h"
+enum map_status {
+# 24 "map.h"
+MAP_FLUID,
+# 24 "map.h"
+MAP_BOUNDARY,
+# 24 "map.h"
+MAP_COLLOID,
+# 24 "map.h"
+MAP_STATUS_MAX};
+# 22 "map_s.h"
+struct map_s;
+# 25 "wall.h"
+struct wall_s;
+# 34 "lc_droplet.h"
+struct fe_lc_droplet_s;
+# 44 "lc_droplet.h"
+struct fe_lc_droplet_param_s;
+# 212 "/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stddef.h" 3
+typedef unsigned long size_t;
+#include "crt/device_runtime.h"
+# 194 "/usr/include/sys/types.h" 3
+typedef signed char int8_t;
+# 28 ".././target/target_cuda.h"
+typedef enum cudaMemcpyKind tdpMemcpyKind;
+# 47 ".././target/target_cuda.h"
+typedef enum cudaError tdpError_t;
+# 22 "pe.h"
+typedef struct pe_s pe_t;
+# 22 "coords.h"
+typedef struct coords_s cs_t;
+# 22 "leesedwards.h"
+typedef struct lees_edw_s lees_edw_t;
+# 32 "free_energy.h"
+typedef struct fe_s fe_t;
+# 33 "free_energy.h"
+typedef struct fe_vt_s fe_vt_t;
+# 35 "free_energy.h"
+typedef int (*fe_free_ft)(fe_t *);
+# 37 "free_energy.h"
+typedef int (*fe_target_ft)(fe_t *, fe_t **);
+# 38 "free_energy.h"
+typedef int (*fe_fed_ft)(fe_t *, int, double *);
+# 39 "free_energy.h"
+typedef int (*fe_mu_ft)(fe_t *, int, double *);
+# 40 "free_energy.h"
+typedef int (*fe_str_ft)(fe_t *, int, double (*)[3]);
+# 41 "free_energy.h"
+typedef int (*fe_mu_solv_ft)(fe_t *, int, int, double *);
+# 42 "free_energy.h"
+typedef int (*fe_hvector_ft)(fe_t *, int, double *);
+# 43 "free_energy.h"
+typedef int (*fe_htensor_ft)(fe_t *, int, double (*)[3]);
+# 45 "free_energy.h"
+typedef void (*fe_htensor_v_ft)(fe_t *, int, double (*)[3][1]);
+# 46 "free_energy.h"
+typedef void (*fe_stress_v_ft)(fe_t *, int, double (*)[3][1]);
+# 48 "free_energy.h"
+struct fe_vt_s {
+# 50 "free_energy.h"
+fe_free_ft free;
+# 51 "free_energy.h"
+fe_target_ft target;
+# 52 "free_energy.h"
+fe_fed_ft fed;
+# 53 "free_energy.h"
+fe_mu_ft mu;
+# 54 "free_energy.h"
+fe_mu_solv_ft mu_solv;
+# 55 "free_energy.h"
+fe_str_ft stress;
+# 56 "free_energy.h"
+fe_str_ft str_symm;
+# 57 "free_energy.h"
+fe_str_ft str_anti;
+# 58 "free_energy.h"
+fe_hvector_ft hvector;
+# 59 "free_energy.h"
+fe_htensor_ft htensor;
+# 60 "free_energy.h"
+fe_htensor_v_ft htensor_v;
+# 61 "free_energy.h"
+fe_stress_v_ft stress_v;
+# 62 "free_energy.h"
+fe_stress_v_ft str_symm_v;
+# 63 "free_energy.h"
+fe_stress_v_ft str_anti_v;};
+# 66 "free_energy.h"
+struct fe_s {
+# 67 "free_energy.h"
+fe_vt_t *func;
+# 68 "free_energy.h"
+int id;
+# 69 "free_energy.h"
+int use_stress_relaxation;};
+# 36 "io_harness.h"
+typedef struct io_info_s io_info_t;
+# 28 "field.h"
+typedef struct field_s field_t;
+# 21 "field_grad.h"
+typedef struct field_grad_s field_grad_t;
+# 29 "blue_phase.h"
+typedef struct fe_lc_s fe_lc_t;
+# 30 "blue_phase.h"
+typedef struct fe_lc_param_s fe_lc_param_t;
+# 34 "blue_phase.h"
+struct fe_lc_s {
+# 35 "blue_phase.h"
+fe_t super;
+# 36 "blue_phase.h"
+pe_t *pe;
+# 37 "blue_phase.h"
+cs_t *cs;
+# 38 "blue_phase.h"
+fe_lc_param_t *param;
+# 39 "blue_phase.h"
+field_t *q;
+# 40 "blue_phase.h"
+field_grad_t *dq;
+# 41 "blue_phase.h"
+field_t *p;
+# 42 "blue_phase.h"
+field_grad_t *dp;
+# 43 "blue_phase.h"
+fe_lc_t *target;};
+# 48 "blue_phase.h"
+struct fe_lc_param_s {
+# 49 "blue_phase.h"
+double a0;
+# 50 "blue_phase.h"
+double q0;
+# 51 "blue_phase.h"
+double gamma;
+# 52 "blue_phase.h"
+double kappa0;
+# 53 "blue_phase.h"
+double kappa1;
+# 55 "blue_phase.h"
+double xi;
+# 56 "blue_phase.h"
+double zeta0;
+# 57 "blue_phase.h"
+double zeta1;
+# 58 "blue_phase.h"
+double zeta2;
+# 59 "blue_phase.h"
+double redshift;
+# 60 "blue_phase.h"
+double rredshift;
+# 61 "blue_phase.h"
+double epsilon;
+# 62 "blue_phase.h"
+double amplitude0;
+# 63 "blue_phase.h"
+double e0coswt[3];
+# 65 "blue_phase.h"
+double w1_coll;
+# 66 "blue_phase.h"
+double w2_coll;
+# 67 "blue_phase.h"
+double w1_wall;
+# 68 "blue_phase.h"
+double w2_wall;
+# 69 "blue_phase.h"
+double nfix[3];
+# 71 "blue_phase.h"
+int anchoring_coll;
+# 72 "blue_phase.h"
+int anchoring_wall;
+# 73 "blue_phase.h"
+int is_redshift_updated;
+# 74 "blue_phase.h"
+int is_active;};
+# 23 "symmetric.h"
+typedef struct fe_symm_param_s fe_symm_param_t;
+# 24 "symmetric.h"
+typedef struct fe_symm_s fe_symm_t;
+# 28 "symmetric.h"
+struct fe_symm_s {
+# 29 "symmetric.h"
+fe_t super;
+# 30 "symmetric.h"
+pe_t *pe;
+# 31 "symmetric.h"
+cs_t *cs;
+# 32 "symmetric.h"
+fe_symm_param_t *param;
+# 33 "symmetric.h"
+field_t *phi;
+# 34 "symmetric.h"
+field_grad_t *dphi;
+# 35 "symmetric.h"
+fe_symm_t *target;};
+# 21 "kernel.h"
+typedef struct kernel_ctxt_s kernel_ctxt_t;
+# 22 "kernel.h"
+typedef struct kernel_info_s kernel_info_t;
+# 23 "kernel.h"
+typedef struct kernel_param_s kernel_param_t;
+# 28 "kernel.h"
+struct kernel_ctxt_s {
+# 29 "kernel.h"
+kernel_param_t *param;
+# 30 "kernel.h"
+kernel_ctxt_t *target;};
+# 37 "kernel.h"
+struct kernel_info_s {
+# 38 "kernel.h"
+int imin;
+# 39 "kernel.h"
+int imax;
+# 40 "kernel.h"
+int jmin;
+# 41 "kernel.h"
+int jmax;
+# 42 "kernel.h"
+int kmin;
+# 43 "kernel.h"
+int kmax;};
+# 23 "halo_swap.h"
+typedef struct halo_swap_s halo_swap_t;
+# 26 "hydro.h"
+typedef struct hydro_s hydro_t;
+# 32 "hydro.h"
+struct hydro_s {
+# 33 "hydro.h"
+int nsite;
+# 34 "hydro.h"
+int nhcomm;
+# 35 "hydro.h"
+double *u;
+# 36 "hydro.h"
+double *f;
+# 37 "hydro.h"
+double *eta;
+# 39 "hydro.h"
+pe_t *pe;
+# 40 "hydro.h"
+cs_t *cs;
+# 41 "hydro.h"
+lees_edw_t *le;
+# 42 "hydro.h"
+io_info_t *info;
+# 43 "hydro.h"
+halo_swap_t *halo;
+# 44 "hydro.h"
+hydro_t *target;};
+# 26 "map.h"
+typedef struct map_s map_t;
+# 25 "wall.h"
+typedef struct wall_s wall_t;
+# 31 "lc_droplet.h"
+typedef struct fe_lc_droplet_s fe_lc_droplet_t;
+# 32 "lc_droplet.h"
+typedef struct fe_lc_droplet_param_s fe_lc_droplet_param_t;
+# 34 "lc_droplet.h"
+struct fe_lc_droplet_s {
+# 35 "lc_droplet.h"
+fe_t super;
+# 36 "lc_droplet.h"
+pe_t *pe;
+# 37 "lc_droplet.h"
+cs_t *cs;
+# 38 "lc_droplet.h"
+fe_lc_droplet_param_t *param;
+# 39 "lc_droplet.h"
+fe_lc_t *lc;
+# 40 "lc_droplet.h"
+fe_symm_t *symm;
+# 41 "lc_droplet.h"
+fe_lc_droplet_t *target;};
+# 44 "lc_droplet.h"
+struct fe_lc_droplet_param_s {
+# 45 "lc_droplet.h"
+double gamma0;
+# 46 "lc_droplet.h"
+double delta;
+# 47 "lc_droplet.h"
+double w;};
+# 150 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) void free(void *);
+# 189 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__noreturn__)) void __assert_fail(const char *, const char *, unsigned, const char *);
+# 3296 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/device_functions.h"
+___device__(extern  __no_sc__) unsigned __cudaPushCallConfiguration(struct dim3, struct dim3, size_t, struct CUstream_st *);
+# 44 ".././target/target.h"
+___device__(extern  __no_sc__) tdpError_t _Z20tdpDeviceSynchronizev(void);
+# 46 ".././target/target.h"
+___device__(extern  __no_sc__) tdpError_t _Z17tdpGetDeviceCountPi(int *);
+# 53 ".././target/target.h"
+___device__(extern  __no_sc__) tdpError_t _Z18tdpPeekAtLastErrorv(void);
+# 79 ".././target/target.h"
+___device__(extern  __no_sc__) tdpError_t _Z7tdpFreePv(void *);
+# 80 ".././target/target.h"
+___device__(extern  __no_sc__) tdpError_t _Z9tdpMallocPPvm(void **, size_t);
+# 117 ".././target/target.h"
+___device__(extern  __no_sc__) void _Z15tdpErrorHandler9cudaErrorPKcii(tdpError_t, const char *, int, int);
+# 59 "coords.h"
+___device__(extern  __no_sc__) int _Z9cs_nlocalP8coords_sPi(cs_t *, int *);
+# 62 "coords.h"
+___device__(extern  __no_sc__) int _Z8cs_indexP8coords_siii(cs_t *, int, int, int);
+# 54 "leesedwards.h"
+___device__(extern  __no_sc__) int _Z14lees_edw_nhaloP10lees_edw_sPi(lees_edw_t *, int *);
+# 56 "leesedwards.h"
+___device__(extern  __no_sc__) int _Z15lees_edw_nlocalP10lees_edw_sPi(lees_edw_t *, int *);
+# 46 "field.h"
+___device__(extern  __no_sc__) int _Z12field_scalarP7field_siPd(field_t *, int, double *);
+# 51 "field.h"
+___device__(extern  __no_sc__) int _Z12field_tensorP7field_siPA3_d(field_t *, int, double (*)[3]);
+# 32 "field_grad.h"
+___device__(extern  __no_sc__) int _Z22field_grad_scalar_gradP12field_grad_siPd(field_grad_t *, int, double *);
+# 33 "field_grad.h"
+___device__(extern  __no_sc__) int _Z23field_grad_scalar_delsqP12field_grad_siPd(field_grad_t *, int, double *);
+# 36 "field_grad.h"
+___device__(extern  __no_sc__) int _Z21field_grad_scalar_dabP12field_grad_siPA3_d(field_grad_t *, int, double (*)[3]);
+# 41 "field_grad.h"
+___device__(extern  __no_sc__) int _Z22field_grad_tensor_gradP12field_grad_siPA3_A3_d(field_grad_t *, int, double (*)[3][3]);
+# 42 "field_grad.h"
+___device__(extern  __no_sc__) int _Z23field_grad_tensor_delsqP12field_grad_siPA3_d(field_grad_t *, int, double (*)[3]);
+# 116 "blue_phase.h"
+___device__(extern  __no_sc__) int _Z17fe_lc_compute_fedP7fe_lc_sdPA3_dPA3_S1_Pd(fe_lc_t *, double, double (*)[3], double (*)[3][3], double *);
+# 120 "blue_phase.h"
+___device__(extern  __no_sc__) int _Z15fe_lc_compute_hP7fe_lc_sdPA3_dPA3_S1_S2_S2_(fe_lc_t *, double, double (*)[3], double (*)[3][3], double (*)[3], double (*)[3]);
+# 55 "symmetric.h"
+___device__(extern  __no_sc__) int _Z11fe_symm_fedP9fe_symm_siPd(fe_symm_t *, int, double *);
+# 56 "symmetric.h"
+___device__(extern  __no_sc__) int _Z10fe_symm_muP9fe_symm_siPd(fe_symm_t *, int, double *);
+# 53 "kernel.h"
+___device__(extern  __no_sc__) int _Z17kernel_iterationsP13kernel_ctxt_s(kernel_ctxt_t *);
+# 56 "kernel.h"
+___device__(extern  __no_sc__) int _Z16kernel_coords_icP13kernel_ctxt_si(kernel_ctxt_t *, int);
+# 57 "kernel.h"
+___device__(extern  __no_sc__) int _Z16kernel_coords_jcP13kernel_ctxt_si(kernel_ctxt_t *, int);
+# 58 "kernel.h"
+___device__(extern  __no_sc__) int _Z16kernel_coords_kcP13kernel_ctxt_si(kernel_ctxt_t *, int);
+# 70 "kernel.h"
+___device__(extern  __no_sc__) int _Z19kernel_coords_indexP13kernel_ctxt_siii(kernel_ctxt_t *, int, int, int);
+# 69 "hydro.h"
+___device__(extern  __no_sc__) int _Z17hydro_f_local_addP7hydro_siPKd(hydro_t *, int, const double *);
+# 40 "map.h"
+___device__(extern  __no_sc__) int _Z10map_statusP5map_siPi(map_t *, int, int *);
+# 233 "lc_droplet.c"
+___device__(extern  __no_sc__) int _Z17fe_lc_droplet_fedP15fe_lc_droplet_siPd(fe_lc_droplet_t *, int, double *);
+# 273 "lc_droplet.c"
+___device__(extern  __no_sc__) int _Z19fe_lc_droplet_gammaP15fe_lc_droplet_siPd(fe_lc_droplet_t *, int, double *);
+# 295 "lc_droplet.c"
+___device__(extern  __no_sc__) int _Z23fe_lc_droplet_mol_fieldP15fe_lc_droplet_siPA3_d(fe_lc_droplet_t *, int, double (*)[3]);
+# 334 "lc_droplet.c"
+___device__(extern  __no_sc__) void _Z25fe_lc_droplet_mol_field_vP15fe_lc_droplet_siPA3_A1_d(fe_lc_droplet_t *, int, double (*)[3][1]);
+# 362 "lc_droplet.c"
+___device__(extern  __no_sc__) int _Z25fe_lc_droplet_anchoring_hP15fe_lc_droplet_siPA3_d(fe_lc_droplet_t *, int, double (*)[3]);
+# 403 "lc_droplet.c"
+___device__(extern  __no_sc__) int _Z16fe_lc_droplet_muP15fe_lc_droplet_siPd(fe_lc_droplet_t *, int, double *);
+# 472 "lc_droplet.c"
+___device__(extern  __no_sc__) int _Z20fe_lc_droplet_stressP15fe_lc_droplet_siPA3_d(fe_lc_droplet_t *, int, double (*)[3]);
+# 500 "lc_droplet.c"
+___device__(extern  __no_sc__) void _Z22fe_lc_droplet_stress_vP15fe_lc_droplet_siPA3_A1_d(fe_lc_droplet_t *, int, double (*)[3][1]);
+# 527 "lc_droplet.c"
+___device__(extern  __no_sc__) int _Z22fe_lc_droplet_str_symmP15fe_lc_droplet_siPA3_d(fe_lc_droplet_t *, int, double (*)[3]);
+# 592 "lc_droplet.c"
+___device__(extern  __no_sc__) void _Z24fe_lc_droplet_str_symm_vP15fe_lc_droplet_siPA3_A1_d(fe_lc_droplet_t *, int, double (*)[3][1]);
+# 618 "lc_droplet.c"
+___device__(extern  __no_sc__) int _Z22fe_lc_droplet_str_antiP15fe_lc_droplet_siPA3_d(fe_lc_droplet_t *, int, double (*)[3]);
+# 672 "lc_droplet.c"
+___device__(extern  __no_sc__) void _Z24fe_lc_droplet_str_anti_vP15fe_lc_droplet_siPA3_A1_d(fe_lc_droplet_t *, int, double (*)[3][1]);
+# 744 "lc_droplet.c"
+__global__ __var_used__ extern void _Z23fe_lc_droplet_bf_kernelP13kernel_ctxt_sP15fe_lc_droplet_sP7hydro_s(kernel_ctxt_t *, fe_lc_droplet_t *, hydro_t *);
+# 61 "lc_droplet.c"
+static  __constant__  __var_used__ fe_vt_t __nv_static_31__18_lc_droplet_cpp1_ii_ba17fca6_fe_drop_dvt;
+# 87 "lc_droplet.c"
+static  __constant__  __var_used__ fe_lc_droplet_param_t __nv_static_31__18_lc_droplet_cpp1_ii_ba17fca6_const_param;
+static  __device__  __var_used__ const char __T5[56];
+static  __device__  __var_used__ const char __T6[58];
+static  __device__  __var_used__ const char __T7[67];
+static  __device__  __var_used__ const char __T8[73];
+static  __device__  __var_used__ const char __T9[69];
+static  __device__  __var_used__ const char __T10[64];
+static  __device__  __var_used__ const char __T11[72];
+static  __device__  __var_used__ const char __T12[66];
+static  __device__  __var_used__ const char __T14[76];
+#include "common_functions.h"
+# 61 "lc_droplet.c"
+static  __constant__  __var_used__ fe_vt_t __nv_static_31__18_lc_droplet_cpp1_ii_ba17fca6_fe_drop_dvt = {((fe_free_ft)0LL),((fe_target_ft)0LL),((int (*)(fe_t *, int, double *))_Z17fe_lc_droplet_fedP15fe_lc_droplet_siPd),((int (*)(fe_t *, int, double *))_Z16fe_lc_droplet_muP15fe_lc_droplet_siPd),((fe_mu_solv_ft)0LL),((int (*)(fe_t *, int, double (*)[3]))_Z20fe_lc_droplet_stressP15fe_lc_droplet_siPA3_d),((int (*)(fe_t *, int, double (*)[3]))_Z22fe_lc_droplet_str_symmP15fe_lc_droplet_siPA3_d),((int (*)(fe_t *, int, double (*)[3]))_Z22fe_lc_droplet_str_antiP15fe_lc_droplet_siPA3_d),((fe_hvector_ft)0LL),((int (*)(fe_t *, int, double (*)[3]))_Z23fe_lc_droplet_mol_fieldP15fe_lc_droplet_siPA3_d),((void (*)(fe_t *, int, double (*)[3][1]))_Z25fe_lc_droplet_mol_field_vP15fe_lc_droplet_siPA3_A1_d),((void (*)(fe_t *, int, double (*)[3][1]))_Z22fe_lc_droplet_stress_vP15fe_lc_droplet_siPA3_A1_d),((void (*)(fe_t *, int, double (*)[3][1]))_Z24fe_lc_droplet_str_symm_vP15fe_lc_droplet_siPA3_A1_d),((void (*)(fe_t *, int, double (*)[3][1]))_Z24fe_lc_droplet_str_anti_vP15fe_lc_droplet_siPA3_A1_d)};
+static  __device__  __var_used__ const char __T5[56] = "int fe_lc_droplet_fed(fe_lc_droplet_s *, int, double *)";
+static  __device__  __var_used__ const char __T6[58] = "int fe_lc_droplet_gamma(fe_lc_droplet_s *, int, double *)";
+static  __device__  __var_used__ const char __T7[67] = "int fe_lc_droplet_mol_field(fe_lc_droplet_s *, int, double (*)[3])";
+static  __device__  __var_used__ const char __T8[73] = "void fe_lc_droplet_mol_field_v(fe_lc_droplet_s *, int, double (*)[3][1])";
+static  __device__  __var_used__ const char __T9[69] = "int fe_lc_droplet_anchoring_h(fe_lc_droplet_s *, int, double (*)[3])";
+static  __device__  __var_used__ const char __T10[64] = "int fe_lc_droplet_stress(fe_lc_droplet_s *, int, double (*)[3])";
+static  __device__  __var_used__ const char __T11[72] = "void fe_lc_droplet_str_symm_v(fe_lc_droplet_s *, int, double (*)[3][1])";
+static  __device__  __var_used__ const char __T12[66] = "int fe_lc_droplet_str_anti(fe_lc_droplet_s *, int, double (*)[3])";
+static  __device__  __var_used__ const char __T14[76] = "void fe_lc_droplet_bf_kernel(kernel_ctxt_s *, fe_lc_droplet_s *, hydro_s *)";
+# 233 "lc_droplet.c"
+___device__( __no_sc__) int _Z17fe_lc_droplet_fedP15fe_lc_droplet_siPd(
+# 233 "lc_droplet.c"
+fe_lc_droplet_t *fe, 
+# 233 "lc_droplet.c"
+int index, 
+# 233 "lc_droplet.c"
+double *fed){
+# 233 "lc_droplet.c"
+{
+# 235 "lc_droplet.c"
+ int __cuda_local_var_16530_7_non_const_ia;
+# 235 "lc_droplet.c"
+ int __cuda_local_var_16530_11_non_const_ib;
+# 236 "lc_droplet.c"
+ double __cuda_local_var_16531_10_non_const_gamma;
+# 237 "lc_droplet.c"
+ double __cuda_local_var_16532_10_non_const_q[3][3];
+# 238 "lc_droplet.c"
+ double __cuda_local_var_16533_10_non_const_dphi[3];
+# 239 "lc_droplet.c"
+ double __cuda_local_var_16534_10_non_const_dq[3][3][3];
+# 240 "lc_droplet.c"
+ double __cuda_local_var_16535_10_non_const_fed_symm;
+# 240 "lc_droplet.c"
+ double __cuda_local_var_16535_20_non_const_fed_lc;
+# 240 "lc_droplet.c"
+ double __cuda_local_var_16535_28_non_const_fed_anch;
+# 242 "lc_droplet.c"
+(fe) ? ((void)0) : (__assert_fail(((const char *)"fe"), ((const char *)"lc_droplet.c"), 242U, __T5));
+# 244 "lc_droplet.c"
+_Z11fe_symm_fedP9fe_symm_siPd((fe->symm), index, (&__cuda_local_var_16535_10_non_const_fed_symm));
+# 246 "lc_droplet.c"
+_Z12field_tensorP7field_siPA3_d(((fe->lc)->q), index, (__cuda_local_var_16532_10_non_const_q));
+# 247 "lc_droplet.c"
+_Z22field_grad_scalar_gradP12field_grad_siPd(((fe->symm)->dphi), index, (__cuda_local_var_16533_10_non_const_dphi));
+# 248 "lc_droplet.c"
+_Z22field_grad_tensor_gradP12field_grad_siPA3_A3_d(((fe->lc)->dq), index, (__cuda_local_var_16534_10_non_const_dq));
+# 250 "lc_droplet.c"
+_Z19fe_lc_droplet_gammaP15fe_lc_droplet_siPd(fe, index, (&__cuda_local_var_16531_10_non_const_gamma));
+# 251 "lc_droplet.c"
+_Z17fe_lc_compute_fedP7fe_lc_sdPA3_dPA3_S1_Pd((fe->lc), __cuda_local_var_16531_10_non_const_gamma, (__cuda_local_var_16532_10_non_const_q), (__cuda_local_var_16534_10_non_const_dq), (&__cuda_local_var_16535_20_non_const_fed_lc));
+# 253 "lc_droplet.c"
+__cuda_local_var_16535_28_non_const_fed_anch = (0.0);
+# 254 "lc_droplet.c"
+for (__cuda_local_var_16530_7_non_const_ia = 0; (__cuda_local_var_16530_7_non_const_ia < 3); __cuda_local_var_16530_7_non_const_ia++)
+# 254 "lc_droplet.c"
+{
+# 255 "lc_droplet.c"
+for (__cuda_local_var_16530_11_non_const_ib = 0; (__cuda_local_var_16530_11_non_const_ib < 3); __cuda_local_var_16530_11_non_const_ib++)
+# 255 "lc_droplet.c"
+{
+# 256 "lc_droplet.c"
+__cuda_local_var_16535_28_non_const_fed_anch += ((((((__cuda_local_var_16532_10_non_const_q)[__cuda_local_var_16530_7_non_const_ia]))[__cuda_local_var_16530_11_non_const_ib]) * ((__cuda_local_var_16533_10_non_const_dphi)[__cuda_local_var_16530_7_non_const_ia])) * ((__cuda_local_var_16533_10_non_const_dphi)[__cuda_local_var_16530_11_non_const_ib]));
+# 257 "lc_droplet.c"
+}
+# 258 "lc_droplet.c"
+}
+# 260 "lc_droplet.c"
+(*fed) = ((__cuda_local_var_16535_10_non_const_fed_symm + __cuda_local_var_16535_20_non_const_fed_lc) + (((fe->param)->w) * __cuda_local_var_16535_28_non_const_fed_anch));
+# 262 "lc_droplet.c"
+return 0;
+# 263 "lc_droplet.c"
+}}
+# 273 "lc_droplet.c"
+___device__( __no_sc__) int _Z19fe_lc_droplet_gammaP15fe_lc_droplet_siPd(
+# 273 "lc_droplet.c"
+fe_lc_droplet_t *fe, 
+# 273 "lc_droplet.c"
+int index, 
+# 274 "lc_droplet.c"
+double *gamma){
+# 274 "lc_droplet.c"
+{
+# 276 "lc_droplet.c"
+ double __cuda_local_var_16563_10_non_const_phi;
+# 277 "lc_droplet.c"
+(fe) ? ((void)0) : (__assert_fail(((const char *)"fe"), ((const char *)"lc_droplet.c"), 277U, __T6));
+# 278 "lc_droplet.c"
+(gamma) ? ((void)0) : (__assert_fail(((const char *)"gamma"), ((const char *)"lc_droplet.c"), 278U, __T6));
+# 280 "lc_droplet.c"
+_Z12field_scalarP7field_siPd(((fe->symm)->phi), index, (&__cuda_local_var_16563_10_non_const_phi));
+# 282 "lc_droplet.c"
+(*gamma) = (((fe->param)->gamma0) + (((fe->param)->delta) * ((1.0) + __cuda_local_var_16563_10_non_const_phi)));
+# 284 "lc_droplet.c"
+return 0;
+# 285 "lc_droplet.c"
+}}
+# 295 "lc_droplet.c"
+___device__( __no_sc__) int _Z23fe_lc_droplet_mol_fieldP15fe_lc_droplet_siPA3_d(
+# 295 "lc_droplet.c"
+fe_lc_droplet_t *fe, 
+# 296 "lc_droplet.c"
+int index, 
+# 296 "lc_droplet.c"
+double (*h)[3]){
+# 296 "lc_droplet.c"
+{
+# 298 "lc_droplet.c"
+ int __cuda_local_var_16577_7_non_const_ia;
+# 298 "lc_droplet.c"
+ int __cuda_local_var_16577_10_non_const_ib;
+# 299 "lc_droplet.c"
+ double __cuda_local_var_16578_10_non_const_q[3][3];
+# 300 "lc_droplet.c"
+ double __cuda_local_var_16579_10_non_const_dq[3][3][3];
+# 301 "lc_droplet.c"
+ double __cuda_local_var_16580_10_non_const_dsq[3][3];
+# 302 "lc_droplet.c"
+ double __cuda_local_var_16581_10_non_const_h1[3][3];
+# 302 "lc_droplet.c"
+ double __cuda_local_var_16581_20_non_const_h2[3][3];
+# 303 "lc_droplet.c"
+ double __cuda_local_var_16582_10_non_const_gamma;
+# 305 "lc_droplet.c"
+(fe) ? ((void)0) : (__assert_fail(((const char *)"fe"), ((const char *)"lc_droplet.c"), 305U, __T7));
+# 307 "lc_droplet.c"
+_Z19fe_lc_droplet_gammaP15fe_lc_droplet_siPd(fe, index, (&__cuda_local_var_16582_10_non_const_gamma));
+# 309 "lc_droplet.c"
+_Z12field_tensorP7field_siPA3_d(((fe->lc)->q), index, (__cuda_local_var_16578_10_non_const_q));
+# 310 "lc_droplet.c"
+_Z22field_grad_tensor_gradP12field_grad_siPA3_A3_d(((fe->lc)->dq), index, (__cuda_local_var_16579_10_non_const_dq));
+# 311 "lc_droplet.c"
+_Z23field_grad_tensor_delsqP12field_grad_siPA3_d(((fe->lc)->dq), index, (__cuda_local_var_16580_10_non_const_dsq));
+# 313 "lc_droplet.c"
+_Z15fe_lc_compute_hP7fe_lc_sdPA3_dPA3_S1_S2_S2_((fe->lc), __cuda_local_var_16582_10_non_const_gamma, (__cuda_local_var_16578_10_non_const_q), (__cuda_local_var_16579_10_non_const_dq), (__cuda_local_var_16580_10_non_const_dsq), (__cuda_local_var_16581_10_non_const_h1));
+# 315 "lc_droplet.c"
+_Z25fe_lc_droplet_anchoring_hP15fe_lc_droplet_siPA3_d(fe, index, (__cuda_local_var_16581_20_non_const_h2));
+# 317 "lc_droplet.c"
+for (__cuda_local_var_16577_7_non_const_ia = 0; (__cuda_local_var_16577_7_non_const_ia < 3); __cuda_local_var_16577_7_non_const_ia++)
+# 317 "lc_droplet.c"
+{
+# 318 "lc_droplet.c"
+for (__cuda_local_var_16577_10_non_const_ib = 0; (__cuda_local_var_16577_10_non_const_ib < 3); __cuda_local_var_16577_10_non_const_ib++)
+# 318 "lc_droplet.c"
+{
+# 319 "lc_droplet.c"
+(((h[__cuda_local_var_16577_7_non_const_ia]))[__cuda_local_var_16577_10_non_const_ib]) = (((((__cuda_local_var_16581_10_non_const_h1)[__cuda_local_var_16577_7_non_const_ia]))[__cuda_local_var_16577_10_non_const_ib]) + ((((__cuda_local_var_16581_20_non_const_h2)[__cuda_local_var_16577_7_non_const_ia]))[__cuda_local_var_16577_10_non_const_ib]));
+# 320 "lc_droplet.c"
+}
+# 321 "lc_droplet.c"
+}
+# 323 "lc_droplet.c"
+return 0;
+# 324 "lc_droplet.c"
+}}
+# 334 "lc_droplet.c"
+___device__( __no_sc__) void _Z25fe_lc_droplet_mol_field_vP15fe_lc_droplet_siPA3_A1_d(
+# 334 "lc_droplet.c"
+fe_lc_droplet_t *fe, 
+# 335 "lc_droplet.c"
+int index, 
+# 336 "lc_droplet.c"
+double (*h)[3][1]){
+# 336 "lc_droplet.c"
+{
+# 337 "lc_droplet.c"
+ int __cuda_local_var_16608_7_non_const_ia;
+# 337 "lc_droplet.c"
+ int __cuda_local_var_16608_11_non_const_ib;
+# 337 "lc_droplet.c"
+ int __cuda_local_var_16608_15_non_const_iv;
+# 338 "lc_droplet.c"
+ double __cuda_local_var_16609_10_non_const_h1[3][3];
+# 340 "lc_droplet.c"
+(fe) ? ((void)0) : (__assert_fail(((const char *)"fe"), ((const char *)"lc_droplet.c"), 340U, __T8));
+# 342 "lc_droplet.c"
+for (__cuda_local_var_16608_15_non_const_iv = 0; (__cuda_local_var_16608_15_non_const_iv < 1); __cuda_local_var_16608_15_non_const_iv++)
+# 342 "lc_droplet.c"
+{
+# 343 "lc_droplet.c"
+_Z23fe_lc_droplet_mol_fieldP15fe_lc_droplet_siPA3_d(fe, (index + __cuda_local_var_16608_15_non_const_iv), (__cuda_local_var_16609_10_non_const_h1));
+# 344 "lc_droplet.c"
+for (__cuda_local_var_16608_7_non_const_ia = 0; (__cuda_local_var_16608_7_non_const_ia < 3); __cuda_local_var_16608_7_non_const_ia++)
+# 344 "lc_droplet.c"
+{
+# 345 "lc_droplet.c"
+for (__cuda_local_var_16608_11_non_const_ib = 0; (__cuda_local_var_16608_11_non_const_ib < 3); __cuda_local_var_16608_11_non_const_ib++)
+# 345 "lc_droplet.c"
+{
+# 346 "lc_droplet.c"
+(((((h[__cuda_local_var_16608_7_non_const_ia]))[__cuda_local_var_16608_11_non_const_ib]))[__cuda_local_var_16608_15_non_const_iv]) = ((((__cuda_local_var_16609_10_non_const_h1)[__cuda_local_var_16608_7_non_const_ia]))[__cuda_local_var_16608_11_non_const_ib]);
+# 347 "lc_droplet.c"
+}
+# 348 "lc_droplet.c"
+}
+# 349 "lc_droplet.c"
+}
+# 351 "lc_droplet.c"
+return;
+# 352 "lc_droplet.c"
+}}
+# 362 "lc_droplet.c"
+___device__( __no_sc__) int _Z25fe_lc_droplet_anchoring_hP15fe_lc_droplet_siPA3_d(
+# 362 "lc_droplet.c"
+fe_lc_droplet_t *fe, 
+# 363 "lc_droplet.c"
+int index, 
+# 363 "lc_droplet.c"
+double (*h)[3]){
+# 363 "lc_droplet.c"
+{
+# 365 "lc_droplet.c"
+ int __cuda_local_var_16628_7_non_const_ia;
+# 365 "lc_droplet.c"
+ int __cuda_local_var_16628_11_non_const_ib;
+# 366 "lc_droplet.c"
+ double __cuda_local_var_16629_10_non_const_dphi[3];
+# 367 "lc_droplet.c"
+ double __cuda_local_var_16630_10_non_const_delsq_phi;
+# 368 "lc_droplet.c"
+ double __cuda_local_var_16631_10_non_const_dphi2;
+# 369 "lc_droplet.c"
+ double __cuda_local_var_16632_16_const_r3;
+# 370 "lc_droplet.c"
+ int8_t __cuda_local_var_16633_16_const_d[3][3];
+# 369 "lc_droplet.c"
+__cuda_local_var_16632_16_const_r3 = (0.3333333333333333148);
+# 370 "lc_droplet.c"
+memset((char *)(const int8_t ( *)[3][3])&__cuda_local_var_16633_16_const_d, 0,sizeof(__cuda_local_var_16633_16_const_d));
+# 370 "lc_droplet.c"
+__cuda_local_var_16633_16_const_d[0][0] = ((int8_t)1);
+# 370 "lc_droplet.c"
+__cuda_local_var_16633_16_const_d[0][1] = ((int8_t)0);
+# 370 "lc_droplet.c"
+__cuda_local_var_16633_16_const_d[0][2] = ((int8_t)0);
+# 370 "lc_droplet.c"
+__cuda_local_var_16633_16_const_d[1][0] = ((int8_t)0);
+# 370 "lc_droplet.c"
+__cuda_local_var_16633_16_const_d[1][1] = ((int8_t)1);
+# 370 "lc_droplet.c"
+__cuda_local_var_16633_16_const_d[1][2] = ((int8_t)0);
+# 370 "lc_droplet.c"
+__cuda_local_var_16633_16_const_d[2][0] = ((int8_t)0);
+# 370 "lc_droplet.c"
+__cuda_local_var_16633_16_const_d[2][1] = ((int8_t)0);
+# 370 "lc_droplet.c"
+__cuda_local_var_16633_16_const_d[2][2] = ((int8_t)1);
+# 372 "lc_droplet.c"
+(fe) ? ((void)0) : (__assert_fail(((const char *)"fe"), ((const char *)"lc_droplet.c"), 372U, __T9));
+# 374 "lc_droplet.c"
+_Z22field_grad_scalar_gradP12field_grad_siPd(((fe->symm)->dphi), index, (__cuda_local_var_16629_10_non_const_dphi));
+# 375 "lc_droplet.c"
+_Z23field_grad_scalar_delsqP12field_grad_siPd(((fe->symm)->dphi), index, (&__cuda_local_var_16630_10_non_const_delsq_phi));
+# 377 "lc_droplet.c"
+__cuda_local_var_16631_10_non_const_dphi2 = (((((__cuda_local_var_16629_10_non_const_dphi)[X]) * ((__cuda_local_var_16629_10_non_const_dphi)[X])) + (((__cuda_local_var_16629_10_non_const_dphi)[Y]) * ((__cuda_local_var_16629_10_non_const_dphi)[Y]))) + (((__cuda_local_var_16629_10_non_const_dphi)[Z]) * ((__cuda_local_var_16629_10_non_const_dphi)[Z])));
+# 379 "lc_droplet.c"
+for (__cuda_local_var_16628_7_non_const_ia = 0; (__cuda_local_var_16628_7_non_const_ia < 3); __cuda_local_var_16628_7_non_const_ia++)
+# 379 "lc_droplet.c"
+{
+# 380 "lc_droplet.c"
+for (__cuda_local_var_16628_11_non_const_ib = 0; (__cuda_local_var_16628_11_non_const_ib < 3); __cuda_local_var_16628_11_non_const_ib++)
+# 380 "lc_droplet.c"
+{
+# 381 "lc_droplet.c"
+(((h[__cuda_local_var_16628_7_non_const_ia]))[__cuda_local_var_16628_11_non_const_ib]) = ((-((fe->param)->w)) * ((((__cuda_local_var_16629_10_non_const_dphi)[__cuda_local_var_16628_7_non_const_ia]) * ((__cuda_local_var_16629_10_non_const_dphi)[__cuda_local_var_16628_11_non_const_ib])) - (((0.3333333333333333148) * ((double)(((((const int8_t (*)[3])__cuda_local_var_16633_16_const_d)[__cuda_local_var_16628_7_non_const_ia]))[__cuda_local_var_16628_11_non_const_ib]))) * __cuda_local_var_16631_10_non_const_dphi2)));
+# 382 "lc_droplet.c"
+}
+# 383 "lc_droplet.c"
+}
+# 385 "lc_droplet.c"
+return 0;
+# 386 "lc_droplet.c"
+}}
+# 403 "lc_droplet.c"
+___device__( __no_sc__) int _Z16fe_lc_droplet_muP15fe_lc_droplet_siPd(
+# 403 "lc_droplet.c"
+fe_lc_droplet_t *fe, 
+# 403 "lc_droplet.c"
+int index, 
+# 404 "lc_droplet.c"
+double *mu){
+# 404 "lc_droplet.c"
+{
+# 406 "lc_droplet.c"
+ int __cuda_local_var_16654_7_non_const_ia;
+# 406 "lc_droplet.c"
+ int __cuda_local_var_16654_11_non_const_ib;
+# 406 "lc_droplet.c"
+ int __cuda_local_var_16654_15_non_const_ic;
+# 407 "lc_droplet.c"
+ double __cuda_local_var_16655_10_non_const_q[3][3];
+# 408 "lc_droplet.c"
+ double __cuda_local_var_16656_10_non_const_dphi[3];
+# 409 "lc_droplet.c"
+ double __cuda_local_var_16657_10_non_const_dq[3][3][3];
+# 410 "lc_droplet.c"
+ double __cuda_local_var_16658_10_non_const_dabphi[3][3];
+# 411 "lc_droplet.c"
+ double __cuda_local_var_16659_10_non_const_q2;
+# 411 "lc_droplet.c"
+ double __cuda_local_var_16659_14_non_const_q3;
+# 412 "lc_droplet.c"
+ double __cuda_local_var_16660_10_non_const_wmu;
+# 413 "lc_droplet.c"
+ double __cuda_local_var_16661_10_non_const_a0;
+# 414 "lc_droplet.c"
+ double __cuda_local_var_16662_10_non_const_delta;
+# 415 "lc_droplet.c"
+ double __cuda_local_var_16663_16_const_r3;
+# 415 "lc_droplet.c"
+__cuda_local_var_16663_16_const_r3 = (0.3333333333333333148);
+# 417 "lc_droplet.c"
+_Z10fe_symm_muP9fe_symm_siPd((fe->symm), index, mu);
+# 419 "lc_droplet.c"
+_Z12field_tensorP7field_siPA3_d(((fe->lc)->q), index, (__cuda_local_var_16655_10_non_const_q));
+# 420 "lc_droplet.c"
+_Z22field_grad_tensor_gradP12field_grad_siPA3_A3_d(((fe->lc)->dq), index, (__cuda_local_var_16657_10_non_const_dq));
+# 421 "lc_droplet.c"
+_Z22field_grad_scalar_gradP12field_grad_siPd(((fe->symm)->dphi), index, (__cuda_local_var_16656_10_non_const_dphi));
+# 422 "lc_droplet.c"
+_Z21field_grad_scalar_dabP12field_grad_siPA3_d(((fe->symm)->dphi), index, (__cuda_local_var_16658_10_non_const_dabphi));
+# 424 "lc_droplet.c"
+__cuda_local_var_16659_10_non_const_q2 = (0.0);
+# 428 "lc_droplet.c"
+for (__cuda_local_var_16654_7_non_const_ia = 0; (__cuda_local_var_16654_7_non_const_ia < 3); __cuda_local_var_16654_7_non_const_ia++)
+# 428 "lc_droplet.c"
+{
+# 429 "lc_droplet.c"
+for (__cuda_local_var_16654_11_non_const_ib = 0; (__cuda_local_var_16654_11_non_const_ib < 3); __cuda_local_var_16654_11_non_const_ib++)
+# 429 "lc_droplet.c"
+{
+# 430 "lc_droplet.c"
+__cuda_local_var_16659_10_non_const_q2 += (((((__cuda_local_var_16655_10_non_const_q)[__cuda_local_var_16654_7_non_const_ia]))[__cuda_local_var_16654_11_non_const_ib]) * ((((__cuda_local_var_16655_10_non_const_q)[__cuda_local_var_16654_7_non_const_ia]))[__cuda_local_var_16654_11_non_const_ib]));
+# 431 "lc_droplet.c"
+}
+# 432 "lc_droplet.c"
+}
+# 436 "lc_droplet.c"
+__cuda_local_var_16659_14_non_const_q3 = (0.0);
+# 438 "lc_droplet.c"
+for (__cuda_local_var_16654_7_non_const_ia = 0; (__cuda_local_var_16654_7_non_const_ia < 3); __cuda_local_var_16654_7_non_const_ia++)
+# 438 "lc_droplet.c"
+{
+# 439 "lc_droplet.c"
+for (__cuda_local_var_16654_11_non_const_ib = 0; (__cuda_local_var_16654_11_non_const_ib < 3); __cuda_local_var_16654_11_non_const_ib++)
+# 439 "lc_droplet.c"
+{
+# 440 "lc_droplet.c"
+for (__cuda_local_var_16654_15_non_const_ic = 0; (__cuda_local_var_16654_15_non_const_ic < 3); __cuda_local_var_16654_15_non_const_ic++)
+# 440 "lc_droplet.c"
+{
+# 442 "lc_droplet.c"
+__cuda_local_var_16659_14_non_const_q3 += ((((((__cuda_local_var_16655_10_non_const_q)[__cuda_local_var_16654_7_non_const_ia]))[__cuda_local_var_16654_11_non_const_ib]) * ((((__cuda_local_var_16655_10_non_const_q)[__cuda_local_var_16654_11_non_const_ib]))[__cuda_local_var_16654_15_non_const_ic])) * ((((__cuda_local_var_16655_10_non_const_q)[__cuda_local_var_16654_7_non_const_ia]))[__cuda_local_var_16654_15_non_const_ic]));
+# 443 "lc_droplet.c"
+}
+# 444 "lc_droplet.c"
+}
+# 445 "lc_droplet.c"
+}
+# 447 "lc_droplet.c"
+__cuda_local_var_16660_10_non_const_wmu = (0.0);
+# 448 "lc_droplet.c"
+for (__cuda_local_var_16654_7_non_const_ia = 0; (__cuda_local_var_16654_7_non_const_ia < 3); __cuda_local_var_16654_7_non_const_ia++)
+# 448 "lc_droplet.c"
+{
+# 449 "lc_droplet.c"
+for (__cuda_local_var_16654_11_non_const_ib = 0; (__cuda_local_var_16654_11_non_const_ib < 3); __cuda_local_var_16654_11_non_const_ib++)
+# 449 "lc_droplet.c"
+{
+# 450 "lc_droplet.c"
+__cuda_local_var_16660_10_non_const_wmu += ((((__cuda_local_var_16656_10_non_const_dphi)[__cuda_local_var_16654_7_non_const_ia]) * ((((((__cuda_local_var_16657_10_non_const_dq)[__cuda_local_var_16654_11_non_const_ib]))[__cuda_local_var_16654_7_non_const_ia]))[__cuda_local_var_16654_11_non_const_ib])) + (((((__cuda_local_var_16655_10_non_const_q)[__cuda_local_var_16654_7_non_const_ia]))[__cuda_local_var_16654_11_non_const_ib]) * ((((__cuda_local_var_16658_10_non_const_dabphi)[__cuda_local_var_16654_7_non_const_ia]))[__cuda_local_var_16654_11_non_const_ib])));
+# 451 "lc_droplet.c"
+}
+# 452 "lc_droplet.c"
+}
+# 454 "lc_droplet.c"
+__cuda_local_var_16661_10_non_const_a0 = (((fe->lc)->param)->a0);
+# 455 "lc_droplet.c"
+__cuda_local_var_16662_10_non_const_delta = ((fe->param)->delta);
+# 457 "lc_droplet.c"
+(*mu) += (((((((-0.1666666666666666574) * __cuda_local_var_16661_10_non_const_a0) * __cuda_local_var_16662_10_non_const_delta) * __cuda_local_var_16659_10_non_const_q2) - ((((0.3333333333333333148) * __cuda_local_var_16661_10_non_const_a0) * __cuda_local_var_16662_10_non_const_delta) * __cuda_local_var_16659_14_non_const_q3)) + (((((0.25) * __cuda_local_var_16661_10_non_const_a0) * __cuda_local_var_16662_10_non_const_delta) * __cuda_local_var_16659_10_non_const_q2) * __cuda_local_var_16659_10_non_const_q2)) - (((2.0) * ((fe->param)->w)) * __cuda_local_var_16660_10_non_const_wmu));
+# 460 "lc_droplet.c"
+return 0;
+# 461 "lc_droplet.c"
+}}
+# 472 "lc_droplet.c"
+___device__( __no_sc__) int _Z20fe_lc_droplet_stressP15fe_lc_droplet_siPA3_d(
+# 472 "lc_droplet.c"
+fe_lc_droplet_t *fe, 
+# 472 "lc_droplet.c"
+int index, 
+# 472 "lc_droplet.c"
+double (*sth)[3]){
+# 472 "lc_droplet.c"
+{
+# 474 "lc_droplet.c"
+ int __cuda_local_var_16714_7_non_const_ia;
+# 474 "lc_droplet.c"
+ int __cuda_local_var_16714_11_non_const_ib;
+# 475 "lc_droplet.c"
+ double __cuda_local_var_16715_10_non_const_s1[3][3];
+# 476 "lc_droplet.c"
+ double __cuda_local_var_16716_10_non_const_s2[3][3];
+# 478 "lc_droplet.c"
+(fe) ? ((void)0) : (__assert_fail(((const char *)"fe"), ((const char *)"lc_droplet.c"), 478U, __T10));
+# 480 "lc_droplet.c"
+_Z22fe_lc_droplet_str_symmP15fe_lc_droplet_siPA3_d(fe, index, (__cuda_local_var_16715_10_non_const_s1));
+# 481 "lc_droplet.c"
+_Z22fe_lc_droplet_str_antiP15fe_lc_droplet_siPA3_d(fe, index, (__cuda_local_var_16716_10_non_const_s2));
+# 483 "lc_droplet.c"
+for (__cuda_local_var_16714_7_non_const_ia = 0; (__cuda_local_var_16714_7_non_const_ia < 3); __cuda_local_var_16714_7_non_const_ia++)
+# 483 "lc_droplet.c"
+{
+# 484 "lc_droplet.c"
+for (__cuda_local_var_16714_11_non_const_ib = 0; (__cuda_local_var_16714_11_non_const_ib < 3); __cuda_local_var_16714_11_non_const_ib++)
+# 484 "lc_droplet.c"
+{
+# 485 "lc_droplet.c"
+(((sth[__cuda_local_var_16714_7_non_const_ia]))[__cuda_local_var_16714_11_non_const_ib]) = (((((__cuda_local_var_16715_10_non_const_s1)[__cuda_local_var_16714_7_non_const_ia]))[__cuda_local_var_16714_11_non_const_ib]) + ((((__cuda_local_var_16716_10_non_const_s2)[__cuda_local_var_16714_7_non_const_ia]))[__cuda_local_var_16714_11_non_const_ib]));
+# 486 "lc_droplet.c"
+}
+# 487 "lc_droplet.c"
+}
+# 489 "lc_droplet.c"
+return 0;
+# 490 "lc_droplet.c"
+}}
+# 500 "lc_droplet.c"
+___device__( __no_sc__) void _Z22fe_lc_droplet_stress_vP15fe_lc_droplet_siPA3_A1_d(
+# 500 "lc_droplet.c"
+fe_lc_droplet_t *fe, 
+# 501 "lc_droplet.c"
+int index, 
+# 502 "lc_droplet.c"
+double (*sth)[3][1]){
+# 502 "lc_droplet.c"
+{
+# 503 "lc_droplet.c"
+ int __cuda_local_var_16735_7_non_const_ia;
+# 503 "lc_droplet.c"
+ int __cuda_local_var_16735_11_non_const_ib;
+# 503 "lc_droplet.c"
+ int __cuda_local_var_16735_15_non_const_iv;
+# 504 "lc_droplet.c"
+ double __cuda_local_var_16736_10_non_const_s1[3][3];
+# 505 "lc_droplet.c"
+ double __cuda_local_var_16737_10_non_const_s2[3][3];
+# 507 "lc_droplet.c"
+for (__cuda_local_var_16735_15_non_const_iv = 0; (__cuda_local_var_16735_15_non_const_iv < 1); __cuda_local_var_16735_15_non_const_iv++)
+# 507 "lc_droplet.c"
+{
+# 508 "lc_droplet.c"
+_Z22fe_lc_droplet_str_symmP15fe_lc_droplet_siPA3_d(fe, (index + __cuda_local_var_16735_15_non_const_iv), (__cuda_local_var_16736_10_non_const_s1));
+# 509 "lc_droplet.c"
+_Z22fe_lc_droplet_str_antiP15fe_lc_droplet_siPA3_d(fe, (index + __cuda_local_var_16735_15_non_const_iv), (__cuda_local_var_16737_10_non_const_s2));
+# 510 "lc_droplet.c"
+for (__cuda_local_var_16735_7_non_const_ia = 0; (__cuda_local_var_16735_7_non_const_ia < 3); __cuda_local_var_16735_7_non_const_ia++)
+# 510 "lc_droplet.c"
+{
+# 511 "lc_droplet.c"
+for (__cuda_local_var_16735_11_non_const_ib = 0; (__cuda_local_var_16735_11_non_const_ib < 3); __cuda_local_var_16735_11_non_const_ib++)
+# 511 "lc_droplet.c"
+{
+# 512 "lc_droplet.c"
+(((((sth[__cuda_local_var_16735_7_non_const_ia]))[__cuda_local_var_16735_11_non_const_ib]))[__cuda_local_var_16735_15_non_const_iv]) = (((((__cuda_local_var_16736_10_non_const_s1)[__cuda_local_var_16735_7_non_const_ia]))[__cuda_local_var_16735_11_non_const_ib]) + ((((__cuda_local_var_16737_10_non_const_s2)[__cuda_local_var_16735_7_non_const_ia]))[__cuda_local_var_16735_11_non_const_ib]));
+# 513 "lc_droplet.c"
+}
+# 514 "lc_droplet.c"
+}
+# 515 "lc_droplet.c"
+}
+# 517 "lc_droplet.c"
+return;
+# 518 "lc_droplet.c"
+}}
+# 527 "lc_droplet.c"
+___device__( __no_sc__) int _Z22fe_lc_droplet_str_symmP15fe_lc_droplet_siPA3_d(
+# 527 "lc_droplet.c"
+fe_lc_droplet_t *fe, 
+# 527 "lc_droplet.c"
+int index, 
+# 527 "lc_droplet.c"
+double (*sth)[3]){
+# 527 "lc_droplet.c"
+{
+# 529 "lc_droplet.c"
+ double __cuda_local_var_16761_10_non_const_q[3][3];
+# 530 "lc_droplet.c"
+ double __cuda_local_var_16762_10_non_const_h[3][3];
+# 531 "lc_droplet.c"
+ int __cuda_local_var_16763_7_non_const_ia;
+# 531 "lc_droplet.c"
+ int __cuda_local_var_16763_11_non_const_ib;
+# 531 "lc_droplet.c"
+ int __cuda_local_var_16763_15_non_const_ic;
+# 532 "lc_droplet.c"
+ double __cuda_local_var_16764_10_non_const_qh;
+# 533 "lc_droplet.c"
+ double __cuda_local_var_16765_10_non_const_xi;
+# 534 "lc_droplet.c"
+ double __cuda_local_var_16766_16_const_r3;
+# 535 "lc_droplet.c"
+ int8_t __cuda_local_var_16767_16_const_d[3][3];
+# 534 "lc_droplet.c"
+__cuda_local_var_16766_16_const_r3 = (0.3333333333333333148);
+# 535 "lc_droplet.c"
+memset((char *)(const int8_t ( *)[3][3])&__cuda_local_var_16767_16_const_d, 0,sizeof(__cuda_local_var_16767_16_const_d));
+# 535 "lc_droplet.c"
+__cuda_local_var_16767_16_const_d[0][0] = ((int8_t)1);
+# 535 "lc_droplet.c"
+__cuda_local_var_16767_16_const_d[0][1] = ((int8_t)0);
+# 535 "lc_droplet.c"
+__cuda_local_var_16767_16_const_d[0][2] = ((int8_t)0);
+# 535 "lc_droplet.c"
+__cuda_local_var_16767_16_const_d[1][0] = ((int8_t)0);
+# 535 "lc_droplet.c"
+__cuda_local_var_16767_16_const_d[1][1] = ((int8_t)1);
+# 535 "lc_droplet.c"
+__cuda_local_var_16767_16_const_d[1][2] = ((int8_t)0);
+# 535 "lc_droplet.c"
+__cuda_local_var_16767_16_const_d[2][0] = ((int8_t)0);
+# 535 "lc_droplet.c"
+__cuda_local_var_16767_16_const_d[2][1] = ((int8_t)0);
+# 535 "lc_droplet.c"
+__cuda_local_var_16767_16_const_d[2][2] = ((int8_t)1);
+# 537 "lc_droplet.c"
+__cuda_local_var_16765_10_non_const_xi = (((fe->lc)->param)->xi);
+# 541 "lc_droplet.c"
+_Z12field_tensorP7field_siPA3_d(((fe->lc)->q), index, (__cuda_local_var_16761_10_non_const_q));
+# 542 "lc_droplet.c"
+_Z23fe_lc_droplet_mol_fieldP15fe_lc_droplet_siPA3_d(fe, index, (__cuda_local_var_16762_10_non_const_h));
+# 544 "lc_droplet.c"
+__cuda_local_var_16764_10_non_const_qh = (0.0);
+# 546 "lc_droplet.c"
+for (__cuda_local_var_16763_7_non_const_ia = 0; (__cuda_local_var_16763_7_non_const_ia < 3); __cuda_local_var_16763_7_non_const_ia++)
+# 546 "lc_droplet.c"
+{
+# 547 "lc_droplet.c"
+for (__cuda_local_var_16763_11_non_const_ib = 0; (__cuda_local_var_16763_11_non_const_ib < 3); __cuda_local_var_16763_11_non_const_ib++)
+# 547 "lc_droplet.c"
+{
+# 548 "lc_droplet.c"
+__cuda_local_var_16764_10_non_const_qh += (((((__cuda_local_var_16761_10_non_const_q)[__cuda_local_var_16763_7_non_const_ia]))[__cuda_local_var_16763_11_non_const_ib]) * ((((__cuda_local_var_16762_10_non_const_h)[__cuda_local_var_16763_7_non_const_ia]))[__cuda_local_var_16763_11_non_const_ib]));
+# 549 "lc_droplet.c"
+}
+# 550 "lc_droplet.c"
+}
+# 556 "lc_droplet.c"
+for (__cuda_local_var_16763_7_non_const_ia = 0; (__cuda_local_var_16763_7_non_const_ia < 3); __cuda_local_var_16763_7_non_const_ia++)
+# 556 "lc_droplet.c"
+{
+# 557 "lc_droplet.c"
+for (__cuda_local_var_16763_11_non_const_ib = 0; (__cuda_local_var_16763_11_non_const_ib < 3); __cuda_local_var_16763_11_non_const_ib++)
+# 557 "lc_droplet.c"
+{
+# 558 "lc_droplet.c"
+(((sth[__cuda_local_var_16763_7_non_const_ia]))[__cuda_local_var_16763_11_non_const_ib]) = ((((2.0) * __cuda_local_var_16765_10_non_const_xi) * (((((__cuda_local_var_16761_10_non_const_q)[__cuda_local_var_16763_7_non_const_ia]))[__cuda_local_var_16763_11_non_const_ib]) + ((0.3333333333333333148) * ((double)(((((const int8_t (*)[3])__cuda_local_var_16767_16_const_d)[__cuda_local_var_16763_7_non_const_ia]))[__cuda_local_var_16763_11_non_const_ib]))))) * __cuda_local_var_16764_10_non_const_qh);
+# 559 "lc_droplet.c"
+}
+# 560 "lc_droplet.c"
+}
+# 564 "lc_droplet.c"
+for (__cuda_local_var_16763_7_non_const_ia = 0; (__cuda_local_var_16763_7_non_const_ia < 3); __cuda_local_var_16763_7_non_const_ia++)
+# 564 "lc_droplet.c"
+{
+# 565 "lc_droplet.c"
+for (__cuda_local_var_16763_11_non_const_ib = 0; (__cuda_local_var_16763_11_non_const_ib < 3); __cuda_local_var_16763_11_non_const_ib++)
+# 565 "lc_droplet.c"
+{
+# 566 "lc_droplet.c"
+for (__cuda_local_var_16763_15_non_const_ic = 0; (__cuda_local_var_16763_15_non_const_ic < 3); __cuda_local_var_16763_15_non_const_ic++)
+# 566 "lc_droplet.c"
+{
+# 567 "lc_droplet.c"
+(((sth[__cuda_local_var_16763_7_non_const_ia]))[__cuda_local_var_16763_11_non_const_ib]) += ((((-__cuda_local_var_16765_10_non_const_xi) * ((((__cuda_local_var_16762_10_non_const_h)[__cuda_local_var_16763_7_non_const_ia]))[__cuda_local_var_16763_15_non_const_ic])) * (((((__cuda_local_var_16761_10_non_const_q)[__cuda_local_var_16763_11_non_const_ib]))[__cuda_local_var_16763_15_non_const_ic]) + ((0.3333333333333333148) * ((double)(((((const int8_t (*)[3])__cuda_local_var_16767_16_const_d)[__cuda_local_var_16763_11_non_const_ib]))[__cuda_local_var_16763_15_non_const_ic]))))) - ((__cuda_local_var_16765_10_non_const_xi * (((((__cuda_local_var_16761_10_non_const_q)[__cuda_local_var_16763_7_non_const_ia]))[__cuda_local_var_16763_15_non_const_ic]) + ((0.3333333333333333148) * ((double)(((((const int8_t (*)[3])__cuda_local_var_16767_16_const_d)[__cuda_local_var_16763_7_non_const_ia]))[__cuda_local_var_16763_15_non_const_ic]))))) * ((((__cuda_local_var_16762_10_non_const_h)[__cuda_local_var_16763_11_non_const_ib]))[__cuda_local_var_16763_15_non_const_ic])));
+# 570 "lc_droplet.c"
+}
+# 571 "lc_droplet.c"
+}
+# 572 "lc_droplet.c"
+}
+# 576 "lc_droplet.c"
+for (__cuda_local_var_16763_7_non_const_ia = 0; (__cuda_local_var_16763_7_non_const_ia < 3); __cuda_local_var_16763_7_non_const_ia++)
+# 576 "lc_droplet.c"
+{
+# 577 "lc_droplet.c"
+for (__cuda_local_var_16763_11_non_const_ib = 0; (__cuda_local_var_16763_11_non_const_ib < 3); __cuda_local_var_16763_11_non_const_ib++)
+# 577 "lc_droplet.c"
+{
+# 578 "lc_droplet.c"
+(((sth[__cuda_local_var_16763_7_non_const_ia]))[__cuda_local_var_16763_11_non_const_ib]) = (-(((sth[__cuda_local_var_16763_7_non_const_ia]))[__cuda_local_var_16763_11_non_const_ib]));
+# 579 "lc_droplet.c"
+}
+# 580 "lc_droplet.c"
+}
+# 582 "lc_droplet.c"
+return 0;
+# 583 "lc_droplet.c"
+}}
+# 592 "lc_droplet.c"
+___device__( __no_sc__) void _Z24fe_lc_droplet_str_symm_vP15fe_lc_droplet_siPA3_A1_d(
+# 592 "lc_droplet.c"
+fe_lc_droplet_t *fe, 
+# 592 "lc_droplet.c"
+int index, 
+# 593 "lc_droplet.c"
+double (*sth)[3][1]){
+# 593 "lc_droplet.c"
+{
+# 594 "lc_droplet.c"
+ int __cuda_local_var_16826_7_non_const_ia;
+# 594 "lc_droplet.c"
+ int __cuda_local_var_16826_11_non_const_ib;
+# 594 "lc_droplet.c"
+ int __cuda_local_var_16826_15_non_const_iv;
+# 595 "lc_droplet.c"
+ double __cuda_local_var_16827_10_non_const_s1[3][3];
+# 597 "lc_droplet.c"
+(fe) ? ((void)0) : (__assert_fail(((const char *)"fe"), ((const char *)"lc_droplet.c"), 597U, __T11));
+# 599 "lc_droplet.c"
+for (__cuda_local_var_16826_15_non_const_iv = 0; (__cuda_local_var_16826_15_non_const_iv < 1); __cuda_local_var_16826_15_non_const_iv++)
+# 599 "lc_droplet.c"
+{
+# 600 "lc_droplet.c"
+_Z22fe_lc_droplet_str_symmP15fe_lc_droplet_siPA3_d(fe, (index + __cuda_local_var_16826_15_non_const_iv), (__cuda_local_var_16827_10_non_const_s1));
+# 601 "lc_droplet.c"
+for (__cuda_local_var_16826_7_non_const_ia = 0; (__cuda_local_var_16826_7_non_const_ia < 3); __cuda_local_var_16826_7_non_const_ia++)
+# 601 "lc_droplet.c"
+{
+# 602 "lc_droplet.c"
+for (__cuda_local_var_16826_11_non_const_ib = 0; (__cuda_local_var_16826_11_non_const_ib < 3); __cuda_local_var_16826_11_non_const_ib++)
+# 602 "lc_droplet.c"
+{
+# 603 "lc_droplet.c"
+(((((sth[__cuda_local_var_16826_7_non_const_ia]))[__cuda_local_var_16826_11_non_const_ib]))[__cuda_local_var_16826_15_non_const_iv]) = ((((__cuda_local_var_16827_10_non_const_s1)[__cuda_local_var_16826_7_non_const_ia]))[__cuda_local_var_16826_11_non_const_ib]);
+# 604 "lc_droplet.c"
+}
+# 605 "lc_droplet.c"
+}
+# 606 "lc_droplet.c"
+}
+# 608 "lc_droplet.c"
+return;
+# 609 "lc_droplet.c"
+}}
+# 618 "lc_droplet.c"
+___device__( __no_sc__) int _Z22fe_lc_droplet_str_antiP15fe_lc_droplet_siPA3_d(
+# 618 "lc_droplet.c"
+fe_lc_droplet_t *fe, 
+# 618 "lc_droplet.c"
+int index, 
+# 618 "lc_droplet.c"
+double (*sth)[3]){
+# 618 "lc_droplet.c"
+{
+# 620 "lc_droplet.c"
+ int __cuda_local_var_16852_7_non_const_ia;
+# 620 "lc_droplet.c"
+ int __cuda_local_var_16852_11_non_const_ib;
+# 620 "lc_droplet.c"
+ int __cuda_local_var_16852_15_non_const_ic;
+# 621 "lc_droplet.c"
+ double __cuda_local_var_16853_10_non_const_q[3][3];
+# 621 "lc_droplet.c"
+ double __cuda_local_var_16853_19_non_const_dq[3][3][3];
+# 622 "lc_droplet.c"
+ double __cuda_local_var_16854_10_non_const_h[3][3];
+# 622 "lc_droplet.c"
+ double __cuda_local_var_16854_19_non_const_dsq[3][3];
+# 623 "lc_droplet.c"
+ double __cuda_local_var_16855_10_non_const_gamma;
+# 625 "lc_droplet.c"
+(fe) ? ((void)0) : (__assert_fail(((const char *)"fe"), ((const char *)"lc_droplet.c"), 625U, __T12));
+# 629 "lc_droplet.c"
+_Z12field_tensorP7field_siPA3_d(((fe->lc)->q), index, (__cuda_local_var_16853_10_non_const_q));
+# 630 "lc_droplet.c"
+_Z23fe_lc_droplet_mol_fieldP15fe_lc_droplet_siPA3_d(fe, index, (__cuda_local_var_16854_10_non_const_h));
+# 632 "lc_droplet.c"
+_Z19fe_lc_droplet_gammaP15fe_lc_droplet_siPd(fe, index, (&__cuda_local_var_16855_10_non_const_gamma));
+# 634 "lc_droplet.c"
+_Z22field_grad_tensor_gradP12field_grad_siPA3_A3_d(((fe->lc)->dq), index, (__cuda_local_var_16853_19_non_const_dq));
+# 635 "lc_droplet.c"
+_Z23field_grad_tensor_delsqP12field_grad_siPA3_d(((fe->lc)->dq), index, (__cuda_local_var_16854_19_non_const_dsq));
+# 637 "lc_droplet.c"
+_Z23fe_lc_droplet_mol_fieldP15fe_lc_droplet_siPA3_d(fe, index, (__cuda_local_var_16854_10_non_const_h));
+# 639 "lc_droplet.c"
+for (__cuda_local_var_16852_7_non_const_ia = 0; (__cuda_local_var_16852_7_non_const_ia < 3); __cuda_local_var_16852_7_non_const_ia++)
+# 639 "lc_droplet.c"
+{
+# 640 "lc_droplet.c"
+for (__cuda_local_var_16852_11_non_const_ib = 0; (__cuda_local_var_16852_11_non_const_ib < 3); __cuda_local_var_16852_11_non_const_ib++)
+# 640 "lc_droplet.c"
+{
+# 641 "lc_droplet.c"
+(((sth[__cuda_local_var_16852_7_non_const_ia]))[__cuda_local_var_16852_11_non_const_ib]) = (0.0);
+# 642 "lc_droplet.c"
+}
+# 643 "lc_droplet.c"
+}
+# 647 "lc_droplet.c"
+for (__cuda_local_var_16852_7_non_const_ia = 0; (__cuda_local_var_16852_7_non_const_ia < 3); __cuda_local_var_16852_7_non_const_ia++)
+# 647 "lc_droplet.c"
+{
+# 648 "lc_droplet.c"
+for (__cuda_local_var_16852_11_non_const_ib = 0; (__cuda_local_var_16852_11_non_const_ib < 3); __cuda_local_var_16852_11_non_const_ib++)
+# 648 "lc_droplet.c"
+{
+# 649 "lc_droplet.c"
+for (__cuda_local_var_16852_15_non_const_ic = 0; (__cuda_local_var_16852_15_non_const_ic < 3); __cuda_local_var_16852_15_non_const_ic++)
+# 649 "lc_droplet.c"
+{
+# 650 "lc_droplet.c"
+(((sth[__cuda_local_var_16852_7_non_const_ia]))[__cuda_local_var_16852_11_non_const_ib]) += ((((((__cuda_local_var_16853_10_non_const_q)[__cuda_local_var_16852_7_non_const_ia]))[__cuda_local_var_16852_15_non_const_ic]) * ((((__cuda_local_var_16854_10_non_const_h)[__cuda_local_var_16852_11_non_const_ib]))[__cuda_local_var_16852_15_non_const_ic])) - (((((__cuda_local_var_16854_10_non_const_h)[__cuda_local_var_16852_7_non_const_ia]))[__cuda_local_var_16852_15_non_const_ic]) * ((((__cuda_local_var_16853_10_non_const_q)[__cuda_local_var_16852_11_non_const_ib]))[__cuda_local_var_16852_15_non_const_ic])));
+# 651 "lc_droplet.c"
+}
+# 652 "lc_droplet.c"
+}
+# 653 "lc_droplet.c"
+}
+# 656 "lc_droplet.c"
+for (__cuda_local_var_16852_7_non_const_ia = 0; (__cuda_local_var_16852_7_non_const_ia < 3); __cuda_local_var_16852_7_non_const_ia++)
+# 656 "lc_droplet.c"
+{
+# 657 "lc_droplet.c"
+for (__cuda_local_var_16852_11_non_const_ib = 0; (__cuda_local_var_16852_11_non_const_ib < 3); __cuda_local_var_16852_11_non_const_ib++)
+# 657 "lc_droplet.c"
+{
+# 658 "lc_droplet.c"
+(((sth[__cuda_local_var_16852_7_non_const_ia]))[__cuda_local_var_16852_11_non_const_ib]) = (-(((sth[__cuda_local_var_16852_7_non_const_ia]))[__cuda_local_var_16852_11_non_const_ib]));
+# 659 "lc_droplet.c"
+}
+# 660 "lc_droplet.c"
+}
+# 662 "lc_droplet.c"
+return 0;
+# 663 "lc_droplet.c"
+}}
+# 672 "lc_droplet.c"
+___device__( __no_sc__) void _Z24fe_lc_droplet_str_anti_vP15fe_lc_droplet_siPA3_A1_d(
+# 672 "lc_droplet.c"
+fe_lc_droplet_t *fe, 
+# 672 "lc_droplet.c"
+int index, 
+# 673 "lc_droplet.c"
+double (*s)[3][1]){
+# 673 "lc_droplet.c"
+{
+# 674 "lc_droplet.c"
+ int __cuda_local_var_16906_7_non_const_ia;
+# 674 "lc_droplet.c"
+ int __cuda_local_var_16906_11_non_const_ib;
+# 674 "lc_droplet.c"
+ int __cuda_local_var_16906_15_non_const_iv;
+# 675 "lc_droplet.c"
+ double __cuda_local_var_16907_10_non_const_s1[3][3];
+# 677 "lc_droplet.c"
+for (__cuda_local_var_16906_15_non_const_iv = 0; (__cuda_local_var_16906_15_non_const_iv < 1); __cuda_local_var_16906_15_non_const_iv++)
+# 677 "lc_droplet.c"
+{
+# 678 "lc_droplet.c"
+_Z22fe_lc_droplet_str_antiP15fe_lc_droplet_siPA3_d(fe, (index + __cuda_local_var_16906_15_non_const_iv), (__cuda_local_var_16907_10_non_const_s1));
+# 679 "lc_droplet.c"
+for (__cuda_local_var_16906_7_non_const_ia = 0; (__cuda_local_var_16906_7_non_const_ia < 3); __cuda_local_var_16906_7_non_const_ia++)
+# 679 "lc_droplet.c"
+{
+# 680 "lc_droplet.c"
+for (__cuda_local_var_16906_11_non_const_ib = 0; (__cuda_local_var_16906_11_non_const_ib < 3); __cuda_local_var_16906_11_non_const_ib++)
+# 680 "lc_droplet.c"
+{
+# 681 "lc_droplet.c"
+(((((s[__cuda_local_var_16906_7_non_const_ia]))[__cuda_local_var_16906_11_non_const_ib]))[__cuda_local_var_16906_15_non_const_iv]) = ((((__cuda_local_var_16907_10_non_const_s1)[__cuda_local_var_16906_7_non_const_ia]))[__cuda_local_var_16906_11_non_const_ib]);
+# 682 "lc_droplet.c"
+}
+# 683 "lc_droplet.c"
+}
+# 684 "lc_droplet.c"
+}
+# 686 "lc_droplet.c"
+return;
+# 687 "lc_droplet.c"
+}}
+# 744 "lc_droplet.c"
+__global__ __var_used__ void _Z23fe_lc_droplet_bf_kernelP13kernel_ctxt_sP15fe_lc_droplet_sP7hydro_s(
+# 744 "lc_droplet.c"
+kernel_ctxt_t *ktx, 
+# 745 "lc_droplet.c"
+fe_lc_droplet_t *fe, 
+# 746 "lc_droplet.c"
+hydro_t *hydro){
+# 746 "lc_droplet.c"
+{
+# 747 "lc_droplet.c"
+ int __cuda_local_var_16954_7_non_const_kindex;
+# 748 "lc_droplet.c"
+ int __cuda_local_var_16955_7_non_const_kiterations;
+# 750 "lc_droplet.c"
+(ktx) ? ((void)0) : (__assert_fail(((const char *)"ktx"), ((const char *)"lc_droplet.c"), 750U, __T14));
+# 751 "lc_droplet.c"
+(fe) ? ((void)0) : (__assert_fail(((const char *)"fe"), ((const char *)"lc_droplet.c"), 751U, __T14));
+# 752 "lc_droplet.c"
+(hydro) ? ((void)0) : (__assert_fail(((const char *)"hydro"), ((const char *)"lc_droplet.c"), 752U, __T14));
+# 754 "lc_droplet.c"
+__cuda_local_var_16955_7_non_const_kiterations = (_Z17kernel_iterationsP13kernel_ctxt_s(ktx));
+# 756 "lc_droplet.c"
+__cuda_local_var_16954_7_non_const_kindex = ((int)(1U * (((blockIdx.x) * (blockDim.x)) + (threadIdx.x))));
+# 756 "lc_droplet.c"
+if (__cuda_local_var_16954_7_non_const_kindex < __cuda_local_var_16955_7_non_const_kiterations)
+# 756 "lc_droplet.c"
+{
+# 758 "lc_droplet.c"
+ int __cuda_local_var_16965_9_non_const_ic;
+# 758 "lc_droplet.c"
+ int __cuda_local_var_16965_13_non_const_jc;
+# 758 "lc_droplet.c"
+ int __cuda_local_var_16965_17_non_const_kc;
+# 759 "lc_droplet.c"
+ int __cuda_local_var_16966_9_non_const_ia;
+# 759 "lc_droplet.c"
+ int __cuda_local_var_16966_13_non_const_ib;
+# 760 "lc_droplet.c"
+ int __cuda_local_var_16967_9_non_const_index0;
+# 760 "lc_droplet.c"
+ int __cuda_local_var_16967_17_non_const_indexm1;
+# 760 "lc_droplet.c"
+ int __cuda_local_var_16967_26_non_const_indexp1;
+# 761 "lc_droplet.c"
+ double __cuda_local_var_16968_12_non_const_mum1;
+# 761 "lc_droplet.c"
+ double __cuda_local_var_16968_18_non_const_mup1;
+# 762 "lc_droplet.c"
+ double __cuda_local_var_16969_12_non_const_force[3];
+# 764 "lc_droplet.c"
+ double __cuda_local_var_16971_12_non_const_h[3][3];
+# 765 "lc_droplet.c"
+ double __cuda_local_var_16972_12_non_const_q[3][3];
+# 766 "lc_droplet.c"
+ double __cuda_local_var_16973_12_non_const_dq[3][3][3];
+# 767 "lc_droplet.c"
+ double __cuda_local_var_16974_12_non_const_phi;
+# 769 "lc_droplet.c"
+__cuda_local_var_16965_9_non_const_ic = (_Z16kernel_coords_icP13kernel_ctxt_si(ktx, __cuda_local_var_16954_7_non_const_kindex));
+# 770 "lc_droplet.c"
+__cuda_local_var_16965_13_non_const_jc = (_Z16kernel_coords_jcP13kernel_ctxt_si(ktx, __cuda_local_var_16954_7_non_const_kindex));
+# 771 "lc_droplet.c"
+__cuda_local_var_16965_17_non_const_kc = (_Z16kernel_coords_kcP13kernel_ctxt_si(ktx, __cuda_local_var_16954_7_non_const_kindex));
+# 773 "lc_droplet.c"
+__cuda_local_var_16967_9_non_const_index0 = (_Z19kernel_coords_indexP13kernel_ctxt_siii(ktx, __cuda_local_var_16965_9_non_const_ic, __cuda_local_var_16965_13_non_const_jc, __cuda_local_var_16965_17_non_const_kc));
+# 775 "lc_droplet.c"
+_Z12field_scalarP7field_siPd(((fe->symm)->phi), __cuda_local_var_16967_9_non_const_index0, (&__cuda_local_var_16974_12_non_const_phi));
+# 776 "lc_droplet.c"
+_Z12field_tensorP7field_siPA3_d(((fe->lc)->q), __cuda_local_var_16967_9_non_const_index0, (__cuda_local_var_16972_12_non_const_q));
+# 778 "lc_droplet.c"
+_Z22field_grad_tensor_gradP12field_grad_siPA3_A3_d(((fe->lc)->dq), __cuda_local_var_16967_9_non_const_index0, (__cuda_local_var_16973_12_non_const_dq));
+# 779 "lc_droplet.c"
+_Z23fe_lc_droplet_mol_fieldP15fe_lc_droplet_siPA3_d(fe, __cuda_local_var_16967_9_non_const_index0, (__cuda_local_var_16971_12_non_const_h));
+# 781 "lc_droplet.c"
+__cuda_local_var_16967_17_non_const_indexm1 = (_Z19kernel_coords_indexP13kernel_ctxt_siii(ktx, (__cuda_local_var_16965_9_non_const_ic - 1), __cuda_local_var_16965_13_non_const_jc, __cuda_local_var_16965_17_non_const_kc));
+# 782 "lc_droplet.c"
+__cuda_local_var_16967_26_non_const_indexp1 = (_Z19kernel_coords_indexP13kernel_ctxt_siii(ktx, (__cuda_local_var_16965_9_non_const_ic + 1), __cuda_local_var_16965_13_non_const_jc, __cuda_local_var_16965_17_non_const_kc));
+# 784 "lc_droplet.c"
+_Z16fe_lc_droplet_muP15fe_lc_droplet_siPd(fe, __cuda_local_var_16967_17_non_const_indexm1, (&__cuda_local_var_16968_12_non_const_mum1));
+# 785 "lc_droplet.c"
+_Z16fe_lc_droplet_muP15fe_lc_droplet_siPd(fe, __cuda_local_var_16967_26_non_const_indexp1, (&__cuda_local_var_16968_18_non_const_mup1));
+# 789 "lc_droplet.c"
+((__cuda_local_var_16969_12_non_const_force)[X]) = (((-__cuda_local_var_16974_12_non_const_phi) * (0.5)) * (__cuda_local_var_16968_18_non_const_mup1 - __cuda_local_var_16968_12_non_const_mum1));
+# 791 "lc_droplet.c"
+for (__cuda_local_var_16966_9_non_const_ia = 0; (__cuda_local_var_16966_9_non_const_ia < 3); __cuda_local_var_16966_9_non_const_ia++)
+# 791 "lc_droplet.c"
+{
+# 792 "lc_droplet.c"
+for (__cuda_local_var_16966_13_non_const_ib = 0; (__cuda_local_var_16966_13_non_const_ib < 3); __cuda_local_var_16966_13_non_const_ib++)
+# 792 "lc_droplet.c"
+{
+# 793 "lc_droplet.c"
+((__cuda_local_var_16969_12_non_const_force)[X]) -= (((((__cuda_local_var_16971_12_non_const_h)[__cuda_local_var_16966_9_non_const_ia]))[__cuda_local_var_16966_13_non_const_ib]) * ((((((__cuda_local_var_16973_12_non_const_dq)[X]))[__cuda_local_var_16966_9_non_const_ia]))[__cuda_local_var_16966_13_non_const_ib]));
+# 794 "lc_droplet.c"
+}
+# 795 "lc_droplet.c"
+}
+# 799 "lc_droplet.c"
+__cuda_local_var_16967_17_non_const_indexm1 = (_Z19kernel_coords_indexP13kernel_ctxt_siii(ktx, __cuda_local_var_16965_9_non_const_ic, (__cuda_local_var_16965_13_non_const_jc - 1), __cuda_local_var_16965_17_non_const_kc));
+# 800 "lc_droplet.c"
+__cuda_local_var_16967_26_non_const_indexp1 = (_Z19kernel_coords_indexP13kernel_ctxt_siii(ktx, __cuda_local_var_16965_9_non_const_ic, (__cuda_local_var_16965_13_non_const_jc + 1), __cuda_local_var_16965_17_non_const_kc));
+# 802 "lc_droplet.c"
+_Z16fe_lc_droplet_muP15fe_lc_droplet_siPd(fe, __cuda_local_var_16967_17_non_const_indexm1, (&__cuda_local_var_16968_12_non_const_mum1));
+# 803 "lc_droplet.c"
+_Z16fe_lc_droplet_muP15fe_lc_droplet_siPd(fe, __cuda_local_var_16967_26_non_const_indexp1, (&__cuda_local_var_16968_18_non_const_mup1));
+# 805 "lc_droplet.c"
+((__cuda_local_var_16969_12_non_const_force)[Y]) = (((-__cuda_local_var_16974_12_non_const_phi) * (0.5)) * (__cuda_local_var_16968_18_non_const_mup1 - __cuda_local_var_16968_12_non_const_mum1));
+# 807 "lc_droplet.c"
+for (__cuda_local_var_16966_9_non_const_ia = 0; (__cuda_local_var_16966_9_non_const_ia < 3); __cuda_local_var_16966_9_non_const_ia++)
+# 807 "lc_droplet.c"
+{
+# 808 "lc_droplet.c"
+for (__cuda_local_var_16966_13_non_const_ib = 0; (__cuda_local_var_16966_13_non_const_ib < 3); __cuda_local_var_16966_13_non_const_ib++)
+# 808 "lc_droplet.c"
+{
+# 809 "lc_droplet.c"
+((__cuda_local_var_16969_12_non_const_force)[Y]) -= (((((__cuda_local_var_16971_12_non_const_h)[__cuda_local_var_16966_9_non_const_ia]))[__cuda_local_var_16966_13_non_const_ib]) * ((((((__cuda_local_var_16973_12_non_const_dq)[Y]))[__cuda_local_var_16966_9_non_const_ia]))[__cuda_local_var_16966_13_non_const_ib]));
+# 810 "lc_droplet.c"
+}
+# 811 "lc_droplet.c"
+}
+# 815 "lc_droplet.c"
+__cuda_local_var_16967_17_non_const_indexm1 = (_Z19kernel_coords_indexP13kernel_ctxt_siii(ktx, __cuda_local_var_16965_9_non_const_ic, __cuda_local_var_16965_13_non_const_jc, (__cuda_local_var_16965_17_non_const_kc - 1)));
+# 816 "lc_droplet.c"
+__cuda_local_var_16967_26_non_const_indexp1 = (_Z19kernel_coords_indexP13kernel_ctxt_siii(ktx, __cuda_local_var_16965_9_non_const_ic, __cuda_local_var_16965_13_non_const_jc, (__cuda_local_var_16965_17_non_const_kc + 1)));
+# 818 "lc_droplet.c"
+_Z16fe_lc_droplet_muP15fe_lc_droplet_siPd(fe, __cuda_local_var_16967_17_non_const_indexm1, (&__cuda_local_var_16968_12_non_const_mum1));
+# 819 "lc_droplet.c"
+_Z16fe_lc_droplet_muP15fe_lc_droplet_siPd(fe, __cuda_local_var_16967_26_non_const_indexp1, (&__cuda_local_var_16968_18_non_const_mup1));
+# 821 "lc_droplet.c"
+((__cuda_local_var_16969_12_non_const_force)[Z]) = (((-__cuda_local_var_16974_12_non_const_phi) * (0.5)) * (__cuda_local_var_16968_18_non_const_mup1 - __cuda_local_var_16968_12_non_const_mum1));
+# 823 "lc_droplet.c"
+for (__cuda_local_var_16966_9_non_const_ia = 0; (__cuda_local_var_16966_9_non_const_ia < 3); __cuda_local_var_16966_9_non_const_ia++)
+# 823 "lc_droplet.c"
+{
+# 824 "lc_droplet.c"
+for (__cuda_local_var_16966_13_non_const_ib = 0; (__cuda_local_var_16966_13_non_const_ib < 3); __cuda_local_var_16966_13_non_const_ib++)
+# 824 "lc_droplet.c"
+{
+# 825 "lc_droplet.c"
+((__cuda_local_var_16969_12_non_const_force)[Z]) -= (((((__cuda_local_var_16971_12_non_const_h)[__cuda_local_var_16966_9_non_const_ia]))[__cuda_local_var_16966_13_non_const_ib]) * ((((((__cuda_local_var_16973_12_non_const_dq)[Z]))[__cuda_local_var_16966_9_non_const_ia]))[__cuda_local_var_16966_13_non_const_ib]));
+# 826 "lc_droplet.c"
+}
+# 827 "lc_droplet.c"
+}
+# 831 "lc_droplet.c"
+_Z17hydro_f_local_addP7hydro_siPKd(hydro, __cuda_local_var_16967_9_non_const_index0, ((const double *)(__cuda_local_var_16969_12_non_const_force)));
+# 832 "lc_droplet.c"
+}
+# 834 "lc_droplet.c"
+return;
+# 835 "lc_droplet.c"
+}}

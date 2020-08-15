@@ -1,0 +1,107 @@
+typedef char __nv_bool;
+# 33 "mpi.h"
+struct MPI_Status;
+# 44 "mpi.h"
+enum return_codes {
+# 44 "mpi.h"
+MPI_SUCCESS};
+# 56 "mpi.h"
+enum error_specifiers {
+# 56 "mpi.h"
+MPI_ERRORS_ARE_FATAL,
+# 56 "mpi.h"
+MPI_ERRORS_RETURN};
+# 58 "mpi.h"
+enum elementary_datatypes {
+# 58 "mpi.h"
+MPI_CHAR,
+# 59 "mpi.h"
+MPI_SHORT,
+# 60 "mpi.h"
+MPI_INT,
+# 61 "mpi.h"
+MPI_LONG,
+# 62 "mpi.h"
+MPI_UNSIGNED_CHAR,
+# 63 "mpi.h"
+MPI_UNSIGNED_SHORT,
+# 64 "mpi.h"
+MPI_UNSIGNED,
+# 65 "mpi.h"
+MPI_UNSIGNED_LONG,
+# 66 "mpi.h"
+MPI_FLOAT,
+# 67 "mpi.h"
+MPI_DOUBLE,
+# 68 "mpi.h"
+MPI_LONG_DOUBLE,
+# 69 "mpi.h"
+MPI_BYTE,
+# 70 "mpi.h"
+MPI_PACKED};
+# 92 "mpi.h"
+enum reserved_communicators {
+# 92 "mpi.h"
+MPI_COMM_WORLD,
+# 92 "mpi.h"
+MPI_COMM_SELF};
+# 46 "mpi_serial.c"
+struct mpi_info_s;
+# 212 "/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stddef.h" 3
+typedef unsigned long size_t;
+#include "crt/device_runtime.h"
+# 144 "/usr/include/bits/types.h" 3
+typedef long __clock_t;
+# 59 "/usr/include/time.h" 3
+typedef __clock_t clock_t;
+# 25 "mpi.h"
+typedef int MPI_Handle;
+# 26 "mpi.h"
+typedef MPI_Handle MPI_Comm;
+# 27 "mpi.h"
+typedef MPI_Handle MPI_Group;
+# 28 "mpi.h"
+typedef MPI_Handle MPI_Datatype;
+# 29 "mpi.h"
+typedef MPI_Handle MPI_Request;
+# 30 "mpi.h"
+typedef MPI_Handle MPI_Op;
+# 31 "mpi.h"
+typedef MPI_Handle MPI_Errhandler;
+# 36 "mpi.h"
+typedef struct MPI_Status MPI_Status;
+# 38 "mpi.h"
+typedef MPI_Handle MPI_Aint;
+# 44 "mpi_serial.c"
+typedef struct mpi_info_s mpi_info_t;
+# 46 "mpi_serial.c"
+struct mpi_info_s {
+# 47 "mpi_serial.c"
+int initialised;
+# 48 "mpi_serial.c"
+int ncart;
+# 49 "mpi_serial.c"
+int period[16][3];};
+#if !defined(__CUDABE__)
+# 89 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+ __device_builtin__ ___device__(extern  __no_sc__) __attribute__((__nothrow__)) void *memcpy(void *__restrict__, const void *__restrict__, size_t);
+#endif
+#if !defined(__CUDABE__)
+# 189 "/usr/include/time.h" 3
+ __device_builtin__ ___device__(extern  __no_sc__) __attribute__((__nothrow__)) clock_t clock(void);
+#endif
+#if !defined(__CUDABE__)
+# 145 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+ __device_builtin__ ___device__(extern  __no_sc__) int printf(const char *__restrict__, ...);
+#endif
+# 150 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) void free(void *);
+# 189 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__noreturn__)) void __assert_fail(const char *, const char *, unsigned, const char *);
+#include "common_functions.h"
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif

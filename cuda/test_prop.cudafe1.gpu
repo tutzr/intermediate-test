@@ -1,0 +1,127 @@
+typedef char __nv_bool;
+# 92 "../.././mpi_s/mpi.h"
+enum reserved_communicators {
+# 92 "../.././mpi_s/mpi.h"
+MPI_COMM_WORLD,
+# 92 "../.././mpi_s/mpi.h"
+MPI_COMM_SELF};
+# 22 "../.././src/pe.h"
+struct pe_s;
+# 24 "../.././src/pe.h"
+enum pe_enum_t {
+# 24 "../.././src/pe.h"
+PE_QUIET,
+# 24 "../.././src/pe.h"
+PE_VERBOSE,
+# 24 "../.././src/pe.h"
+PE_OPTION_MAX};
+# 22 "../.././src/coords.h"
+struct coords_s;
+# 26 "../.././src/coords.h"
+enum cartesian_directions {
+# 26 "../.././src/coords.h"
+X,
+# 26 "../.././src/coords.h"
+Y,
+# 26 "../.././src/coords.h"
+Z};
+# 115 "../.././src/memory.h"
+enum data_model_enum_type {
+# 115 "../.././src/memory.h"
+DATA_MODEL_AOS,
+# 116 "../.././src/memory.h"
+DATA_MODEL_SOA,
+# 117 "../.././src/memory.h"
+DATA_MODEL_AOSOA};
+# 21 "../.././src/d3q19.h"
+enum _ZUt0_ {
+# 21 "../.././src/d3q19.h"
+NDIM19 = 3};
+# 22 "../.././src/d3q19.h"
+enum _ZUt1_ {
+# 22 "../.././src/d3q19.h"
+NVEL19 = 19};
+# 23 "../.././src/d3q19.h"
+enum _ZUt2_ {
+# 23 "../.././src/d3q19.h"
+CVXBLOCK19 = 1};
+# 24 "../.././src/d3q19.h"
+enum _ZUt3_ {
+# 24 "../.././src/d3q19.h"
+CVYBLOCK19 = 3};
+# 25 "../.././src/d3q19.h"
+enum _ZUt4_ {
+# 25 "../.././src/d3q19.h"
+CVZBLOCK19 = 5};
+# 49 "../.././src/model.h"
+enum _ZUt5_ {
+# 49 "../.././src/model.h"
+NDIM = 3,
+# 50 "../.././src/model.h"
+NVEL = 19,
+# 51 "../.././src/model.h"
+CVXBLOCK = 1,
+# 52 "../.././src/model.h"
+CVYBLOCK = 3,
+# 53 "../.././src/model.h"
+CVZBLOCK = 5};
+# 83 "../.././src/model.h"
+enum lb_halo_enum_type {
+# 83 "../.././src/model.h"
+LB_HALO_FULL,
+# 84 "../.././src/model.h"
+LB_HALO_REDUCED,
+# 85 "../.././src/model.h"
+LB_HALO_HOST,
+# 86 "../.././src/model.h"
+LB_HALO_TARGET};
+# 45 "../.././src/lb_model_s.h"
+struct lb_data_s;
+# 212 "/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stddef.h" 3
+typedef unsigned long size_t;
+#include "crt/device_runtime.h"
+# 25 "../.././mpi_s/mpi.h"
+typedef int MPI_Handle;
+# 26 "../.././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Comm;
+# 28 "../.././target/target_cuda.h"
+typedef enum cudaMemcpyKind tdpMemcpyKind;
+# 47 "../.././target/target_cuda.h"
+typedef enum cudaError tdpError_t;
+# 22 "../.././src/pe.h"
+typedef struct pe_s pe_t;
+# 24 "../.././src/pe.h"
+typedef enum pe_enum_t pe_enum_t;
+# 22 "../.././src/coords.h"
+typedef struct coords_s cs_t;
+# 82 "../.././src/model.h"
+typedef struct lb_data_s lb_t;
+# 86 "../.././src/model.h"
+typedef enum lb_halo_enum_type lb_halo_enum_t;
+# 189 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__noreturn__)) void __assert_fail(const char *, const char *, unsigned, const char *);
+#if !defined(__CUDABE__)
+# 244 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/math_functions.h"
+ __device_builtin__ ___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__const__)) double fabs(double);
+#endif
+# 46 "../.././target/target.h"
+___device__(extern  __no_sc__) tdpError_t _Z17tdpGetDeviceCountPi(int *);
+# 57 "../.././src/coords.h"
+___device__(extern  __no_sc__) int _Z7cs_ltotP8coords_sPd(cs_t *, double *);
+# 59 "../.././src/coords.h"
+___device__(extern  __no_sc__) int _Z9cs_nlocalP8coords_sPi(cs_t *, int *);
+# 60 "../.././src/coords.h"
+___device__(extern  __no_sc__) int _Z16cs_nlocal_offsetP8coords_sPi(cs_t *, int *);
+# 62 "../.././src/coords.h"
+___device__(extern  __no_sc__) int _Z8cs_indexP8coords_siii(cs_t *, int, int, int);
+# 63 "../.././src/coords.h"
+___device__(extern  __no_sc__) int _Z9cs_ntotalP8coords_sPi(cs_t *, int *);
+# 108 "../.././src/model.h"
+___device__(extern  __no_sc__) int _Z7lb_nvelP9lb_data_sPi(lb_t *, int *);
+# 111 "../.././src/model.h"
+___device__(extern  __no_sc__) int _Z4lb_fP9lb_data_siiiPd(lb_t *, int, int, int, double *);
+# 112 "../.././src/model.h"
+___device__(extern  __no_sc__) int _Z8lb_f_setP9lb_data_siiid(lb_t *, int, int, int, double);
+#include "common_functions.h"
+#if !defined(__CUDABE__)
+#endif

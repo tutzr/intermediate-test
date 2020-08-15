@@ -1,0 +1,841 @@
+typedef char __nv_bool;
+# 212 "/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stddef.h" 3
+typedef unsigned long size_t;
+#include "crt/device_runtime.h"
+#if !defined(__CUDABE__)
+# 89 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+ __device_builtin__ ___device__(extern  __no_sc__) __attribute__((__nothrow__)) void *memcpy(void *__restrict__, const void *__restrict__, size_t);
+#endif
+#if !defined(__CUDABE__)
+# 88 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+ __device_builtin__ ___device__(extern  __no_sc__) __attribute__((__nothrow__)) void *memset(void *, int, size_t);
+#endif
+#if !defined(__CUDABE__)
+# 145 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+ __device_builtin__ ___device__(extern  __no_sc__) int printf(const char *__restrict__, ...);
+#endif
+# 150 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) void free(void *);
+# 189 "/usr/local/cuda-10.1/bin/../targets/x86_64-linux/include/crt/common_functions.h"
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__noreturn__)) void __assert_fail(const char *, const char *, unsigned, const char *);
+# 57 "memory.c"
+___device__(extern  __no_sc__) int _Z25forward_addr_rank0_assertiPKcii(int, const char *, int, int);
+# 72 "memory.c"
+___device__(extern  __no_sc__) int _Z25forward_addr_rank1_assertiPKciiii(int, const char *, int, int, int, int);
+# 88 "memory.c"
+___device__(extern  __no_sc__) int _Z25forward_addr_rank2_assertiPKciiiiii(int, const char *, int, int, int, int, int, int);
+# 106 "memory.c"
+___device__(extern  __no_sc__) int _Z25forward_addr_rank3_assertiPKciiiiiiii(int, const char *, int, int, int, int, int, int, int, int);
+# 125 "memory.c"
+___device__(extern  __no_sc__) int _Z25forward_addr_rank4_assertiPKciiiiiiiiii(int, const char *, int, int, int, int, int, int, int, int, int, int);
+# 145 "memory.c"
+___device__(extern  __no_sc__) int _Z25reverse_addr_rank0_assertiPKcii(int, const char *, int, int);
+# 160 "memory.c"
+___device__(extern  __no_sc__) int _Z25reverse_addr_rank1_assertiPKciiii(int, const char *, int, int, int, int);
+# 176 "memory.c"
+___device__(extern  __no_sc__) int _Z25reverse_addr_rank2_assertiPKciiiiii(int, const char *, int, int, int, int, int, int);
+# 194 "memory.c"
+___device__(extern  __no_sc__) int _Z25reverse_addr_rank3_assertiPKciiiiiiii(int, const char *, int, int, int, int, int, int, int, int);
+# 213 "memory.c"
+___device__(extern  __no_sc__) int _Z25reverse_addr_rank4_assertiPKciiiiiiiiii(int, const char *, int, int, int, int, int, int, int, int, int, int);
+# 235 "memory.c"
+___device__(extern  __no_sc__) int _Z14mem_addr_rank0ii(int, int);
+# 247 "memory.c"
+___device__(extern  __no_sc__) int _Z14mem_addr_rank1iiii(int, int, int, int);
+# 259 "memory.c"
+___device__(extern  __no_sc__) int _Z14mem_addr_rank2iiiiii(int, int, int, int, int, int);
+static  __device__  __var_used__ const char __T0[59];
+static  __device__  __var_used__ const char __T1[69];
+static  __device__  __var_used__ const char __T2[79];
+static  __device__  __var_used__ const char __T3[89];
+static  __device__  __var_used__ const char __T4[99];
+static  __device__  __var_used__ const char __T5[59];
+static  __device__  __var_used__ const char __T6[69];
+static  __device__  __var_used__ const char __T7[79];
+static  __device__  __var_used__ const char __T8[89];
+static  __device__  __var_used__ const char __T9[99];
+#include "common_functions.h"
+static  __device__  __var_used__ const char __T0[59] = "int forward_addr_rank0_assert(int, const char *, int, int)";
+static  __device__  __var_used__ const char __T1[69] = "int forward_addr_rank1_assert(int, const char *, int, int, int, int)";
+static  __device__  __var_used__ const char __T2[79] = "int forward_addr_rank2_assert(int, const char *, int, int, int, int, int, int)";
+static  __device__  __var_used__ const char __T3[89] = "int forward_addr_rank3_assert(int, const char *, int, int, int, int, int, int, int, int)";
+static  __device__  __var_used__ const char __T4[99] = "int forward_addr_rank4_assert(int, const char *, int, int, int, int, int, int, int, int, int, int)";
+static  __device__  __var_used__ const char __T5[59] = "int reverse_addr_rank0_assert(int, const char *, int, int)";
+static  __device__  __var_used__ const char __T6[69] = "int reverse_addr_rank1_assert(int, const char *, int, int, int, int)";
+static  __device__  __var_used__ const char __T7[79] = "int reverse_addr_rank2_assert(int, const char *, int, int, int, int, int, int)";
+static  __device__  __var_used__ const char __T8[89] = "int reverse_addr_rank3_assert(int, const char *, int, int, int, int, int, int, int, int)";
+static  __device__  __var_used__ const char __T9[99] = "int reverse_addr_rank4_assert(int, const char *, int, int, int, int, int, int, int, int, int, int)";
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+# 57 "memory.c"
+___device__( __no_sc__) int _Z25forward_addr_rank0_assertiPKcii(
+# 57 "memory.c"
+int lineno, 
+# 57 "memory.c"
+const char *file, 
+# 58 "memory.c"
+int nsites, 
+# 58 "memory.c"
+int index){
+# 58 "memory.c"
+{
+# 60 "memory.c"
+do
+# 60 "memory.c"
+{
+# 60 "memory.c"
+if ((index < 0) || (index >= nsites))
+# 60 "memory.c"
+{
+# 60 "memory.c"
+printf(((const char *)"%s (%s = %d, %s = %d), file %s, line %d\n"), ((const char *)("Bad array index")), ((const char *)("nsites")), nsites, ((const char *)("index")), index, file, lineno);
+# 60 "memory.c"
+((index > 0) && (index < nsites)) ? ((void)0) : (__assert_fail(((const char *)"index > 0 && index < nsites"), ((const char *)"memory.c"), 60U, __T0));
+# 60 "memory.c"
+}
+# 60 "memory.c"
+} while (0);
+# 62 "memory.c"
+return index;
+# 63 "memory.c"
+}}
+# 72 "memory.c"
+___device__( __no_sc__) int _Z25forward_addr_rank1_assertiPKciiii(
+# 72 "memory.c"
+int lineno, 
+# 72 "memory.c"
+const char *file, 
+# 73 "memory.c"
+int nsites, 
+# 73 "memory.c"
+int na, 
+# 73 "memory.c"
+int index, 
+# 73 "memory.c"
+int ia){
+# 73 "memory.c"
+{
+# 75 "memory.c"
+do
+# 75 "memory.c"
+{
+# 75 "memory.c"
+if ((index < 0) || (index >= nsites))
+# 75 "memory.c"
+{
+# 75 "memory.c"
+printf(((const char *)"%s (%s = %d, %s = %d), file %s, line %d\n"), ((const char *)("Bad array index")), ((const char *)("nsites")), nsites, ((const char *)("index")), index, file, lineno);
+# 75 "memory.c"
+((index > 0) && (index < nsites)) ? ((void)0) : (__assert_fail(((const char *)"index > 0 && index < nsites"), ((const char *)"memory.c"), 75U, __T1));
+# 75 "memory.c"
+}
+# 75 "memory.c"
+} while (0);
+# 76 "memory.c"
+do
+# 76 "memory.c"
+{
+# 76 "memory.c"
+if ((ia < 0) || (ia >= na))
+# 76 "memory.c"
+{
+# 76 "memory.c"
+printf(((const char *)"%s (%s = %d, %s = %d), file %s, line %d\n"), ((const char *)("Bad array index")), ((const char *)("na")), na, ((const char *)("ia")), ia, file, lineno);
+# 76 "memory.c"
+((ia > 0) && (ia < na)) ? ((void)0) : (__assert_fail(((const char *)"ia > 0 && ia < na"), ((const char *)"memory.c"), 76U, __T1));
+# 76 "memory.c"
+}
+# 76 "memory.c"
+} while (0);
+# 78 "memory.c"
+return (na * index) + ia;
+# 79 "memory.c"
+}}
+# 88 "memory.c"
+___device__( __no_sc__) int _Z25forward_addr_rank2_assertiPKciiiiii(
+# 88 "memory.c"
+int lineno, 
+# 88 "memory.c"
+const char *file, 
+# 89 "memory.c"
+int nsites, 
+# 89 "memory.c"
+int na, 
+# 89 "memory.c"
+int nb, 
+# 90 "memory.c"
+int index, 
+# 90 "memory.c"
+int ia, 
+# 90 "memory.c"
+int ib){
+# 90 "memory.c"
+{
+# 92 "memory.c"
+do
+# 92 "memory.c"
+{
+# 92 "memory.c"
+if ((index < 0) || (index >= nsites))
+# 92 "memory.c"
+{
+# 92 "memory.c"
+printf(((const char *)"%s (%s = %d, %s = %d), file %s, line %d\n"), ((const char *)("Bad array index")), ((const char *)("nsites")), nsites, ((const char *)("index")), index, file, lineno);
+# 92 "memory.c"
+((index > 0) && (index < nsites)) ? ((void)0) : (__assert_fail(((const char *)"index > 0 && index < nsites"), ((const char *)"memory.c"), 92U, __T2));
+# 92 "memory.c"
+}
+# 92 "memory.c"
+} while (0);
+# 93 "memory.c"
+do
+# 93 "memory.c"
+{
+# 93 "memory.c"
+if ((ia < 0) || (ia >= na))
+# 93 "memory.c"
+{
+# 93 "memory.c"
+printf(((const char *)"%s (%s = %d, %s = %d), file %s, line %d\n"), ((const char *)("Bad array index")), ((const char *)("na")), na, ((const char *)("ia")), ia, file, lineno);
+# 93 "memory.c"
+((ia > 0) && (ia < na)) ? ((void)0) : (__assert_fail(((const char *)"ia > 0 && ia < na"), ((const char *)"memory.c"), 93U, __T2));
+# 93 "memory.c"
+}
+# 93 "memory.c"
+} while (0);
+# 94 "memory.c"
+do
+# 94 "memory.c"
+{
+# 94 "memory.c"
+if ((ib < 0) || (ib >= nb))
+# 94 "memory.c"
+{
+# 94 "memory.c"
+printf(((const char *)"%s (%s = %d, %s = %d), file %s, line %d\n"), ((const char *)("Bad array index")), ((const char *)("nb")), nb, ((const char *)("ib")), ib, file, lineno);
+# 94 "memory.c"
+((ib > 0) && (ib < nb)) ? ((void)0) : (__assert_fail(((const char *)"ib > 0 && ib < nb"), ((const char *)"memory.c"), 94U, __T2));
+# 94 "memory.c"
+}
+# 94 "memory.c"
+} while (0);
+# 96 "memory.c"
+return (((na * nb) * index) + (nb * ia)) + ib;
+# 97 "memory.c"
+}}
+# 106 "memory.c"
+___device__( __no_sc__) int _Z25forward_addr_rank3_assertiPKciiiiiiii(
+# 106 "memory.c"
+int lineno, 
+# 106 "memory.c"
+const char *file, 
+# 107 "memory.c"
+int nsites, 
+# 107 "memory.c"
+int na, 
+# 107 "memory.c"
+int nb, 
+# 107 "memory.c"
+int nc, 
+# 108 "memory.c"
+int index, 
+# 108 "memory.c"
+int ia, 
+# 108 "memory.c"
+int ib, 
+# 108 "memory.c"
+int ic){
+# 108 "memory.c"
+{
+# 110 "memory.c"
+do
+# 110 "memory.c"
+{
+# 110 "memory.c"
+if ((index < 0) || (index >= nsites))
+# 110 "memory.c"
+{
+# 110 "memory.c"
+printf(((const char *)"%s (%s = %d, %s = %d), file %s, line %d\n"), ((const char *)("Bad array index")), ((const char *)("nsites")), nsites, ((const char *)("index")), index, file, lineno);
+# 110 "memory.c"
+((index > 0) && (index < nsites)) ? ((void)0) : (__assert_fail(((const char *)"index > 0 && index < nsites"), ((const char *)"memory.c"), 110U, __T3));
+# 110 "memory.c"
+}
+# 110 "memory.c"
+} while (0);
+# 111 "memory.c"
+do
+# 111 "memory.c"
+{
+# 111 "memory.c"
+if ((ia < 0) || (ia >= na))
+# 111 "memory.c"
+{
+# 111 "memory.c"
+printf(((const char *)"%s (%s = %d, %s = %d), file %s, line %d\n"), ((const char *)("Bad array index")), ((const char *)("na")), na, ((const char *)("ia")), ia, file, lineno);
+# 111 "memory.c"
+((ia > 0) && (ia < na)) ? ((void)0) : (__assert_fail(((const char *)"ia > 0 && ia < na"), ((const char *)"memory.c"), 111U, __T3));
+# 111 "memory.c"
+}
+# 111 "memory.c"
+} while (0);
+# 112 "memory.c"
+do
+# 112 "memory.c"
+{
+# 112 "memory.c"
+if ((ib < 0) || (ib >= nb))
+# 112 "memory.c"
+{
+# 112 "memory.c"
+printf(((const char *)"%s (%s = %d, %s = %d), file %s, line %d\n"), ((const char *)("Bad array index")), ((const char *)("nb")), nb, ((const char *)("ib")), ib, file, lineno);
+# 112 "memory.c"
+((ib > 0) && (ib < nb)) ? ((void)0) : (__assert_fail(((const char *)"ib > 0 && ib < nb"), ((const char *)"memory.c"), 112U, __T3));
+# 112 "memory.c"
+}
+# 112 "memory.c"
+} while (0);
+# 113 "memory.c"
+do
+# 113 "memory.c"
+{
+# 113 "memory.c"
+if ((ic < 0) || (ic >= nc))
+# 113 "memory.c"
+{
+# 113 "memory.c"
+printf(((const char *)"%s (%s = %d, %s = %d), file %s, line %d\n"), ((const char *)("Bad array index")), ((const char *)("nc")), nc, ((const char *)("ic")), ic, file, lineno);
+# 113 "memory.c"
+((ic > 0) && (ic < nc)) ? ((void)0) : (__assert_fail(((const char *)"ic > 0 && ic < nc"), ((const char *)"memory.c"), 113U, __T3));
+# 113 "memory.c"
+}
+# 113 "memory.c"
+} while (0);
+# 115 "memory.c"
+return (((((na * nb) * nc) * index) + ((nb * nc) * ia)) + (nc * ib)) + ic;
+# 116 "memory.c"
+}}
+# 125 "memory.c"
+___device__( __no_sc__) int _Z25forward_addr_rank4_assertiPKciiiiiiiiii(
+# 125 "memory.c"
+int lineno, 
+# 125 "memory.c"
+const char *file, 
+# 126 "memory.c"
+int nsites, 
+# 126 "memory.c"
+int na, 
+# 126 "memory.c"
+int nb, 
+# 126 "memory.c"
+int nc, 
+# 126 "memory.c"
+int nd, 
+# 127 "memory.c"
+int index, 
+# 127 "memory.c"
+int ia, 
+# 127 "memory.c"
+int ib, 
+# 127 "memory.c"
+int ic, 
+# 127 "memory.c"
+int id){
+# 127 "memory.c"
+{
+# 129 "memory.c"
+do
+# 129 "memory.c"
+{
+# 129 "memory.c"
+if ((index < 0) || (index >= nsites))
+# 129 "memory.c"
+{
+# 129 "memory.c"
+printf(((const char *)"%s (%s = %d, %s = %d), file %s, line %d\n"), ((const char *)("Bad array index")), ((const char *)("nsites")), nsites, ((const char *)("index")), index, file, lineno);
+# 129 "memory.c"
+((index > 0) && (index < nsites)) ? ((void)0) : (__assert_fail(((const char *)"index > 0 && index < nsites"), ((const char *)"memory.c"), 129U, __T4));
+# 129 "memory.c"
+}
+# 129 "memory.c"
+} while (0);
+# 130 "memory.c"
+do
+# 130 "memory.c"
+{
+# 130 "memory.c"
+if ((ia < 0) || (ia >= na))
+# 130 "memory.c"
+{
+# 130 "memory.c"
+printf(((const char *)"%s (%s = %d, %s = %d), file %s, line %d\n"), ((const char *)("Bad array index")), ((const char *)("na")), na, ((const char *)("ia")), ia, file, lineno);
+# 130 "memory.c"
+((ia > 0) && (ia < na)) ? ((void)0) : (__assert_fail(((const char *)"ia > 0 && ia < na"), ((const char *)"memory.c"), 130U, __T4));
+# 130 "memory.c"
+}
+# 130 "memory.c"
+} while (0);
+# 131 "memory.c"
+do
+# 131 "memory.c"
+{
+# 131 "memory.c"
+if ((ib < 0) || (ib >= nb))
+# 131 "memory.c"
+{
+# 131 "memory.c"
+printf(((const char *)"%s (%s = %d, %s = %d), file %s, line %d\n"), ((const char *)("Bad array index")), ((const char *)("nb")), nb, ((const char *)("ib")), ib, file, lineno);
+# 131 "memory.c"
+((ib > 0) && (ib < nb)) ? ((void)0) : (__assert_fail(((const char *)"ib > 0 && ib < nb"), ((const char *)"memory.c"), 131U, __T4));
+# 131 "memory.c"
+}
+# 131 "memory.c"
+} while (0);
+# 132 "memory.c"
+do
+# 132 "memory.c"
+{
+# 132 "memory.c"
+if ((ic < 0) || (ic >= nc))
+# 132 "memory.c"
+{
+# 132 "memory.c"
+printf(((const char *)"%s (%s = %d, %s = %d), file %s, line %d\n"), ((const char *)("Bad array index")), ((const char *)("nc")), nc, ((const char *)("ic")), ic, file, lineno);
+# 132 "memory.c"
+((ic > 0) && (ic < nc)) ? ((void)0) : (__assert_fail(((const char *)"ic > 0 && ic < nc"), ((const char *)"memory.c"), 132U, __T4));
+# 132 "memory.c"
+}
+# 132 "memory.c"
+} while (0);
+# 133 "memory.c"
+do
+# 133 "memory.c"
+{
+# 133 "memory.c"
+if ((id < 0) || (id >= nd))
+# 133 "memory.c"
+{
+# 133 "memory.c"
+printf(((const char *)"%s (%s = %d, %s = %d), file %s, line %d\n"), ((const char *)("Bad array index")), ((const char *)("nd")), nd, ((const char *)("id")), id, file, lineno);
+# 133 "memory.c"
+((id > 0) && (id < nd)) ? ((void)0) : (__assert_fail(((const char *)"id > 0 && id < nd"), ((const char *)"memory.c"), 133U, __T4));
+# 133 "memory.c"
+}
+# 133 "memory.c"
+} while (0);
+# 135 "memory.c"
+return (((((((na * nb) * nc) * nd) * index) + (((nb * nc) * nd) * ia)) + ((nc * nd) * ib)) + (nd * ic)) + id;
+# 136 "memory.c"
+}}
+# 145 "memory.c"
+___device__( __no_sc__) int _Z25reverse_addr_rank0_assertiPKcii(
+# 145 "memory.c"
+int lineno, 
+# 145 "memory.c"
+const char *file, 
+# 146 "memory.c"
+int nsites, 
+# 146 "memory.c"
+int index){
+# 146 "memory.c"
+{
+# 148 "memory.c"
+do
+# 148 "memory.c"
+{
+# 148 "memory.c"
+if ((index < 0) || (index >= nsites))
+# 148 "memory.c"
+{
+# 148 "memory.c"
+printf(((const char *)"%s (%s = %d, %s = %d), file %s, line %d\n"), ((const char *)("Bad array index")), ((const char *)("nsites")), nsites, ((const char *)("index")), index, file, lineno);
+# 148 "memory.c"
+((index > 0) && (index < nsites)) ? ((void)0) : (__assert_fail(((const char *)"index > 0 && index < nsites"), ((const char *)"memory.c"), 148U, __T5));
+# 148 "memory.c"
+}
+# 148 "memory.c"
+} while (0);
+# 150 "memory.c"
+return index;
+# 151 "memory.c"
+}}
+# 160 "memory.c"
+___device__( __no_sc__) int _Z25reverse_addr_rank1_assertiPKciiii(
+# 160 "memory.c"
+int lineno, 
+# 160 "memory.c"
+const char *file, 
+# 161 "memory.c"
+int nsites, 
+# 161 "memory.c"
+int na, 
+# 161 "memory.c"
+int index, 
+# 161 "memory.c"
+int ia){
+# 161 "memory.c"
+{
+# 163 "memory.c"
+do
+# 163 "memory.c"
+{
+# 163 "memory.c"
+if ((index < 0) || (index >= nsites))
+# 163 "memory.c"
+{
+# 163 "memory.c"
+printf(((const char *)"%s (%s = %d, %s = %d), file %s, line %d\n"), ((const char *)("Bad array index")), ((const char *)("nsites")), nsites, ((const char *)("index")), index, file, lineno);
+# 163 "memory.c"
+((index > 0) && (index < nsites)) ? ((void)0) : (__assert_fail(((const char *)"index > 0 && index < nsites"), ((const char *)"memory.c"), 163U, __T6));
+# 163 "memory.c"
+}
+# 163 "memory.c"
+} while (0);
+# 164 "memory.c"
+do
+# 164 "memory.c"
+{
+# 164 "memory.c"
+if ((ia < 0) || (ia >= na))
+# 164 "memory.c"
+{
+# 164 "memory.c"
+printf(((const char *)"%s (%s = %d, %s = %d), file %s, line %d\n"), ((const char *)("Bad array index")), ((const char *)("na")), na, ((const char *)("ia")), ia, file, lineno);
+# 164 "memory.c"
+((ia > 0) && (ia < na)) ? ((void)0) : (__assert_fail(((const char *)"ia > 0 && ia < na"), ((const char *)"memory.c"), 164U, __T6));
+# 164 "memory.c"
+}
+# 164 "memory.c"
+} while (0);
+# 166 "memory.c"
+return (nsites * ia) + index;
+# 167 "memory.c"
+}}
+# 176 "memory.c"
+___device__( __no_sc__) int _Z25reverse_addr_rank2_assertiPKciiiiii(
+# 176 "memory.c"
+int lineno, 
+# 176 "memory.c"
+const char *file, 
+# 177 "memory.c"
+int nsites, 
+# 177 "memory.c"
+int na, 
+# 177 "memory.c"
+int nb, 
+# 178 "memory.c"
+int index, 
+# 178 "memory.c"
+int ia, 
+# 178 "memory.c"
+int ib){
+# 178 "memory.c"
+{
+# 180 "memory.c"
+do
+# 180 "memory.c"
+{
+# 180 "memory.c"
+if ((index < 0) || (index >= nsites))
+# 180 "memory.c"
+{
+# 180 "memory.c"
+printf(((const char *)"%s (%s = %d, %s = %d), file %s, line %d\n"), ((const char *)("Bad array index")), ((const char *)("nsites")), nsites, ((const char *)("index")), index, file, lineno);
+# 180 "memory.c"
+((index > 0) && (index < nsites)) ? ((void)0) : (__assert_fail(((const char *)"index > 0 && index < nsites"), ((const char *)"memory.c"), 180U, __T7));
+# 180 "memory.c"
+}
+# 180 "memory.c"
+} while (0);
+# 181 "memory.c"
+do
+# 181 "memory.c"
+{
+# 181 "memory.c"
+if ((ia < 0) || (ia >= na))
+# 181 "memory.c"
+{
+# 181 "memory.c"
+printf(((const char *)"%s (%s = %d, %s = %d), file %s, line %d\n"), ((const char *)("Bad array index")), ((const char *)("na")), na, ((const char *)("ia")), ia, file, lineno);
+# 181 "memory.c"
+((ia > 0) && (ia < na)) ? ((void)0) : (__assert_fail(((const char *)"ia > 0 && ia < na"), ((const char *)"memory.c"), 181U, __T7));
+# 181 "memory.c"
+}
+# 181 "memory.c"
+} while (0);
+# 182 "memory.c"
+do
+# 182 "memory.c"
+{
+# 182 "memory.c"
+if ((ib < 0) || (ib >= nb))
+# 182 "memory.c"
+{
+# 182 "memory.c"
+printf(((const char *)"%s (%s = %d, %s = %d), file %s, line %d\n"), ((const char *)("Bad array index")), ((const char *)("nb")), nb, ((const char *)("ib")), ib, file, lineno);
+# 182 "memory.c"
+((ib > 0) && (ib < nb)) ? ((void)0) : (__assert_fail(((const char *)"ib > 0 && ib < nb"), ((const char *)"memory.c"), 182U, __T7));
+# 182 "memory.c"
+}
+# 182 "memory.c"
+} while (0);
+# 184 "memory.c"
+return (((nb * nsites) * ia) + (nsites * ib)) + index;
+# 185 "memory.c"
+}}
+# 194 "memory.c"
+___device__( __no_sc__) int _Z25reverse_addr_rank3_assertiPKciiiiiiii(
+# 194 "memory.c"
+int lineno, 
+# 194 "memory.c"
+const char *file, 
+# 195 "memory.c"
+int nsites, 
+# 195 "memory.c"
+int na, 
+# 195 "memory.c"
+int nb, 
+# 195 "memory.c"
+int nc, 
+# 196 "memory.c"
+int index, 
+# 196 "memory.c"
+int ia, 
+# 196 "memory.c"
+int ib, 
+# 196 "memory.c"
+int ic){
+# 196 "memory.c"
+{
+# 198 "memory.c"
+do
+# 198 "memory.c"
+{
+# 198 "memory.c"
+if ((index < 0) || (index >= nsites))
+# 198 "memory.c"
+{
+# 198 "memory.c"
+printf(((const char *)"%s (%s = %d, %s = %d), file %s, line %d\n"), ((const char *)("Bad array index")), ((const char *)("nsites")), nsites, ((const char *)("index")), index, file, lineno);
+# 198 "memory.c"
+((index > 0) && (index < nsites)) ? ((void)0) : (__assert_fail(((const char *)"index > 0 && index < nsites"), ((const char *)"memory.c"), 198U, __T8));
+# 198 "memory.c"
+}
+# 198 "memory.c"
+} while (0);
+# 199 "memory.c"
+do
+# 199 "memory.c"
+{
+# 199 "memory.c"
+if ((ia < 0) || (ia >= na))
+# 199 "memory.c"
+{
+# 199 "memory.c"
+printf(((const char *)"%s (%s = %d, %s = %d), file %s, line %d\n"), ((const char *)("Bad array index")), ((const char *)("na")), na, ((const char *)("ia")), ia, file, lineno);
+# 199 "memory.c"
+((ia > 0) && (ia < na)) ? ((void)0) : (__assert_fail(((const char *)"ia > 0 && ia < na"), ((const char *)"memory.c"), 199U, __T8));
+# 199 "memory.c"
+}
+# 199 "memory.c"
+} while (0);
+# 200 "memory.c"
+do
+# 200 "memory.c"
+{
+# 200 "memory.c"
+if ((ib < 0) || (ib >= nb))
+# 200 "memory.c"
+{
+# 200 "memory.c"
+printf(((const char *)"%s (%s = %d, %s = %d), file %s, line %d\n"), ((const char *)("Bad array index")), ((const char *)("nb")), nb, ((const char *)("ib")), ib, file, lineno);
+# 200 "memory.c"
+((ib > 0) && (ib < nb)) ? ((void)0) : (__assert_fail(((const char *)"ib > 0 && ib < nb"), ((const char *)"memory.c"), 200U, __T8));
+# 200 "memory.c"
+}
+# 200 "memory.c"
+} while (0);
+# 201 "memory.c"
+do
+# 201 "memory.c"
+{
+# 201 "memory.c"
+if ((ic < 0) || (ic >= nc))
+# 201 "memory.c"
+{
+# 201 "memory.c"
+printf(((const char *)"%s (%s = %d, %s = %d), file %s, line %d\n"), ((const char *)("Bad array index")), ((const char *)("nc")), nc, ((const char *)("ic")), ic, file, lineno);
+# 201 "memory.c"
+((ic > 0) && (ic < nc)) ? ((void)0) : (__assert_fail(((const char *)"ic > 0 && ic < nc"), ((const char *)"memory.c"), 201U, __T8));
+# 201 "memory.c"
+}
+# 201 "memory.c"
+} while (0);
+# 203 "memory.c"
+return (((((nb * nc) * nsites) * ia) + ((nc * nsites) * ib)) + (nsites * ic)) + index;
+# 204 "memory.c"
+}}
+# 213 "memory.c"
+___device__( __no_sc__) int _Z25reverse_addr_rank4_assertiPKciiiiiiiiii(
+# 213 "memory.c"
+int lineno, 
+# 213 "memory.c"
+const char *file, 
+# 214 "memory.c"
+int nsites, 
+# 214 "memory.c"
+int na, 
+# 214 "memory.c"
+int nb, 
+# 214 "memory.c"
+int nc, 
+# 214 "memory.c"
+int nd, 
+# 215 "memory.c"
+int index, 
+# 215 "memory.c"
+int ia, 
+# 215 "memory.c"
+int ib, 
+# 215 "memory.c"
+int ic, 
+# 215 "memory.c"
+int id){
+# 215 "memory.c"
+{
+# 217 "memory.c"
+do
+# 217 "memory.c"
+{
+# 217 "memory.c"
+if ((index < 0) || (index >= nsites))
+# 217 "memory.c"
+{
+# 217 "memory.c"
+printf(((const char *)"%s (%s = %d, %s = %d), file %s, line %d\n"), ((const char *)("Bad array index")), ((const char *)("nsites")), nsites, ((const char *)("index")), index, file, lineno);
+# 217 "memory.c"
+((index > 0) && (index < nsites)) ? ((void)0) : (__assert_fail(((const char *)"index > 0 && index < nsites"), ((const char *)"memory.c"), 217U, __T9));
+# 217 "memory.c"
+}
+# 217 "memory.c"
+} while (0);
+# 218 "memory.c"
+do
+# 218 "memory.c"
+{
+# 218 "memory.c"
+if ((ia < 0) || (ia >= na))
+# 218 "memory.c"
+{
+# 218 "memory.c"
+printf(((const char *)"%s (%s = %d, %s = %d), file %s, line %d\n"), ((const char *)("Bad array index")), ((const char *)("na")), na, ((const char *)("ia")), ia, file, lineno);
+# 218 "memory.c"
+((ia > 0) && (ia < na)) ? ((void)0) : (__assert_fail(((const char *)"ia > 0 && ia < na"), ((const char *)"memory.c"), 218U, __T9));
+# 218 "memory.c"
+}
+# 218 "memory.c"
+} while (0);
+# 219 "memory.c"
+do
+# 219 "memory.c"
+{
+# 219 "memory.c"
+if ((ib < 0) || (ib >= nb))
+# 219 "memory.c"
+{
+# 219 "memory.c"
+printf(((const char *)"%s (%s = %d, %s = %d), file %s, line %d\n"), ((const char *)("Bad array index")), ((const char *)("nb")), nb, ((const char *)("ib")), ib, file, lineno);
+# 219 "memory.c"
+((ib > 0) && (ib < nb)) ? ((void)0) : (__assert_fail(((const char *)"ib > 0 && ib < nb"), ((const char *)"memory.c"), 219U, __T9));
+# 219 "memory.c"
+}
+# 219 "memory.c"
+} while (0);
+# 220 "memory.c"
+do
+# 220 "memory.c"
+{
+# 220 "memory.c"
+if ((ic < 0) || (ic >= nc))
+# 220 "memory.c"
+{
+# 220 "memory.c"
+printf(((const char *)"%s (%s = %d, %s = %d), file %s, line %d\n"), ((const char *)("Bad array index")), ((const char *)("nc")), nc, ((const char *)("ic")), ic, file, lineno);
+# 220 "memory.c"
+((ic > 0) && (ic < nc)) ? ((void)0) : (__assert_fail(((const char *)"ic > 0 && ic < nc"), ((const char *)"memory.c"), 220U, __T9));
+# 220 "memory.c"
+}
+# 220 "memory.c"
+} while (0);
+# 221 "memory.c"
+do
+# 221 "memory.c"
+{
+# 221 "memory.c"
+if ((id < 0) || (id >= nd))
+# 221 "memory.c"
+{
+# 221 "memory.c"
+printf(((const char *)"%s (%s = %d, %s = %d), file %s, line %d\n"), ((const char *)("Bad array index")), ((const char *)("nd")), nd, ((const char *)("id")), id, file, lineno);
+# 221 "memory.c"
+((id > 0) && (id < nd)) ? ((void)0) : (__assert_fail(((const char *)"id > 0 && id < nd"), ((const char *)"memory.c"), 221U, __T9));
+# 221 "memory.c"
+}
+# 221 "memory.c"
+} while (0);
+# 223 "memory.c"
+return (((((((nb * nc) * nd) * nsites) * ia) + (((nc * nd) * nsites) * ib)) + ((nd * nsites) * ic)) + (nsites * id)) + index;
+# 224 "memory.c"
+}}
+# 235 "memory.c"
+___device__( __no_sc__) int _Z14mem_addr_rank0ii(
+# 235 "memory.c"
+int nsites, 
+# 235 "memory.c"
+int index){
+# 235 "memory.c"
+{
+# 237 "memory.c"
+return _Z25reverse_addr_rank0_assertiPKcii(237, ((const char *)"memory.c"), nsites, index);
+# 238 "memory.c"
+}}
+# 247 "memory.c"
+___device__( __no_sc__) int _Z14mem_addr_rank1iiii(
+# 247 "memory.c"
+int nsites, 
+# 247 "memory.c"
+int na, 
+# 247 "memory.c"
+int index, 
+# 247 "memory.c"
+int ia){
+# 247 "memory.c"
+{
+# 249 "memory.c"
+return _Z25reverse_addr_rank1_assertiPKciiii(249, ((const char *)"memory.c"), nsites, na, index, ia);
+# 250 "memory.c"
+}}
+# 259 "memory.c"
+___device__( __no_sc__) int _Z14mem_addr_rank2iiiiii(
+# 259 "memory.c"
+int nsites, 
+# 259 "memory.c"
+int na, 
+# 259 "memory.c"
+int nb, 
+# 259 "memory.c"
+int index, 
+# 259 "memory.c"
+int ia, 
+# 259 "memory.c"
+int ib){
+# 259 "memory.c"
+{
+# 261 "memory.c"
+return _Z25reverse_addr_rank2_assertiPKciiiiii(261, ((const char *)"memory.c"), nsites, na, nb, index, ia, ib);
+# 262 "memory.c"
+}}
