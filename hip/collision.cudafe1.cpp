@@ -15306,112 +15306,6 @@ int MPI_Type_create_struct(int count, int * arry_of_blocklens, const MPI_Aint * 
 int MPI_Type_create_resized(MPI_Datatype oldtype, MPI_Aint ub, MPI_Aint extent, MPI_Datatype * newtype); 
 # 220
 }
-# 21 ".././target/target_cuda.h"
-typedef cudaFuncCache tdpFuncCache; 
-# 28
-typedef cudaMemcpyKind tdpMemcpyKind; 
-# 29
-typedef cudaDeviceAttr tdpDeviceAttr; 
-# 46 ".././target/target_cuda.h"
-typedef cudaStream_t tdpStream_t; 
-# 47
-typedef cudaError_t tdpError_t; 
-# 38 ".././target/target.h"
-tdpError_t tdpDeviceSetCacheConfig(tdpFuncCache cacheConfig); 
-# 39
-tdpError_t tdpGetDeviceProperties(cudaDeviceProp * prop, int); 
-# 40
-tdpError_t tdpSetDevice(int device); 
-# 42
-tdpError_t tdpDeviceGetAttribute(int * value, tdpDeviceAttr attr, int device); 
-# 45
-tdpError_t tdpDeviceGetCacheConfig(tdpFuncCache * cache); 
-# 46
-tdpError_t tdpDeviceSynchronize(); 
-# 47
-tdpError_t tdpGetDevice(int * device); 
-# 48
-tdpError_t tdpGetDeviceCount(int * count); 
-# 52
-const char *tdpGetErrorName(tdpError_t error); 
-# 53
-const char *tdpGetErrorString(tdpError_t error); 
-# 54
-tdpError_t tdpGetLastError(); 
-# 55
-tdpError_t tdpPeekAtLastError(); 
-# 59
-tdpError_t tdpStreamCreate(tdpStream_t * stream); 
-# 60
-tdpError_t tdpStreamDestroy(tdpStream_t stream); 
-# 61
-tdpError_t tdpStreamSynchronize(tdpStream_t stream); 
-# 69
-tdpError_t tdpFreeHost(void * phost); 
-# 70
-tdpError_t tdpHostAlloc(void ** phost, size_t size, unsigned flags); 
-# 72
-tdpError_t tdpMallocManaged(void ** devptr, size_t size, unsigned flag); 
-# 74
-tdpError_t tdpMemcpy(void * dst, const void * src, size_t count, tdpMemcpyKind kind); 
-# 76
-tdpError_t tdpMemcpyAsync(void * dst, const void * src, size_t count, tdpMemcpyKind kind, tdpStream_t stream); 
-# 78
-tdpError_t tdpMemset(void * devPtr, int value, size_t count); 
-# 81
-tdpError_t tdpFree(void * devPtr); 
-# 82
-tdpError_t tdpMalloc(void ** devRtr, size_t size); 
-# 101 ".././target/target.h"
-tdpError_t tdpThreadModelInfo(FILE * fp); 
-# 105
-__attribute__((unused)) int tdpAtomicAddInt(int * sum, int val); 
-# 106
-__attribute__((unused)) int tdpAtomicMaxInt(int * maxval, int val); 
-# 107
-__attribute__((unused)) int tdpAtomicMinInt(int * minval, int val); 
-# 108
-__attribute__((unused)) double tdpAtomicAddDouble(double * sum, double val); 
-# 109
-__attribute__((unused)) double tdpAtomicMaxDouble(double * maxval, double val); 
-# 110
-__attribute__((unused)) double tdpAtomicMinDouble(double * minval, double val); 
-# 114
-__attribute__((unused)) int tdpAtomicBlockAddInt(int * partsum); 
-# 115
-__attribute__((unused)) double tdpAtomicBlockAddDouble(double * partsum); 
-# 119
-void tdpErrorHandler(tdpError_t ifail, const char * file, int line, int fatal); 
-# 22 "pe.h"
-typedef struct pe_s pe_t; 
-# 24
-typedef enum { PE_QUIET, PE_VERBOSE, PE_OPTION_MAX} pe_enum_t; 
-# 26
-int pe_create(MPI_Comm parent, pe_enum_t flag, pe_t ** ppe); 
-# 27
-int pe_free(pe_t * pe); 
-# 28
-int pe_retain(pe_t * pe); 
-# 29
-int pe_set(pe_t * pe, pe_enum_t option); 
-# 30
-int pe_message(pe_t * pe); 
-# 31
-int pe_mpi_comm(pe_t * pe, MPI_Comm * comm); 
-# 32
-int pe_mpi_rank(pe_t * pe); 
-# 33
-int pe_mpi_size(pe_t * pe); 
-# 34
-int pe_subdirectory(pe_t * pe, char * name); 
-# 35
-int pe_subdirectory_set(pe_t * pe, const char * name); 
-# 36
-int pe_info(pe_t * pe, const char * fmt, ...); 
-# 37
-int pe_fatal(pe_t * pe, const char * fmt, ...); 
-# 38
-int pe_verbose(pe_t * pe, const char * fmt, ...); 
 # 48 "/usr/include/stdint.h" 3
 typedef unsigned char uint8_t; 
 # 49
@@ -15460,6 +15354,5368 @@ typedef unsigned long uintptr_t;
 typedef long intmax_t; 
 # 135
 typedef unsigned long uintmax_t; 
+# 65 "/usr/include/assert.h" 3
+extern "C" {
+# 68
+extern void __assert_fail(const char * __assertion, const char * __file, unsigned __line, const char * __function) throw()
+# 70
+ __attribute((__noreturn__)); 
+# 73
+extern void __assert_perror_fail(int __errnum, const char * __file, unsigned __line, const char * __function) throw()
+# 75
+ __attribute((__noreturn__)); 
+# 80
+extern void __assert(const char * __assertion, const char * __file, int __line) throw()
+# 81
+ __attribute((__noreturn__)); 
+# 84
+}
+# 37 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+enum { 
+# 38
+HIP_SUCCESS, 
+# 39
+HIP_ERROR_INVALID_VALUE, 
+# 40
+HIP_ERROR_NOT_INITIALIZED, 
+# 41
+HIP_ERROR_LAUNCH_OUT_OF_RESOURCES
+# 42
+}; 
+# 73
+typedef 
+# 44
+struct { 
+# 46
+unsigned hasGlobalInt32Atomics:1; 
+# 47
+unsigned hasGlobalFloatAtomicExch:1; 
+# 48
+unsigned hasSharedInt32Atomics:1; 
+# 49
+unsigned hasSharedFloatAtomicExch:1; 
+# 50
+unsigned hasFloatAtomicAdd:1; 
+# 53
+unsigned hasGlobalInt64Atomics:1; 
+# 54
+unsigned hasSharedInt64Atomics:1; 
+# 57
+unsigned hasDoubles:1; 
+# 60
+unsigned hasWarpVote:1; 
+# 61
+unsigned hasWarpBallot:1; 
+# 62
+unsigned hasWarpShuffle:1; 
+# 63
+unsigned hasFunnelShift:1; 
+# 66
+unsigned hasThreadFenceSystem:1; 
+# 67
+unsigned hasSyncThreadsExt:1; 
+# 70
+unsigned hasSurfaceFuncs:1; 
+# 71
+unsigned has3dGrid:1; 
+# 72
+unsigned hasDynamicParallelism:1; 
+# 73
+} hipDeviceArch_t; 
+# 132 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+typedef 
+# 83
+struct hipDeviceProp_t { 
+# 84
+char name[256]; 
+# 85
+size_t totalGlobalMem; 
+# 86
+size_t sharedMemPerBlock; 
+# 87
+int regsPerBlock; 
+# 88
+int warpSize; 
+# 89
+int maxThreadsPerBlock; 
+# 90
+int maxThreadsDim[3]; 
+# 91
+int maxGridSize[3]; 
+# 92
+int clockRate; 
+# 93
+int memoryClockRate; 
+# 94
+int memoryBusWidth; 
+# 95
+size_t totalConstMem; 
+# 96
+int major; 
+# 99
+int minor; 
+# 102
+int multiProcessorCount; 
+# 103
+int l2CacheSize; 
+# 104
+int maxThreadsPerMultiProcessor; 
+# 105
+int computeMode; 
+# 106
+int clockInstructionRate; 
+# 108
+hipDeviceArch_t arch; 
+# 109
+int concurrentKernels; 
+# 110
+int pciDomainID; 
+# 111
+int pciBusID; 
+# 112
+int pciDeviceID; 
+# 113
+size_t maxSharedMemoryPerMultiProcessor; 
+# 114
+int isMultiGpuBoard; 
+# 115
+int canMapHostMemory; 
+# 116
+int gcnArch; 
+# 117
+int integrated; 
+# 118
+int cooperativeLaunch; 
+# 119
+int cooperativeMultiDeviceLaunch; 
+# 120
+int maxTexture1D; 
+# 121
+int maxTexture2D[2]; 
+# 122
+int maxTexture3D[3]; 
+# 123
+unsigned *hdpMemFlushCntl; 
+# 124
+unsigned *hdpRegFlushCntl; 
+# 125
+size_t memPitch; 
+# 126
+size_t textureAlignment; 
+# 127
+size_t texturePitchAlignment; 
+# 128
+int kernelExecTimeoutEnabled; 
+# 129
+int ECCEnabled; 
+# 130
+int tccDriver; 
+# 132
+} hipDeviceProp_t; 
+# 145
+typedef 
+# 138
+enum hipMemoryType { 
+# 139
+hipMemoryTypeHost, 
+# 140
+hipMemoryTypeDevice, 
+# 142
+hipMemoryTypeArray, 
+# 144
+hipMemoryTypeUnified
+# 145
+} hipMemoryType; 
+# 159
+typedef 
+# 151
+struct hipPointerAttribute_t { 
+# 152
+enum hipMemoryType memoryType; 
+# 153
+int device; 
+# 154
+void *devicePointer; 
+# 155
+void *hostPointer; 
+# 156
+int isManaged; 
+# 157
+unsigned allocationFlags; 
+# 159
+} hipPointerAttribute_t; 
+# 270 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+typedef 
+# 185
+enum hipError_t { 
+# 186
+hipSuccess, 
+# 187
+hipErrorInvalidValue, 
+# 189
+hipErrorOutOfMemory, 
+# 191
+hipErrorMemoryAllocation = 2, 
+# 192
+hipErrorNotInitialized, 
+# 194
+hipErrorInitializationError = 3, 
+# 195
+hipErrorDeinitialized, 
+# 196
+hipErrorProfilerDisabled, 
+# 197
+hipErrorProfilerNotInitialized, 
+# 198
+hipErrorProfilerAlreadyStarted, 
+# 199
+hipErrorProfilerAlreadyStopped, 
+# 200
+hipErrorInvalidConfiguration, 
+# 201
+hipErrorInvalidSymbol = 13, 
+# 202
+hipErrorInvalidDevicePointer = 17, 
+# 203
+hipErrorInvalidMemcpyDirection = 21, 
+# 204
+hipErrorInsufficientDriver = 35, 
+# 205
+hipErrorMissingConfiguration = 52, 
+# 206
+hipErrorPriorLaunchFailure, 
+# 207
+hipErrorInvalidDeviceFunction = 98, 
+# 208
+hipErrorNoDevice = 100, 
+# 209
+hipErrorInvalidDevice, 
+# 210
+hipErrorInvalidImage = 200, 
+# 211
+hipErrorInvalidContext, 
+# 212
+hipErrorContextAlreadyCurrent, 
+# 213
+hipErrorMapFailed = 205, 
+# 215
+hipErrorMapBufferObjectFailed = 205, 
+# 216
+hipErrorUnmapFailed, 
+# 217
+hipErrorArrayIsMapped, 
+# 218
+hipErrorAlreadyMapped, 
+# 219
+hipErrorNoBinaryForGpu, 
+# 220
+hipErrorAlreadyAcquired, 
+# 221
+hipErrorNotMapped, 
+# 222
+hipErrorNotMappedAsArray, 
+# 223
+hipErrorNotMappedAsPointer, 
+# 224
+hipErrorECCNotCorrectable, 
+# 225
+hipErrorUnsupportedLimit, 
+# 226
+hipErrorContextAlreadyInUse, 
+# 227
+hipErrorPeerAccessUnsupported, 
+# 228
+hipErrorInvalidKernelFile, 
+# 229
+hipErrorInvalidGraphicsContext, 
+# 230
+hipErrorInvalidSource = 300, 
+# 231
+hipErrorFileNotFound, 
+# 232
+hipErrorSharedObjectSymbolNotFound, 
+# 233
+hipErrorSharedObjectInitFailed, 
+# 234
+hipErrorOperatingSystem, 
+# 235
+hipErrorInvalidHandle = 400, 
+# 237
+hipErrorInvalidResourceHandle = 400, 
+# 238
+hipErrorNotFound = 500, 
+# 239
+hipErrorNotReady = 600, 
+# 243
+hipErrorIllegalAddress = 700, 
+# 244
+hipErrorLaunchOutOfResources, 
+# 245
+hipErrorLaunchTimeOut, 
+# 246
+hipErrorPeerAccessAlreadyEnabled = 704, 
+# 248
+hipErrorPeerAccessNotEnabled, 
+# 250
+hipErrorSetOnActiveProcess = 708, 
+# 251
+hipErrorAssert = 710, 
+# 252
+hipErrorHostMemoryAlreadyRegistered = 712, 
+# 254
+hipErrorHostMemoryNotRegistered, 
+# 256
+hipErrorLaunchFailure = 719, 
+# 258
+hipErrorCooperativeLaunchTooLarge, 
+# 262
+hipErrorNotSupported = 801, 
+# 263
+hipErrorUnknown = 999, 
+# 265
+hipErrorRuntimeMemory = 1052, 
+# 267
+hipErrorRuntimeOther, 
+# 269
+hipErrorTbd
+# 270
+} hipError_t; 
+# 334 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+typedef 
+# 279
+enum hipDeviceAttribute_t { 
+# 280
+hipDeviceAttributeMaxThreadsPerBlock, 
+# 281
+hipDeviceAttributeMaxBlockDimX, 
+# 282
+hipDeviceAttributeMaxBlockDimY, 
+# 283
+hipDeviceAttributeMaxBlockDimZ, 
+# 284
+hipDeviceAttributeMaxGridDimX, 
+# 285
+hipDeviceAttributeMaxGridDimY, 
+# 286
+hipDeviceAttributeMaxGridDimZ, 
+# 287
+hipDeviceAttributeMaxSharedMemoryPerBlock, 
+# 289
+hipDeviceAttributeTotalConstantMemory, 
+# 290
+hipDeviceAttributeWarpSize, 
+# 291
+hipDeviceAttributeMaxRegistersPerBlock, 
+# 295
+hipDeviceAttributeClockRate, 
+# 296
+hipDeviceAttributeMemoryClockRate, 
+# 297
+hipDeviceAttributeMemoryBusWidth, 
+# 298
+hipDeviceAttributeMultiprocessorCount, 
+# 299
+hipDeviceAttributeComputeMode, 
+# 300
+hipDeviceAttributeL2CacheSize, 
+# 302
+hipDeviceAttributeMaxThreadsPerMultiProcessor, 
+# 304
+hipDeviceAttributeComputeCapabilityMajor, 
+# 305
+hipDeviceAttributeComputeCapabilityMinor, 
+# 306
+hipDeviceAttributeConcurrentKernels, 
+# 308
+hipDeviceAttributePciBusId, 
+# 309
+hipDeviceAttributePciDeviceId, 
+# 310
+hipDeviceAttributeMaxSharedMemoryPerMultiprocessor, 
+# 312
+hipDeviceAttributeIsMultiGpuBoard, 
+# 313
+hipDeviceAttributeIntegrated, 
+# 314
+hipDeviceAttributeCooperativeLaunch, 
+# 315
+hipDeviceAttributeCooperativeMultiDeviceLaunch, 
+# 317
+hipDeviceAttributeMaxTexture1DWidth, 
+# 318
+hipDeviceAttributeMaxTexture2DWidth, 
+# 319
+hipDeviceAttributeMaxTexture2DHeight, 
+# 320
+hipDeviceAttributeMaxTexture3DWidth, 
+# 321
+hipDeviceAttributeMaxTexture3DHeight, 
+# 322
+hipDeviceAttributeMaxTexture3DDepth, 
+# 324
+hipDeviceAttributeHdpMemFlushCntl, 
+# 325
+hipDeviceAttributeHdpRegFlushCntl, 
+# 327
+hipDeviceAttributeMaxPitch, 
+# 328
+hipDeviceAttributeTextureAlignment, 
+# 329
+hipDeviceAttributeTexturePitchAlignment, 
+# 330
+hipDeviceAttributeKernelExecTimeout, 
+# 331
+hipDeviceAttributeCanMapHostMemory, 
+# 332
+hipDeviceAttributeEccEnabled
+# 334
+} hipDeviceAttribute_t; 
+# 336
+enum hipComputeMode { 
+# 337
+hipComputeModeDefault, 
+# 338
+hipComputeModeExclusive, 
+# 339
+hipComputeModeProhibited, 
+# 340
+hipComputeModeExclusiveProcess
+# 341
+}; 
+# 59 "/usr/local/cuda-10.1/include/cuda.h" 3
+typedef uint32_t cuuint32_t; 
+# 60
+typedef uint64_t cuuint64_t; 
+# 240 "/usr/local/cuda-10.1/include/cuda.h" 3
+extern "C" {
+# 250 "/usr/local/cuda-10.1/include/cuda.h" 3
+typedef unsigned long long CUdeviceptr; 
+# 257
+typedef int CUdevice; 
+# 258
+typedef struct CUctx_st *CUcontext; 
+# 259
+typedef struct CUmod_st *CUmodule; 
+# 260
+typedef struct CUfunc_st *CUfunction; 
+# 261
+typedef struct CUarray_st *CUarray; 
+# 262
+typedef struct CUmipmappedArray_st *CUmipmappedArray; 
+# 263
+typedef struct CUtexref_st *CUtexref; 
+# 264
+typedef struct CUsurfref_st *CUsurfref; 
+# 265
+typedef CUevent_st *CUevent; 
+# 266
+typedef CUstream_st *CUstream; 
+# 267
+typedef struct CUgraphicsResource_st *CUgraphicsResource; 
+# 268
+typedef unsigned long long CUtexObject; 
+# 269
+typedef unsigned long long CUsurfObject; 
+# 270
+typedef struct CUextMemory_st *CUexternalMemory; 
+# 271
+typedef struct CUextSemaphore_st *CUexternalSemaphore; 
+# 272
+typedef CUgraph_st *CUgraph; 
+# 273
+typedef CUgraphNode_st *CUgraphNode; 
+# 274
+typedef CUgraphExec_st *CUgraphExec; 
+# 295 "/usr/local/cuda-10.1/include/cuda.h" 3
+typedef 
+# 293
+struct CUipcEventHandle_st { 
+# 294
+char reserved[64]; 
+# 295
+} CUipcEventHandle; 
+# 302
+typedef 
+# 300
+struct CUipcMemHandle_st { 
+# 301
+char reserved[64]; 
+# 302
+} CUipcMemHandle; 
+# 309
+typedef 
+# 307
+enum CUipcMem_flags_enum { 
+# 308
+CU_IPC_MEM_LAZY_ENABLE_PEER_ACCESS = 1
+# 309
+} CUipcMem_flags; 
+# 320
+typedef 
+# 316
+enum CUmemAttach_flags_enum { 
+# 317
+CU_MEM_ATTACH_GLOBAL = 1, 
+# 318
+CU_MEM_ATTACH_HOST, 
+# 319
+CU_MEM_ATTACH_SINGLE = 4
+# 320
+} CUmemAttach_flags; 
+# 337
+typedef 
+# 325
+enum CUctx_flags_enum { 
+# 326
+CU_CTX_SCHED_AUTO, 
+# 327
+CU_CTX_SCHED_SPIN, 
+# 328
+CU_CTX_SCHED_YIELD, 
+# 329
+CU_CTX_SCHED_BLOCKING_SYNC = 4, 
+# 330
+CU_CTX_BLOCKING_SYNC = 4, 
+# 333
+CU_CTX_SCHED_MASK = 7, 
+# 334
+CU_CTX_MAP_HOST, 
+# 335
+CU_CTX_LMEM_RESIZE_TO_MAX = 16, 
+# 336
+CU_CTX_FLAGS_MASK = 31
+# 337
+} CUctx_flags; 
+# 345
+typedef 
+# 342
+enum CUstream_flags_enum { 
+# 343
+CU_STREAM_DEFAULT, 
+# 344
+CU_STREAM_NON_BLOCKING
+# 345
+} CUstream_flags; 
+# 375 "/usr/local/cuda-10.1/include/cuda.h" 3
+typedef 
+# 370
+enum CUevent_flags_enum { 
+# 371
+CU_EVENT_DEFAULT, 
+# 372
+CU_EVENT_BLOCKING_SYNC, 
+# 373
+CU_EVENT_DISABLE_TIMING, 
+# 374
+CU_EVENT_INTERPROCESS = 4
+# 375
+} CUevent_flags; 
+# 399 "/usr/local/cuda-10.1/include/cuda.h" 3
+typedef 
+# 381 "/usr/local/cuda-10.1/include/cuda.h" 3
+enum CUstreamWaitValue_flags_enum { 
+# 382
+CU_STREAM_WAIT_VALUE_GEQ, 
+# 385
+CU_STREAM_WAIT_VALUE_EQ, 
+# 386
+CU_STREAM_WAIT_VALUE_AND, 
+# 387
+CU_STREAM_WAIT_VALUE_NOR, 
+# 390
+CU_STREAM_WAIT_VALUE_FLUSH = 1073741824
+# 399 "/usr/local/cuda-10.1/include/cuda.h" 3
+} CUstreamWaitValue_flags; 
+# 412
+typedef 
+# 404
+enum CUstreamWriteValue_flags_enum { 
+# 405
+CU_STREAM_WRITE_VALUE_DEFAULT, 
+# 406
+CU_STREAM_WRITE_VALUE_NO_MEMORY_BARRIER
+# 412
+} CUstreamWriteValue_flags; 
+# 424
+typedef 
+# 417
+enum CUstreamBatchMemOpType_enum { 
+# 418
+CU_STREAM_MEM_OP_WAIT_VALUE_32 = 1, 
+# 419
+CU_STREAM_MEM_OP_WRITE_VALUE_32, 
+# 420
+CU_STREAM_MEM_OP_WAIT_VALUE_64 = 4, 
+# 421
+CU_STREAM_MEM_OP_WRITE_VALUE_64, 
+# 422
+CU_STREAM_MEM_OP_FLUSH_REMOTE_WRITES = 3
+# 424
+} CUstreamBatchMemOpType; 
+# 456
+typedef 
+# 429
+union CUstreamBatchMemOpParams_union { 
+# 430
+CUstreamBatchMemOpType operation; 
+# 431
+struct CUstreamMemOpWaitValueParams_st { 
+# 432
+CUstreamBatchMemOpType operation; 
+# 433
+CUdeviceptr address; 
+# 434
+union { 
+# 435
+cuuint32_t value; 
+# 436
+cuuint64_t value64; 
+# 437
+}; 
+# 438
+unsigned flags; 
+# 439
+CUdeviceptr alias; 
+# 440
+} waitValue; 
+# 441
+struct CUstreamMemOpWriteValueParams_st { 
+# 442
+CUstreamBatchMemOpType operation; 
+# 443
+CUdeviceptr address; 
+# 444
+union { 
+# 445
+cuuint32_t value; 
+# 446
+cuuint64_t value64; 
+# 447
+}; 
+# 448
+unsigned flags; 
+# 449
+CUdeviceptr alias; 
+# 450
+} writeValue; 
+# 451
+struct CUstreamMemOpFlushRemoteWritesParams_st { 
+# 452
+CUstreamBatchMemOpType operation; 
+# 453
+unsigned flags; 
+# 454
+} flushRemoteWrites; 
+# 455
+cuuint64_t pad[6]; 
+# 456
+} CUstreamBatchMemOpParams; 
+# 465
+typedef 
+# 462
+enum CUoccupancy_flags_enum { 
+# 463
+CU_OCCUPANCY_DEFAULT, 
+# 464
+CU_OCCUPANCY_DISABLE_CACHING_OVERRIDE
+# 465
+} CUoccupancy_flags; 
+# 479
+typedef 
+# 470
+enum CUarray_format_enum { 
+# 471
+CU_AD_FORMAT_UNSIGNED_INT8 = 1, 
+# 472
+CU_AD_FORMAT_UNSIGNED_INT16, 
+# 473
+CU_AD_FORMAT_UNSIGNED_INT32, 
+# 474
+CU_AD_FORMAT_SIGNED_INT8 = 8, 
+# 475
+CU_AD_FORMAT_SIGNED_INT16, 
+# 476
+CU_AD_FORMAT_SIGNED_INT32, 
+# 477
+CU_AD_FORMAT_HALF = 16, 
+# 478
+CU_AD_FORMAT_FLOAT = 32
+# 479
+} CUarray_format; 
+# 489
+typedef 
+# 484
+enum CUaddress_mode_enum { 
+# 485
+CU_TR_ADDRESS_MODE_WRAP, 
+# 486
+CU_TR_ADDRESS_MODE_CLAMP, 
+# 487
+CU_TR_ADDRESS_MODE_MIRROR, 
+# 488
+CU_TR_ADDRESS_MODE_BORDER
+# 489
+} CUaddress_mode; 
+# 497
+typedef 
+# 494
+enum CUfilter_mode_enum { 
+# 495
+CU_TR_FILTER_MODE_POINT, 
+# 496
+CU_TR_FILTER_MODE_LINEAR
+# 497
+} CUfilter_mode; 
+# 610
+typedef 
+# 502
+enum CUdevice_attribute_enum { 
+# 503
+CU_DEVICE_ATTRIBUTE_MAX_THREADS_PER_BLOCK = 1, 
+# 504
+CU_DEVICE_ATTRIBUTE_MAX_BLOCK_DIM_X, 
+# 505
+CU_DEVICE_ATTRIBUTE_MAX_BLOCK_DIM_Y, 
+# 506
+CU_DEVICE_ATTRIBUTE_MAX_BLOCK_DIM_Z, 
+# 507
+CU_DEVICE_ATTRIBUTE_MAX_GRID_DIM_X, 
+# 508
+CU_DEVICE_ATTRIBUTE_MAX_GRID_DIM_Y, 
+# 509
+CU_DEVICE_ATTRIBUTE_MAX_GRID_DIM_Z, 
+# 510
+CU_DEVICE_ATTRIBUTE_MAX_SHARED_MEMORY_PER_BLOCK, 
+# 511
+CU_DEVICE_ATTRIBUTE_SHARED_MEMORY_PER_BLOCK = 8, 
+# 512
+CU_DEVICE_ATTRIBUTE_TOTAL_CONSTANT_MEMORY, 
+# 513
+CU_DEVICE_ATTRIBUTE_WARP_SIZE, 
+# 514
+CU_DEVICE_ATTRIBUTE_MAX_PITCH, 
+# 515
+CU_DEVICE_ATTRIBUTE_MAX_REGISTERS_PER_BLOCK, 
+# 516
+CU_DEVICE_ATTRIBUTE_REGISTERS_PER_BLOCK = 12, 
+# 517
+CU_DEVICE_ATTRIBUTE_CLOCK_RATE, 
+# 518
+CU_DEVICE_ATTRIBUTE_TEXTURE_ALIGNMENT, 
+# 519
+CU_DEVICE_ATTRIBUTE_GPU_OVERLAP, 
+# 520
+CU_DEVICE_ATTRIBUTE_MULTIPROCESSOR_COUNT, 
+# 521
+CU_DEVICE_ATTRIBUTE_KERNEL_EXEC_TIMEOUT, 
+# 522
+CU_DEVICE_ATTRIBUTE_INTEGRATED, 
+# 523
+CU_DEVICE_ATTRIBUTE_CAN_MAP_HOST_MEMORY, 
+# 524
+CU_DEVICE_ATTRIBUTE_COMPUTE_MODE, 
+# 525
+CU_DEVICE_ATTRIBUTE_MAXIMUM_TEXTURE1D_WIDTH, 
+# 526
+CU_DEVICE_ATTRIBUTE_MAXIMUM_TEXTURE2D_WIDTH, 
+# 527
+CU_DEVICE_ATTRIBUTE_MAXIMUM_TEXTURE2D_HEIGHT, 
+# 528
+CU_DEVICE_ATTRIBUTE_MAXIMUM_TEXTURE3D_WIDTH, 
+# 529
+CU_DEVICE_ATTRIBUTE_MAXIMUM_TEXTURE3D_HEIGHT, 
+# 530
+CU_DEVICE_ATTRIBUTE_MAXIMUM_TEXTURE3D_DEPTH, 
+# 531
+CU_DEVICE_ATTRIBUTE_MAXIMUM_TEXTURE2D_LAYERED_WIDTH, 
+# 532
+CU_DEVICE_ATTRIBUTE_MAXIMUM_TEXTURE2D_LAYERED_HEIGHT, 
+# 533
+CU_DEVICE_ATTRIBUTE_MAXIMUM_TEXTURE2D_LAYERED_LAYERS, 
+# 534
+CU_DEVICE_ATTRIBUTE_MAXIMUM_TEXTURE2D_ARRAY_WIDTH = 27, 
+# 535
+CU_DEVICE_ATTRIBUTE_MAXIMUM_TEXTURE2D_ARRAY_HEIGHT, 
+# 536
+CU_DEVICE_ATTRIBUTE_MAXIMUM_TEXTURE2D_ARRAY_NUMSLICES, 
+# 537
+CU_DEVICE_ATTRIBUTE_SURFACE_ALIGNMENT, 
+# 538
+CU_DEVICE_ATTRIBUTE_CONCURRENT_KERNELS, 
+# 539
+CU_DEVICE_ATTRIBUTE_ECC_ENABLED, 
+# 540
+CU_DEVICE_ATTRIBUTE_PCI_BUS_ID, 
+# 541
+CU_DEVICE_ATTRIBUTE_PCI_DEVICE_ID, 
+# 542
+CU_DEVICE_ATTRIBUTE_TCC_DRIVER, 
+# 543
+CU_DEVICE_ATTRIBUTE_MEMORY_CLOCK_RATE, 
+# 544
+CU_DEVICE_ATTRIBUTE_GLOBAL_MEMORY_BUS_WIDTH, 
+# 545
+CU_DEVICE_ATTRIBUTE_L2_CACHE_SIZE, 
+# 546
+CU_DEVICE_ATTRIBUTE_MAX_THREADS_PER_MULTIPROCESSOR, 
+# 547
+CU_DEVICE_ATTRIBUTE_ASYNC_ENGINE_COUNT, 
+# 548
+CU_DEVICE_ATTRIBUTE_UNIFIED_ADDRESSING, 
+# 549
+CU_DEVICE_ATTRIBUTE_MAXIMUM_TEXTURE1D_LAYERED_WIDTH, 
+# 550
+CU_DEVICE_ATTRIBUTE_MAXIMUM_TEXTURE1D_LAYERED_LAYERS, 
+# 551
+CU_DEVICE_ATTRIBUTE_CAN_TEX2D_GATHER, 
+# 552
+CU_DEVICE_ATTRIBUTE_MAXIMUM_TEXTURE2D_GATHER_WIDTH, 
+# 553
+CU_DEVICE_ATTRIBUTE_MAXIMUM_TEXTURE2D_GATHER_HEIGHT, 
+# 554
+CU_DEVICE_ATTRIBUTE_MAXIMUM_TEXTURE3D_WIDTH_ALTERNATE, 
+# 555
+CU_DEVICE_ATTRIBUTE_MAXIMUM_TEXTURE3D_HEIGHT_ALTERNATE, 
+# 556
+CU_DEVICE_ATTRIBUTE_MAXIMUM_TEXTURE3D_DEPTH_ALTERNATE, 
+# 557
+CU_DEVICE_ATTRIBUTE_PCI_DOMAIN_ID, 
+# 558
+CU_DEVICE_ATTRIBUTE_TEXTURE_PITCH_ALIGNMENT, 
+# 559
+CU_DEVICE_ATTRIBUTE_MAXIMUM_TEXTURECUBEMAP_WIDTH, 
+# 560
+CU_DEVICE_ATTRIBUTE_MAXIMUM_TEXTURECUBEMAP_LAYERED_WIDTH, 
+# 561
+CU_DEVICE_ATTRIBUTE_MAXIMUM_TEXTURECUBEMAP_LAYERED_LAYERS, 
+# 562
+CU_DEVICE_ATTRIBUTE_MAXIMUM_SURFACE1D_WIDTH, 
+# 563
+CU_DEVICE_ATTRIBUTE_MAXIMUM_SURFACE2D_WIDTH, 
+# 564
+CU_DEVICE_ATTRIBUTE_MAXIMUM_SURFACE2D_HEIGHT, 
+# 565
+CU_DEVICE_ATTRIBUTE_MAXIMUM_SURFACE3D_WIDTH, 
+# 566
+CU_DEVICE_ATTRIBUTE_MAXIMUM_SURFACE3D_HEIGHT, 
+# 567
+CU_DEVICE_ATTRIBUTE_MAXIMUM_SURFACE3D_DEPTH, 
+# 568
+CU_DEVICE_ATTRIBUTE_MAXIMUM_SURFACE1D_LAYERED_WIDTH, 
+# 569
+CU_DEVICE_ATTRIBUTE_MAXIMUM_SURFACE1D_LAYERED_LAYERS, 
+# 570
+CU_DEVICE_ATTRIBUTE_MAXIMUM_SURFACE2D_LAYERED_WIDTH, 
+# 571
+CU_DEVICE_ATTRIBUTE_MAXIMUM_SURFACE2D_LAYERED_HEIGHT, 
+# 572
+CU_DEVICE_ATTRIBUTE_MAXIMUM_SURFACE2D_LAYERED_LAYERS, 
+# 573
+CU_DEVICE_ATTRIBUTE_MAXIMUM_SURFACECUBEMAP_WIDTH, 
+# 574
+CU_DEVICE_ATTRIBUTE_MAXIMUM_SURFACECUBEMAP_LAYERED_WIDTH, 
+# 575
+CU_DEVICE_ATTRIBUTE_MAXIMUM_SURFACECUBEMAP_LAYERED_LAYERS, 
+# 576
+CU_DEVICE_ATTRIBUTE_MAXIMUM_TEXTURE1D_LINEAR_WIDTH, 
+# 577
+CU_DEVICE_ATTRIBUTE_MAXIMUM_TEXTURE2D_LINEAR_WIDTH, 
+# 578
+CU_DEVICE_ATTRIBUTE_MAXIMUM_TEXTURE2D_LINEAR_HEIGHT, 
+# 579
+CU_DEVICE_ATTRIBUTE_MAXIMUM_TEXTURE2D_LINEAR_PITCH, 
+# 580
+CU_DEVICE_ATTRIBUTE_MAXIMUM_TEXTURE2D_MIPMAPPED_WIDTH, 
+# 581
+CU_DEVICE_ATTRIBUTE_MAXIMUM_TEXTURE2D_MIPMAPPED_HEIGHT, 
+# 582
+CU_DEVICE_ATTRIBUTE_COMPUTE_CAPABILITY_MAJOR, 
+# 583
+CU_DEVICE_ATTRIBUTE_COMPUTE_CAPABILITY_MINOR, 
+# 584
+CU_DEVICE_ATTRIBUTE_MAXIMUM_TEXTURE1D_MIPMAPPED_WIDTH, 
+# 585
+CU_DEVICE_ATTRIBUTE_STREAM_PRIORITIES_SUPPORTED, 
+# 586
+CU_DEVICE_ATTRIBUTE_GLOBAL_L1_CACHE_SUPPORTED, 
+# 587
+CU_DEVICE_ATTRIBUTE_LOCAL_L1_CACHE_SUPPORTED, 
+# 588
+CU_DEVICE_ATTRIBUTE_MAX_SHARED_MEMORY_PER_MULTIPROCESSOR, 
+# 589
+CU_DEVICE_ATTRIBUTE_MAX_REGISTERS_PER_MULTIPROCESSOR, 
+# 590
+CU_DEVICE_ATTRIBUTE_MANAGED_MEMORY, 
+# 591
+CU_DEVICE_ATTRIBUTE_MULTI_GPU_BOARD, 
+# 592
+CU_DEVICE_ATTRIBUTE_MULTI_GPU_BOARD_GROUP_ID, 
+# 593
+CU_DEVICE_ATTRIBUTE_HOST_NATIVE_ATOMIC_SUPPORTED, 
+# 594
+CU_DEVICE_ATTRIBUTE_SINGLE_TO_DOUBLE_PRECISION_PERF_RATIO, 
+# 595
+CU_DEVICE_ATTRIBUTE_PAGEABLE_MEMORY_ACCESS, 
+# 596
+CU_DEVICE_ATTRIBUTE_CONCURRENT_MANAGED_ACCESS, 
+# 597
+CU_DEVICE_ATTRIBUTE_COMPUTE_PREEMPTION_SUPPORTED, 
+# 598
+CU_DEVICE_ATTRIBUTE_CAN_USE_HOST_POINTER_FOR_REGISTERED_MEM, 
+# 599
+CU_DEVICE_ATTRIBUTE_CAN_USE_STREAM_MEM_OPS, 
+# 600
+CU_DEVICE_ATTRIBUTE_CAN_USE_64_BIT_STREAM_MEM_OPS, 
+# 601
+CU_DEVICE_ATTRIBUTE_CAN_USE_STREAM_WAIT_VALUE_NOR, 
+# 602
+CU_DEVICE_ATTRIBUTE_COOPERATIVE_LAUNCH, 
+# 603
+CU_DEVICE_ATTRIBUTE_COOPERATIVE_MULTI_DEVICE_LAUNCH, 
+# 604
+CU_DEVICE_ATTRIBUTE_MAX_SHARED_MEMORY_PER_BLOCK_OPTIN, 
+# 605
+CU_DEVICE_ATTRIBUTE_CAN_FLUSH_REMOTE_WRITES, 
+# 606
+CU_DEVICE_ATTRIBUTE_HOST_REGISTER_SUPPORTED, 
+# 607
+CU_DEVICE_ATTRIBUTE_PAGEABLE_MEMORY_ACCESS_USES_HOST_PAGE_TABLES, 
+# 608
+CU_DEVICE_ATTRIBUTE_DIRECT_MANAGED_MEM_ACCESS_FROM_HOST, 
+# 609
+CU_DEVICE_ATTRIBUTE_MAX
+# 610
+} CUdevice_attribute; 
+# 626
+typedef 
+# 615
+struct CUdevprop_st { 
+# 616
+int maxThreadsPerBlock; 
+# 617
+int maxThreadsDim[3]; 
+# 618
+int maxGridSize[3]; 
+# 619
+int sharedMemPerBlock; 
+# 620
+int totalConstantMemory; 
+# 621
+int SIMDWidth; 
+# 622
+int memPitch; 
+# 623
+int regsPerBlock; 
+# 624
+int clockRate; 
+# 625
+int textureAlign; 
+# 626
+} CUdevprop; 
+# 641
+typedef 
+# 631
+enum CUpointer_attribute_enum { 
+# 632
+CU_POINTER_ATTRIBUTE_CONTEXT = 1, 
+# 633
+CU_POINTER_ATTRIBUTE_MEMORY_TYPE, 
+# 634
+CU_POINTER_ATTRIBUTE_DEVICE_POINTER, 
+# 635
+CU_POINTER_ATTRIBUTE_HOST_POINTER, 
+# 636
+CU_POINTER_ATTRIBUTE_P2P_TOKENS, 
+# 637
+CU_POINTER_ATTRIBUTE_SYNC_MEMOPS, 
+# 638
+CU_POINTER_ATTRIBUTE_BUFFER_ID, 
+# 639
+CU_POINTER_ATTRIBUTE_IS_MANAGED, 
+# 640
+CU_POINTER_ATTRIBUTE_DEVICE_ORDINAL
+# 641
+} CUpointer_attribute; 
+# 719 "/usr/local/cuda-10.1/include/cuda.h" 3
+typedef 
+# 646 "/usr/local/cuda-10.1/include/cuda.h" 3
+enum CUfunction_attribute_enum { 
+# 652
+CU_FUNC_ATTRIBUTE_MAX_THREADS_PER_BLOCK, 
+# 659
+CU_FUNC_ATTRIBUTE_SHARED_SIZE_BYTES, 
+# 665
+CU_FUNC_ATTRIBUTE_CONST_SIZE_BYTES, 
+# 670
+CU_FUNC_ATTRIBUTE_LOCAL_SIZE_BYTES, 
+# 675
+CU_FUNC_ATTRIBUTE_NUM_REGS, 
+# 684 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_PTX_VERSION, 
+# 693 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_BINARY_VERSION, 
+# 699
+CU_FUNC_ATTRIBUTE_CACHE_MODE_CA, 
+# 707
+CU_FUNC_ATTRIBUTE_MAX_DYNAMIC_SHARED_SIZE_BYTES, 
+# 716 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_PREFERRED_SHARED_MEMORY_CARVEOUT, 
+# 718
+CU_FUNC_ATTRIBUTE_MAX
+# 719
+} CUfunction_attribute; 
+# 729
+typedef 
+# 724
+enum CUfunc_cache_enum { 
+# 725
+CU_FUNC_CACHE_PREFER_NONE, 
+# 726
+CU_FUNC_CACHE_PREFER_SHARED, 
+# 727
+CU_FUNC_CACHE_PREFER_L1, 
+# 728
+CU_FUNC_CACHE_PREFER_EQUAL
+# 729
+} CUfunc_cache; 
+# 738
+typedef 
+# 734
+enum CUsharedconfig_enum { 
+# 735
+CU_SHARED_MEM_CONFIG_DEFAULT_BANK_SIZE, 
+# 736
+CU_SHARED_MEM_CONFIG_FOUR_BYTE_BANK_SIZE, 
+# 737
+CU_SHARED_MEM_CONFIG_EIGHT_BYTE_BANK_SIZE
+# 738
+} CUsharedconfig; 
+# 747
+typedef 
+# 743
+enum CUshared_carveout_enum { 
+# 744
+CU_SHAREDMEM_CARVEOUT_DEFAULT = (-1), 
+# 745
+CU_SHAREDMEM_CARVEOUT_MAX_SHARED = 100, 
+# 746
+CU_SHAREDMEM_CARVEOUT_MAX_L1 = 0
+# 747
+} CUshared_carveout; 
+# 757
+typedef 
+# 752
+enum CUmemorytype_enum { 
+# 753
+CU_MEMORYTYPE_HOST = 1, 
+# 754
+CU_MEMORYTYPE_DEVICE, 
+# 755
+CU_MEMORYTYPE_ARRAY, 
+# 756
+CU_MEMORYTYPE_UNIFIED
+# 757
+} CUmemorytype; 
+# 766
+typedef 
+# 762
+enum CUcomputemode_enum { 
+# 763
+CU_COMPUTEMODE_DEFAULT, 
+# 764
+CU_COMPUTEMODE_PROHIBITED = 2, 
+# 765
+CU_COMPUTEMODE_EXCLUSIVE_PROCESS
+# 766
+} CUcomputemode; 
+# 778
+typedef 
+# 771
+enum CUmem_advise_enum { 
+# 772
+CU_MEM_ADVISE_SET_READ_MOSTLY = 1, 
+# 773
+CU_MEM_ADVISE_UNSET_READ_MOSTLY, 
+# 774
+CU_MEM_ADVISE_SET_PREFERRED_LOCATION, 
+# 775
+CU_MEM_ADVISE_UNSET_PREFERRED_LOCATION, 
+# 776
+CU_MEM_ADVISE_SET_ACCESSED_BY, 
+# 777
+CU_MEM_ADVISE_UNSET_ACCESSED_BY
+# 778
+} CUmem_advise; 
+# 785
+typedef 
+# 780
+enum CUmem_range_attribute_enum { 
+# 781
+CU_MEM_RANGE_ATTRIBUTE_READ_MOSTLY = 1, 
+# 782
+CU_MEM_RANGE_ATTRIBUTE_PREFERRED_LOCATION, 
+# 783
+CU_MEM_RANGE_ATTRIBUTE_ACCESSED_BY, 
+# 784
+CU_MEM_RANGE_ATTRIBUTE_LAST_PREFETCH_LOCATION
+# 785
+} CUmem_range_attribute; 
+# 960 "/usr/local/cuda-10.1/include/cuda.h" 3
+typedef 
+# 790 "/usr/local/cuda-10.1/include/cuda.h" 3
+enum CUjit_option_enum { 
+# 797
+CU_JIT_MAX_REGISTERS, 
+# 812 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_THREADS_PER_BLOCK, 
+# 820
+CU_JIT_WALL_TIME, 
+# 829 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_INFO_LOG_BUFFER, 
+# 838 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_INFO_LOG_BUFFER_SIZE_BYTES, 
+# 847 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_ERROR_LOG_BUFFER, 
+# 856 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_ERROR_LOG_BUFFER_SIZE_BYTES, 
+# 864
+CU_JIT_OPTIMIZATION_LEVEL, 
+# 872
+CU_JIT_TARGET_FROM_CUCONTEXT, 
+# 880
+CU_JIT_TARGET, 
+# 889 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_FALLBACK_STRATEGY, 
+# 897
+CU_JIT_GENERATE_DEBUG_INFO, 
+# 904
+CU_JIT_LOG_VERBOSE, 
+# 911
+CU_JIT_GENERATE_LINE_INFO, 
+# 919
+CU_JIT_CACHE_MODE, 
+# 924
+CU_JIT_NEW_SM3X_OPT, 
+# 925
+CU_JIT_FAST_COMPILE, 
+# 939 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_GLOBAL_SYMBOL_NAMES, 
+# 948 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_GLOBAL_SYMBOL_ADDRESSES, 
+# 956
+CU_JIT_GLOBAL_SYMBOL_COUNT, 
+# 958
+CU_JIT_NUM_OPTIONS
+# 960
+} CUjit_option; 
+# 982
+typedef 
+# 965
+enum CUjit_target_enum { 
+# 967
+CU_TARGET_COMPUTE_20 = 20, 
+# 968
+CU_TARGET_COMPUTE_21, 
+# 969
+CU_TARGET_COMPUTE_30 = 30, 
+# 970
+CU_TARGET_COMPUTE_32 = 32, 
+# 971
+CU_TARGET_COMPUTE_35 = 35, 
+# 972
+CU_TARGET_COMPUTE_37 = 37, 
+# 973
+CU_TARGET_COMPUTE_50 = 50, 
+# 974
+CU_TARGET_COMPUTE_52 = 52, 
+# 975
+CU_TARGET_COMPUTE_53, 
+# 976
+CU_TARGET_COMPUTE_60 = 60, 
+# 977
+CU_TARGET_COMPUTE_61, 
+# 978
+CU_TARGET_COMPUTE_62, 
+# 979
+CU_TARGET_COMPUTE_70 = 70, 
+# 980
+CU_TARGET_COMPUTE_72 = 72, 
+# 981
+CU_TARGET_COMPUTE_75 = 75
+# 982
+} CUjit_target; 
+# 993
+typedef 
+# 987
+enum CUjit_fallback_enum { 
+# 989
+CU_PREFER_PTX, 
+# 991
+CU_PREFER_BINARY
+# 993
+} CUjit_fallback; 
+# 1003
+typedef 
+# 998
+enum CUjit_cacheMode_enum { 
+# 1000
+CU_JIT_CACHE_OPTION_NONE, 
+# 1001
+CU_JIT_CACHE_OPTION_CG, 
+# 1002
+CU_JIT_CACHE_OPTION_CA
+# 1003
+} CUjit_cacheMode; 
+# 1041
+typedef 
+# 1008
+enum CUjitInputType_enum { 
+# 1014
+CU_JIT_INPUT_CUBIN, 
+# 1020
+CU_JIT_INPUT_PTX, 
+# 1026
+CU_JIT_INPUT_FATBINARY, 
+# 1032
+CU_JIT_INPUT_OBJECT, 
+# 1038
+CU_JIT_INPUT_LIBRARY, 
+# 1040
+CU_JIT_NUM_INPUT_TYPES
+# 1041
+} CUjitInputType; 
+# 1044
+typedef struct CUlinkState_st *CUlinkState; 
+# 1056
+typedef 
+# 1050
+enum CUgraphicsRegisterFlags_enum { 
+# 1051
+CU_GRAPHICS_REGISTER_FLAGS_NONE, 
+# 1052
+CU_GRAPHICS_REGISTER_FLAGS_READ_ONLY, 
+# 1053
+CU_GRAPHICS_REGISTER_FLAGS_WRITE_DISCARD, 
+# 1054
+CU_GRAPHICS_REGISTER_FLAGS_SURFACE_LDST = 4, 
+# 1055
+CU_GRAPHICS_REGISTER_FLAGS_TEXTURE_GATHER = 8
+# 1056
+} CUgraphicsRegisterFlags; 
+# 1065
+typedef 
+# 1061
+enum CUgraphicsMapResourceFlags_enum { 
+# 1062
+CU_GRAPHICS_MAP_RESOURCE_FLAGS_NONE, 
+# 1063
+CU_GRAPHICS_MAP_RESOURCE_FLAGS_READ_ONLY, 
+# 1064
+CU_GRAPHICS_MAP_RESOURCE_FLAGS_WRITE_DISCARD
+# 1065
+} CUgraphicsMapResourceFlags; 
+# 1077
+typedef 
+# 1070
+enum CUarray_cubemap_face_enum { 
+# 1071
+CU_CUBEMAP_FACE_POSITIVE_X, 
+# 1072
+CU_CUBEMAP_FACE_NEGATIVE_X, 
+# 1073
+CU_CUBEMAP_FACE_POSITIVE_Y, 
+# 1074
+CU_CUBEMAP_FACE_NEGATIVE_Y, 
+# 1075
+CU_CUBEMAP_FACE_POSITIVE_Z, 
+# 1076
+CU_CUBEMAP_FACE_NEGATIVE_Z
+# 1077
+} CUarray_cubemap_face; 
+# 1090
+typedef 
+# 1082
+enum CUlimit_enum { 
+# 1083
+CU_LIMIT_STACK_SIZE, 
+# 1084
+CU_LIMIT_PRINTF_FIFO_SIZE, 
+# 1085
+CU_LIMIT_MALLOC_HEAP_SIZE, 
+# 1086
+CU_LIMIT_DEV_RUNTIME_SYNC_DEPTH, 
+# 1087
+CU_LIMIT_DEV_RUNTIME_PENDING_LAUNCH_COUNT, 
+# 1088
+CU_LIMIT_MAX_L2_FETCH_GRANULARITY, 
+# 1089
+CU_LIMIT_MAX
+# 1090
+} CUlimit; 
+# 1100
+typedef 
+# 1095
+enum CUresourcetype_enum { 
+# 1096
+CU_RESOURCE_TYPE_ARRAY, 
+# 1097
+CU_RESOURCE_TYPE_MIPMAPPED_ARRAY, 
+# 1098
+CU_RESOURCE_TYPE_LINEAR, 
+# 1099
+CU_RESOURCE_TYPE_PITCH2D
+# 1100
+} CUresourcetype; 
+# 1114 "/usr/local/cuda-10.1/include/cuda.h" 3
+typedef void (*CUhostFn)(void * userData); 
+# 1130
+typedef 
+# 1119
+struct CUDA_KERNEL_NODE_PARAMS_st { 
+# 1120
+CUfunction func; 
+# 1121
+unsigned gridDimX; 
+# 1122
+unsigned gridDimY; 
+# 1123
+unsigned gridDimZ; 
+# 1124
+unsigned blockDimX; 
+# 1125
+unsigned blockDimY; 
+# 1126
+unsigned blockDimZ; 
+# 1127
+unsigned sharedMemBytes; 
+# 1128
+void **kernelParams; 
+# 1129
+void **extra; 
+# 1130
+} CUDA_KERNEL_NODE_PARAMS; 
+# 1142
+typedef 
+# 1135
+struct CUDA_MEMSET_NODE_PARAMS_st { 
+# 1136
+CUdeviceptr dst; 
+# 1137
+size_t pitch; 
+# 1138
+unsigned value; 
+# 1139
+unsigned elementSize; 
+# 1140
+size_t width; 
+# 1141
+size_t height; 
+# 1142
+} CUDA_MEMSET_NODE_PARAMS; 
+# 1150
+typedef 
+# 1147
+struct CUDA_HOST_NODE_PARAMS_st { 
+# 1148
+CUhostFn fn; 
+# 1149
+void *userData; 
+# 1150
+} CUDA_HOST_NODE_PARAMS; 
+# 1163
+typedef 
+# 1155
+enum CUgraphNodeType_enum { 
+# 1156
+CU_GRAPH_NODE_TYPE_KERNEL, 
+# 1157
+CU_GRAPH_NODE_TYPE_MEMCPY, 
+# 1158
+CU_GRAPH_NODE_TYPE_MEMSET, 
+# 1159
+CU_GRAPH_NODE_TYPE_HOST, 
+# 1160
+CU_GRAPH_NODE_TYPE_GRAPH, 
+# 1161
+CU_GRAPH_NODE_TYPE_EMPTY, 
+# 1162
+CU_GRAPH_NODE_TYPE_COUNT
+# 1163
+} CUgraphNodeType; 
+# 1173
+typedef 
+# 1168
+enum CUstreamCaptureStatus_enum { 
+# 1169
+CU_STREAM_CAPTURE_STATUS_NONE, 
+# 1170
+CU_STREAM_CAPTURE_STATUS_ACTIVE, 
+# 1171
+CU_STREAM_CAPTURE_STATUS_INVALIDATED
+# 1173
+} CUstreamCaptureStatus; 
+# 1187 "/usr/local/cuda-10.1/include/cuda.h" 3
+typedef 
+# 1183
+enum CUstreamCaptureMode_enum { 
+# 1184
+CU_STREAM_CAPTURE_MODE_GLOBAL, 
+# 1185
+CU_STREAM_CAPTURE_MODE_THREAD_LOCAL, 
+# 1186
+CU_STREAM_CAPTURE_MODE_RELAXED
+# 1187
+} CUstreamCaptureMode; 
+# 1690 "/usr/local/cuda-10.1/include/cuda.h" 3
+typedef 
+# 1194 "/usr/local/cuda-10.1/include/cuda.h" 3
+enum cudaError_enum { 
+# 1200
+CUDA_SUCCESS, 
+# 1206
+CUDA_ERROR_INVALID_VALUE, 
+# 1212
+CUDA_ERROR_OUT_OF_MEMORY, 
+# 1218
+CUDA_ERROR_NOT_INITIALIZED, 
+# 1223
+CUDA_ERROR_DEINITIALIZED, 
+# 1230
+CUDA_ERROR_PROFILER_DISABLED, 
+# 1238
+CUDA_ERROR_PROFILER_NOT_INITIALIZED, 
+# 1245
+CUDA_ERROR_PROFILER_ALREADY_STARTED, 
+# 1252
+CUDA_ERROR_PROFILER_ALREADY_STOPPED, 
+# 1258
+CUDA_ERROR_NO_DEVICE = 100, 
+# 1264
+CUDA_ERROR_INVALID_DEVICE, 
+# 1271
+CUDA_ERROR_INVALID_IMAGE = 200, 
+# 1281 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_INVALID_CONTEXT, 
+# 1290 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_CONTEXT_ALREADY_CURRENT, 
+# 1295
+CUDA_ERROR_MAP_FAILED = 205, 
+# 1300
+CUDA_ERROR_UNMAP_FAILED, 
+# 1306
+CUDA_ERROR_ARRAY_IS_MAPPED, 
+# 1311
+CUDA_ERROR_ALREADY_MAPPED, 
+# 1319
+CUDA_ERROR_NO_BINARY_FOR_GPU, 
+# 1324
+CUDA_ERROR_ALREADY_ACQUIRED, 
+# 1329
+CUDA_ERROR_NOT_MAPPED, 
+# 1335
+CUDA_ERROR_NOT_MAPPED_AS_ARRAY, 
+# 1341
+CUDA_ERROR_NOT_MAPPED_AS_POINTER, 
+# 1347
+CUDA_ERROR_ECC_UNCORRECTABLE, 
+# 1353
+CUDA_ERROR_UNSUPPORTED_LIMIT, 
+# 1360
+CUDA_ERROR_CONTEXT_ALREADY_IN_USE, 
+# 1366
+CUDA_ERROR_PEER_ACCESS_UNSUPPORTED, 
+# 1371
+CUDA_ERROR_INVALID_PTX, 
+# 1376
+CUDA_ERROR_INVALID_GRAPHICS_CONTEXT, 
+# 1382
+CUDA_ERROR_NVLINK_UNCORRECTABLE, 
+# 1387
+CUDA_ERROR_JIT_COMPILER_NOT_FOUND, 
+# 1392
+CUDA_ERROR_INVALID_SOURCE = 300, 
+# 1397
+CUDA_ERROR_FILE_NOT_FOUND, 
+# 1402
+CUDA_ERROR_SHARED_OBJECT_SYMBOL_NOT_FOUND, 
+# 1407
+CUDA_ERROR_SHARED_OBJECT_INIT_FAILED, 
+# 1412
+CUDA_ERROR_OPERATING_SYSTEM, 
+# 1418
+CUDA_ERROR_INVALID_HANDLE = 400, 
+# 1424
+CUDA_ERROR_ILLEGAL_STATE, 
+# 1430
+CUDA_ERROR_NOT_FOUND = 500, 
+# 1438
+CUDA_ERROR_NOT_READY = 600, 
+# 1447 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_ILLEGAL_ADDRESS = 700, 
+# 1458 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_LAUNCH_OUT_OF_RESOURCES, 
+# 1468 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_LAUNCH_TIMEOUT, 
+# 1474
+CUDA_ERROR_LAUNCH_INCOMPATIBLE_TEXTURING, 
+# 1481
+CUDA_ERROR_PEER_ACCESS_ALREADY_ENABLED, 
+# 1488
+CUDA_ERROR_PEER_ACCESS_NOT_ENABLED, 
+# 1494
+CUDA_ERROR_PRIMARY_CONTEXT_ACTIVE = 708, 
+# 1501
+CUDA_ERROR_CONTEXT_IS_DESTROYED, 
+# 1509
+CUDA_ERROR_ASSERT, 
+# 1516
+CUDA_ERROR_TOO_MANY_PEERS, 
+# 1522
+CUDA_ERROR_HOST_MEMORY_ALREADY_REGISTERED, 
+# 1528
+CUDA_ERROR_HOST_MEMORY_NOT_REGISTERED, 
+# 1537 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_HARDWARE_STACK_ERROR, 
+# 1545
+CUDA_ERROR_ILLEGAL_INSTRUCTION, 
+# 1554 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_MISALIGNED_ADDRESS, 
+# 1565 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_INVALID_ADDRESS_SPACE, 
+# 1573
+CUDA_ERROR_INVALID_PC, 
+# 1584 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_LAUNCH_FAILED, 
+# 1593 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_COOPERATIVE_LAUNCH_TOO_LARGE, 
+# 1598
+CUDA_ERROR_NOT_PERMITTED = 800, 
+# 1604
+CUDA_ERROR_NOT_SUPPORTED, 
+# 1613 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_SYSTEM_NOT_READY, 
+# 1620
+CUDA_ERROR_SYSTEM_DRIVER_MISMATCH, 
+# 1629 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_COMPAT_NOT_SUPPORTED_ON_DEVICE, 
+# 1635
+CUDA_ERROR_STREAM_CAPTURE_UNSUPPORTED = 900, 
+# 1641
+CUDA_ERROR_STREAM_CAPTURE_INVALIDATED, 
+# 1647
+CUDA_ERROR_STREAM_CAPTURE_MERGE, 
+# 1652
+CUDA_ERROR_STREAM_CAPTURE_UNMATCHED, 
+# 1658
+CUDA_ERROR_STREAM_CAPTURE_UNJOINED, 
+# 1665
+CUDA_ERROR_STREAM_CAPTURE_ISOLATION, 
+# 1671
+CUDA_ERROR_STREAM_CAPTURE_IMPLICIT, 
+# 1677
+CUDA_ERROR_CAPTURED_EVENT, 
+# 1684
+CUDA_ERROR_STREAM_CAPTURE_WRONG_THREAD, 
+# 1689
+CUDA_ERROR_UNKNOWN = 999
+# 1690
+} CUresult; 
+# 1701
+typedef 
+# 1695
+enum CUdevice_P2PAttribute_enum { 
+# 1696
+CU_DEVICE_P2P_ATTRIBUTE_PERFORMANCE_RANK = 1, 
+# 1697
+CU_DEVICE_P2P_ATTRIBUTE_ACCESS_SUPPORTED, 
+# 1698
+CU_DEVICE_P2P_ATTRIBUTE_NATIVE_ATOMIC_SUPPORTED, 
+# 1699
+CU_DEVICE_P2P_ATTRIBUTE_ACCESS_ACCESS_SUPPORTED, 
+# 1700
+CU_DEVICE_P2P_ATTRIBUTE_CUDA_ARRAY_ACCESS_SUPPORTED = 4
+# 1701
+} CUdevice_P2PAttribute; 
+# 1709
+typedef void (*CUstreamCallback)(CUstream hStream, CUresult status, void * userData); 
+# 1717
+typedef size_t (*CUoccupancyB2DSize)(int blockSize); 
+# 1793 "/usr/local/cuda-10.1/include/cuda.h" 3
+typedef 
+# 1772
+struct CUDA_MEMCPY2D_st { 
+# 1773
+size_t srcXInBytes; 
+# 1774
+size_t srcY; 
+# 1776
+CUmemorytype srcMemoryType; 
+# 1777
+const void *srcHost; 
+# 1778
+CUdeviceptr srcDevice; 
+# 1779
+CUarray srcArray; 
+# 1780
+size_t srcPitch; 
+# 1782
+size_t dstXInBytes; 
+# 1783
+size_t dstY; 
+# 1785
+CUmemorytype dstMemoryType; 
+# 1786
+void *dstHost; 
+# 1787
+CUdeviceptr dstDevice; 
+# 1788
+CUarray dstArray; 
+# 1789
+size_t dstPitch; 
+# 1791
+size_t WidthInBytes; 
+# 1792
+size_t Height; 
+# 1793
+} CUDA_MEMCPY2D; 
+# 1826
+typedef 
+# 1798
+struct CUDA_MEMCPY3D_st { 
+# 1799
+size_t srcXInBytes; 
+# 1800
+size_t srcY; 
+# 1801
+size_t srcZ; 
+# 1802
+size_t srcLOD; 
+# 1803
+CUmemorytype srcMemoryType; 
+# 1804
+const void *srcHost; 
+# 1805
+CUdeviceptr srcDevice; 
+# 1806
+CUarray srcArray; 
+# 1807
+void *reserved0; 
+# 1808
+size_t srcPitch; 
+# 1809
+size_t srcHeight; 
+# 1811
+size_t dstXInBytes; 
+# 1812
+size_t dstY; 
+# 1813
+size_t dstZ; 
+# 1814
+size_t dstLOD; 
+# 1815
+CUmemorytype dstMemoryType; 
+# 1816
+void *dstHost; 
+# 1817
+CUdeviceptr dstDevice; 
+# 1818
+CUarray dstArray; 
+# 1819
+void *reserved1; 
+# 1820
+size_t dstPitch; 
+# 1821
+size_t dstHeight; 
+# 1823
+size_t WidthInBytes; 
+# 1824
+size_t Height; 
+# 1825
+size_t Depth; 
+# 1826
+} CUDA_MEMCPY3D; 
+# 1859
+typedef 
+# 1831
+struct CUDA_MEMCPY3D_PEER_st { 
+# 1832
+size_t srcXInBytes; 
+# 1833
+size_t srcY; 
+# 1834
+size_t srcZ; 
+# 1835
+size_t srcLOD; 
+# 1836
+CUmemorytype srcMemoryType; 
+# 1837
+const void *srcHost; 
+# 1838
+CUdeviceptr srcDevice; 
+# 1839
+CUarray srcArray; 
+# 1840
+CUcontext srcContext; 
+# 1841
+size_t srcPitch; 
+# 1842
+size_t srcHeight; 
+# 1844
+size_t dstXInBytes; 
+# 1845
+size_t dstY; 
+# 1846
+size_t dstZ; 
+# 1847
+size_t dstLOD; 
+# 1848
+CUmemorytype dstMemoryType; 
+# 1849
+void *dstHost; 
+# 1850
+CUdeviceptr dstDevice; 
+# 1851
+CUarray dstArray; 
+# 1852
+CUcontext dstContext; 
+# 1853
+size_t dstPitch; 
+# 1854
+size_t dstHeight; 
+# 1856
+size_t WidthInBytes; 
+# 1857
+size_t Height; 
+# 1858
+size_t Depth; 
+# 1859
+} CUDA_MEMCPY3D_PEER; 
+# 1871
+typedef 
+# 1864
+struct CUDA_ARRAY_DESCRIPTOR_st { 
+# 1866
+size_t Width; 
+# 1867
+size_t Height; 
+# 1869
+CUarray_format Format; 
+# 1870
+unsigned NumChannels; 
+# 1871
+} CUDA_ARRAY_DESCRIPTOR; 
+# 1885
+typedef 
+# 1876
+struct CUDA_ARRAY3D_DESCRIPTOR_st { 
+# 1878
+size_t Width; 
+# 1879
+size_t Height; 
+# 1880
+size_t Depth; 
+# 1882
+CUarray_format Format; 
+# 1883
+unsigned NumChannels; 
+# 1884
+unsigned Flags; 
+# 1885
+} CUDA_ARRAY3D_DESCRIPTOR; 
+# 1925 "/usr/local/cuda-10.1/include/cuda.h" 3
+typedef 
+# 1894
+struct CUDA_RESOURCE_DESC_st { 
+# 1896
+CUresourcetype resType; 
+# 1898
+union { 
+# 1899
+struct { 
+# 1900
+CUarray hArray; 
+# 1901
+} array; 
+# 1902
+struct { 
+# 1903
+CUmipmappedArray hMipmappedArray; 
+# 1904
+} mipmap; 
+# 1905
+struct { 
+# 1906
+CUdeviceptr devPtr; 
+# 1907
+CUarray_format format; 
+# 1908
+unsigned numChannels; 
+# 1909
+size_t sizeInBytes; 
+# 1910
+} linear; 
+# 1911
+struct { 
+# 1912
+CUdeviceptr devPtr; 
+# 1913
+CUarray_format format; 
+# 1914
+unsigned numChannels; 
+# 1915
+size_t width; 
+# 1916
+size_t height; 
+# 1917
+size_t pitchInBytes; 
+# 1918
+} pitch2D; 
+# 1919
+struct { 
+# 1920
+int reserved[32]; 
+# 1921
+} reserved; 
+# 1922
+} res; 
+# 1924
+unsigned flags; 
+# 1925
+} CUDA_RESOURCE_DESC; 
+# 1941
+typedef 
+# 1930
+struct CUDA_TEXTURE_DESC_st { 
+# 1931
+CUaddress_mode addressMode[3]; 
+# 1932
+CUfilter_mode filterMode; 
+# 1933
+unsigned flags; 
+# 1934
+unsigned maxAnisotropy; 
+# 1935
+CUfilter_mode mipmapFilterMode; 
+# 1936
+float mipmapLevelBias; 
+# 1937
+float minMipmapLevelClamp; 
+# 1938
+float maxMipmapLevelClamp; 
+# 1939
+float borderColor[4]; 
+# 1940
+int reserved[12]; 
+# 1941
+} CUDA_TEXTURE_DESC; 
+# 1983
+typedef 
+# 1946
+enum CUresourceViewFormat_enum { 
+# 1948
+CU_RES_VIEW_FORMAT_NONE, 
+# 1949
+CU_RES_VIEW_FORMAT_UINT_1X8, 
+# 1950
+CU_RES_VIEW_FORMAT_UINT_2X8, 
+# 1951
+CU_RES_VIEW_FORMAT_UINT_4X8, 
+# 1952
+CU_RES_VIEW_FORMAT_SINT_1X8, 
+# 1953
+CU_RES_VIEW_FORMAT_SINT_2X8, 
+# 1954
+CU_RES_VIEW_FORMAT_SINT_4X8, 
+# 1955
+CU_RES_VIEW_FORMAT_UINT_1X16, 
+# 1956
+CU_RES_VIEW_FORMAT_UINT_2X16, 
+# 1957
+CU_RES_VIEW_FORMAT_UINT_4X16, 
+# 1958
+CU_RES_VIEW_FORMAT_SINT_1X16, 
+# 1959
+CU_RES_VIEW_FORMAT_SINT_2X16, 
+# 1960
+CU_RES_VIEW_FORMAT_SINT_4X16, 
+# 1961
+CU_RES_VIEW_FORMAT_UINT_1X32, 
+# 1962
+CU_RES_VIEW_FORMAT_UINT_2X32, 
+# 1963
+CU_RES_VIEW_FORMAT_UINT_4X32, 
+# 1964
+CU_RES_VIEW_FORMAT_SINT_1X32, 
+# 1965
+CU_RES_VIEW_FORMAT_SINT_2X32, 
+# 1966
+CU_RES_VIEW_FORMAT_SINT_4X32, 
+# 1967
+CU_RES_VIEW_FORMAT_FLOAT_1X16, 
+# 1968
+CU_RES_VIEW_FORMAT_FLOAT_2X16, 
+# 1969
+CU_RES_VIEW_FORMAT_FLOAT_4X16, 
+# 1970
+CU_RES_VIEW_FORMAT_FLOAT_1X32, 
+# 1971
+CU_RES_VIEW_FORMAT_FLOAT_2X32, 
+# 1972
+CU_RES_VIEW_FORMAT_FLOAT_4X32, 
+# 1973
+CU_RES_VIEW_FORMAT_UNSIGNED_BC1, 
+# 1974
+CU_RES_VIEW_FORMAT_UNSIGNED_BC2, 
+# 1975
+CU_RES_VIEW_FORMAT_UNSIGNED_BC3, 
+# 1976
+CU_RES_VIEW_FORMAT_UNSIGNED_BC4, 
+# 1977
+CU_RES_VIEW_FORMAT_SIGNED_BC4, 
+# 1978
+CU_RES_VIEW_FORMAT_UNSIGNED_BC5, 
+# 1979
+CU_RES_VIEW_FORMAT_SIGNED_BC5, 
+# 1980
+CU_RES_VIEW_FORMAT_UNSIGNED_BC6H, 
+# 1981
+CU_RES_VIEW_FORMAT_SIGNED_BC6H, 
+# 1982
+CU_RES_VIEW_FORMAT_UNSIGNED_BC7
+# 1983
+} CUresourceViewFormat; 
+# 1999
+typedef 
+# 1988
+struct CUDA_RESOURCE_VIEW_DESC_st { 
+# 1990
+CUresourceViewFormat format; 
+# 1991
+size_t width; 
+# 1992
+size_t height; 
+# 1993
+size_t depth; 
+# 1994
+unsigned firstMipmapLevel; 
+# 1995
+unsigned lastMipmapLevel; 
+# 1996
+unsigned firstLayer; 
+# 1997
+unsigned lastLayer; 
+# 1998
+unsigned reserved[16]; 
+# 1999
+} CUDA_RESOURCE_VIEW_DESC; 
+# 2007
+typedef 
+# 2004
+struct CUDA_POINTER_ATTRIBUTE_P2P_TOKENS_st { 
+# 2005
+unsigned long long p2pToken; 
+# 2006
+unsigned vaSpaceToken; 
+# 2007
+} CUDA_POINTER_ATTRIBUTE_P2P_TOKENS; 
+# 2027 "/usr/local/cuda-10.1/include/cuda.h" 3
+typedef 
+# 2016
+struct CUDA_LAUNCH_PARAMS_st { 
+# 2017
+CUfunction function; 
+# 2018
+unsigned gridDimX; 
+# 2019
+unsigned gridDimY; 
+# 2020
+unsigned gridDimZ; 
+# 2021
+unsigned blockDimX; 
+# 2022
+unsigned blockDimY; 
+# 2023
+unsigned blockDimZ; 
+# 2024
+unsigned sharedMemBytes; 
+# 2025
+CUstream hStream; 
+# 2026
+void **kernelParams; 
+# 2027
+} CUDA_LAUNCH_PARAMS; 
+# 2057 "/usr/local/cuda-10.1/include/cuda.h" 3
+typedef 
+# 2036
+enum CUexternalMemoryHandleType_enum { 
+# 2040
+CU_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_FD = 1, 
+# 2044
+CU_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32, 
+# 2048
+CU_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_KMT, 
+# 2052
+CU_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_HEAP, 
+# 2056
+CU_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_RESOURCE
+# 2057
+} CUexternalMemoryHandleType; 
+# 2112 "/usr/local/cuda-10.1/include/cuda.h" 3
+typedef 
+# 2067 "/usr/local/cuda-10.1/include/cuda.h" 3
+struct CUDA_EXTERNAL_MEMORY_HANDLE_DESC_st { 
+# 2071
+CUexternalMemoryHandleType type; 
+# 2072
+union { 
+# 2078
+int fd; 
+# 2091 "/usr/local/cuda-10.1/include/cuda.h" 3
+struct { 
+# 2095
+void *handle; 
+# 2100
+const void *name; 
+# 2101
+} win32; 
+# 2102
+} handle; 
+# 2106
+unsigned long long size; 
+# 2110
+unsigned flags; 
+# 2111
+unsigned reserved[16]; 
+# 2112
+} CUDA_EXTERNAL_MEMORY_HANDLE_DESC; 
+# 2131
+typedef 
+# 2117
+struct CUDA_EXTERNAL_MEMORY_BUFFER_DESC_st { 
+# 2121
+unsigned long long offset; 
+# 2125
+unsigned long long size; 
+# 2129
+unsigned flags; 
+# 2130
+unsigned reserved[16]; 
+# 2131
+} CUDA_EXTERNAL_MEMORY_BUFFER_DESC; 
+# 2151
+typedef 
+# 2136
+struct CUDA_EXTERNAL_MEMORY_MIPMAPPED_ARRAY_DESC_st { 
+# 2141
+unsigned long long offset; 
+# 2145
+CUDA_ARRAY3D_DESCRIPTOR arrayDesc; 
+# 2149
+unsigned numLevels; 
+# 2150
+unsigned reserved[16]; 
+# 2151
+} CUDA_EXTERNAL_MEMORY_MIPMAPPED_ARRAY_DESC; 
+# 2173
+typedef 
+# 2156
+enum CUexternalSemaphoreHandleType_enum { 
+# 2160
+CU_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_FD = 1, 
+# 2164
+CU_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32, 
+# 2168
+CU_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_KMT, 
+# 2172
+CU_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE
+# 2173
+} CUexternalSemaphoreHandleType; 
+# 2218 "/usr/local/cuda-10.1/include/cuda.h" 3
+typedef 
+# 2178 "/usr/local/cuda-10.1/include/cuda.h" 3
+struct CUDA_EXTERNAL_SEMAPHORE_HANDLE_DESC_st { 
+# 2182
+CUexternalSemaphoreHandleType type; 
+# 2183
+union { 
+# 2189
+int fd; 
+# 2201 "/usr/local/cuda-10.1/include/cuda.h" 3
+struct { 
+# 2205
+void *handle; 
+# 2210
+const void *name; 
+# 2211
+} win32; 
+# 2212
+} handle; 
+# 2216
+unsigned flags; 
+# 2217
+unsigned reserved[16]; 
+# 2218
+} CUDA_EXTERNAL_SEMAPHORE_HANDLE_DESC; 
+# 2241
+typedef 
+# 2223
+struct CUDA_EXTERNAL_SEMAPHORE_SIGNAL_PARAMS_st { 
+# 2224
+struct { 
+# 2228
+struct { 
+# 2232
+unsigned long long value; 
+# 2233
+} fence; 
+# 2234
+unsigned reserved[16]; 
+# 2235
+} params; 
+# 2239
+unsigned flags; 
+# 2240
+unsigned reserved[16]; 
+# 2241
+} CUDA_EXTERNAL_SEMAPHORE_SIGNAL_PARAMS; 
+# 2264
+typedef 
+# 2246
+struct CUDA_EXTERNAL_SEMAPHORE_WAIT_PARAMS_st { 
+# 2247
+struct { 
+# 2251
+struct { 
+# 2255
+unsigned long long value; 
+# 2256
+} fence; 
+# 2257
+unsigned reserved[16]; 
+# 2258
+} params; 
+# 2262
+unsigned flags; 
+# 2263
+unsigned reserved[16]; 
+# 2264
+} CUDA_EXTERNAL_SEMAPHORE_WAIT_PARAMS; 
+# 2434 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuGetErrorString(CUresult error, const char ** pStr); 
+# 2455 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuGetErrorName(CUresult error, const char ** pStr); 
+# 2489 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuInit(unsigned Flags); 
+# 2527 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuDriverGetVersion(int * driverVersion); 
+# 2569 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuDeviceGet(CUdevice * device, int ordinal); 
+# 2597 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuDeviceGetCount(int * count); 
+# 2628 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuDeviceGetName(char * name, int len, CUdevice dev); 
+# 2657 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuDeviceGetUuid(CUuuid * uuid, CUdevice dev); 
+# 2717 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuDeviceTotalMem_v2(size_t * bytes, CUdevice dev); 
+# 2922 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuDeviceGetAttribute(int * pi, CUdevice_attribute attrib, CUdevice dev); 
+# 3000 "/usr/local/cuda-10.1/include/cuda.h" 3
+__attribute((deprecated)) CUresult cuDeviceGetProperties(CUdevprop * prop, CUdevice dev); 
+# 3034 "/usr/local/cuda-10.1/include/cuda.h" 3
+__attribute((deprecated)) CUresult cuDeviceComputeCapability(int * major, int * minor, CUdevice dev); 
+# 3102 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuDevicePrimaryCtxRetain(CUcontext * pctx, CUdevice dev); 
+# 3136 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuDevicePrimaryCtxRelease(CUdevice dev); 
+# 3201 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuDevicePrimaryCtxSetFlags(CUdevice dev, unsigned flags); 
+# 3227 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuDevicePrimaryCtxGetState(CUdevice dev, unsigned * flags, int * active); 
+# 3265 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuDevicePrimaryCtxReset(CUdevice dev); 
+# 3377 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuCtxCreate_v2(CUcontext * pctx, unsigned flags, CUdevice dev); 
+# 3417 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuCtxDestroy_v2(CUcontext ctx); 
+# 3453 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuCtxPushCurrent_v2(CUcontext ctx); 
+# 3487 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuCtxPopCurrent_v2(CUcontext * pctx); 
+# 3517 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuCtxSetCurrent(CUcontext ctx); 
+# 3540 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuCtxGetCurrent(CUcontext * pctx); 
+# 3571 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuCtxGetDevice(CUdevice * device); 
+# 3600 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuCtxGetFlags(unsigned * flags); 
+# 3631 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuCtxSynchronize(); 
+# 3723 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuCtxSetLimit(CUlimit limit, size_t value); 
+# 3764 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuCtxGetLimit(size_t * pvalue, CUlimit limit); 
+# 3808 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuCtxGetCacheConfig(CUfunc_cache * pconfig); 
+# 3859 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuCtxSetCacheConfig(CUfunc_cache config); 
+# 3902 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuCtxGetSharedMemConfig(CUsharedconfig * pConfig); 
+# 3955 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuCtxSetSharedMemConfig(CUsharedconfig config); 
+# 3994 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuCtxGetApiVersion(CUcontext ctx, unsigned * version); 
+# 4034 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuCtxGetStreamPriorityRange(int * leastPriority, int * greatestPriority); 
+# 4089 "/usr/local/cuda-10.1/include/cuda.h" 3
+__attribute((deprecated)) CUresult cuCtxAttach(CUcontext * pctx, unsigned flags); 
+# 4125 "/usr/local/cuda-10.1/include/cuda.h" 3
+__attribute((deprecated)) CUresult cuCtxDetach(CUcontext ctx); 
+# 4180 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuModuleLoad(CUmodule * module, const char * fname); 
+# 4217 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuModuleLoadData(CUmodule * module, const void * image); 
+# 4260 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuModuleLoadDataEx(CUmodule * module, const void * image, unsigned numOptions, CUjit_option * options, void ** optionValues); 
+# 4302 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuModuleLoadFatBinary(CUmodule * module, const void * fatCubin); 
+# 4327 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuModuleUnload(CUmodule hmod); 
+# 4357 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuModuleGetFunction(CUfunction * hfunc, CUmodule hmod, const char * name); 
+# 4393 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuModuleGetGlobal_v2(CUdeviceptr * dptr, size_t * bytes, CUmodule hmod, const char * name); 
+# 4428 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuModuleGetTexRef(CUtexref * pTexRef, CUmodule hmod, const char * name); 
+# 4460 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuModuleGetSurfRef(CUsurfref * pSurfRef, CUmodule hmod, const char * name); 
+# 4503 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuLinkCreate_v2(unsigned numOptions, CUjit_option * options, void ** optionValues, CUlinkState * stateOut); 
+# 4540 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuLinkAddData_v2(CUlinkState state, CUjitInputType type, void * data, size_t size, const char * name, unsigned numOptions, CUjit_option * options, void ** optionValues); 
+# 4579 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuLinkAddFile_v2(CUlinkState state, CUjitInputType type, const char * path, unsigned numOptions, CUjit_option * options, void ** optionValues); 
+# 4606 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuLinkComplete(CUlinkState state, void ** cubinOut, size_t * sizeOut); 
+# 4620 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuLinkDestroy(CUlinkState state); 
+# 4669 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuMemGetInfo_v2(size_t * free, size_t * total); 
+# 4703 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuMemAlloc_v2(CUdeviceptr * dptr, size_t bytesize); 
+# 4765 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuMemAllocPitch_v2(CUdeviceptr * dptr, size_t * pPitch, size_t WidthInBytes, size_t Height, unsigned ElementSizeBytes); 
+# 4795 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuMemFree_v2(CUdeviceptr dptr); 
+# 4829 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuMemGetAddressRange_v2(CUdeviceptr * pbase, size_t * psize, CUdeviceptr dptr); 
+# 4876 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuMemAllocHost_v2(void ** pp, size_t bytesize); 
+# 4907 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuMemFreeHost(void * p); 
+# 4989 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuMemHostAlloc(void ** pp, size_t bytesize, unsigned Flags); 
+# 5043 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuMemHostGetDevicePointer_v2(CUdeviceptr * pdptr, void * p, unsigned Flags); 
+# 5071 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuMemHostGetFlags(unsigned * pFlags, void * p); 
+# 5183 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuMemAllocManaged(CUdeviceptr * dptr, size_t bytesize, unsigned flags); 
+# 5216 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuDeviceGetByPCIBusId(CUdevice * dev, const char * pciBusId); 
+# 5248 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuDeviceGetPCIBusId(char * pciBusId, int len, CUdevice dev); 
+# 5293 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuIpcGetEventHandle(CUipcEventHandle * pHandle, CUevent event); 
+# 5333 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuIpcOpenEventHandle(CUevent * phEvent, CUipcEventHandle handle); 
+# 5373 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuIpcGetMemHandle(CUipcMemHandle * pHandle, CUdeviceptr dptr); 
+# 5430 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuIpcOpenMemHandle(CUdeviceptr * pdptr, CUipcMemHandle handle, unsigned Flags); 
+# 5463 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuIpcCloseMemHandle(CUdeviceptr dptr); 
+# 5549 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuMemHostRegister_v2(void * p, size_t bytesize, unsigned Flags); 
+# 5575 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuMemHostUnregister(void * p); 
+# 5614 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuMemcpy(CUdeviceptr dst, CUdeviceptr src, size_t ByteCount); 
+# 5644 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuMemcpyPeer(CUdeviceptr dstDevice, CUcontext dstContext, CUdeviceptr srcDevice, CUcontext srcContext, size_t ByteCount); 
+# 5682 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuMemcpyHtoD_v2(CUdeviceptr dstDevice, const void * srcHost, size_t ByteCount); 
+# 5717 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuMemcpyDtoH_v2(void * dstHost, CUdeviceptr srcDevice, size_t ByteCount); 
+# 5753 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuMemcpyDtoD_v2(CUdeviceptr dstDevice, CUdeviceptr srcDevice, size_t ByteCount); 
+# 5789 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuMemcpyDtoA_v2(CUarray dstArray, size_t dstOffset, CUdeviceptr srcDevice, size_t ByteCount); 
+# 5827 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuMemcpyAtoD_v2(CUdeviceptr dstDevice, CUarray srcArray, size_t srcOffset, size_t ByteCount); 
+# 5863 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuMemcpyHtoA_v2(CUarray dstArray, size_t dstOffset, const void * srcHost, size_t ByteCount); 
+# 5899 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuMemcpyAtoH_v2(void * dstHost, CUarray srcArray, size_t srcOffset, size_t ByteCount); 
+# 5939 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuMemcpyAtoA_v2(CUarray dstArray, size_t dstOffset, CUarray srcArray, size_t srcOffset, size_t ByteCount); 
+# 6103 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuMemcpy2D_v2(const CUDA_MEMCPY2D * pCopy); 
+# 6265 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuMemcpy2DUnaligned_v2(const CUDA_MEMCPY2D * pCopy); 
+# 6434 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuMemcpy3D_v2(const CUDA_MEMCPY3D * pCopy); 
+# 6460 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuMemcpy3DPeer(const CUDA_MEMCPY3D_PEER * pCopy); 
+# 6504 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuMemcpyAsync(CUdeviceptr dst, CUdeviceptr src, size_t ByteCount, CUstream hStream); 
+# 6537 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuMemcpyPeerAsync(CUdeviceptr dstDevice, CUcontext dstContext, CUdeviceptr srcDevice, CUcontext srcContext, size_t ByteCount, CUstream hStream); 
+# 6579 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuMemcpyHtoDAsync_v2(CUdeviceptr dstDevice, const void * srcHost, size_t ByteCount, CUstream hStream); 
+# 6619 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuMemcpyDtoHAsync_v2(void * dstHost, CUdeviceptr srcDevice, size_t ByteCount, CUstream hStream); 
+# 6660 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuMemcpyDtoDAsync_v2(CUdeviceptr dstDevice, CUdeviceptr srcDevice, size_t ByteCount, CUstream hStream); 
+# 6701 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuMemcpyHtoAAsync_v2(CUarray dstArray, size_t dstOffset, const void * srcHost, size_t ByteCount, CUstream hStream); 
+# 6742 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuMemcpyAtoHAsync_v2(void * dstHost, CUarray srcArray, size_t srcOffset, size_t ByteCount, CUstream hStream); 
+# 6911 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuMemcpy2DAsync_v2(const CUDA_MEMCPY2D * pCopy, CUstream hStream); 
+# 7085 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuMemcpy3DAsync_v2(const CUDA_MEMCPY3D * pCopy, CUstream hStream); 
+# 7113 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuMemcpy3DPeerAsync(const CUDA_MEMCPY3D_PEER * pCopy, CUstream hStream); 
+# 7150 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuMemsetD8_v2(CUdeviceptr dstDevice, unsigned char uc, size_t N); 
+# 7185 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuMemsetD16_v2(CUdeviceptr dstDevice, unsigned short us, size_t N); 
+# 7220 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuMemsetD32_v2(CUdeviceptr dstDevice, unsigned ui, size_t N); 
+# 7260 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuMemsetD2D8_v2(CUdeviceptr dstDevice, size_t dstPitch, unsigned char uc, size_t Width, size_t Height); 
+# 7301 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuMemsetD2D16_v2(CUdeviceptr dstDevice, size_t dstPitch, unsigned short us, size_t Width, size_t Height); 
+# 7342 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuMemsetD2D32_v2(CUdeviceptr dstDevice, size_t dstPitch, unsigned ui, size_t Width, size_t Height); 
+# 7379 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuMemsetD8Async(CUdeviceptr dstDevice, unsigned char uc, size_t N, CUstream hStream); 
+# 7416 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuMemsetD16Async(CUdeviceptr dstDevice, unsigned short us, size_t N, CUstream hStream); 
+# 7452 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuMemsetD32Async(CUdeviceptr dstDevice, unsigned ui, size_t N, CUstream hStream); 
+# 7494 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuMemsetD2D8Async(CUdeviceptr dstDevice, size_t dstPitch, unsigned char uc, size_t Width, size_t Height, CUstream hStream); 
+# 7537 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuMemsetD2D16Async(CUdeviceptr dstDevice, size_t dstPitch, unsigned short us, size_t Width, size_t Height, CUstream hStream); 
+# 7580 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuMemsetD2D32Async(CUdeviceptr dstDevice, size_t dstPitch, unsigned ui, size_t Width, size_t Height, CUstream hStream); 
+# 7684 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuArrayCreate_v2(CUarray * pHandle, const CUDA_ARRAY_DESCRIPTOR * pAllocateArray); 
+# 7718 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuArrayGetDescriptor_v2(CUDA_ARRAY_DESCRIPTOR * pArrayDescriptor, CUarray hArray); 
+# 7751 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuArrayDestroy(CUarray hArray); 
+# 7932 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuArray3DCreate_v2(CUarray * pHandle, const CUDA_ARRAY3D_DESCRIPTOR * pAllocateArray); 
+# 7970 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuArray3DGetDescriptor_v2(CUDA_ARRAY3D_DESCRIPTOR * pArrayDescriptor, CUarray hArray); 
+# 8115 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuMipmappedArrayCreate(CUmipmappedArray * pHandle, const CUDA_ARRAY3D_DESCRIPTOR * pMipmappedArrayDesc, unsigned numMipmapLevels); 
+# 8145 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuMipmappedArrayGetLevel(CUarray * pLevelArray, CUmipmappedArray hMipmappedArray, unsigned level); 
+# 8170 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuMipmappedArrayDestroy(CUmipmappedArray hMipmappedArray); 
+# 8422 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuPointerGetAttribute(void * data, CUpointer_attribute attribute, CUdeviceptr ptr); 
+# 8492 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuMemPrefetchAsync(CUdeviceptr devPtr, size_t count, CUdevice dstDevice, CUstream hStream); 
+# 8606 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuMemAdvise(CUdeviceptr devPtr, size_t count, CUmem_advise advice, CUdevice device); 
+# 8664 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuMemRangeGetAttribute(void * data, size_t dataSize, CUmem_range_attribute attribute, CUdeviceptr devPtr, size_t count); 
+# 8704 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuMemRangeGetAttributes(void ** data, size_t * dataSizes, CUmem_range_attribute * attributes, size_t numAttributes, CUdeviceptr devPtr, size_t count); 
+# 8748 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuPointerSetAttribute(const void * value, CUpointer_attribute attribute, CUdeviceptr ptr); 
+# 8793 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuPointerGetAttributes(unsigned numAttributes, CUpointer_attribute * attributes, void ** data, CUdeviceptr ptr); 
+# 8843 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuStreamCreate(CUstream * phStream, unsigned Flags); 
+# 8892 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuStreamCreateWithPriority(CUstream * phStream, unsigned flags, int priority); 
+# 8923 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuStreamGetPriority(CUstream hStream, int * priority); 
+# 8951 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuStreamGetFlags(CUstream hStream, unsigned * flags); 
+# 8997 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuStreamGetCtx(CUstream hStream, CUcontext * pctx); 
+# 9030 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuStreamWaitEvent(CUstream hStream, CUevent hEvent, unsigned Flags); 
+# 9105 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuStreamAddCallback(CUstream hStream, CUstreamCallback callback, void * userData, unsigned flags); 
+# 9145 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuStreamBeginCapture_v2(CUstream hStream, CUstreamCaptureMode mode); 
+# 9201 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuThreadExchangeStreamCaptureMode(CUstreamCaptureMode * mode); 
+# 9234 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuStreamEndCapture(CUstream hStream, CUgraph * phGraph); 
+# 9274 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuStreamIsCapturing(CUstream hStream, CUstreamCaptureStatus * captureStatus); 
+# 9302 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuStreamGetCaptureInfo(CUstream hStream, CUstreamCaptureStatus * captureStatus, cuuint64_t * id); 
+# 9394 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuStreamAttachMemAsync(CUstream hStream, CUdeviceptr dptr, size_t length, unsigned flags); 
+# 9426 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuStreamQuery(CUstream hStream); 
+# 9455 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuStreamSynchronize(CUstream hStream); 
+# 9486 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuStreamDestroy_v2(CUstream hStream); 
+# 9543 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuEventCreate(CUevent * phEvent, unsigned Flags); 
+# 9584 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuEventRecord(CUevent hEvent, CUstream hStream); 
+# 9616 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuEventQuery(CUevent hEvent); 
+# 9647 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuEventSynchronize(CUevent hEvent); 
+# 9677 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuEventDestroy_v2(CUevent hEvent); 
+# 9722 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuEventElapsedTime(float * pMilliseconds, CUevent hStart, CUevent hEnd); 
+# 9862 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuImportExternalMemory(CUexternalMemory * extMem_out, const CUDA_EXTERNAL_MEMORY_HANDLE_DESC * memHandleDesc); 
+# 9915 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuExternalMemoryGetMappedBuffer(CUdeviceptr * devPtr, CUexternalMemory extMem, const CUDA_EXTERNAL_MEMORY_BUFFER_DESC * bufferDesc); 
+# 9964 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuExternalMemoryGetMappedMipmappedArray(CUmipmappedArray * mipmap, CUexternalMemory extMem, const CUDA_EXTERNAL_MEMORY_MIPMAPPED_ARRAY_DESC * mipmapDesc); 
+# 9986 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuDestroyExternalMemory(CUexternalMemory extMem); 
+# 10083 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuImportExternalSemaphore(CUexternalSemaphore * extSem_out, const CUDA_EXTERNAL_SEMAPHORE_HANDLE_DESC * semHandleDesc); 
+# 10121 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuSignalExternalSemaphoresAsync(const CUexternalSemaphore * extSemArray, const CUDA_EXTERNAL_SEMAPHORE_SIGNAL_PARAMS * paramsArray, unsigned numExtSems, CUstream stream); 
+# 10163 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuWaitExternalSemaphoresAsync(const CUexternalSemaphore * extSemArray, const CUDA_EXTERNAL_SEMAPHORE_WAIT_PARAMS * paramsArray, unsigned numExtSems, CUstream stream); 
+# 10184 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuDestroyExternalSemaphore(CUexternalSemaphore extSem); 
+# 10271 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuStreamWaitValue32(CUstream stream, CUdeviceptr addr, cuuint32_t value, unsigned flags); 
+# 10306 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuStreamWaitValue64(CUstream stream, CUdeviceptr addr, cuuint64_t value, unsigned flags); 
+# 10341 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuStreamWriteValue32(CUstream stream, CUdeviceptr addr, cuuint32_t value, unsigned flags); 
+# 10375 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuStreamWriteValue64(CUstream stream, CUdeviceptr addr, cuuint64_t value, unsigned flags); 
+# 10410 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuStreamBatchMemOp(CUstream stream, unsigned count, CUstreamBatchMemOpParams * paramArray, unsigned flags); 
+# 10484 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuFuncGetAttribute(int * pi, CUfunction_attribute attrib, CUfunction hfunc); 
+# 10532 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuFuncSetAttribute(CUfunction hfunc, CUfunction_attribute attrib, int value); 
+# 10577 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuFuncSetCacheConfig(CUfunction hfunc, CUfunc_cache config); 
+# 10630 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuFuncSetSharedMemConfig(CUfunction hfunc, CUsharedconfig config); 
+# 10745 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuLaunchKernel(CUfunction f, unsigned gridDimX, unsigned gridDimY, unsigned gridDimZ, unsigned blockDimX, unsigned blockDimY, unsigned blockDimZ, unsigned sharedMemBytes, CUstream hStream, void ** kernelParams, void ** extra); 
+# 10834 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuLaunchCooperativeKernel(CUfunction f, unsigned gridDimX, unsigned gridDimY, unsigned gridDimZ, unsigned blockDimX, unsigned blockDimY, unsigned blockDimZ, unsigned sharedMemBytes, CUstream hStream, void ** kernelParams); 
+# 10978 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuLaunchCooperativeKernelMultiDevice(CUDA_LAUNCH_PARAMS * launchParamsList, unsigned numDevices, unsigned flags); 
+# 11047 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuLaunchHostFunc(CUstream hStream, CUhostFn fn, void * userData); 
+# 11099 "/usr/local/cuda-10.1/include/cuda.h" 3
+__attribute((deprecated)) CUresult cuFuncSetBlockShape(CUfunction hfunc, int x, int y, int z); 
+# 11133 "/usr/local/cuda-10.1/include/cuda.h" 3
+__attribute((deprecated)) CUresult cuFuncSetSharedSize(CUfunction hfunc, unsigned bytes); 
+# 11165 "/usr/local/cuda-10.1/include/cuda.h" 3
+__attribute((deprecated)) CUresult cuParamSetSize(CUfunction hfunc, unsigned numbytes); 
+# 11198 "/usr/local/cuda-10.1/include/cuda.h" 3
+__attribute((deprecated)) CUresult cuParamSeti(CUfunction hfunc, int offset, unsigned value); 
+# 11231 "/usr/local/cuda-10.1/include/cuda.h" 3
+__attribute((deprecated)) CUresult cuParamSetf(CUfunction hfunc, int offset, float value); 
+# 11266 "/usr/local/cuda-10.1/include/cuda.h" 3
+__attribute((deprecated)) CUresult cuParamSetv(CUfunction hfunc, int offset, void * ptr, unsigned numbytes); 
+# 11303 "/usr/local/cuda-10.1/include/cuda.h" 3
+__attribute((deprecated)) CUresult cuLaunch(CUfunction f); 
+# 11342 "/usr/local/cuda-10.1/include/cuda.h" 3
+__attribute((deprecated)) CUresult cuLaunchGrid(CUfunction f, int grid_width, int grid_height); 
+# 11389 "/usr/local/cuda-10.1/include/cuda.h" 3
+__attribute((deprecated)) CUresult cuLaunchGridAsync(CUfunction f, int grid_width, int grid_height, CUstream hStream); 
+# 11414 "/usr/local/cuda-10.1/include/cuda.h" 3
+__attribute((deprecated)) CUresult cuParamSetTexRef(CUfunction hfunc, int texunit, CUtexref hTexRef); 
+# 11461 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuGraphCreate(CUgraph * phGraph, unsigned flags); 
+# 11560 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuGraphAddKernelNode(CUgraphNode * phGraphNode, CUgraph hGraph, const CUgraphNode * dependencies, size_t numDependencies, const CUDA_KERNEL_NODE_PARAMS * nodeParams); 
+# 11592 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuGraphKernelNodeGetParams(CUgraphNode hNode, CUDA_KERNEL_NODE_PARAMS * nodeParams); 
+# 11615 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuGraphKernelNodeSetParams(CUgraphNode hNode, const CUDA_KERNEL_NODE_PARAMS * nodeParams); 
+# 11663 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuGraphAddMemcpyNode(CUgraphNode * phGraphNode, CUgraph hGraph, const CUgraphNode * dependencies, size_t numDependencies, const CUDA_MEMCPY3D * copyParams, CUcontext ctx); 
+# 11686 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuGraphMemcpyNodeGetParams(CUgraphNode hNode, CUDA_MEMCPY3D * nodeParams); 
+# 11709 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuGraphMemcpyNodeSetParams(CUgraphNode hNode, const CUDA_MEMCPY3D * nodeParams); 
+# 11751 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuGraphAddMemsetNode(CUgraphNode * phGraphNode, CUgraph hGraph, const CUgraphNode * dependencies, size_t numDependencies, const CUDA_MEMSET_NODE_PARAMS * memsetParams, CUcontext ctx); 
+# 11774 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuGraphMemsetNodeGetParams(CUgraphNode hNode, CUDA_MEMSET_NODE_PARAMS * nodeParams); 
+# 11797 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuGraphMemsetNodeSetParams(CUgraphNode hNode, const CUDA_MEMSET_NODE_PARAMS * nodeParams); 
+# 11838 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuGraphAddHostNode(CUgraphNode * phGraphNode, CUgraph hGraph, const CUgraphNode * dependencies, size_t numDependencies, const CUDA_HOST_NODE_PARAMS * nodeParams); 
+# 11861 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuGraphHostNodeGetParams(CUgraphNode hNode, CUDA_HOST_NODE_PARAMS * nodeParams); 
+# 11884 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuGraphHostNodeSetParams(CUgraphNode hNode, const CUDA_HOST_NODE_PARAMS * nodeParams); 
+# 11922 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuGraphAddChildGraphNode(CUgraphNode * phGraphNode, CUgraph hGraph, const CUgraphNode * dependencies, size_t numDependencies, CUgraph childGraph); 
+# 11946 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuGraphChildGraphNodeGetGraph(CUgraphNode hNode, CUgraph * phGraph); 
+# 11984 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuGraphAddEmptyNode(CUgraphNode * phGraphNode, CUgraph hGraph, const CUgraphNode * dependencies, size_t numDependencies); 
+# 12009 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuGraphClone(CUgraph * phGraphClone, CUgraph originalGraph); 
+# 12035 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuGraphNodeFindInClone(CUgraphNode * phNode, CUgraphNode hOriginalNode, CUgraph hClonedGraph); 
+# 12066 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuGraphNodeGetType(CUgraphNode hNode, CUgraphNodeType * type); 
+# 12097 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuGraphGetNodes(CUgraph hGraph, CUgraphNode * nodes, size_t * numNodes); 
+# 12128 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuGraphGetRootNodes(CUgraph hGraph, CUgraphNode * rootNodes, size_t * numRootNodes); 
+# 12162 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuGraphGetEdges(CUgraph hGraph, CUgraphNode * from, CUgraphNode * to, size_t * numEdges); 
+# 12193 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuGraphNodeGetDependencies(CUgraphNode hNode, CUgraphNode * dependencies, size_t * numDependencies); 
+# 12225 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuGraphNodeGetDependentNodes(CUgraphNode hNode, CUgraphNode * dependentNodes, size_t * numDependentNodes); 
+# 12254 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuGraphAddDependencies(CUgraph hGraph, const CUgraphNode * from, const CUgraphNode * to, size_t numDependencies); 
+# 12283 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuGraphRemoveDependencies(CUgraph hGraph, const CUgraphNode * from, const CUgraphNode * to, size_t numDependencies); 
+# 12307 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuGraphDestroyNode(CUgraphNode hNode); 
+# 12343 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuGraphInstantiate(CUgraphExec * phGraphExec, CUgraph hGraph, CUgraphNode * phErrorNode, char * logBuffer, size_t bufferSize); 
+# 12377 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuGraphExecKernelNodeSetParams(CUgraphExec hGraphExec, CUgraphNode hNode, const CUDA_KERNEL_NODE_PARAMS * nodeParams); 
+# 12404 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuGraphLaunch(CUgraphExec hGraphExec, CUstream hStream); 
+# 12428 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuGraphExecDestroy(CUgraphExec hGraphExec); 
+# 12448 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuGraphDestroy(CUgraph hGraph); 
+# 12488 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuOccupancyMaxActiveBlocksPerMultiprocessor(int * numBlocks, CUfunction func, int blockSize, size_t dynamicSMemSize); 
+# 12530 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuOccupancyMaxActiveBlocksPerMultiprocessorWithFlags(int * numBlocks, CUfunction func, int blockSize, size_t dynamicSMemSize, unsigned flags); 
+# 12582 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuOccupancyMaxPotentialBlockSize(int * minGridSize, int * blockSize, CUfunction func, CUoccupancyB2DSize blockSizeToDynamicSMemSize, size_t dynamicSMemSize, int blockSizeLimit); 
+# 12628 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuOccupancyMaxPotentialBlockSizeWithFlags(int * minGridSize, int * blockSize, CUfunction func, CUoccupancyB2DSize blockSizeToDynamicSMemSize, size_t dynamicSMemSize, int blockSizeLimit, unsigned flags); 
+# 12674 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuTexRefSetArray(CUtexref hTexRef, CUarray hArray, unsigned Flags); 
+# 12704 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuTexRefSetMipmappedArray(CUtexref hTexRef, CUmipmappedArray hMipmappedArray, unsigned Flags); 
+# 12751 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuTexRefSetAddress_v2(size_t * ByteOffset, CUtexref hTexRef, CUdeviceptr dptr, size_t bytes); 
+# 12806 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuTexRefSetAddress2D_v3(CUtexref hTexRef, const CUDA_ARRAY_DESCRIPTOR * desc, CUdeviceptr dptr, size_t Pitch); 
+# 12842 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuTexRefSetFormat(CUtexref hTexRef, CUarray_format fmt, int NumPackedComponents); 
+# 12888 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuTexRefSetAddressMode(CUtexref hTexRef, int dim, CUaddress_mode am); 
+# 12924 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuTexRefSetFilterMode(CUtexref hTexRef, CUfilter_mode fm); 
+# 12960 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuTexRefSetMipmapFilterMode(CUtexref hTexRef, CUfilter_mode fm); 
+# 12989 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuTexRefSetMipmapLevelBias(CUtexref hTexRef, float bias); 
+# 13020 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuTexRefSetMipmapLevelClamp(CUtexref hTexRef, float minMipmapLevelClamp, float maxMipmapLevelClamp); 
+# 13050 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuTexRefSetMaxAnisotropy(CUtexref hTexRef, unsigned maxAniso); 
+# 13086 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuTexRefSetBorderColor(CUtexref hTexRef, float * pBorderColor); 
+# 13127 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuTexRefSetFlags(CUtexref hTexRef, unsigned Flags); 
+# 13155 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuTexRefGetAddress_v2(CUdeviceptr * pdptr, CUtexref hTexRef); 
+# 13183 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuTexRefGetArray(CUarray * phArray, CUtexref hTexRef); 
+# 13210 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuTexRefGetMipmappedArray(CUmipmappedArray * phMipmappedArray, CUtexref hTexRef); 
+# 13238 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuTexRefGetAddressMode(CUaddress_mode * pam, CUtexref hTexRef, int dim); 
+# 13264 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuTexRefGetFilterMode(CUfilter_mode * pfm, CUtexref hTexRef); 
+# 13292 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuTexRefGetFormat(CUarray_format * pFormat, int * pNumChannels, CUtexref hTexRef); 
+# 13318 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuTexRefGetMipmapFilterMode(CUfilter_mode * pfm, CUtexref hTexRef); 
+# 13344 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuTexRefGetMipmapLevelBias(float * pbias, CUtexref hTexRef); 
+# 13371 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuTexRefGetMipmapLevelClamp(float * pminMipmapLevelClamp, float * pmaxMipmapLevelClamp, CUtexref hTexRef); 
+# 13397 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuTexRefGetMaxAnisotropy(int * pmaxAniso, CUtexref hTexRef); 
+# 13426 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuTexRefGetBorderColor(float * pBorderColor, CUtexref hTexRef); 
+# 13451 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuTexRefGetFlags(unsigned * pFlags, CUtexref hTexRef); 
+# 13476 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuTexRefCreate(CUtexref * pTexRef); 
+# 13496 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuTexRefDestroy(CUtexref hTexRef); 
+# 13540 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuSurfRefSetArray(CUsurfref hSurfRef, CUarray hArray, unsigned Flags); 
+# 13563 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuSurfRefGetArray(CUarray * phArray, CUsurfref hSurfRef); 
+# 13787 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuTexObjectCreate(CUtexObject * pTexObject, const CUDA_RESOURCE_DESC * pResDesc, const CUDA_TEXTURE_DESC * pTexDesc, const CUDA_RESOURCE_VIEW_DESC * pResViewDesc); 
+# 13807 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuTexObjectDestroy(CUtexObject texObject); 
+# 13828 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuTexObjectGetResourceDesc(CUDA_RESOURCE_DESC * pResDesc, CUtexObject texObject); 
+# 13849 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuTexObjectGetTextureDesc(CUDA_TEXTURE_DESC * pTexDesc, CUtexObject texObject); 
+# 13871 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuTexObjectGetResourceViewDesc(CUDA_RESOURCE_VIEW_DESC * pResViewDesc, CUtexObject texObject); 
+# 13914 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuSurfObjectCreate(CUsurfObject * pSurfObject, const CUDA_RESOURCE_DESC * pResDesc); 
+# 13934 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuSurfObjectDestroy(CUsurfObject surfObject); 
+# 13955 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuSurfObjectGetResourceDesc(CUDA_RESOURCE_DESC * pResDesc, CUsurfObject surfObject); 
+# 14000 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuDeviceCanAccessPeer(int * canAccessPeer, CUdevice dev, CUdevice peerDev); 
+# 14051 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuCtxEnablePeerAccess(CUcontext peerContext, unsigned Flags); 
+# 14078 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuCtxDisablePeerAccess(CUcontext peerContext); 
+# 14122 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuDeviceGetP2PAttribute(int * value, CUdevice_P2PAttribute attrib, CUdevice srcDevice, CUdevice dstDevice); 
+# 14168 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuGraphicsUnregisterResource(CUgraphicsResource resource); 
+# 14208 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuGraphicsSubResourceGetMappedArray(CUarray * pArray, CUgraphicsResource resource, unsigned arrayIndex, unsigned mipLevel); 
+# 14241 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuGraphicsResourceGetMappedMipmappedArray(CUmipmappedArray * pMipmappedArray, CUgraphicsResource resource); 
+# 14278 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuGraphicsResourceGetMappedPointer_v2(CUdeviceptr * pDevPtr, size_t * pSize, CUgraphicsResource resource); 
+# 14320 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuGraphicsResourceSetMapFlags_v2(CUgraphicsResource resource, unsigned flags); 
+# 14360 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuGraphicsMapResources(unsigned count, CUgraphicsResource * resources, CUstream hStream); 
+# 14397 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUresult cuGraphicsUnmapResources(unsigned count, CUgraphicsResource * resources, CUstream hStream); 
+# 14401
+CUresult cuGetExportTable(const void ** ppExportTable, const CUuuid * pExportTableId); 
+# 14746 "/usr/local/cuda-10.1/include/cuda.h" 3
+}
+# 56 "/usr/local/cuda-10.1/include/cuda_profiler_api.h" 3
+extern "C" {
+# 122 "/usr/local/cuda-10.1/include/cuda_profiler_api.h" 3
+extern cudaError_t cudaProfilerInitialize(const char * configFile, const char * outputFile, cudaOutputMode_t outputMode); 
+# 147 "/usr/local/cuda-10.1/include/cuda_profiler_api.h" 3
+extern cudaError_t cudaProfilerStart(); 
+# 169 "/usr/local/cuda-10.1/include/cuda_profiler_api.h" 3
+extern cudaError_t cudaProfilerStop(); 
+# 174
+}
+# 31 "/opt/rocm-3.3.0/hip/include/hip/nvcc_detail/hip_runtime_api.h" 3
+extern "C" {
+# 51 "/opt/rocm-3.3.0/hip/include/hip/nvcc_detail/hip_runtime_api.h" 3
+typedef 
+# 45
+enum hipMemcpyKind { 
+# 46
+hipMemcpyHostToHost, 
+# 47
+hipMemcpyHostToDevice, 
+# 48
+hipMemcpyDeviceToHost, 
+# 49
+hipMemcpyDeviceToDevice, 
+# 50
+hipMemcpyDefault
+# 51
+} hipMemcpyKind; 
+# 69 "/opt/rocm-3.3.0/hip/include/hip/nvcc_detail/hip_runtime_api.h" 3
+typedef cudaTextureAddressMode hipTextureAddressMode; 
+# 76
+typedef cudaTextureFilterMode hipTextureFilterMode; 
+# 81
+typedef cudaTextureReadMode hipTextureReadMode; 
+# 86
+typedef cudaChannelFormatKind hipChannelFormatKind; 
+# 171 "/opt/rocm-3.3.0/hip/include/hip/nvcc_detail/hip_runtime_api.h" 3
+typedef cudaEvent_t hipEvent_t; 
+# 172
+typedef cudaStream_t hipStream_t; 
+# 173
+typedef cudaIpcEventHandle_t hipIpcEventHandle_t; 
+# 174
+typedef cudaIpcMemHandle_t hipIpcMemHandle_t; 
+# 175
+typedef cudaLimit hipLimit_t; 
+# 176
+typedef cudaFuncCache hipFuncCache_t; 
+# 177
+typedef CUcontext hipCtx_t; 
+# 178
+typedef cudaSharedMemConfig hipSharedMemConfig; 
+# 179
+typedef CUfunc_cache hipFuncCache; 
+# 180
+typedef CUjit_option hipJitOption; 
+# 181
+typedef CUdevice hipDevice_t; 
+# 182
+typedef CUmodule hipModule_t; 
+# 183
+typedef CUfunction hipFunction_t; 
+# 184
+typedef CUdeviceptr hipDeviceptr_t; 
+# 185
+typedef cudaArray hipArray; 
+# 186
+typedef cudaArray *hipArray_t; 
+# 187
+typedef cudaArray *hipArray_const_t; 
+# 188
+typedef cudaFuncAttributes hipFuncAttributes; 
+# 198 "/opt/rocm-3.3.0/hip/include/hip/nvcc_detail/hip_runtime_api.h" 3
+typedef cudaTextureObject_t hipTextureObject_t; 
+# 199
+typedef cudaSurfaceObject_t hipSurfaceObject_t; 
+# 207
+typedef cudaExtent hipExtent; 
+# 208
+typedef cudaPitchedPtr hipPitchedPtr; 
+# 216
+typedef cudaChannelFormatDesc hipChannelFormatDesc; 
+# 217
+typedef cudaResourceDesc hipResourceDesc; 
+# 218
+typedef cudaTextureDesc hipTextureDesc; 
+# 219
+typedef cudaResourceViewDesc hipResourceViewDesc; 
+# 238 "/opt/rocm-3.3.0/hip/include/hip/nvcc_detail/hip_runtime_api.h" 3
+static inline hipError_t hipCUDAErrorTohipError(cudaError_t cuError) { 
+# 239
+switch (cuError) { 
+# 240
+case cudaSuccess:  
+# 241
+return hipSuccess; 
+# 242
+case cudaErrorProfilerDisabled:  
+# 243
+return hipErrorProfilerDisabled; 
+# 244
+case cudaErrorProfilerNotInitialized:  
+# 245
+return hipErrorProfilerNotInitialized; 
+# 246
+case cudaErrorProfilerAlreadyStarted:  
+# 247
+return hipErrorProfilerAlreadyStarted; 
+# 248
+case cudaErrorProfilerAlreadyStopped:  
+# 249
+return hipErrorProfilerAlreadyStopped; 
+# 250
+case cudaErrorInsufficientDriver:  
+# 251
+return hipErrorInsufficientDriver; 
+# 252
+case cudaErrorUnsupportedLimit:  
+# 253
+return hipErrorUnsupportedLimit; 
+# 254
+case cudaErrorPeerAccessUnsupported:  
+# 255
+return hipErrorPeerAccessUnsupported; 
+# 256
+case cudaErrorInvalidGraphicsContext:  
+# 257
+return hipErrorInvalidGraphicsContext; 
+# 258
+case cudaErrorSharedObjectSymbolNotFound:  
+# 259
+return hipErrorSharedObjectSymbolNotFound; 
+# 260
+case cudaErrorSharedObjectInitFailed:  
+# 261
+return hipErrorSharedObjectInitFailed; 
+# 262
+case cudaErrorOperatingSystem:  
+# 263
+return hipErrorOperatingSystem; 
+# 264
+case cudaErrorSetOnActiveProcess:  
+# 265
+return hipErrorSetOnActiveProcess; 
+# 266
+case cudaErrorIllegalAddress:  
+# 267
+return hipErrorIllegalAddress; 
+# 268
+case cudaErrorInvalidSymbol:  
+# 269
+return hipErrorInvalidSymbol; 
+# 270
+case cudaErrorMissingConfiguration:  
+# 271
+return hipErrorMissingConfiguration; 
+# 272
+case cudaErrorMemoryAllocation:  
+# 273
+return hipErrorOutOfMemory; 
+# 274
+case cudaErrorInitializationError:  
+# 275
+return hipErrorNotInitialized; 
+# 276
+case cudaErrorLaunchFailure:  
+# 277
+return hipErrorLaunchFailure; 
+# 278
+case cudaErrorCooperativeLaunchTooLarge:  
+# 279
+return hipErrorCooperativeLaunchTooLarge; 
+# 280
+case cudaErrorPriorLaunchFailure:  
+# 281
+return hipErrorPriorLaunchFailure; 
+# 282
+case cudaErrorLaunchOutOfResources:  
+# 283
+return hipErrorLaunchOutOfResources; 
+# 284
+case cudaErrorInvalidDeviceFunction:  
+# 285
+return hipErrorInvalidDeviceFunction; 
+# 286
+case cudaErrorInvalidConfiguration:  
+# 287
+return hipErrorInvalidConfiguration; 
+# 288
+case cudaErrorInvalidDevice:  
+# 289
+return hipErrorInvalidDevice; 
+# 290
+case cudaErrorInvalidValue:  
+# 291
+return hipErrorInvalidValue; 
+# 292
+case cudaErrorInvalidDevicePointer:  
+# 293
+return hipErrorInvalidDevicePointer; 
+# 294
+case cudaErrorInvalidMemcpyDirection:  
+# 295
+return hipErrorInvalidMemcpyDirection; 
+# 296
+case cudaErrorInvalidResourceHandle:  
+# 297
+return hipErrorInvalidHandle; 
+# 298
+case cudaErrorNotReady:  
+# 299
+return hipErrorNotReady; 
+# 300
+case cudaErrorNoDevice:  
+# 301
+return hipErrorNoDevice; 
+# 302
+case cudaErrorPeerAccessAlreadyEnabled:  
+# 303
+return hipErrorPeerAccessAlreadyEnabled; 
+# 304
+case cudaErrorPeerAccessNotEnabled:  
+# 305
+return hipErrorPeerAccessNotEnabled; 
+# 306
+case cudaErrorHostMemoryAlreadyRegistered:  
+# 307
+return hipErrorHostMemoryAlreadyRegistered; 
+# 308
+case cudaErrorHostMemoryNotRegistered:  
+# 309
+return hipErrorHostMemoryNotRegistered; 
+# 310
+case cudaErrorMapBufferObjectFailed:  
+# 311
+return hipErrorMapFailed; 
+# 312
+case cudaErrorAssert:  
+# 313
+return hipErrorAssert; 
+# 314
+case cudaErrorNotSupported:  
+# 315
+return hipErrorNotSupported; 
+# 316
+case cudaErrorCudartUnloading:  
+# 317
+return hipErrorDeinitialized; 
+# 318
+case cudaErrorInvalidKernelImage:  
+# 319
+return hipErrorInvalidImage; 
+# 320
+case cudaErrorUnmapBufferObjectFailed:  
+# 321
+return hipErrorUnmapFailed; 
+# 322
+case cudaErrorNoKernelImageForDevice:  
+# 323
+return hipErrorNoBinaryForGpu; 
+# 324
+case cudaErrorECCUncorrectable:  
+# 325
+return hipErrorECCNotCorrectable; 
+# 326
+case cudaErrorDeviceAlreadyInUse:  
+# 327
+return hipErrorContextAlreadyInUse; 
+# 328
+case cudaErrorInvalidPtx:  
+# 329
+return hipErrorInvalidKernelFile; 
+# 330
+case cudaErrorLaunchTimeout:  
+# 331
+return hipErrorLaunchTimeOut; 
+# 333
+case cudaErrorInvalidSource:  
+# 334
+return hipErrorInvalidSource; 
+# 335
+case cudaErrorFileNotFound:  
+# 336
+return hipErrorFileNotFound; 
+# 337
+case cudaErrorSymbolNotFound:  
+# 338
+return hipErrorNotFound; 
+# 339
+case cudaErrorArrayIsMapped:  
+# 340
+return hipErrorArrayIsMapped; 
+# 341
+case cudaErrorNotMappedAsPointer:  
+# 342
+return hipErrorNotMappedAsPointer; 
+# 343
+case cudaErrorNotMappedAsArray:  
+# 344
+return hipErrorNotMappedAsArray; 
+# 345
+case cudaErrorNotMapped:  
+# 346
+return hipErrorNotMapped; 
+# 347
+case cudaErrorAlreadyAcquired:  
+# 348
+return hipErrorAlreadyAcquired; 
+# 349
+case cudaErrorAlreadyMapped:  
+# 350
+return hipErrorAlreadyMapped; 
+# 356
+case cudaErrorUnknown:  
+# 357
+default:  
+# 358
+return hipErrorUnknown; 
+# 359
+}  
+# 360
+} 
+# 362
+static inline hipError_t hipCUResultTohipError(CUresult cuError) { 
+# 363
+switch (cuError) { 
+# 364
+case CUDA_SUCCESS:  
+# 365
+return hipSuccess; 
+# 366
+case CUDA_ERROR_OUT_OF_MEMORY:  
+# 367
+return hipErrorOutOfMemory; 
+# 368
+case CUDA_ERROR_INVALID_VALUE:  
+# 369
+return hipErrorInvalidValue; 
+# 370
+case CUDA_ERROR_INVALID_DEVICE:  
+# 371
+return hipErrorInvalidDevice; 
+# 372
+case CUDA_ERROR_DEINITIALIZED:  
+# 373
+return hipErrorDeinitialized; 
+# 374
+case CUDA_ERROR_NO_DEVICE:  
+# 375
+return hipErrorNoDevice; 
+# 376
+case CUDA_ERROR_INVALID_CONTEXT:  
+# 377
+return hipErrorInvalidContext; 
+# 378
+case CUDA_ERROR_NOT_INITIALIZED:  
+# 379
+return hipErrorNotInitialized; 
+# 380
+case CUDA_ERROR_INVALID_HANDLE:  
+# 381
+return hipErrorInvalidHandle; 
+# 382
+case CUDA_ERROR_MAP_FAILED:  
+# 383
+return hipErrorMapFailed; 
+# 384
+case CUDA_ERROR_PROFILER_DISABLED:  
+# 385
+return hipErrorProfilerDisabled; 
+# 386
+case CUDA_ERROR_PROFILER_NOT_INITIALIZED:  
+# 387
+return hipErrorProfilerNotInitialized; 
+# 388
+case CUDA_ERROR_PROFILER_ALREADY_STARTED:  
+# 389
+return hipErrorProfilerAlreadyStarted; 
+# 390
+case CUDA_ERROR_PROFILER_ALREADY_STOPPED:  
+# 391
+return hipErrorProfilerAlreadyStopped; 
+# 392
+case CUDA_ERROR_INVALID_IMAGE:  
+# 393
+return hipErrorInvalidImage; 
+# 394
+case CUDA_ERROR_CONTEXT_ALREADY_CURRENT:  
+# 395
+return hipErrorContextAlreadyCurrent; 
+# 396
+case CUDA_ERROR_UNMAP_FAILED:  
+# 397
+return hipErrorUnmapFailed; 
+# 398
+case CUDA_ERROR_ARRAY_IS_MAPPED:  
+# 399
+return hipErrorArrayIsMapped; 
+# 400
+case CUDA_ERROR_ALREADY_MAPPED:  
+# 401
+return hipErrorAlreadyMapped; 
+# 402
+case CUDA_ERROR_NO_BINARY_FOR_GPU:  
+# 403
+return hipErrorNoBinaryForGpu; 
+# 404
+case CUDA_ERROR_ALREADY_ACQUIRED:  
+# 405
+return hipErrorAlreadyAcquired; 
+# 406
+case CUDA_ERROR_NOT_MAPPED:  
+# 407
+return hipErrorNotMapped; 
+# 408
+case CUDA_ERROR_NOT_MAPPED_AS_ARRAY:  
+# 409
+return hipErrorNotMappedAsArray; 
+# 410
+case CUDA_ERROR_NOT_MAPPED_AS_POINTER:  
+# 411
+return hipErrorNotMappedAsPointer; 
+# 412
+case CUDA_ERROR_ECC_UNCORRECTABLE:  
+# 413
+return hipErrorECCNotCorrectable; 
+# 414
+case CUDA_ERROR_UNSUPPORTED_LIMIT:  
+# 415
+return hipErrorUnsupportedLimit; 
+# 416
+case CUDA_ERROR_CONTEXT_ALREADY_IN_USE:  
+# 417
+return hipErrorContextAlreadyInUse; 
+# 418
+case CUDA_ERROR_PEER_ACCESS_UNSUPPORTED:  
+# 419
+return hipErrorPeerAccessUnsupported; 
+# 420
+case CUDA_ERROR_INVALID_PTX:  
+# 421
+return hipErrorInvalidKernelFile; 
+# 422
+case CUDA_ERROR_INVALID_GRAPHICS_CONTEXT:  
+# 423
+return hipErrorInvalidGraphicsContext; 
+# 424
+case CUDA_ERROR_INVALID_SOURCE:  
+# 425
+return hipErrorInvalidSource; 
+# 426
+case CUDA_ERROR_FILE_NOT_FOUND:  
+# 427
+return hipErrorFileNotFound; 
+# 428
+case CUDA_ERROR_SHARED_OBJECT_SYMBOL_NOT_FOUND:  
+# 429
+return hipErrorSharedObjectSymbolNotFound; 
+# 430
+case CUDA_ERROR_SHARED_OBJECT_INIT_FAILED:  
+# 431
+return hipErrorSharedObjectInitFailed; 
+# 432
+case CUDA_ERROR_OPERATING_SYSTEM:  
+# 433
+return hipErrorOperatingSystem; 
+# 434
+case CUDA_ERROR_NOT_FOUND:  
+# 435
+return hipErrorNotFound; 
+# 436
+case CUDA_ERROR_NOT_READY:  
+# 437
+return hipErrorNotReady; 
+# 438
+case CUDA_ERROR_ILLEGAL_ADDRESS:  
+# 439
+return hipErrorIllegalAddress; 
+# 440
+case CUDA_ERROR_LAUNCH_OUT_OF_RESOURCES:  
+# 441
+return hipErrorLaunchOutOfResources; 
+# 442
+case CUDA_ERROR_LAUNCH_TIMEOUT:  
+# 443
+return hipErrorLaunchTimeOut; 
+# 444
+case CUDA_ERROR_PEER_ACCESS_ALREADY_ENABLED:  
+# 445
+return hipErrorPeerAccessAlreadyEnabled; 
+# 446
+case CUDA_ERROR_PEER_ACCESS_NOT_ENABLED:  
+# 447
+return hipErrorPeerAccessNotEnabled; 
+# 448
+case CUDA_ERROR_PRIMARY_CONTEXT_ACTIVE:  
+# 449
+return hipErrorSetOnActiveProcess; 
+# 450
+case CUDA_ERROR_ASSERT:  
+# 451
+return hipErrorAssert; 
+# 452
+case CUDA_ERROR_HOST_MEMORY_ALREADY_REGISTERED:  
+# 453
+return hipErrorHostMemoryAlreadyRegistered; 
+# 454
+case CUDA_ERROR_HOST_MEMORY_NOT_REGISTERED:  
+# 455
+return hipErrorHostMemoryNotRegistered; 
+# 456
+case CUDA_ERROR_LAUNCH_FAILED:  
+# 457
+return hipErrorLaunchFailure; 
+# 458
+case CUDA_ERROR_COOPERATIVE_LAUNCH_TOO_LARGE:  
+# 459
+return hipErrorCooperativeLaunchTooLarge; 
+# 460
+case CUDA_ERROR_NOT_SUPPORTED:  
+# 461
+return hipErrorNotSupported; 
+# 462
+case CUDA_ERROR_UNKNOWN:  
+# 463
+default:  
+# 464
+return hipErrorUnknown; 
+# 465
+}  
+# 466
+} 
+# 468
+static inline cudaError_t hipErrorToCudaError(hipError_t hError) { 
+# 469
+switch (hError) { 
+# 470
+case hipSuccess:  
+# 471
+return cudaSuccess; 
+# 472
+case hipErrorOutOfMemory:  
+# 473
+return cudaErrorMemoryAllocation; 
+# 474
+case hipErrorProfilerDisabled:  
+# 475
+return cudaErrorProfilerDisabled; 
+# 476
+case hipErrorProfilerNotInitialized:  
+# 477
+return cudaErrorProfilerNotInitialized; 
+# 478
+case hipErrorProfilerAlreadyStarted:  
+# 479
+return cudaErrorProfilerAlreadyStarted; 
+# 480
+case hipErrorProfilerAlreadyStopped:  
+# 481
+return cudaErrorProfilerAlreadyStopped; 
+# 482
+case hipErrorInvalidConfiguration:  
+# 483
+return cudaErrorInvalidConfiguration; 
+# 484
+case hipErrorLaunchOutOfResources:  
+# 485
+return cudaErrorLaunchOutOfResources; 
+# 486
+case hipErrorInvalidValue:  
+# 487
+return cudaErrorInvalidValue; 
+# 488
+case hipErrorInvalidHandle:  
+# 489
+return cudaErrorInvalidResourceHandle; 
+# 490
+case hipErrorInvalidDevice:  
+# 491
+return cudaErrorInvalidDevice; 
+# 492
+case hipErrorInvalidMemcpyDirection:  
+# 493
+return cudaErrorInvalidMemcpyDirection; 
+# 494
+case hipErrorInvalidDevicePointer:  
+# 495
+return cudaErrorInvalidDevicePointer; 
+# 496
+case hipErrorNotInitialized:  
+# 497
+return cudaErrorInitializationError; 
+# 498
+case hipErrorNoDevice:  
+# 499
+return cudaErrorNoDevice; 
+# 500
+case hipErrorNotReady:  
+# 501
+return cudaErrorNotReady; 
+# 502
+case hipErrorPeerAccessNotEnabled:  
+# 503
+return cudaErrorPeerAccessNotEnabled; 
+# 504
+case hipErrorPeerAccessAlreadyEnabled:  
+# 505
+return cudaErrorPeerAccessAlreadyEnabled; 
+# 506
+case hipErrorHostMemoryAlreadyRegistered:  
+# 507
+return cudaErrorHostMemoryAlreadyRegistered; 
+# 508
+case hipErrorHostMemoryNotRegistered:  
+# 509
+return cudaErrorHostMemoryNotRegistered; 
+# 510
+case hipErrorDeinitialized:  
+# 511
+return cudaErrorCudartUnloading; 
+# 512
+case hipErrorInvalidSymbol:  
+# 513
+return cudaErrorInvalidSymbol; 
+# 514
+case hipErrorInsufficientDriver:  
+# 515
+return cudaErrorInsufficientDriver; 
+# 516
+case hipErrorMissingConfiguration:  
+# 517
+return cudaErrorMissingConfiguration; 
+# 518
+case hipErrorPriorLaunchFailure:  
+# 519
+return cudaErrorPriorLaunchFailure; 
+# 520
+case hipErrorInvalidDeviceFunction:  
+# 521
+return cudaErrorInvalidDeviceFunction; 
+# 522
+case hipErrorInvalidImage:  
+# 523
+return cudaErrorInvalidKernelImage; 
+# 524
+case hipErrorInvalidContext:  
+# 528
+return cudaErrorUnknown; 
+# 530
+case hipErrorMapFailed:  
+# 531
+return cudaErrorMapBufferObjectFailed; 
+# 532
+case hipErrorUnmapFailed:  
+# 533
+return cudaErrorUnmapBufferObjectFailed; 
+# 534
+case hipErrorArrayIsMapped:  
+# 536
+return cudaErrorArrayIsMapped; 
+# 540
+case hipErrorAlreadyMapped:  
+# 542
+return cudaErrorAlreadyMapped; 
+# 546
+case hipErrorNoBinaryForGpu:  
+# 547
+return cudaErrorNoKernelImageForDevice; 
+# 548
+case hipErrorAlreadyAcquired:  
+# 550
+return cudaErrorAlreadyAcquired; 
+# 554
+case hipErrorNotMapped:  
+# 556
+return cudaErrorNotMapped; 
+# 560
+case hipErrorNotMappedAsArray:  
+# 562
+return cudaErrorNotMappedAsArray; 
+# 566
+case hipErrorNotMappedAsPointer:  
+# 568
+return cudaErrorNotMappedAsPointer; 
+# 572
+case hipErrorECCNotCorrectable:  
+# 573
+return cudaErrorECCUncorrectable; 
+# 574
+case hipErrorUnsupportedLimit:  
+# 575
+return cudaErrorUnsupportedLimit; 
+# 576
+case hipErrorContextAlreadyInUse:  
+# 577
+return cudaErrorDeviceAlreadyInUse; 
+# 578
+case hipErrorPeerAccessUnsupported:  
+# 579
+return cudaErrorPeerAccessUnsupported; 
+# 580
+case hipErrorInvalidKernelFile:  
+# 581
+return cudaErrorInvalidPtx; 
+# 582
+case hipErrorInvalidGraphicsContext:  
+# 583
+return cudaErrorInvalidGraphicsContext; 
+# 584
+case hipErrorInvalidSource:  
+# 586
+return cudaErrorInvalidSource; 
+# 590
+case hipErrorFileNotFound:  
+# 592
+return cudaErrorFileNotFound; 
+# 596
+case hipErrorSharedObjectSymbolNotFound:  
+# 597
+return cudaErrorSharedObjectSymbolNotFound; 
+# 598
+case hipErrorSharedObjectInitFailed:  
+# 599
+return cudaErrorSharedObjectInitFailed; 
+# 600
+case hipErrorOperatingSystem:  
+# 601
+return cudaErrorOperatingSystem; 
+# 602
+case hipErrorNotFound:  
+# 604
+return cudaErrorSymbolNotFound; 
+# 608
+case hipErrorIllegalAddress:  
+# 609
+return cudaErrorIllegalAddress; 
+# 610
+case hipErrorLaunchTimeOut:  
+# 611
+return cudaErrorLaunchTimeout; 
+# 612
+case hipErrorSetOnActiveProcess:  
+# 613
+return cudaErrorSetOnActiveProcess; 
+# 614
+case hipErrorLaunchFailure:  
+# 615
+return cudaErrorLaunchFailure; 
+# 616
+case hipErrorCooperativeLaunchTooLarge:  
+# 617
+return cudaErrorCooperativeLaunchTooLarge; 
+# 618
+case hipErrorNotSupported:  
+# 619
+return cudaErrorNotSupported; 
+# 621
+case hipErrorRuntimeMemory:  
+# 623
+case hipErrorRuntimeOther:  
+# 624
+case hipErrorUnknown:  
+# 625
+case hipErrorTbd:  
+# 626
+default:  
+# 627
+return cudaErrorUnknown; 
+# 628
+}  
+# 629
+} 
+# 631
+static inline cudaMemcpyKind hipMemcpyKindToCudaMemcpyKind(hipMemcpyKind kind) { 
+# 632
+switch (kind) { 
+# 633
+case hipMemcpyHostToHost:  
+# 634
+return cudaMemcpyHostToHost; 
+# 635
+case hipMemcpyHostToDevice:  
+# 636
+return cudaMemcpyHostToDevice; 
+# 637
+case hipMemcpyDeviceToHost:  
+# 638
+return cudaMemcpyDeviceToHost; 
+# 639
+case hipMemcpyDeviceToDevice:  
+# 640
+return cudaMemcpyDeviceToDevice; 
+# 641
+default:  
+# 642
+return cudaMemcpyDefault; 
+# 643
+}  
+# 644
+} 
+# 646
+static inline cudaTextureAddressMode hipTextureAddressModeToCudaTextureAddressMode(hipTextureAddressMode 
+# 647
+kind) { 
+# 648
+switch (kind) { 
+# 649
+case cudaAddressModeWrap:  
+# 650
+return cudaAddressModeWrap; 
+# 651
+case cudaAddressModeClamp:  
+# 652
+return cudaAddressModeClamp; 
+# 653
+case cudaAddressModeMirror:  
+# 654
+return cudaAddressModeMirror; 
+# 655
+case cudaAddressModeBorder:  
+# 656
+return cudaAddressModeBorder; 
+# 657
+default:  
+# 658
+return cudaAddressModeWrap; 
+# 659
+}  
+# 660
+} 
+# 662
+static inline cudaTextureFilterMode hipTextureFilterModeToCudaTextureFilterMode(hipTextureFilterMode 
+# 663
+kind) { 
+# 664
+switch (kind) { 
+# 665
+case cudaFilterModePoint:  
+# 666
+return cudaFilterModePoint; 
+# 667
+case cudaFilterModeLinear:  
+# 668
+return cudaFilterModeLinear; 
+# 669
+default:  
+# 670
+return cudaFilterModePoint; 
+# 671
+}  
+# 672
+} 
+# 674
+static inline cudaTextureReadMode hipTextureReadModeToCudaTextureReadMode(hipTextureReadMode kind) { 
+# 675
+switch (kind) { 
+# 676
+case cudaReadModeElementType:  
+# 677
+return cudaReadModeElementType; 
+# 678
+case cudaReadModeNormalizedFloat:  
+# 679
+return cudaReadModeNormalizedFloat; 
+# 680
+default:  
+# 681
+return cudaReadModeElementType; 
+# 682
+}  
+# 683
+} 
+# 685
+static inline cudaChannelFormatKind hipChannelFormatKindToCudaChannelFormatKind(hipChannelFormatKind 
+# 686
+kind) { 
+# 687
+switch (kind) { 
+# 688
+case cudaChannelFormatKindSigned:  
+# 689
+return cudaChannelFormatKindSigned; 
+# 690
+case cudaChannelFormatKindUnsigned:  
+# 691
+return cudaChannelFormatKindUnsigned; 
+# 692
+case cudaChannelFormatKindFloat:  
+# 693
+return cudaChannelFormatKindFloat; 
+# 694
+case cudaChannelFormatKindNone:  
+# 695
+return cudaChannelFormatKindNone; 
+# 696
+default:  
+# 697
+return cudaChannelFormatKindNone; 
+# 698
+}  
+# 699
+} 
+# 705
+typedef void (*hipStreamCallback_t)(hipStream_t stream, hipError_t status, void * userData); 
+# 706
+static inline hipError_t hipInit(unsigned flags) { 
+# 707
+return hipCUResultTohipError(cuInit(flags)); 
+# 708
+} 
+# 710
+static inline hipError_t hipDeviceReset() { return hipCUDAErrorTohipError(cudaDeviceReset()); } 
+# 712
+static inline hipError_t hipGetLastError() { return hipCUDAErrorTohipError(cudaGetLastError()); } 
+# 714
+static inline hipError_t hipPeekAtLastError() { 
+# 715
+return hipCUDAErrorTohipError(cudaPeekAtLastError()); 
+# 716
+} 
+# 718
+static inline hipError_t hipMalloc(void **ptr, size_t size) { 
+# 719
+return hipCUDAErrorTohipError(cudaMalloc(ptr, size)); 
+# 720
+} 
+# 722
+static inline hipError_t hipMallocPitch(void **ptr, size_t *pitch, size_t width, size_t height) { 
+# 723
+return hipCUDAErrorTohipError(cudaMallocPitch(ptr, pitch, width, height)); 
+# 724
+} 
+# 726
+static inline hipError_t hipMemAllocPitch(hipDeviceptr_t *dptr, size_t *pitch, size_t widthInBytes, size_t height, unsigned elementSizeBytes) { 
+# 727
+return hipCUResultTohipError(cuMemAllocPitch_v2(dptr, pitch, widthInBytes, height, elementSizeBytes)); 
+# 728
+} 
+# 730
+static inline hipError_t hipMalloc3D(hipPitchedPtr *pitchedDevPtr, hipExtent extent) { 
+# 731
+return hipCUDAErrorTohipError(cudaMalloc3D(pitchedDevPtr, extent)); 
+# 732
+} 
+# 734
+static inline hipError_t hipFree(void *ptr) { return hipCUDAErrorTohipError(cudaFree(ptr)); } 
+# 736
+static inline hipError_t hipMallocHost(void ** ptr, size_t size)
+# 737
+ __attribute((deprecated("use hipHostMalloc instead"))); 
+# 738
+static inline hipError_t hipMallocHost(void **ptr, size_t size) { 
+# 739
+return hipCUDAErrorTohipError(cudaMallocHost(ptr, size)); 
+# 740
+} 
+# 742
+static inline hipError_t hipMemAllocHost(void ** ptr, size_t size)
+# 743
+ __attribute((deprecated("use hipHostMalloc instead"))); 
+# 744
+static inline hipError_t hipMemAllocHost(void **ptr, size_t size) { 
+# 745
+return hipCUResultTohipError(cuMemAllocHost_v2(ptr, size)); 
+# 746
+} 
+# 748
+static inline hipError_t hipHostAlloc(void ** ptr, size_t size, unsigned flags)
+# 749
+ __attribute((deprecated("use hipHostMalloc instead"))); 
+# 750
+static inline hipError_t hipHostAlloc(void **ptr, size_t size, unsigned flags) { 
+# 751
+return hipCUDAErrorTohipError(cudaHostAlloc(ptr, size, flags)); 
+# 752
+} 
+# 754
+static inline hipError_t hipHostMalloc(void **ptr, size_t size, unsigned flags) { 
+# 755
+return hipCUDAErrorTohipError(cudaHostAlloc(ptr, size, flags)); 
+# 756
+} 
+# 758
+static inline hipError_t hipMallocManaged(void **ptr, size_t size, unsigned flags) { 
+# 759
+return hipCUDAErrorTohipError(cudaMallocManaged(ptr, size, flags)); 
+# 760
+} 
+# 762
+static inline hipError_t hipMallocArray(hipArray **array, const hipChannelFormatDesc *desc, size_t 
+# 763
+width, size_t height, unsigned 
+# 764
+flags = 0) { 
+# 765
+return hipCUDAErrorTohipError(cudaMallocArray(array, desc, width, height, flags)); 
+# 766
+} 
+# 768
+static inline hipError_t hipMalloc3DArray(hipArray **array, const hipChannelFormatDesc *desc, hipExtent 
+# 769
+extent, unsigned flags) { 
+# 770
+return hipCUDAErrorTohipError(cudaMalloc3DArray(array, desc, extent, flags)); 
+# 771
+} 
+# 773
+static inline hipError_t hipFreeArray(hipArray *array) { 
+# 774
+return hipCUDAErrorTohipError(cudaFreeArray(array)); 
+# 775
+} 
+# 777
+static inline hipError_t hipHostGetDevicePointer(void **devPtr, void *hostPtr, unsigned flags) { 
+# 778
+return hipCUDAErrorTohipError(cudaHostGetDevicePointer(devPtr, hostPtr, flags)); 
+# 779
+} 
+# 781
+static inline hipError_t hipHostGetFlags(unsigned *flagsPtr, void *hostPtr) { 
+# 782
+return hipCUDAErrorTohipError(cudaHostGetFlags(flagsPtr, hostPtr)); 
+# 783
+} 
+# 785
+static inline hipError_t hipHostRegister(void *ptr, size_t size, unsigned flags) { 
+# 786
+return hipCUDAErrorTohipError(cudaHostRegister(ptr, size, flags)); 
+# 787
+} 
+# 789
+static inline hipError_t hipHostUnregister(void *ptr) { 
+# 790
+return hipCUDAErrorTohipError(cudaHostUnregister(ptr)); 
+# 791
+} 
+# 793
+static inline hipError_t hipFreeHost(void * ptr)
+# 794
+ __attribute((deprecated("use hipHostFree instead"))); 
+# 795
+static inline hipError_t hipFreeHost(void *ptr) { 
+# 796
+return hipCUDAErrorTohipError(cudaFreeHost(ptr)); 
+# 797
+} 
+# 799
+static inline hipError_t hipHostFree(void *ptr) { 
+# 800
+return hipCUDAErrorTohipError(cudaFreeHost(ptr)); 
+# 801
+} 
+# 803
+static inline hipError_t hipSetDevice(int device) { 
+# 804
+return hipCUDAErrorTohipError(cudaSetDevice(device)); 
+# 805
+} 
+# 807
+static inline hipError_t hipChooseDevice(int *device, const hipDeviceProp_t *prop) { 
+# 808
+cudaDeviceProp cdprop; 
+# 809
+memset(&cdprop, 0, sizeof(cudaDeviceProp)); 
+# 810
+(cdprop.major) = (prop->major); 
+# 811
+(cdprop.minor) = (prop->minor); 
+# 812
+(cdprop.totalGlobalMem) = (prop->totalGlobalMem); 
+# 813
+(cdprop.sharedMemPerBlock) = (prop->sharedMemPerBlock); 
+# 814
+(cdprop.regsPerBlock) = (prop->regsPerBlock); 
+# 815
+(cdprop.warpSize) = (prop->warpSize); 
+# 816
+(cdprop.maxThreadsPerBlock) = (prop->maxThreadsPerBlock); 
+# 817
+(cdprop.clockRate) = (prop->clockRate); 
+# 818
+(cdprop.totalConstMem) = (prop->totalConstMem); 
+# 819
+(cdprop.multiProcessorCount) = (prop->multiProcessorCount); 
+# 820
+(cdprop.l2CacheSize) = (prop->l2CacheSize); 
+# 821
+(cdprop.maxThreadsPerMultiProcessor) = (prop->maxThreadsPerMultiProcessor); 
+# 822
+(cdprop.computeMode) = (prop->computeMode); 
+# 823
+(cdprop.canMapHostMemory) = (prop->canMapHostMemory); 
+# 824
+(cdprop.memoryClockRate) = (prop->memoryClockRate); 
+# 825
+(cdprop.memoryBusWidth) = (prop->memoryBusWidth); 
+# 826
+return hipCUDAErrorTohipError(cudaChooseDevice(device, &cdprop)); 
+# 827
+} 
+# 829
+static inline hipError_t hipMemcpyHtoD(hipDeviceptr_t dst, void *src, size_t size) { 
+# 830
+return hipCUResultTohipError(cuMemcpyHtoD_v2(dst, src, size)); 
+# 831
+} 
+# 833
+static inline hipError_t hipMemcpyDtoH(void *dst, hipDeviceptr_t src, size_t size) { 
+# 834
+return hipCUResultTohipError(cuMemcpyDtoH_v2(dst, src, size)); 
+# 835
+} 
+# 837
+static inline hipError_t hipMemcpyDtoD(hipDeviceptr_t dst, hipDeviceptr_t src, size_t size) { 
+# 838
+return hipCUResultTohipError(cuMemcpyDtoD_v2(dst, src, size)); 
+# 839
+} 
+# 841
+static inline hipError_t hipMemcpyHtoDAsync(hipDeviceptr_t dst, void *src, size_t size, hipStream_t 
+# 842
+stream) { 
+# 843
+return hipCUResultTohipError(cuMemcpyHtoDAsync_v2(dst, src, size, stream)); 
+# 844
+} 
+# 846
+static inline hipError_t hipMemcpyDtoHAsync(void *dst, hipDeviceptr_t src, size_t size, hipStream_t 
+# 847
+stream) { 
+# 848
+return hipCUResultTohipError(cuMemcpyDtoHAsync_v2(dst, src, size, stream)); 
+# 849
+} 
+# 851
+static inline hipError_t hipMemcpyDtoDAsync(hipDeviceptr_t dst, hipDeviceptr_t src, size_t size, hipStream_t 
+# 852
+stream) { 
+# 853
+return hipCUResultTohipError(cuMemcpyDtoDAsync_v2(dst, src, size, stream)); 
+# 854
+} 
+# 856
+static inline hipError_t hipMemcpy(void *dst, const void *src, size_t sizeBytes, hipMemcpyKind 
+# 857
+copyKind) { 
+# 858
+return hipCUDAErrorTohipError(cudaMemcpy(dst, src, sizeBytes, hipMemcpyKindToCudaMemcpyKind(copyKind))); 
+# 860
+} 
+# 863
+inline hipError_t hipMemcpyWithStream(void *dst, const void *src, size_t 
+# 864
+sizeBytes, hipMemcpyKind copyKind, hipStream_t 
+# 865
+stream) { 
+# 866
+cudaError_t error = cudaMemcpyAsync(dst, src, sizeBytes, hipMemcpyKindToCudaMemcpyKind(copyKind), stream); 
+# 870
+if (error != (cudaSuccess)) { return hipCUDAErrorTohipError(error); }  
+# 872
+return hipCUDAErrorTohipError(cudaStreamSynchronize(stream)); 
+# 873
+} 
+# 875
+static inline hipError_t hipMemcpyAsync(void *dst, const void *src, size_t sizeBytes, hipMemcpyKind 
+# 876
+copyKind, hipStream_t stream = 0) { 
+# 877
+return hipCUDAErrorTohipError(cudaMemcpyAsync(dst, src, sizeBytes, hipMemcpyKindToCudaMemcpyKind(copyKind), stream)); 
+# 879
+} 
+# 881
+static inline hipError_t hipMemcpyToSymbol(const void *symbol, const void *src, size_t sizeBytes, size_t 
+# 882
+offset = 0, hipMemcpyKind 
+# 883
+copyType = hipMemcpyHostToDevice) { 
+# 884
+return hipCUDAErrorTohipError(cudaMemcpyToSymbol(symbol, src, sizeBytes, offset, hipMemcpyKindToCudaMemcpyKind(copyType))); 
+# 886
+} 
+# 888
+static inline hipError_t hipMemcpyToSymbolAsync(const void *symbol, const void *src, size_t 
+# 889
+sizeBytes, size_t offset, hipMemcpyKind 
+# 890
+copyType, hipStream_t 
+# 891
+stream = 0) { 
+# 892
+return hipCUDAErrorTohipError(cudaMemcpyToSymbolAsync(symbol, src, sizeBytes, offset, hipMemcpyKindToCudaMemcpyKind(copyType), stream)); 
+# 894
+} 
+# 896
+static inline hipError_t hipMemcpyFromSymbol(void *dst, const void *symbolName, size_t sizeBytes, size_t 
+# 897
+offset = 0, hipMemcpyKind 
+# 898
+kind = hipMemcpyDeviceToHost) { 
+# 899
+return hipCUDAErrorTohipError(cudaMemcpyFromSymbol(dst, symbolName, sizeBytes, offset, hipMemcpyKindToCudaMemcpyKind(kind))); 
+# 901
+} 
+# 903
+static inline hipError_t hipMemcpyFromSymbolAsync(void *dst, const void *symbolName, size_t 
+# 904
+sizeBytes, size_t offset, hipMemcpyKind 
+# 905
+kind, hipStream_t 
+# 906
+stream = 0) { 
+# 907
+return hipCUDAErrorTohipError(cudaMemcpyFromSymbolAsync(dst, symbolName, sizeBytes, offset, hipMemcpyKindToCudaMemcpyKind(kind), stream)); 
+# 909
+} 
+# 911
+static inline hipError_t hipGetSymbolAddress(void **devPtr, const void *symbolName) { 
+# 912
+return hipCUDAErrorTohipError(cudaGetSymbolAddress(devPtr, symbolName)); 
+# 913
+} 
+# 915
+static inline hipError_t hipGetSymbolSize(size_t *size, const void *symbolName) { 
+# 916
+return hipCUDAErrorTohipError(cudaGetSymbolSize(size, symbolName)); 
+# 917
+} 
+# 919
+static inline hipError_t hipMemcpy2D(void *dst, size_t dpitch, const void *src, size_t spitch, size_t 
+# 920
+width, size_t height, hipMemcpyKind kind) { 
+# 921
+return hipCUDAErrorTohipError(cudaMemcpy2D(dst, dpitch, src, spitch, width, height, hipMemcpyKindToCudaMemcpyKind(kind))); 
+# 923
+} 
+# 925
+static inline hipError_t hipMemcpyParam2D(const CUDA_MEMCPY2D *pCopy) { 
+# 926
+return hipCUResultTohipError(cuMemcpy2D_v2(pCopy)); 
+# 927
+} 
+# 929
+static inline hipError_t hipMemcpyParam2DAsync(const CUDA_MEMCPY2D *pCopy, hipStream_t stream = 0) { 
+# 930
+return hipCUResultTohipError(cuMemcpy2DAsync_v2(pCopy, stream)); 
+# 931
+} 
+# 933
+static inline hipError_t hipMemcpy3D(const cudaMemcpy3DParms *p) 
+# 934
+{ 
+# 935
+return hipCUDAErrorTohipError(cudaMemcpy3D(p)); 
+# 936
+} 
+# 938
+static inline hipError_t hipMemcpy3DAsync(const cudaMemcpy3DParms *p, hipStream_t stream) 
+# 939
+{ 
+# 940
+return hipCUDAErrorTohipError(cudaMemcpy3DAsync(p, stream)); 
+# 941
+} 
+# 943
+static inline hipError_t hipMemcpy2DAsync(void *dst, size_t dpitch, const void *src, size_t spitch, size_t 
+# 944
+width, size_t height, hipMemcpyKind kind, hipStream_t 
+# 945
+stream) { 
+# 946
+return hipCUDAErrorTohipError(cudaMemcpy2DAsync(dst, dpitch, src, spitch, width, height, hipMemcpyKindToCudaMemcpyKind(kind), stream)); 
+# 948
+} 
+# 950
+static inline hipError_t hipMemcpy2DToArray(hipArray *dst, size_t wOffset, size_t hOffset, const void *
+# 951
+src, size_t spitch, size_t width, size_t 
+# 952
+height, hipMemcpyKind kind) { 
+# 953
+return hipCUDAErrorTohipError(cudaMemcpy2DToArray(dst, wOffset, hOffset, src, spitch, width, height, hipMemcpyKindToCudaMemcpyKind(kind))); 
+# 955
+} 
+# 957
+static inline hipError_t hipMemcpyToArray(hipArray *dst, size_t wOffset, size_t hOffset, const void *
+# 958
+src, size_t count, hipMemcpyKind kind) { 
+# 959
+return hipCUDAErrorTohipError(cudaMemcpyToArray(dst, wOffset, hOffset, src, count, hipMemcpyKindToCudaMemcpyKind(kind))); 
+# 961
+} 
+# 963
+static inline hipError_t hipMemcpyFromArray(void *dst, hipArray_const_t srcArray, size_t wOffset, size_t 
+# 964
+hOffset, size_t count, hipMemcpyKind kind) { 
+# 965
+return hipCUDAErrorTohipError(cudaMemcpyFromArray(dst, srcArray, wOffset, hOffset, count, hipMemcpyKindToCudaMemcpyKind(kind))); 
+# 967
+} 
+# 969
+static inline hipError_t hipMemcpyAtoH(void *dst, hipArray *srcArray, size_t srcOffset, size_t 
+# 970
+count) { 
+# 971
+return hipCUResultTohipError(cuMemcpyAtoH_v2(dst, (CUarray)srcArray, srcOffset, count)); 
+# 972
+} 
+# 974
+static inline hipError_t hipMemcpyHtoA(hipArray *dstArray, size_t dstOffset, const void *srcHost, size_t 
+# 975
+count) { 
+# 976
+return hipCUResultTohipError(cuMemcpyHtoA_v2((CUarray)dstArray, dstOffset, srcHost, count)); 
+# 977
+} 
+# 979
+static inline hipError_t hipDeviceSynchronize() { 
+# 980
+return hipCUDAErrorTohipError(cudaDeviceSynchronize()); 
+# 981
+} 
+# 983
+static inline hipError_t hipDeviceGetCacheConfig(hipFuncCache_t *pCacheConfig) { 
+# 984
+return hipCUDAErrorTohipError(cudaDeviceGetCacheConfig(pCacheConfig)); 
+# 985
+} 
+# 987
+static inline hipError_t hipDeviceSetCacheConfig(hipFuncCache_t cacheConfig) { 
+# 988
+return hipCUDAErrorTohipError(cudaDeviceSetCacheConfig(cacheConfig)); 
+# 989
+} 
+# 991
+static inline const char *hipGetErrorString(hipError_t error) { 
+# 992
+return cudaGetErrorString(hipErrorToCudaError(error)); 
+# 993
+} 
+# 995
+static inline const char *hipGetErrorName(hipError_t error) { 
+# 996
+return cudaGetErrorName(hipErrorToCudaError(error)); 
+# 997
+} 
+# 999
+static inline hipError_t hipGetDeviceCount(int *count) { 
+# 1000
+return hipCUDAErrorTohipError(cudaGetDeviceCount(count)); 
+# 1001
+} 
+# 1003
+static inline hipError_t hipGetDevice(int *device) { 
+# 1004
+return hipCUDAErrorTohipError(cudaGetDevice(device)); 
+# 1005
+} 
+# 1007
+static inline hipError_t hipIpcCloseMemHandle(void *devPtr) { 
+# 1008
+return hipCUDAErrorTohipError(cudaIpcCloseMemHandle(devPtr)); 
+# 1009
+} 
+# 1011
+static inline hipError_t hipIpcGetEventHandle(hipIpcEventHandle_t *handle, hipEvent_t event) { 
+# 1012
+return hipCUDAErrorTohipError(cudaIpcGetEventHandle(handle, event)); 
+# 1013
+} 
+# 1015
+static inline hipError_t hipIpcGetMemHandle(hipIpcMemHandle_t *handle, void *devPtr) { 
+# 1016
+return hipCUDAErrorTohipError(cudaIpcGetMemHandle(handle, devPtr)); 
+# 1017
+} 
+# 1019
+static inline hipError_t hipIpcOpenEventHandle(hipEvent_t *event, hipIpcEventHandle_t handle) { 
+# 1020
+return hipCUDAErrorTohipError(cudaIpcOpenEventHandle(event, handle)); 
+# 1021
+} 
+# 1023
+static inline hipError_t hipIpcOpenMemHandle(void **devPtr, hipIpcMemHandle_t handle, unsigned 
+# 1024
+flags) { 
+# 1025
+return hipCUDAErrorTohipError(cudaIpcOpenMemHandle(devPtr, handle, flags)); 
+# 1026
+} 
+# 1028
+static inline hipError_t hipMemset(void *devPtr, int value, size_t count) { 
+# 1029
+return hipCUDAErrorTohipError(cudaMemset(devPtr, value, count)); 
+# 1030
+} 
+# 1032
+static inline hipError_t hipMemsetD32(hipDeviceptr_t devPtr, int value, size_t count) { 
+# 1033
+return hipCUResultTohipError(cuMemsetD32_v2(devPtr, value, count)); 
+# 1034
+} 
+# 1036
+static inline hipError_t hipMemsetAsync(void *devPtr, int value, size_t count, hipStream_t 
+# 1037
+stream = 0) { 
+# 1038
+return hipCUDAErrorTohipError(cudaMemsetAsync(devPtr, value, count, stream)); 
+# 1039
+} 
+# 1041
+static inline hipError_t hipMemsetD32Async(hipDeviceptr_t devPtr, int value, size_t count, hipStream_t 
+# 1042
+stream = 0) { 
+# 1043
+return hipCUResultTohipError(cuMemsetD32Async(devPtr, value, count, stream)); 
+# 1044
+} 
+# 1046
+static inline hipError_t hipMemsetD8(hipDeviceptr_t dest, unsigned char value, size_t sizeBytes) { 
+# 1047
+return hipCUResultTohipError(cuMemsetD8_v2(dest, value, sizeBytes)); 
+# 1048
+} 
+# 1050
+static inline hipError_t hipMemsetD8Async(hipDeviceptr_t dest, unsigned char value, size_t sizeBytes, hipStream_t 
+# 1051
+stream = 0) { 
+# 1052
+return hipCUResultTohipError(cuMemsetD8Async(dest, value, sizeBytes, stream)); 
+# 1053
+} 
+# 1055
+static inline hipError_t hipMemsetD16(hipDeviceptr_t dest, unsigned short value, size_t sizeBytes) { 
+# 1056
+return hipCUResultTohipError(cuMemsetD16_v2(dest, value, sizeBytes)); 
+# 1057
+} 
+# 1059
+static inline hipError_t hipMemsetD16Async(hipDeviceptr_t dest, unsigned short value, size_t sizeBytes, hipStream_t 
+# 1060
+stream = 0) { 
+# 1061
+return hipCUResultTohipError(cuMemsetD16Async(dest, value, sizeBytes, stream)); 
+# 1062
+} 
+# 1064
+static inline hipError_t hipMemset2D(void *dst, size_t pitch, int value, size_t width, size_t height) { 
+# 1065
+return hipCUDAErrorTohipError(cudaMemset2D(dst, pitch, value, width, height)); 
+# 1066
+} 
+# 1068
+static inline hipError_t hipMemset2DAsync(void *dst, size_t pitch, int value, size_t width, size_t height, hipStream_t stream = 0) { 
+# 1069
+return hipCUDAErrorTohipError(cudaMemset2DAsync(dst, pitch, value, width, height, stream)); 
+# 1070
+} 
+# 1072
+static inline hipError_t hipMemset3D(hipPitchedPtr pitchedDevPtr, int value, hipExtent extent) { 
+# 1073
+return hipCUDAErrorTohipError(cudaMemset3D(pitchedDevPtr, value, extent)); 
+# 1074
+} 
+# 1076
+static inline hipError_t hipMemset3DAsync(hipPitchedPtr pitchedDevPtr, int value, hipExtent extent, hipStream_t stream = 0) { 
+# 1077
+return hipCUDAErrorTohipError(cudaMemset3DAsync(pitchedDevPtr, value, extent, stream)); 
+# 1078
+} 
+# 1080
+static inline hipError_t hipGetDeviceProperties(hipDeviceProp_t *p_prop, int device) { 
+# 1081
+cudaDeviceProp cdprop; 
+# 1082
+cudaError_t cerror; 
+# 1083
+cerror = cudaGetDeviceProperties(&cdprop, device); 
+# 1085
+strncpy(p_prop->name, cdprop.name, 256); 
+# 1086
+(p_prop->totalGlobalMem) = (cdprop.totalGlobalMem); 
+# 1087
+(p_prop->sharedMemPerBlock) = (cdprop.sharedMemPerBlock); 
+# 1088
+(p_prop->regsPerBlock) = (cdprop.regsPerBlock); 
+# 1089
+(p_prop->warpSize) = (cdprop.warpSize); 
+# 1090
+(p_prop->maxThreadsPerBlock) = (cdprop.maxThreadsPerBlock); 
+# 1091
+for (int i = 0; i < 3; i++) { 
+# 1092
+((p_prop->maxThreadsDim)[i]) = ((cdprop.maxThreadsDim)[i]); 
+# 1093
+((p_prop->maxGridSize)[i]) = ((cdprop.maxGridSize)[i]); 
+# 1094
+}  
+# 1095
+(p_prop->clockRate) = (cdprop.clockRate); 
+# 1096
+(p_prop->memoryClockRate) = (cdprop.memoryClockRate); 
+# 1097
+(p_prop->memoryBusWidth) = (cdprop.memoryBusWidth); 
+# 1098
+(p_prop->totalConstMem) = (cdprop.totalConstMem); 
+# 1099
+(p_prop->major) = (cdprop.major); 
+# 1100
+(p_prop->minor) = (cdprop.minor); 
+# 1101
+(p_prop->multiProcessorCount) = (cdprop.multiProcessorCount); 
+# 1102
+(p_prop->l2CacheSize) = (cdprop.l2CacheSize); 
+# 1103
+(p_prop->maxThreadsPerMultiProcessor) = (cdprop.maxThreadsPerMultiProcessor); 
+# 1104
+(p_prop->computeMode) = (cdprop.computeMode); 
+# 1105
+(p_prop->clockInstructionRate) = (cdprop.clockRate); 
+# 1107
+int ccVers = ((p_prop->major) * 100) + ((p_prop->minor) * 10); 
+# 1108
+((p_prop->arch).hasGlobalInt32Atomics) = (ccVers >= 110); 
+# 1109
+((p_prop->arch).hasGlobalFloatAtomicExch) = (ccVers >= 110); 
+# 1110
+((p_prop->arch).hasSharedInt32Atomics) = (ccVers >= 120); 
+# 1111
+((p_prop->arch).hasSharedFloatAtomicExch) = (ccVers >= 120); 
+# 1112
+((p_prop->arch).hasFloatAtomicAdd) = (ccVers >= 200); 
+# 1113
+((p_prop->arch).hasGlobalInt64Atomics) = (ccVers >= 120); 
+# 1114
+((p_prop->arch).hasSharedInt64Atomics) = (ccVers >= 110); 
+# 1115
+((p_prop->arch).hasDoubles) = (ccVers >= 130); 
+# 1116
+((p_prop->arch).hasWarpVote) = (ccVers >= 120); 
+# 1117
+((p_prop->arch).hasWarpBallot) = (ccVers >= 200); 
+# 1118
+((p_prop->arch).hasWarpShuffle) = (ccVers >= 300); 
+# 1119
+((p_prop->arch).hasFunnelShift) = (ccVers >= 350); 
+# 1120
+((p_prop->arch).hasThreadFenceSystem) = (ccVers >= 200); 
+# 1121
+((p_prop->arch).hasSyncThreadsExt) = (ccVers >= 200); 
+# 1122
+((p_prop->arch).hasSurfaceFuncs) = (ccVers >= 200); 
+# 1123
+((p_prop->arch).has3dGrid) = (ccVers >= 200); 
+# 1124
+((p_prop->arch).hasDynamicParallelism) = (ccVers >= 350); 
+# 1126
+(p_prop->concurrentKernels) = (cdprop.concurrentKernels); 
+# 1127
+(p_prop->pciDomainID) = (cdprop.pciDomainID); 
+# 1128
+(p_prop->pciBusID) = (cdprop.pciBusID); 
+# 1129
+(p_prop->pciDeviceID) = (cdprop.pciDeviceID); 
+# 1130
+(p_prop->maxSharedMemoryPerMultiProcessor) = (cdprop.sharedMemPerMultiprocessor); 
+# 1131
+(p_prop->isMultiGpuBoard) = (cdprop.isMultiGpuBoard); 
+# 1132
+(p_prop->canMapHostMemory) = (cdprop.canMapHostMemory); 
+# 1133
+(p_prop->gcnArch) = 0; 
+# 1134
+(p_prop->integrated) = (cdprop.integrated); 
+# 1135
+(p_prop->cooperativeLaunch) = (cdprop.cooperativeLaunch); 
+# 1136
+(p_prop->cooperativeMultiDeviceLaunch) = (cdprop.cooperativeMultiDeviceLaunch); 
+# 1138
+(p_prop->maxTexture1D) = (cdprop.maxTexture1D); 
+# 1139
+((p_prop->maxTexture2D)[0]) = ((cdprop.maxTexture2D)[0]); 
+# 1140
+((p_prop->maxTexture2D)[1]) = ((cdprop.maxTexture2D)[1]); 
+# 1141
+((p_prop->maxTexture3D)[0]) = ((cdprop.maxTexture3D)[0]); 
+# 1142
+((p_prop->maxTexture3D)[1]) = ((cdprop.maxTexture3D)[1]); 
+# 1143
+((p_prop->maxTexture3D)[2]) = ((cdprop.maxTexture3D)[2]); 
+# 1145
+(p_prop->memPitch) = (cdprop.memPitch); 
+# 1146
+(p_prop->textureAlignment) = (cdprop.textureAlignment); 
+# 1147
+(p_prop->texturePitchAlignment) = (cdprop.texturePitchAlignment); 
+# 1148
+(p_prop->kernelExecTimeoutEnabled) = (cdprop.kernelExecTimeoutEnabled); 
+# 1149
+(p_prop->ECCEnabled) = (cdprop.ECCEnabled); 
+# 1150
+(p_prop->tccDriver) = (cdprop.tccDriver); 
+# 1152
+return hipCUDAErrorTohipError(cerror); 
+# 1153
+} 
+# 1155
+static inline hipError_t hipDeviceGetAttribute(int *pi, hipDeviceAttribute_t attr, int device) { 
+# 1156
+cudaDeviceAttr cdattr; 
+# 1157
+cudaError_t cerror; 
+# 1159
+switch (attr) { 
+# 1160
+case hipDeviceAttributeMaxThreadsPerBlock:  
+# 1161
+cdattr = cudaDevAttrMaxThreadsPerBlock; 
+# 1162
+break; 
+# 1163
+case hipDeviceAttributeMaxBlockDimX:  
+# 1164
+cdattr = cudaDevAttrMaxBlockDimX; 
+# 1165
+break; 
+# 1166
+case hipDeviceAttributeMaxBlockDimY:  
+# 1167
+cdattr = cudaDevAttrMaxBlockDimY; 
+# 1168
+break; 
+# 1169
+case hipDeviceAttributeMaxBlockDimZ:  
+# 1170
+cdattr = cudaDevAttrMaxBlockDimZ; 
+# 1171
+break; 
+# 1172
+case hipDeviceAttributeMaxGridDimX:  
+# 1173
+cdattr = cudaDevAttrMaxGridDimX; 
+# 1174
+break; 
+# 1175
+case hipDeviceAttributeMaxGridDimY:  
+# 1176
+cdattr = cudaDevAttrMaxGridDimY; 
+# 1177
+break; 
+# 1178
+case hipDeviceAttributeMaxGridDimZ:  
+# 1179
+cdattr = cudaDevAttrMaxGridDimZ; 
+# 1180
+break; 
+# 1181
+case hipDeviceAttributeMaxSharedMemoryPerBlock:  
+# 1182
+cdattr = cudaDevAttrMaxSharedMemoryPerBlock; 
+# 1183
+break; 
+# 1184
+case hipDeviceAttributeTotalConstantMemory:  
+# 1185
+cdattr = cudaDevAttrTotalConstantMemory; 
+# 1186
+break; 
+# 1187
+case hipDeviceAttributeWarpSize:  
+# 1188
+cdattr = cudaDevAttrWarpSize; 
+# 1189
+break; 
+# 1190
+case hipDeviceAttributeMaxRegistersPerBlock:  
+# 1191
+cdattr = cudaDevAttrMaxRegistersPerBlock; 
+# 1192
+break; 
+# 1193
+case hipDeviceAttributeClockRate:  
+# 1194
+cdattr = cudaDevAttrClockRate; 
+# 1195
+break; 
+# 1196
+case hipDeviceAttributeMemoryClockRate:  
+# 1197
+cdattr = cudaDevAttrMemoryClockRate; 
+# 1198
+break; 
+# 1199
+case hipDeviceAttributeMemoryBusWidth:  
+# 1200
+cdattr = cudaDevAttrGlobalMemoryBusWidth; 
+# 1201
+break; 
+# 1202
+case hipDeviceAttributeMultiprocessorCount:  
+# 1203
+cdattr = cudaDevAttrMultiProcessorCount; 
+# 1204
+break; 
+# 1205
+case hipDeviceAttributeComputeMode:  
+# 1206
+cdattr = cudaDevAttrComputeMode; 
+# 1207
+break; 
+# 1208
+case hipDeviceAttributeL2CacheSize:  
+# 1209
+cdattr = cudaDevAttrL2CacheSize; 
+# 1210
+break; 
+# 1211
+case hipDeviceAttributeMaxThreadsPerMultiProcessor:  
+# 1212
+cdattr = cudaDevAttrMaxThreadsPerMultiProcessor; 
+# 1213
+break; 
+# 1214
+case hipDeviceAttributeComputeCapabilityMajor:  
+# 1215
+cdattr = cudaDevAttrComputeCapabilityMajor; 
+# 1216
+break; 
+# 1217
+case hipDeviceAttributeComputeCapabilityMinor:  
+# 1218
+cdattr = cudaDevAttrComputeCapabilityMinor; 
+# 1219
+break; 
+# 1220
+case hipDeviceAttributeConcurrentKernels:  
+# 1221
+cdattr = cudaDevAttrConcurrentKernels; 
+# 1222
+break; 
+# 1223
+case hipDeviceAttributePciBusId:  
+# 1224
+cdattr = cudaDevAttrPciBusId; 
+# 1225
+break; 
+# 1226
+case hipDeviceAttributePciDeviceId:  
+# 1227
+cdattr = cudaDevAttrPciDeviceId; 
+# 1228
+break; 
+# 1229
+case hipDeviceAttributeMaxSharedMemoryPerMultiprocessor:  
+# 1230
+cdattr = cudaDevAttrMaxSharedMemoryPerMultiprocessor; 
+# 1231
+break; 
+# 1232
+case hipDeviceAttributeIsMultiGpuBoard:  
+# 1233
+cdattr = cudaDevAttrIsMultiGpuBoard; 
+# 1234
+break; 
+# 1235
+case hipDeviceAttributeIntegrated:  
+# 1236
+cdattr = cudaDevAttrIntegrated; 
+# 1237
+break; 
+# 1238
+case hipDeviceAttributeMaxTexture1DWidth:  
+# 1239
+cdattr = cudaDevAttrMaxTexture1DWidth; 
+# 1240
+break; 
+# 1241
+case hipDeviceAttributeMaxTexture2DWidth:  
+# 1242
+cdattr = cudaDevAttrMaxTexture2DWidth; 
+# 1243
+break; 
+# 1244
+case hipDeviceAttributeMaxTexture2DHeight:  
+# 1245
+cdattr = cudaDevAttrMaxTexture2DHeight; 
+# 1246
+break; 
+# 1247
+case hipDeviceAttributeMaxTexture3DWidth:  
+# 1248
+cdattr = cudaDevAttrMaxTexture3DWidth; 
+# 1249
+break; 
+# 1250
+case hipDeviceAttributeMaxTexture3DHeight:  
+# 1251
+cdattr = cudaDevAttrMaxTexture3DHeight; 
+# 1252
+break; 
+# 1253
+case hipDeviceAttributeMaxTexture3DDepth:  
+# 1254
+cdattr = cudaDevAttrMaxTexture3DDepth; 
+# 1255
+break; 
+# 1256
+case hipDeviceAttributeMaxPitch:  
+# 1257
+cdattr = cudaDevAttrMaxPitch; 
+# 1258
+break; 
+# 1259
+case hipDeviceAttributeTextureAlignment:  
+# 1260
+cdattr = cudaDevAttrTextureAlignment; 
+# 1261
+break; 
+# 1262
+case hipDeviceAttributeTexturePitchAlignment:  
+# 1263
+cdattr = cudaDevAttrTexturePitchAlignment; 
+# 1264
+break; 
+# 1265
+case hipDeviceAttributeKernelExecTimeout:  
+# 1266
+cdattr = cudaDevAttrKernelExecTimeout; 
+# 1267
+break; 
+# 1268
+case hipDeviceAttributeCanMapHostMemory:  
+# 1269
+cdattr = cudaDevAttrCanMapHostMemory; 
+# 1270
+break; 
+# 1271
+case hipDeviceAttributeEccEnabled:  
+# 1272
+cdattr = cudaDevAttrEccEnabled; 
+# 1273
+break; 
+# 1274
+default:  
+# 1275
+return hipCUDAErrorTohipError(cudaErrorInvalidValue); 
+# 1276
+}  
+# 1278
+cerror = cudaDeviceGetAttribute(pi, cdattr, device); 
+# 1280
+return hipCUDAErrorTohipError(cerror); 
+# 1281
+} 
+# 1283
+static inline hipError_t hipOccupancyMaxActiveBlocksPerMultiprocessor(int *numBlocks, const void *
+# 1284
+func, int 
+# 1285
+blockSize, size_t 
+# 1286
+dynamicSMemSize) { 
+# 1287
+cudaError_t cerror; 
+# 1288
+cerror = cudaOccupancyMaxActiveBlocksPerMultiprocessor(numBlocks, func, blockSize, dynamicSMemSize); 
+# 1290
+return hipCUDAErrorTohipError(cerror); 
+# 1291
+} 
+# 1293
+static inline hipError_t hipPointerGetAttributes(hipPointerAttribute_t *attributes, const void *ptr) { 
+# 1294
+cudaPointerAttributes cPA; 
+# 1295
+hipError_t err = hipCUDAErrorTohipError(cudaPointerGetAttributes(&cPA, ptr)); 
+# 1296
+if (err == (hipSuccess)) { 
+# 1297
+switch (cPA.memoryType) { 
+# 1298
+case cudaMemoryTypeDevice:  
+# 1299
+(attributes->memoryType) = hipMemoryTypeDevice; 
+# 1300
+break; 
+# 1301
+case cudaMemoryTypeHost:  
+# 1302
+(attributes->memoryType) = hipMemoryTypeHost; 
+# 1303
+break; 
+# 1304
+default:  
+# 1305
+return hipErrorUnknown; 
+# 1306
+}  
+# 1307
+(attributes->device) = (cPA.device); 
+# 1308
+(attributes->devicePointer) = (cPA.devicePointer); 
+# 1309
+(attributes->hostPointer) = (cPA.hostPointer); 
+# 1310
+(attributes->isManaged) = 0; 
+# 1311
+(attributes->allocationFlags) = (0); 
+# 1312
+}  
+# 1313
+return err; 
+# 1314
+} 
+# 1316
+static inline hipError_t hipMemGetInfo(size_t *free, size_t *total) { 
+# 1317
+return hipCUDAErrorTohipError(cudaMemGetInfo(free, total)); 
+# 1318
+} 
+# 1320
+static inline hipError_t hipEventCreate(hipEvent_t *event) { 
+# 1321
+return hipCUDAErrorTohipError(cudaEventCreate(event)); 
+# 1322
+} 
+# 1324
+static inline hipError_t hipEventRecord(hipEvent_t event, hipStream_t stream = 0) { 
+# 1325
+return hipCUDAErrorTohipError(cudaEventRecord(event, stream)); 
+# 1326
+} 
+# 1328
+static inline hipError_t hipEventSynchronize(hipEvent_t event) { 
+# 1329
+return hipCUDAErrorTohipError(cudaEventSynchronize(event)); 
+# 1330
+} 
+# 1332
+static inline hipError_t hipEventElapsedTime(float *ms, hipEvent_t start, hipEvent_t stop) { 
+# 1333
+return hipCUDAErrorTohipError(cudaEventElapsedTime(ms, start, stop)); 
+# 1334
+} 
+# 1336
+static inline hipError_t hipEventDestroy(hipEvent_t event) { 
+# 1337
+return hipCUDAErrorTohipError(cudaEventDestroy(event)); 
+# 1338
+} 
+# 1340
+static inline hipError_t hipStreamCreateWithFlags(hipStream_t *stream, unsigned flags) { 
+# 1341
+return hipCUDAErrorTohipError(cudaStreamCreateWithFlags(stream, flags)); 
+# 1342
+} 
+# 1344
+static inline hipError_t hipStreamCreateWithPriority(hipStream_t *stream, unsigned flags, int priority) { 
+# 1345
+return hipCUDAErrorTohipError(cudaStreamCreateWithPriority(stream, flags, priority)); 
+# 1346
+} 
+# 1348
+static inline hipError_t hipDeviceGetStreamPriorityRange(int *leastPriority, int *greatestPriority) { 
+# 1349
+return hipCUDAErrorTohipError(cudaDeviceGetStreamPriorityRange(leastPriority, greatestPriority)); 
+# 1350
+} 
+# 1352
+static inline hipError_t hipStreamCreate(hipStream_t *stream) { 
+# 1353
+return hipCUDAErrorTohipError(cudaStreamCreate(stream)); 
+# 1354
+} 
+# 1356
+static inline hipError_t hipStreamSynchronize(hipStream_t stream) { 
+# 1357
+return hipCUDAErrorTohipError(cudaStreamSynchronize(stream)); 
+# 1358
+} 
+# 1360
+static inline hipError_t hipStreamDestroy(hipStream_t stream) { 
+# 1361
+return hipCUDAErrorTohipError(cudaStreamDestroy(stream)); 
+# 1362
+} 
+# 1364
+static inline hipError_t hipStreamGetFlags(hipStream_t stream, unsigned *flags) { 
+# 1365
+return hipCUDAErrorTohipError(cudaStreamGetFlags(stream, flags)); 
+# 1366
+} 
+# 1368
+static inline hipError_t hipStreamGetPriority(hipStream_t stream, int *priority) { 
+# 1369
+return hipCUDAErrorTohipError(cudaStreamGetPriority(stream, priority)); 
+# 1370
+} 
+# 1372
+static inline hipError_t hipStreamWaitEvent(hipStream_t stream, hipEvent_t event, unsigned 
+# 1373
+flags) { 
+# 1374
+return hipCUDAErrorTohipError(cudaStreamWaitEvent(stream, event, flags)); 
+# 1375
+} 
+# 1377
+static inline hipError_t hipStreamQuery(hipStream_t stream) { 
+# 1378
+return hipCUDAErrorTohipError(cudaStreamQuery(stream)); 
+# 1379
+} 
+# 1381
+static inline hipError_t hipStreamAddCallback(hipStream_t stream, hipStreamCallback_t callback, void *
+# 1382
+userData, unsigned flags) { 
+# 1383
+return hipCUDAErrorTohipError(cudaStreamAddCallback(stream, (cudaStreamCallback_t)callback, userData, flags)); 
+# 1385
+} 
+# 1387
+static inline hipError_t hipDriverGetVersion(int *driverVersion) { 
+# 1388
+cudaError_t err = cudaDriverGetVersion(driverVersion); 
+# 1391
+(*driverVersion) = 4; 
+# 1393
+return hipCUDAErrorTohipError(err); 
+# 1394
+} 
+# 1396
+static inline hipError_t hipRuntimeGetVersion(int *runtimeVersion) { 
+# 1397
+return hipCUDAErrorTohipError(cudaRuntimeGetVersion(runtimeVersion)); 
+# 1398
+} 
+# 1400
+static inline hipError_t hipDeviceCanAccessPeer(int *canAccessPeer, int device, int peerDevice) { 
+# 1401
+return hipCUDAErrorTohipError(cudaDeviceCanAccessPeer(canAccessPeer, device, peerDevice)); 
+# 1402
+} 
+# 1404
+static inline hipError_t hipDeviceDisablePeerAccess(int peerDevice) { 
+# 1405
+return hipCUDAErrorTohipError(cudaDeviceDisablePeerAccess(peerDevice)); 
+# 1406
+} 
+# 1408
+static inline hipError_t hipDeviceEnablePeerAccess(int peerDevice, unsigned flags) { 
+# 1409
+return hipCUDAErrorTohipError(cudaDeviceEnablePeerAccess(peerDevice, flags)); 
+# 1410
+} 
+# 1412
+static inline hipError_t hipCtxDisablePeerAccess(hipCtx_t peerCtx) { 
+# 1413
+return hipCUResultTohipError(cuCtxDisablePeerAccess(peerCtx)); 
+# 1414
+} 
+# 1416
+static inline hipError_t hipCtxEnablePeerAccess(hipCtx_t peerCtx, unsigned flags) { 
+# 1417
+return hipCUResultTohipError(cuCtxEnablePeerAccess(peerCtx, flags)); 
+# 1418
+} 
+# 1420
+static inline hipError_t hipDevicePrimaryCtxGetState(hipDevice_t dev, unsigned *flags, int *
+# 1421
+active) { 
+# 1422
+return hipCUResultTohipError(cuDevicePrimaryCtxGetState(dev, flags, active)); 
+# 1423
+} 
+# 1425
+static inline hipError_t hipDevicePrimaryCtxRelease(hipDevice_t dev) { 
+# 1426
+return hipCUResultTohipError(cuDevicePrimaryCtxRelease(dev)); 
+# 1427
+} 
+# 1429
+static inline hipError_t hipDevicePrimaryCtxRetain(hipCtx_t *pctx, hipDevice_t dev) { 
+# 1430
+return hipCUResultTohipError(cuDevicePrimaryCtxRetain(pctx, dev)); 
+# 1431
+} 
+# 1433
+static inline hipError_t hipDevicePrimaryCtxReset(hipDevice_t dev) { 
+# 1434
+return hipCUResultTohipError(cuDevicePrimaryCtxReset(dev)); 
+# 1435
+} 
+# 1437
+static inline hipError_t hipDevicePrimaryCtxSetFlags(hipDevice_t dev, unsigned flags) { 
+# 1438
+return hipCUResultTohipError(cuDevicePrimaryCtxSetFlags(dev, flags)); 
+# 1439
+} 
+# 1441
+static inline hipError_t hipMemGetAddressRange(hipDeviceptr_t *pbase, size_t *psize, hipDeviceptr_t 
+# 1442
+dptr) { 
+# 1443
+return hipCUResultTohipError(cuMemGetAddressRange_v2(pbase, psize, dptr)); 
+# 1444
+} 
+# 1446
+static inline hipError_t hipMemcpyPeer(void *dst, int dstDevice, const void *src, int srcDevice, size_t 
+# 1447
+count) { 
+# 1448
+return hipCUDAErrorTohipError(cudaMemcpyPeer(dst, dstDevice, src, srcDevice, count)); 
+# 1449
+} 
+# 1451
+static inline hipError_t hipMemcpyPeerAsync(void *dst, int dstDevice, const void *src, int 
+# 1452
+srcDevice, size_t count, hipStream_t 
+# 1453
+stream = 0) { 
+# 1454
+return hipCUDAErrorTohipError(cudaMemcpyPeerAsync(dst, dstDevice, src, srcDevice, count, stream)); 
+# 1456
+} 
+# 1459
+static inline hipError_t hipProfilerStart() { return hipCUDAErrorTohipError(cudaProfilerStart()); } 
+# 1461
+static inline hipError_t hipProfilerStop() { return hipCUDAErrorTohipError(cudaProfilerStop()); } 
+# 1463
+static inline hipError_t hipSetDeviceFlags(unsigned flags) { 
+# 1464
+return hipCUDAErrorTohipError(cudaSetDeviceFlags(flags)); 
+# 1465
+} 
+# 1467
+static inline hipError_t hipEventCreateWithFlags(hipEvent_t *event, unsigned flags) { 
+# 1468
+return hipCUDAErrorTohipError(cudaEventCreateWithFlags(event, flags)); 
+# 1469
+} 
+# 1471
+static inline hipError_t hipEventQuery(hipEvent_t event) { 
+# 1472
+return hipCUDAErrorTohipError(cudaEventQuery(event)); 
+# 1473
+} 
+# 1475
+static inline hipError_t hipCtxCreate(hipCtx_t *ctx, unsigned flags, hipDevice_t device) { 
+# 1476
+return hipCUResultTohipError(cuCtxCreate_v2(ctx, flags, device)); 
+# 1477
+} 
+# 1479
+static inline hipError_t hipCtxDestroy(hipCtx_t ctx) { 
+# 1480
+return hipCUResultTohipError(cuCtxDestroy_v2(ctx)); 
+# 1481
+} 
+# 1483
+static inline hipError_t hipCtxPopCurrent(hipCtx_t *ctx) { 
+# 1484
+return hipCUResultTohipError(cuCtxPopCurrent_v2(ctx)); 
+# 1485
+} 
+# 1487
+static inline hipError_t hipCtxPushCurrent(hipCtx_t ctx) { 
+# 1488
+return hipCUResultTohipError(cuCtxPushCurrent_v2(ctx)); 
+# 1489
+} 
+# 1491
+static inline hipError_t hipCtxSetCurrent(hipCtx_t ctx) { 
+# 1492
+return hipCUResultTohipError(cuCtxSetCurrent(ctx)); 
+# 1493
+} 
+# 1495
+static inline hipError_t hipCtxGetCurrent(hipCtx_t *ctx) { 
+# 1496
+return hipCUResultTohipError(cuCtxGetCurrent(ctx)); 
+# 1497
+} 
+# 1499
+static inline hipError_t hipCtxGetDevice(hipDevice_t *device) { 
+# 1500
+return hipCUResultTohipError(cuCtxGetDevice(device)); 
+# 1501
+} 
+# 1503
+static inline hipError_t hipCtxGetApiVersion(hipCtx_t ctx, int *apiVersion) { 
+# 1504
+return hipCUResultTohipError(cuCtxGetApiVersion(ctx, (unsigned *)apiVersion)); 
+# 1505
+} 
+# 1507
+static inline hipError_t hipCtxGetCacheConfig(hipFuncCache *cacheConfig) { 
+# 1508
+return hipCUResultTohipError(cuCtxGetCacheConfig(cacheConfig)); 
+# 1509
+} 
+# 1511
+static inline hipError_t hipCtxSetCacheConfig(hipFuncCache cacheConfig) { 
+# 1512
+return hipCUResultTohipError(cuCtxSetCacheConfig(cacheConfig)); 
+# 1513
+} 
+# 1515
+static inline hipError_t hipCtxSetSharedMemConfig(hipSharedMemConfig config) { 
+# 1516
+return hipCUResultTohipError(cuCtxSetSharedMemConfig((CUsharedconfig)config)); 
+# 1517
+} 
+# 1519
+static inline hipError_t hipCtxGetSharedMemConfig(hipSharedMemConfig *pConfig) { 
+# 1520
+return hipCUResultTohipError(cuCtxGetSharedMemConfig((CUsharedconfig *)pConfig)); 
+# 1521
+} 
+# 1523
+static inline hipError_t hipCtxSynchronize() { 
+# 1524
+return hipCUResultTohipError(cuCtxSynchronize()); 
+# 1525
+} 
+# 1527
+static inline hipError_t hipCtxGetFlags(unsigned *flags) { 
+# 1528
+return hipCUResultTohipError(cuCtxGetFlags(flags)); 
+# 1529
+} 
+# 1531
+static inline hipError_t hipCtxDetach(hipCtx_t ctx) { 
+# 1532
+return hipCUResultTohipError(cuCtxDetach(ctx)); 
+# 1533
+} 
+# 1535
+static inline hipError_t hipDeviceGet(hipDevice_t *device, int ordinal) { 
+# 1536
+return hipCUResultTohipError(cuDeviceGet(device, ordinal)); 
+# 1537
+} 
+# 1539
+static inline hipError_t hipDeviceComputeCapability(int *major, int *minor, hipDevice_t device) { 
+# 1540
+return hipCUResultTohipError(cuDeviceComputeCapability(major, minor, device)); 
+# 1541
+} 
+# 1543
+static inline hipError_t hipDeviceGetName(char *name, int len, hipDevice_t device) { 
+# 1544
+return hipCUResultTohipError(cuDeviceGetName(name, len, device)); 
+# 1545
+} 
+# 1547
+static inline hipError_t hipDeviceGetPCIBusId(char *pciBusId, int len, hipDevice_t device) { 
+# 1548
+return hipCUDAErrorTohipError(cudaDeviceGetPCIBusId(pciBusId, len, device)); 
+# 1549
+} 
+# 1551
+static inline hipError_t hipDeviceGetByPCIBusId(int *device, const char *pciBusId) { 
+# 1552
+return hipCUDAErrorTohipError(cudaDeviceGetByPCIBusId(device, pciBusId)); 
+# 1553
+} 
+# 1555
+static inline hipError_t hipDeviceGetSharedMemConfig(hipSharedMemConfig *config) { 
+# 1556
+return hipCUDAErrorTohipError(cudaDeviceGetSharedMemConfig(config)); 
+# 1557
+} 
+# 1559
+static inline hipError_t hipDeviceSetSharedMemConfig(hipSharedMemConfig config) { 
+# 1560
+return hipCUDAErrorTohipError(cudaDeviceSetSharedMemConfig(config)); 
+# 1561
+} 
+# 1563
+static inline hipError_t hipDeviceGetLimit(size_t *pValue, hipLimit_t limit) { 
+# 1564
+return hipCUDAErrorTohipError(cudaDeviceGetLimit(pValue, limit)); 
+# 1565
+} 
+# 1567
+static inline hipError_t hipDeviceTotalMem(size_t *bytes, hipDevice_t device) { 
+# 1568
+return hipCUResultTohipError(cuDeviceTotalMem_v2(bytes, device)); 
+# 1569
+} 
+# 1571
+static inline hipError_t hipModuleLoad(hipModule_t *module, const char *fname) { 
+# 1572
+return hipCUResultTohipError(cuModuleLoad(module, fname)); 
+# 1573
+} 
+# 1575
+static inline hipError_t hipModuleUnload(hipModule_t hmod) { 
+# 1576
+return hipCUResultTohipError(cuModuleUnload(hmod)); 
+# 1577
+} 
+# 1579
+static inline hipError_t hipModuleGetFunction(hipFunction_t *function, hipModule_t module, const char *
+# 1580
+kname) { 
+# 1581
+return hipCUResultTohipError(cuModuleGetFunction(function, module, kname)); 
+# 1582
+} 
+# 1584
+static inline hipError_t hipFuncGetAttributes(hipFuncAttributes *attr, const void *func) { 
+# 1585
+return hipCUDAErrorTohipError(cudaFuncGetAttributes(attr, func)); 
+# 1586
+} 
+# 1588
+static inline hipError_t hipFuncGetAttribute(int *value, CUfunction_attribute attrib, hipFunction_t hfunc) { 
+# 1589
+return hipCUResultTohipError(cuFuncGetAttribute(value, attrib, hfunc)); 
+# 1590
+} 
+# 1592
+static inline hipError_t hipModuleGetGlobal(hipDeviceptr_t *dptr, size_t *bytes, hipModule_t hmod, const char *
+# 1593
+name) { 
+# 1594
+return hipCUResultTohipError(cuModuleGetGlobal_v2(dptr, bytes, hmod, name)); 
+# 1595
+} 
+# 1597
+static inline hipError_t hipModuleLoadData(hipModule_t *module, const void *image) { 
+# 1598
+return hipCUResultTohipError(cuModuleLoadData(module, image)); 
+# 1599
+} 
+# 1601
+static inline hipError_t hipModuleLoadDataEx(hipModule_t *module, const void *image, unsigned 
+# 1602
+numOptions, hipJitOption *options, void **
+# 1603
+optionValues) { 
+# 1604
+return hipCUResultTohipError(cuModuleLoadDataEx(module, image, numOptions, options, optionValues)); 
+# 1606
+} 
+# 1608
+static inline hipError_t hipLaunchKernel(const void *function_address, dim3 numBlocks, dim3 
+# 1609
+dimBlocks, void **args, size_t sharedMemBytes, hipStream_t 
+# 1610
+stream) 
+# 1611
+{ 
+# 1612
+return hipCUDAErrorTohipError(cudaLaunchKernel(function_address, numBlocks, dimBlocks, args, sharedMemBytes, stream)); 
+# 1613
+} 
+# 1615
+static inline hipError_t hipModuleLaunchKernel(hipFunction_t f, unsigned gridDimX, unsigned 
+# 1616
+gridDimY, unsigned gridDimZ, unsigned 
+# 1617
+blockDimX, unsigned blockDimY, unsigned 
+# 1618
+blockDimZ, unsigned sharedMemBytes, hipStream_t 
+# 1619
+stream, void **kernelParams, void **
+# 1620
+extra) { 
+# 1621
+return hipCUResultTohipError(cuLaunchKernel(f, gridDimX, gridDimY, gridDimZ, blockDimX, blockDimY, blockDimZ, sharedMemBytes, stream, kernelParams, extra)); 
+# 1624
+} 
+# 1626
+static inline hipError_t hipFuncSetCacheConfig(const void *func, hipFuncCache_t cacheConfig) { 
+# 1627
+return hipCUDAErrorTohipError(cudaFuncSetCacheConfig(func, cacheConfig)); 
+# 1628
+} 
+# 1630
+static inline hipError_t hipBindTexture(size_t *offset, textureReference *tex, const void *devPtr, const hipChannelFormatDesc *
+# 1631
+desc, size_t size = ((2147483647) * 2U) + 1U) { 
+# 1632
+return hipCUDAErrorTohipError(cudaBindTexture(offset, tex, devPtr, desc, size)); 
+# 1633
+} 
+# 1635
+static inline hipError_t hipBindTexture2D(size_t *offset, textureReference *tex, const void *devPtr, const hipChannelFormatDesc *
+# 1636
+desc, size_t width, size_t height, size_t 
+# 1637
+pitch) { 
+# 1638
+return hipCUDAErrorTohipError(cudaBindTexture2D(offset, tex, devPtr, desc, width, height, pitch)); 
+# 1639
+} 
+# 1641
+static inline hipChannelFormatDesc hipCreateChannelDesc(int x, int y, int z, int w, hipChannelFormatKind 
+# 1642
+f) { 
+# 1643
+return cudaCreateChannelDesc(x, y, z, w, hipChannelFormatKindToCudaChannelFormatKind(f)); 
+# 1644
+} 
+# 1646
+static inline hipError_t hipCreateTextureObject(hipTextureObject_t *pTexObject, const hipResourceDesc *
+# 1647
+pResDesc, const hipTextureDesc *
+# 1648
+pTexDesc, const hipResourceViewDesc *
+# 1649
+pResViewDesc) { 
+# 1650
+return hipCUDAErrorTohipError(cudaCreateTextureObject(pTexObject, pResDesc, pTexDesc, pResViewDesc)); 
+# 1652
+} 
+# 1654
+static inline hipError_t hipDestroyTextureObject(hipTextureObject_t textureObject) { 
+# 1655
+return hipCUDAErrorTohipError(cudaDestroyTextureObject(textureObject)); 
+# 1656
+} 
+# 1658
+static inline hipError_t hipCreateSurfaceObject(hipSurfaceObject_t *pSurfObject, const hipResourceDesc *
+# 1659
+pResDesc) { 
+# 1660
+return hipCUDAErrorTohipError(cudaCreateSurfaceObject(pSurfObject, pResDesc)); 
+# 1661
+} 
+# 1663
+static inline hipError_t hipDestroySurfaceObject(hipSurfaceObject_t surfaceObject) { 
+# 1664
+return hipCUDAErrorTohipError(cudaDestroySurfaceObject(surfaceObject)); 
+# 1665
+} 
+# 1667
+static inline hipError_t hipGetTextureObjectResourceDesc(hipResourceDesc *pResDesc, hipTextureObject_t 
+# 1668
+textureObject) { 
+# 1669
+return hipCUDAErrorTohipError(cudaGetTextureObjectResourceDesc(pResDesc, textureObject)); 
+# 1670
+} 
+# 1672
+static inline hipError_t hipGetTextureAlignmentOffset(size_t *offset, const textureReference *texref) 
+# 1673
+{ 
+# 1674
+return hipCUDAErrorTohipError(cudaGetTextureAlignmentOffset(offset, texref)); 
+# 1675
+} 
+# 1677
+static inline hipError_t hipGetChannelDesc(hipChannelFormatDesc *desc, hipArray_const_t array) 
+# 1678
+{ 
+# 1679
+return hipCUDAErrorTohipError(cudaGetChannelDesc(desc, array)); 
+# 1680
+} 
+# 1684
+}
+# 1689
+template< class T> static inline hipError_t 
+# 1690
+hipOccupancyMaxPotentialBlockSize(int *minGridSize, int *blockSize, T func, size_t 
+# 1691
+dynamicSMemSize = 0, int 
+# 1692
+blockSizeLimit = 0) { 
+# 1693
+cudaError_t cerror; 
+# 1694
+cerror = cudaOccupancyMaxPotentialBlockSize(minGridSize, blockSize, func, dynamicSMemSize, blockSizeLimit); 
+# 1695
+return hipCUDAErrorTohipError(cerror); 
+# 1696
+} 
+# 1698
+template< class T, int dim, cudaTextureReadMode readMode> static inline hipError_t 
+# 1699
+hipBindTexture(size_t *offset, const texture< T, dim, readMode>  &tex, const void *
+# 1700
+devPtr, size_t size = ((2147483647) * 2U) + 1U) { 
+# 1701
+return hipCUDAErrorTohipError(cudaBindTexture(offset, tex, devPtr, size)); 
+# 1702
+} 
+# 1704
+template< class T, int dim, cudaTextureReadMode readMode> static inline hipError_t 
+# 1705
+hipBindTexture(size_t *offset, texture< T, dim, readMode>  &tex, const void *
+# 1706
+devPtr, const hipChannelFormatDesc &desc, size_t 
+# 1707
+size = ((2147483647) * 2U) + 1U) { 
+# 1708
+return hipCUDAErrorTohipError(cudaBindTexture(offset, tex, devPtr, desc, size)); 
+# 1709
+} 
+# 1711
+template< class T, int dim, cudaTextureReadMode readMode> static inline hipError_t 
+# 1712
+hipUnbindTexture(texture< T, dim, readMode>  *tex) { 
+# 1713
+return hipCUDAErrorTohipError(cudaUnbindTexture(tex)); 
+# 1714
+} 
+# 1716
+template< class T, int dim, cudaTextureReadMode readMode> static inline hipError_t 
+# 1717
+hipUnbindTexture(texture< T, dim, readMode>  &tex) { 
+# 1718
+return hipCUDAErrorTohipError(cudaUnbindTexture(tex)); 
+# 1719
+} 
+# 1721
+template< class T, int dim, cudaTextureReadMode readMode> static inline hipError_t 
+# 1722
+hipBindTextureToArray(texture< T, dim, readMode>  &tex, hipArray_const_t 
+# 1723
+array, const hipChannelFormatDesc &
+# 1724
+desc) { 
+# 1725
+return hipCUDAErrorTohipError(cudaBindTextureToArray(tex, array, desc)); 
+# 1726
+} 
+# 1728
+template< class T, int dim, cudaTextureReadMode readMode> static inline hipError_t 
+# 1729
+hipBindTextureToArray(texture< T, dim, readMode>  *tex, hipArray_const_t 
+# 1730
+array, const hipChannelFormatDesc *
+# 1731
+desc) { 
+# 1732
+return hipCUDAErrorTohipError(cudaBindTextureToArray(tex, array, desc)); 
+# 1733
+} 
+# 1735
+template< class T, int dim, cudaTextureReadMode readMode> static inline hipError_t 
+# 1736
+hipBindTextureToArray(texture< T, dim, readMode>  &tex, hipArray_const_t 
+# 1737
+array) { 
+# 1738
+return hipCUDAErrorTohipError(cudaBindTextureToArray(tex, array)); 
+# 1739
+} 
+# 1741
+template< class T> static inline hipChannelFormatDesc 
+# 1742
+hipCreateChannelDesc() { 
+# 1743
+return cudaCreateChannelDesc< T> (); 
+# 1744
+} 
+# 368 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+template< class T> static inline hipError_t 
+# 369
+hipMalloc(T **devPtr, size_t size) { 
+# 370
+return hipMalloc((void **)devPtr, size); 
+# 371
+} 
+# 375
+template< class T> static inline hipError_t 
+# 376
+hipHostMalloc(T **ptr, size_t size, unsigned 
+# 377
+flags = 0) { 
+# 378
+return hipHostMalloc((void **)ptr, size, flags); 
+# 379
+} 
+# 381
+template< class T> static inline hipError_t 
+# 382
+hipMallocManaged(T **devPtr, size_t size, unsigned 
+# 383
+flags = 1) { 
+# 384
+return hipMallocManaged((void **)devPtr, size, flags); 
+# 385
+} 
+# 32 "/opt/rocm-3.3.0/hip/include/hip/nvcc_detail/hip_runtime.h" 3
+typedef int hipLaunchParm; 
+# 19 ".././target/target_hip.h"
+typedef hipFuncCache_t tdpFuncCache; 
+# 26
+typedef hipMemcpyKind tdpMemcpyKind; 
+# 27
+typedef hipDeviceAttribute_t tdpDeviceAttr; 
+# 44 ".././target/target_hip.h"
+typedef hipStream_t tdpStream_t; 
+# 45
+typedef hipError_t tdpError_t; 
+# 39 ".././target/target.h"
+tdpError_t tdpDeviceSetCacheConfig(tdpFuncCache cacheConfig); 
+# 40
+tdpError_t tdpGetDeviceProperties(hipDeviceProp_t * prop, int); 
+# 41
+tdpError_t tdpSetDevice(int device); 
+# 43
+tdpError_t tdpDeviceGetAttribute(int * value, tdpDeviceAttr attr, int device); 
+# 46
+tdpError_t tdpDeviceGetCacheConfig(tdpFuncCache * cache); 
+# 47
+tdpError_t tdpDeviceSynchronize(); 
+# 48
+tdpError_t tdpGetDevice(int * device); 
+# 49
+tdpError_t tdpGetDeviceCount(int * count); 
+# 53
+const char *tdpGetErrorName(tdpError_t error); 
+# 54
+const char *tdpGetErrorString(tdpError_t error); 
+# 55
+tdpError_t tdpGetLastError(); 
+# 56
+tdpError_t tdpPeekAtLastError(); 
+# 60
+tdpError_t tdpStreamCreate(tdpStream_t * stream); 
+# 61
+tdpError_t tdpStreamDestroy(tdpStream_t stream); 
+# 62
+tdpError_t tdpStreamSynchronize(tdpStream_t stream); 
+# 70
+tdpError_t tdpFreeHost(void * phost); 
+# 71
+tdpError_t tdpHostAlloc(void ** phost, size_t size, unsigned flags); 
+# 73
+tdpError_t tdpMallocManaged(void ** devptr, size_t size, unsigned flag); 
+# 75
+tdpError_t tdpMemcpy(void * dst, const void * src, size_t count, tdpMemcpyKind kind); 
+# 77
+tdpError_t tdpMemcpyAsync(void * dst, const void * src, size_t count, tdpMemcpyKind kind, tdpStream_t stream); 
+# 79
+tdpError_t tdpMemset(void * devPtr, int value, size_t count); 
+# 82
+tdpError_t tdpFree(void * devPtr); 
+# 83
+tdpError_t tdpMalloc(void ** devRtr, size_t size); 
+# 102 ".././target/target.h"
+tdpError_t tdpThreadModelInfo(FILE * fp); 
+# 106
+__attribute__((unused)) int tdpAtomicAddInt(int * sum, int val); 
+# 107
+__attribute__((unused)) int tdpAtomicMaxInt(int * maxval, int val); 
+# 108
+__attribute__((unused)) int tdpAtomicMinInt(int * minval, int val); 
+# 109
+__attribute__((unused)) double tdpAtomicAddDouble(double * sum, double val); 
+# 110
+__attribute__((unused)) double tdpAtomicMaxDouble(double * maxval, double val); 
+# 111
+__attribute__((unused)) double tdpAtomicMinDouble(double * minval, double val); 
+# 115
+__attribute__((unused)) int tdpAtomicBlockAddInt(int * partsum); 
+# 116
+__attribute__((unused)) double tdpAtomicBlockAddDouble(double * partsum); 
+# 120
+void tdpErrorHandler(tdpError_t ifail, const char * file, int line, int fatal); 
+# 22 "pe.h"
+typedef struct pe_s pe_t; 
+# 24
+typedef enum { PE_QUIET, PE_VERBOSE, PE_OPTION_MAX} pe_enum_t; 
+# 26
+int pe_create(MPI_Comm parent, pe_enum_t flag, pe_t ** ppe); 
+# 27
+int pe_free(pe_t * pe); 
+# 28
+int pe_retain(pe_t * pe); 
+# 29
+int pe_set(pe_t * pe, pe_enum_t option); 
+# 30
+int pe_message(pe_t * pe); 
+# 31
+int pe_mpi_comm(pe_t * pe, MPI_Comm * comm); 
+# 32
+int pe_mpi_rank(pe_t * pe); 
+# 33
+int pe_mpi_size(pe_t * pe); 
+# 34
+int pe_subdirectory(pe_t * pe, char * name); 
+# 35
+int pe_subdirectory_set(pe_t * pe, const char * name); 
+# 36
+int pe_info(pe_t * pe, const char * fmt, ...); 
+# 37
+int pe_fatal(pe_t * pe, const char * fmt, ...); 
+# 38
+int pe_verbose(pe_t * pe, const char * fmt, ...); 
 # 22 "coords.h"
 typedef struct coords_s cs_t; 
 # 26
@@ -15588,6 +20844,8 @@ int util_random_unit_vector(int * state, double  rhat[3]);
 int util_ranlcg_reap_uniform(int * state, double * r); 
 # 67
 int util_ranlcg_reap_gaussian(int * state, double  r[2]); 
+# 69
+int util_str_tolower(char * str, size_t maxlen); 
 # 7 "coords_s.h"
 typedef struct coords_param_s cs_param_t; 
 # 9
@@ -15764,77 +21022,287 @@ CVXBLOCK = 1,
 CVYBLOCK = 3, 
 # 53
 CVZBLOCK = 5}; 
-# 29 "io_harness.h"
-typedef 
-# 24
-enum io_format_enum { IO_FORMAT_NULL, 
-# 25
-IO_FORMAT_ASCII, 
-# 26
-IO_FORMAT_BINARY, 
-# 27
-IO_FORMAT_ASCII_SERIAL, 
-# 28
-IO_FORMAT_BINARY_SERIAL, 
-# 29
-IO_FORMAT_DEFAULT} io_format_enum_t; 
-# 32
-typedef struct io_info_arg_s io_info_arg_t; 
-# 33
-typedef struct io_info_s io_info_t; 
-# 35
-struct io_info_arg_s { 
+# 32 "io_options.h"
+enum io_mode_enum { IO_MODE_INVALID, IO_MODE_SINGLE, IO_MODE_MULTIPLE}; 
 # 36
-int grid[3]; 
+enum io_record_format_enum { IO_RECORD_INVALID, 
 # 37
-io_format_enum_t ioformat; 
+IO_RECORD_ASCII, 
 # 38
-int is_asynchronous; 
-# 39
-}; 
+IO_RECORD_BINARY}; 
 # 42
-typedef int (*io_rw_cb_ft)(FILE * fp, int index, void * self); 
-# 45
-int io_info_create(pe_t * pe, cs_t * cs, io_info_arg_t * arg, io_info_t ** pinfo); 
-# 47
-int io_info_free(io_info_t *); 
+enum io_metadata_version_enum { IO_METADATA_INVALID, 
+# 43
+IO_METADATA_SINGLE_V1, 
+# 44
+IO_METADATA_MULTI_V1}; 
+# 48
+typedef io_mode_enum io_mode_enum_t; 
 # 49
-void io_info_set_name(io_info_t *, const char *); 
+typedef io_record_format_enum io_record_format_enum_t; 
 # 50
-void io_info_set_write(io_info_t *, int (*)(FILE *, int, int, int)); 
-# 51
-void io_info_set_read(io_info_t *, int (*)(FILE *, int, int, int)); 
+typedef io_metadata_version_enum io_metadata_version_enum_t; 
 # 52
-void io_info_set_processor_independent(io_info_t *); 
+struct io_options_s { 
 # 53
-void io_info_set_processor_dependent(io_info_t *); 
+io_mode_enum_t mode; 
 # 54
-void io_info_single_file_set(io_info_t * info); 
+io_record_format_enum_t iorformat; 
+# 55
+io_metadata_version_enum_t metadata_version; 
 # 56
-int io_info_set_bytesize(io_info_t * p, io_format_enum_t t, size_t); 
+int report; 
 # 57
-int io_write_metadata(io_info_t * info); 
+int asynchronous; 
 # 58
-int io_write_metadata_file(io_info_t * info, char * filestub); 
-# 59
-int io_info_metadata_filestub_set(io_info_t * info, const char * filestub); 
-# 61
-int io_remove(const char * filename_stub, io_info_t * obj); 
+}; 
+# 60
+typedef io_options_s io_options_t; 
 # 62
-int io_remove_metadata(io_info_t * obj, const char * file_stub); 
+io_mode_enum_t io_mode_default(); 
 # 63
-int io_info_format_set(io_info_t * obj, int form_in, int form_out); 
+io_record_format_enum_t io_record_format_default(); 
 # 64
-int io_info_format_in_set(io_info_t * obj, int form_in); 
+io_metadata_version_enum_t io_metadata_version_default(); 
 # 65
-int io_info_format_out_set(io_info_t * obj, int form_out); 
+io_options_t io_options_default(); 
 # 67
-int io_info_read_set(io_info_t * obj, int format, io_rw_cb_ft); 
+int io_options_valid(const io_options_t * options); 
 # 68
-int io_info_write_set(io_info_t * obj, int format, io_rw_cb_ft); 
+int io_options_mode_valid(io_mode_enum_t mode); 
 # 69
-int io_write_data(io_info_t * obj, const char * filename_stub, void * data); 
+int io_options_record_format_valid(io_record_format_enum_t iorformat); 
 # 70
+int io_options_metadata_version_valid(const io_options_t * options); 
+# 22 "runtime.h"
+typedef struct rt_s rt_t; 
+# 24
+int rt_create(pe_t * pe, rt_t ** prt); 
+# 25
+int rt_free(rt_t * rt); 
+# 26
+int rt_read_input_file(rt_t * rt, const char * filename); 
+# 27
+int rt_info(rt_t * rt); 
+# 28
+int rt_int_parameter(rt_t * rt, const char * key, int * ivalue); 
+# 29
+int rt_int_parameter_vector(rt_t * rt, const char * key, int  ivalue[3]); 
+# 30
+int rt_double_parameter(rt_t * rt, const char * key, double * value); 
+# 31
+int rt_double_parameter_vector(rt_t * rt, const char * key, double  value[3]); 
+# 32
+int rt_string_parameter(rt_t * rt, const char * key, char * s, unsigned len); 
+# 33
+int rt_switch(rt_t * rt, const char * key); 
+# 34
+int rt_active_keys(rt_t * rt, int * nactive); 
+# 35
+int rt_add_key_value(rt_t * rt, const char * key, const char * value); 
+# 25 "io_options_rt.h"
+int io_options_rt(pe_t * pe, rt_t * rt, const char * keystub, io_options_t * opts); 
+# 27
+int io_options_rt_mode(pe_t * pe, rt_t * rt, const char * key, io_mode_enum_t * mode); 
+# 29
+int io_options_rt_record_format(pe_t * pe, rt_t * rt, const char * key, io_record_format_enum_t * options); 
+# 26 "io_info_args.h"
+enum io_info_rw_enum { IO_INFO_NONE, 
+# 27
+IO_INFO_READ_ONLY, 
+# 28
+IO_INFO_WRITE_ONLY, 
+# 29
+IO_INFO_READ_WRITE}; 
+# 31
+typedef io_info_rw_enum io_info_rw_enum_t; 
+# 32
+typedef struct io_info_args_s io_info_args_t; 
+# 36
+struct io_info_args_s { 
+# 37
+io_options_t input; 
+# 38
+io_options_t output; 
+# 39
+int grid[3]; 
+# 40
+int nfreq; 
+# 41
+}; 
+# 43
+io_info_args_t io_info_args_default(); 
+# 44
+int io_info_args_iogrid_valid(int  iogrid[3]); 
+# 33 "io_harness.h"
+typedef 
+# 28
+enum io_format_enum { IO_FORMAT_NULL, 
+# 29
+IO_FORMAT_ASCII, 
+# 30
+IO_FORMAT_BINARY, 
+# 31
+IO_FORMAT_ASCII_SERIAL, 
+# 32
+IO_FORMAT_BINARY_SERIAL, 
+# 33
+IO_FORMAT_DEFAULT} io_format_enum_t; 
+# 35
+typedef struct io_implementation_s io_implementation_t; 
+# 36
+typedef struct io_info_s io_info_t; 
+# 39
+typedef int (*io_rw_cb_ft)(FILE * fp, int index, void * self); 
+# 42
+typedef struct io_info_arg_s io_info_arg_t; 
+# 44
+struct io_info_arg_s { 
+# 45
+int grid[3]; 
+# 46
+}; 
+# 48
+struct io_implementation_s { 
+# 49
+char name[8192]; 
+# 50
+io_rw_cb_ft write_ascii; 
+# 51
+io_rw_cb_ft write_binary; 
+# 52
+io_rw_cb_ft read_ascii; 
+# 53
+io_rw_cb_ft read_binary; 
+# 54
+size_t bytesize_ascii; 
+# 55
+size_t bytesize_binary; 
+# 56
+}; 
+# 58
+typedef struct io_decomposition_s io_decomposition_t; 
+# 60
+struct io_decomposition_s { 
+# 61
+int n_io; 
+# 62
+int index; 
+# 63
+MPI_Comm xcomm; 
+# 64
+MPI_Comm comm; 
+# 65
+int rank; 
+# 66
+int size; 
+# 67
+int ngroup[3]; 
+# 68
+int coords[3]; 
+# 69
+int nsite[3]; 
+# 70
+int offset[3]; 
+# 71
+}; 
+# 73
+struct io_info_s { 
+# 74
+pe_t *pe; 
+# 75
+cs_t *cs; 
+# 77
+io_info_args_t args; 
+# 78
+io_implementation_t impl; 
+# 79
+io_decomposition_t *comm; 
+# 81
+io_decomposition_t *io_comm; 
+# 82
+size_t bytesize; 
+# 83
+size_t bytesize_ascii; 
+# 84
+size_t bytesize_binary; 
+# 85
+int nsites; 
+# 86
+int maxlocal; 
+# 87
+int metadata_written; 
+# 88
+int processor_independent; 
+# 89
+int single_file_read; 
+# 90
+int report; 
+# 91
+char metadata_stub[4096]; 
+# 92
+char name[4096]; 
+# 93
+io_rw_cb_ft write_data; 
+# 94
+io_rw_cb_ft write_ascii; 
+# 95
+io_rw_cb_ft write_binary; 
+# 96
+io_rw_cb_ft read_data; 
+# 97
+io_rw_cb_ft read_ascii; 
+# 98
+io_rw_cb_ft read_binary; 
+# 99
+}; 
+# 101
+int io_info_create(pe_t * pe, cs_t * cs, io_info_arg_t * arg, io_info_t ** pinfo); 
+# 103
+int io_info_free(io_info_t *); 
+# 105
+int io_info_create_impl(pe_t * pe, cs_t * cs, io_info_args_t arg, io_implementation_t impl, io_info_t ** info); 
+# 108
+int io_info_input_bytesize(io_info_t * info, size_t * bs); 
+# 109
+int io_info_output_bytesize(io_info_t * info, size_t * bs); 
+# 111
+void io_info_set_name(io_info_t *, const char *); 
+# 112
+void io_info_set_write(io_info_t *, int (*)(FILE *, int, int, int)); 
+# 113
+void io_info_set_read(io_info_t *, int (*)(FILE *, int, int, int)); 
+# 114
+void io_info_set_processor_independent(io_info_t *); 
+# 115
+void io_info_set_processor_dependent(io_info_t *); 
+# 116
+void io_info_single_file_set(io_info_t * info); 
+# 118
+int io_info_set_bytesize(io_info_t * p, io_format_enum_t t, size_t); 
+# 119
+int io_write_metadata(io_info_t * info); 
+# 120
+int io_write_metadata_file(io_info_t * info, char * filestub); 
+# 121
+int io_info_metadata_filestub_set(io_info_t * info, const char * filestub); 
+# 123
+int io_remove(const char * filename_stub, io_info_t * obj); 
+# 124
+int io_remove_metadata(io_info_t * obj, const char * file_stub); 
+# 125
+int io_info_format_set(io_info_t * obj, int form_in, int form_out); 
+# 126
+int io_info_format_in_set(io_info_t * obj, int form_in); 
+# 127
+int io_info_format_out_set(io_info_t * obj, int form_out); 
+# 129
+int io_info_read_set(io_info_t * obj, int format, io_rw_cb_ft); 
+# 130
+int io_info_write_set(io_info_t * obj, int format, io_rw_cb_ft); 
+# 131
+int io_write_data(io_info_t * obj, const char * filename_stub, void * data); 
+# 132
 int io_read_data(io_info_t * obj, const char * filename_stub, void * data); 
 # 65 "/usr/include/assert.h" 3
 extern "C" {
@@ -15953,44 +21421,46 @@ int lb_io_info_set(lb_t * lb, io_info_t * io_info, int fin, int fout);
 # 104
 int lb_io_rho_set(lb_t * lb, io_info_t * io_rho, int fin, int fout); 
 # 106
-int lb_nvel(lb_t * lb, int * nvel); 
-# 107
-int lb_ndim(lb_t * lb, int * ndim); 
+int lb_io_info_commit(lb_t * lb, io_info_args_t args); 
 # 108
-int lb_ndist(lb_t * lb, int * ndist); 
+int lb_nvel(lb_t * lb, int * nvel); 
 # 109
-int lb_f(lb_t * lb, int index, int p, int n, double * f); 
+int lb_ndim(lb_t * lb, int * ndim); 
 # 110
-int lb_f_set(lb_t * lb, int index, int p, int n, double f); 
+int lb_ndist(lb_t * lb, int * ndist); 
 # 111
-int lb_0th_moment(lb_t * lb, int index, lb_dist_enum_t nd, double * rho); 
+int lb_f(lb_t * lb, int index, int p, int n, double * f); 
+# 112
+int lb_f_set(lb_t * lb, int index, int p, int n, double f); 
 # 113
+int lb_0th_moment(lb_t * lb, int index, lb_dist_enum_t nd, double * rho); 
+# 115
 int lb_f_index(lb_t * lb, int index, int n, double  f[NVEL]); 
-# 114
-int lb_f_index_set(lb_t * lb, int index, int n, double  f[NVEL]); 
 # 116
-int lb_f_multi_index_part(lb_t * lb, int index, int n, double  f[NVEL][1], int nv); 
+int lb_f_index_set(lb_t * lb, int index, int n, double  f[NVEL]); 
 # 118
+int lb_f_multi_index_part(lb_t * lb, int index, int n, double  f[NVEL][1], int nv); 
+# 120
 int lb_f_multi_index_set_part(lb_t * lb, int index, int n, double  f[NVEL][1], int nv); 
-# 121
-int lb_f_multi_index(lb_t * lb, int index, int n, double  f[NVEL][1]); 
 # 123
+int lb_f_multi_index(lb_t * lb, int index, int n, double  f[NVEL][1]); 
+# 125
 int lb_f_multi_index_set(lb_t * lb, int index, int n, double  f[NVEL][1]); 
-# 129
-int lb_nblock(lb_t * lb, int dim, int * nblock); 
-# 130
-int lb_init_rest_f(lb_t * lb, double rho0); 
 # 131
-int lb_order(lb_t * lb); 
+int lb_nblock(lb_t * lb, int dim, int * nblock); 
 # 132
-int lb_ndist_set(lb_t * lb, int ndist); 
+int lb_init_rest_f(lb_t * lb, double rho0); 
 # 133
-int lb_1st_moment(lb_t * lb, int index, lb_dist_enum_t nd, double  g[3]); 
+int lb_order(lb_t * lb); 
 # 134
-int lb_2nd_moment(lb_t * lb, int index, lb_dist_enum_t nd, double  s[3][3]); 
+int lb_ndist_set(lb_t * lb, int ndist); 
 # 135
-int lb_0th_moment_equilib_set(lb_t * lb, int index, int n, double rho); 
+int lb_1st_moment(lb_t * lb, int index, lb_dist_enum_t nd, double  g[3]); 
 # 136
+int lb_2nd_moment(lb_t * lb, int index, lb_dist_enum_t nd, double  s[3][3]); 
+# 137
+int lb_0th_moment_equilib_set(lb_t * lb, int index, int n, double rho); 
+# 138
 int lb_1st_moment_equilib_set(lb_t * lb, int index, double rho, double  u[3]); 
 # 21 "kernel.h"
 typedef struct kernel_ctxt_s kernel_ctxt_t; 
@@ -16250,30 +21720,6 @@ int id;
 int use_stress_relaxation; 
 # 70
 }; 
-# 22 "runtime.h"
-typedef struct rt_s rt_t; 
-# 24
-int rt_create(pe_t * pe, rt_t ** prt); 
-# 25
-int rt_free(rt_t * rt); 
-# 26
-int rt_read_input_file(rt_t * rt, const char * filename); 
-# 27
-int rt_info(rt_t * rt); 
-# 28
-int rt_int_parameter(rt_t * rt, const char * key, int * ivalue); 
-# 29
-int rt_int_parameter_vector(rt_t * rt, const char * key, int  ivalue[3]); 
-# 30
-int rt_double_parameter(rt_t * rt, const char * key, double * value); 
-# 31
-int rt_double_parameter_vector(rt_t * rt, const char * key, double  value[3]); 
-# 32
-int rt_string_parameter(rt_t * rt, const char * key, char * s, unsigned len); 
-# 33
-int rt_switch(rt_t * rt, const char * key); 
-# 34
-int rt_active_keys(rt_t * rt, int * nactive); 
 # 22 "leesedwards.h"
 typedef struct lees_edw_s lees_edw_t; 
 # 23
@@ -17001,7 +22447,7 @@ if (fe) { ((fe->func)->target)(fe, &fetarget); }
 # 190
 TIMER_start(TIMER_COLLIDE_KERNEL); 
 # 192
-(__cudaPushCallConfiguration(nblk, ntpb, 0, 0)) ? (void)0 : lb_collision_mrt1(ctxt->target, lb->target, hydro->target, map->target, noise->target, fetarget); 
+do { (__cudaPushCallConfiguration(nblk, ntpb, 0, 0)) ? (void)0 : lb_collision_mrt1(ctxt->target, lb->target, hydro->target, map->target, noise->target, fetarget); } while (0); 
 # 194
 ; 
 # 196
@@ -17515,7 +22961,7 @@ lb_collision_parameters_commit(lb, visc);
 # 626
 TIMER_start(TIMER_COLLIDE_KERNEL); 
 # 628
-(__cudaPushCallConfiguration(nblk, ntpb, 0, 0)) ? (void)0 : lb_collision_mrt2(ctxt->target, lb->target, hydro->target, fe->target, noise->target); 
+do { (__cudaPushCallConfiguration(nblk, ntpb, 0, 0)) ? (void)0 : lb_collision_mrt2(ctxt->target, lb->target, hydro->target, fe->target, noise->target); } while (0); 
 # 629
 ; 
 # 631
@@ -18737,13 +24183,13 @@ physics_mobility(phys, &(p.mobility));
 # 1789
 (p.rtau2) = ((2.0) / ((1.0) + ((2.0) * (p.mobility)))); 
 # 1791
-{ tdpErrorHandler(cudaMemcpyToSymbol(_lbp, lb->param, sizeof(lb_collide_param_t), 0, cudaMemcpyHostToDevice), "collision.c", 1792, 1); 
+{ tdpErrorHandler(hipMemcpyToSymbol(&_lbp, lb->param, sizeof(lb_collide_param_t), 0, hipMemcpyHostToDevice), "collision.c", 1792, 1); 
 # 1791 "collision.c"
 } 
 # 1792
 ; 
 # 1793
-{ tdpErrorHandler(cudaMemcpyToSymbol(_cp, &p, sizeof(collide_param_t), 0, cudaMemcpyHostToDevice), "collision.c", 1794, 1); 
+{ tdpErrorHandler(hipMemcpyToSymbol(&_cp, &p, sizeof(collide_param_t), 0, hipMemcpyHostToDevice), "collision.c", 1794, 1); 
 # 1793 "collision.c"
 } 
 # 1794
@@ -18753,7 +24199,7 @@ return 0;
 # 1796
 } 
 # 1828 "collision.c"
-__attribute((noinline)) __attribute__((unused)) void d3q19_f2mode_chunk(double *mode, const double *__restrict__ fchunk) 
+__attribute__((unused)) void d3q19_f2mode_chunk(double *mode, const double *__restrict__ fchunk) 
 # 1829
 {int volatile ___ = 1;(void)mode;(void)fchunk;
 # 2237
