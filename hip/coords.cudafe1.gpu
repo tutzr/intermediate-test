@@ -1,0 +1,1275 @@
+typedef char __nv_bool;
+# 185 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+enum hipError_t {
+# 186 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipSuccess,
+# 187 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidValue,
+# 189 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorOutOfMemory,
+# 191 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorMemoryAllocation = 2,
+# 192 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorNotInitialized,
+# 194 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInitializationError = 3,
+# 195 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorDeinitialized,
+# 196 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorProfilerDisabled,
+# 197 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorProfilerNotInitialized,
+# 198 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorProfilerAlreadyStarted,
+# 199 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorProfilerAlreadyStopped,
+# 200 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidConfiguration,
+# 201 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidSymbol = 13,
+# 202 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidDevicePointer = 17,
+# 203 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidMemcpyDirection = 21,
+# 204 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInsufficientDriver = 35,
+# 205 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorMissingConfiguration = 52,
+# 206 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorPriorLaunchFailure,
+# 207 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidDeviceFunction = 98,
+# 208 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorNoDevice = 100,
+# 209 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidDevice,
+# 210 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidImage = 200,
+# 211 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidContext,
+# 212 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorContextAlreadyCurrent,
+# 213 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorMapFailed = 205,
+# 215 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorMapBufferObjectFailed = 205,
+# 216 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorUnmapFailed,
+# 217 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorArrayIsMapped,
+# 218 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorAlreadyMapped,
+# 219 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorNoBinaryForGpu,
+# 220 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorAlreadyAcquired,
+# 221 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorNotMapped,
+# 222 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorNotMappedAsArray,
+# 223 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorNotMappedAsPointer,
+# 224 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorECCNotCorrectable,
+# 225 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorUnsupportedLimit,
+# 226 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorContextAlreadyInUse,
+# 227 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorPeerAccessUnsupported,
+# 228 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidKernelFile,
+# 229 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidGraphicsContext,
+# 230 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidSource = 300,
+# 231 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorFileNotFound,
+# 232 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorSharedObjectSymbolNotFound,
+# 233 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorSharedObjectInitFailed,
+# 234 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorOperatingSystem,
+# 235 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidHandle = 400,
+# 237 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidResourceHandle = 400,
+# 238 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorNotFound = 500,
+# 239 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorNotReady = 600,
+# 243 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorIllegalAddress = 700,
+# 244 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorLaunchOutOfResources,
+# 245 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorLaunchTimeOut,
+# 246 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorPeerAccessAlreadyEnabled = 704,
+# 248 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorPeerAccessNotEnabled,
+# 250 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorSetOnActiveProcess = 708,
+# 251 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorAssert = 710,
+# 252 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorHostMemoryAlreadyRegistered = 712,
+# 254 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorHostMemoryNotRegistered,
+# 256 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorLaunchFailure = 719,
+# 258 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorCooperativeLaunchTooLarge,
+# 262 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorNotSupported = 801,
+# 263 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorUnknown = 999,
+# 265 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorRuntimeMemory = 1052,
+# 267 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorRuntimeOther,
+# 269 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorTbd};
+# 646 "/usr/local/cuda-10.1/include/cuda.h" 3
+enum CUfunction_attribute_enum {
+# 652 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_MAX_THREADS_PER_BLOCK,
+# 659 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_SHARED_SIZE_BYTES,
+# 665 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_CONST_SIZE_BYTES,
+# 670 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_LOCAL_SIZE_BYTES,
+# 675 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_NUM_REGS,
+# 684 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_PTX_VERSION,
+# 693 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_BINARY_VERSION,
+# 699 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_CACHE_MODE_CA,
+# 707 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_MAX_DYNAMIC_SHARED_SIZE_BYTES,
+# 716 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_PREFERRED_SHARED_MEMORY_CARVEOUT,
+# 718 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_MAX};
+# 724 "/usr/local/cuda-10.1/include/cuda.h" 3
+enum CUfunc_cache_enum {
+# 725 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_CACHE_PREFER_NONE = 0,
+# 726 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_CACHE_PREFER_SHARED = 1,
+# 727 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_CACHE_PREFER_L1 = 2,
+# 728 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_CACHE_PREFER_EQUAL = 3};
+# 734 "/usr/local/cuda-10.1/include/cuda.h" 3
+enum CUsharedconfig_enum {
+# 735 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_SHARED_MEM_CONFIG_DEFAULT_BANK_SIZE = 0,
+# 736 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_SHARED_MEM_CONFIG_FOUR_BYTE_BANK_SIZE = 1,
+# 737 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_SHARED_MEM_CONFIG_EIGHT_BYTE_BANK_SIZE = 2};
+# 790 "/usr/local/cuda-10.1/include/cuda.h" 3
+enum CUjit_option_enum {
+# 797 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_MAX_REGISTERS,
+# 812 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_THREADS_PER_BLOCK,
+# 820 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_WALL_TIME,
+# 829 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_INFO_LOG_BUFFER,
+# 838 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_INFO_LOG_BUFFER_SIZE_BYTES,
+# 847 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_ERROR_LOG_BUFFER,
+# 856 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_ERROR_LOG_BUFFER_SIZE_BYTES,
+# 864 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_OPTIMIZATION_LEVEL,
+# 872 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_TARGET_FROM_CUCONTEXT,
+# 880 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_TARGET,
+# 889 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_FALLBACK_STRATEGY,
+# 897 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_GENERATE_DEBUG_INFO,
+# 904 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_LOG_VERBOSE,
+# 911 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_GENERATE_LINE_INFO,
+# 919 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_CACHE_MODE,
+# 924 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_NEW_SM3X_OPT,
+# 925 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_FAST_COMPILE,
+# 939 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_GLOBAL_SYMBOL_NAMES,
+# 948 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_GLOBAL_SYMBOL_ADDRESSES,
+# 956 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_GLOBAL_SYMBOL_COUNT,
+# 958 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_NUM_OPTIONS};
+# 1194 "/usr/local/cuda-10.1/include/cuda.h" 3
+enum cudaError_enum {
+# 1200 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_SUCCESS,
+# 1206 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_INVALID_VALUE,
+# 1212 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_OUT_OF_MEMORY,
+# 1218 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_NOT_INITIALIZED,
+# 1223 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_DEINITIALIZED,
+# 1230 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_PROFILER_DISABLED,
+# 1238 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_PROFILER_NOT_INITIALIZED,
+# 1245 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_PROFILER_ALREADY_STARTED,
+# 1252 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_PROFILER_ALREADY_STOPPED,
+# 1258 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_NO_DEVICE = 100,
+# 1264 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_INVALID_DEVICE,
+# 1271 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_INVALID_IMAGE = 200,
+# 1281 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_INVALID_CONTEXT,
+# 1290 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_CONTEXT_ALREADY_CURRENT,
+# 1295 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_MAP_FAILED = 205,
+# 1300 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_UNMAP_FAILED,
+# 1306 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_ARRAY_IS_MAPPED,
+# 1311 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_ALREADY_MAPPED,
+# 1319 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_NO_BINARY_FOR_GPU,
+# 1324 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_ALREADY_ACQUIRED,
+# 1329 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_NOT_MAPPED,
+# 1335 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_NOT_MAPPED_AS_ARRAY,
+# 1341 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_NOT_MAPPED_AS_POINTER,
+# 1347 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_ECC_UNCORRECTABLE,
+# 1353 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_UNSUPPORTED_LIMIT,
+# 1360 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_CONTEXT_ALREADY_IN_USE,
+# 1366 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_PEER_ACCESS_UNSUPPORTED,
+# 1371 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_INVALID_PTX,
+# 1376 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_INVALID_GRAPHICS_CONTEXT,
+# 1382 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_NVLINK_UNCORRECTABLE,
+# 1387 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_JIT_COMPILER_NOT_FOUND,
+# 1392 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_INVALID_SOURCE = 300,
+# 1397 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_FILE_NOT_FOUND,
+# 1402 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_SHARED_OBJECT_SYMBOL_NOT_FOUND,
+# 1407 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_SHARED_OBJECT_INIT_FAILED,
+# 1412 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_OPERATING_SYSTEM,
+# 1418 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_INVALID_HANDLE = 400,
+# 1424 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_ILLEGAL_STATE,
+# 1430 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_NOT_FOUND = 500,
+# 1438 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_NOT_READY = 600,
+# 1447 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_ILLEGAL_ADDRESS = 700,
+# 1458 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_LAUNCH_OUT_OF_RESOURCES,
+# 1468 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_LAUNCH_TIMEOUT,
+# 1474 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_LAUNCH_INCOMPATIBLE_TEXTURING,
+# 1481 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_PEER_ACCESS_ALREADY_ENABLED,
+# 1488 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_PEER_ACCESS_NOT_ENABLED,
+# 1494 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_PRIMARY_CONTEXT_ACTIVE = 708,
+# 1501 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_CONTEXT_IS_DESTROYED,
+# 1509 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_ASSERT,
+# 1516 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_TOO_MANY_PEERS,
+# 1522 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_HOST_MEMORY_ALREADY_REGISTERED,
+# 1528 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_HOST_MEMORY_NOT_REGISTERED,
+# 1537 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_HARDWARE_STACK_ERROR,
+# 1545 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_ILLEGAL_INSTRUCTION,
+# 1554 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_MISALIGNED_ADDRESS,
+# 1565 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_INVALID_ADDRESS_SPACE,
+# 1573 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_INVALID_PC,
+# 1584 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_LAUNCH_FAILED,
+# 1593 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_COOPERATIVE_LAUNCH_TOO_LARGE,
+# 1598 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_NOT_PERMITTED = 800,
+# 1604 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_NOT_SUPPORTED,
+# 1613 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_SYSTEM_NOT_READY,
+# 1620 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_SYSTEM_DRIVER_MISMATCH,
+# 1629 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_COMPAT_NOT_SUPPORTED_ON_DEVICE,
+# 1635 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_STREAM_CAPTURE_UNSUPPORTED = 900,
+# 1641 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_STREAM_CAPTURE_INVALIDATED,
+# 1647 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_STREAM_CAPTURE_MERGE,
+# 1652 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_STREAM_CAPTURE_UNMATCHED,
+# 1658 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_STREAM_CAPTURE_UNJOINED,
+# 1665 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_STREAM_CAPTURE_ISOLATION,
+# 1671 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_STREAM_CAPTURE_IMPLICIT,
+# 1677 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_CAPTURED_EVENT,
+# 1684 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_STREAM_CAPTURE_WRONG_THREAD,
+# 1689 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_UNKNOWN = 999};
+# 45 "/opt/rocm-3.3.0/hip/include/hip/nvcc_detail/hip_runtime_api.h" 3
+enum hipMemcpyKind {
+# 46 "/opt/rocm-3.3.0/hip/include/hip/nvcc_detail/hip_runtime_api.h" 3
+hipMemcpyHostToHost,
+# 47 "/opt/rocm-3.3.0/hip/include/hip/nvcc_detail/hip_runtime_api.h" 3
+hipMemcpyHostToDevice,
+# 48 "/opt/rocm-3.3.0/hip/include/hip/nvcc_detail/hip_runtime_api.h" 3
+hipMemcpyDeviceToHost,
+# 49 "/opt/rocm-3.3.0/hip/include/hip/nvcc_detail/hip_runtime_api.h" 3
+hipMemcpyDeviceToDevice,
+# 50 "/opt/rocm-3.3.0/hip/include/hip/nvcc_detail/hip_runtime_api.h" 3
+hipMemcpyDefault};
+# 22 "pe.h"
+struct pe_s;
+# 26 "coords.h"
+enum cartesian_directions {
+# 26 "coords.h"
+X,
+# 26 "coords.h"
+Y,
+# 26 "coords.h"
+Z};
+# 27 "coords.h"
+enum cartesian_neighbours {
+# 27 "coords.h"
+FORWARD,
+# 27 "coords.h"
+BACKWARD};
+# 28 "coords.h"
+enum cs_mpi_cart_neighbours {
+# 28 "coords.h"
+CS_FORW,
+# 28 "coords.h"
+CS_BACK};
+# 9 "coords_s.h"
+struct coords_param_s;
+# 24 "coords_s.h"
+struct coords_s;
+# 212 "/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stddef.h" 3
+typedef unsigned long size_t;
+#include "crt/device_runtime.h"
+# 25 ".././mpi_s/mpi.h"
+typedef int MPI_Handle;
+# 26 ".././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Comm;
+# 270 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+typedef enum hipError_t hipError_t;
+# 51 "/opt/rocm-3.3.0/hip/include/hip/nvcc_detail/hip_runtime_api.h" 3
+typedef enum hipMemcpyKind hipMemcpyKind;
+# 26 ".././target/target_hip.h"
+typedef hipMemcpyKind tdpMemcpyKind;
+# 45 ".././target/target_hip.h"
+typedef hipError_t tdpError_t;
+# 22 "pe.h"
+typedef struct pe_s pe_t;
+# 22 "coords.h"
+typedef struct coords_s cs_t;
+# 7 "coords_s.h"
+typedef struct coords_param_s cs_param_t;
+# 9 "coords_s.h"
+struct coords_param_s {
+# 10 "coords_s.h"
+int nhalo;
+# 11 "coords_s.h"
+int nsites;
+# 12 "coords_s.h"
+int ntotal[3];
+# 13 "coords_s.h"
+int nlocal[3];
+# 14 "coords_s.h"
+int noffset[3];
+# 15 "coords_s.h"
+int str[3];
+# 16 "coords_s.h"
+int periodic[3];
+# 18 "coords_s.h"
+int mpi_cartsz[3];
+# 19 "coords_s.h"
+int mpi_cartcoords[3];
+# 21 "coords_s.h"
+double lmin[3];};
+# 24 "coords_s.h"
+struct coords_s {
+# 25 "coords_s.h"
+pe_t *pe;
+# 26 "coords_s.h"
+int nref;
+# 28 "coords_s.h"
+cs_param_t *param;
+# 31 "coords_s.h"
+int mpi_cartrank;
+# 32 "coords_s.h"
+int reorder;
+# 33 "coords_s.h"
+int mpi_cart_neighbours[2][3];
+# 34 "coords_s.h"
+int *listnlocal[3];
+# 35 "coords_s.h"
+int *listnoffset[3];
+# 37 "coords_s.h"
+MPI_Comm commcart;
+# 38 "coords_s.h"
+MPI_Comm commperiodic;
+# 40 "coords_s.h"
+cs_t *target;};
+# 150 "/usr/local/cuda-10.1/include/crt/common_functions.h" 3
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) void free(void *);
+# 49 ".././target/target.h"
+___device__(extern  __no_sc__) tdpError_t _Z17tdpGetDeviceCountPi(int *);
+# 82 ".././target/target.h"
+___device__(extern  __no_sc__) tdpError_t _Z7tdpFreePv(void *);
+# 83 ".././target/target.h"
+___device__(extern  __no_sc__) tdpError_t _Z9tdpMallocPPvm(void **, size_t);
+# 120 ".././target/target.h"
+___device__(extern  __no_sc__) void _Z15tdpErrorHandler10hipError_tPKcii(tdpError_t, const char *, int, int);
+# 47 "util.h"
+___device__(extern  __no_sc__) int _Z4iminii(const int, const int);
+# 48 "util.h"
+___device__(extern  __no_sc__) int _Z4imaxii(const int, const int);
+# 329 "coords.c"
+___device__(extern  __no_sc__) int _Z9cs_cartszP8coords_sPi(cs_t *, int *);
+# 347 "coords.c"
+___device__(extern  __no_sc__) int _Z14cs_cart_coordsP8coords_sPi(cs_t *, int *);
+# 401 "coords.c"
+___device__(extern  __no_sc__) int _Z11cs_periodicP8coords_sPi(cs_t *, int *);
+# 419 "coords.c"
+___device__(extern  __no_sc__) int _Z7cs_ltotP8coords_sPd(cs_t *, double *);
+# 437 "coords.c"
+___device__(extern  __no_sc__) int _Z7cs_lminP8coords_sPd(cs_t *, double *);
+# 459 "coords.c"
+___device__(extern  __no_sc__) int _Z9cs_nlocalP8coords_sPi(cs_t *, int *);
+# 480 "coords.c"
+___device__(extern  __no_sc__) int _Z9cs_nsitesP8coords_sPi(cs_t *, int *);
+# 499 "coords.c"
+___device__(extern  __no_sc__) int _Z16cs_nlocal_offsetP8coords_sPi(cs_t *, int *);
+# 610 "coords.c"
+___device__(extern  __no_sc__) int _Z8cs_indexP8coords_siii(cs_t *, int, int, int);
+# 649 "coords.c"
+___device__(extern  __no_sc__) int _Z8cs_nhaloP8coords_sPi(cs_t *, int *);
+# 666 "coords.c"
+___device__(extern  __no_sc__) int _Z9cs_ntotalP8coords_sPi(cs_t *, int *);
+# 753 "coords.c"
+___device__(extern  __no_sc__) int _Z19cs_minimum_distanceP8coords_sPKdS2_Pd(cs_t *, const double *, const double *, double *);
+# 783 "coords.c"
+___device__(extern  __no_sc__) int _Z15cs_index_to_ijkP8coords_siPi(cs_t *, int, int *);
+# 803 "coords.c"
+___device__(extern  __no_sc__) int _Z10cs_stridesP8coords_sPiS1_S1_(cs_t *, int *, int *, int *);
+# 883 "coords.c"
+___device__(extern  __no_sc__) int _Z7cs_nallP8coords_sPi(cs_t *, int *);
+# 27 "coords.c"
+static  __constant__  __var_used__ cs_param_t __nv_static_27__14_coords_cpp1_ii_7126c51d_const_param;
+#include "common_functions.h"
+# 329 "coords.c"
+___device__( __no_sc__) int _Z9cs_cartszP8coords_sPi(
+# 329 "coords.c"
+cs_t *cs, 
+# 329 "coords.c"
+int *sz){
+# 329 "coords.c"
+{
+# 331 "coords.c"
+{
+# 331 "coords.c"
+if (!(cs))
+# 331 "coords.c"
+{
+# 331 "coords.c"
+{
+# 331 "coords.c"
+__asm("trap;");
+# 331 "coords.c"
+}
+# 331 "coords.c"
+;
+# 331 "coords.c"
+}
+# 331 "coords.c"
+}
+# 331 "coords.c"
+;
+# 333 "coords.c"
+(sz[X]) = ((((cs->param)->mpi_cartsz))[X]);
+# 334 "coords.c"
+(sz[Y]) = ((((cs->param)->mpi_cartsz))[Y]);
+# 335 "coords.c"
+(sz[Z]) = ((((cs->param)->mpi_cartsz))[Z]);
+# 337 "coords.c"
+return 0;
+# 338 "coords.c"
+}}
+# 347 "coords.c"
+___device__( __no_sc__) int _Z14cs_cart_coordsP8coords_sPi(
+# 347 "coords.c"
+cs_t *cs, 
+# 347 "coords.c"
+int *coords){
+# 347 "coords.c"
+{
+# 349 "coords.c"
+{
+# 349 "coords.c"
+if (!(cs))
+# 349 "coords.c"
+{
+# 349 "coords.c"
+{
+# 349 "coords.c"
+__asm("trap;");
+# 349 "coords.c"
+}
+# 349 "coords.c"
+;
+# 349 "coords.c"
+}
+# 349 "coords.c"
+}
+# 349 "coords.c"
+;
+# 351 "coords.c"
+(coords[X]) = ((((cs->param)->mpi_cartcoords))[X]);
+# 352 "coords.c"
+(coords[Y]) = ((((cs->param)->mpi_cartcoords))[Y]);
+# 353 "coords.c"
+(coords[Z]) = ((((cs->param)->mpi_cartcoords))[Z]);
+# 355 "coords.c"
+return 0;
+# 356 "coords.c"
+}}
+# 401 "coords.c"
+___device__( __no_sc__) int _Z11cs_periodicP8coords_sPi(
+# 401 "coords.c"
+cs_t *cs, 
+# 401 "coords.c"
+int *periodic){
+# 401 "coords.c"
+{
+# 403 "coords.c"
+{
+# 403 "coords.c"
+if (!(cs))
+# 403 "coords.c"
+{
+# 403 "coords.c"
+{
+# 403 "coords.c"
+__asm("trap;");
+# 403 "coords.c"
+}
+# 403 "coords.c"
+;
+# 403 "coords.c"
+}
+# 403 "coords.c"
+}
+# 403 "coords.c"
+;
+# 405 "coords.c"
+(periodic[X]) = ((((cs->param)->periodic))[X]);
+# 406 "coords.c"
+(periodic[Y]) = ((((cs->param)->periodic))[Y]);
+# 407 "coords.c"
+(periodic[Z]) = ((((cs->param)->periodic))[Z]);
+# 409 "coords.c"
+return 0;
+# 410 "coords.c"
+}}
+# 419 "coords.c"
+___device__( __no_sc__) int _Z7cs_ltotP8coords_sPd(
+# 419 "coords.c"
+cs_t *cs, 
+# 419 "coords.c"
+double *ltotal){
+# 419 "coords.c"
+{
+# 421 "coords.c"
+{
+# 421 "coords.c"
+if (!(cs))
+# 421 "coords.c"
+{
+# 421 "coords.c"
+{
+# 421 "coords.c"
+__asm("trap;");
+# 421 "coords.c"
+}
+# 421 "coords.c"
+;
+# 421 "coords.c"
+}
+# 421 "coords.c"
+}
+# 421 "coords.c"
+;
+# 423 "coords.c"
+(ltotal[X]) = ((double)((((cs->param)->ntotal))[X]));
+# 424 "coords.c"
+(ltotal[Y]) = ((double)((((cs->param)->ntotal))[Y]));
+# 425 "coords.c"
+(ltotal[Z]) = ((double)((((cs->param)->ntotal))[Z]));
+# 427 "coords.c"
+return 0;
+# 428 "coords.c"
+}}
+# 437 "coords.c"
+___device__( __no_sc__) int _Z7cs_lminP8coords_sPd(
+# 437 "coords.c"
+cs_t *cs, 
+# 437 "coords.c"
+double *lmin){
+# 437 "coords.c"
+{
+# 439 "coords.c"
+{
+# 439 "coords.c"
+if (!(cs))
+# 439 "coords.c"
+{
+# 439 "coords.c"
+{
+# 439 "coords.c"
+__asm("trap;");
+# 439 "coords.c"
+}
+# 439 "coords.c"
+;
+# 439 "coords.c"
+}
+# 439 "coords.c"
+}
+# 439 "coords.c"
+;
+# 441 "coords.c"
+(lmin[X]) = ((((cs->param)->lmin))[X]);
+# 442 "coords.c"
+(lmin[Y]) = ((((cs->param)->lmin))[Y]);
+# 443 "coords.c"
+(lmin[Z]) = ((((cs->param)->lmin))[Z]);
+# 445 "coords.c"
+return 0;
+# 446 "coords.c"
+}}
+# 459 "coords.c"
+___device__( __no_sc__) int _Z9cs_nlocalP8coords_sPi(
+# 459 "coords.c"
+cs_t *cs, 
+# 459 "coords.c"
+int *n){
+# 459 "coords.c"
+{
+# 461 "coords.c"
+{
+# 461 "coords.c"
+if (!(cs))
+# 461 "coords.c"
+{
+# 461 "coords.c"
+{
+# 461 "coords.c"
+__asm("trap;");
+# 461 "coords.c"
+}
+# 461 "coords.c"
+;
+# 461 "coords.c"
+}
+# 461 "coords.c"
+}
+# 461 "coords.c"
+;
+# 463 "coords.c"
+(n[X]) = ((((cs->param)->nlocal))[X]);
+# 464 "coords.c"
+(n[Y]) = ((((cs->param)->nlocal))[Y]);
+# 465 "coords.c"
+(n[Z]) = ((((cs->param)->nlocal))[Z]);
+# 467 "coords.c"
+return 0;
+# 468 "coords.c"
+}}
+# 480 "coords.c"
+___device__( __no_sc__) int _Z9cs_nsitesP8coords_sPi(
+# 480 "coords.c"
+cs_t *cs, 
+# 480 "coords.c"
+int *nsites){
+# 480 "coords.c"
+{
+# 482 "coords.c"
+{
+# 482 "coords.c"
+if (!(cs))
+# 482 "coords.c"
+{
+# 482 "coords.c"
+{
+# 482 "coords.c"
+__asm("trap;");
+# 482 "coords.c"
+}
+# 482 "coords.c"
+;
+# 482 "coords.c"
+}
+# 482 "coords.c"
+}
+# 482 "coords.c"
+;
+# 484 "coords.c"
+(*nsites) = ((cs->param)->nsites);
+# 486 "coords.c"
+return 0;
+# 487 "coords.c"
+}}
+# 499 "coords.c"
+___device__( __no_sc__) int _Z16cs_nlocal_offsetP8coords_sPi(
+# 499 "coords.c"
+cs_t *cs, 
+# 499 "coords.c"
+int *n){
+# 499 "coords.c"
+{
+# 501 "coords.c"
+{
+# 501 "coords.c"
+if (!(cs))
+# 501 "coords.c"
+{
+# 501 "coords.c"
+{
+# 501 "coords.c"
+__asm("trap;");
+# 501 "coords.c"
+}
+# 501 "coords.c"
+;
+# 501 "coords.c"
+}
+# 501 "coords.c"
+}
+# 501 "coords.c"
+;
+# 503 "coords.c"
+(n[X]) = ((((cs->param)->noffset))[X]);
+# 504 "coords.c"
+(n[Y]) = ((((cs->param)->noffset))[Y]);
+# 505 "coords.c"
+(n[Z]) = ((((cs->param)->noffset))[Z]);
+# 507 "coords.c"
+return 0;
+# 508 "coords.c"
+}}
+# 610 "coords.c"
+___device__( __no_sc__) int _Z8cs_indexP8coords_siii(
+# 610 "coords.c"
+cs_t *cs, 
+# 610 "coords.c"
+int ic, 
+# 610 "coords.c"
+int jc, 
+# 610 "coords.c"
+int kc){
+# 610 "coords.c"
+{
+# 612 "coords.c"
+{
+# 612 "coords.c"
+if (!(cs))
+# 612 "coords.c"
+{
+# 612 "coords.c"
+{
+# 612 "coords.c"
+__asm("trap;");
+# 612 "coords.c"
+}
+# 612 "coords.c"
+;
+# 612 "coords.c"
+}
+# 612 "coords.c"
+}
+# 612 "coords.c"
+;
+# 614 "coords.c"
+{
+# 614 "coords.c"
+if (((int)(!(ic))) >= (1 - ((cs->param)->nhalo)))
+# 614 "coords.c"
+{
+# 614 "coords.c"
+{
+# 614 "coords.c"
+__asm("trap;");
+# 614 "coords.c"
+}
+# 614 "coords.c"
+;
+# 614 "coords.c"
+}
+# 614 "coords.c"
+}
+# 614 "coords.c"
+;
+# 615 "coords.c"
+{
+# 615 "coords.c"
+if (((int)(!(jc))) >= (1 - ((cs->param)->nhalo)))
+# 615 "coords.c"
+{
+# 615 "coords.c"
+{
+# 615 "coords.c"
+__asm("trap;");
+# 615 "coords.c"
+}
+# 615 "coords.c"
+;
+# 615 "coords.c"
+}
+# 615 "coords.c"
+}
+# 615 "coords.c"
+;
+# 616 "coords.c"
+{
+# 616 "coords.c"
+if (((int)(!(kc))) >= (1 - ((cs->param)->nhalo)))
+# 616 "coords.c"
+{
+# 616 "coords.c"
+{
+# 616 "coords.c"
+__asm("trap;");
+# 616 "coords.c"
+}
+# 616 "coords.c"
+;
+# 616 "coords.c"
+}
+# 616 "coords.c"
+}
+# 616 "coords.c"
+;
+# 617 "coords.c"
+{
+# 617 "coords.c"
+if (((int)(!(ic))) <= (((((cs->param)->nlocal))[X]) + ((cs->param)->nhalo)))
+# 617 "coords.c"
+{
+# 617 "coords.c"
+{
+# 617 "coords.c"
+__asm("trap;");
+# 617 "coords.c"
+}
+# 617 "coords.c"
+;
+# 617 "coords.c"
+}
+# 617 "coords.c"
+}
+# 617 "coords.c"
+;
+# 618 "coords.c"
+{
+# 618 "coords.c"
+if (((int)(!(jc))) <= (((((cs->param)->nlocal))[Y]) + ((cs->param)->nhalo)))
+# 618 "coords.c"
+{
+# 618 "coords.c"
+{
+# 618 "coords.c"
+__asm("trap;");
+# 618 "coords.c"
+}
+# 618 "coords.c"
+;
+# 618 "coords.c"
+}
+# 618 "coords.c"
+}
+# 618 "coords.c"
+;
+# 619 "coords.c"
+{
+# 619 "coords.c"
+if (((int)(!(kc))) <= (((((cs->param)->nlocal))[Z]) + ((cs->param)->nhalo)))
+# 619 "coords.c"
+{
+# 619 "coords.c"
+{
+# 619 "coords.c"
+__asm("trap;");
+# 619 "coords.c"
+}
+# 619 "coords.c"
+;
+# 619 "coords.c"
+}
+# 619 "coords.c"
+}
+# 619 "coords.c"
+;
+# 621 "coords.c"
+return ((((((cs->param)->str))[X]) * ((((cs->param)->nhalo) + ic) - 1)) + (((((cs->param)->str))[Y]) * ((((cs->param)->nhalo) + jc) - 1))) + (((((cs->param)->str))[Z]) * ((((cs->param)->nhalo) + kc) - 1));
+# 624 "coords.c"
+}}
+# 649 "coords.c"
+___device__( __no_sc__) int _Z8cs_nhaloP8coords_sPi(
+# 649 "coords.c"
+cs_t *cs, 
+# 649 "coords.c"
+int *nhalo){
+# 649 "coords.c"
+{
+# 651 "coords.c"
+{
+# 651 "coords.c"
+if (!(cs))
+# 651 "coords.c"
+{
+# 651 "coords.c"
+{
+# 651 "coords.c"
+__asm("trap;");
+# 651 "coords.c"
+}
+# 651 "coords.c"
+;
+# 651 "coords.c"
+}
+# 651 "coords.c"
+}
+# 651 "coords.c"
+;
+# 652 "coords.c"
+{
+# 652 "coords.c"
+if (!(nhalo))
+# 652 "coords.c"
+{
+# 652 "coords.c"
+{
+# 652 "coords.c"
+__asm("trap;");
+# 652 "coords.c"
+}
+# 652 "coords.c"
+;
+# 652 "coords.c"
+}
+# 652 "coords.c"
+}
+# 652 "coords.c"
+;
+# 654 "coords.c"
+(*nhalo) = ((cs->param)->nhalo);
+# 656 "coords.c"
+return 0;
+# 657 "coords.c"
+}}
+# 666 "coords.c"
+___device__( __no_sc__) int _Z9cs_ntotalP8coords_sPi(
+# 666 "coords.c"
+cs_t *cs, 
+# 666 "coords.c"
+int *ntotal){
+# 666 "coords.c"
+{
+# 668 "coords.c"
+{
+# 668 "coords.c"
+if (!(cs))
+# 668 "coords.c"
+{
+# 668 "coords.c"
+{
+# 668 "coords.c"
+__asm("trap;");
+# 668 "coords.c"
+}
+# 668 "coords.c"
+;
+# 668 "coords.c"
+}
+# 668 "coords.c"
+}
+# 668 "coords.c"
+;
+# 670 "coords.c"
+(ntotal[X]) = ((((cs->param)->ntotal))[X]);
+# 671 "coords.c"
+(ntotal[Y]) = ((((cs->param)->ntotal))[Y]);
+# 672 "coords.c"
+(ntotal[Z]) = ((((cs->param)->ntotal))[Z]);
+# 674 "coords.c"
+return 0;
+# 675 "coords.c"
+}}
+# 753 "coords.c"
+___device__( __no_sc__) int _Z19cs_minimum_distanceP8coords_sPKdS2_Pd(
+# 753 "coords.c"
+cs_t *cs, 
+# 753 "coords.c"
+const double *r1, 
+# 754 "coords.c"
+const double *r2, 
+# 755 "coords.c"
+double *r12){
+# 755 "coords.c"
+{
+# 757 "coords.c"
+{
+# 757 "coords.c"
+if (!(cs))
+# 757 "coords.c"
+{
+# 757 "coords.c"
+{
+# 757 "coords.c"
+__asm("trap;");
+# 757 "coords.c"
+}
+# 757 "coords.c"
+;
+# 757 "coords.c"
+}
+# 757 "coords.c"
+}
+# 757 "coords.c"
+;
+# 759 "coords.c"
+(r12[X]) = ((r2[X]) - (r1[X]));
+# 760 "coords.c"
+(r12[Y]) = ((r2[Y]) - (r1[Y]));
+# 761 "coords.c"
+(r12[Z]) = ((r2[Z]) - (r1[Z]));
+# 763 "coords.c"
+if ((r12[X]) > ((0.5) * ((double)((((cs->param)->ntotal))[X])))) {
+# 763 "coords.c"
+(r12[X]) -= (((1.0) * ((double)((((cs->param)->ntotal))[X]))) * ((double)((((cs->param)->periodic))[X]))); }
+# 764 "coords.c"
+if ((r12[X]) < ((-0.5) * ((double)((((cs->param)->ntotal))[X])))) {
+# 764 "coords.c"
+(r12[X]) += (((1.0) * ((double)((((cs->param)->ntotal))[X]))) * ((double)((((cs->param)->periodic))[X]))); }
+# 765 "coords.c"
+if ((r12[Y]) > ((0.5) * ((double)((((cs->param)->ntotal))[Y])))) {
+# 765 "coords.c"
+(r12[Y]) -= (((1.0) * ((double)((((cs->param)->ntotal))[Y]))) * ((double)((((cs->param)->periodic))[Y]))); }
+# 766 "coords.c"
+if ((r12[Y]) < ((-0.5) * ((double)((((cs->param)->ntotal))[Y])))) {
+# 766 "coords.c"
+(r12[Y]) += (((1.0) * ((double)((((cs->param)->ntotal))[Y]))) * ((double)((((cs->param)->periodic))[Y]))); }
+# 767 "coords.c"
+if ((r12[Z]) > ((0.5) * ((double)((((cs->param)->ntotal))[Z])))) {
+# 767 "coords.c"
+(r12[Z]) -= (((1.0) * ((double)((((cs->param)->ntotal))[Z]))) * ((double)((((cs->param)->periodic))[Z]))); }
+# 768 "coords.c"
+if ((r12[Z]) < ((-0.5) * ((double)((((cs->param)->ntotal))[Z])))) {
+# 768 "coords.c"
+(r12[Z]) += (((1.0) * ((double)((((cs->param)->ntotal))[Z]))) * ((double)((((cs->param)->periodic))[Z]))); }
+# 770 "coords.c"
+return 0;
+# 771 "coords.c"
+}}
+# 783 "coords.c"
+___device__( __no_sc__) int _Z15cs_index_to_ijkP8coords_siPi(
+# 783 "coords.c"
+cs_t *cs, 
+# 783 "coords.c"
+int index, 
+# 783 "coords.c"
+int *coords){
+# 783 "coords.c"
+{
+# 785 "coords.c"
+{
+# 785 "coords.c"
+if (!(cs))
+# 785 "coords.c"
+{
+# 785 "coords.c"
+{
+# 785 "coords.c"
+__asm("trap;");
+# 785 "coords.c"
+}
+# 785 "coords.c"
+;
+# 785 "coords.c"
+}
+# 785 "coords.c"
+}
+# 785 "coords.c"
+;
+# 787 "coords.c"
+(coords[X]) = ((1 - ((cs->param)->nhalo)) + (index / ((((cs->param)->str))[X])));
+# 788 "coords.c"
+(coords[Y]) = ((1 - ((cs->param)->nhalo)) + ((index % ((((cs->param)->str))[X])) / ((((cs->param)->str))[Y])));
+# 789 "coords.c"
+(coords[Z]) = ((1 - ((cs->param)->nhalo)) + (index % ((((cs->param)->str))[Y])));
+# 791 "coords.c"
+{
+# 791 "coords.c"
+if (((int)(!(_Z8cs_indexP8coords_siii(cs, (coords[X]), (coords[Y]), (coords[Z]))))) == index)
+# 791 "coords.c"
+{
+# 791 "coords.c"
+{
+# 791 "coords.c"
+__asm("trap;");
+# 791 "coords.c"
+}
+# 791 "coords.c"
+;
+# 791 "coords.c"
+}
+# 791 "coords.c"
+}
+# 791 "coords.c"
+;
+# 793 "coords.c"
+return 0;
+# 794 "coords.c"
+}}
+# 803 "coords.c"
+___device__( __no_sc__) int _Z10cs_stridesP8coords_sPiS1_S1_(
+# 803 "coords.c"
+cs_t *cs, 
+# 803 "coords.c"
+int *xs, 
+# 803 "coords.c"
+int *ys, 
+# 803 "coords.c"
+int *zs){
+# 803 "coords.c"
+{
+# 805 "coords.c"
+{
+# 805 "coords.c"
+if (!(cs))
+# 805 "coords.c"
+{
+# 805 "coords.c"
+{
+# 805 "coords.c"
+__asm("trap;");
+# 805 "coords.c"
+}
+# 805 "coords.c"
+;
+# 805 "coords.c"
+}
+# 805 "coords.c"
+}
+# 805 "coords.c"
+;
+# 807 "coords.c"
+(*xs) = ((((cs->param)->str))[X]);
+# 808 "coords.c"
+(*ys) = ((((cs->param)->str))[Y]);
+# 809 "coords.c"
+(*zs) = ((((cs->param)->str))[Z]);
+# 811 "coords.c"
+return 0;
+# 812 "coords.c"
+}}
+# 883 "coords.c"
+___device__( __no_sc__) int _Z7cs_nallP8coords_sPi(
+# 883 "coords.c"
+cs_t *cs, 
+# 883 "coords.c"
+int *nall){
+# 883 "coords.c"
+{
+# 885 "coords.c"
+{
+# 885 "coords.c"
+if (!(cs))
+# 885 "coords.c"
+{
+# 885 "coords.c"
+{
+# 885 "coords.c"
+__asm("trap;");
+# 885 "coords.c"
+}
+# 885 "coords.c"
+;
+# 885 "coords.c"
+}
+# 885 "coords.c"
+}
+# 885 "coords.c"
+;
+# 887 "coords.c"
+(nall[X]) = (((((cs->param)->nlocal))[X]) + (2 * ((cs->param)->nhalo)));
+# 888 "coords.c"
+(nall[Y]) = (((((cs->param)->nlocal))[Y]) + (2 * ((cs->param)->nhalo)));
+# 889 "coords.c"
+(nall[Z]) = (((((cs->param)->nlocal))[Z]) + (2 * ((cs->param)->nhalo)));
+# 891 "coords.c"
+return 0;
+# 892 "coords.c"
+}}

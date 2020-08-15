@@ -1,0 +1,89 @@
+typedef char __nv_bool;
+# 44 "mpi.h"
+enum return_codes {
+# 44 "mpi.h"
+MPI_SUCCESS};
+# 58 "mpi.h"
+enum elementary_datatypes {
+# 58 "mpi.h"
+MPI_CHAR,
+# 59 "mpi.h"
+MPI_SHORT,
+# 60 "mpi.h"
+MPI_INT,
+# 61 "mpi.h"
+MPI_LONG,
+# 62 "mpi.h"
+MPI_UNSIGNED_CHAR,
+# 63 "mpi.h"
+MPI_UNSIGNED_SHORT,
+# 64 "mpi.h"
+MPI_UNSIGNED,
+# 65 "mpi.h"
+MPI_UNSIGNED_LONG,
+# 66 "mpi.h"
+MPI_FLOAT,
+# 67 "mpi.h"
+MPI_DOUBLE,
+# 68 "mpi.h"
+MPI_LONG_DOUBLE,
+# 69 "mpi.h"
+MPI_BYTE,
+# 70 "mpi.h"
+MPI_PACKED};
+# 72 "mpi.h"
+enum collective_operations {
+# 72 "mpi.h"
+MPI_MAX,
+# 73 "mpi.h"
+MPI_MIN,
+# 74 "mpi.h"
+MPI_SUM,
+# 75 "mpi.h"
+MPI_PROD,
+# 76 "mpi.h"
+MPI_MAXLOC,
+# 77 "mpi.h"
+MPI_MINLOC,
+# 78 "mpi.h"
+MPI_BAND,
+# 79 "mpi.h"
+MPI_BOR,
+# 80 "mpi.h"
+MPI_BXOR,
+# 81 "mpi.h"
+MPI_LAND,
+# 82 "mpi.h"
+MPI_LOR,
+# 83 "mpi.h"
+MPI_LXOR};
+# 92 "mpi.h"
+enum reserved_communicators {
+# 92 "mpi.h"
+MPI_COMM_WORLD,
+# 92 "mpi.h"
+MPI_COMM_SELF};
+# 212 "/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stddef.h" 3
+typedef unsigned long size_t;
+#include "crt/device_runtime.h"
+# 25 "mpi.h"
+typedef int MPI_Handle;
+# 26 "mpi.h"
+typedef MPI_Handle MPI_Comm;
+# 28 "mpi.h"
+typedef MPI_Handle MPI_Datatype;
+# 30 "mpi.h"
+typedef MPI_Handle MPI_Op;
+#if !defined(__CUDABE__)
+# 145 "/usr/local/cuda-10.1/include/crt/common_functions.h" 3
+ __device_builtin__ ___device__(extern  __no_sc__) int printf(const char *__restrict__, ...);
+#endif
+# 149 "/usr/local/cuda-10.1/include/crt/common_functions.h" 3
+___device__(extern  __no_sc__) __attribute__((__malloc__)) __attribute__((__nothrow__)) void *malloc(size_t);
+# 150 "/usr/local/cuda-10.1/include/crt/common_functions.h" 3
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) void free(void *);
+# 68 "/usr/include/assert.h" 3
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__noreturn__)) void __assert_fail(const char *, const char *, unsigned, const char *);
+#include "common_functions.h"
+#if !defined(__CUDABE__)
+#endif

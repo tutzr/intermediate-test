@@ -1,0 +1,1385 @@
+typedef char __nv_bool;
+# 58 ".././mpi_s/mpi.h"
+enum elementary_datatypes {
+# 58 ".././mpi_s/mpi.h"
+MPI_CHAR,
+# 59 ".././mpi_s/mpi.h"
+MPI_SHORT,
+# 60 ".././mpi_s/mpi.h"
+MPI_INT,
+# 61 ".././mpi_s/mpi.h"
+MPI_LONG,
+# 62 ".././mpi_s/mpi.h"
+MPI_UNSIGNED_CHAR,
+# 63 ".././mpi_s/mpi.h"
+MPI_UNSIGNED_SHORT,
+# 64 ".././mpi_s/mpi.h"
+MPI_UNSIGNED,
+# 65 ".././mpi_s/mpi.h"
+MPI_UNSIGNED_LONG,
+# 66 ".././mpi_s/mpi.h"
+MPI_FLOAT,
+# 67 ".././mpi_s/mpi.h"
+MPI_DOUBLE,
+# 68 ".././mpi_s/mpi.h"
+MPI_LONG_DOUBLE,
+# 69 ".././mpi_s/mpi.h"
+MPI_BYTE,
+# 70 ".././mpi_s/mpi.h"
+MPI_PACKED};
+# 72 ".././mpi_s/mpi.h"
+enum collective_operations {
+# 72 ".././mpi_s/mpi.h"
+MPI_MAX,
+# 73 ".././mpi_s/mpi.h"
+MPI_MIN,
+# 74 ".././mpi_s/mpi.h"
+MPI_SUM,
+# 75 ".././mpi_s/mpi.h"
+MPI_PROD,
+# 76 ".././mpi_s/mpi.h"
+MPI_MAXLOC,
+# 77 ".././mpi_s/mpi.h"
+MPI_MINLOC,
+# 78 ".././mpi_s/mpi.h"
+MPI_BAND,
+# 79 ".././mpi_s/mpi.h"
+MPI_BOR,
+# 80 ".././mpi_s/mpi.h"
+MPI_BXOR,
+# 81 ".././mpi_s/mpi.h"
+MPI_LAND,
+# 82 ".././mpi_s/mpi.h"
+MPI_LOR,
+# 83 ".././mpi_s/mpi.h"
+MPI_LXOR};
+# 185 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+enum hipError_t {
+# 186 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipSuccess,
+# 187 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidValue,
+# 189 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorOutOfMemory,
+# 191 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorMemoryAllocation = 2,
+# 192 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorNotInitialized,
+# 194 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInitializationError = 3,
+# 195 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorDeinitialized,
+# 196 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorProfilerDisabled,
+# 197 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorProfilerNotInitialized,
+# 198 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorProfilerAlreadyStarted,
+# 199 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorProfilerAlreadyStopped,
+# 200 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidConfiguration,
+# 201 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidSymbol = 13,
+# 202 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidDevicePointer = 17,
+# 203 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidMemcpyDirection = 21,
+# 204 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInsufficientDriver = 35,
+# 205 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorMissingConfiguration = 52,
+# 206 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorPriorLaunchFailure,
+# 207 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidDeviceFunction = 98,
+# 208 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorNoDevice = 100,
+# 209 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidDevice,
+# 210 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidImage = 200,
+# 211 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidContext,
+# 212 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorContextAlreadyCurrent,
+# 213 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorMapFailed = 205,
+# 215 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorMapBufferObjectFailed = 205,
+# 216 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorUnmapFailed,
+# 217 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorArrayIsMapped,
+# 218 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorAlreadyMapped,
+# 219 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorNoBinaryForGpu,
+# 220 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorAlreadyAcquired,
+# 221 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorNotMapped,
+# 222 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorNotMappedAsArray,
+# 223 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorNotMappedAsPointer,
+# 224 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorECCNotCorrectable,
+# 225 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorUnsupportedLimit,
+# 226 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorContextAlreadyInUse,
+# 227 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorPeerAccessUnsupported,
+# 228 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidKernelFile,
+# 229 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidGraphicsContext,
+# 230 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidSource = 300,
+# 231 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorFileNotFound,
+# 232 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorSharedObjectSymbolNotFound,
+# 233 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorSharedObjectInitFailed,
+# 234 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorOperatingSystem,
+# 235 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidHandle = 400,
+# 237 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidResourceHandle = 400,
+# 238 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorNotFound = 500,
+# 239 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorNotReady = 600,
+# 243 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorIllegalAddress = 700,
+# 244 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorLaunchOutOfResources,
+# 245 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorLaunchTimeOut,
+# 246 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorPeerAccessAlreadyEnabled = 704,
+# 248 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorPeerAccessNotEnabled,
+# 250 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorSetOnActiveProcess = 708,
+# 251 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorAssert = 710,
+# 252 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorHostMemoryAlreadyRegistered = 712,
+# 254 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorHostMemoryNotRegistered,
+# 256 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorLaunchFailure = 719,
+# 258 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorCooperativeLaunchTooLarge,
+# 262 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorNotSupported = 801,
+# 263 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorUnknown = 999,
+# 265 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorRuntimeMemory = 1052,
+# 267 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorRuntimeOther,
+# 269 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorTbd};
+# 646 "/usr/local/cuda-10.1/include/cuda.h" 3
+enum CUfunction_attribute_enum {
+# 652 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_MAX_THREADS_PER_BLOCK,
+# 659 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_SHARED_SIZE_BYTES,
+# 665 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_CONST_SIZE_BYTES,
+# 670 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_LOCAL_SIZE_BYTES,
+# 675 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_NUM_REGS,
+# 684 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_PTX_VERSION,
+# 693 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_BINARY_VERSION,
+# 699 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_CACHE_MODE_CA,
+# 707 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_MAX_DYNAMIC_SHARED_SIZE_BYTES,
+# 716 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_PREFERRED_SHARED_MEMORY_CARVEOUT,
+# 718 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_MAX};
+# 724 "/usr/local/cuda-10.1/include/cuda.h" 3
+enum CUfunc_cache_enum {
+# 725 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_CACHE_PREFER_NONE = 0,
+# 726 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_CACHE_PREFER_SHARED = 1,
+# 727 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_CACHE_PREFER_L1 = 2,
+# 728 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_CACHE_PREFER_EQUAL = 3};
+# 734 "/usr/local/cuda-10.1/include/cuda.h" 3
+enum CUsharedconfig_enum {
+# 735 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_SHARED_MEM_CONFIG_DEFAULT_BANK_SIZE = 0,
+# 736 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_SHARED_MEM_CONFIG_FOUR_BYTE_BANK_SIZE = 1,
+# 737 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_SHARED_MEM_CONFIG_EIGHT_BYTE_BANK_SIZE = 2};
+# 790 "/usr/local/cuda-10.1/include/cuda.h" 3
+enum CUjit_option_enum {
+# 797 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_MAX_REGISTERS,
+# 812 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_THREADS_PER_BLOCK,
+# 820 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_WALL_TIME,
+# 829 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_INFO_LOG_BUFFER,
+# 838 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_INFO_LOG_BUFFER_SIZE_BYTES,
+# 847 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_ERROR_LOG_BUFFER,
+# 856 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_ERROR_LOG_BUFFER_SIZE_BYTES,
+# 864 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_OPTIMIZATION_LEVEL,
+# 872 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_TARGET_FROM_CUCONTEXT,
+# 880 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_TARGET,
+# 889 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_FALLBACK_STRATEGY,
+# 897 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_GENERATE_DEBUG_INFO,
+# 904 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_LOG_VERBOSE,
+# 911 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_GENERATE_LINE_INFO,
+# 919 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_CACHE_MODE,
+# 924 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_NEW_SM3X_OPT,
+# 925 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_FAST_COMPILE,
+# 939 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_GLOBAL_SYMBOL_NAMES,
+# 948 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_GLOBAL_SYMBOL_ADDRESSES,
+# 956 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_GLOBAL_SYMBOL_COUNT,
+# 958 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_NUM_OPTIONS};
+# 1194 "/usr/local/cuda-10.1/include/cuda.h" 3
+enum cudaError_enum {
+# 1200 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_SUCCESS,
+# 1206 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_INVALID_VALUE,
+# 1212 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_OUT_OF_MEMORY,
+# 1218 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_NOT_INITIALIZED,
+# 1223 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_DEINITIALIZED,
+# 1230 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_PROFILER_DISABLED,
+# 1238 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_PROFILER_NOT_INITIALIZED,
+# 1245 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_PROFILER_ALREADY_STARTED,
+# 1252 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_PROFILER_ALREADY_STOPPED,
+# 1258 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_NO_DEVICE = 100,
+# 1264 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_INVALID_DEVICE,
+# 1271 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_INVALID_IMAGE = 200,
+# 1281 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_INVALID_CONTEXT,
+# 1290 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_CONTEXT_ALREADY_CURRENT,
+# 1295 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_MAP_FAILED = 205,
+# 1300 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_UNMAP_FAILED,
+# 1306 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_ARRAY_IS_MAPPED,
+# 1311 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_ALREADY_MAPPED,
+# 1319 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_NO_BINARY_FOR_GPU,
+# 1324 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_ALREADY_ACQUIRED,
+# 1329 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_NOT_MAPPED,
+# 1335 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_NOT_MAPPED_AS_ARRAY,
+# 1341 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_NOT_MAPPED_AS_POINTER,
+# 1347 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_ECC_UNCORRECTABLE,
+# 1353 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_UNSUPPORTED_LIMIT,
+# 1360 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_CONTEXT_ALREADY_IN_USE,
+# 1366 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_PEER_ACCESS_UNSUPPORTED,
+# 1371 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_INVALID_PTX,
+# 1376 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_INVALID_GRAPHICS_CONTEXT,
+# 1382 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_NVLINK_UNCORRECTABLE,
+# 1387 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_JIT_COMPILER_NOT_FOUND,
+# 1392 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_INVALID_SOURCE = 300,
+# 1397 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_FILE_NOT_FOUND,
+# 1402 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_SHARED_OBJECT_SYMBOL_NOT_FOUND,
+# 1407 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_SHARED_OBJECT_INIT_FAILED,
+# 1412 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_OPERATING_SYSTEM,
+# 1418 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_INVALID_HANDLE = 400,
+# 1424 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_ILLEGAL_STATE,
+# 1430 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_NOT_FOUND = 500,
+# 1438 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_NOT_READY = 600,
+# 1447 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_ILLEGAL_ADDRESS = 700,
+# 1458 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_LAUNCH_OUT_OF_RESOURCES,
+# 1468 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_LAUNCH_TIMEOUT,
+# 1474 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_LAUNCH_INCOMPATIBLE_TEXTURING,
+# 1481 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_PEER_ACCESS_ALREADY_ENABLED,
+# 1488 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_PEER_ACCESS_NOT_ENABLED,
+# 1494 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_PRIMARY_CONTEXT_ACTIVE = 708,
+# 1501 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_CONTEXT_IS_DESTROYED,
+# 1509 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_ASSERT,
+# 1516 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_TOO_MANY_PEERS,
+# 1522 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_HOST_MEMORY_ALREADY_REGISTERED,
+# 1528 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_HOST_MEMORY_NOT_REGISTERED,
+# 1537 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_HARDWARE_STACK_ERROR,
+# 1545 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_ILLEGAL_INSTRUCTION,
+# 1554 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_MISALIGNED_ADDRESS,
+# 1565 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_INVALID_ADDRESS_SPACE,
+# 1573 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_INVALID_PC,
+# 1584 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_LAUNCH_FAILED,
+# 1593 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_COOPERATIVE_LAUNCH_TOO_LARGE,
+# 1598 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_NOT_PERMITTED = 800,
+# 1604 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_NOT_SUPPORTED,
+# 1613 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_SYSTEM_NOT_READY,
+# 1620 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_SYSTEM_DRIVER_MISMATCH,
+# 1629 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_COMPAT_NOT_SUPPORTED_ON_DEVICE,
+# 1635 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_STREAM_CAPTURE_UNSUPPORTED = 900,
+# 1641 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_STREAM_CAPTURE_INVALIDATED,
+# 1647 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_STREAM_CAPTURE_MERGE,
+# 1652 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_STREAM_CAPTURE_UNMATCHED,
+# 1658 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_STREAM_CAPTURE_UNJOINED,
+# 1665 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_STREAM_CAPTURE_ISOLATION,
+# 1671 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_STREAM_CAPTURE_IMPLICIT,
+# 1677 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_CAPTURED_EVENT,
+# 1684 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_STREAM_CAPTURE_WRONG_THREAD,
+# 1689 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_UNKNOWN = 999};
+# 45 "/opt/rocm-3.3.0/hip/include/hip/nvcc_detail/hip_runtime_api.h" 3
+enum hipMemcpyKind {
+# 46 "/opt/rocm-3.3.0/hip/include/hip/nvcc_detail/hip_runtime_api.h" 3
+hipMemcpyHostToHost,
+# 47 "/opt/rocm-3.3.0/hip/include/hip/nvcc_detail/hip_runtime_api.h" 3
+hipMemcpyHostToDevice,
+# 48 "/opt/rocm-3.3.0/hip/include/hip/nvcc_detail/hip_runtime_api.h" 3
+hipMemcpyDeviceToHost,
+# 49 "/opt/rocm-3.3.0/hip/include/hip/nvcc_detail/hip_runtime_api.h" 3
+hipMemcpyDeviceToDevice,
+# 50 "/opt/rocm-3.3.0/hip/include/hip/nvcc_detail/hip_runtime_api.h" 3
+hipMemcpyDefault};
+# 22 "pe.h"
+struct pe_s;
+# 22 "coords.h"
+struct coords_s;
+# 26 "coords.h"
+enum cartesian_directions {
+# 26 "coords.h"
+X,
+# 26 "coords.h"
+Y,
+# 26 "coords.h"
+Z};
+# 18 "physics.h"
+struct physics_s;
+# 25 "leesedwards.h"
+struct lees_edw_info_s;
+# 29 "leesedwards.c"
+enum shear_type {
+# 29 "leesedwards.c"
+LEES_EDW_LINEAR,
+# 29 "leesedwards.c"
+LEES_EDW_OSCILLATORY};
+# 31 "leesedwards.c"
+struct lees_edw_s;
+# 49 "leesedwards.c"
+struct lees_edw_param_s;
+# 212 "/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stddef.h" 3
+typedef unsigned long size_t;
+#include "crt/device_runtime.h"
+# 25 ".././mpi_s/mpi.h"
+typedef int MPI_Handle;
+# 26 ".././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Comm;
+# 28 ".././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Datatype;
+# 30 ".././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Op;
+# 270 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+typedef enum hipError_t hipError_t;
+# 51 "/opt/rocm-3.3.0/hip/include/hip/nvcc_detail/hip_runtime_api.h" 3
+typedef enum hipMemcpyKind hipMemcpyKind;
+# 26 ".././target/target_hip.h"
+typedef hipMemcpyKind tdpMemcpyKind;
+# 45 ".././target/target_hip.h"
+typedef hipError_t tdpError_t;
+# 22 "pe.h"
+typedef struct pe_s pe_t;
+# 22 "coords.h"
+typedef struct coords_s cs_t;
+# 18 "physics.h"
+typedef struct physics_s physics_t;
+# 22 "leesedwards.h"
+typedef struct lees_edw_s lees_edw_t;
+# 23 "leesedwards.h"
+typedef struct lees_edw_info_s lees_edw_info_t;
+# 25 "leesedwards.h"
+struct lees_edw_info_s {
+# 26 "leesedwards.h"
+int nplanes;
+# 27 "leesedwards.h"
+int type;
+# 28 "leesedwards.h"
+int period;
+# 29 "leesedwards.h"
+int nt0;
+# 30 "leesedwards.h"
+double uy;};
+# 27 "leesedwards.c"
+typedef struct lees_edw_param_s lees_edw_param_t;
+# 31 "leesedwards.c"
+struct lees_edw_s {
+# 32 "leesedwards.c"
+pe_t *pe;
+# 33 "leesedwards.c"
+cs_t *cs;
+# 34 "leesedwards.c"
+physics_t *phys;
+# 36 "leesedwards.c"
+lees_edw_param_t *param;
+# 38 "leesedwards.c"
+int nref;
+# 39 "leesedwards.c"
+int *icbuff_to_real;
+# 40 "leesedwards.c"
+int *icreal_to_buff;
+# 41 "leesedwards.c"
+int *buffer_duy;
+# 43 "leesedwards.c"
+MPI_Comm le_comm;
+# 44 "leesedwards.c"
+MPI_Comm le_plane_comm;
+# 46 "leesedwards.c"
+lees_edw_t *target;};
+# 49 "leesedwards.c"
+struct lees_edw_param_s {
+# 51 "leesedwards.c"
+int nplanelocal;
+# 52 "leesedwards.c"
+int nxbuffer;
+# 53 "leesedwards.c"
+int index_real_nbuffer;
+# 55 "leesedwards.c"
+int nhalo;
+# 56 "leesedwards.c"
+int str[3];
+# 57 "leesedwards.c"
+int nlocal[3];
+# 59 "leesedwards.c"
+int nplanetotal;
+# 60 "leesedwards.c"
+int type;
+# 61 "leesedwards.c"
+int period;
+# 62 "leesedwards.c"
+int nt0;
+# 63 "leesedwards.c"
+int nsites;
+# 64 "leesedwards.c"
+double uy;
+# 65 "leesedwards.c"
+double dx_min;
+# 66 "leesedwards.c"
+double dx_sep;
+# 67 "leesedwards.c"
+double omega;
+# 68 "leesedwards.c"
+double time0;};
+# 150 "/usr/local/cuda-10.1/include/crt/common_functions.h" 3
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) void free(void *);
+# 68 "/usr/include/assert.h" 3
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__noreturn__)) void __assert_fail(const char *, const char *, unsigned, const char *);
+#if !defined(__CUDABE__)
+# 65 "/usr/include/bits/mathcalls.h" 3
+ __device_builtin__ ___device__(extern  __no_sc__) __attribute__((__nothrow__)) double sin(double);
+#endif
+#if !defined(__CUDABE__)
+# 63 "/usr/include/bits/mathcalls.h" 3
+ __device_builtin__ ___device__(extern  __no_sc__) __attribute__((__nothrow__)) double cos(double);
+#endif
+#if !defined(__CUDABE__)
+# 58 "/usr/include/bits/mathcalls.h" 3
+ __device_builtin__ ___device__(extern  __no_sc__) __attribute__((__nothrow__)) double atan(double);
+#endif
+# 49 ".././target/target.h"
+___device__(extern  __no_sc__) tdpError_t _Z17tdpGetDeviceCountPi(int *);
+# 82 ".././target/target.h"
+___device__(extern  __no_sc__) tdpError_t _Z7tdpFreePv(void *);
+# 83 ".././target/target.h"
+___device__(extern  __no_sc__) tdpError_t _Z9tdpMallocPPvm(void **, size_t);
+# 120 ".././target/target.h"
+___device__(extern  __no_sc__) void _Z15tdpErrorHandler10hipError_tPKcii(tdpError_t, const char *, int, int);
+# 54 "coords.h"
+___device__(extern  __no_sc__) int _Z9cs_cartszP8coords_sPi(cs_t *, int *);
+# 55 "coords.h"
+___device__(extern  __no_sc__) int _Z14cs_cart_coordsP8coords_sPi(cs_t *, int *);
+# 56 "coords.h"
+___device__(extern  __no_sc__) int _Z7cs_lminP8coords_sPd(cs_t *, double *);
+# 57 "coords.h"
+___device__(extern  __no_sc__) int _Z7cs_ltotP8coords_sPd(cs_t *, double *);
+# 59 "coords.h"
+___device__(extern  __no_sc__) int _Z9cs_nlocalP8coords_sPi(cs_t *, int *);
+# 60 "coords.h"
+___device__(extern  __no_sc__) int _Z16cs_nlocal_offsetP8coords_sPi(cs_t *, int *);
+# 61 "coords.h"
+___device__(extern  __no_sc__) int _Z8cs_nhaloP8coords_sPi(cs_t *, int *);
+# 63 "coords.h"
+___device__(extern  __no_sc__) int _Z9cs_ntotalP8coords_sPi(cs_t *, int *);
+# 68 "coords.h"
+___device__(extern  __no_sc__) int _Z10cs_stridesP8coords_sPiS1_S1_(cs_t *, int *, int *, int *);
+# 40 "physics.h"
+___device__(extern  __no_sc__) int _Z11physics_refPP9physics_s(physics_t **);
+# 54 "physics.h"
+___device__(extern  __no_sc__) int _Z20physics_control_timeP9physics_sPd(physics_t *, double *);
+# 47 "util.h"
+___device__(extern  __no_sc__) int _Z4iminii(const int, const int);
+# 48 "util.h"
+___device__(extern  __no_sc__) int _Z4imaxii(const int, const int);
+# 333 "leesedwards.c"
+___device__(extern  __no_sc__) int _Z21lees_edw_nplane_totalP10lees_edw_s(lees_edw_t *);
+# 347 "leesedwards.c"
+___device__(extern  __no_sc__) int _Z21lees_edw_nplane_localP10lees_edw_s(lees_edw_t *);
+# 361 "leesedwards.c"
+___device__(extern  __no_sc__) int _Z17lees_edw_plane_uyP10lees_edw_sPd(lees_edw_t *, double *);
+# 377 "leesedwards.c"
+___device__(extern  __no_sc__) int _Z17lees_edw_nxbufferP10lees_edw_sPi(lees_edw_t *, int *);
+# 656 "leesedwards.c"
+___device__(extern  __no_sc__) int _Z15lees_edw_nsitesP10lees_edw_sPi(lees_edw_t *, int *);
+# 679 "leesedwards.c"
+___device__(extern  __no_sc__) int _Z18lees_edw_steady_uyP10lees_edw_siPd(lees_edw_t *, int, double *);
+# 719 "leesedwards.c"
+___device__(extern  __no_sc__) int _Z17lees_edw_block_uyP10lees_edw_siPd(lees_edw_t *, int, double *);
+# 759 "leesedwards.c"
+___device__(extern  __no_sc__) int _Z21lees_edw_plane_uy_nowP10lees_edw_sdPd(lees_edw_t *, double, double *);
+# 784 "leesedwards.c"
+___device__(extern  __no_sc__) int _Z23lees_edw_plane_locationP10lees_edw_si(lees_edw_t *, int);
+# 814 "leesedwards.c"
+___device__(extern  __no_sc__) int _Z29lees_edw_index_real_to_bufferP10lees_edw_sii(lees_edw_t *, int, int);
+# 841 "leesedwards.c"
+___device__(extern  __no_sc__) int _Z29lees_edw_index_buffer_to_realP10lees_edw_si(lees_edw_t *, int);
+# 865 "leesedwards.c"
+___device__(extern  __no_sc__) int _Z28lees_edw_buffer_displacementP10lees_edw_sidPd(lees_edw_t *, int, double, double *);
+# 975 "leesedwards.c"
+___device__(extern  __no_sc__) int _Z19lees_edw_shear_rateP10lees_edw_sPd(lees_edw_t *, double *);
+# 998 "leesedwards.c"
+___device__(extern  __no_sc__) int _Z14lees_edw_indexP10lees_edw_siii(lees_edw_t *, int, int, int);
+# 1020 "leesedwards.c"
+___device__(extern  __no_sc__) void _Z16lees_edw_index_vP10lees_edw_sPiS1_S1_S1_(lees_edw_t *, int *, int *, int *, int *);
+# 1040 "leesedwards.c"
+___device__(extern  __no_sc__) int _Z15lees_edw_nlocalP10lees_edw_sPi(lees_edw_t *, int *);
+# 1054 "leesedwards.c"
+___device__(extern  __no_sc__) int _Z16lees_edw_stridesP10lees_edw_sPiS1_S1_(lees_edw_t *, int *, int *, int *);
+# 1068 "leesedwards.c"
+___device__(extern  __no_sc__) int _Z14lees_edw_nhaloP10lees_edw_sPi(lees_edw_t *, int *);
+# 1082 "leesedwards.c"
+___device__(extern  __no_sc__) int _Z13lees_edw_ltotP10lees_edw_sPd(lees_edw_t *, double *);
+# 1096 "leesedwards.c"
+___device__(extern  __no_sc__) int _Z15lees_edw_cartszP10lees_edw_sPi(lees_edw_t *, int *);
+# 1111 "leesedwards.c"
+___device__(extern  __no_sc__) int _Z15lees_edw_ntotalP10lees_edw_sPi(lees_edw_t *, int *);
+# 1125 "leesedwards.c"
+___device__(extern  __no_sc__) int _Z22lees_edw_nlocal_offsetP10lees_edw_sPi(lees_edw_t *, int *);
+# 1139 "leesedwards.c"
+___device__(extern  __no_sc__) int _Z20lees_edw_cart_coordsP10lees_edw_sPi(lees_edw_t *, int *);
+# 1154 "leesedwards.c"
+___device__(extern  __no_sc__) int _Z17lees_edw_plane_dyP10lees_edw_sPd(lees_edw_t *, double *);
+# 1223 "leesedwards.c"
+___device__(extern  __no_sc__) int _Z22lees_edw_ibuff_to_realP10lees_edw_si(lees_edw_t *, int);
+# 1246 "leesedwards.c"
+___device__(extern  __no_sc__) int _Z19lees_edw_ic_to_buffP10lees_edw_sii(lees_edw_t *, int, int);
+# 1288 "leesedwards.c"
+___device__(extern  __no_sc__) int _Z19lees_edw_buffer_duyP10lees_edw_si(lees_edw_t *, int);
+# 75 "leesedwards.c"
+static  __constant__  __var_used__ lees_edw_param_t __nv_static_32__19_leesedwards_cpp1_ii_a73b72cf_static_param;
+static  __device__  __var_used__ const char __T10[40];
+static  __device__  __var_used__ const char __T11[40];
+static  __device__  __var_used__ const char __T12[46];
+static  __device__  __var_used__ const char __T13[43];
+static  __device__  __var_used__ const char __T17[41];
+static  __device__  __var_used__ const char __T18[52];
+static  __device__  __var_used__ const char __T19[51];
+static  __device__  __var_used__ const char __T20[58];
+static  __device__  __var_used__ const char __T21[47];
+static  __device__  __var_used__ const char __T22[58];
+static  __device__  __var_used__ const char __T23[53];
+static  __device__  __var_used__ const char __T24[70];
+static  __device__  __var_used__ const char __T28[48];
+static  __device__  __var_used__ const char __T29[48];
+static  __device__  __var_used__ const char __T30[64];
+static  __device__  __var_used__ const char __T31[41];
+static  __device__  __var_used__ const char __T32[56];
+static  __device__  __var_used__ const char __T33[40];
+static  __device__  __var_used__ const char __T34[42];
+static  __device__  __var_used__ const char __T35[41];
+static  __device__  __var_used__ const char __T36[41];
+static  __device__  __var_used__ const char __T37[48];
+static  __device__  __var_used__ const char __T38[46];
+static  __device__  __var_used__ const char __T39[46];
+static  __device__  __var_used__ const char __T42[46];
+static  __device__  __var_used__ const char __T43[48];
+static  __device__  __var_used__ const char __T44[43];
+#include "common_functions.h"
+static  __device__  __var_used__ const char __T10[40] = "int lees_edw_nplane_total(lees_edw_s *)";
+static  __device__  __var_used__ const char __T11[40] = "int lees_edw_nplane_local(lees_edw_s *)";
+static  __device__  __var_used__ const char __T12[46] = "int lees_edw_plane_uy(lees_edw_s *, double *)";
+static  __device__  __var_used__ const char __T13[43] = "int lees_edw_nxbuffer(lees_edw_s *, int *)";
+static  __device__  __var_used__ const char __T17[41] = "int lees_edw_nsites(lees_edw_s *, int *)";
+static  __device__  __var_used__ const char __T18[52] = "int lees_edw_steady_uy(lees_edw_s *, int, double *)";
+static  __device__  __var_used__ const char __T19[51] = "int lees_edw_block_uy(lees_edw_s *, int, double *)";
+static  __device__  __var_used__ const char __T20[58] = "int lees_edw_plane_uy_now(lees_edw_s *, double, double *)";
+static  __device__  __var_used__ const char __T21[47] = "int lees_edw_plane_location(lees_edw_s *, int)";
+static  __device__  __var_used__ const char __T22[58] = "int lees_edw_index_real_to_buffer(lees_edw_s *, int, int)";
+static  __device__  __var_used__ const char __T23[53] = "int lees_edw_index_buffer_to_real(lees_edw_s *, int)";
+static  __device__  __var_used__ const char __T24[70] = "int lees_edw_buffer_displacement(lees_edw_s *, int, double, double *)";
+static  __device__  __var_used__ const char __T28[48] = "int lees_edw_shear_rate(lees_edw_s *, double *)";
+static  __device__  __var_used__ const char __T29[48] = "int lees_edw_index(lees_edw_s *, int, int, int)";
+static  __device__  __var_used__ const char __T30[64] = "void lees_edw_index_v(lees_edw_s *, int *, int *, int *, int *)";
+static  __device__  __var_used__ const char __T31[41] = "int lees_edw_nlocal(lees_edw_s *, int *)";
+static  __device__  __var_used__ const char __T32[56] = "int lees_edw_strides(lees_edw_s *, int *, int *, int *)";
+static  __device__  __var_used__ const char __T33[40] = "int lees_edw_nhalo(lees_edw_s *, int *)";
+static  __device__  __var_used__ const char __T34[42] = "int lees_edw_ltot(lees_edw_s *, double *)";
+static  __device__  __var_used__ const char __T35[41] = "int lees_edw_cartsz(lees_edw_s *, int *)";
+static  __device__  __var_used__ const char __T36[41] = "int lees_edw_ntotal(lees_edw_s *, int *)";
+static  __device__  __var_used__ const char __T37[48] = "int lees_edw_nlocal_offset(lees_edw_s *, int *)";
+static  __device__  __var_used__ const char __T38[46] = "int lees_edw_cart_coords(lees_edw_s *, int *)";
+static  __device__  __var_used__ const char __T39[46] = "int lees_edw_plane_dy(lees_edw_s *, double *)";
+static  __device__  __var_used__ const char __T42[46] = "int lees_edw_ibuff_to_real(lees_edw_s *, int)";
+static  __device__  __var_used__ const char __T43[48] = "int lees_edw_ic_to_buff(lees_edw_s *, int, int)";
+static  __device__  __var_used__ const char __T44[43] = "int lees_edw_buffer_duy(lees_edw_s *, int)";
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+# 333 "leesedwards.c"
+___device__( __no_sc__) int _Z21lees_edw_nplane_totalP10lees_edw_s(
+# 333 "leesedwards.c"
+lees_edw_t *le){
+# 333 "leesedwards.c"
+{
+# 335 "leesedwards.c"
+(le) ? ((void)0) : (__assert_fail(((const char *)"le"), ((const char *)"leesedwards.c"), 335U, __T10));
+# 337 "leesedwards.c"
+return (le->param)->nplanetotal;
+# 338 "leesedwards.c"
+}}
+# 347 "leesedwards.c"
+___device__( __no_sc__) int _Z21lees_edw_nplane_localP10lees_edw_s(
+# 347 "leesedwards.c"
+lees_edw_t *le){
+# 347 "leesedwards.c"
+{
+# 349 "leesedwards.c"
+(le) ? ((void)0) : (__assert_fail(((const char *)"le"), ((const char *)"leesedwards.c"), 349U, __T11));
+# 351 "leesedwards.c"
+return (le->param)->nplanelocal;
+# 352 "leesedwards.c"
+}}
+# 361 "leesedwards.c"
+___device__( __no_sc__) int _Z17lees_edw_plane_uyP10lees_edw_sPd(
+# 361 "leesedwards.c"
+lees_edw_t *le, 
+# 361 "leesedwards.c"
+double *uy){
+# 361 "leesedwards.c"
+{
+# 363 "leesedwards.c"
+(le) ? ((void)0) : (__assert_fail(((const char *)"le"), ((const char *)"leesedwards.c"), 363U, __T12));
+# 365 "leesedwards.c"
+(*uy) = ((le->param)->uy);
+# 367 "leesedwards.c"
+return 0;
+# 368 "leesedwards.c"
+}}
+# 377 "leesedwards.c"
+___device__( __no_sc__) int _Z17lees_edw_nxbufferP10lees_edw_sPi(
+# 377 "leesedwards.c"
+lees_edw_t *le, 
+# 377 "leesedwards.c"
+int *nxb){
+# 377 "leesedwards.c"
+{
+# 379 "leesedwards.c"
+(le) ? ((void)0) : (__assert_fail(((const char *)"le"), ((const char *)"leesedwards.c"), 379U, __T13));
+# 381 "leesedwards.c"
+(*nxb) = ((le->param)->nxbuffer);
+# 383 "leesedwards.c"
+return 0;
+# 384 "leesedwards.c"
+}}
+# 656 "leesedwards.c"
+___device__( __no_sc__) int _Z15lees_edw_nsitesP10lees_edw_sPi(
+# 656 "leesedwards.c"
+lees_edw_t *le, 
+# 656 "leesedwards.c"
+int *nsites){
+# 656 "leesedwards.c"
+{
+# 658 "leesedwards.c"
+(le) ? ((void)0) : (__assert_fail(((const char *)"le"), ((const char *)"leesedwards.c"), 658U, __T17));
+# 660 "leesedwards.c"
+(*nsites) = ((((((((le->param)->nlocal))[X]) + (2 * ((le->param)->nhalo))) + ((le->param)->nxbuffer)) * (((((le->param)->nlocal))[Y]) + (2 * ((le->param)->nhalo)))) * (((((le->param)->nlocal))[Z]) + (2 * ((le->param)->nhalo))));
+# 664 "leesedwards.c"
+return 0;
+# 665 "leesedwards.c"
+}}
+# 679 "leesedwards.c"
+___device__( __no_sc__) int _Z18lees_edw_steady_uyP10lees_edw_siPd(
+# 679 "leesedwards.c"
+lees_edw_t *le, 
+# 679 "leesedwards.c"
+int ic, 
+# 679 "leesedwards.c"
+double *uy){
+# 679 "leesedwards.c"
+{
+# 681 "leesedwards.c"
+ int __cuda_local_var_19708_7_non_const_offset[3];
+# 682 "leesedwards.c"
+ int __cuda_local_var_19709_7_non_const_nplane;
+# 683 "leesedwards.c"
+ double __cuda_local_var_19710_10_non_const_gammadot;
+# 684 "leesedwards.c"
+ double __cuda_local_var_19711_10_non_const_xglobal;
+# 686 "leesedwards.c"
+(le) ? ((void)0) : (__assert_fail(((const char *)"le"), ((const char *)"leesedwards.c"), 686U, __T18));
+# 687 "leesedwards.c"
+(((le->param)->type) == 0) ? ((void)0) : (__assert_fail(((const char *)"le->param->type == LEES_EDW_LINEAR"), ((const char *)"leesedwards.c"), 687U, __T18));
+# 689 "leesedwards.c"
+_Z16cs_nlocal_offsetP8coords_sPi((le->cs), (__cuda_local_var_19708_7_non_const_offset));
+# 690 "leesedwards.c"
+_Z19lees_edw_shear_rateP10lees_edw_sPd(le, (&__cuda_local_var_19710_10_non_const_gammadot));
+# 697 "leesedwards.c"
+__cuda_local_var_19711_10_non_const_xglobal = ((((double)((__cuda_local_var_19708_7_non_const_offset)[X])) + ((double)ic)) - (0.5));
+# 698 "leesedwards.c"
+__cuda_local_var_19709_7_non_const_nplane = ((int)( fdivide((((le->param)->dx_min) + __cuda_local_var_19711_10_non_const_xglobal) , ((le->param)->dx_sep))));
+# 700 "leesedwards.c"
+(*uy) = ((__cuda_local_var_19711_10_non_const_xglobal * __cuda_local_var_19710_10_non_const_gammadot) - (((le->param)->uy) * ((double)__cuda_local_var_19709_7_non_const_nplane)));
+# 702 "leesedwards.c"
+return 0;
+# 703 "leesedwards.c"
+}}
+# 719 "leesedwards.c"
+___device__( __no_sc__) int _Z17lees_edw_block_uyP10lees_edw_siPd(
+# 719 "leesedwards.c"
+lees_edw_t *le, 
+# 719 "leesedwards.c"
+int ic, 
+# 719 "leesedwards.c"
+double *uy){
+# 719 "leesedwards.c"
+{
+# 721 "leesedwards.c"
+ int __cuda_local_var_19735_7_non_const_offset[3];
+# 722 "leesedwards.c"
+ int __cuda_local_var_19736_7_non_const_n;
+# 723 "leesedwards.c"
+ double __cuda_local_var_19737_10_non_const_xh;
+# 724 "leesedwards.c"
+ double __cuda_local_var_19738_10_non_const_lmin[3];
+# 725 "leesedwards.c"
+ double __cuda_local_var_19739_10_non_const_ltot[3];
+# 727 "leesedwards.c"
+(le) ? ((void)0) : (__assert_fail(((const char *)"le"), ((const char *)"leesedwards.c"), 727U, __T19));
+# 728 "leesedwards.c"
+(((le->param)->type) == 0) ? ((void)0) : (__assert_fail(((const char *)"le->param->type == LEES_EDW_LINEAR"), ((const char *)"leesedwards.c"), 728U, __T19));
+# 730 "leesedwards.c"
+_Z7cs_lminP8coords_sPd((le->cs), (__cuda_local_var_19738_10_non_const_lmin));
+# 731 "leesedwards.c"
+_Z7cs_ltotP8coords_sPd((le->cs), (__cuda_local_var_19739_10_non_const_ltot));
+# 732 "leesedwards.c"
+_Z16cs_nlocal_offsetP8coords_sPi((le->cs), (__cuda_local_var_19735_7_non_const_offset));
+# 737 "leesedwards.c"
+__cuda_local_var_19737_10_non_const_xh = (((((double)((__cuda_local_var_19735_7_non_const_offset)[X])) + ((double)ic)) - ((__cuda_local_var_19738_10_non_const_lmin)[X])) - ((0.5) * ((__cuda_local_var_19739_10_non_const_ltot)[X])));
+# 738 "leesedwards.c"
+if (__cuda_local_var_19737_10_non_const_xh > (0.0))
+# 738 "leesedwards.c"
+{
+# 739 "leesedwards.c"
+__cuda_local_var_19736_7_non_const_n = ((int)((0.5) + ( fdivide(__cuda_local_var_19737_10_non_const_xh , ((le->param)->dx_sep)))));
+# 740 "leesedwards.c"
+}
+# 741 "leesedwards.c"
+else 
+# 741 "leesedwards.c"
+{
+# 742 "leesedwards.c"
+__cuda_local_var_19736_7_non_const_n = ((int)((-0.5) + ( fdivide(__cuda_local_var_19737_10_non_const_xh , ((le->param)->dx_sep)))));
+# 743 "leesedwards.c"
+}
+# 745 "leesedwards.c"
+(*uy) = (((le->param)->uy) * ((double)__cuda_local_var_19736_7_non_const_n));
+# 747 "leesedwards.c"
+return 0;
+# 748 "leesedwards.c"
+}}
+# 759 "leesedwards.c"
+___device__( __no_sc__) int _Z21lees_edw_plane_uy_nowP10lees_edw_sdPd(
+# 759 "leesedwards.c"
+lees_edw_t *le, 
+# 759 "leesedwards.c"
+double t, 
+# 759 "leesedwards.c"
+double *uy){
+# 759 "leesedwards.c"
+{
+# 761 "leesedwards.c"
+ double __cuda_local_var_19767_10_non_const_tle;
+# 763 "leesedwards.c"
+(le) ? ((void)0) : (__assert_fail(((const char *)"le"), ((const char *)"leesedwards.c"), 763U, __T20));
+# 765 "leesedwards.c"
+__cuda_local_var_19767_10_non_const_tle = (t - ((le->param)->time0));
+# 766 "leesedwards.c"
+(__cuda_local_var_19767_10_non_const_tle >= (0.0)) ? ((void)0) : (__assert_fail(((const char *)"tle >= 0.0"), ((const char *)"leesedwards.c"), 766U, __T20));
+# 768 "leesedwards.c"
+(*uy) = ((le->param)->uy);
+# 769 "leesedwards.c"
+if (((le->param)->type) == 1) {
+# 769 "leesedwards.c"
+(*uy) *= (cos((((le->param)->omega) * __cuda_local_var_19767_10_non_const_tle))); }
+# 771 "leesedwards.c"
+return 0;
+# 772 "leesedwards.c"
+}}
+# 784 "leesedwards.c"
+___device__( __no_sc__) int _Z23lees_edw_plane_locationP10lees_edw_si(
+# 784 "leesedwards.c"
+lees_edw_t *le, 
+# 784 "leesedwards.c"
+int np){
+# 784 "leesedwards.c"
+{
+# 786 "leesedwards.c"
+ int __cuda_local_var_19783_7_non_const_offset[3];
+# 787 "leesedwards.c"
+ int __cuda_local_var_19784_7_non_const_nplane_offset;
+# 788 "leesedwards.c"
+ int __cuda_local_var_19785_7_non_const_cartcoords[3];
+# 789 "leesedwards.c"
+ int __cuda_local_var_19786_7_non_const_ix;
+# 791 "leesedwards.c"
+(le) ? ((void)0) : (__assert_fail(((const char *)"le"), ((const char *)"leesedwards.c"), 791U, __T21));
+# 792 "leesedwards.c"
+(le->cs) ? ((void)0) : (__assert_fail(((const char *)"le->cs"), ((const char *)"leesedwards.c"), 792U, __T21));
+# 793 "leesedwards.c"
+((np >= 0) && (np < ((le->param)->nplanelocal))) ? ((void)0) : (__assert_fail(((const char *)"np >= 0 && np < le->param->nplanelocal"), ((const char *)"leesedwards.c"), 793U, __T21));
+# 795 "leesedwards.c"
+_Z14cs_cart_coordsP8coords_sPi((le->cs), (__cuda_local_var_19785_7_non_const_cartcoords));
+# 796 "leesedwards.c"
+_Z16cs_nlocal_offsetP8coords_sPi((le->cs), (__cuda_local_var_19783_7_non_const_offset));
+# 797 "leesedwards.c"
+__cuda_local_var_19784_7_non_const_nplane_offset = (((__cuda_local_var_19785_7_non_const_cartcoords)[X]) * ((le->param)->nplanelocal));
+# 799 "leesedwards.c"
+__cuda_local_var_19786_7_non_const_ix = ((int)((((le->param)->dx_min) + (((double)(np + __cuda_local_var_19784_7_non_const_nplane_offset)) * ((le->param)->dx_sep))) - ((double)((__cuda_local_var_19783_7_non_const_offset)[X]))));
+# 801 "leesedwards.c"
+return __cuda_local_var_19786_7_non_const_ix;
+# 802 "leesedwards.c"
+}}
+# 814 "leesedwards.c"
+___device__( __no_sc__) int _Z29lees_edw_index_real_to_bufferP10lees_edw_sii(
+# 814 "leesedwards.c"
+lees_edw_t *le, 
+# 814 "leesedwards.c"
+int ic, 
+# 814 "leesedwards.c"
+int idisplace){
+# 814 "leesedwards.c"
+{
+# 816 "leesedwards.c"
+ int __cuda_local_var_19804_7_non_const_ib;
+# 818 "leesedwards.c"
+(le) ? ((void)0) : (__assert_fail(((const char *)"le"), ((const char *)"leesedwards.c"), 818U, __T22));
+# 819 "leesedwards.c"
+(le->icreal_to_buff) ? ((void)0) : (__assert_fail(((const char *)"le->icreal_to_buff"), ((const char *)"leesedwards.c"), 819U, __T22));
+# 821 "leesedwards.c"
+((idisplace >= (-((le->param)->nhalo))) && (idisplace <= ((le->param)->nhalo))) ? ((void)0) : (__assert_fail(((const char *)"idisplace >= -le->param->nhalo && idisplace <= +le->param->nhalo"), ((const char *)"leesedwards.c"), 821U, __T22));
+# 823 "leesedwards.c"
+__cuda_local_var_19804_7_non_const_ib = (((((ic + ((le->param)->nhalo)) - 1) * ((2 * ((le->param)->nhalo)) + 1)) + idisplace) + ((le->param)->nhalo));
+# 825 "leesedwards.c"
+((__cuda_local_var_19804_7_non_const_ib >= 0) && (__cuda_local_var_19804_7_non_const_ib < ((le->param)->index_real_nbuffer))) ? ((void)0) : (__assert_fail(((const char *)"ib >= 0 && ib < le->param->index_real_nbuffer"), ((const char *)"leesedwards.c"), 825U, __T22));
+# 827 "leesedwards.c"
+(((le->icreal_to_buff)[__cuda_local_var_19804_7_non_const_ib]) == (_Z19lees_edw_ic_to_buffP10lees_edw_sii(le, ic, idisplace))) ? ((void)0) : (__assert_fail(((const char *)"le->icreal_to_buff[ib] == lees_edw_ic_to_buff(le, ic, idisplace)"), ((const char *)"leesedwards.c"), 827U, __T22));
+# 828 "leesedwards.c"
+return (le->icreal_to_buff)[__cuda_local_var_19804_7_non_const_ib];
+# 829 "leesedwards.c"
+}}
+# 841 "leesedwards.c"
+___device__( __no_sc__) int _Z29lees_edw_index_buffer_to_realP10lees_edw_si(
+# 841 "leesedwards.c"
+lees_edw_t *le, 
+# 841 "leesedwards.c"
+int ib){
+# 841 "leesedwards.c"
+{
+# 843 "leesedwards.c"
+(le) ? ((void)0) : (__assert_fail(((const char *)"le"), ((const char *)"leesedwards.c"), 843U, __T23));
+# 844 "leesedwards.c"
+(le->icbuff_to_real) ? ((void)0) : (__assert_fail(((const char *)"le->icbuff_to_real"), ((const char *)"leesedwards.c"), 844U, __T23));
+# 845 "leesedwards.c"
+((ib >= 0) && (ib < ((le->param)->nxbuffer))) ? ((void)0) : (__assert_fail(((const char *)"ib >=0 && ib < le->param->nxbuffer"), ((const char *)"leesedwards.c"), 845U, __T23));
+# 847 "leesedwards.c"
+(((le->icbuff_to_real)[ib]) == (_Z22lees_edw_ibuff_to_realP10lees_edw_si(le, ib))) ? ((void)0) : (__assert_fail(((const char *)"le->icbuff_to_real[ib] == lees_edw_ibuff_to_real(le, ib)"), ((const char *)"leesedwards.c"), 847U, __T23));
+# 848 "leesedwards.c"
+return (le->icbuff_to_real)[ib];
+# 849 "leesedwards.c"
+}}
+# 865 "leesedwards.c"
+___device__( __no_sc__) int _Z28lees_edw_buffer_displacementP10lees_edw_sidPd(
+# 865 "leesedwards.c"
+lees_edw_t *le, 
+# 865 "leesedwards.c"
+int ib, 
+# 865 "leesedwards.c"
+double t, 
+# 865 "leesedwards.c"
+double *dy){
+# 865 "leesedwards.c"
+{
+# 867 "leesedwards.c"
+ double __cuda_local_var_19833_10_non_const_tle;
+# 869 "leesedwards.c"
+(le) ? ((void)0) : (__assert_fail(((const char *)"le"), ((const char *)"leesedwards.c"), 869U, __T24));
+# 870 "leesedwards.c"
+((ib >= 0) && (ib < ((le->param)->nxbuffer))) ? ((void)0) : (__assert_fail(((const char *)"ib >= 0 && ib < le->param->nxbuffer"), ((const char *)"leesedwards.c"), 870U, __T24));
+# 872 "leesedwards.c"
+__cuda_local_var_19833_10_non_const_tle = (t - ((le->param)->time0));
+# 873 "leesedwards.c"
+(__cuda_local_var_19833_10_non_const_tle >= (0.0)) ? ((void)0) : (__assert_fail(((const char *)"tle >= 0.0"), ((const char *)"leesedwards.c"), 873U, __T24));
+# 875 "leesedwards.c"
+(*dy) = (0.0);
+# 877 "leesedwards.c"
+if (((le->param)->type) == 0)
+# 877 "leesedwards.c"
+{
+# 878 "leesedwards.c"
+(*dy) = ((__cuda_local_var_19833_10_non_const_tle * ((le->param)->uy)) * ((double)((le->buffer_duy)[ib])));
+# 879 "leesedwards.c"
+(((le->buffer_duy)[ib]) == (_Z19lees_edw_buffer_duyP10lees_edw_si(le, ib))) ? ((void)0) : (__assert_fail(((const char *)"le->buffer_duy[ib] == lees_edw_buffer_duy(le, ib)"), ((const char *)"leesedwards.c"), 879U, __T24));
+# 880 "leesedwards.c"
+}
+# 882 "leesedwards.c"
+if (((le->param)->type) == 1)
+# 882 "leesedwards.c"
+{
+# 883 "leesedwards.c"
+(*dy) = ( fdivide((((le->param)->uy) * (sin((((le->param)->omega) * __cuda_local_var_19833_10_non_const_tle)))) , ((le->param)->omega)));
+# 884 "leesedwards.c"
+}
+# 886 "leesedwards.c"
+return 0;
+# 887 "leesedwards.c"
+}}
+# 975 "leesedwards.c"
+___device__( __no_sc__) int _Z19lees_edw_shear_rateP10lees_edw_sPd(
+# 975 "leesedwards.c"
+lees_edw_t *le, 
+# 975 "leesedwards.c"
+double *gammadot){
+# 975 "leesedwards.c"
+{
+# 977 "leesedwards.c"
+ double __cuda_local_var_19917_10_non_const_ltot[3];
+# 979 "leesedwards.c"
+(le) ? ((void)0) : (__assert_fail(((const char *)"le"), ((const char *)"leesedwards.c"), 979U, __T28));
+# 980 "leesedwards.c"
+_Z7cs_ltotP8coords_sPd((le->cs), (__cuda_local_var_19917_10_non_const_ltot));
+# 982 "leesedwards.c"
+(*gammadot) = ( fdivide((((le->param)->uy) * ((double)((le->param)->nplanetotal))) , ((__cuda_local_var_19917_10_non_const_ltot)[X])));
+# 984 "leesedwards.c"
+return 0;
+# 985 "leesedwards.c"
+}}
+# 998 "leesedwards.c"
+___device__( __no_sc__) int _Z14lees_edw_indexP10lees_edw_siii(
+# 998 "leesedwards.c"
+lees_edw_t *le, 
+# 998 "leesedwards.c"
+int ic, 
+# 998 "leesedwards.c"
+int jc, 
+# 998 "leesedwards.c"
+int kc){
+# 998 "leesedwards.c"
+{
+# 1000 "leesedwards.c"
+(le) ? ((void)0) : (__assert_fail(((const char *)"le"), ((const char *)"leesedwards.c"), 1000U, __T29));
+# 1002 "leesedwards.c"
+(ic >= (1 - ((le->param)->nhalo))) ? ((void)0) : (__assert_fail(((const char *)"ic >= 1-le->param->nhalo"), ((const char *)"leesedwards.c"), 1002U, __T29));
+# 1003 "leesedwards.c"
+(jc >= (1 - ((le->param)->nhalo))) ? ((void)0) : (__assert_fail(((const char *)"jc >= 1-le->param->nhalo"), ((const char *)"leesedwards.c"), 1003U, __T29));
+# 1004 "leesedwards.c"
+(kc >= (1 - ((le->param)->nhalo))) ? ((void)0) : (__assert_fail(((const char *)"kc >= 1-le->param->nhalo"), ((const char *)"leesedwards.c"), 1004U, __T29));
+# 1005 "leesedwards.c"
+(ic <= ((((((le->param)->nlocal))[X]) + ((le->param)->nhalo)) + ((le->param)->nxbuffer))) ? ((void)0) : (__assert_fail(((const char *)"ic <= le->param->nlocal[X] + le->param->nhalo + le->param->nxbuffer"), ((const char *)"leesedwards.c"), 1005U, __T29));
+# 1006 "leesedwards.c"
+(jc <= (((((le->param)->nlocal))[Y]) + ((le->param)->nhalo))) ? ((void)0) : (__assert_fail(((const char *)"jc <= le->param->nlocal[Y] + le->param->nhalo"), ((const char *)"leesedwards.c"), 1006U, __T29));
+# 1007 "leesedwards.c"
+(kc <= (((((le->param)->nlocal))[Z]) + ((le->param)->nhalo))) ? ((void)0) : (__assert_fail(((const char *)"kc <= le->param->nlocal[Z] + le->param->nhalo"), ((const char *)"leesedwards.c"), 1007U, __T29));
+# 1009 "leesedwards.c"
+return ((((((le->param)->str))[X]) * ((((le->param)->nhalo) + ic) - 1)) + (((((le->param)->str))[Y]) * ((((le->param)->nhalo) + jc) - 1))) + (((((le->param)->str))[Z]) * ((((le->param)->nhalo) + kc) - 1));
+# 1012 "leesedwards.c"
+}}
+# 1020 "leesedwards.c"
+___device__( __no_sc__) void _Z16lees_edw_index_vP10lees_edw_sPiS1_S1_S1_(
+# 1020 "leesedwards.c"
+lees_edw_t *le, 
+# 1020 "leesedwards.c"
+int *ic, 
+# 1021 "leesedwards.c"
+int *jc, 
+# 1021 "leesedwards.c"
+int *kc, 
+# 1022 "leesedwards.c"
+int *index){
+# 1022 "leesedwards.c"
+{
+# 1023 "leesedwards.c"
+ int __cuda_local_var_19953_7_non_const_iv;
+# 1024 "leesedwards.c"
+(le) ? ((void)0) : (__assert_fail(((const char *)"le"), ((const char *)"leesedwards.c"), 1024U, __T30));
+# 1026 "leesedwards.c"
+for (__cuda_local_var_19953_7_non_const_iv = 0; (__cuda_local_var_19953_7_non_const_iv < 1); __cuda_local_var_19953_7_non_const_iv++)
+# 1026 "leesedwards.c"
+{
+# 1027 "leesedwards.c"
+(index[__cuda_local_var_19953_7_non_const_iv]) = (_Z14lees_edw_indexP10lees_edw_siii(le, (ic[__cuda_local_var_19953_7_non_const_iv]), (jc[__cuda_local_var_19953_7_non_const_iv]), (kc[__cuda_local_var_19953_7_non_const_iv])));
+# 1028 "leesedwards.c"
+}
+# 1030 "leesedwards.c"
+return;
+# 1031 "leesedwards.c"
+}}
+# 1040 "leesedwards.c"
+___device__( __no_sc__) int _Z15lees_edw_nlocalP10lees_edw_sPi(
+# 1040 "leesedwards.c"
+lees_edw_t *le, 
+# 1040 "leesedwards.c"
+int *nlocal){
+# 1040 "leesedwards.c"
+{
+# 1042 "leesedwards.c"
+(le) ? ((void)0) : (__assert_fail(((const char *)"le"), ((const char *)"leesedwards.c"), 1042U, __T31));
+# 1044 "leesedwards.c"
+return _Z9cs_nlocalP8coords_sPi((le->cs), nlocal);
+# 1045 "leesedwards.c"
+}}
+# 1054 "leesedwards.c"
+___device__( __no_sc__) int _Z16lees_edw_stridesP10lees_edw_sPiS1_S1_(
+# 1054 "leesedwards.c"
+lees_edw_t *le, 
+# 1054 "leesedwards.c"
+int *xs, 
+# 1054 "leesedwards.c"
+int *ys, 
+# 1054 "leesedwards.c"
+int *zs){
+# 1054 "leesedwards.c"
+{
+# 1056 "leesedwards.c"
+(le) ? ((void)0) : (__assert_fail(((const char *)"le"), ((const char *)"leesedwards.c"), 1056U, __T32));
+# 1058 "leesedwards.c"
+return _Z10cs_stridesP8coords_sPiS1_S1_((le->cs), xs, ys, zs);
+# 1059 "leesedwards.c"
+}}
+# 1068 "leesedwards.c"
+___device__( __no_sc__) int _Z14lees_edw_nhaloP10lees_edw_sPi(
+# 1068 "leesedwards.c"
+lees_edw_t *le, 
+# 1068 "leesedwards.c"
+int *nhalo){
+# 1068 "leesedwards.c"
+{
+# 1070 "leesedwards.c"
+(le) ? ((void)0) : (__assert_fail(((const char *)"le"), ((const char *)"leesedwards.c"), 1070U, __T33));
+# 1072 "leesedwards.c"
+return _Z8cs_nhaloP8coords_sPi((le->cs), nhalo);
+# 1073 "leesedwards.c"
+}}
+# 1082 "leesedwards.c"
+___device__( __no_sc__) int _Z13lees_edw_ltotP10lees_edw_sPd(
+# 1082 "leesedwards.c"
+lees_edw_t *le, 
+# 1082 "leesedwards.c"
+double *ltot){
+# 1082 "leesedwards.c"
+{
+# 1084 "leesedwards.c"
+(le) ? ((void)0) : (__assert_fail(((const char *)"le"), ((const char *)"leesedwards.c"), 1084U, __T34));
+# 1086 "leesedwards.c"
+return _Z7cs_ltotP8coords_sPd((le->cs), ltot);
+# 1087 "leesedwards.c"
+}}
+# 1096 "leesedwards.c"
+___device__( __no_sc__) int _Z15lees_edw_cartszP10lees_edw_sPi(
+# 1096 "leesedwards.c"
+lees_edw_t *le, 
+# 1096 "leesedwards.c"
+int *cartsz){
+# 1096 "leesedwards.c"
+{
+# 1098 "leesedwards.c"
+(le) ? ((void)0) : (__assert_fail(((const char *)"le"), ((const char *)"leesedwards.c"), 1098U, __T35));
+# 1099 "leesedwards.c"
+(le->cs) ? ((void)0) : (__assert_fail(((const char *)"le->cs"), ((const char *)"leesedwards.c"), 1099U, __T35));
+# 1101 "leesedwards.c"
+return _Z9cs_cartszP8coords_sPi((le->cs), cartsz);
+# 1102 "leesedwards.c"
+}}
+# 1111 "leesedwards.c"
+___device__( __no_sc__) int _Z15lees_edw_ntotalP10lees_edw_sPi(
+# 1111 "leesedwards.c"
+lees_edw_t *le, 
+# 1111 "leesedwards.c"
+int *ntotal){
+# 1111 "leesedwards.c"
+{
+# 1113 "leesedwards.c"
+(le) ? ((void)0) : (__assert_fail(((const char *)"le"), ((const char *)"leesedwards.c"), 1113U, __T36));
+# 1115 "leesedwards.c"
+return _Z9cs_ntotalP8coords_sPi((le->cs), ntotal);
+# 1116 "leesedwards.c"
+}}
+# 1125 "leesedwards.c"
+___device__( __no_sc__) int _Z22lees_edw_nlocal_offsetP10lees_edw_sPi(
+# 1125 "leesedwards.c"
+lees_edw_t *le, 
+# 1125 "leesedwards.c"
+int *noffset){
+# 1125 "leesedwards.c"
+{
+# 1127 "leesedwards.c"
+(le) ? ((void)0) : (__assert_fail(((const char *)"le"), ((const char *)"leesedwards.c"), 1127U, __T37));
+# 1129 "leesedwards.c"
+return _Z16cs_nlocal_offsetP8coords_sPi((le->cs), noffset);
+# 1130 "leesedwards.c"
+}}
+# 1139 "leesedwards.c"
+___device__( __no_sc__) int _Z20lees_edw_cart_coordsP10lees_edw_sPi(
+# 1139 "leesedwards.c"
+lees_edw_t *le, 
+# 1139 "leesedwards.c"
+int *cartcoord){
+# 1139 "leesedwards.c"
+{
+# 1141 "leesedwards.c"
+(le) ? ((void)0) : (__assert_fail(((const char *)"le"), ((const char *)"leesedwards.c"), 1141U, __T38));
+# 1143 "leesedwards.c"
+return _Z14cs_cart_coordsP8coords_sPi((le->cs), cartcoord);
+# 1144 "leesedwards.c"
+}}
+# 1154 "leesedwards.c"
+___device__( __no_sc__) int _Z17lees_edw_plane_dyP10lees_edw_sPd(
+# 1154 "leesedwards.c"
+lees_edw_t *le, 
+# 1154 "leesedwards.c"
+double *dy){
+# 1154 "leesedwards.c"
+{
+# 1156 "leesedwards.c"
+ double __cuda_local_var_20078_10_non_const_t;
+# 1158 "leesedwards.c"
+(le) ? ((void)0) : (__assert_fail(((const char *)"le"), ((const char *)"leesedwards.c"), 1158U, __T39));
+# 1159 "leesedwards.c"
+(le->phys) ? ((void)0) : (__assert_fail(((const char *)"le->phys"), ((const char *)"leesedwards.c"), 1159U, __T39));
+# 1160 "leesedwards.c"
+(dy) ? ((void)0) : (__assert_fail(((const char *)"dy"), ((const char *)"leesedwards.c"), 1160U, __T39));
+# 1162 "leesedwards.c"
+_Z20physics_control_timeP9physics_sPd((le->phys), (&__cuda_local_var_20078_10_non_const_t));
+# 1163 "leesedwards.c"
+(*dy) = (__cuda_local_var_20078_10_non_const_t * ((le->param)->uy));
+# 1165 "leesedwards.c"
+return 0;
+# 1166 "leesedwards.c"
+}}
+# 1223 "leesedwards.c"
+___device__( __no_sc__) int _Z22lees_edw_ibuff_to_realP10lees_edw_si(
+# 1223 "leesedwards.c"
+lees_edw_t *le, 
+# 1223 "leesedwards.c"
+int ib){
+# 1223 "leesedwards.c"
+{
+# 1225 "leesedwards.c"
+ int __cuda_local_var_20130_7_non_const_ic;
+# 1226 "leesedwards.c"
+ int __cuda_local_var_20131_7_non_const_p;
+# 1228 "leesedwards.c"
+(le) ? ((void)0) : (__assert_fail(((const char *)"le"), ((const char *)"leesedwards.c"), 1228U, __T42));
+# 1229 "leesedwards.c"
+((ib >= 0) && (ib < ((le->param)->nxbuffer))) ? ((void)0) : (__assert_fail(((const char *)"ib >= 0 && ib < le->param->nxbuffer"), ((const char *)"leesedwards.c"), 1229U, __T42));
+# 1231 "leesedwards.c"
+__cuda_local_var_20131_7_non_const_p = (ib / (2 * ((le->param)->nhalo)));
+# 1233 "leesedwards.c"
+__cuda_local_var_20130_7_non_const_ic = ((_Z23lees_edw_plane_locationP10lees_edw_si(le, __cuda_local_var_20131_7_non_const_p)) - (((le->param)->nhalo) - 1));
+# 1234 "leesedwards.c"
+__cuda_local_var_20130_7_non_const_ic = (__cuda_local_var_20130_7_non_const_ic + (ib % (2 * ((le->param)->nhalo))));
+# 1236 "leesedwards.c"
+return __cuda_local_var_20130_7_non_const_ic;
+# 1237 "leesedwards.c"
+}}
+# 1246 "leesedwards.c"
+___device__( __no_sc__) int _Z19lees_edw_ic_to_buffP10lees_edw_sii(
+# 1246 "leesedwards.c"
+lees_edw_t *le, 
+# 1246 "leesedwards.c"
+int ic, 
+# 1246 "leesedwards.c"
+int di){
+# 1246 "leesedwards.c"
+{
+# 1248 "leesedwards.c"
+ int __cuda_local_var_20153_7_non_const_ib;
+# 1249 "leesedwards.c"
+ int __cuda_local_var_20154_7_non_const_p;
+# 1249 "leesedwards.c"
+ int __cuda_local_var_20154_10_non_const_ip;
+# 1250 "leesedwards.c"
+ int __cuda_local_var_20155_7_non_const_nh;
+# 1252 "leesedwards.c"
+(le) ? ((void)0) : (__assert_fail(((const char *)"le"), ((const char *)"leesedwards.c"), 1252U, __T43));
+# 1253 "leesedwards.c"
+(di <= ((le->param)->nhalo)) ? ((void)0) : (__assert_fail(((const char *)"di <= le->param->nhalo"), ((const char *)"leesedwards.c"), 1253U, __T43));
+# 1254 "leesedwards.c"
+(di >= (-((le->param)->nhalo))) ? ((void)0) : (__assert_fail(((const char *)"di >= -le->param->nhalo"), ((const char *)"leesedwards.c"), 1254U, __T43));
+# 1256 "leesedwards.c"
+__cuda_local_var_20153_7_non_const_ib = (ic + di);
+# 1258 "leesedwards.c"
+if (((le->param)->nplanelocal) > 0)
+# 1258 "leesedwards.c"
+{
+# 1260 "leesedwards.c"
+__cuda_local_var_20154_7_non_const_p = (ic / (((((le->param)->nlocal))[X]) / ((le->param)->nplanelocal)));
+# 1261 "leesedwards.c"
+__cuda_local_var_20154_7_non_const_p = (_Z4imaxii(0, (_Z4iminii(__cuda_local_var_20154_7_non_const_p, (((le->param)->nplanelocal) - 1)))));
+# 1263 "leesedwards.c"
+__cuda_local_var_20155_7_non_const_nh = ((le->param)->nhalo);
+# 1264 "leesedwards.c"
+__cuda_local_var_20154_10_non_const_ip = ((_Z23lees_edw_plane_locationP10lees_edw_si(le, __cuda_local_var_20154_7_non_const_p)) - (__cuda_local_var_20155_7_non_const_nh - 1));
+# 1266 "leesedwards.c"
+if (((di > 0) && ((ic >= __cuda_local_var_20154_10_non_const_ip) && (ic < (__cuda_local_var_20154_10_non_const_ip + __cuda_local_var_20155_7_non_const_nh)))) && ((ic + di) >= (__cuda_local_var_20154_10_non_const_ip + __cuda_local_var_20155_7_non_const_nh)))
+# 1266 "leesedwards.c"
+{
+# 1267 "leesedwards.c"
+__cuda_local_var_20153_7_non_const_ib = (((((((le->param)->nlocal))[X]) + ((1 + (2 * __cuda_local_var_20154_7_non_const_p)) * __cuda_local_var_20155_7_non_const_nh)) + ((ic - __cuda_local_var_20154_10_non_const_ip) + 1)) + di);
+# 1268 "leesedwards.c"
+return __cuda_local_var_20153_7_non_const_ib;
+# 1269 "leesedwards.c"
+}
+# 1271 "leesedwards.c"
+__cuda_local_var_20154_10_non_const_ip = ((_Z23lees_edw_plane_locationP10lees_edw_si(le, __cuda_local_var_20154_7_non_const_p)) + 1);
+# 1273 "leesedwards.c"
+if (((di < 0) && ((ic >= __cuda_local_var_20154_10_non_const_ip) && (ic < (__cuda_local_var_20154_10_non_const_ip + __cuda_local_var_20155_7_non_const_nh)))) && ((ic + di) < __cuda_local_var_20154_10_non_const_ip))
+# 1273 "leesedwards.c"
+{
+# 1274 "leesedwards.c"
+__cuda_local_var_20153_7_non_const_ib = (((((((le->param)->nlocal))[X]) + ((2 + (2 * __cuda_local_var_20154_7_non_const_p)) * __cuda_local_var_20155_7_non_const_nh)) + ((ic - __cuda_local_var_20154_10_non_const_ip) + 1)) + di);
+# 1275 "leesedwards.c"
+return __cuda_local_var_20153_7_non_const_ib;
+# 1276 "leesedwards.c"
+}
+# 1277 "leesedwards.c"
+}
+# 1279 "leesedwards.c"
+return __cuda_local_var_20153_7_non_const_ib;
+# 1280 "leesedwards.c"
+}}
+# 1288 "leesedwards.c"
+___device__( __no_sc__) int _Z19lees_edw_buffer_duyP10lees_edw_si(
+# 1288 "leesedwards.c"
+lees_edw_t *le, 
+# 1288 "leesedwards.c"
+int ib){
+# 1288 "leesedwards.c"
+{
+# 1290 "leesedwards.c"
+ int __cuda_local_var_20195_7_non_const_pm1;
+# 1292 "leesedwards.c"
+(le) ? ((void)0) : (__assert_fail(((const char *)"le"), ((const char *)"leesedwards.c"), 1292U, __T44));
+# 1293 "leesedwards.c"
+((ib >= 0) && (ib < ((le->param)->nxbuffer))) ? ((void)0) : (__assert_fail(((const char *)"ib >= 0 && ib < le->param->nxbuffer"), ((const char *)"leesedwards.c"), 1293U, __T44));
+# 1295 "leesedwards.c"
+__cuda_local_var_20195_7_non_const_pm1 = 1;
+# 1296 "leesedwards.c"
+if ((ib % (2 * ((le->param)->nhalo))) < ((le->param)->nhalo)) {
+# 1296 "leesedwards.c"
+__cuda_local_var_20195_7_non_const_pm1 = (-1); }
+# 1298 "leesedwards.c"
+return __cuda_local_var_20195_7_non_const_pm1;
+# 1299 "leesedwards.c"
+}}

@@ -1,0 +1,94 @@
+# 1 "model.c"
+# 29 "d3q19.h"
+extern const int cv[19][3];
+extern const double wv[19];
+extern const double q_[19][3][3];
+
+extern const double ma_[19][19];
+extern const double mi_[19][19];
+
+extern const int xblocklen_cv[1];
+extern const int xdisp_fwd_cv[1];
+extern const int xdisp_bwd_cv[1];
+
+extern const int yblocklen_cv[3];
+extern const int ydisp_fwd_cv[3];
+extern const int ydisp_bwd_cv[3];
+
+extern const int zblocklen_cv[5];
+extern const int zdisp_fwd_cv[5];
+extern const int zdisp_bwd_cv[5];
+# 35 "model.c"
+extern const double cs2;
+extern const double rcs2;
+static const char __T0[59];
+static const char __T1[48];
+static const char __T2[25];
+static const char __T3[42];
+static const char __T4[25];
+static const char __T5[41];
+static const char __T6[37];
+static const char __T9[39];
+static const char __T10[40];
+static const char __T11[29];
+static const char __T12[29];
+static const char __T13[61];
+static const char __T14[68];
+static const char __T15[51];
+static const char __T16[55];
+static const char __T17[54];
+static const char __T18[42];
+static const char __T19[25];
+static const char __T20[49];
+static const char __T21[36];
+static const char __T22[39];
+static const char __T23[45];
+static const char __T24[40];
+static const char __T25[46];
+static const char __T26[42];
+static const char __T27[48];
+static const char __T28[48];
+static const char __T30[35];
+static const char __T34[65];
+static const char __T35[70];
+static const char __T36[61];
+static const char __T37[66];
+static const char __T44[26];
+static const char __T45[34];
+# 35 "model.c"
+const double cs2 = (0.3333333333333333148);
+const double rcs2 = (3.0);
+static const char __T0[59] = "int lb_create_ndist(pe_s *, coords_s *, int, lb_data_s **)";
+static const char __T1[48] = "int lb_create(pe_s *, coords_s *, lb_data_s **)";
+static const char __T2[25] = "int lb_free(lb_data_s *)";
+static const char __T3[42] = "int lb_memcpy(lb_data_s *, hipMemcpyKind)";
+static const char __T4[25] = "int lb_init(lb_data_s *)";
+static const char __T5[41] = "int lb_collide_param_commit(lb_data_s *)";
+static const char __T6[37] = "int lb_model_param_init(lb_data_s *)";
+static const char __T9[39] = "int lb_nblock(lb_data_s *, int, int *)";
+static const char __T10[40] = "int lb_init_rest_f(lb_data_s *, double)";
+static const char __T11[29] = "int lb_mpi_init(lb_data_s *)";
+static const char __T12[29] = "int lb_set_types(int, int *)";
+static const char __T13[61] = "int lb_set_blocks(lb_data_s *, int, int *, int, const int *)";
+static const char __T14[68] = "int lb_set_displacements(lb_data_s *, int, int *, int, const int *)";
+static const char __T15[51] = "int lb_io_info_commit(lb_data_s *, io_info_args_s)";
+static const char __T16[55] = "int lb_io_info_set(lb_data_s *, io_info_s *, int, int)";
+static const char __T17[54] = "int lb_io_rho_set(lb_data_s *, io_info_s *, int, int)";
+static const char __T18[42] = "int lb_io_info(lb_data_s *, io_info_s **)";
+static const char __T19[25] = "int lb_halo(lb_data_s *)";
+static const char __T20[49] = "int lb_halo_swap(lb_data_s *, lb_halo_enum_type)";
+static const char __T21[36] = "int lb_halo_via_struct(lb_data_s *)";
+static const char __T22[39] = "int lb_f_read(_IO_FILE *, int, void *)";
+static const char __T23[45] = "int lb_f_read_ascii(_IO_FILE *, int, void *)";
+static const char __T24[40] = "int lb_f_write(_IO_FILE *, int, void *)";
+static const char __T25[46] = "int lb_f_write_ascii(_IO_FILE *, int, void *)";
+static const char __T26[42] = "int lb_rho_write(_IO_FILE *, int, void *)";
+static const char __T27[48] = "int lb_rho_write_ascii(_IO_FILE *, int, void *)";
+static const char __T28[48] = "int lb_halo_set(lb_data_s *, lb_halo_enum_type)";
+static const char __T30[35] = "int lb_ndist_set(lb_data_s *, int)";
+static const char __T34[65] = "int lb_1st_moment(lb_data_s *, int, lb_dist_enum_type, double *)";
+static const char __T35[70] = "int lb_2nd_moment(lb_data_s *, int, lb_dist_enum_type, double (*)[3])";
+static const char __T36[61] = "int lb_0th_moment_equilib_set(lb_data_s *, int, int, double)";
+static const char __T37[66] = "int lb_1st_moment_equilib_set(lb_data_s *, int, double, double *)";
+static const char __T44[26] = "int lb_order(lb_data_s *)";
+static const char __T45[34] = "int lb_halo_via_copy(lb_data_s *)";

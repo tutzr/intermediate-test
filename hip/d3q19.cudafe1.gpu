@@ -1,0 +1,21 @@
+typedef char __nv_bool;
+# 22 "d3q19.h"
+enum _ZUt1_ {
+# 22 "d3q19.h"
+NVEL19 = 19};
+# 23 "d3q19.h"
+enum _ZUt2_ {
+# 23 "d3q19.h"
+CVXBLOCK19 = 1};
+# 24 "d3q19.h"
+enum _ZUt3_ {
+# 24 "d3q19.h"
+CVYBLOCK19 = 3};
+# 25 "d3q19.h"
+enum _ZUt4_ {
+# 25 "d3q19.h"
+CVZBLOCK19 = 5};
+# 212 "/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stddef.h" 3
+typedef unsigned long size_t;
+#include "crt/device_runtime.h"
+#include "common_functions.h"

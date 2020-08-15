@@ -1,0 +1,25 @@
+# 1 "field_phi_init.c"
+static const char __T0[59];
+static const char __T1[46];
+static const char __T2[44];
+static const char __T3[54];
+static const char __T4[54];
+static const char __T5[54];
+static const char __T6[54];
+static const char __T7[54];
+static const char __T8[35];
+static const char __T9[60];
+static const char __T10[65];
+static const char __T11[76];
+static const char __T0[59] = "int field_phi_init_drop(field_s *, double, double, double)";
+static const char __T1[46] = "int field_phi_init_uniform(field_s *, double)";
+static const char __T2[44] = "int field_phi_init_block(field_s *, double)";
+static const char __T3[54] = "int field_phi_init_block_Y(field_s *, double, double)";
+static const char __T4[54] = "int field_phi_init_block_Z(field_s *, double, double)";
+static const char __T5[54] = "int field_phi_init_layer_X(field_s *, double, double)";
+static const char __T6[54] = "int field_phi_init_layer_Y(field_s *, double, double)";
+static const char __T7[54] = "int field_phi_init_layer_Z(field_s *, double, double)";
+static const char __T8[35] = "int field_phi_init_bath(field_s *)";
+static const char __T9[60] = "int field_phi_init_spinodal(field_s *, int, double, double)";
+static const char __T10[65] = "int field_phi_init_spinodal_patches(field_s *, int, int, double)";
+static const char __T11[76] = "int field_phi_init_emulsion(field_s *, double, double, double, int, double)";

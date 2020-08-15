@@ -1,0 +1,1739 @@
+typedef char __nv_bool;
+# 185 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+enum hipError_t {
+# 186 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipSuccess,
+# 187 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidValue,
+# 189 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorOutOfMemory,
+# 191 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorMemoryAllocation = 2,
+# 192 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorNotInitialized,
+# 194 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInitializationError = 3,
+# 195 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorDeinitialized,
+# 196 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorProfilerDisabled,
+# 197 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorProfilerNotInitialized,
+# 198 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorProfilerAlreadyStarted,
+# 199 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorProfilerAlreadyStopped,
+# 200 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidConfiguration,
+# 201 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidSymbol = 13,
+# 202 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidDevicePointer = 17,
+# 203 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidMemcpyDirection = 21,
+# 204 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInsufficientDriver = 35,
+# 205 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorMissingConfiguration = 52,
+# 206 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorPriorLaunchFailure,
+# 207 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidDeviceFunction = 98,
+# 208 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorNoDevice = 100,
+# 209 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidDevice,
+# 210 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidImage = 200,
+# 211 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidContext,
+# 212 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorContextAlreadyCurrent,
+# 213 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorMapFailed = 205,
+# 215 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorMapBufferObjectFailed = 205,
+# 216 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorUnmapFailed,
+# 217 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorArrayIsMapped,
+# 218 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorAlreadyMapped,
+# 219 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorNoBinaryForGpu,
+# 220 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorAlreadyAcquired,
+# 221 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorNotMapped,
+# 222 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorNotMappedAsArray,
+# 223 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorNotMappedAsPointer,
+# 224 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorECCNotCorrectable,
+# 225 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorUnsupportedLimit,
+# 226 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorContextAlreadyInUse,
+# 227 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorPeerAccessUnsupported,
+# 228 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidKernelFile,
+# 229 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidGraphicsContext,
+# 230 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidSource = 300,
+# 231 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorFileNotFound,
+# 232 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorSharedObjectSymbolNotFound,
+# 233 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorSharedObjectInitFailed,
+# 234 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorOperatingSystem,
+# 235 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidHandle = 400,
+# 237 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidResourceHandle = 400,
+# 238 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorNotFound = 500,
+# 239 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorNotReady = 600,
+# 243 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorIllegalAddress = 700,
+# 244 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorLaunchOutOfResources,
+# 245 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorLaunchTimeOut,
+# 246 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorPeerAccessAlreadyEnabled = 704,
+# 248 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorPeerAccessNotEnabled,
+# 250 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorSetOnActiveProcess = 708,
+# 251 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorAssert = 710,
+# 252 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorHostMemoryAlreadyRegistered = 712,
+# 254 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorHostMemoryNotRegistered,
+# 256 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorLaunchFailure = 719,
+# 258 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorCooperativeLaunchTooLarge,
+# 262 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorNotSupported = 801,
+# 263 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorUnknown = 999,
+# 265 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorRuntimeMemory = 1052,
+# 267 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorRuntimeOther,
+# 269 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorTbd};
+# 646 "/usr/local/cuda-10.1/include/cuda.h" 3
+enum CUfunction_attribute_enum {
+# 652 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_MAX_THREADS_PER_BLOCK,
+# 659 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_SHARED_SIZE_BYTES,
+# 665 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_CONST_SIZE_BYTES,
+# 670 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_LOCAL_SIZE_BYTES,
+# 675 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_NUM_REGS,
+# 684 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_PTX_VERSION,
+# 693 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_BINARY_VERSION,
+# 699 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_CACHE_MODE_CA,
+# 707 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_MAX_DYNAMIC_SHARED_SIZE_BYTES,
+# 716 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_PREFERRED_SHARED_MEMORY_CARVEOUT,
+# 718 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_MAX};
+# 724 "/usr/local/cuda-10.1/include/cuda.h" 3
+enum CUfunc_cache_enum {
+# 725 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_CACHE_PREFER_NONE = 0,
+# 726 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_CACHE_PREFER_SHARED = 1,
+# 727 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_CACHE_PREFER_L1 = 2,
+# 728 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_CACHE_PREFER_EQUAL = 3};
+# 734 "/usr/local/cuda-10.1/include/cuda.h" 3
+enum CUsharedconfig_enum {
+# 735 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_SHARED_MEM_CONFIG_DEFAULT_BANK_SIZE = 0,
+# 736 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_SHARED_MEM_CONFIG_FOUR_BYTE_BANK_SIZE = 1,
+# 737 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_SHARED_MEM_CONFIG_EIGHT_BYTE_BANK_SIZE = 2};
+# 790 "/usr/local/cuda-10.1/include/cuda.h" 3
+enum CUjit_option_enum {
+# 797 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_MAX_REGISTERS,
+# 812 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_THREADS_PER_BLOCK,
+# 820 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_WALL_TIME,
+# 829 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_INFO_LOG_BUFFER,
+# 838 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_INFO_LOG_BUFFER_SIZE_BYTES,
+# 847 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_ERROR_LOG_BUFFER,
+# 856 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_ERROR_LOG_BUFFER_SIZE_BYTES,
+# 864 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_OPTIMIZATION_LEVEL,
+# 872 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_TARGET_FROM_CUCONTEXT,
+# 880 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_TARGET,
+# 889 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_FALLBACK_STRATEGY,
+# 897 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_GENERATE_DEBUG_INFO,
+# 904 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_LOG_VERBOSE,
+# 911 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_GENERATE_LINE_INFO,
+# 919 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_CACHE_MODE,
+# 924 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_NEW_SM3X_OPT,
+# 925 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_FAST_COMPILE,
+# 939 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_GLOBAL_SYMBOL_NAMES,
+# 948 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_GLOBAL_SYMBOL_ADDRESSES,
+# 956 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_GLOBAL_SYMBOL_COUNT,
+# 958 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_NUM_OPTIONS};
+# 1194 "/usr/local/cuda-10.1/include/cuda.h" 3
+enum cudaError_enum {
+# 1200 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_SUCCESS,
+# 1206 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_INVALID_VALUE,
+# 1212 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_OUT_OF_MEMORY,
+# 1218 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_NOT_INITIALIZED,
+# 1223 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_DEINITIALIZED,
+# 1230 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_PROFILER_DISABLED,
+# 1238 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_PROFILER_NOT_INITIALIZED,
+# 1245 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_PROFILER_ALREADY_STARTED,
+# 1252 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_PROFILER_ALREADY_STOPPED,
+# 1258 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_NO_DEVICE = 100,
+# 1264 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_INVALID_DEVICE,
+# 1271 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_INVALID_IMAGE = 200,
+# 1281 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_INVALID_CONTEXT,
+# 1290 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_CONTEXT_ALREADY_CURRENT,
+# 1295 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_MAP_FAILED = 205,
+# 1300 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_UNMAP_FAILED,
+# 1306 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_ARRAY_IS_MAPPED,
+# 1311 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_ALREADY_MAPPED,
+# 1319 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_NO_BINARY_FOR_GPU,
+# 1324 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_ALREADY_ACQUIRED,
+# 1329 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_NOT_MAPPED,
+# 1335 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_NOT_MAPPED_AS_ARRAY,
+# 1341 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_NOT_MAPPED_AS_POINTER,
+# 1347 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_ECC_UNCORRECTABLE,
+# 1353 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_UNSUPPORTED_LIMIT,
+# 1360 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_CONTEXT_ALREADY_IN_USE,
+# 1366 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_PEER_ACCESS_UNSUPPORTED,
+# 1371 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_INVALID_PTX,
+# 1376 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_INVALID_GRAPHICS_CONTEXT,
+# 1382 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_NVLINK_UNCORRECTABLE,
+# 1387 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_JIT_COMPILER_NOT_FOUND,
+# 1392 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_INVALID_SOURCE = 300,
+# 1397 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_FILE_NOT_FOUND,
+# 1402 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_SHARED_OBJECT_SYMBOL_NOT_FOUND,
+# 1407 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_SHARED_OBJECT_INIT_FAILED,
+# 1412 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_OPERATING_SYSTEM,
+# 1418 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_INVALID_HANDLE = 400,
+# 1424 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_ILLEGAL_STATE,
+# 1430 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_NOT_FOUND = 500,
+# 1438 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_NOT_READY = 600,
+# 1447 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_ILLEGAL_ADDRESS = 700,
+# 1458 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_LAUNCH_OUT_OF_RESOURCES,
+# 1468 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_LAUNCH_TIMEOUT,
+# 1474 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_LAUNCH_INCOMPATIBLE_TEXTURING,
+# 1481 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_PEER_ACCESS_ALREADY_ENABLED,
+# 1488 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_PEER_ACCESS_NOT_ENABLED,
+# 1494 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_PRIMARY_CONTEXT_ACTIVE = 708,
+# 1501 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_CONTEXT_IS_DESTROYED,
+# 1509 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_ASSERT,
+# 1516 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_TOO_MANY_PEERS,
+# 1522 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_HOST_MEMORY_ALREADY_REGISTERED,
+# 1528 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_HOST_MEMORY_NOT_REGISTERED,
+# 1537 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_HARDWARE_STACK_ERROR,
+# 1545 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_ILLEGAL_INSTRUCTION,
+# 1554 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_MISALIGNED_ADDRESS,
+# 1565 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_INVALID_ADDRESS_SPACE,
+# 1573 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_INVALID_PC,
+# 1584 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_LAUNCH_FAILED,
+# 1593 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_COOPERATIVE_LAUNCH_TOO_LARGE,
+# 1598 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_NOT_PERMITTED = 800,
+# 1604 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_NOT_SUPPORTED,
+# 1613 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_SYSTEM_NOT_READY,
+# 1620 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_SYSTEM_DRIVER_MISMATCH,
+# 1629 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_COMPAT_NOT_SUPPORTED_ON_DEVICE,
+# 1635 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_STREAM_CAPTURE_UNSUPPORTED = 900,
+# 1641 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_STREAM_CAPTURE_INVALIDATED,
+# 1647 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_STREAM_CAPTURE_MERGE,
+# 1652 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_STREAM_CAPTURE_UNMATCHED,
+# 1658 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_STREAM_CAPTURE_UNJOINED,
+# 1665 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_STREAM_CAPTURE_ISOLATION,
+# 1671 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_STREAM_CAPTURE_IMPLICIT,
+# 1677 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_CAPTURED_EVENT,
+# 1684 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_STREAM_CAPTURE_WRONG_THREAD,
+# 1689 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_UNKNOWN = 999};
+# 45 "/opt/rocm-3.3.0/hip/include/hip/nvcc_detail/hip_runtime_api.h" 3
+enum hipMemcpyKind {
+# 46 "/opt/rocm-3.3.0/hip/include/hip/nvcc_detail/hip_runtime_api.h" 3
+hipMemcpyHostToHost,
+# 47 "/opt/rocm-3.3.0/hip/include/hip/nvcc_detail/hip_runtime_api.h" 3
+hipMemcpyHostToDevice,
+# 48 "/opt/rocm-3.3.0/hip/include/hip/nvcc_detail/hip_runtime_api.h" 3
+hipMemcpyDeviceToHost,
+# 49 "/opt/rocm-3.3.0/hip/include/hip/nvcc_detail/hip_runtime_api.h" 3
+hipMemcpyDeviceToDevice,
+# 50 "/opt/rocm-3.3.0/hip/include/hip/nvcc_detail/hip_runtime_api.h" 3
+hipMemcpyDefault};
+# 212 "/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stddef.h" 3
+typedef unsigned long size_t;
+#include "crt/device_runtime.h"
+#if !defined(__CUDABE__)
+# 89 "/usr/local/cuda-10.1/include/crt/common_functions.h" 3
+ __device_builtin__ ___device__(extern  __no_sc__) __attribute__((__nothrow__)) void *memcpy(void *__restrict__, const void *__restrict__, size_t);
+#endif
+#if !defined(__CUDABE__)
+# 88 "/usr/local/cuda-10.1/include/crt/common_functions.h" 3
+ __device_builtin__ ___device__(extern  __no_sc__) __attribute__((__nothrow__)) void *memset(void *, int, size_t);
+#endif
+#if !defined(__CUDABE__)
+# 145 "/usr/local/cuda-10.1/include/crt/common_functions.h" 3
+ __device_builtin__ ___device__(extern  __no_sc__) int printf(const char *__restrict__, ...);
+#endif
+# 150 "/usr/local/cuda-10.1/include/crt/common_functions.h" 3
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) void free(void *);
+# 57 "memory.c"
+___device__(extern  __no_sc__) int _Z25forward_addr_rank0_assertiPKcii(int, const char *, int, int);
+# 72 "memory.c"
+___device__(extern  __no_sc__) int _Z25forward_addr_rank1_assertiPKciiii(int, const char *, int, int, int, int);
+# 88 "memory.c"
+___device__(extern  __no_sc__) int _Z25forward_addr_rank2_assertiPKciiiiii(int, const char *, int, int, int, int, int, int);
+# 106 "memory.c"
+___device__(extern  __no_sc__) int _Z25forward_addr_rank3_assertiPKciiiiiiii(int, const char *, int, int, int, int, int, int, int, int);
+# 125 "memory.c"
+___device__(extern  __no_sc__) int _Z25forward_addr_rank4_assertiPKciiiiiiiiii(int, const char *, int, int, int, int, int, int, int, int, int, int);
+# 145 "memory.c"
+___device__(extern  __no_sc__) int _Z25reverse_addr_rank0_assertiPKcii(int, const char *, int, int);
+# 160 "memory.c"
+___device__(extern  __no_sc__) int _Z25reverse_addr_rank1_assertiPKciiii(int, const char *, int, int, int, int);
+# 176 "memory.c"
+___device__(extern  __no_sc__) int _Z25reverse_addr_rank2_assertiPKciiiiii(int, const char *, int, int, int, int, int, int);
+# 194 "memory.c"
+___device__(extern  __no_sc__) int _Z25reverse_addr_rank3_assertiPKciiiiiiii(int, const char *, int, int, int, int, int, int, int, int);
+# 213 "memory.c"
+___device__(extern  __no_sc__) int _Z25reverse_addr_rank4_assertiPKciiiiiiiiii(int, const char *, int, int, int, int, int, int, int, int, int, int);
+# 235 "memory.c"
+___device__(extern  __no_sc__) int _Z14mem_addr_rank0ii(int, int);
+# 247 "memory.c"
+___device__(extern  __no_sc__) int _Z14mem_addr_rank1iiii(int, int, int, int);
+# 259 "memory.c"
+___device__(extern  __no_sc__) int _Z14mem_addr_rank2iiiiii(int, int, int, int, int, int);
+#include "common_functions.h"
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+# 57 "memory.c"
+___device__( __no_sc__) int _Z25forward_addr_rank0_assertiPKcii(
+# 57 "memory.c"
+int lineno, 
+# 57 "memory.c"
+const char *file, 
+# 58 "memory.c"
+int nsites, 
+# 58 "memory.c"
+int index){
+# 58 "memory.c"
+{
+# 60 "memory.c"
+do
+# 60 "memory.c"
+{
+# 60 "memory.c"
+if ((index < 0) || (index >= nsites))
+# 60 "memory.c"
+{
+# 60 "memory.c"
+printf(((const char *)"%s (%s = %d, %s = %d), file %s, line %d\n"), ((const char *)("Bad array index")), ((const char *)("nsites")), nsites, ((const char *)("index")), index, file, lineno);
+# 60 "memory.c"
+{
+# 60 "memory.c"
+if ((((int)(!(index))) > 0) && (index < nsites))
+# 60 "memory.c"
+{
+# 60 "memory.c"
+{
+# 60 "memory.c"
+__asm("trap;");
+# 60 "memory.c"
+}
+# 60 "memory.c"
+;
+# 60 "memory.c"
+}
+# 60 "memory.c"
+}
+# 60 "memory.c"
+;
+# 60 "memory.c"
+}
+# 60 "memory.c"
+} while (0);
+# 62 "memory.c"
+return index;
+# 63 "memory.c"
+}}
+# 72 "memory.c"
+___device__( __no_sc__) int _Z25forward_addr_rank1_assertiPKciiii(
+# 72 "memory.c"
+int lineno, 
+# 72 "memory.c"
+const char *file, 
+# 73 "memory.c"
+int nsites, 
+# 73 "memory.c"
+int na, 
+# 73 "memory.c"
+int index, 
+# 73 "memory.c"
+int ia){
+# 73 "memory.c"
+{
+# 75 "memory.c"
+do
+# 75 "memory.c"
+{
+# 75 "memory.c"
+if ((index < 0) || (index >= nsites))
+# 75 "memory.c"
+{
+# 75 "memory.c"
+printf(((const char *)"%s (%s = %d, %s = %d), file %s, line %d\n"), ((const char *)("Bad array index")), ((const char *)("nsites")), nsites, ((const char *)("index")), index, file, lineno);
+# 75 "memory.c"
+{
+# 75 "memory.c"
+if ((((int)(!(index))) > 0) && (index < nsites))
+# 75 "memory.c"
+{
+# 75 "memory.c"
+{
+# 75 "memory.c"
+__asm("trap;");
+# 75 "memory.c"
+}
+# 75 "memory.c"
+;
+# 75 "memory.c"
+}
+# 75 "memory.c"
+}
+# 75 "memory.c"
+;
+# 75 "memory.c"
+}
+# 75 "memory.c"
+} while (0);
+# 76 "memory.c"
+do
+# 76 "memory.c"
+{
+# 76 "memory.c"
+if ((ia < 0) || (ia >= na))
+# 76 "memory.c"
+{
+# 76 "memory.c"
+printf(((const char *)"%s (%s = %d, %s = %d), file %s, line %d\n"), ((const char *)("Bad array index")), ((const char *)("na")), na, ((const char *)("ia")), ia, file, lineno);
+# 76 "memory.c"
+{
+# 76 "memory.c"
+if ((((int)(!(ia))) > 0) && (ia < na))
+# 76 "memory.c"
+{
+# 76 "memory.c"
+{
+# 76 "memory.c"
+__asm("trap;");
+# 76 "memory.c"
+}
+# 76 "memory.c"
+;
+# 76 "memory.c"
+}
+# 76 "memory.c"
+}
+# 76 "memory.c"
+;
+# 76 "memory.c"
+}
+# 76 "memory.c"
+} while (0);
+# 78 "memory.c"
+return (na * index) + ia;
+# 79 "memory.c"
+}}
+# 88 "memory.c"
+___device__( __no_sc__) int _Z25forward_addr_rank2_assertiPKciiiiii(
+# 88 "memory.c"
+int lineno, 
+# 88 "memory.c"
+const char *file, 
+# 89 "memory.c"
+int nsites, 
+# 89 "memory.c"
+int na, 
+# 89 "memory.c"
+int nb, 
+# 90 "memory.c"
+int index, 
+# 90 "memory.c"
+int ia, 
+# 90 "memory.c"
+int ib){
+# 90 "memory.c"
+{
+# 92 "memory.c"
+do
+# 92 "memory.c"
+{
+# 92 "memory.c"
+if ((index < 0) || (index >= nsites))
+# 92 "memory.c"
+{
+# 92 "memory.c"
+printf(((const char *)"%s (%s = %d, %s = %d), file %s, line %d\n"), ((const char *)("Bad array index")), ((const char *)("nsites")), nsites, ((const char *)("index")), index, file, lineno);
+# 92 "memory.c"
+{
+# 92 "memory.c"
+if ((((int)(!(index))) > 0) && (index < nsites))
+# 92 "memory.c"
+{
+# 92 "memory.c"
+{
+# 92 "memory.c"
+__asm("trap;");
+# 92 "memory.c"
+}
+# 92 "memory.c"
+;
+# 92 "memory.c"
+}
+# 92 "memory.c"
+}
+# 92 "memory.c"
+;
+# 92 "memory.c"
+}
+# 92 "memory.c"
+} while (0);
+# 93 "memory.c"
+do
+# 93 "memory.c"
+{
+# 93 "memory.c"
+if ((ia < 0) || (ia >= na))
+# 93 "memory.c"
+{
+# 93 "memory.c"
+printf(((const char *)"%s (%s = %d, %s = %d), file %s, line %d\n"), ((const char *)("Bad array index")), ((const char *)("na")), na, ((const char *)("ia")), ia, file, lineno);
+# 93 "memory.c"
+{
+# 93 "memory.c"
+if ((((int)(!(ia))) > 0) && (ia < na))
+# 93 "memory.c"
+{
+# 93 "memory.c"
+{
+# 93 "memory.c"
+__asm("trap;");
+# 93 "memory.c"
+}
+# 93 "memory.c"
+;
+# 93 "memory.c"
+}
+# 93 "memory.c"
+}
+# 93 "memory.c"
+;
+# 93 "memory.c"
+}
+# 93 "memory.c"
+} while (0);
+# 94 "memory.c"
+do
+# 94 "memory.c"
+{
+# 94 "memory.c"
+if ((ib < 0) || (ib >= nb))
+# 94 "memory.c"
+{
+# 94 "memory.c"
+printf(((const char *)"%s (%s = %d, %s = %d), file %s, line %d\n"), ((const char *)("Bad array index")), ((const char *)("nb")), nb, ((const char *)("ib")), ib, file, lineno);
+# 94 "memory.c"
+{
+# 94 "memory.c"
+if ((((int)(!(ib))) > 0) && (ib < nb))
+# 94 "memory.c"
+{
+# 94 "memory.c"
+{
+# 94 "memory.c"
+__asm("trap;");
+# 94 "memory.c"
+}
+# 94 "memory.c"
+;
+# 94 "memory.c"
+}
+# 94 "memory.c"
+}
+# 94 "memory.c"
+;
+# 94 "memory.c"
+}
+# 94 "memory.c"
+} while (0);
+# 96 "memory.c"
+return (((na * nb) * index) + (nb * ia)) + ib;
+# 97 "memory.c"
+}}
+# 106 "memory.c"
+___device__( __no_sc__) int _Z25forward_addr_rank3_assertiPKciiiiiiii(
+# 106 "memory.c"
+int lineno, 
+# 106 "memory.c"
+const char *file, 
+# 107 "memory.c"
+int nsites, 
+# 107 "memory.c"
+int na, 
+# 107 "memory.c"
+int nb, 
+# 107 "memory.c"
+int nc, 
+# 108 "memory.c"
+int index, 
+# 108 "memory.c"
+int ia, 
+# 108 "memory.c"
+int ib, 
+# 108 "memory.c"
+int ic){
+# 108 "memory.c"
+{
+# 110 "memory.c"
+do
+# 110 "memory.c"
+{
+# 110 "memory.c"
+if ((index < 0) || (index >= nsites))
+# 110 "memory.c"
+{
+# 110 "memory.c"
+printf(((const char *)"%s (%s = %d, %s = %d), file %s, line %d\n"), ((const char *)("Bad array index")), ((const char *)("nsites")), nsites, ((const char *)("index")), index, file, lineno);
+# 110 "memory.c"
+{
+# 110 "memory.c"
+if ((((int)(!(index))) > 0) && (index < nsites))
+# 110 "memory.c"
+{
+# 110 "memory.c"
+{
+# 110 "memory.c"
+__asm("trap;");
+# 110 "memory.c"
+}
+# 110 "memory.c"
+;
+# 110 "memory.c"
+}
+# 110 "memory.c"
+}
+# 110 "memory.c"
+;
+# 110 "memory.c"
+}
+# 110 "memory.c"
+} while (0);
+# 111 "memory.c"
+do
+# 111 "memory.c"
+{
+# 111 "memory.c"
+if ((ia < 0) || (ia >= na))
+# 111 "memory.c"
+{
+# 111 "memory.c"
+printf(((const char *)"%s (%s = %d, %s = %d), file %s, line %d\n"), ((const char *)("Bad array index")), ((const char *)("na")), na, ((const char *)("ia")), ia, file, lineno);
+# 111 "memory.c"
+{
+# 111 "memory.c"
+if ((((int)(!(ia))) > 0) && (ia < na))
+# 111 "memory.c"
+{
+# 111 "memory.c"
+{
+# 111 "memory.c"
+__asm("trap;");
+# 111 "memory.c"
+}
+# 111 "memory.c"
+;
+# 111 "memory.c"
+}
+# 111 "memory.c"
+}
+# 111 "memory.c"
+;
+# 111 "memory.c"
+}
+# 111 "memory.c"
+} while (0);
+# 112 "memory.c"
+do
+# 112 "memory.c"
+{
+# 112 "memory.c"
+if ((ib < 0) || (ib >= nb))
+# 112 "memory.c"
+{
+# 112 "memory.c"
+printf(((const char *)"%s (%s = %d, %s = %d), file %s, line %d\n"), ((const char *)("Bad array index")), ((const char *)("nb")), nb, ((const char *)("ib")), ib, file, lineno);
+# 112 "memory.c"
+{
+# 112 "memory.c"
+if ((((int)(!(ib))) > 0) && (ib < nb))
+# 112 "memory.c"
+{
+# 112 "memory.c"
+{
+# 112 "memory.c"
+__asm("trap;");
+# 112 "memory.c"
+}
+# 112 "memory.c"
+;
+# 112 "memory.c"
+}
+# 112 "memory.c"
+}
+# 112 "memory.c"
+;
+# 112 "memory.c"
+}
+# 112 "memory.c"
+} while (0);
+# 113 "memory.c"
+do
+# 113 "memory.c"
+{
+# 113 "memory.c"
+if ((ic < 0) || (ic >= nc))
+# 113 "memory.c"
+{
+# 113 "memory.c"
+printf(((const char *)"%s (%s = %d, %s = %d), file %s, line %d\n"), ((const char *)("Bad array index")), ((const char *)("nc")), nc, ((const char *)("ic")), ic, file, lineno);
+# 113 "memory.c"
+{
+# 113 "memory.c"
+if ((((int)(!(ic))) > 0) && (ic < nc))
+# 113 "memory.c"
+{
+# 113 "memory.c"
+{
+# 113 "memory.c"
+__asm("trap;");
+# 113 "memory.c"
+}
+# 113 "memory.c"
+;
+# 113 "memory.c"
+}
+# 113 "memory.c"
+}
+# 113 "memory.c"
+;
+# 113 "memory.c"
+}
+# 113 "memory.c"
+} while (0);
+# 115 "memory.c"
+return (((((na * nb) * nc) * index) + ((nb * nc) * ia)) + (nc * ib)) + ic;
+# 116 "memory.c"
+}}
+# 125 "memory.c"
+___device__( __no_sc__) int _Z25forward_addr_rank4_assertiPKciiiiiiiiii(
+# 125 "memory.c"
+int lineno, 
+# 125 "memory.c"
+const char *file, 
+# 126 "memory.c"
+int nsites, 
+# 126 "memory.c"
+int na, 
+# 126 "memory.c"
+int nb, 
+# 126 "memory.c"
+int nc, 
+# 126 "memory.c"
+int nd, 
+# 127 "memory.c"
+int index, 
+# 127 "memory.c"
+int ia, 
+# 127 "memory.c"
+int ib, 
+# 127 "memory.c"
+int ic, 
+# 127 "memory.c"
+int id){
+# 127 "memory.c"
+{
+# 129 "memory.c"
+do
+# 129 "memory.c"
+{
+# 129 "memory.c"
+if ((index < 0) || (index >= nsites))
+# 129 "memory.c"
+{
+# 129 "memory.c"
+printf(((const char *)"%s (%s = %d, %s = %d), file %s, line %d\n"), ((const char *)("Bad array index")), ((const char *)("nsites")), nsites, ((const char *)("index")), index, file, lineno);
+# 129 "memory.c"
+{
+# 129 "memory.c"
+if ((((int)(!(index))) > 0) && (index < nsites))
+# 129 "memory.c"
+{
+# 129 "memory.c"
+{
+# 129 "memory.c"
+__asm("trap;");
+# 129 "memory.c"
+}
+# 129 "memory.c"
+;
+# 129 "memory.c"
+}
+# 129 "memory.c"
+}
+# 129 "memory.c"
+;
+# 129 "memory.c"
+}
+# 129 "memory.c"
+} while (0);
+# 130 "memory.c"
+do
+# 130 "memory.c"
+{
+# 130 "memory.c"
+if ((ia < 0) || (ia >= na))
+# 130 "memory.c"
+{
+# 130 "memory.c"
+printf(((const char *)"%s (%s = %d, %s = %d), file %s, line %d\n"), ((const char *)("Bad array index")), ((const char *)("na")), na, ((const char *)("ia")), ia, file, lineno);
+# 130 "memory.c"
+{
+# 130 "memory.c"
+if ((((int)(!(ia))) > 0) && (ia < na))
+# 130 "memory.c"
+{
+# 130 "memory.c"
+{
+# 130 "memory.c"
+__asm("trap;");
+# 130 "memory.c"
+}
+# 130 "memory.c"
+;
+# 130 "memory.c"
+}
+# 130 "memory.c"
+}
+# 130 "memory.c"
+;
+# 130 "memory.c"
+}
+# 130 "memory.c"
+} while (0);
+# 131 "memory.c"
+do
+# 131 "memory.c"
+{
+# 131 "memory.c"
+if ((ib < 0) || (ib >= nb))
+# 131 "memory.c"
+{
+# 131 "memory.c"
+printf(((const char *)"%s (%s = %d, %s = %d), file %s, line %d\n"), ((const char *)("Bad array index")), ((const char *)("nb")), nb, ((const char *)("ib")), ib, file, lineno);
+# 131 "memory.c"
+{
+# 131 "memory.c"
+if ((((int)(!(ib))) > 0) && (ib < nb))
+# 131 "memory.c"
+{
+# 131 "memory.c"
+{
+# 131 "memory.c"
+__asm("trap;");
+# 131 "memory.c"
+}
+# 131 "memory.c"
+;
+# 131 "memory.c"
+}
+# 131 "memory.c"
+}
+# 131 "memory.c"
+;
+# 131 "memory.c"
+}
+# 131 "memory.c"
+} while (0);
+# 132 "memory.c"
+do
+# 132 "memory.c"
+{
+# 132 "memory.c"
+if ((ic < 0) || (ic >= nc))
+# 132 "memory.c"
+{
+# 132 "memory.c"
+printf(((const char *)"%s (%s = %d, %s = %d), file %s, line %d\n"), ((const char *)("Bad array index")), ((const char *)("nc")), nc, ((const char *)("ic")), ic, file, lineno);
+# 132 "memory.c"
+{
+# 132 "memory.c"
+if ((((int)(!(ic))) > 0) && (ic < nc))
+# 132 "memory.c"
+{
+# 132 "memory.c"
+{
+# 132 "memory.c"
+__asm("trap;");
+# 132 "memory.c"
+}
+# 132 "memory.c"
+;
+# 132 "memory.c"
+}
+# 132 "memory.c"
+}
+# 132 "memory.c"
+;
+# 132 "memory.c"
+}
+# 132 "memory.c"
+} while (0);
+# 133 "memory.c"
+do
+# 133 "memory.c"
+{
+# 133 "memory.c"
+if ((id < 0) || (id >= nd))
+# 133 "memory.c"
+{
+# 133 "memory.c"
+printf(((const char *)"%s (%s = %d, %s = %d), file %s, line %d\n"), ((const char *)("Bad array index")), ((const char *)("nd")), nd, ((const char *)("id")), id, file, lineno);
+# 133 "memory.c"
+{
+# 133 "memory.c"
+if ((((int)(!(id))) > 0) && (id < nd))
+# 133 "memory.c"
+{
+# 133 "memory.c"
+{
+# 133 "memory.c"
+__asm("trap;");
+# 133 "memory.c"
+}
+# 133 "memory.c"
+;
+# 133 "memory.c"
+}
+# 133 "memory.c"
+}
+# 133 "memory.c"
+;
+# 133 "memory.c"
+}
+# 133 "memory.c"
+} while (0);
+# 135 "memory.c"
+return (((((((na * nb) * nc) * nd) * index) + (((nb * nc) * nd) * ia)) + ((nc * nd) * ib)) + (nd * ic)) + id;
+# 136 "memory.c"
+}}
+# 145 "memory.c"
+___device__( __no_sc__) int _Z25reverse_addr_rank0_assertiPKcii(
+# 145 "memory.c"
+int lineno, 
+# 145 "memory.c"
+const char *file, 
+# 146 "memory.c"
+int nsites, 
+# 146 "memory.c"
+int index){
+# 146 "memory.c"
+{
+# 148 "memory.c"
+do
+# 148 "memory.c"
+{
+# 148 "memory.c"
+if ((index < 0) || (index >= nsites))
+# 148 "memory.c"
+{
+# 148 "memory.c"
+printf(((const char *)"%s (%s = %d, %s = %d), file %s, line %d\n"), ((const char *)("Bad array index")), ((const char *)("nsites")), nsites, ((const char *)("index")), index, file, lineno);
+# 148 "memory.c"
+{
+# 148 "memory.c"
+if ((((int)(!(index))) > 0) && (index < nsites))
+# 148 "memory.c"
+{
+# 148 "memory.c"
+{
+# 148 "memory.c"
+__asm("trap;");
+# 148 "memory.c"
+}
+# 148 "memory.c"
+;
+# 148 "memory.c"
+}
+# 148 "memory.c"
+}
+# 148 "memory.c"
+;
+# 148 "memory.c"
+}
+# 148 "memory.c"
+} while (0);
+# 150 "memory.c"
+return index;
+# 151 "memory.c"
+}}
+# 160 "memory.c"
+___device__( __no_sc__) int _Z25reverse_addr_rank1_assertiPKciiii(
+# 160 "memory.c"
+int lineno, 
+# 160 "memory.c"
+const char *file, 
+# 161 "memory.c"
+int nsites, 
+# 161 "memory.c"
+int na, 
+# 161 "memory.c"
+int index, 
+# 161 "memory.c"
+int ia){
+# 161 "memory.c"
+{
+# 163 "memory.c"
+do
+# 163 "memory.c"
+{
+# 163 "memory.c"
+if ((index < 0) || (index >= nsites))
+# 163 "memory.c"
+{
+# 163 "memory.c"
+printf(((const char *)"%s (%s = %d, %s = %d), file %s, line %d\n"), ((const char *)("Bad array index")), ((const char *)("nsites")), nsites, ((const char *)("index")), index, file, lineno);
+# 163 "memory.c"
+{
+# 163 "memory.c"
+if ((((int)(!(index))) > 0) && (index < nsites))
+# 163 "memory.c"
+{
+# 163 "memory.c"
+{
+# 163 "memory.c"
+__asm("trap;");
+# 163 "memory.c"
+}
+# 163 "memory.c"
+;
+# 163 "memory.c"
+}
+# 163 "memory.c"
+}
+# 163 "memory.c"
+;
+# 163 "memory.c"
+}
+# 163 "memory.c"
+} while (0);
+# 164 "memory.c"
+do
+# 164 "memory.c"
+{
+# 164 "memory.c"
+if ((ia < 0) || (ia >= na))
+# 164 "memory.c"
+{
+# 164 "memory.c"
+printf(((const char *)"%s (%s = %d, %s = %d), file %s, line %d\n"), ((const char *)("Bad array index")), ((const char *)("na")), na, ((const char *)("ia")), ia, file, lineno);
+# 164 "memory.c"
+{
+# 164 "memory.c"
+if ((((int)(!(ia))) > 0) && (ia < na))
+# 164 "memory.c"
+{
+# 164 "memory.c"
+{
+# 164 "memory.c"
+__asm("trap;");
+# 164 "memory.c"
+}
+# 164 "memory.c"
+;
+# 164 "memory.c"
+}
+# 164 "memory.c"
+}
+# 164 "memory.c"
+;
+# 164 "memory.c"
+}
+# 164 "memory.c"
+} while (0);
+# 166 "memory.c"
+return (nsites * ia) + index;
+# 167 "memory.c"
+}}
+# 176 "memory.c"
+___device__( __no_sc__) int _Z25reverse_addr_rank2_assertiPKciiiiii(
+# 176 "memory.c"
+int lineno, 
+# 176 "memory.c"
+const char *file, 
+# 177 "memory.c"
+int nsites, 
+# 177 "memory.c"
+int na, 
+# 177 "memory.c"
+int nb, 
+# 178 "memory.c"
+int index, 
+# 178 "memory.c"
+int ia, 
+# 178 "memory.c"
+int ib){
+# 178 "memory.c"
+{
+# 180 "memory.c"
+do
+# 180 "memory.c"
+{
+# 180 "memory.c"
+if ((index < 0) || (index >= nsites))
+# 180 "memory.c"
+{
+# 180 "memory.c"
+printf(((const char *)"%s (%s = %d, %s = %d), file %s, line %d\n"), ((const char *)("Bad array index")), ((const char *)("nsites")), nsites, ((const char *)("index")), index, file, lineno);
+# 180 "memory.c"
+{
+# 180 "memory.c"
+if ((((int)(!(index))) > 0) && (index < nsites))
+# 180 "memory.c"
+{
+# 180 "memory.c"
+{
+# 180 "memory.c"
+__asm("trap;");
+# 180 "memory.c"
+}
+# 180 "memory.c"
+;
+# 180 "memory.c"
+}
+# 180 "memory.c"
+}
+# 180 "memory.c"
+;
+# 180 "memory.c"
+}
+# 180 "memory.c"
+} while (0);
+# 181 "memory.c"
+do
+# 181 "memory.c"
+{
+# 181 "memory.c"
+if ((ia < 0) || (ia >= na))
+# 181 "memory.c"
+{
+# 181 "memory.c"
+printf(((const char *)"%s (%s = %d, %s = %d), file %s, line %d\n"), ((const char *)("Bad array index")), ((const char *)("na")), na, ((const char *)("ia")), ia, file, lineno);
+# 181 "memory.c"
+{
+# 181 "memory.c"
+if ((((int)(!(ia))) > 0) && (ia < na))
+# 181 "memory.c"
+{
+# 181 "memory.c"
+{
+# 181 "memory.c"
+__asm("trap;");
+# 181 "memory.c"
+}
+# 181 "memory.c"
+;
+# 181 "memory.c"
+}
+# 181 "memory.c"
+}
+# 181 "memory.c"
+;
+# 181 "memory.c"
+}
+# 181 "memory.c"
+} while (0);
+# 182 "memory.c"
+do
+# 182 "memory.c"
+{
+# 182 "memory.c"
+if ((ib < 0) || (ib >= nb))
+# 182 "memory.c"
+{
+# 182 "memory.c"
+printf(((const char *)"%s (%s = %d, %s = %d), file %s, line %d\n"), ((const char *)("Bad array index")), ((const char *)("nb")), nb, ((const char *)("ib")), ib, file, lineno);
+# 182 "memory.c"
+{
+# 182 "memory.c"
+if ((((int)(!(ib))) > 0) && (ib < nb))
+# 182 "memory.c"
+{
+# 182 "memory.c"
+{
+# 182 "memory.c"
+__asm("trap;");
+# 182 "memory.c"
+}
+# 182 "memory.c"
+;
+# 182 "memory.c"
+}
+# 182 "memory.c"
+}
+# 182 "memory.c"
+;
+# 182 "memory.c"
+}
+# 182 "memory.c"
+} while (0);
+# 184 "memory.c"
+return (((nb * nsites) * ia) + (nsites * ib)) + index;
+# 185 "memory.c"
+}}
+# 194 "memory.c"
+___device__( __no_sc__) int _Z25reverse_addr_rank3_assertiPKciiiiiiii(
+# 194 "memory.c"
+int lineno, 
+# 194 "memory.c"
+const char *file, 
+# 195 "memory.c"
+int nsites, 
+# 195 "memory.c"
+int na, 
+# 195 "memory.c"
+int nb, 
+# 195 "memory.c"
+int nc, 
+# 196 "memory.c"
+int index, 
+# 196 "memory.c"
+int ia, 
+# 196 "memory.c"
+int ib, 
+# 196 "memory.c"
+int ic){
+# 196 "memory.c"
+{
+# 198 "memory.c"
+do
+# 198 "memory.c"
+{
+# 198 "memory.c"
+if ((index < 0) || (index >= nsites))
+# 198 "memory.c"
+{
+# 198 "memory.c"
+printf(((const char *)"%s (%s = %d, %s = %d), file %s, line %d\n"), ((const char *)("Bad array index")), ((const char *)("nsites")), nsites, ((const char *)("index")), index, file, lineno);
+# 198 "memory.c"
+{
+# 198 "memory.c"
+if ((((int)(!(index))) > 0) && (index < nsites))
+# 198 "memory.c"
+{
+# 198 "memory.c"
+{
+# 198 "memory.c"
+__asm("trap;");
+# 198 "memory.c"
+}
+# 198 "memory.c"
+;
+# 198 "memory.c"
+}
+# 198 "memory.c"
+}
+# 198 "memory.c"
+;
+# 198 "memory.c"
+}
+# 198 "memory.c"
+} while (0);
+# 199 "memory.c"
+do
+# 199 "memory.c"
+{
+# 199 "memory.c"
+if ((ia < 0) || (ia >= na))
+# 199 "memory.c"
+{
+# 199 "memory.c"
+printf(((const char *)"%s (%s = %d, %s = %d), file %s, line %d\n"), ((const char *)("Bad array index")), ((const char *)("na")), na, ((const char *)("ia")), ia, file, lineno);
+# 199 "memory.c"
+{
+# 199 "memory.c"
+if ((((int)(!(ia))) > 0) && (ia < na))
+# 199 "memory.c"
+{
+# 199 "memory.c"
+{
+# 199 "memory.c"
+__asm("trap;");
+# 199 "memory.c"
+}
+# 199 "memory.c"
+;
+# 199 "memory.c"
+}
+# 199 "memory.c"
+}
+# 199 "memory.c"
+;
+# 199 "memory.c"
+}
+# 199 "memory.c"
+} while (0);
+# 200 "memory.c"
+do
+# 200 "memory.c"
+{
+# 200 "memory.c"
+if ((ib < 0) || (ib >= nb))
+# 200 "memory.c"
+{
+# 200 "memory.c"
+printf(((const char *)"%s (%s = %d, %s = %d), file %s, line %d\n"), ((const char *)("Bad array index")), ((const char *)("nb")), nb, ((const char *)("ib")), ib, file, lineno);
+# 200 "memory.c"
+{
+# 200 "memory.c"
+if ((((int)(!(ib))) > 0) && (ib < nb))
+# 200 "memory.c"
+{
+# 200 "memory.c"
+{
+# 200 "memory.c"
+__asm("trap;");
+# 200 "memory.c"
+}
+# 200 "memory.c"
+;
+# 200 "memory.c"
+}
+# 200 "memory.c"
+}
+# 200 "memory.c"
+;
+# 200 "memory.c"
+}
+# 200 "memory.c"
+} while (0);
+# 201 "memory.c"
+do
+# 201 "memory.c"
+{
+# 201 "memory.c"
+if ((ic < 0) || (ic >= nc))
+# 201 "memory.c"
+{
+# 201 "memory.c"
+printf(((const char *)"%s (%s = %d, %s = %d), file %s, line %d\n"), ((const char *)("Bad array index")), ((const char *)("nc")), nc, ((const char *)("ic")), ic, file, lineno);
+# 201 "memory.c"
+{
+# 201 "memory.c"
+if ((((int)(!(ic))) > 0) && (ic < nc))
+# 201 "memory.c"
+{
+# 201 "memory.c"
+{
+# 201 "memory.c"
+__asm("trap;");
+# 201 "memory.c"
+}
+# 201 "memory.c"
+;
+# 201 "memory.c"
+}
+# 201 "memory.c"
+}
+# 201 "memory.c"
+;
+# 201 "memory.c"
+}
+# 201 "memory.c"
+} while (0);
+# 203 "memory.c"
+return (((((nb * nc) * nsites) * ia) + ((nc * nsites) * ib)) + (nsites * ic)) + index;
+# 204 "memory.c"
+}}
+# 213 "memory.c"
+___device__( __no_sc__) int _Z25reverse_addr_rank4_assertiPKciiiiiiiiii(
+# 213 "memory.c"
+int lineno, 
+# 213 "memory.c"
+const char *file, 
+# 214 "memory.c"
+int nsites, 
+# 214 "memory.c"
+int na, 
+# 214 "memory.c"
+int nb, 
+# 214 "memory.c"
+int nc, 
+# 214 "memory.c"
+int nd, 
+# 215 "memory.c"
+int index, 
+# 215 "memory.c"
+int ia, 
+# 215 "memory.c"
+int ib, 
+# 215 "memory.c"
+int ic, 
+# 215 "memory.c"
+int id){
+# 215 "memory.c"
+{
+# 217 "memory.c"
+do
+# 217 "memory.c"
+{
+# 217 "memory.c"
+if ((index < 0) || (index >= nsites))
+# 217 "memory.c"
+{
+# 217 "memory.c"
+printf(((const char *)"%s (%s = %d, %s = %d), file %s, line %d\n"), ((const char *)("Bad array index")), ((const char *)("nsites")), nsites, ((const char *)("index")), index, file, lineno);
+# 217 "memory.c"
+{
+# 217 "memory.c"
+if ((((int)(!(index))) > 0) && (index < nsites))
+# 217 "memory.c"
+{
+# 217 "memory.c"
+{
+# 217 "memory.c"
+__asm("trap;");
+# 217 "memory.c"
+}
+# 217 "memory.c"
+;
+# 217 "memory.c"
+}
+# 217 "memory.c"
+}
+# 217 "memory.c"
+;
+# 217 "memory.c"
+}
+# 217 "memory.c"
+} while (0);
+# 218 "memory.c"
+do
+# 218 "memory.c"
+{
+# 218 "memory.c"
+if ((ia < 0) || (ia >= na))
+# 218 "memory.c"
+{
+# 218 "memory.c"
+printf(((const char *)"%s (%s = %d, %s = %d), file %s, line %d\n"), ((const char *)("Bad array index")), ((const char *)("na")), na, ((const char *)("ia")), ia, file, lineno);
+# 218 "memory.c"
+{
+# 218 "memory.c"
+if ((((int)(!(ia))) > 0) && (ia < na))
+# 218 "memory.c"
+{
+# 218 "memory.c"
+{
+# 218 "memory.c"
+__asm("trap;");
+# 218 "memory.c"
+}
+# 218 "memory.c"
+;
+# 218 "memory.c"
+}
+# 218 "memory.c"
+}
+# 218 "memory.c"
+;
+# 218 "memory.c"
+}
+# 218 "memory.c"
+} while (0);
+# 219 "memory.c"
+do
+# 219 "memory.c"
+{
+# 219 "memory.c"
+if ((ib < 0) || (ib >= nb))
+# 219 "memory.c"
+{
+# 219 "memory.c"
+printf(((const char *)"%s (%s = %d, %s = %d), file %s, line %d\n"), ((const char *)("Bad array index")), ((const char *)("nb")), nb, ((const char *)("ib")), ib, file, lineno);
+# 219 "memory.c"
+{
+# 219 "memory.c"
+if ((((int)(!(ib))) > 0) && (ib < nb))
+# 219 "memory.c"
+{
+# 219 "memory.c"
+{
+# 219 "memory.c"
+__asm("trap;");
+# 219 "memory.c"
+}
+# 219 "memory.c"
+;
+# 219 "memory.c"
+}
+# 219 "memory.c"
+}
+# 219 "memory.c"
+;
+# 219 "memory.c"
+}
+# 219 "memory.c"
+} while (0);
+# 220 "memory.c"
+do
+# 220 "memory.c"
+{
+# 220 "memory.c"
+if ((ic < 0) || (ic >= nc))
+# 220 "memory.c"
+{
+# 220 "memory.c"
+printf(((const char *)"%s (%s = %d, %s = %d), file %s, line %d\n"), ((const char *)("Bad array index")), ((const char *)("nc")), nc, ((const char *)("ic")), ic, file, lineno);
+# 220 "memory.c"
+{
+# 220 "memory.c"
+if ((((int)(!(ic))) > 0) && (ic < nc))
+# 220 "memory.c"
+{
+# 220 "memory.c"
+{
+# 220 "memory.c"
+__asm("trap;");
+# 220 "memory.c"
+}
+# 220 "memory.c"
+;
+# 220 "memory.c"
+}
+# 220 "memory.c"
+}
+# 220 "memory.c"
+;
+# 220 "memory.c"
+}
+# 220 "memory.c"
+} while (0);
+# 221 "memory.c"
+do
+# 221 "memory.c"
+{
+# 221 "memory.c"
+if ((id < 0) || (id >= nd))
+# 221 "memory.c"
+{
+# 221 "memory.c"
+printf(((const char *)"%s (%s = %d, %s = %d), file %s, line %d\n"), ((const char *)("Bad array index")), ((const char *)("nd")), nd, ((const char *)("id")), id, file, lineno);
+# 221 "memory.c"
+{
+# 221 "memory.c"
+if ((((int)(!(id))) > 0) && (id < nd))
+# 221 "memory.c"
+{
+# 221 "memory.c"
+{
+# 221 "memory.c"
+__asm("trap;");
+# 221 "memory.c"
+}
+# 221 "memory.c"
+;
+# 221 "memory.c"
+}
+# 221 "memory.c"
+}
+# 221 "memory.c"
+;
+# 221 "memory.c"
+}
+# 221 "memory.c"
+} while (0);
+# 223 "memory.c"
+return (((((((nb * nc) * nd) * nsites) * ia) + (((nc * nd) * nsites) * ib)) + ((nd * nsites) * ic)) + (nsites * id)) + index;
+# 224 "memory.c"
+}}
+# 235 "memory.c"
+___device__( __no_sc__) int _Z14mem_addr_rank0ii(
+# 235 "memory.c"
+int nsites, 
+# 235 "memory.c"
+int index){
+# 235 "memory.c"
+{
+# 237 "memory.c"
+return _Z25reverse_addr_rank0_assertiPKcii(237, ((const char *)"memory.c"), nsites, index);
+# 238 "memory.c"
+}}
+# 247 "memory.c"
+___device__( __no_sc__) int _Z14mem_addr_rank1iiii(
+# 247 "memory.c"
+int nsites, 
+# 247 "memory.c"
+int na, 
+# 247 "memory.c"
+int index, 
+# 247 "memory.c"
+int ia){
+# 247 "memory.c"
+{
+# 249 "memory.c"
+return _Z25reverse_addr_rank1_assertiPKciiii(249, ((const char *)"memory.c"), nsites, na, index, ia);
+# 250 "memory.c"
+}}
+# 259 "memory.c"
+___device__( __no_sc__) int _Z14mem_addr_rank2iiiiii(
+# 259 "memory.c"
+int nsites, 
+# 259 "memory.c"
+int na, 
+# 259 "memory.c"
+int nb, 
+# 259 "memory.c"
+int index, 
+# 259 "memory.c"
+int ia, 
+# 259 "memory.c"
+int ib){
+# 259 "memory.c"
+{
+# 261 "memory.c"
+return _Z25reverse_addr_rank2_assertiPKciiiiii(261, ((const char *)"memory.c"), nsites, na, nb, index, ia, ib);
+# 262 "memory.c"
+}}

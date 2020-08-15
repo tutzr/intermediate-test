@@ -1,0 +1,2067 @@
+typedef char __nv_bool;
+# 2074 "/usr/local/cuda-10.1/include/driver_types.h" 3
+struct CUstream_st;
+# 185 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+enum hipError_t {
+# 186 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipSuccess,
+# 187 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidValue,
+# 189 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorOutOfMemory,
+# 191 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorMemoryAllocation = 2,
+# 192 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorNotInitialized,
+# 194 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInitializationError = 3,
+# 195 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorDeinitialized,
+# 196 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorProfilerDisabled,
+# 197 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorProfilerNotInitialized,
+# 198 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorProfilerAlreadyStarted,
+# 199 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorProfilerAlreadyStopped,
+# 200 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidConfiguration,
+# 201 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidSymbol = 13,
+# 202 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidDevicePointer = 17,
+# 203 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidMemcpyDirection = 21,
+# 204 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInsufficientDriver = 35,
+# 205 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorMissingConfiguration = 52,
+# 206 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorPriorLaunchFailure,
+# 207 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidDeviceFunction = 98,
+# 208 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorNoDevice = 100,
+# 209 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidDevice,
+# 210 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidImage = 200,
+# 211 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidContext,
+# 212 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorContextAlreadyCurrent,
+# 213 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorMapFailed = 205,
+# 215 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorMapBufferObjectFailed = 205,
+# 216 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorUnmapFailed,
+# 217 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorArrayIsMapped,
+# 218 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorAlreadyMapped,
+# 219 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorNoBinaryForGpu,
+# 220 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorAlreadyAcquired,
+# 221 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorNotMapped,
+# 222 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorNotMappedAsArray,
+# 223 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorNotMappedAsPointer,
+# 224 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorECCNotCorrectable,
+# 225 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorUnsupportedLimit,
+# 226 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorContextAlreadyInUse,
+# 227 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorPeerAccessUnsupported,
+# 228 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidKernelFile,
+# 229 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidGraphicsContext,
+# 230 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidSource = 300,
+# 231 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorFileNotFound,
+# 232 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorSharedObjectSymbolNotFound,
+# 233 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorSharedObjectInitFailed,
+# 234 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorOperatingSystem,
+# 235 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidHandle = 400,
+# 237 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidResourceHandle = 400,
+# 238 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorNotFound = 500,
+# 239 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorNotReady = 600,
+# 243 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorIllegalAddress = 700,
+# 244 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorLaunchOutOfResources,
+# 245 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorLaunchTimeOut,
+# 246 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorPeerAccessAlreadyEnabled = 704,
+# 248 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorPeerAccessNotEnabled,
+# 250 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorSetOnActiveProcess = 708,
+# 251 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorAssert = 710,
+# 252 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorHostMemoryAlreadyRegistered = 712,
+# 254 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorHostMemoryNotRegistered,
+# 256 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorLaunchFailure = 719,
+# 258 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorCooperativeLaunchTooLarge,
+# 262 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorNotSupported = 801,
+# 263 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorUnknown = 999,
+# 265 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorRuntimeMemory = 1052,
+# 267 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorRuntimeOther,
+# 269 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorTbd};
+# 646 "/usr/local/cuda-10.1/include/cuda.h" 3
+enum CUfunction_attribute_enum {
+# 652 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_MAX_THREADS_PER_BLOCK,
+# 659 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_SHARED_SIZE_BYTES,
+# 665 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_CONST_SIZE_BYTES,
+# 670 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_LOCAL_SIZE_BYTES,
+# 675 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_NUM_REGS,
+# 684 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_PTX_VERSION,
+# 693 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_BINARY_VERSION,
+# 699 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_CACHE_MODE_CA,
+# 707 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_MAX_DYNAMIC_SHARED_SIZE_BYTES,
+# 716 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_PREFERRED_SHARED_MEMORY_CARVEOUT,
+# 718 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_MAX};
+# 724 "/usr/local/cuda-10.1/include/cuda.h" 3
+enum CUfunc_cache_enum {
+# 725 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_CACHE_PREFER_NONE = 0,
+# 726 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_CACHE_PREFER_SHARED = 1,
+# 727 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_CACHE_PREFER_L1 = 2,
+# 728 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_CACHE_PREFER_EQUAL = 3};
+# 734 "/usr/local/cuda-10.1/include/cuda.h" 3
+enum CUsharedconfig_enum {
+# 735 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_SHARED_MEM_CONFIG_DEFAULT_BANK_SIZE = 0,
+# 736 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_SHARED_MEM_CONFIG_FOUR_BYTE_BANK_SIZE = 1,
+# 737 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_SHARED_MEM_CONFIG_EIGHT_BYTE_BANK_SIZE = 2};
+# 790 "/usr/local/cuda-10.1/include/cuda.h" 3
+enum CUjit_option_enum {
+# 797 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_MAX_REGISTERS,
+# 812 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_THREADS_PER_BLOCK,
+# 820 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_WALL_TIME,
+# 829 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_INFO_LOG_BUFFER,
+# 838 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_INFO_LOG_BUFFER_SIZE_BYTES,
+# 847 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_ERROR_LOG_BUFFER,
+# 856 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_ERROR_LOG_BUFFER_SIZE_BYTES,
+# 864 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_OPTIMIZATION_LEVEL,
+# 872 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_TARGET_FROM_CUCONTEXT,
+# 880 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_TARGET,
+# 889 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_FALLBACK_STRATEGY,
+# 897 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_GENERATE_DEBUG_INFO,
+# 904 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_LOG_VERBOSE,
+# 911 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_GENERATE_LINE_INFO,
+# 919 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_CACHE_MODE,
+# 924 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_NEW_SM3X_OPT,
+# 925 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_FAST_COMPILE,
+# 939 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_GLOBAL_SYMBOL_NAMES,
+# 948 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_GLOBAL_SYMBOL_ADDRESSES,
+# 956 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_GLOBAL_SYMBOL_COUNT,
+# 958 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_NUM_OPTIONS};
+# 1194 "/usr/local/cuda-10.1/include/cuda.h" 3
+enum cudaError_enum {
+# 1200 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_SUCCESS,
+# 1206 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_INVALID_VALUE,
+# 1212 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_OUT_OF_MEMORY,
+# 1218 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_NOT_INITIALIZED,
+# 1223 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_DEINITIALIZED,
+# 1230 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_PROFILER_DISABLED,
+# 1238 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_PROFILER_NOT_INITIALIZED,
+# 1245 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_PROFILER_ALREADY_STARTED,
+# 1252 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_PROFILER_ALREADY_STOPPED,
+# 1258 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_NO_DEVICE = 100,
+# 1264 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_INVALID_DEVICE,
+# 1271 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_INVALID_IMAGE = 200,
+# 1281 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_INVALID_CONTEXT,
+# 1290 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_CONTEXT_ALREADY_CURRENT,
+# 1295 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_MAP_FAILED = 205,
+# 1300 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_UNMAP_FAILED,
+# 1306 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_ARRAY_IS_MAPPED,
+# 1311 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_ALREADY_MAPPED,
+# 1319 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_NO_BINARY_FOR_GPU,
+# 1324 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_ALREADY_ACQUIRED,
+# 1329 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_NOT_MAPPED,
+# 1335 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_NOT_MAPPED_AS_ARRAY,
+# 1341 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_NOT_MAPPED_AS_POINTER,
+# 1347 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_ECC_UNCORRECTABLE,
+# 1353 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_UNSUPPORTED_LIMIT,
+# 1360 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_CONTEXT_ALREADY_IN_USE,
+# 1366 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_PEER_ACCESS_UNSUPPORTED,
+# 1371 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_INVALID_PTX,
+# 1376 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_INVALID_GRAPHICS_CONTEXT,
+# 1382 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_NVLINK_UNCORRECTABLE,
+# 1387 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_JIT_COMPILER_NOT_FOUND,
+# 1392 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_INVALID_SOURCE = 300,
+# 1397 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_FILE_NOT_FOUND,
+# 1402 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_SHARED_OBJECT_SYMBOL_NOT_FOUND,
+# 1407 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_SHARED_OBJECT_INIT_FAILED,
+# 1412 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_OPERATING_SYSTEM,
+# 1418 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_INVALID_HANDLE = 400,
+# 1424 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_ILLEGAL_STATE,
+# 1430 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_NOT_FOUND = 500,
+# 1438 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_NOT_READY = 600,
+# 1447 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_ILLEGAL_ADDRESS = 700,
+# 1458 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_LAUNCH_OUT_OF_RESOURCES,
+# 1468 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_LAUNCH_TIMEOUT,
+# 1474 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_LAUNCH_INCOMPATIBLE_TEXTURING,
+# 1481 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_PEER_ACCESS_ALREADY_ENABLED,
+# 1488 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_PEER_ACCESS_NOT_ENABLED,
+# 1494 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_PRIMARY_CONTEXT_ACTIVE = 708,
+# 1501 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_CONTEXT_IS_DESTROYED,
+# 1509 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_ASSERT,
+# 1516 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_TOO_MANY_PEERS,
+# 1522 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_HOST_MEMORY_ALREADY_REGISTERED,
+# 1528 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_HOST_MEMORY_NOT_REGISTERED,
+# 1537 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_HARDWARE_STACK_ERROR,
+# 1545 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_ILLEGAL_INSTRUCTION,
+# 1554 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_MISALIGNED_ADDRESS,
+# 1565 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_INVALID_ADDRESS_SPACE,
+# 1573 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_INVALID_PC,
+# 1584 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_LAUNCH_FAILED,
+# 1593 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_COOPERATIVE_LAUNCH_TOO_LARGE,
+# 1598 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_NOT_PERMITTED = 800,
+# 1604 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_NOT_SUPPORTED,
+# 1613 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_SYSTEM_NOT_READY,
+# 1620 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_SYSTEM_DRIVER_MISMATCH,
+# 1629 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_COMPAT_NOT_SUPPORTED_ON_DEVICE,
+# 1635 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_STREAM_CAPTURE_UNSUPPORTED = 900,
+# 1641 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_STREAM_CAPTURE_INVALIDATED,
+# 1647 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_STREAM_CAPTURE_MERGE,
+# 1652 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_STREAM_CAPTURE_UNMATCHED,
+# 1658 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_STREAM_CAPTURE_UNJOINED,
+# 1665 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_STREAM_CAPTURE_ISOLATION,
+# 1671 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_STREAM_CAPTURE_IMPLICIT,
+# 1677 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_CAPTURED_EVENT,
+# 1684 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_STREAM_CAPTURE_WRONG_THREAD,
+# 1689 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_UNKNOWN = 999};
+# 45 "/opt/rocm-3.3.0/hip/include/hip/nvcc_detail/hip_runtime_api.h" 3
+enum hipMemcpyKind {
+# 46 "/opt/rocm-3.3.0/hip/include/hip/nvcc_detail/hip_runtime_api.h" 3
+hipMemcpyHostToHost,
+# 47 "/opt/rocm-3.3.0/hip/include/hip/nvcc_detail/hip_runtime_api.h" 3
+hipMemcpyHostToDevice,
+# 48 "/opt/rocm-3.3.0/hip/include/hip/nvcc_detail/hip_runtime_api.h" 3
+hipMemcpyDeviceToHost,
+# 49 "/opt/rocm-3.3.0/hip/include/hip/nvcc_detail/hip_runtime_api.h" 3
+hipMemcpyDeviceToDevice,
+# 50 "/opt/rocm-3.3.0/hip/include/hip/nvcc_detail/hip_runtime_api.h" 3
+hipMemcpyDefault};
+# 22 "pe.h"
+struct pe_s;
+# 22 "coords.h"
+struct coords_s;
+# 26 "coords.h"
+enum cartesian_directions {
+# 26 "coords.h"
+X,
+# 26 "coords.h"
+Y,
+# 26 "coords.h"
+Z};
+# 23 "kernel.h"
+struct kernel_param_s;
+# 28 "kernel.h"
+struct kernel_ctxt_s;
+# 37 "kernel.h"
+struct kernel_info_s;
+# 23 "halo_swap.h"
+struct halo_swap_s;
+# 73 "io_harness.h"
+struct io_info_s;
+# 22 "leesedwards.h"
+struct lees_edw_s;
+# 21 "field_s.h"
+struct field_s;
+# 32 "hydro.h"
+struct hydro_s;
+# 22 "advection_s.h"
+struct advflux_s;
+# 30 "timer.h"
+enum timer_id {
+# 30 "timer.h"
+TIMER_TOTAL,
+# 31 "timer.h"
+TIMER_STEPS,
+# 32 "timer.h"
+TIMER_PROPAGATE,
+# 33 "timer.h"
+TIMER_PROP_KERNEL,
+# 34 "timer.h"
+TIMER_COLLIDE,
+# 35 "timer.h"
+TIMER_COLLIDE_KERNEL,
+# 36 "timer.h"
+TIMER_HALO_LATTICE,
+# 37 "timer.h"
+TIMER_PHI_GRADIENTS,
+# 38 "timer.h"
+TIMER_PHI_GRAD_KERNEL,
+# 39 "timer.h"
+TIMER_PHI_HALO,
+# 40 "timer.h"
+TIMER_LE,
+# 41 "timer.h"
+TIMER_IO,
+# 42 "timer.h"
+TIMER_FORCES,
+# 43 "timer.h"
+TIMER_REBUILD,
+# 44 "timer.h"
+TIMER_BBL,
+# 45 "timer.h"
+TIMER_PARTICLE_UPDATE,
+# 46 "timer.h"
+TIMER_PARTICLE_HALO,
+# 47 "timer.h"
+TIMER_FLUCTUATIONS,
+# 48 "timer.h"
+TIMER_EWALD_TOTAL,
+# 49 "timer.h"
+TIMER_EWALD_REAL_SPACE,
+# 50 "timer.h"
+TIMER_EWALD_FOURIER_SPACE,
+# 51 "timer.h"
+TIMER_FORCE_CALCULATION,
+# 52 "timer.h"
+TIMER_CHEMICAL_STRESS_KERNEL,
+# 53 "timer.h"
+TIMER_PHI_FORCE_CALC,
+# 54 "timer.h"
+TIMER_ORDER_PARAMETER_UPDATE,
+# 55 "timer.h"
+TIMER_U_HALO,
+# 56 "timer.h"
+TIMER_BE_MOL_FIELD,
+# 57 "timer.h"
+BP_BE_UPDATE_KERNEL,
+# 58 "timer.h"
+ADVECTION_X_KERNEL,
+# 59 "timer.h"
+ADVECTION_BCS_KERNEL,
+# 60 "timer.h"
+ADVECTION_BCS_MEM,
+# 61 "timer.h"
+TIMER_ELECTRO_TOTAL,
+# 62 "timer.h"
+TIMER_ELECTRO_POISSON,
+# 63 "timer.h"
+TIMER_ELECTRO_NPEQ,
+# 64 "timer.h"
+TIMER_FREE1,
+# 65 "timer.h"
+TIMER_FREE2,
+# 66 "timer.h"
+TIMER_FREE3,
+# 67 "timer.h"
+TIMER_NTIMERS};
+# 212 "/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stddef.h" 3
+typedef unsigned long size_t;
+#include "crt/device_runtime.h"
+# 270 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+typedef enum hipError_t hipError_t;
+# 51 "/opt/rocm-3.3.0/hip/include/hip/nvcc_detail/hip_runtime_api.h" 3
+typedef enum hipMemcpyKind hipMemcpyKind;
+# 26 ".././target/target_hip.h"
+typedef hipMemcpyKind tdpMemcpyKind;
+# 45 ".././target/target_hip.h"
+typedef hipError_t tdpError_t;
+# 22 "pe.h"
+typedef struct pe_s pe_t;
+# 22 "coords.h"
+typedef struct coords_s cs_t;
+# 21 "kernel.h"
+typedef struct kernel_ctxt_s kernel_ctxt_t;
+# 22 "kernel.h"
+typedef struct kernel_info_s kernel_info_t;
+# 23 "kernel.h"
+typedef struct kernel_param_s kernel_param_t;
+# 28 "kernel.h"
+struct kernel_ctxt_s {
+# 29 "kernel.h"
+kernel_param_t *param;
+# 30 "kernel.h"
+kernel_ctxt_t *target;};
+# 37 "kernel.h"
+struct kernel_info_s {
+# 38 "kernel.h"
+int imin;
+# 39 "kernel.h"
+int imax;
+# 40 "kernel.h"
+int jmin;
+# 41 "kernel.h"
+int jmax;
+# 42 "kernel.h"
+int kmin;
+# 43 "kernel.h"
+int kmax;};
+# 23 "halo_swap.h"
+typedef struct halo_swap_s halo_swap_t;
+# 36 "io_harness.h"
+typedef struct io_info_s io_info_t;
+# 22 "leesedwards.h"
+typedef struct lees_edw_s lees_edw_t;
+# 28 "field.h"
+typedef struct field_s field_t;
+# 21 "field_s.h"
+struct field_s {
+# 22 "field_s.h"
+int nf;
+# 23 "field_s.h"
+int nhcomm;
+# 24 "field_s.h"
+int nsites;
+# 25 "field_s.h"
+double *data;
+# 26 "field_s.h"
+char *name;
+# 28 "field_s.h"
+pe_t *pe;
+# 29 "field_s.h"
+cs_t *cs;
+# 30 "field_s.h"
+lees_edw_t *le;
+# 31 "field_s.h"
+io_info_t *info;
+# 32 "field_s.h"
+halo_swap_t *halo;
+# 34 "field_s.h"
+field_t *target;};
+# 26 "hydro.h"
+typedef struct hydro_s hydro_t;
+# 32 "hydro.h"
+struct hydro_s {
+# 33 "hydro.h"
+int nsite;
+# 34 "hydro.h"
+int nhcomm;
+# 35 "hydro.h"
+double *u;
+# 36 "hydro.h"
+double *f;
+# 37 "hydro.h"
+double *eta;
+# 39 "hydro.h"
+pe_t *pe;
+# 40 "hydro.h"
+cs_t *cs;
+# 41 "hydro.h"
+lees_edw_t *le;
+# 42 "hydro.h"
+io_info_t *info;
+# 43 "hydro.h"
+halo_swap_t *halo;
+# 44 "hydro.h"
+hydro_t *target;};
+# 23 "advection.h"
+typedef struct advflux_s advflux_t;
+# 22 "advection_s.h"
+struct advflux_s {
+# 24 "advection_s.h"
+int nf;
+# 25 "advection_s.h"
+int nsite;
+# 26 "advection_s.h"
+double *fe;
+# 27 "advection_s.h"
+double *fw;
+# 28 "advection_s.h"
+double *fy;
+# 29 "advection_s.h"
+double *fz;
+# 31 "advection_s.h"
+pe_t *pe;
+# 32 "advection_s.h"
+cs_t *cs;
+# 33 "advection_s.h"
+lees_edw_t *le;
+# 34 "advection_s.h"
+advflux_t *target;};
+# 150 "/usr/local/cuda-10.1/include/crt/common_functions.h" 3
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) void free(void *);
+# 68 "/usr/include/assert.h" 3
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__noreturn__)) void __assert_fail(const char *, const char *, unsigned, const char *);
+# 3296 "/usr/local/cuda-10.1/include/crt/device_functions.h" 3
+___device__(extern  __no_sc__) unsigned __cudaPushCallConfiguration(struct dim3, struct dim3, size_t, struct CUstream_st *);
+# 47 ".././target/target.h"
+___device__(extern  __no_sc__) tdpError_t _Z20tdpDeviceSynchronizev(void);
+# 49 ".././target/target.h"
+___device__(extern  __no_sc__) tdpError_t _Z17tdpGetDeviceCountPi(int *);
+# 82 ".././target/target.h"
+___device__(extern  __no_sc__) tdpError_t _Z7tdpFreePv(void *);
+# 83 ".././target/target.h"
+___device__(extern  __no_sc__) tdpError_t _Z9tdpMallocPPvm(void **, size_t);
+# 59 "coords.h"
+___device__(extern  __no_sc__) int _Z9cs_nlocalP8coords_sPi(cs_t *, int *);
+# 62 "coords.h"
+___device__(extern  __no_sc__) int _Z8cs_indexP8coords_siii(cs_t *, int, int, int);
+# 64 "coords.h"
+___device__(extern  __no_sc__) int _Z9cs_nsitesP8coords_sPi(cs_t *, int *);
+# 203 "memory.h"
+___device__(extern  __no_sc__) int _Z25reverse_addr_rank1_assertiPKciiii(int, const char *, int, int, int, int);
+# 53 "kernel.h"
+___device__(extern  __no_sc__) int _Z17kernel_iterationsP13kernel_ctxt_s(kernel_ctxt_t *);
+# 54 "kernel.h"
+___device__(extern  __no_sc__) int _Z24kernel_vector_iterationsP13kernel_ctxt_s(kernel_ctxt_t *);
+# 56 "kernel.h"
+___device__(extern  __no_sc__) int _Z16kernel_coords_icP13kernel_ctxt_si(kernel_ctxt_t *, int);
+# 57 "kernel.h"
+___device__(extern  __no_sc__) int _Z16kernel_coords_jcP13kernel_ctxt_si(kernel_ctxt_t *, int);
+# 58 "kernel.h"
+___device__(extern  __no_sc__) int _Z16kernel_coords_kcP13kernel_ctxt_si(kernel_ctxt_t *, int);
+# 59 "kernel.h"
+___device__(extern  __no_sc__) int _Z15kernel_coords_vP13kernel_ctxt_siPiS1_S1_(kernel_ctxt_t *, int, int *, int *, int *);
+# 66 "kernel.h"
+___device__(extern  __no_sc__) int _Z13kernel_mask_vP13kernel_ctxt_sPiS1_S1_S1_(kernel_ctxt_t *, int *, int *, int *, int *);
+# 70 "kernel.h"
+___device__(extern  __no_sc__) int _Z19kernel_coords_indexP13kernel_ctxt_siii(kernel_ctxt_t *, int, int, int);
+# 72 "kernel.h"
+___device__(extern  __no_sc__) int _Z21kernel_coords_index_vP13kernel_ctxt_sPiS1_S1_S1_(kernel_ctxt_t *, int *, int *, int *, int *);
+# 55 "leesedwards.h"
+___device__(extern  __no_sc__) int _Z15lees_edw_nsitesP10lees_edw_sPi(lees_edw_t *, int *);
+# 56 "leesedwards.h"
+___device__(extern  __no_sc__) int _Z15lees_edw_nlocalP10lees_edw_sPi(lees_edw_t *, int *);
+# 57 "leesedwards.h"
+___device__(extern  __no_sc__) int _Z14lees_edw_indexP10lees_edw_siii(lees_edw_t *, int, int, int);
+# 79 "leesedwards.h"
+___device__(extern  __no_sc__) int _Z19lees_edw_ic_to_buffP10lees_edw_sii(lees_edw_t *, int, int);
+# 81 "leesedwards.h"
+___device__(extern  __no_sc__) void _Z16lees_edw_index_vP10lees_edw_sPiS1_S1_S1_(lees_edw_t *, int *, int *, int *, int *);
+# 45 "field.h"
+___device__(extern  __no_sc__) int _Z8field_nfP7field_sPi(field_t *, int *);
+# 72 "hydro.h"
+___device__(extern  __no_sc__) int _Z7hydro_uP7hydro_siPd(hydro_t *, int, double *);
+# 374 "advection.c"
+__global__ __var_used__ extern void _Z23advection_le_1st_kernelP13kernel_ctxt_sP9advflux_sP7hydro_sP7field_s(kernel_ctxt_t *, advflux_t *, hydro_t *, field_t *);
+# 529 "advection.c"
+__global__ __var_used__ extern void _Z20advection_2nd_kernelP13kernel_ctxt_sP9advflux_sP7hydro_sP7field_s(kernel_ctxt_t *, advflux_t *, hydro_t *, field_t *);
+# 623 "advection.c"
+__global__ __var_used__ extern void _Z22advection_2nd_kernel_vP13kernel_ctxt_sP9advflux_sP7hydro_sP7field_s(kernel_ctxt_t *, advflux_t *, hydro_t *, field_t *);
+# 805 "advection.c"
+__global__ __var_used__ extern void _Z25advection_le_3rd_kernel_vP13kernel_ctxt_sP10lees_edw_sP9advflux_sP7hydro_sP7field_s(kernel_ctxt_t *, lees_edw_t *, advflux_t *, hydro_t *, field_t *);
+# 1009 "advection.c"
+__global__ __var_used__ extern void _Z22advection_3rd_kernel_vP13kernel_ctxt_sP9advflux_sP7hydro_sP7field_s(kernel_ctxt_t *, advflux_t *, hydro_t *, field_t *);
+static  __device__  __var_used__ const char __T8[81];
+# 380 "advection.c"
+static  __shared__  __var_used__ int _ZZ23advection_le_1st_kernelP13kernel_ctxt_sP9advflux_sP7hydro_sP7field_sE5kiter;
+static  __device__  __var_used__ const char __T10[78];
+# 532 "advection.c"
+static  __shared__  __var_used__ int _ZZ20advection_2nd_kernelP13kernel_ctxt_sP9advflux_sP7hydro_sP7field_sE5kiter;
+static  __device__  __var_used__ const char __T11[80];
+# 626 "advection.c"
+static  __shared__  __var_used__ int _ZZ22advection_2nd_kernel_vP13kernel_ctxt_sP9advflux_sP7hydro_sP7field_sE5kiter;
+static  __device__  __var_used__ const char __T13[97];
+# 811 "advection.c"
+static  __shared__  __var_used__ int _ZZ25advection_le_3rd_kernel_vP13kernel_ctxt_sP10lees_edw_sP9advflux_sP7hydro_sP7field_sE5kiter;
+static  __device__  __var_used__ const char __T14[80];
+# 1015 "advection.c"
+static  __shared__  __var_used__ int _ZZ22advection_3rd_kernel_vP13kernel_ctxt_sP9advflux_sP7hydro_sP7field_sE5kiter;
+#include "common_functions.h"
+static  __device__  __var_used__ const char __T8[81] = "void advection_le_1st_kernel(kernel_ctxt_s *, advflux_s *, hydro_s *, field_s *)";
+static  __device__  __var_used__ const char __T10[78] = "void advection_2nd_kernel(kernel_ctxt_s *, advflux_s *, hydro_s *, field_s *)";
+static  __device__  __var_used__ const char __T11[80] = "void advection_2nd_kernel_v(kernel_ctxt_s *, advflux_s *, hydro_s *, field_s *)";
+static  __device__  __var_used__ const char __T13[97] = "void advection_le_3rd_kernel_v(kernel_ctxt_s *, lees_edw_s *, advflux_s *, hydro_s *, field_s *)";
+static  __device__  __var_used__ const char __T14[80] = "void advection_3rd_kernel_v(kernel_ctxt_s *, advflux_s *, hydro_s *, field_s *)";
+# 374 "advection.c"
+__global__ __var_used__ void _Z23advection_le_1st_kernelP13kernel_ctxt_sP9advflux_sP7hydro_sP7field_s(
+# 374 "advection.c"
+kernel_ctxt_t *ktx, 
+# 375 "advection.c"
+advflux_t *flux, 
+# 376 "advection.c"
+hydro_t *hydro, 
+# 377 "advection.c"
+field_t *field){
+# 377 "advection.c"
+{
+# 379 "advection.c"
+ int __cuda_local_var_20153_7_non_const_kindex;
+# 382 "advection.c"
+(ktx) ? ((void)0) : (__assert_fail(((const char *)"ktx"), ((const char *)"advection.c"), 382U, __T8));
+# 383 "advection.c"
+(flux) ? ((void)0) : (__assert_fail(((const char *)"flux"), ((const char *)"advection.c"), 383U, __T8));
+# 384 "advection.c"
+(hydro) ? ((void)0) : (__assert_fail(((const char *)"hydro"), ((const char *)"advection.c"), 384U, __T8));
+# 385 "advection.c"
+(field) ? ((void)0) : (__assert_fail(((const char *)"field"), ((const char *)"advection.c"), 385U, __T8));
+# 387 "advection.c"
+_ZZ23advection_le_1st_kernelP13kernel_ctxt_sP9advflux_sP7hydro_sP7field_sE5kiter = (_Z17kernel_iterationsP13kernel_ctxt_s(ktx));
+# 389 "advection.c"
+__cuda_local_var_20153_7_non_const_kindex = ((int)(1U * (((blockIdx.x) * (blockDim.x)) + (threadIdx.x))));
+# 389 "advection.c"
+if (__cuda_local_var_20153_7_non_const_kindex < _ZZ23advection_le_1st_kernelP13kernel_ctxt_sP9advflux_sP7hydro_sP7field_sE5kiter)
+# 389 "advection.c"
+{
+# 391 "advection.c"
+ int __cuda_local_var_20165_9_non_const_ia;
+# 392 "advection.c"
+ int __cuda_local_var_20166_9_non_const_n;
+# 393 "advection.c"
+ int __cuda_local_var_20167_9_non_const_ic;
+# 393 "advection.c"
+ int __cuda_local_var_20167_13_non_const_jc;
+# 393 "advection.c"
+ int __cuda_local_var_20167_17_non_const_kc;
+# 394 "advection.c"
+ int __cuda_local_var_20168_9_non_const_index0;
+# 394 "advection.c"
+ int __cuda_local_var_20168_17_non_const_index1;
+# 394 "advection.c"
+ int __cuda_local_var_20168_25_non_const_index;
+# 395 "advection.c"
+ int __cuda_local_var_20169_9_non_const_icm1;
+# 395 "advection.c"
+ int __cuda_local_var_20169_15_non_const_icp1;
+# 396 "advection.c"
+ double __cuda_local_var_20170_12_non_const_u0[3];
+# 396 "advection.c"
+ double __cuda_local_var_20170_19_non_const_u1[3];
+# 396 "advection.c"
+ double __cuda_local_var_20170_26_non_const_u;
+# 398 "advection.c"
+__cuda_local_var_20167_9_non_const_ic = (_Z16kernel_coords_icP13kernel_ctxt_si(ktx, __cuda_local_var_20153_7_non_const_kindex));
+# 399 "advection.c"
+__cuda_local_var_20167_13_non_const_jc = (_Z16kernel_coords_jcP13kernel_ctxt_si(ktx, __cuda_local_var_20153_7_non_const_kindex));
+# 400 "advection.c"
+__cuda_local_var_20167_17_non_const_kc = (_Z16kernel_coords_kcP13kernel_ctxt_si(ktx, __cuda_local_var_20153_7_non_const_kindex));
+# 401 "advection.c"
+__cuda_local_var_20168_9_non_const_index0 = (_Z19kernel_coords_indexP13kernel_ctxt_siii(ktx, __cuda_local_var_20167_9_non_const_ic, __cuda_local_var_20167_13_non_const_jc, __cuda_local_var_20167_17_non_const_kc));
+# 403 "advection.c"
+__cuda_local_var_20169_9_non_const_icm1 = (_Z19lees_edw_ic_to_buffP10lees_edw_sii((flux->le), __cuda_local_var_20167_9_non_const_ic, (-1)));
+# 404 "advection.c"
+__cuda_local_var_20169_15_non_const_icp1 = (_Z19lees_edw_ic_to_buffP10lees_edw_sii((flux->le), __cuda_local_var_20167_9_non_const_ic, 1));
+# 408 "advection.c"
+for (__cuda_local_var_20165_9_non_const_ia = 0; (__cuda_local_var_20165_9_non_const_ia < 3); __cuda_local_var_20165_9_non_const_ia++)
+# 408 "advection.c"
+{
+# 409 "advection.c"
+((__cuda_local_var_20170_12_non_const_u0)[__cuda_local_var_20165_9_non_const_ia]) = ((hydro->u)[(_Z25reverse_addr_rank1_assertiPKciiii(409, ((const char *)"advection.c"), (hydro->nsite), 3, __cuda_local_var_20168_9_non_const_index0, __cuda_local_var_20165_9_non_const_ia))]);
+# 410 "advection.c"
+}
+# 412 "advection.c"
+__cuda_local_var_20168_17_non_const_index1 = (_Z19kernel_coords_indexP13kernel_ctxt_siii(ktx, __cuda_local_var_20169_9_non_const_icm1, __cuda_local_var_20167_13_non_const_jc, __cuda_local_var_20167_17_non_const_kc));
+# 414 "advection.c"
+((__cuda_local_var_20170_19_non_const_u1)[X]) = ((hydro->u)[(_Z25reverse_addr_rank1_assertiPKciiii(414, ((const char *)"advection.c"), (hydro->nsite), 3, __cuda_local_var_20168_17_non_const_index1, 0))]);
+# 415 "advection.c"
+__cuda_local_var_20170_26_non_const_u = ((0.5) * (((__cuda_local_var_20170_12_non_const_u0)[X]) + ((__cuda_local_var_20170_19_non_const_u1)[X])));
+# 417 "advection.c"
+__cuda_local_var_20168_25_non_const_index = __cuda_local_var_20168_9_non_const_index0;
+# 418 "advection.c"
+if (__cuda_local_var_20170_26_non_const_u > (0.0)) {
+# 418 "advection.c"
+__cuda_local_var_20168_25_non_const_index = __cuda_local_var_20168_17_non_const_index1; }
+# 420 "advection.c"
+for (__cuda_local_var_20166_9_non_const_n = 0; (__cuda_local_var_20166_9_non_const_n < (field->nf)); __cuda_local_var_20166_9_non_const_n++)
+# 420 "advection.c"
+{
+# 421 "advection.c"
+((flux->fw)[(_Z25reverse_addr_rank1_assertiPKciiii(421, ((const char *)"advection.c"), (flux->nsite), (flux->nf), __cuda_local_var_20168_9_non_const_index0, __cuda_local_var_20166_9_non_const_n))]) = (__cuda_local_var_20170_26_non_const_u * ((field->data)[(_Z25reverse_addr_rank1_assertiPKciiii(422, ((const char *)"advection.c"), (field->nsites), (field->nf), __cuda_local_var_20168_25_non_const_index, __cuda_local_var_20166_9_non_const_n))]));
+# 423 "advection.c"
+}
+# 428 "advection.c"
+__cuda_local_var_20168_17_non_const_index1 = (_Z19kernel_coords_indexP13kernel_ctxt_siii(ktx, __cuda_local_var_20169_15_non_const_icp1, __cuda_local_var_20167_13_non_const_jc, __cuda_local_var_20167_17_non_const_kc));
+# 430 "advection.c"
+((__cuda_local_var_20170_19_non_const_u1)[X]) = ((hydro->u)[(_Z25reverse_addr_rank1_assertiPKciiii(430, ((const char *)"advection.c"), (hydro->nsite), 3, __cuda_local_var_20168_17_non_const_index1, 0))]);
+# 431 "advection.c"
+__cuda_local_var_20170_26_non_const_u = ((0.5) * (((__cuda_local_var_20170_12_non_const_u0)[X]) + ((__cuda_local_var_20170_19_non_const_u1)[X])));
+# 433 "advection.c"
+__cuda_local_var_20168_25_non_const_index = __cuda_local_var_20168_9_non_const_index0;
+# 434 "advection.c"
+if (__cuda_local_var_20170_26_non_const_u < (0.0)) {
+# 434 "advection.c"
+__cuda_local_var_20168_25_non_const_index = __cuda_local_var_20168_17_non_const_index1; }
+# 436 "advection.c"
+for (__cuda_local_var_20166_9_non_const_n = 0; (__cuda_local_var_20166_9_non_const_n < (field->nf)); __cuda_local_var_20166_9_non_const_n++)
+# 436 "advection.c"
+{
+# 437 "advection.c"
+((flux->fe)[(_Z25reverse_addr_rank1_assertiPKciiii(437, ((const char *)"advection.c"), (flux->nsite), (flux->nf), __cuda_local_var_20168_9_non_const_index0, __cuda_local_var_20166_9_non_const_n))]) = (__cuda_local_var_20170_26_non_const_u * ((field->data)[(_Z25reverse_addr_rank1_assertiPKciiii(438, ((const char *)"advection.c"), (field->nsites), (field->nf), __cuda_local_var_20168_25_non_const_index, __cuda_local_var_20166_9_non_const_n))]));
+# 439 "advection.c"
+}
+# 443 "advection.c"
+__cuda_local_var_20168_17_non_const_index1 = (_Z19kernel_coords_indexP13kernel_ctxt_siii(ktx, __cuda_local_var_20167_9_non_const_ic, (__cuda_local_var_20167_13_non_const_jc + 1), __cuda_local_var_20167_17_non_const_kc));
+# 445 "advection.c"
+((__cuda_local_var_20170_19_non_const_u1)[Y]) = ((hydro->u)[(_Z25reverse_addr_rank1_assertiPKciiii(445, ((const char *)"advection.c"), (hydro->nsite), 3, __cuda_local_var_20168_17_non_const_index1, 1))]);
+# 446 "advection.c"
+__cuda_local_var_20170_26_non_const_u = ((0.5) * (((__cuda_local_var_20170_12_non_const_u0)[Y]) + ((__cuda_local_var_20170_19_non_const_u1)[Y])));
+# 448 "advection.c"
+__cuda_local_var_20168_25_non_const_index = __cuda_local_var_20168_9_non_const_index0;
+# 449 "advection.c"
+if (__cuda_local_var_20170_26_non_const_u < (0.0)) {
+# 449 "advection.c"
+__cuda_local_var_20168_25_non_const_index = __cuda_local_var_20168_17_non_const_index1; }
+# 451 "advection.c"
+for (__cuda_local_var_20166_9_non_const_n = 0; (__cuda_local_var_20166_9_non_const_n < (field->nf)); __cuda_local_var_20166_9_non_const_n++)
+# 451 "advection.c"
+{
+# 452 "advection.c"
+((flux->fy)[(_Z25reverse_addr_rank1_assertiPKciiii(452, ((const char *)"advection.c"), (flux->nsite), (flux->nf), __cuda_local_var_20168_9_non_const_index0, __cuda_local_var_20166_9_non_const_n))]) = (__cuda_local_var_20170_26_non_const_u * ((field->data)[(_Z25reverse_addr_rank1_assertiPKciiii(453, ((const char *)"advection.c"), (field->nsites), (field->nf), __cuda_local_var_20168_25_non_const_index, __cuda_local_var_20166_9_non_const_n))]));
+# 454 "advection.c"
+}
+# 458 "advection.c"
+__cuda_local_var_20168_17_non_const_index1 = (_Z19kernel_coords_indexP13kernel_ctxt_siii(ktx, __cuda_local_var_20167_9_non_const_ic, __cuda_local_var_20167_13_non_const_jc, (__cuda_local_var_20167_17_non_const_kc + 1)));
+# 460 "advection.c"
+((__cuda_local_var_20170_19_non_const_u1)[Z]) = ((hydro->u)[(_Z25reverse_addr_rank1_assertiPKciiii(460, ((const char *)"advection.c"), (hydro->nsite), 3, __cuda_local_var_20168_17_non_const_index1, 2))]);
+# 461 "advection.c"
+__cuda_local_var_20170_26_non_const_u = ((0.5) * (((__cuda_local_var_20170_12_non_const_u0)[Z]) + ((__cuda_local_var_20170_19_non_const_u1)[Z])));
+# 463 "advection.c"
+__cuda_local_var_20168_25_non_const_index = __cuda_local_var_20168_9_non_const_index0;
+# 464 "advection.c"
+if (__cuda_local_var_20170_26_non_const_u < (0.0)) {
+# 464 "advection.c"
+__cuda_local_var_20168_25_non_const_index = __cuda_local_var_20168_17_non_const_index1; }
+# 466 "advection.c"
+for (__cuda_local_var_20166_9_non_const_n = 0; (__cuda_local_var_20166_9_non_const_n < (field->nf)); __cuda_local_var_20166_9_non_const_n++)
+# 466 "advection.c"
+{
+# 467 "advection.c"
+((flux->fz)[(_Z25reverse_addr_rank1_assertiPKciiii(467, ((const char *)"advection.c"), (flux->nsite), (flux->nf), __cuda_local_var_20168_9_non_const_index0, __cuda_local_var_20166_9_non_const_n))]) = (__cuda_local_var_20170_26_non_const_u * ((field->data)[(_Z25reverse_addr_rank1_assertiPKciiii(468, ((const char *)"advection.c"), (field->nsites), (field->nf), __cuda_local_var_20168_25_non_const_index, __cuda_local_var_20166_9_non_const_n))]));
+# 469 "advection.c"
+}
+# 472 "advection.c"
+}
+# 474 "advection.c"
+return;
+# 475 "advection.c"
+}}
+# 529 "advection.c"
+__global__ __var_used__ void _Z20advection_2nd_kernelP13kernel_ctxt_sP9advflux_sP7hydro_sP7field_s(
+# 529 "advection.c"
+kernel_ctxt_t *ktx, 
+# 529 "advection.c"
+advflux_t *flux, 
+# 530 "advection.c"
+hydro_t *hydro, 
+# 530 "advection.c"
+field_t *field){
+# 530 "advection.c"
+{
+# 531 "advection.c"
+ int __cuda_local_var_20285_7_non_const_kindex;
+# 534 "advection.c"
+(ktx) ? ((void)0) : (__assert_fail(((const char *)"ktx"), ((const char *)"advection.c"), 534U, __T10));
+# 535 "advection.c"
+(flux) ? ((void)0) : (__assert_fail(((const char *)"flux"), ((const char *)"advection.c"), 535U, __T10));
+# 536 "advection.c"
+(hydro) ? ((void)0) : (__assert_fail(((const char *)"hydro"), ((const char *)"advection.c"), 536U, __T10));
+# 537 "advection.c"
+(field) ? ((void)0) : (__assert_fail(((const char *)"field"), ((const char *)"advection.c"), 537U, __T10));
+# 539 "advection.c"
+_ZZ20advection_2nd_kernelP13kernel_ctxt_sP9advflux_sP7hydro_sP7field_sE5kiter = (_Z17kernel_iterationsP13kernel_ctxt_s(ktx));
+# 541 "advection.c"
+__cuda_local_var_20285_7_non_const_kindex = ((int)(1U * (((blockIdx.x) * (blockDim.x)) + (threadIdx.x))));
+# 541 "advection.c"
+if (__cuda_local_var_20285_7_non_const_kindex < _ZZ20advection_2nd_kernelP13kernel_ctxt_sP9advflux_sP7hydro_sP7field_sE5kiter)
+# 541 "advection.c"
+{
+# 543 "advection.c"
+ int __cuda_local_var_20297_9_non_const_ia;
+# 543 "advection.c"
+ int __cuda_local_var_20297_13_non_const_n;
+# 544 "advection.c"
+ int __cuda_local_var_20298_9_non_const_ic;
+# 544 "advection.c"
+ int __cuda_local_var_20298_13_non_const_jc;
+# 544 "advection.c"
+ int __cuda_local_var_20298_17_non_const_kc;
+# 545 "advection.c"
+ int __cuda_local_var_20299_9_non_const_icm1;
+# 545 "advection.c"
+ int __cuda_local_var_20299_15_non_const_icp1;
+# 546 "advection.c"
+ int __cuda_local_var_20300_9_non_const_index0;
+# 546 "advection.c"
+ int __cuda_local_var_20300_17_non_const_index1;
+# 547 "advection.c"
+ double __cuda_local_var_20301_12_non_const_u;
+# 547 "advection.c"
+ double __cuda_local_var_20301_15_non_const_u0[3];
+# 547 "advection.c"
+ double __cuda_local_var_20301_22_non_const_u1[3];
+# 549 "advection.c"
+__cuda_local_var_20298_9_non_const_ic = (_Z16kernel_coords_icP13kernel_ctxt_si(ktx, __cuda_local_var_20285_7_non_const_kindex));
+# 550 "advection.c"
+__cuda_local_var_20298_13_non_const_jc = (_Z16kernel_coords_jcP13kernel_ctxt_si(ktx, __cuda_local_var_20285_7_non_const_kindex));
+# 551 "advection.c"
+__cuda_local_var_20298_17_non_const_kc = (_Z16kernel_coords_kcP13kernel_ctxt_si(ktx, __cuda_local_var_20285_7_non_const_kindex));
+# 553 "advection.c"
+__cuda_local_var_20300_9_non_const_index0 = (_Z19kernel_coords_indexP13kernel_ctxt_siii(ktx, __cuda_local_var_20298_9_non_const_ic, __cuda_local_var_20298_13_non_const_jc, __cuda_local_var_20298_17_non_const_kc));
+# 555 "advection.c"
+__cuda_local_var_20299_9_non_const_icm1 = (_Z19lees_edw_ic_to_buffP10lees_edw_sii((flux->le), __cuda_local_var_20298_9_non_const_ic, (-1)));
+# 556 "advection.c"
+__cuda_local_var_20299_15_non_const_icp1 = (_Z19lees_edw_ic_to_buffP10lees_edw_sii((flux->le), __cuda_local_var_20298_9_non_const_ic, 1));
+# 558 "advection.c"
+for (__cuda_local_var_20297_9_non_const_ia = 0; (__cuda_local_var_20297_9_non_const_ia < 3); __cuda_local_var_20297_9_non_const_ia++)
+# 558 "advection.c"
+{
+# 559 "advection.c"
+((__cuda_local_var_20301_15_non_const_u0)[__cuda_local_var_20297_9_non_const_ia]) = ((hydro->u)[(_Z25reverse_addr_rank1_assertiPKciiii(559, ((const char *)"advection.c"), (hydro->nsite), 3, __cuda_local_var_20300_9_non_const_index0, __cuda_local_var_20297_9_non_const_ia))]);
+# 560 "advection.c"
+}
+# 564 "advection.c"
+__cuda_local_var_20300_17_non_const_index1 = (_Z19kernel_coords_indexP13kernel_ctxt_siii(ktx, __cuda_local_var_20299_9_non_const_icm1, __cuda_local_var_20298_13_non_const_jc, __cuda_local_var_20298_17_non_const_kc));
+# 565 "advection.c"
+((__cuda_local_var_20301_22_non_const_u1)[X]) = ((hydro->u)[(_Z25reverse_addr_rank1_assertiPKciiii(565, ((const char *)"advection.c"), (hydro->nsite), 3, __cuda_local_var_20300_17_non_const_index1, 0))]);
+# 566 "advection.c"
+__cuda_local_var_20301_12_non_const_u = ((0.5) * (((__cuda_local_var_20301_15_non_const_u0)[X]) + ((__cuda_local_var_20301_22_non_const_u1)[X])));
+# 568 "advection.c"
+for (__cuda_local_var_20297_13_non_const_n = 0; (__cuda_local_var_20297_13_non_const_n < (field->nf)); __cuda_local_var_20297_13_non_const_n++)
+# 568 "advection.c"
+{
+# 569 "advection.c"
+((flux->fw)[(_Z25reverse_addr_rank1_assertiPKciiii(569, ((const char *)"advection.c"), (flux->nsite), (flux->nf), __cuda_local_var_20300_9_non_const_index0, __cuda_local_var_20297_13_non_const_n))]) = (((0.5) * __cuda_local_var_20301_12_non_const_u) * (((field->data)[(_Z25reverse_addr_rank1_assertiPKciiii(570, ((const char *)"advection.c"), (field->nsites), (field->nf), __cuda_local_var_20300_17_non_const_index1, __cuda_local_var_20297_13_non_const_n))]) + ((field->data)[(_Z25reverse_addr_rank1_assertiPKciiii(571, ((const char *)"advection.c"), (field->nsites), (field->nf), __cuda_local_var_20300_9_non_const_index0, __cuda_local_var_20297_13_non_const_n))])));
+# 572 "advection.c"
+}
+# 576 "advection.c"
+__cuda_local_var_20300_17_non_const_index1 = (_Z19kernel_coords_indexP13kernel_ctxt_siii(ktx, __cuda_local_var_20299_15_non_const_icp1, __cuda_local_var_20298_13_non_const_jc, __cuda_local_var_20298_17_non_const_kc));
+# 577 "advection.c"
+((__cuda_local_var_20301_22_non_const_u1)[X]) = ((hydro->u)[(_Z25reverse_addr_rank1_assertiPKciiii(577, ((const char *)"advection.c"), (hydro->nsite), 3, __cuda_local_var_20300_17_non_const_index1, 0))]);
+# 578 "advection.c"
+__cuda_local_var_20301_12_non_const_u = ((0.5) * (((__cuda_local_var_20301_15_non_const_u0)[X]) + ((__cuda_local_var_20301_22_non_const_u1)[X])));
+# 580 "advection.c"
+for (__cuda_local_var_20297_13_non_const_n = 0; (__cuda_local_var_20297_13_non_const_n < (flux->nf)); __cuda_local_var_20297_13_non_const_n++)
+# 580 "advection.c"
+{
+# 581 "advection.c"
+((flux->fe)[(_Z25reverse_addr_rank1_assertiPKciiii(581, ((const char *)"advection.c"), (flux->nsite), (flux->nf), __cuda_local_var_20300_9_non_const_index0, __cuda_local_var_20297_13_non_const_n))]) = (((0.5) * __cuda_local_var_20301_12_non_const_u) * (((field->data)[(_Z25reverse_addr_rank1_assertiPKciiii(582, ((const char *)"advection.c"), (field->nsites), (field->nf), __cuda_local_var_20300_9_non_const_index0, __cuda_local_var_20297_13_non_const_n))]) + ((field->data)[(_Z25reverse_addr_rank1_assertiPKciiii(583, ((const char *)"advection.c"), (field->nsites), (field->nf), __cuda_local_var_20300_17_non_const_index1, __cuda_local_var_20297_13_non_const_n))])));
+# 584 "advection.c"
+}
+# 588 "advection.c"
+__cuda_local_var_20300_17_non_const_index1 = (_Z19kernel_coords_indexP13kernel_ctxt_siii(ktx, __cuda_local_var_20298_9_non_const_ic, (__cuda_local_var_20298_13_non_const_jc + 1), __cuda_local_var_20298_17_non_const_kc));
+# 589 "advection.c"
+((__cuda_local_var_20301_22_non_const_u1)[Y]) = ((hydro->u)[(_Z25reverse_addr_rank1_assertiPKciiii(589, ((const char *)"advection.c"), (hydro->nsite), 3, __cuda_local_var_20300_17_non_const_index1, 1))]);
+# 590 "advection.c"
+__cuda_local_var_20301_12_non_const_u = ((0.5) * (((__cuda_local_var_20301_15_non_const_u0)[Y]) + ((__cuda_local_var_20301_22_non_const_u1)[Y])));
+# 592 "advection.c"
+for (__cuda_local_var_20297_13_non_const_n = 0; (__cuda_local_var_20297_13_non_const_n < (flux->nf)); __cuda_local_var_20297_13_non_const_n++)
+# 592 "advection.c"
+{
+# 593 "advection.c"
+((flux->fy)[(_Z25reverse_addr_rank1_assertiPKciiii(593, ((const char *)"advection.c"), (flux->nsite), (flux->nf), __cuda_local_var_20300_9_non_const_index0, __cuda_local_var_20297_13_non_const_n))]) = (((0.5) * __cuda_local_var_20301_12_non_const_u) * (((field->data)[(_Z25reverse_addr_rank1_assertiPKciiii(594, ((const char *)"advection.c"), (field->nsites), (field->nf), __cuda_local_var_20300_9_non_const_index0, __cuda_local_var_20297_13_non_const_n))]) + ((field->data)[(_Z25reverse_addr_rank1_assertiPKciiii(595, ((const char *)"advection.c"), (field->nsites), (field->nf), __cuda_local_var_20300_17_non_const_index1, __cuda_local_var_20297_13_non_const_n))])));
+# 596 "advection.c"
+}
+# 600 "advection.c"
+__cuda_local_var_20300_17_non_const_index1 = (_Z19kernel_coords_indexP13kernel_ctxt_siii(ktx, __cuda_local_var_20298_9_non_const_ic, __cuda_local_var_20298_13_non_const_jc, (__cuda_local_var_20298_17_non_const_kc + 1)));
+# 601 "advection.c"
+((__cuda_local_var_20301_22_non_const_u1)[Z]) = ((hydro->u)[(_Z25reverse_addr_rank1_assertiPKciiii(601, ((const char *)"advection.c"), (hydro->nsite), 3, __cuda_local_var_20300_17_non_const_index1, 2))]);
+# 602 "advection.c"
+__cuda_local_var_20301_12_non_const_u = ((0.5) * (((__cuda_local_var_20301_15_non_const_u0)[Z]) + ((__cuda_local_var_20301_22_non_const_u1)[Z])));
+# 604 "advection.c"
+for (__cuda_local_var_20297_13_non_const_n = 0; (__cuda_local_var_20297_13_non_const_n < (flux->nf)); __cuda_local_var_20297_13_non_const_n++)
+# 604 "advection.c"
+{
+# 605 "advection.c"
+((flux->fz)[(_Z25reverse_addr_rank1_assertiPKciiii(605, ((const char *)"advection.c"), (flux->nsite), (flux->nf), __cuda_local_var_20300_9_non_const_index0, __cuda_local_var_20297_13_non_const_n))]) = (((0.5) * __cuda_local_var_20301_12_non_const_u) * (((field->data)[(_Z25reverse_addr_rank1_assertiPKciiii(606, ((const char *)"advection.c"), (field->nsites), (field->nf), __cuda_local_var_20300_9_non_const_index0, __cuda_local_var_20297_13_non_const_n))]) + ((field->data)[(_Z25reverse_addr_rank1_assertiPKciiii(607, ((const char *)"advection.c"), (field->nsites), (field->nf), __cuda_local_var_20300_17_non_const_index1, __cuda_local_var_20297_13_non_const_n))])));
+# 608 "advection.c"
+}
+# 610 "advection.c"
+}
+# 612 "advection.c"
+return;
+# 613 "advection.c"
+}}
+# 623 "advection.c"
+__global__ __var_used__ void _Z22advection_2nd_kernel_vP13kernel_ctxt_sP9advflux_sP7hydro_sP7field_s(
+# 623 "advection.c"
+kernel_ctxt_t *ktx, 
+# 623 "advection.c"
+advflux_t *flux, 
+# 624 "advection.c"
+hydro_t *hydro, 
+# 624 "advection.c"
+field_t *field){
+# 624 "advection.c"
+{
+# 625 "advection.c"
+ int __cuda_local_var_20371_7_non_const_kindex;
+# 628 "advection.c"
+(ktx) ? ((void)0) : (__assert_fail(((const char *)"ktx"), ((const char *)"advection.c"), 628U, __T11));
+# 629 "advection.c"
+(flux) ? ((void)0) : (__assert_fail(((const char *)"flux"), ((const char *)"advection.c"), 629U, __T11));
+# 630 "advection.c"
+(hydro) ? ((void)0) : (__assert_fail(((const char *)"hydro"), ((const char *)"advection.c"), 630U, __T11));
+# 631 "advection.c"
+(field) ? ((void)0) : (__assert_fail(((const char *)"field"), ((const char *)"advection.c"), 631U, __T11));
+# 633 "advection.c"
+_ZZ22advection_2nd_kernel_vP13kernel_ctxt_sP9advflux_sP7hydro_sP7field_sE5kiter = (_Z24kernel_vector_iterationsP13kernel_ctxt_s(ktx));
+# 635 "advection.c"
+__cuda_local_var_20371_7_non_const_kindex = ((int)(1U * (((blockIdx.x) * (blockDim.x)) + (threadIdx.x))));
+# 635 "advection.c"
+if (__cuda_local_var_20371_7_non_const_kindex < _ZZ22advection_2nd_kernel_vP13kernel_ctxt_sP9advflux_sP7hydro_sP7field_sE5kiter)
+# 635 "advection.c"
+{
+# 637 "advection.c"
+ int __cuda_local_var_20383_9_non_const_ia;
+# 637 "advection.c"
+ int __cuda_local_var_20383_13_non_const_iv;
+# 637 "advection.c"
+ int __cuda_local_var_20383_17_non_const_n;
+# 638 "advection.c"
+ int __cuda_local_var_20384_9_non_const_ic[1];
+# 638 "advection.c"
+ int __cuda_local_var_20384_16_non_const_jc[1];
+# 638 "advection.c"
+ int __cuda_local_var_20384_23_non_const_kc[1];
+# 639 "advection.c"
+ int __cuda_local_var_20385_9_non_const_p1[1];
+# 639 "advection.c"
+ int __cuda_local_var_20385_16_non_const_m1[1];
+# 640 "advection.c"
+ int __cuda_local_var_20386_9_non_const_index0[1];
+# 640 "advection.c"
+ int __cuda_local_var_20386_20_non_const_index1[1];
+# 641 "advection.c"
+ int __cuda_local_var_20387_9_non_const_maskv[1];
+# 642 "advection.c"
+ double __cuda_local_var_20388_12_non_const_u0[3][1];
+# 642 "advection.c"
+ double __cuda_local_var_20388_22_non_const_u1[3][1];
+# 644 "advection.c"
+_Z15kernel_coords_vP13kernel_ctxt_siPiS1_S1_(ktx, __cuda_local_var_20371_7_non_const_kindex, (__cuda_local_var_20384_9_non_const_ic), (__cuda_local_var_20384_16_non_const_jc), (__cuda_local_var_20384_23_non_const_kc));
+# 645 "advection.c"
+_Z21kernel_coords_index_vP13kernel_ctxt_sPiS1_S1_S1_(ktx, (__cuda_local_var_20384_9_non_const_ic), (__cuda_local_var_20384_16_non_const_jc), (__cuda_local_var_20384_23_non_const_kc), (__cuda_local_var_20386_9_non_const_index0));
+# 646 "advection.c"
+_Z13kernel_mask_vP13kernel_ctxt_sPiS1_S1_S1_(ktx, (__cuda_local_var_20384_9_non_const_ic), (__cuda_local_var_20384_16_non_const_jc), (__cuda_local_var_20384_23_non_const_kc), (__cuda_local_var_20387_9_non_const_maskv));
+# 648 "advection.c"
+for (__cuda_local_var_20383_13_non_const_iv = 0; (__cuda_local_var_20383_13_non_const_iv < 1); __cuda_local_var_20383_13_non_const_iv++)
+# 648 "advection.c"
+{
+# 649 "advection.c"
+((__cuda_local_var_20385_16_non_const_m1)[__cuda_local_var_20383_13_non_const_iv]) = (_Z19lees_edw_ic_to_buffP10lees_edw_sii((flux->le), ((__cuda_local_var_20384_9_non_const_ic)[__cuda_local_var_20383_13_non_const_iv]), (-((__cuda_local_var_20387_9_non_const_maskv)[__cuda_local_var_20383_13_non_const_iv]))));
+# 650 "advection.c"
+}
+# 651 "advection.c"
+for (__cuda_local_var_20383_13_non_const_iv = 0; (__cuda_local_var_20383_13_non_const_iv < 1); __cuda_local_var_20383_13_non_const_iv++)
+# 651 "advection.c"
+{
+# 652 "advection.c"
+((__cuda_local_var_20385_9_non_const_p1)[__cuda_local_var_20383_13_non_const_iv]) = (_Z19lees_edw_ic_to_buffP10lees_edw_sii((flux->le), ((__cuda_local_var_20384_9_non_const_ic)[__cuda_local_var_20383_13_non_const_iv]), ((__cuda_local_var_20387_9_non_const_maskv)[__cuda_local_var_20383_13_non_const_iv])));
+# 653 "advection.c"
+}
+# 656 "advection.c"
+for (__cuda_local_var_20383_9_non_const_ia = 0; (__cuda_local_var_20383_9_non_const_ia < 3); __cuda_local_var_20383_9_non_const_ia++)
+# 656 "advection.c"
+{
+# 657 "advection.c"
+for (__cuda_local_var_20383_13_non_const_iv = 0; (__cuda_local_var_20383_13_non_const_iv < 1); __cuda_local_var_20383_13_non_const_iv++)
+# 657 "advection.c"
+{
+# 658 "advection.c"
+((((__cuda_local_var_20388_12_non_const_u0)[__cuda_local_var_20383_9_non_const_ia]))[__cuda_local_var_20383_13_non_const_iv]) = ((hydro->u)[(_Z25reverse_addr_rank1_assertiPKciiii(658, ((const char *)"advection.c"), (hydro->nsite), 3, ((__cuda_local_var_20386_9_non_const_index0)[__cuda_local_var_20383_13_non_const_iv]), __cuda_local_var_20383_9_non_const_ia))]);
+# 659 "advection.c"
+}
+# 660 "advection.c"
+}
+# 664 "advection.c"
+_Z16lees_edw_index_vP10lees_edw_sPiS1_S1_S1_((flux->le), (__cuda_local_var_20385_16_non_const_m1), (__cuda_local_var_20384_16_non_const_jc), (__cuda_local_var_20384_23_non_const_kc), (__cuda_local_var_20386_20_non_const_index1));
+# 666 "advection.c"
+for (__cuda_local_var_20383_9_non_const_ia = 0; (__cuda_local_var_20383_9_non_const_ia < 3); __cuda_local_var_20383_9_non_const_ia++)
+# 666 "advection.c"
+{
+# 667 "advection.c"
+for (__cuda_local_var_20383_13_non_const_iv = 0; (__cuda_local_var_20383_13_non_const_iv < 1); __cuda_local_var_20383_13_non_const_iv++)
+# 667 "advection.c"
+{
+# 668 "advection.c"
+((((__cuda_local_var_20388_22_non_const_u1)[__cuda_local_var_20383_9_non_const_ia]))[__cuda_local_var_20383_13_non_const_iv]) = ((hydro->u)[(_Z25reverse_addr_rank1_assertiPKciiii(668, ((const char *)"advection.c"), (hydro->nsite), 3, ((__cuda_local_var_20386_20_non_const_index1)[__cuda_local_var_20383_13_non_const_iv]), __cuda_local_var_20383_9_non_const_ia))]);
+# 669 "advection.c"
+}
+# 670 "advection.c"
+}
+# 672 "advection.c"
+for (__cuda_local_var_20383_17_non_const_n = 0; (__cuda_local_var_20383_17_non_const_n < (field->nf)); __cuda_local_var_20383_17_non_const_n++)
+# 672 "advection.c"
+{
+# 673 "advection.c"
+for (__cuda_local_var_20383_13_non_const_iv = 0; (__cuda_local_var_20383_13_non_const_iv < 1); __cuda_local_var_20383_13_non_const_iv++)
+# 673 "advection.c"
+{
+# 674 "advection.c"
+((flux->fw)[(_Z25reverse_addr_rank1_assertiPKciiii(674, ((const char *)"advection.c"), (flux->nsite), (flux->nf), ((__cuda_local_var_20386_9_non_const_index0)[__cuda_local_var_20383_13_non_const_iv]), __cuda_local_var_20383_17_non_const_n))]) = (((((0.5) * (((((__cuda_local_var_20388_12_non_const_u0)[X]))[__cuda_local_var_20383_13_non_const_iv]) + ((((__cuda_local_var_20388_22_non_const_u1)[X]))[__cuda_local_var_20383_13_non_const_iv]))) * ((double)((__cuda_local_var_20387_9_non_const_maskv)[__cuda_local_var_20383_13_non_const_iv]))) * (0.5)) * (((field->data)[(_Z25reverse_addr_rank1_assertiPKciiii(676, ((const char *)"advection.c"), (field->nsites), (field->nf), ((__cuda_local_var_20386_20_non_const_index1)[__cuda_local_var_20383_13_non_const_iv]), __cuda_local_var_20383_17_non_const_n))]) + ((field->data)[(_Z25reverse_addr_rank1_assertiPKciiii(677, ((const char *)"advection.c"), (field->nsites), (field->nf), ((__cuda_local_var_20386_9_non_const_index0)[__cuda_local_var_20383_13_non_const_iv]), __cuda_local_var_20383_17_non_const_n))])));
+# 678 "advection.c"
+}
+# 679 "advection.c"
+}
+# 683 "advection.c"
+_Z16lees_edw_index_vP10lees_edw_sPiS1_S1_S1_((flux->le), (__cuda_local_var_20385_9_non_const_p1), (__cuda_local_var_20384_16_non_const_jc), (__cuda_local_var_20384_23_non_const_kc), (__cuda_local_var_20386_20_non_const_index1));
+# 685 "advection.c"
+for (__cuda_local_var_20383_9_non_const_ia = 0; (__cuda_local_var_20383_9_non_const_ia < 3); __cuda_local_var_20383_9_non_const_ia++)
+# 685 "advection.c"
+{
+# 686 "advection.c"
+for (__cuda_local_var_20383_13_non_const_iv = 0; (__cuda_local_var_20383_13_non_const_iv < 1); __cuda_local_var_20383_13_non_const_iv++)
+# 686 "advection.c"
+{
+# 687 "advection.c"
+((((__cuda_local_var_20388_22_non_const_u1)[__cuda_local_var_20383_9_non_const_ia]))[__cuda_local_var_20383_13_non_const_iv]) = ((hydro->u)[(_Z25reverse_addr_rank1_assertiPKciiii(687, ((const char *)"advection.c"), (hydro->nsite), 3, ((__cuda_local_var_20386_20_non_const_index1)[__cuda_local_var_20383_13_non_const_iv]), __cuda_local_var_20383_9_non_const_ia))]);
+# 688 "advection.c"
+}
+# 689 "advection.c"
+}
+# 691 "advection.c"
+for (__cuda_local_var_20383_17_non_const_n = 0; (__cuda_local_var_20383_17_non_const_n < (flux->nf)); __cuda_local_var_20383_17_non_const_n++)
+# 691 "advection.c"
+{
+# 692 "advection.c"
+for (__cuda_local_var_20383_13_non_const_iv = 0; (__cuda_local_var_20383_13_non_const_iv < 1); __cuda_local_var_20383_13_non_const_iv++)
+# 692 "advection.c"
+{
+# 693 "advection.c"
+((flux->fe)[(_Z25reverse_addr_rank1_assertiPKciiii(693, ((const char *)"advection.c"), (flux->nsite), (flux->nf), ((__cuda_local_var_20386_9_non_const_index0)[__cuda_local_var_20383_13_non_const_iv]), __cuda_local_var_20383_17_non_const_n))]) = (((((0.5) * (((((__cuda_local_var_20388_12_non_const_u0)[X]))[__cuda_local_var_20383_13_non_const_iv]) + ((((__cuda_local_var_20388_22_non_const_u1)[X]))[__cuda_local_var_20383_13_non_const_iv]))) * ((double)((__cuda_local_var_20387_9_non_const_maskv)[__cuda_local_var_20383_13_non_const_iv]))) * (0.5)) * (((field->data)[(_Z25reverse_addr_rank1_assertiPKciiii(695, ((const char *)"advection.c"), (field->nsites), (field->nf), ((__cuda_local_var_20386_9_non_const_index0)[__cuda_local_var_20383_13_non_const_iv]), __cuda_local_var_20383_17_non_const_n))]) + ((field->data)[(_Z25reverse_addr_rank1_assertiPKciiii(696, ((const char *)"advection.c"), (field->nsites), (field->nf), ((__cuda_local_var_20386_20_non_const_index1)[__cuda_local_var_20383_13_non_const_iv]), __cuda_local_var_20383_17_non_const_n))])));
+# 697 "advection.c"
+}
+# 698 "advection.c"
+}
+# 702 "advection.c"
+for (__cuda_local_var_20383_13_non_const_iv = 0; (__cuda_local_var_20383_13_non_const_iv < 1); __cuda_local_var_20383_13_non_const_iv++) {
+# 702 "advection.c"
+((__cuda_local_var_20385_9_non_const_p1)[__cuda_local_var_20383_13_non_const_iv]) = (((__cuda_local_var_20384_16_non_const_jc)[__cuda_local_var_20383_13_non_const_iv]) + ((__cuda_local_var_20387_9_non_const_maskv)[__cuda_local_var_20383_13_non_const_iv])); }
+# 703 "advection.c"
+_Z16lees_edw_index_vP10lees_edw_sPiS1_S1_S1_((flux->le), (__cuda_local_var_20384_9_non_const_ic), (__cuda_local_var_20385_9_non_const_p1), (__cuda_local_var_20384_23_non_const_kc), (__cuda_local_var_20386_20_non_const_index1));
+# 705 "advection.c"
+for (__cuda_local_var_20383_9_non_const_ia = 0; (__cuda_local_var_20383_9_non_const_ia < 3); __cuda_local_var_20383_9_non_const_ia++)
+# 705 "advection.c"
+{
+# 706 "advection.c"
+for (__cuda_local_var_20383_13_non_const_iv = 0; (__cuda_local_var_20383_13_non_const_iv < 1); __cuda_local_var_20383_13_non_const_iv++)
+# 706 "advection.c"
+{
+# 707 "advection.c"
+((((__cuda_local_var_20388_22_non_const_u1)[__cuda_local_var_20383_9_non_const_ia]))[__cuda_local_var_20383_13_non_const_iv]) = ((hydro->u)[(_Z25reverse_addr_rank1_assertiPKciiii(707, ((const char *)"advection.c"), (hydro->nsite), 3, ((__cuda_local_var_20386_20_non_const_index1)[__cuda_local_var_20383_13_non_const_iv]), __cuda_local_var_20383_9_non_const_ia))]);
+# 708 "advection.c"
+}
+# 709 "advection.c"
+}
+# 711 "advection.c"
+for (__cuda_local_var_20383_17_non_const_n = 0; (__cuda_local_var_20383_17_non_const_n < (flux->nf)); __cuda_local_var_20383_17_non_const_n++)
+# 711 "advection.c"
+{
+# 712 "advection.c"
+for (__cuda_local_var_20383_13_non_const_iv = 0; (__cuda_local_var_20383_13_non_const_iv < 1); __cuda_local_var_20383_13_non_const_iv++)
+# 712 "advection.c"
+{
+# 713 "advection.c"
+((flux->fy)[(_Z25reverse_addr_rank1_assertiPKciiii(713, ((const char *)"advection.c"), (flux->nsite), (flux->nf), ((__cuda_local_var_20386_9_non_const_index0)[__cuda_local_var_20383_13_non_const_iv]), __cuda_local_var_20383_17_non_const_n))]) = (((((0.5) * (((((__cuda_local_var_20388_12_non_const_u0)[Y]))[__cuda_local_var_20383_13_non_const_iv]) + ((((__cuda_local_var_20388_22_non_const_u1)[Y]))[__cuda_local_var_20383_13_non_const_iv]))) * ((double)((__cuda_local_var_20387_9_non_const_maskv)[__cuda_local_var_20383_13_non_const_iv]))) * (0.5)) * (((field->data)[(_Z25reverse_addr_rank1_assertiPKciiii(715, ((const char *)"advection.c"), (field->nsites), (field->nf), ((__cuda_local_var_20386_9_non_const_index0)[__cuda_local_var_20383_13_non_const_iv]), __cuda_local_var_20383_17_non_const_n))]) + ((field->data)[(_Z25reverse_addr_rank1_assertiPKciiii(716, ((const char *)"advection.c"), (field->nsites), (field->nf), ((__cuda_local_var_20386_20_non_const_index1)[__cuda_local_var_20383_13_non_const_iv]), __cuda_local_var_20383_17_non_const_n))])));
+# 717 "advection.c"
+}
+# 718 "advection.c"
+}
+# 722 "advection.c"
+for (__cuda_local_var_20383_13_non_const_iv = 0; (__cuda_local_var_20383_13_non_const_iv < 1); __cuda_local_var_20383_13_non_const_iv++) {
+# 722 "advection.c"
+((__cuda_local_var_20385_9_non_const_p1)[__cuda_local_var_20383_13_non_const_iv]) = (((__cuda_local_var_20384_23_non_const_kc)[__cuda_local_var_20383_13_non_const_iv]) + ((__cuda_local_var_20387_9_non_const_maskv)[__cuda_local_var_20383_13_non_const_iv])); }
+# 723 "advection.c"
+_Z16lees_edw_index_vP10lees_edw_sPiS1_S1_S1_((flux->le), (__cuda_local_var_20384_9_non_const_ic), (__cuda_local_var_20384_16_non_const_jc), (__cuda_local_var_20385_9_non_const_p1), (__cuda_local_var_20386_20_non_const_index1));
+# 725 "advection.c"
+for (__cuda_local_var_20383_9_non_const_ia = 0; (__cuda_local_var_20383_9_non_const_ia < 3); __cuda_local_var_20383_9_non_const_ia++)
+# 725 "advection.c"
+{
+# 726 "advection.c"
+for (__cuda_local_var_20383_13_non_const_iv = 0; (__cuda_local_var_20383_13_non_const_iv < 1); __cuda_local_var_20383_13_non_const_iv++)
+# 726 "advection.c"
+{
+# 727 "advection.c"
+((((__cuda_local_var_20388_22_non_const_u1)[__cuda_local_var_20383_9_non_const_ia]))[__cuda_local_var_20383_13_non_const_iv]) = ((hydro->u)[(_Z25reverse_addr_rank1_assertiPKciiii(727, ((const char *)"advection.c"), (hydro->nsite), 3, ((__cuda_local_var_20386_20_non_const_index1)[__cuda_local_var_20383_13_non_const_iv]), __cuda_local_var_20383_9_non_const_ia))]);
+# 728 "advection.c"
+}
+# 729 "advection.c"
+}
+# 731 "advection.c"
+for (__cuda_local_var_20383_17_non_const_n = 0; (__cuda_local_var_20383_17_non_const_n < (flux->nf)); __cuda_local_var_20383_17_non_const_n++)
+# 731 "advection.c"
+{
+# 732 "advection.c"
+for (__cuda_local_var_20383_13_non_const_iv = 0; (__cuda_local_var_20383_13_non_const_iv < 1); __cuda_local_var_20383_13_non_const_iv++)
+# 732 "advection.c"
+{
+# 733 "advection.c"
+((flux->fz)[(_Z25reverse_addr_rank1_assertiPKciiii(733, ((const char *)"advection.c"), (flux->nsite), (flux->nf), ((__cuda_local_var_20386_9_non_const_index0)[__cuda_local_var_20383_13_non_const_iv]), __cuda_local_var_20383_17_non_const_n))]) = (((((0.5) * (((((__cuda_local_var_20388_12_non_const_u0)[Z]))[__cuda_local_var_20383_13_non_const_iv]) + ((((__cuda_local_var_20388_22_non_const_u1)[Z]))[__cuda_local_var_20383_13_non_const_iv]))) * ((double)((__cuda_local_var_20387_9_non_const_maskv)[__cuda_local_var_20383_13_non_const_iv]))) * (0.5)) * (((field->data)[(_Z25reverse_addr_rank1_assertiPKciiii(735, ((const char *)"advection.c"), (field->nsites), (field->nf), ((__cuda_local_var_20386_9_non_const_index0)[__cuda_local_var_20383_13_non_const_iv]), __cuda_local_var_20383_17_non_const_n))]) + ((field->data)[(_Z25reverse_addr_rank1_assertiPKciiii(736, ((const char *)"advection.c"), (field->nsites), (field->nf), ((__cuda_local_var_20386_20_non_const_index1)[__cuda_local_var_20383_13_non_const_iv]), __cuda_local_var_20383_17_non_const_n))])));
+# 737 "advection.c"
+}
+# 738 "advection.c"
+}
+# 740 "advection.c"
+}
+# 742 "advection.c"
+return;
+# 743 "advection.c"
+}}
+# 805 "advection.c"
+__global__ __var_used__ void _Z25advection_le_3rd_kernel_vP13kernel_ctxt_sP10lees_edw_sP9advflux_sP7hydro_sP7field_s(
+# 805 "advection.c"
+kernel_ctxt_t *ktx, 
+# 806 "advection.c"
+lees_edw_t *le, 
+# 807 "advection.c"
+advflux_t *flux, 
+# 808 "advection.c"
+hydro_t *hydro, 
+# 809 "advection.c"
+field_t *fld){
+# 809 "advection.c"
+{
+# 810 "advection.c"
+ int __cuda_local_var_20534_7_non_const_kindex;
+# 813 "advection.c"
+(ktx) ? ((void)0) : (__assert_fail(((const char *)"ktx"), ((const char *)"advection.c"), 813U, __T13));
+# 814 "advection.c"
+(le) ? ((void)0) : (__assert_fail(((const char *)"le"), ((const char *)"advection.c"), 814U, __T13));
+# 815 "advection.c"
+(flux) ? ((void)0) : (__assert_fail(((const char *)"flux"), ((const char *)"advection.c"), 815U, __T13));
+# 816 "advection.c"
+(hydro) ? ((void)0) : (__assert_fail(((const char *)"hydro"), ((const char *)"advection.c"), 816U, __T13));
+# 817 "advection.c"
+(fld) ? ((void)0) : (__assert_fail(((const char *)"fld"), ((const char *)"advection.c"), 817U, __T13));
+# 819 "advection.c"
+_ZZ25advection_le_3rd_kernel_vP13kernel_ctxt_sP10lees_edw_sP9advflux_sP7hydro_sP7field_sE5kiter = (_Z24kernel_vector_iterationsP13kernel_ctxt_s(ktx));
+# 821 "advection.c"
+__cuda_local_var_20534_7_non_const_kindex = ((int)(1U * (((blockIdx.x) * (blockDim.x)) + (threadIdx.x))));
+# 821 "advection.c"
+if (__cuda_local_var_20534_7_non_const_kindex < _ZZ25advection_le_3rd_kernel_vP13kernel_ctxt_sP10lees_edw_sP9advflux_sP7hydro_sP7field_sE5kiter)
+# 821 "advection.c"
+{
+# 823 "advection.c"
+ int __cuda_local_var_20547_9_non_const_ia;
+# 823 "advection.c"
+ int __cuda_local_var_20547_13_non_const_iv;
+# 823 "advection.c"
+ int __cuda_local_var_20547_17_non_const_n;
+# 824 "advection.c"
+ int __cuda_local_var_20548_9_non_const_ic[1];
+# 824 "advection.c"
+ int __cuda_local_var_20548_16_non_const_jc[1];
+# 824 "advection.c"
+ int __cuda_local_var_20548_23_non_const_kc[1];
+# 825 "advection.c"
+ int __cuda_local_var_20549_9_non_const_maskv[1];
+# 826 "advection.c"
+ int __cuda_local_var_20550_9_non_const_index0[1];
+# 826 "advection.c"
+ int __cuda_local_var_20550_20_non_const_index1[1];
+# 826 "advection.c"
+ int __cuda_local_var_20550_31_non_const_index2[1];
+# 826 "advection.c"
+ int __cuda_local_var_20550_42_non_const_index3[1];
+# 827 "advection.c"
+ int __cuda_local_var_20551_9_non_const_m2[1];
+# 827 "advection.c"
+ int __cuda_local_var_20551_16_non_const_m1[1];
+# 827 "advection.c"
+ int __cuda_local_var_20551_23_non_const_p1[1];
+# 827 "advection.c"
+ int __cuda_local_var_20551_30_non_const_p2[1];
+# 828 "advection.c"
+ double __cuda_local_var_20552_12_non_const_u0[3][1];
+# 828 "advection.c"
+ double __cuda_local_var_20552_22_non_const_u1[3][1];
+# 828 "advection.c"
+ double __cuda_local_var_20552_32_non_const_u[1];
+# 830 "advection.c"
+ double __cuda_local_var_20554_12_non_const_fd1[1];
+# 831 "advection.c"
+ double __cuda_local_var_20555_12_non_const_fd2[1];
+# 832 "advection.c"
+ double __cuda_local_var_20556_12_non_const_fd3[1];
+# 834 "advection.c"
+ double __cuda_local_var_20558_18_const_a1;
+# 835 "advection.c"
+ double __cuda_local_var_20559_18_const_a2;
+# 836 "advection.c"
+ double __cuda_local_var_20560_18_const_a3;
+# 834 "advection.c"
+__cuda_local_var_20558_18_const_a1 = (-0.213933000000000012);
+# 835 "advection.c"
+__cuda_local_var_20559_18_const_a2 = (0.9278650000000000508);
+# 836 "advection.c"
+__cuda_local_var_20560_18_const_a3 = (0.2860670000000000157);
+# 838 "advection.c"
+_Z15kernel_coords_vP13kernel_ctxt_siPiS1_S1_(ktx, __cuda_local_var_20534_7_non_const_kindex, (__cuda_local_var_20548_9_non_const_ic), (__cuda_local_var_20548_16_non_const_jc), (__cuda_local_var_20548_23_non_const_kc));
+# 839 "advection.c"
+_Z21kernel_coords_index_vP13kernel_ctxt_sPiS1_S1_S1_(ktx, (__cuda_local_var_20548_9_non_const_ic), (__cuda_local_var_20548_16_non_const_jc), (__cuda_local_var_20548_23_non_const_kc), (__cuda_local_var_20550_9_non_const_index0));
+# 840 "advection.c"
+_Z13kernel_mask_vP13kernel_ctxt_sPiS1_S1_S1_(ktx, (__cuda_local_var_20548_9_non_const_ic), (__cuda_local_var_20548_16_non_const_jc), (__cuda_local_var_20548_23_non_const_kc), (__cuda_local_var_20549_9_non_const_maskv));
+# 842 "advection.c"
+for (__cuda_local_var_20547_9_non_const_ia = 0; (__cuda_local_var_20547_9_non_const_ia < 3); __cuda_local_var_20547_9_non_const_ia++)
+# 842 "advection.c"
+{
+# 843 "advection.c"
+for (__cuda_local_var_20547_13_non_const_iv = 0; (__cuda_local_var_20547_13_non_const_iv < 1); __cuda_local_var_20547_13_non_const_iv++)
+# 843 "advection.c"
+{
+# 844 "advection.c"
+((((__cuda_local_var_20552_12_non_const_u0)[__cuda_local_var_20547_9_non_const_ia]))[__cuda_local_var_20547_13_non_const_iv]) = ((hydro->u)[(_Z25reverse_addr_rank1_assertiPKciiii(844, ((const char *)"advection.c"), (hydro->nsite), 3, ((__cuda_local_var_20550_9_non_const_index0)[__cuda_local_var_20547_13_non_const_iv]), __cuda_local_var_20547_9_non_const_ia))]);
+# 845 "advection.c"
+}
+# 846 "advection.c"
+}
+# 850 "advection.c"
+for (__cuda_local_var_20547_13_non_const_iv = 0; (__cuda_local_var_20547_13_non_const_iv < 1); __cuda_local_var_20547_13_non_const_iv++) {
+# 850 "advection.c"
+((__cuda_local_var_20551_9_non_const_m2)[__cuda_local_var_20547_13_non_const_iv]) = (_Z19lees_edw_ic_to_buffP10lees_edw_sii(le, ((__cuda_local_var_20548_9_non_const_ic)[__cuda_local_var_20547_13_non_const_iv]), ((-2) * ((__cuda_local_var_20549_9_non_const_maskv)[__cuda_local_var_20547_13_non_const_iv])))); }
+# 851 "advection.c"
+for (__cuda_local_var_20547_13_non_const_iv = 0; (__cuda_local_var_20547_13_non_const_iv < 1); __cuda_local_var_20547_13_non_const_iv++) {
+# 851 "advection.c"
+((__cuda_local_var_20551_16_non_const_m1)[__cuda_local_var_20547_13_non_const_iv]) = (_Z19lees_edw_ic_to_buffP10lees_edw_sii(le, ((__cuda_local_var_20548_9_non_const_ic)[__cuda_local_var_20547_13_non_const_iv]), ((-1) * ((__cuda_local_var_20549_9_non_const_maskv)[__cuda_local_var_20547_13_non_const_iv])))); }
+# 852 "advection.c"
+for (__cuda_local_var_20547_13_non_const_iv = 0; (__cuda_local_var_20547_13_non_const_iv < 1); __cuda_local_var_20547_13_non_const_iv++) {
+# 852 "advection.c"
+((__cuda_local_var_20551_23_non_const_p1)[__cuda_local_var_20547_13_non_const_iv]) = (_Z19lees_edw_ic_to_buffP10lees_edw_sii(le, ((__cuda_local_var_20548_9_non_const_ic)[__cuda_local_var_20547_13_non_const_iv]), (1 * ((__cuda_local_var_20549_9_non_const_maskv)[__cuda_local_var_20547_13_non_const_iv])))); }
+# 853 "advection.c"
+for (__cuda_local_var_20547_13_non_const_iv = 0; (__cuda_local_var_20547_13_non_const_iv < 1); __cuda_local_var_20547_13_non_const_iv++) {
+# 853 "advection.c"
+((__cuda_local_var_20551_30_non_const_p2)[__cuda_local_var_20547_13_non_const_iv]) = (_Z19lees_edw_ic_to_buffP10lees_edw_sii(le, ((__cuda_local_var_20548_9_non_const_ic)[__cuda_local_var_20547_13_non_const_iv]), (2 * ((__cuda_local_var_20549_9_non_const_maskv)[__cuda_local_var_20547_13_non_const_iv])))); }
+# 855 "advection.c"
+_Z16lees_edw_index_vP10lees_edw_sPiS1_S1_S1_(le, (__cuda_local_var_20551_9_non_const_m2), (__cuda_local_var_20548_16_non_const_jc), (__cuda_local_var_20548_23_non_const_kc), (__cuda_local_var_20550_31_non_const_index2));
+# 856 "advection.c"
+_Z16lees_edw_index_vP10lees_edw_sPiS1_S1_S1_(le, (__cuda_local_var_20551_16_non_const_m1), (__cuda_local_var_20548_16_non_const_jc), (__cuda_local_var_20548_23_non_const_kc), (__cuda_local_var_20550_20_non_const_index1));
+# 857 "advection.c"
+_Z16lees_edw_index_vP10lees_edw_sPiS1_S1_S1_(le, (__cuda_local_var_20551_23_non_const_p1), (__cuda_local_var_20548_16_non_const_jc), (__cuda_local_var_20548_23_non_const_kc), (__cuda_local_var_20550_42_non_const_index3));
+# 859 "advection.c"
+for (__cuda_local_var_20547_9_non_const_ia = 0; (__cuda_local_var_20547_9_non_const_ia < 3); __cuda_local_var_20547_9_non_const_ia++)
+# 859 "advection.c"
+{
+# 860 "advection.c"
+for (__cuda_local_var_20547_13_non_const_iv = 0; (__cuda_local_var_20547_13_non_const_iv < 1); __cuda_local_var_20547_13_non_const_iv++)
+# 860 "advection.c"
+{
+# 861 "advection.c"
+((((__cuda_local_var_20552_22_non_const_u1)[__cuda_local_var_20547_9_non_const_ia]))[__cuda_local_var_20547_13_non_const_iv]) = ((hydro->u)[(_Z25reverse_addr_rank1_assertiPKciiii(861, ((const char *)"advection.c"), (hydro->nsite), 3, ((__cuda_local_var_20550_20_non_const_index1)[__cuda_local_var_20547_13_non_const_iv]), __cuda_local_var_20547_9_non_const_ia))]);
+# 862 "advection.c"
+}
+# 863 "advection.c"
+}
+# 865 "advection.c"
+for (__cuda_local_var_20547_13_non_const_iv = 0; (__cuda_local_var_20547_13_non_const_iv < 1); __cuda_local_var_20547_13_non_const_iv++) {
+# 865 "advection.c"
+((__cuda_local_var_20552_32_non_const_u)[__cuda_local_var_20547_13_non_const_iv]) = (((0.5) * ((double)((__cuda_local_var_20549_9_non_const_maskv)[__cuda_local_var_20547_13_non_const_iv]))) * (((((__cuda_local_var_20552_12_non_const_u0)[X]))[__cuda_local_var_20547_13_non_const_iv]) + ((((__cuda_local_var_20552_22_non_const_u1)[X]))[__cuda_local_var_20547_13_non_const_iv]))); }
+# 867 "advection.c"
+for (__cuda_local_var_20547_17_non_const_n = 0; (__cuda_local_var_20547_17_non_const_n < (fld->nf)); __cuda_local_var_20547_17_non_const_n++)
+# 867 "advection.c"
+{
+# 868 "advection.c"
+for (__cuda_local_var_20547_13_non_const_iv = 0; (__cuda_local_var_20547_13_non_const_iv < 1); __cuda_local_var_20547_13_non_const_iv++)
+# 868 "advection.c"
+{
+# 869 "advection.c"
+if (((__cuda_local_var_20552_32_non_const_u)[__cuda_local_var_20547_13_non_const_iv]) > (0.0))
+# 869 "advection.c"
+{
+# 870 "advection.c"
+((__cuda_local_var_20554_12_non_const_fd1)[__cuda_local_var_20547_13_non_const_iv]) = ((fld->data)[(_Z25reverse_addr_rank1_assertiPKciiii(870, ((const char *)"advection.c"), (fld->nsites), (fld->nf), ((__cuda_local_var_20550_31_non_const_index2)[__cuda_local_var_20547_13_non_const_iv]), __cuda_local_var_20547_17_non_const_n))]);
+# 871 "advection.c"
+((__cuda_local_var_20555_12_non_const_fd2)[__cuda_local_var_20547_13_non_const_iv]) = ((fld->data)[(_Z25reverse_addr_rank1_assertiPKciiii(871, ((const char *)"advection.c"), (fld->nsites), (fld->nf), ((__cuda_local_var_20550_20_non_const_index1)[__cuda_local_var_20547_13_non_const_iv]), __cuda_local_var_20547_17_non_const_n))]);
+# 872 "advection.c"
+((__cuda_local_var_20556_12_non_const_fd3)[__cuda_local_var_20547_13_non_const_iv]) = ((fld->data)[(_Z25reverse_addr_rank1_assertiPKciiii(872, ((const char *)"advection.c"), (fld->nsites), (fld->nf), ((__cuda_local_var_20550_9_non_const_index0)[__cuda_local_var_20547_13_non_const_iv]), __cuda_local_var_20547_17_non_const_n))]);
+# 873 "advection.c"
+}
+# 874 "advection.c"
+else 
+# 874 "advection.c"
+{
+# 875 "advection.c"
+((__cuda_local_var_20554_12_non_const_fd1)[__cuda_local_var_20547_13_non_const_iv]) = ((fld->data)[(_Z25reverse_addr_rank1_assertiPKciiii(875, ((const char *)"advection.c"), (fld->nsites), (fld->nf), ((__cuda_local_var_20550_42_non_const_index3)[__cuda_local_var_20547_13_non_const_iv]), __cuda_local_var_20547_17_non_const_n))]);
+# 876 "advection.c"
+((__cuda_local_var_20555_12_non_const_fd2)[__cuda_local_var_20547_13_non_const_iv]) = ((fld->data)[(_Z25reverse_addr_rank1_assertiPKciiii(876, ((const char *)"advection.c"), (fld->nsites), (fld->nf), ((__cuda_local_var_20550_9_non_const_index0)[__cuda_local_var_20547_13_non_const_iv]), __cuda_local_var_20547_17_non_const_n))]);
+# 877 "advection.c"
+((__cuda_local_var_20556_12_non_const_fd3)[__cuda_local_var_20547_13_non_const_iv]) = ((fld->data)[(_Z25reverse_addr_rank1_assertiPKciiii(877, ((const char *)"advection.c"), (fld->nsites), (fld->nf), ((__cuda_local_var_20550_20_non_const_index1)[__cuda_local_var_20547_13_non_const_iv]), __cuda_local_var_20547_17_non_const_n))]);
+# 878 "advection.c"
+}
+# 879 "advection.c"
+}
+# 881 "advection.c"
+for (__cuda_local_var_20547_13_non_const_iv = 0; (__cuda_local_var_20547_13_non_const_iv < 1); __cuda_local_var_20547_13_non_const_iv++)
+# 881 "advection.c"
+{
+# 882 "advection.c"
+((flux->fw)[(_Z25reverse_addr_rank1_assertiPKciiii(882, ((const char *)"advection.c"), (flux->nsite), (flux->nf), ((__cuda_local_var_20550_9_non_const_index0)[__cuda_local_var_20547_13_non_const_iv]), __cuda_local_var_20547_17_non_const_n))]) = (((__cuda_local_var_20552_32_non_const_u)[__cuda_local_var_20547_13_non_const_iv]) * ((((-0.213933000000000012) * ((__cuda_local_var_20554_12_non_const_fd1)[__cuda_local_var_20547_13_non_const_iv])) + ((0.9278650000000000508) * ((__cuda_local_var_20555_12_non_const_fd2)[__cuda_local_var_20547_13_non_const_iv]))) + ((0.2860670000000000157) * ((__cuda_local_var_20556_12_non_const_fd3)[__cuda_local_var_20547_13_non_const_iv]))));
+# 884 "advection.c"
+}
+# 885 "advection.c"
+}
+# 889 "advection.c"
+_Z16lees_edw_index_vP10lees_edw_sPiS1_S1_S1_(le, (__cuda_local_var_20551_30_non_const_p2), (__cuda_local_var_20548_16_non_const_jc), (__cuda_local_var_20548_23_non_const_kc), (__cuda_local_var_20550_31_non_const_index2));
+# 891 "advection.c"
+for (__cuda_local_var_20547_9_non_const_ia = 0; (__cuda_local_var_20547_9_non_const_ia < 3); __cuda_local_var_20547_9_non_const_ia++)
+# 891 "advection.c"
+{
+# 892 "advection.c"
+for (__cuda_local_var_20547_13_non_const_iv = 0; (__cuda_local_var_20547_13_non_const_iv < 1); __cuda_local_var_20547_13_non_const_iv++)
+# 892 "advection.c"
+{
+# 893 "advection.c"
+((((__cuda_local_var_20552_22_non_const_u1)[__cuda_local_var_20547_9_non_const_ia]))[__cuda_local_var_20547_13_non_const_iv]) = ((hydro->u)[(_Z25reverse_addr_rank1_assertiPKciiii(893, ((const char *)"advection.c"), (hydro->nsite), 3, ((__cuda_local_var_20550_42_non_const_index3)[__cuda_local_var_20547_13_non_const_iv]), __cuda_local_var_20547_9_non_const_ia))]);
+# 894 "advection.c"
+}
+# 895 "advection.c"
+}
+# 897 "advection.c"
+for (__cuda_local_var_20547_13_non_const_iv = 0; (__cuda_local_var_20547_13_non_const_iv < 1); __cuda_local_var_20547_13_non_const_iv++) {
+# 897 "advection.c"
+((__cuda_local_var_20552_32_non_const_u)[__cuda_local_var_20547_13_non_const_iv]) = (((0.5) * ((double)((__cuda_local_var_20549_9_non_const_maskv)[__cuda_local_var_20547_13_non_const_iv]))) * (((((__cuda_local_var_20552_12_non_const_u0)[X]))[__cuda_local_var_20547_13_non_const_iv]) + ((((__cuda_local_var_20552_22_non_const_u1)[X]))[__cuda_local_var_20547_13_non_const_iv]))); }
+# 899 "advection.c"
+for (__cuda_local_var_20547_17_non_const_n = 0; (__cuda_local_var_20547_17_non_const_n < (fld->nf)); __cuda_local_var_20547_17_non_const_n++)
+# 899 "advection.c"
+{
+# 900 "advection.c"
+for (__cuda_local_var_20547_13_non_const_iv = 0; (__cuda_local_var_20547_13_non_const_iv < 1); __cuda_local_var_20547_13_non_const_iv++)
+# 900 "advection.c"
+{
+# 901 "advection.c"
+if (((__cuda_local_var_20552_32_non_const_u)[__cuda_local_var_20547_13_non_const_iv]) < (0.0))
+# 901 "advection.c"
+{
+# 902 "advection.c"
+((__cuda_local_var_20554_12_non_const_fd1)[__cuda_local_var_20547_13_non_const_iv]) = ((fld->data)[(_Z25reverse_addr_rank1_assertiPKciiii(902, ((const char *)"advection.c"), (fld->nsites), (fld->nf), ((__cuda_local_var_20550_31_non_const_index2)[__cuda_local_var_20547_13_non_const_iv]), __cuda_local_var_20547_17_non_const_n))]);
+# 903 "advection.c"
+((__cuda_local_var_20555_12_non_const_fd2)[__cuda_local_var_20547_13_non_const_iv]) = ((fld->data)[(_Z25reverse_addr_rank1_assertiPKciiii(903, ((const char *)"advection.c"), (fld->nsites), (fld->nf), ((__cuda_local_var_20550_42_non_const_index3)[__cuda_local_var_20547_13_non_const_iv]), __cuda_local_var_20547_17_non_const_n))]);
+# 904 "advection.c"
+((__cuda_local_var_20556_12_non_const_fd3)[__cuda_local_var_20547_13_non_const_iv]) = ((fld->data)[(_Z25reverse_addr_rank1_assertiPKciiii(904, ((const char *)"advection.c"), (fld->nsites), (fld->nf), ((__cuda_local_var_20550_9_non_const_index0)[__cuda_local_var_20547_13_non_const_iv]), __cuda_local_var_20547_17_non_const_n))]);
+# 905 "advection.c"
+}
+# 906 "advection.c"
+else 
+# 906 "advection.c"
+{
+# 907 "advection.c"
+((__cuda_local_var_20554_12_non_const_fd1)[__cuda_local_var_20547_13_non_const_iv]) = ((fld->data)[(_Z25reverse_addr_rank1_assertiPKciiii(907, ((const char *)"advection.c"), (fld->nsites), (fld->nf), ((__cuda_local_var_20550_20_non_const_index1)[__cuda_local_var_20547_13_non_const_iv]), __cuda_local_var_20547_17_non_const_n))]);
+# 908 "advection.c"
+((__cuda_local_var_20555_12_non_const_fd2)[__cuda_local_var_20547_13_non_const_iv]) = ((fld->data)[(_Z25reverse_addr_rank1_assertiPKciiii(908, ((const char *)"advection.c"), (fld->nsites), (fld->nf), ((__cuda_local_var_20550_9_non_const_index0)[__cuda_local_var_20547_13_non_const_iv]), __cuda_local_var_20547_17_non_const_n))]);
+# 909 "advection.c"
+((__cuda_local_var_20556_12_non_const_fd3)[__cuda_local_var_20547_13_non_const_iv]) = ((fld->data)[(_Z25reverse_addr_rank1_assertiPKciiii(909, ((const char *)"advection.c"), (fld->nsites), (fld->nf), ((__cuda_local_var_20550_42_non_const_index3)[__cuda_local_var_20547_13_non_const_iv]), __cuda_local_var_20547_17_non_const_n))]);
+# 910 "advection.c"
+}
+# 911 "advection.c"
+}
+# 913 "advection.c"
+for (__cuda_local_var_20547_13_non_const_iv = 0; (__cuda_local_var_20547_13_non_const_iv < 1); __cuda_local_var_20547_13_non_const_iv++)
+# 913 "advection.c"
+{
+# 914 "advection.c"
+((flux->fe)[(_Z25reverse_addr_rank1_assertiPKciiii(914, ((const char *)"advection.c"), (flux->nsite), (flux->nf), ((__cuda_local_var_20550_9_non_const_index0)[__cuda_local_var_20547_13_non_const_iv]), __cuda_local_var_20547_17_non_const_n))]) = (((__cuda_local_var_20552_32_non_const_u)[__cuda_local_var_20547_13_non_const_iv]) * ((((-0.213933000000000012) * ((__cuda_local_var_20554_12_non_const_fd1)[__cuda_local_var_20547_13_non_const_iv])) + ((0.9278650000000000508) * ((__cuda_local_var_20555_12_non_const_fd2)[__cuda_local_var_20547_13_non_const_iv]))) + ((0.2860670000000000157) * ((__cuda_local_var_20556_12_non_const_fd3)[__cuda_local_var_20547_13_non_const_iv]))));
+# 916 "advection.c"
+}
+# 917 "advection.c"
+}
+# 922 "advection.c"
+for (__cuda_local_var_20547_13_non_const_iv = 0; (__cuda_local_var_20547_13_non_const_iv < 1); __cuda_local_var_20547_13_non_const_iv++) {
+# 922 "advection.c"
+((__cuda_local_var_20551_16_non_const_m1)[__cuda_local_var_20547_13_non_const_iv]) = (((__cuda_local_var_20548_16_non_const_jc)[__cuda_local_var_20547_13_non_const_iv]) - (1 * ((__cuda_local_var_20549_9_non_const_maskv)[__cuda_local_var_20547_13_non_const_iv]))); }
+# 923 "advection.c"
+for (__cuda_local_var_20547_13_non_const_iv = 0; (__cuda_local_var_20547_13_non_const_iv < 1); __cuda_local_var_20547_13_non_const_iv++) {
+# 923 "advection.c"
+((__cuda_local_var_20551_23_non_const_p1)[__cuda_local_var_20547_13_non_const_iv]) = (((__cuda_local_var_20548_16_non_const_jc)[__cuda_local_var_20547_13_non_const_iv]) + (1 * ((__cuda_local_var_20549_9_non_const_maskv)[__cuda_local_var_20547_13_non_const_iv]))); }
+# 924 "advection.c"
+for (__cuda_local_var_20547_13_non_const_iv = 0; (__cuda_local_var_20547_13_non_const_iv < 1); __cuda_local_var_20547_13_non_const_iv++) {
+# 924 "advection.c"
+((__cuda_local_var_20551_30_non_const_p2)[__cuda_local_var_20547_13_non_const_iv]) = (((__cuda_local_var_20548_16_non_const_jc)[__cuda_local_var_20547_13_non_const_iv]) + (2 * ((__cuda_local_var_20549_9_non_const_maskv)[__cuda_local_var_20547_13_non_const_iv]))); }
+# 926 "advection.c"
+_Z16lees_edw_index_vP10lees_edw_sPiS1_S1_S1_(le, (__cuda_local_var_20548_9_non_const_ic), (__cuda_local_var_20551_16_non_const_m1), (__cuda_local_var_20548_23_non_const_kc), (__cuda_local_var_20550_42_non_const_index3));
+# 927 "advection.c"
+_Z16lees_edw_index_vP10lees_edw_sPiS1_S1_S1_(le, (__cuda_local_var_20548_9_non_const_ic), (__cuda_local_var_20551_23_non_const_p1), (__cuda_local_var_20548_23_non_const_kc), (__cuda_local_var_20550_20_non_const_index1));
+# 928 "advection.c"
+_Z16lees_edw_index_vP10lees_edw_sPiS1_S1_S1_(le, (__cuda_local_var_20548_9_non_const_ic), (__cuda_local_var_20551_30_non_const_p2), (__cuda_local_var_20548_23_non_const_kc), (__cuda_local_var_20550_31_non_const_index2));
+# 930 "advection.c"
+for (__cuda_local_var_20547_9_non_const_ia = 0; (__cuda_local_var_20547_9_non_const_ia < 3); __cuda_local_var_20547_9_non_const_ia++)
+# 930 "advection.c"
+{
+# 931 "advection.c"
+for (__cuda_local_var_20547_13_non_const_iv = 0; (__cuda_local_var_20547_13_non_const_iv < 1); __cuda_local_var_20547_13_non_const_iv++)
+# 931 "advection.c"
+{
+# 932 "advection.c"
+((((__cuda_local_var_20552_22_non_const_u1)[__cuda_local_var_20547_9_non_const_ia]))[__cuda_local_var_20547_13_non_const_iv]) = ((hydro->u)[(_Z25reverse_addr_rank1_assertiPKciiii(932, ((const char *)"advection.c"), (fld->nsites), 3, ((__cuda_local_var_20550_20_non_const_index1)[__cuda_local_var_20547_13_non_const_iv]), __cuda_local_var_20547_9_non_const_ia))]);
+# 933 "advection.c"
+}
+# 934 "advection.c"
+}
+# 936 "advection.c"
+for (__cuda_local_var_20547_13_non_const_iv = 0; (__cuda_local_var_20547_13_non_const_iv < 1); __cuda_local_var_20547_13_non_const_iv++) {
+# 936 "advection.c"
+((__cuda_local_var_20552_32_non_const_u)[__cuda_local_var_20547_13_non_const_iv]) = (((0.5) * ((double)((__cuda_local_var_20549_9_non_const_maskv)[__cuda_local_var_20547_13_non_const_iv]))) * (((((__cuda_local_var_20552_12_non_const_u0)[Y]))[__cuda_local_var_20547_13_non_const_iv]) + ((((__cuda_local_var_20552_22_non_const_u1)[Y]))[__cuda_local_var_20547_13_non_const_iv]))); }
+# 938 "advection.c"
+for (__cuda_local_var_20547_17_non_const_n = 0; (__cuda_local_var_20547_17_non_const_n < (fld->nf)); __cuda_local_var_20547_17_non_const_n++)
+# 938 "advection.c"
+{
+# 939 "advection.c"
+for (__cuda_local_var_20547_13_non_const_iv = 0; (__cuda_local_var_20547_13_non_const_iv < 1); __cuda_local_var_20547_13_non_const_iv++)
+# 939 "advection.c"
+{
+# 940 "advection.c"
+if (((__cuda_local_var_20552_32_non_const_u)[__cuda_local_var_20547_13_non_const_iv]) < (0.0))
+# 940 "advection.c"
+{
+# 941 "advection.c"
+((__cuda_local_var_20554_12_non_const_fd1)[__cuda_local_var_20547_13_non_const_iv]) = ((fld->data)[(_Z25reverse_addr_rank1_assertiPKciiii(941, ((const char *)"advection.c"), (fld->nsites), (fld->nf), ((__cuda_local_var_20550_31_non_const_index2)[__cuda_local_var_20547_13_non_const_iv]), __cuda_local_var_20547_17_non_const_n))]);
+# 942 "advection.c"
+((__cuda_local_var_20555_12_non_const_fd2)[__cuda_local_var_20547_13_non_const_iv]) = ((fld->data)[(_Z25reverse_addr_rank1_assertiPKciiii(942, ((const char *)"advection.c"), (fld->nsites), (fld->nf), ((__cuda_local_var_20550_20_non_const_index1)[__cuda_local_var_20547_13_non_const_iv]), __cuda_local_var_20547_17_non_const_n))]);
+# 943 "advection.c"
+((__cuda_local_var_20556_12_non_const_fd3)[__cuda_local_var_20547_13_non_const_iv]) = ((fld->data)[(_Z25reverse_addr_rank1_assertiPKciiii(943, ((const char *)"advection.c"), (fld->nsites), (fld->nf), ((__cuda_local_var_20550_9_non_const_index0)[__cuda_local_var_20547_13_non_const_iv]), __cuda_local_var_20547_17_non_const_n))]);
+# 944 "advection.c"
+}
+# 945 "advection.c"
+else 
+# 945 "advection.c"
+{
+# 946 "advection.c"
+((__cuda_local_var_20554_12_non_const_fd1)[__cuda_local_var_20547_13_non_const_iv]) = ((fld->data)[(_Z25reverse_addr_rank1_assertiPKciiii(946, ((const char *)"advection.c"), (fld->nsites), (fld->nf), ((__cuda_local_var_20550_42_non_const_index3)[__cuda_local_var_20547_13_non_const_iv]), __cuda_local_var_20547_17_non_const_n))]);
+# 947 "advection.c"
+((__cuda_local_var_20555_12_non_const_fd2)[__cuda_local_var_20547_13_non_const_iv]) = ((fld->data)[(_Z25reverse_addr_rank1_assertiPKciiii(947, ((const char *)"advection.c"), (fld->nsites), (fld->nf), ((__cuda_local_var_20550_9_non_const_index0)[__cuda_local_var_20547_13_non_const_iv]), __cuda_local_var_20547_17_non_const_n))]);
+# 948 "advection.c"
+((__cuda_local_var_20556_12_non_const_fd3)[__cuda_local_var_20547_13_non_const_iv]) = ((fld->data)[(_Z25reverse_addr_rank1_assertiPKciiii(948, ((const char *)"advection.c"), (fld->nsites), (fld->nf), ((__cuda_local_var_20550_20_non_const_index1)[__cuda_local_var_20547_13_non_const_iv]), __cuda_local_var_20547_17_non_const_n))]);
+# 949 "advection.c"
+}
+# 950 "advection.c"
+}
+# 952 "advection.c"
+for (__cuda_local_var_20547_13_non_const_iv = 0; (__cuda_local_var_20547_13_non_const_iv < 1); __cuda_local_var_20547_13_non_const_iv++)
+# 952 "advection.c"
+{
+# 953 "advection.c"
+((flux->fy)[(_Z25reverse_addr_rank1_assertiPKciiii(953, ((const char *)"advection.c"), (flux->nsite), (flux->nf), ((__cuda_local_var_20550_9_non_const_index0)[__cuda_local_var_20547_13_non_const_iv]), __cuda_local_var_20547_17_non_const_n))]) = (((__cuda_local_var_20552_32_non_const_u)[__cuda_local_var_20547_13_non_const_iv]) * ((((-0.213933000000000012) * ((__cuda_local_var_20554_12_non_const_fd1)[__cuda_local_var_20547_13_non_const_iv])) + ((0.9278650000000000508) * ((__cuda_local_var_20555_12_non_const_fd2)[__cuda_local_var_20547_13_non_const_iv]))) + ((0.2860670000000000157) * ((__cuda_local_var_20556_12_non_const_fd3)[__cuda_local_var_20547_13_non_const_iv]))));
+# 955 "advection.c"
+}
+# 956 "advection.c"
+}
+# 960 "advection.c"
+for (__cuda_local_var_20547_13_non_const_iv = 0; (__cuda_local_var_20547_13_non_const_iv < 1); __cuda_local_var_20547_13_non_const_iv++) {
+# 960 "advection.c"
+((__cuda_local_var_20551_16_non_const_m1)[__cuda_local_var_20547_13_non_const_iv]) = (((__cuda_local_var_20548_23_non_const_kc)[__cuda_local_var_20547_13_non_const_iv]) - (1 * ((__cuda_local_var_20549_9_non_const_maskv)[__cuda_local_var_20547_13_non_const_iv]))); }
+# 961 "advection.c"
+for (__cuda_local_var_20547_13_non_const_iv = 0; (__cuda_local_var_20547_13_non_const_iv < 1); __cuda_local_var_20547_13_non_const_iv++) {
+# 961 "advection.c"
+((__cuda_local_var_20551_23_non_const_p1)[__cuda_local_var_20547_13_non_const_iv]) = (((__cuda_local_var_20548_23_non_const_kc)[__cuda_local_var_20547_13_non_const_iv]) + (1 * ((__cuda_local_var_20549_9_non_const_maskv)[__cuda_local_var_20547_13_non_const_iv]))); }
+# 962 "advection.c"
+for (__cuda_local_var_20547_13_non_const_iv = 0; (__cuda_local_var_20547_13_non_const_iv < 1); __cuda_local_var_20547_13_non_const_iv++) {
+# 962 "advection.c"
+((__cuda_local_var_20551_30_non_const_p2)[__cuda_local_var_20547_13_non_const_iv]) = (((__cuda_local_var_20548_23_non_const_kc)[__cuda_local_var_20547_13_non_const_iv]) + (2 * ((__cuda_local_var_20549_9_non_const_maskv)[__cuda_local_var_20547_13_non_const_iv]))); }
+# 964 "advection.c"
+_Z16lees_edw_index_vP10lees_edw_sPiS1_S1_S1_(le, (__cuda_local_var_20548_9_non_const_ic), (__cuda_local_var_20548_16_non_const_jc), (__cuda_local_var_20551_16_non_const_m1), (__cuda_local_var_20550_42_non_const_index3));
+# 965 "advection.c"
+_Z16lees_edw_index_vP10lees_edw_sPiS1_S1_S1_(le, (__cuda_local_var_20548_9_non_const_ic), (__cuda_local_var_20548_16_non_const_jc), (__cuda_local_var_20551_23_non_const_p1), (__cuda_local_var_20550_20_non_const_index1));
+# 966 "advection.c"
+_Z16lees_edw_index_vP10lees_edw_sPiS1_S1_S1_(le, (__cuda_local_var_20548_9_non_const_ic), (__cuda_local_var_20548_16_non_const_jc), (__cuda_local_var_20551_30_non_const_p2), (__cuda_local_var_20550_31_non_const_index2));
+# 968 "advection.c"
+for (__cuda_local_var_20547_9_non_const_ia = 0; (__cuda_local_var_20547_9_non_const_ia < 3); __cuda_local_var_20547_9_non_const_ia++)
+# 968 "advection.c"
+{
+# 969 "advection.c"
+for (__cuda_local_var_20547_13_non_const_iv = 0; (__cuda_local_var_20547_13_non_const_iv < 1); __cuda_local_var_20547_13_non_const_iv++)
+# 969 "advection.c"
+{
+# 970 "advection.c"
+((((__cuda_local_var_20552_22_non_const_u1)[__cuda_local_var_20547_9_non_const_ia]))[__cuda_local_var_20547_13_non_const_iv]) = ((hydro->u)[(_Z25reverse_addr_rank1_assertiPKciiii(970, ((const char *)"advection.c"), (hydro->nsite), 3, ((__cuda_local_var_20550_20_non_const_index1)[__cuda_local_var_20547_13_non_const_iv]), __cuda_local_var_20547_9_non_const_ia))]);
+# 971 "advection.c"
+}
+# 972 "advection.c"
+}
+# 974 "advection.c"
+for (__cuda_local_var_20547_13_non_const_iv = 0; (__cuda_local_var_20547_13_non_const_iv < 1); __cuda_local_var_20547_13_non_const_iv++) {
+# 974 "advection.c"
+((__cuda_local_var_20552_32_non_const_u)[__cuda_local_var_20547_13_non_const_iv]) = (((0.5) * ((double)((__cuda_local_var_20549_9_non_const_maskv)[__cuda_local_var_20547_13_non_const_iv]))) * (((((__cuda_local_var_20552_12_non_const_u0)[Z]))[__cuda_local_var_20547_13_non_const_iv]) + ((((__cuda_local_var_20552_22_non_const_u1)[Z]))[__cuda_local_var_20547_13_non_const_iv]))); }
+# 976 "advection.c"
+for (__cuda_local_var_20547_17_non_const_n = 0; (__cuda_local_var_20547_17_non_const_n < (fld->nf)); __cuda_local_var_20547_17_non_const_n++)
+# 976 "advection.c"
+{
+# 977 "advection.c"
+for (__cuda_local_var_20547_13_non_const_iv = 0; (__cuda_local_var_20547_13_non_const_iv < 1); __cuda_local_var_20547_13_non_const_iv++)
+# 977 "advection.c"
+{
+# 978 "advection.c"
+if (((__cuda_local_var_20552_32_non_const_u)[__cuda_local_var_20547_13_non_const_iv]) < (0.0))
+# 978 "advection.c"
+{
+# 979 "advection.c"
+((__cuda_local_var_20554_12_non_const_fd1)[__cuda_local_var_20547_13_non_const_iv]) = ((fld->data)[(_Z25reverse_addr_rank1_assertiPKciiii(979, ((const char *)"advection.c"), (fld->nsites), (fld->nf), ((__cuda_local_var_20550_31_non_const_index2)[__cuda_local_var_20547_13_non_const_iv]), __cuda_local_var_20547_17_non_const_n))]);
+# 980 "advection.c"
+((__cuda_local_var_20555_12_non_const_fd2)[__cuda_local_var_20547_13_non_const_iv]) = ((fld->data)[(_Z25reverse_addr_rank1_assertiPKciiii(980, ((const char *)"advection.c"), (fld->nsites), (fld->nf), ((__cuda_local_var_20550_20_non_const_index1)[__cuda_local_var_20547_13_non_const_iv]), __cuda_local_var_20547_17_non_const_n))]);
+# 981 "advection.c"
+((__cuda_local_var_20556_12_non_const_fd3)[__cuda_local_var_20547_13_non_const_iv]) = ((fld->data)[(_Z25reverse_addr_rank1_assertiPKciiii(981, ((const char *)"advection.c"), (fld->nsites), (fld->nf), ((__cuda_local_var_20550_9_non_const_index0)[__cuda_local_var_20547_13_non_const_iv]), __cuda_local_var_20547_17_non_const_n))]);
+# 982 "advection.c"
+}
+# 983 "advection.c"
+else 
+# 983 "advection.c"
+{
+# 984 "advection.c"
+((__cuda_local_var_20554_12_non_const_fd1)[__cuda_local_var_20547_13_non_const_iv]) = ((fld->data)[(_Z25reverse_addr_rank1_assertiPKciiii(984, ((const char *)"advection.c"), (fld->nsites), (fld->nf), ((__cuda_local_var_20550_42_non_const_index3)[__cuda_local_var_20547_13_non_const_iv]), __cuda_local_var_20547_17_non_const_n))]);
+# 985 "advection.c"
+((__cuda_local_var_20555_12_non_const_fd2)[__cuda_local_var_20547_13_non_const_iv]) = ((fld->data)[(_Z25reverse_addr_rank1_assertiPKciiii(985, ((const char *)"advection.c"), (fld->nsites), (fld->nf), ((__cuda_local_var_20550_9_non_const_index0)[__cuda_local_var_20547_13_non_const_iv]), __cuda_local_var_20547_17_non_const_n))]);
+# 986 "advection.c"
+((__cuda_local_var_20556_12_non_const_fd3)[__cuda_local_var_20547_13_non_const_iv]) = ((fld->data)[(_Z25reverse_addr_rank1_assertiPKciiii(986, ((const char *)"advection.c"), (fld->nsites), (fld->nf), ((__cuda_local_var_20550_20_non_const_index1)[__cuda_local_var_20547_13_non_const_iv]), __cuda_local_var_20547_17_non_const_n))]);
+# 987 "advection.c"
+}
+# 988 "advection.c"
+}
+# 990 "advection.c"
+for (__cuda_local_var_20547_13_non_const_iv = 0; (__cuda_local_var_20547_13_non_const_iv < 1); __cuda_local_var_20547_13_non_const_iv++)
+# 990 "advection.c"
+{
+# 991 "advection.c"
+((flux->fz)[(_Z25reverse_addr_rank1_assertiPKciiii(991, ((const char *)"advection.c"), (flux->nsite), (flux->nf), ((__cuda_local_var_20550_9_non_const_index0)[__cuda_local_var_20547_13_non_const_iv]), __cuda_local_var_20547_17_non_const_n))]) = (((__cuda_local_var_20552_32_non_const_u)[__cuda_local_var_20547_13_non_const_iv]) * ((((-0.213933000000000012) * ((__cuda_local_var_20554_12_non_const_fd1)[__cuda_local_var_20547_13_non_const_iv])) + ((0.9278650000000000508) * ((__cuda_local_var_20555_12_non_const_fd2)[__cuda_local_var_20547_13_non_const_iv]))) + ((0.2860670000000000157) * ((__cuda_local_var_20556_12_non_const_fd3)[__cuda_local_var_20547_13_non_const_iv]))));
+# 993 "advection.c"
+}
+# 994 "advection.c"
+}
+# 996 "advection.c"
+}
+# 998 "advection.c"
+return;
+# 999 "advection.c"
+}}
+# 1009 "advection.c"
+__global__ __var_used__ void _Z22advection_3rd_kernel_vP13kernel_ctxt_sP9advflux_sP7hydro_sP7field_s(
+# 1009 "advection.c"
+kernel_ctxt_t *ktx, 
+# 1010 "advection.c"
+advflux_t *flux, 
+# 1011 "advection.c"
+hydro_t *hydro, 
+# 1012 "advection.c"
+field_t *field){
+# 1012 "advection.c"
+{
+# 1014 "advection.c"
+ int __cuda_local_var_20730_7_non_const_kindex;
+# 1017 "advection.c"
+(ktx) ? ((void)0) : (__assert_fail(((const char *)"ktx"), ((const char *)"advection.c"), 1017U, __T14));
+# 1018 "advection.c"
+(flux) ? ((void)0) : (__assert_fail(((const char *)"flux"), ((const char *)"advection.c"), 1018U, __T14));
+# 1019 "advection.c"
+(hydro) ? ((void)0) : (__assert_fail(((const char *)"hydro"), ((const char *)"advection.c"), 1019U, __T14));
+# 1020 "advection.c"
+(field) ? ((void)0) : (__assert_fail(((const char *)"field"), ((const char *)"advection.c"), 1020U, __T14));
+# 1022 "advection.c"
+_ZZ22advection_3rd_kernel_vP13kernel_ctxt_sP9advflux_sP7hydro_sP7field_sE5kiter = (_Z24kernel_vector_iterationsP13kernel_ctxt_s(ktx));
+# 1024 "advection.c"
+__cuda_local_var_20730_7_non_const_kindex = ((int)(1U * (((blockIdx.x) * (blockDim.x)) + (threadIdx.x))));
+# 1024 "advection.c"
+if (__cuda_local_var_20730_7_non_const_kindex < _ZZ22advection_3rd_kernel_vP13kernel_ctxt_sP9advflux_sP7hydro_sP7field_sE5kiter)
+# 1024 "advection.c"
+{
+# 1026 "advection.c"
+ int __cuda_local_var_20742_9_non_const_ia;
+# 1026 "advection.c"
+ int __cuda_local_var_20742_13_non_const_iv;
+# 1027 "advection.c"
+ int __cuda_local_var_20743_9_non_const_n;
+# 1027 "advection.c"
+ int __cuda_local_var_20743_12_non_const_nf;
+# 1028 "advection.c"
+ int __cuda_local_var_20744_9_non_const_ic[1];
+# 1028 "advection.c"
+ int __cuda_local_var_20744_16_non_const_jc[1];
+# 1028 "advection.c"
+ int __cuda_local_var_20744_23_non_const_kc[1];
+# 1029 "advection.c"
+ int __cuda_local_var_20745_9_non_const_maskv[1];
+# 1030 "advection.c"
+ int __cuda_local_var_20746_9_non_const_index0[1];
+# 1030 "advection.c"
+ int __cuda_local_var_20746_20_non_const_index1[1];
+# 1030 "advection.c"
+ int __cuda_local_var_20746_31_non_const_index2[1];
+# 1030 "advection.c"
+ int __cuda_local_var_20746_42_non_const_index3[1];
+# 1031 "advection.c"
+ int __cuda_local_var_20747_9_non_const_m2[1];
+# 1031 "advection.c"
+ int __cuda_local_var_20747_16_non_const_m1[1];
+# 1031 "advection.c"
+ int __cuda_local_var_20747_23_non_const_p1[1];
+# 1031 "advection.c"
+ int __cuda_local_var_20747_30_non_const_p2[1];
+# 1032 "advection.c"
+ double __cuda_local_var_20748_12_non_const_u0[3][1];
+# 1032 "advection.c"
+ double __cuda_local_var_20748_22_non_const_u1[3][1];
+# 1032 "advection.c"
+ double __cuda_local_var_20748_32_non_const_u[1];
+# 1034 "advection.c"
+ double __cuda_local_var_20750_12_non_const_fd1[1];
+# 1035 "advection.c"
+ double __cuda_local_var_20751_12_non_const_fd2[1];
+# 1036 "advection.c"
+ double __cuda_local_var_20752_12_non_const_fd3[1];
+# 1038 "advection.c"
+ double __cuda_local_var_20754_18_const_a1;
+# 1039 "advection.c"
+ double __cuda_local_var_20755_18_const_a2;
+# 1040 "advection.c"
+ double __cuda_local_var_20756_18_const_a3;
+# 1038 "advection.c"
+__cuda_local_var_20754_18_const_a1 = (-0.213933000000000012);
+# 1039 "advection.c"
+__cuda_local_var_20755_18_const_a2 = (0.9278650000000000508);
+# 1040 "advection.c"
+__cuda_local_var_20756_18_const_a3 = (0.2860670000000000157);
+# 1042 "advection.c"
+__cuda_local_var_20743_12_non_const_nf = (field->nf);
+# 1044 "advection.c"
+_Z15kernel_coords_vP13kernel_ctxt_siPiS1_S1_(ktx, __cuda_local_var_20730_7_non_const_kindex, (__cuda_local_var_20744_9_non_const_ic), (__cuda_local_var_20744_16_non_const_jc), (__cuda_local_var_20744_23_non_const_kc));
+# 1045 "advection.c"
+_Z21kernel_coords_index_vP13kernel_ctxt_sPiS1_S1_S1_(ktx, (__cuda_local_var_20744_9_non_const_ic), (__cuda_local_var_20744_16_non_const_jc), (__cuda_local_var_20744_23_non_const_kc), (__cuda_local_var_20746_9_non_const_index0));
+# 1046 "advection.c"
+_Z13kernel_mask_vP13kernel_ctxt_sPiS1_S1_S1_(ktx, (__cuda_local_var_20744_9_non_const_ic), (__cuda_local_var_20744_16_non_const_jc), (__cuda_local_var_20744_23_non_const_kc), (__cuda_local_var_20745_9_non_const_maskv));
+# 1048 "advection.c"
+for (__cuda_local_var_20742_9_non_const_ia = 0; (__cuda_local_var_20742_9_non_const_ia < 3); __cuda_local_var_20742_9_non_const_ia++)
+# 1048 "advection.c"
+{
+# 1049 "advection.c"
+for (__cuda_local_var_20742_13_non_const_iv = 0; (__cuda_local_var_20742_13_non_const_iv < 1); __cuda_local_var_20742_13_non_const_iv++)
+# 1049 "advection.c"
+{
+# 1050 "advection.c"
+((((__cuda_local_var_20748_12_non_const_u0)[__cuda_local_var_20742_9_non_const_ia]))[__cuda_local_var_20742_13_non_const_iv]) = ((hydro->u)[(_Z25reverse_addr_rank1_assertiPKciiii(1050, ((const char *)"advection.c"), (hydro->nsite), 3, ((__cuda_local_var_20746_9_non_const_index0)[__cuda_local_var_20742_13_non_const_iv]), __cuda_local_var_20742_9_non_const_ia))]);
+# 1051 "advection.c"
+}
+# 1052 "advection.c"
+}
+# 1056 "advection.c"
+for (__cuda_local_var_20742_13_non_const_iv = 0; (__cuda_local_var_20742_13_non_const_iv < 1); __cuda_local_var_20742_13_non_const_iv++) {
+# 1056 "advection.c"
+((__cuda_local_var_20747_9_non_const_m2)[__cuda_local_var_20742_13_non_const_iv]) = (((__cuda_local_var_20744_9_non_const_ic)[__cuda_local_var_20742_13_non_const_iv]) - (2 * ((__cuda_local_var_20745_9_non_const_maskv)[__cuda_local_var_20742_13_non_const_iv]))); }
+# 1057 "advection.c"
+for (__cuda_local_var_20742_13_non_const_iv = 0; (__cuda_local_var_20742_13_non_const_iv < 1); __cuda_local_var_20742_13_non_const_iv++) {
+# 1057 "advection.c"
+((__cuda_local_var_20747_16_non_const_m1)[__cuda_local_var_20742_13_non_const_iv]) = (((__cuda_local_var_20744_9_non_const_ic)[__cuda_local_var_20742_13_non_const_iv]) - (1 * ((__cuda_local_var_20745_9_non_const_maskv)[__cuda_local_var_20742_13_non_const_iv]))); }
+# 1058 "advection.c"
+for (__cuda_local_var_20742_13_non_const_iv = 0; (__cuda_local_var_20742_13_non_const_iv < 1); __cuda_local_var_20742_13_non_const_iv++) {
+# 1058 "advection.c"
+((__cuda_local_var_20747_23_non_const_p1)[__cuda_local_var_20742_13_non_const_iv]) = (((__cuda_local_var_20744_9_non_const_ic)[__cuda_local_var_20742_13_non_const_iv]) + (1 * ((__cuda_local_var_20745_9_non_const_maskv)[__cuda_local_var_20742_13_non_const_iv]))); }
+# 1059 "advection.c"
+for (__cuda_local_var_20742_13_non_const_iv = 0; (__cuda_local_var_20742_13_non_const_iv < 1); __cuda_local_var_20742_13_non_const_iv++) {
+# 1059 "advection.c"
+((__cuda_local_var_20747_30_non_const_p2)[__cuda_local_var_20742_13_non_const_iv]) = (((__cuda_local_var_20744_9_non_const_ic)[__cuda_local_var_20742_13_non_const_iv]) + (2 * ((__cuda_local_var_20745_9_non_const_maskv)[__cuda_local_var_20742_13_non_const_iv]))); }
+# 1061 "advection.c"
+_Z21kernel_coords_index_vP13kernel_ctxt_sPiS1_S1_S1_(ktx, (__cuda_local_var_20747_9_non_const_m2), (__cuda_local_var_20744_16_non_const_jc), (__cuda_local_var_20744_23_non_const_kc), (__cuda_local_var_20746_31_non_const_index2));
+# 1062 "advection.c"
+_Z21kernel_coords_index_vP13kernel_ctxt_sPiS1_S1_S1_(ktx, (__cuda_local_var_20747_16_non_const_m1), (__cuda_local_var_20744_16_non_const_jc), (__cuda_local_var_20744_23_non_const_kc), (__cuda_local_var_20746_20_non_const_index1));
+# 1063 "advection.c"
+_Z21kernel_coords_index_vP13kernel_ctxt_sPiS1_S1_S1_(ktx, (__cuda_local_var_20747_23_non_const_p1), (__cuda_local_var_20744_16_non_const_jc), (__cuda_local_var_20744_23_non_const_kc), (__cuda_local_var_20746_42_non_const_index3));
+# 1065 "advection.c"
+for (__cuda_local_var_20742_9_non_const_ia = 0; (__cuda_local_var_20742_9_non_const_ia < 3); __cuda_local_var_20742_9_non_const_ia++)
+# 1065 "advection.c"
+{
+# 1066 "advection.c"
+for (__cuda_local_var_20742_13_non_const_iv = 0; (__cuda_local_var_20742_13_non_const_iv < 1); __cuda_local_var_20742_13_non_const_iv++)
+# 1066 "advection.c"
+{
+# 1067 "advection.c"
+((((__cuda_local_var_20748_22_non_const_u1)[__cuda_local_var_20742_9_non_const_ia]))[__cuda_local_var_20742_13_non_const_iv]) = ((hydro->u)[(_Z25reverse_addr_rank1_assertiPKciiii(1067, ((const char *)"advection.c"), (hydro->nsite), 3, ((__cuda_local_var_20746_20_non_const_index1)[__cuda_local_var_20742_13_non_const_iv]), __cuda_local_var_20742_9_non_const_ia))]);
+# 1068 "advection.c"
+}
+# 1069 "advection.c"
+}
+# 1071 "advection.c"
+for (__cuda_local_var_20742_13_non_const_iv = 0; (__cuda_local_var_20742_13_non_const_iv < 1); __cuda_local_var_20742_13_non_const_iv++) {
+# 1071 "advection.c"
+((__cuda_local_var_20748_32_non_const_u)[__cuda_local_var_20742_13_non_const_iv]) = (((0.5) * ((double)((__cuda_local_var_20745_9_non_const_maskv)[__cuda_local_var_20742_13_non_const_iv]))) * (((((__cuda_local_var_20748_12_non_const_u0)[X]))[__cuda_local_var_20742_13_non_const_iv]) + ((((__cuda_local_var_20748_22_non_const_u1)[X]))[__cuda_local_var_20742_13_non_const_iv]))); }
+# 1073 "advection.c"
+for (__cuda_local_var_20743_9_non_const_n = 0; (__cuda_local_var_20743_9_non_const_n < __cuda_local_var_20743_12_non_const_nf); __cuda_local_var_20743_9_non_const_n++)
+# 1073 "advection.c"
+{
+# 1074 "advection.c"
+for (__cuda_local_var_20742_13_non_const_iv = 0; (__cuda_local_var_20742_13_non_const_iv < 1); __cuda_local_var_20742_13_non_const_iv++)
+# 1074 "advection.c"
+{
+# 1075 "advection.c"
+if (((__cuda_local_var_20748_32_non_const_u)[__cuda_local_var_20742_13_non_const_iv]) > (0.0))
+# 1075 "advection.c"
+{
+# 1076 "advection.c"
+((__cuda_local_var_20750_12_non_const_fd1)[__cuda_local_var_20742_13_non_const_iv]) = ((field->data)[(_Z25reverse_addr_rank1_assertiPKciiii(1076, ((const char *)"advection.c"), (field->nsites), __cuda_local_var_20743_12_non_const_nf, ((__cuda_local_var_20746_31_non_const_index2)[__cuda_local_var_20742_13_non_const_iv]), __cuda_local_var_20743_9_non_const_n))]);
+# 1077 "advection.c"
+((__cuda_local_var_20751_12_non_const_fd2)[__cuda_local_var_20742_13_non_const_iv]) = ((field->data)[(_Z25reverse_addr_rank1_assertiPKciiii(1077, ((const char *)"advection.c"), (field->nsites), __cuda_local_var_20743_12_non_const_nf, ((__cuda_local_var_20746_20_non_const_index1)[__cuda_local_var_20742_13_non_const_iv]), __cuda_local_var_20743_9_non_const_n))]);
+# 1078 "advection.c"
+((__cuda_local_var_20752_12_non_const_fd3)[__cuda_local_var_20742_13_non_const_iv]) = ((field->data)[(_Z25reverse_addr_rank1_assertiPKciiii(1078, ((const char *)"advection.c"), (field->nsites), __cuda_local_var_20743_12_non_const_nf, ((__cuda_local_var_20746_9_non_const_index0)[__cuda_local_var_20742_13_non_const_iv]), __cuda_local_var_20743_9_non_const_n))]);
+# 1079 "advection.c"
+}
+# 1080 "advection.c"
+else 
+# 1080 "advection.c"
+{
+# 1081 "advection.c"
+((__cuda_local_var_20750_12_non_const_fd1)[__cuda_local_var_20742_13_non_const_iv]) = ((field->data)[(_Z25reverse_addr_rank1_assertiPKciiii(1081, ((const char *)"advection.c"), (field->nsites), __cuda_local_var_20743_12_non_const_nf, ((__cuda_local_var_20746_42_non_const_index3)[__cuda_local_var_20742_13_non_const_iv]), __cuda_local_var_20743_9_non_const_n))]);
+# 1082 "advection.c"
+((__cuda_local_var_20751_12_non_const_fd2)[__cuda_local_var_20742_13_non_const_iv]) = ((field->data)[(_Z25reverse_addr_rank1_assertiPKciiii(1082, ((const char *)"advection.c"), (field->nsites), __cuda_local_var_20743_12_non_const_nf, ((__cuda_local_var_20746_9_non_const_index0)[__cuda_local_var_20742_13_non_const_iv]), __cuda_local_var_20743_9_non_const_n))]);
+# 1083 "advection.c"
+((__cuda_local_var_20752_12_non_const_fd3)[__cuda_local_var_20742_13_non_const_iv]) = ((field->data)[(_Z25reverse_addr_rank1_assertiPKciiii(1083, ((const char *)"advection.c"), (field->nsites), __cuda_local_var_20743_12_non_const_nf, ((__cuda_local_var_20746_20_non_const_index1)[__cuda_local_var_20742_13_non_const_iv]), __cuda_local_var_20743_9_non_const_n))]);
+# 1084 "advection.c"
+}
+# 1085 "advection.c"
+}
+# 1087 "advection.c"
+for (__cuda_local_var_20742_13_non_const_iv = 0; (__cuda_local_var_20742_13_non_const_iv < 1); __cuda_local_var_20742_13_non_const_iv++)
+# 1087 "advection.c"
+{
+# 1088 "advection.c"
+((flux->fw)[(_Z25reverse_addr_rank1_assertiPKciiii(1088, ((const char *)"advection.c"), (flux->nsite), (flux->nf), ((__cuda_local_var_20746_9_non_const_index0)[__cuda_local_var_20742_13_non_const_iv]), __cuda_local_var_20743_9_non_const_n))]) = (((__cuda_local_var_20748_32_non_const_u)[__cuda_local_var_20742_13_non_const_iv]) * ((((-0.213933000000000012) * ((__cuda_local_var_20750_12_non_const_fd1)[__cuda_local_var_20742_13_non_const_iv])) + ((0.9278650000000000508) * ((__cuda_local_var_20751_12_non_const_fd2)[__cuda_local_var_20742_13_non_const_iv]))) + ((0.2860670000000000157) * ((__cuda_local_var_20752_12_non_const_fd3)[__cuda_local_var_20742_13_non_const_iv]))));
+# 1090 "advection.c"
+}
+# 1091 "advection.c"
+}
+# 1095 "advection.c"
+_Z21kernel_coords_index_vP13kernel_ctxt_sPiS1_S1_S1_(ktx, (__cuda_local_var_20747_30_non_const_p2), (__cuda_local_var_20744_16_non_const_jc), (__cuda_local_var_20744_23_non_const_kc), (__cuda_local_var_20746_31_non_const_index2));
+# 1097 "advection.c"
+for (__cuda_local_var_20742_9_non_const_ia = 0; (__cuda_local_var_20742_9_non_const_ia < 3); __cuda_local_var_20742_9_non_const_ia++)
+# 1097 "advection.c"
+{
+# 1098 "advection.c"
+for (__cuda_local_var_20742_13_non_const_iv = 0; (__cuda_local_var_20742_13_non_const_iv < 1); __cuda_local_var_20742_13_non_const_iv++)
+# 1098 "advection.c"
+{
+# 1099 "advection.c"
+((((__cuda_local_var_20748_22_non_const_u1)[__cuda_local_var_20742_9_non_const_ia]))[__cuda_local_var_20742_13_non_const_iv]) = ((hydro->u)[(_Z25reverse_addr_rank1_assertiPKciiii(1099, ((const char *)"advection.c"), (hydro->nsite), 3, ((__cuda_local_var_20746_42_non_const_index3)[__cuda_local_var_20742_13_non_const_iv]), __cuda_local_var_20742_9_non_const_ia))]);
+# 1100 "advection.c"
+}
+# 1101 "advection.c"
+}
+# 1103 "advection.c"
+for (__cuda_local_var_20742_13_non_const_iv = 0; (__cuda_local_var_20742_13_non_const_iv < 1); __cuda_local_var_20742_13_non_const_iv++) {
+# 1103 "advection.c"
+((__cuda_local_var_20748_32_non_const_u)[__cuda_local_var_20742_13_non_const_iv]) = (((0.5) * ((double)((__cuda_local_var_20745_9_non_const_maskv)[__cuda_local_var_20742_13_non_const_iv]))) * (((((__cuda_local_var_20748_12_non_const_u0)[X]))[__cuda_local_var_20742_13_non_const_iv]) + ((((__cuda_local_var_20748_22_non_const_u1)[X]))[__cuda_local_var_20742_13_non_const_iv]))); }
+# 1105 "advection.c"
+for (__cuda_local_var_20743_9_non_const_n = 0; (__cuda_local_var_20743_9_non_const_n < __cuda_local_var_20743_12_non_const_nf); __cuda_local_var_20743_9_non_const_n++)
+# 1105 "advection.c"
+{
+# 1106 "advection.c"
+for (__cuda_local_var_20742_13_non_const_iv = 0; (__cuda_local_var_20742_13_non_const_iv < 1); __cuda_local_var_20742_13_non_const_iv++)
+# 1106 "advection.c"
+{
+# 1107 "advection.c"
+if (((__cuda_local_var_20748_32_non_const_u)[__cuda_local_var_20742_13_non_const_iv]) < (0.0))
+# 1107 "advection.c"
+{
+# 1108 "advection.c"
+((__cuda_local_var_20750_12_non_const_fd1)[__cuda_local_var_20742_13_non_const_iv]) = ((field->data)[(_Z25reverse_addr_rank1_assertiPKciiii(1108, ((const char *)"advection.c"), (field->nsites), __cuda_local_var_20743_12_non_const_nf, ((__cuda_local_var_20746_31_non_const_index2)[__cuda_local_var_20742_13_non_const_iv]), __cuda_local_var_20743_9_non_const_n))]);
+# 1109 "advection.c"
+((__cuda_local_var_20751_12_non_const_fd2)[__cuda_local_var_20742_13_non_const_iv]) = ((field->data)[(_Z25reverse_addr_rank1_assertiPKciiii(1109, ((const char *)"advection.c"), (field->nsites), __cuda_local_var_20743_12_non_const_nf, ((__cuda_local_var_20746_42_non_const_index3)[__cuda_local_var_20742_13_non_const_iv]), __cuda_local_var_20743_9_non_const_n))]);
+# 1110 "advection.c"
+((__cuda_local_var_20752_12_non_const_fd3)[__cuda_local_var_20742_13_non_const_iv]) = ((field->data)[(_Z25reverse_addr_rank1_assertiPKciiii(1110, ((const char *)"advection.c"), (field->nsites), __cuda_local_var_20743_12_non_const_nf, ((__cuda_local_var_20746_9_non_const_index0)[__cuda_local_var_20742_13_non_const_iv]), __cuda_local_var_20743_9_non_const_n))]);
+# 1111 "advection.c"
+}
+# 1112 "advection.c"
+else 
+# 1112 "advection.c"
+{
+# 1113 "advection.c"
+((__cuda_local_var_20750_12_non_const_fd1)[__cuda_local_var_20742_13_non_const_iv]) = ((field->data)[(_Z25reverse_addr_rank1_assertiPKciiii(1113, ((const char *)"advection.c"), (field->nsites), __cuda_local_var_20743_12_non_const_nf, ((__cuda_local_var_20746_20_non_const_index1)[__cuda_local_var_20742_13_non_const_iv]), __cuda_local_var_20743_9_non_const_n))]);
+# 1114 "advection.c"
+((__cuda_local_var_20751_12_non_const_fd2)[__cuda_local_var_20742_13_non_const_iv]) = ((field->data)[(_Z25reverse_addr_rank1_assertiPKciiii(1114, ((const char *)"advection.c"), (field->nsites), __cuda_local_var_20743_12_non_const_nf, ((__cuda_local_var_20746_9_non_const_index0)[__cuda_local_var_20742_13_non_const_iv]), __cuda_local_var_20743_9_non_const_n))]);
+# 1115 "advection.c"
+((__cuda_local_var_20752_12_non_const_fd3)[__cuda_local_var_20742_13_non_const_iv]) = ((field->data)[(_Z25reverse_addr_rank1_assertiPKciiii(1115, ((const char *)"advection.c"), (field->nsites), __cuda_local_var_20743_12_non_const_nf, ((__cuda_local_var_20746_42_non_const_index3)[__cuda_local_var_20742_13_non_const_iv]), __cuda_local_var_20743_9_non_const_n))]);
+# 1116 "advection.c"
+}
+# 1117 "advection.c"
+}
+# 1119 "advection.c"
+for (__cuda_local_var_20742_13_non_const_iv = 0; (__cuda_local_var_20742_13_non_const_iv < 1); __cuda_local_var_20742_13_non_const_iv++)
+# 1119 "advection.c"
+{
+# 1120 "advection.c"
+((flux->fe)[(_Z25reverse_addr_rank1_assertiPKciiii(1120, ((const char *)"advection.c"), (flux->nsite), (flux->nf), ((__cuda_local_var_20746_9_non_const_index0)[__cuda_local_var_20742_13_non_const_iv]), __cuda_local_var_20743_9_non_const_n))]) = (((__cuda_local_var_20748_32_non_const_u)[__cuda_local_var_20742_13_non_const_iv]) * ((((-0.213933000000000012) * ((__cuda_local_var_20750_12_non_const_fd1)[__cuda_local_var_20742_13_non_const_iv])) + ((0.9278650000000000508) * ((__cuda_local_var_20751_12_non_const_fd2)[__cuda_local_var_20742_13_non_const_iv]))) + ((0.2860670000000000157) * ((__cuda_local_var_20752_12_non_const_fd3)[__cuda_local_var_20742_13_non_const_iv]))));
+# 1122 "advection.c"
+}
+# 1123 "advection.c"
+}
+# 1128 "advection.c"
+for (__cuda_local_var_20742_13_non_const_iv = 0; (__cuda_local_var_20742_13_non_const_iv < 1); __cuda_local_var_20742_13_non_const_iv++) {
+# 1128 "advection.c"
+((__cuda_local_var_20747_16_non_const_m1)[__cuda_local_var_20742_13_non_const_iv]) = (((__cuda_local_var_20744_16_non_const_jc)[__cuda_local_var_20742_13_non_const_iv]) - (1 * ((__cuda_local_var_20745_9_non_const_maskv)[__cuda_local_var_20742_13_non_const_iv]))); }
+# 1129 "advection.c"
+for (__cuda_local_var_20742_13_non_const_iv = 0; (__cuda_local_var_20742_13_non_const_iv < 1); __cuda_local_var_20742_13_non_const_iv++) {
+# 1129 "advection.c"
+((__cuda_local_var_20747_23_non_const_p1)[__cuda_local_var_20742_13_non_const_iv]) = (((__cuda_local_var_20744_16_non_const_jc)[__cuda_local_var_20742_13_non_const_iv]) + (1 * ((__cuda_local_var_20745_9_non_const_maskv)[__cuda_local_var_20742_13_non_const_iv]))); }
+# 1130 "advection.c"
+for (__cuda_local_var_20742_13_non_const_iv = 0; (__cuda_local_var_20742_13_non_const_iv < 1); __cuda_local_var_20742_13_non_const_iv++) {
+# 1130 "advection.c"
+((__cuda_local_var_20747_30_non_const_p2)[__cuda_local_var_20742_13_non_const_iv]) = (((__cuda_local_var_20744_16_non_const_jc)[__cuda_local_var_20742_13_non_const_iv]) + (2 * ((__cuda_local_var_20745_9_non_const_maskv)[__cuda_local_var_20742_13_non_const_iv]))); }
+# 1132 "advection.c"
+_Z21kernel_coords_index_vP13kernel_ctxt_sPiS1_S1_S1_(ktx, (__cuda_local_var_20744_9_non_const_ic), (__cuda_local_var_20747_16_non_const_m1), (__cuda_local_var_20744_23_non_const_kc), (__cuda_local_var_20746_42_non_const_index3));
+# 1133 "advection.c"
+_Z21kernel_coords_index_vP13kernel_ctxt_sPiS1_S1_S1_(ktx, (__cuda_local_var_20744_9_non_const_ic), (__cuda_local_var_20747_23_non_const_p1), (__cuda_local_var_20744_23_non_const_kc), (__cuda_local_var_20746_20_non_const_index1));
+# 1134 "advection.c"
+_Z21kernel_coords_index_vP13kernel_ctxt_sPiS1_S1_S1_(ktx, (__cuda_local_var_20744_9_non_const_ic), (__cuda_local_var_20747_30_non_const_p2), (__cuda_local_var_20744_23_non_const_kc), (__cuda_local_var_20746_31_non_const_index2));
+# 1136 "advection.c"
+for (__cuda_local_var_20742_9_non_const_ia = 0; (__cuda_local_var_20742_9_non_const_ia < 3); __cuda_local_var_20742_9_non_const_ia++)
+# 1136 "advection.c"
+{
+# 1137 "advection.c"
+for (__cuda_local_var_20742_13_non_const_iv = 0; (__cuda_local_var_20742_13_non_const_iv < 1); __cuda_local_var_20742_13_non_const_iv++)
+# 1137 "advection.c"
+{
+# 1138 "advection.c"
+((((__cuda_local_var_20748_22_non_const_u1)[__cuda_local_var_20742_9_non_const_ia]))[__cuda_local_var_20742_13_non_const_iv]) = ((hydro->u)[(_Z25reverse_addr_rank1_assertiPKciiii(1138, ((const char *)"advection.c"), (field->nsites), 3, ((__cuda_local_var_20746_20_non_const_index1)[__cuda_local_var_20742_13_non_const_iv]), __cuda_local_var_20742_9_non_const_ia))]);
+# 1139 "advection.c"
+}
+# 1140 "advection.c"
+}
+# 1142 "advection.c"
+for (__cuda_local_var_20742_13_non_const_iv = 0; (__cuda_local_var_20742_13_non_const_iv < 1); __cuda_local_var_20742_13_non_const_iv++) {
+# 1142 "advection.c"
+((__cuda_local_var_20748_32_non_const_u)[__cuda_local_var_20742_13_non_const_iv]) = (((0.5) * ((double)((__cuda_local_var_20745_9_non_const_maskv)[__cuda_local_var_20742_13_non_const_iv]))) * (((((__cuda_local_var_20748_12_non_const_u0)[Y]))[__cuda_local_var_20742_13_non_const_iv]) + ((((__cuda_local_var_20748_22_non_const_u1)[Y]))[__cuda_local_var_20742_13_non_const_iv]))); }
+# 1144 "advection.c"
+for (__cuda_local_var_20743_9_non_const_n = 0; (__cuda_local_var_20743_9_non_const_n < __cuda_local_var_20743_12_non_const_nf); __cuda_local_var_20743_9_non_const_n++)
+# 1144 "advection.c"
+{
+# 1145 "advection.c"
+for (__cuda_local_var_20742_13_non_const_iv = 0; (__cuda_local_var_20742_13_non_const_iv < 1); __cuda_local_var_20742_13_non_const_iv++)
+# 1145 "advection.c"
+{
+# 1146 "advection.c"
+if (((__cuda_local_var_20748_32_non_const_u)[__cuda_local_var_20742_13_non_const_iv]) < (0.0))
+# 1146 "advection.c"
+{
+# 1147 "advection.c"
+((__cuda_local_var_20750_12_non_const_fd1)[__cuda_local_var_20742_13_non_const_iv]) = ((field->data)[(_Z25reverse_addr_rank1_assertiPKciiii(1147, ((const char *)"advection.c"), (field->nsites), __cuda_local_var_20743_12_non_const_nf, ((__cuda_local_var_20746_31_non_const_index2)[__cuda_local_var_20742_13_non_const_iv]), __cuda_local_var_20743_9_non_const_n))]);
+# 1148 "advection.c"
+((__cuda_local_var_20751_12_non_const_fd2)[__cuda_local_var_20742_13_non_const_iv]) = ((field->data)[(_Z25reverse_addr_rank1_assertiPKciiii(1148, ((const char *)"advection.c"), (field->nsites), __cuda_local_var_20743_12_non_const_nf, ((__cuda_local_var_20746_20_non_const_index1)[__cuda_local_var_20742_13_non_const_iv]), __cuda_local_var_20743_9_non_const_n))]);
+# 1149 "advection.c"
+((__cuda_local_var_20752_12_non_const_fd3)[__cuda_local_var_20742_13_non_const_iv]) = ((field->data)[(_Z25reverse_addr_rank1_assertiPKciiii(1149, ((const char *)"advection.c"), (field->nsites), __cuda_local_var_20743_12_non_const_nf, ((__cuda_local_var_20746_9_non_const_index0)[__cuda_local_var_20742_13_non_const_iv]), __cuda_local_var_20743_9_non_const_n))]);
+# 1150 "advection.c"
+}
+# 1151 "advection.c"
+else 
+# 1151 "advection.c"
+{
+# 1152 "advection.c"
+((__cuda_local_var_20750_12_non_const_fd1)[__cuda_local_var_20742_13_non_const_iv]) = ((field->data)[(_Z25reverse_addr_rank1_assertiPKciiii(1152, ((const char *)"advection.c"), (field->nsites), __cuda_local_var_20743_12_non_const_nf, ((__cuda_local_var_20746_42_non_const_index3)[__cuda_local_var_20742_13_non_const_iv]), __cuda_local_var_20743_9_non_const_n))]);
+# 1153 "advection.c"
+((__cuda_local_var_20751_12_non_const_fd2)[__cuda_local_var_20742_13_non_const_iv]) = ((field->data)[(_Z25reverse_addr_rank1_assertiPKciiii(1153, ((const char *)"advection.c"), (field->nsites), __cuda_local_var_20743_12_non_const_nf, ((__cuda_local_var_20746_9_non_const_index0)[__cuda_local_var_20742_13_non_const_iv]), __cuda_local_var_20743_9_non_const_n))]);
+# 1154 "advection.c"
+((__cuda_local_var_20752_12_non_const_fd3)[__cuda_local_var_20742_13_non_const_iv]) = ((field->data)[(_Z25reverse_addr_rank1_assertiPKciiii(1154, ((const char *)"advection.c"), (field->nsites), __cuda_local_var_20743_12_non_const_nf, ((__cuda_local_var_20746_20_non_const_index1)[__cuda_local_var_20742_13_non_const_iv]), __cuda_local_var_20743_9_non_const_n))]);
+# 1155 "advection.c"
+}
+# 1156 "advection.c"
+}
+# 1158 "advection.c"
+for (__cuda_local_var_20742_13_non_const_iv = 0; (__cuda_local_var_20742_13_non_const_iv < 1); __cuda_local_var_20742_13_non_const_iv++)
+# 1158 "advection.c"
+{
+# 1159 "advection.c"
+((flux->fy)[(_Z25reverse_addr_rank1_assertiPKciiii(1159, ((const char *)"advection.c"), (field->nsites), __cuda_local_var_20743_12_non_const_nf, ((__cuda_local_var_20746_9_non_const_index0)[__cuda_local_var_20742_13_non_const_iv]), __cuda_local_var_20743_9_non_const_n))]) = (((__cuda_local_var_20748_32_non_const_u)[__cuda_local_var_20742_13_non_const_iv]) * ((((-0.213933000000000012) * ((__cuda_local_var_20750_12_non_const_fd1)[__cuda_local_var_20742_13_non_const_iv])) + ((0.9278650000000000508) * ((__cuda_local_var_20751_12_non_const_fd2)[__cuda_local_var_20742_13_non_const_iv]))) + ((0.2860670000000000157) * ((__cuda_local_var_20752_12_non_const_fd3)[__cuda_local_var_20742_13_non_const_iv]))));
+# 1161 "advection.c"
+}
+# 1162 "advection.c"
+}
+# 1166 "advection.c"
+for (__cuda_local_var_20742_13_non_const_iv = 0; (__cuda_local_var_20742_13_non_const_iv < 1); __cuda_local_var_20742_13_non_const_iv++) {
+# 1166 "advection.c"
+((__cuda_local_var_20747_16_non_const_m1)[__cuda_local_var_20742_13_non_const_iv]) = (((__cuda_local_var_20744_23_non_const_kc)[__cuda_local_var_20742_13_non_const_iv]) - (1 * ((__cuda_local_var_20745_9_non_const_maskv)[__cuda_local_var_20742_13_non_const_iv]))); }
+# 1167 "advection.c"
+for (__cuda_local_var_20742_13_non_const_iv = 0; (__cuda_local_var_20742_13_non_const_iv < 1); __cuda_local_var_20742_13_non_const_iv++) {
+# 1167 "advection.c"
+((__cuda_local_var_20747_23_non_const_p1)[__cuda_local_var_20742_13_non_const_iv]) = (((__cuda_local_var_20744_23_non_const_kc)[__cuda_local_var_20742_13_non_const_iv]) + (1 * ((__cuda_local_var_20745_9_non_const_maskv)[__cuda_local_var_20742_13_non_const_iv]))); }
+# 1168 "advection.c"
+for (__cuda_local_var_20742_13_non_const_iv = 0; (__cuda_local_var_20742_13_non_const_iv < 1); __cuda_local_var_20742_13_non_const_iv++) {
+# 1168 "advection.c"
+((__cuda_local_var_20747_30_non_const_p2)[__cuda_local_var_20742_13_non_const_iv]) = (((__cuda_local_var_20744_23_non_const_kc)[__cuda_local_var_20742_13_non_const_iv]) + (2 * ((__cuda_local_var_20745_9_non_const_maskv)[__cuda_local_var_20742_13_non_const_iv]))); }
+# 1170 "advection.c"
+_Z21kernel_coords_index_vP13kernel_ctxt_sPiS1_S1_S1_(ktx, (__cuda_local_var_20744_9_non_const_ic), (__cuda_local_var_20744_16_non_const_jc), (__cuda_local_var_20747_16_non_const_m1), (__cuda_local_var_20746_42_non_const_index3));
+# 1171 "advection.c"
+_Z21kernel_coords_index_vP13kernel_ctxt_sPiS1_S1_S1_(ktx, (__cuda_local_var_20744_9_non_const_ic), (__cuda_local_var_20744_16_non_const_jc), (__cuda_local_var_20747_23_non_const_p1), (__cuda_local_var_20746_20_non_const_index1));
+# 1172 "advection.c"
+_Z21kernel_coords_index_vP13kernel_ctxt_sPiS1_S1_S1_(ktx, (__cuda_local_var_20744_9_non_const_ic), (__cuda_local_var_20744_16_non_const_jc), (__cuda_local_var_20747_30_non_const_p2), (__cuda_local_var_20746_31_non_const_index2));
+# 1174 "advection.c"
+for (__cuda_local_var_20742_9_non_const_ia = 0; (__cuda_local_var_20742_9_non_const_ia < 3); __cuda_local_var_20742_9_non_const_ia++)
+# 1174 "advection.c"
+{
+# 1175 "advection.c"
+for (__cuda_local_var_20742_13_non_const_iv = 0; (__cuda_local_var_20742_13_non_const_iv < 1); __cuda_local_var_20742_13_non_const_iv++)
+# 1175 "advection.c"
+{
+# 1176 "advection.c"
+((((__cuda_local_var_20748_22_non_const_u1)[__cuda_local_var_20742_9_non_const_ia]))[__cuda_local_var_20742_13_non_const_iv]) = ((hydro->u)[(_Z25reverse_addr_rank1_assertiPKciiii(1176, ((const char *)"advection.c"), (hydro->nsite), 3, ((__cuda_local_var_20746_20_non_const_index1)[__cuda_local_var_20742_13_non_const_iv]), __cuda_local_var_20742_9_non_const_ia))]);
+# 1177 "advection.c"
+}
+# 1178 "advection.c"
+}
+# 1180 "advection.c"
+for (__cuda_local_var_20742_13_non_const_iv = 0; (__cuda_local_var_20742_13_non_const_iv < 1); __cuda_local_var_20742_13_non_const_iv++) {
+# 1180 "advection.c"
+((__cuda_local_var_20748_32_non_const_u)[__cuda_local_var_20742_13_non_const_iv]) = (((0.5) * ((double)((__cuda_local_var_20745_9_non_const_maskv)[__cuda_local_var_20742_13_non_const_iv]))) * (((((__cuda_local_var_20748_12_non_const_u0)[Z]))[__cuda_local_var_20742_13_non_const_iv]) + ((((__cuda_local_var_20748_22_non_const_u1)[Z]))[__cuda_local_var_20742_13_non_const_iv]))); }
+# 1182 "advection.c"
+for (__cuda_local_var_20743_9_non_const_n = 0; (__cuda_local_var_20743_9_non_const_n < __cuda_local_var_20743_12_non_const_nf); __cuda_local_var_20743_9_non_const_n++)
+# 1182 "advection.c"
+{
+# 1183 "advection.c"
+for (__cuda_local_var_20742_13_non_const_iv = 0; (__cuda_local_var_20742_13_non_const_iv < 1); __cuda_local_var_20742_13_non_const_iv++)
+# 1183 "advection.c"
+{
+# 1184 "advection.c"
+if (((__cuda_local_var_20748_32_non_const_u)[__cuda_local_var_20742_13_non_const_iv]) < (0.0))
+# 1184 "advection.c"
+{
+# 1185 "advection.c"
+((__cuda_local_var_20750_12_non_const_fd1)[__cuda_local_var_20742_13_non_const_iv]) = ((field->data)[(_Z25reverse_addr_rank1_assertiPKciiii(1185, ((const char *)"advection.c"), (field->nsites), __cuda_local_var_20743_12_non_const_nf, ((__cuda_local_var_20746_31_non_const_index2)[__cuda_local_var_20742_13_non_const_iv]), __cuda_local_var_20743_9_non_const_n))]);
+# 1186 "advection.c"
+((__cuda_local_var_20751_12_non_const_fd2)[__cuda_local_var_20742_13_non_const_iv]) = ((field->data)[(_Z25reverse_addr_rank1_assertiPKciiii(1186, ((const char *)"advection.c"), (field->nsites), __cuda_local_var_20743_12_non_const_nf, ((__cuda_local_var_20746_20_non_const_index1)[__cuda_local_var_20742_13_non_const_iv]), __cuda_local_var_20743_9_non_const_n))]);
+# 1187 "advection.c"
+((__cuda_local_var_20752_12_non_const_fd3)[__cuda_local_var_20742_13_non_const_iv]) = ((field->data)[(_Z25reverse_addr_rank1_assertiPKciiii(1187, ((const char *)"advection.c"), (field->nsites), __cuda_local_var_20743_12_non_const_nf, ((__cuda_local_var_20746_9_non_const_index0)[__cuda_local_var_20742_13_non_const_iv]), __cuda_local_var_20743_9_non_const_n))]);
+# 1188 "advection.c"
+}
+# 1189 "advection.c"
+else 
+# 1189 "advection.c"
+{
+# 1190 "advection.c"
+((__cuda_local_var_20750_12_non_const_fd1)[__cuda_local_var_20742_13_non_const_iv]) = ((field->data)[(_Z25reverse_addr_rank1_assertiPKciiii(1190, ((const char *)"advection.c"), (field->nsites), __cuda_local_var_20743_12_non_const_nf, ((__cuda_local_var_20746_42_non_const_index3)[__cuda_local_var_20742_13_non_const_iv]), __cuda_local_var_20743_9_non_const_n))]);
+# 1191 "advection.c"
+((__cuda_local_var_20751_12_non_const_fd2)[__cuda_local_var_20742_13_non_const_iv]) = ((field->data)[(_Z25reverse_addr_rank1_assertiPKciiii(1191, ((const char *)"advection.c"), (field->nsites), __cuda_local_var_20743_12_non_const_nf, ((__cuda_local_var_20746_9_non_const_index0)[__cuda_local_var_20742_13_non_const_iv]), __cuda_local_var_20743_9_non_const_n))]);
+# 1192 "advection.c"
+((__cuda_local_var_20752_12_non_const_fd3)[__cuda_local_var_20742_13_non_const_iv]) = ((field->data)[(_Z25reverse_addr_rank1_assertiPKciiii(1192, ((const char *)"advection.c"), (field->nsites), __cuda_local_var_20743_12_non_const_nf, ((__cuda_local_var_20746_20_non_const_index1)[__cuda_local_var_20742_13_non_const_iv]), __cuda_local_var_20743_9_non_const_n))]);
+# 1193 "advection.c"
+}
+# 1194 "advection.c"
+}
+# 1196 "advection.c"
+for (__cuda_local_var_20742_13_non_const_iv = 0; (__cuda_local_var_20742_13_non_const_iv < 1); __cuda_local_var_20742_13_non_const_iv++)
+# 1196 "advection.c"
+{
+# 1197 "advection.c"
+((flux->fz)[(_Z25reverse_addr_rank1_assertiPKciiii(1197, ((const char *)"advection.c"), (field->nsites), __cuda_local_var_20743_12_non_const_nf, ((__cuda_local_var_20746_9_non_const_index0)[__cuda_local_var_20742_13_non_const_iv]), __cuda_local_var_20743_9_non_const_n))]) = (((__cuda_local_var_20748_32_non_const_u)[__cuda_local_var_20742_13_non_const_iv]) * ((((-0.213933000000000012) * ((__cuda_local_var_20750_12_non_const_fd1)[__cuda_local_var_20742_13_non_const_iv])) + ((0.9278650000000000508) * ((__cuda_local_var_20751_12_non_const_fd2)[__cuda_local_var_20742_13_non_const_iv]))) + ((0.2860670000000000157) * ((__cuda_local_var_20752_12_non_const_fd3)[__cuda_local_var_20742_13_non_const_iv]))));
+# 1199 "advection.c"
+}
+# 1200 "advection.c"
+}
+# 1202 "advection.c"
+}
+# 1204 "advection.c"
+return;
+# 1205 "advection.c"
+}}

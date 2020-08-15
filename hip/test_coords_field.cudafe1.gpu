@@ -1,0 +1,461 @@
+typedef char __nv_bool;
+# 58 "../.././mpi_s/mpi.h"
+enum elementary_datatypes {
+# 58 "../.././mpi_s/mpi.h"
+MPI_CHAR,
+# 59 "../.././mpi_s/mpi.h"
+MPI_SHORT,
+# 60 "../.././mpi_s/mpi.h"
+MPI_INT,
+# 61 "../.././mpi_s/mpi.h"
+MPI_LONG,
+# 62 "../.././mpi_s/mpi.h"
+MPI_UNSIGNED_CHAR,
+# 63 "../.././mpi_s/mpi.h"
+MPI_UNSIGNED_SHORT,
+# 64 "../.././mpi_s/mpi.h"
+MPI_UNSIGNED,
+# 65 "../.././mpi_s/mpi.h"
+MPI_UNSIGNED_LONG,
+# 66 "../.././mpi_s/mpi.h"
+MPI_FLOAT,
+# 67 "../.././mpi_s/mpi.h"
+MPI_DOUBLE,
+# 68 "../.././mpi_s/mpi.h"
+MPI_LONG_DOUBLE,
+# 69 "../.././mpi_s/mpi.h"
+MPI_BYTE,
+# 70 "../.././mpi_s/mpi.h"
+MPI_PACKED};
+# 185 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+enum hipError_t {
+# 186 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipSuccess,
+# 187 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidValue,
+# 189 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorOutOfMemory,
+# 191 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorMemoryAllocation = 2,
+# 192 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorNotInitialized,
+# 194 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInitializationError = 3,
+# 195 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorDeinitialized,
+# 196 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorProfilerDisabled,
+# 197 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorProfilerNotInitialized,
+# 198 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorProfilerAlreadyStarted,
+# 199 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorProfilerAlreadyStopped,
+# 200 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidConfiguration,
+# 201 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidSymbol = 13,
+# 202 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidDevicePointer = 17,
+# 203 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidMemcpyDirection = 21,
+# 204 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInsufficientDriver = 35,
+# 205 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorMissingConfiguration = 52,
+# 206 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorPriorLaunchFailure,
+# 207 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidDeviceFunction = 98,
+# 208 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorNoDevice = 100,
+# 209 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidDevice,
+# 210 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidImage = 200,
+# 211 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidContext,
+# 212 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorContextAlreadyCurrent,
+# 213 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorMapFailed = 205,
+# 215 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorMapBufferObjectFailed = 205,
+# 216 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorUnmapFailed,
+# 217 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorArrayIsMapped,
+# 218 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorAlreadyMapped,
+# 219 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorNoBinaryForGpu,
+# 220 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorAlreadyAcquired,
+# 221 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorNotMapped,
+# 222 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorNotMappedAsArray,
+# 223 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorNotMappedAsPointer,
+# 224 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorECCNotCorrectable,
+# 225 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorUnsupportedLimit,
+# 226 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorContextAlreadyInUse,
+# 227 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorPeerAccessUnsupported,
+# 228 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidKernelFile,
+# 229 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidGraphicsContext,
+# 230 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidSource = 300,
+# 231 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorFileNotFound,
+# 232 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorSharedObjectSymbolNotFound,
+# 233 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorSharedObjectInitFailed,
+# 234 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorOperatingSystem,
+# 235 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidHandle = 400,
+# 237 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidResourceHandle = 400,
+# 238 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorNotFound = 500,
+# 239 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorNotReady = 600,
+# 243 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorIllegalAddress = 700,
+# 244 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorLaunchOutOfResources,
+# 245 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorLaunchTimeOut,
+# 246 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorPeerAccessAlreadyEnabled = 704,
+# 248 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorPeerAccessNotEnabled,
+# 250 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorSetOnActiveProcess = 708,
+# 251 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorAssert = 710,
+# 252 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorHostMemoryAlreadyRegistered = 712,
+# 254 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorHostMemoryNotRegistered,
+# 256 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorLaunchFailure = 719,
+# 258 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorCooperativeLaunchTooLarge,
+# 262 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorNotSupported = 801,
+# 263 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorUnknown = 999,
+# 265 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorRuntimeMemory = 1052,
+# 267 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorRuntimeOther,
+# 269 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorTbd};
+# 646 "/usr/local/cuda-10.1/include/cuda.h" 3
+enum CUfunction_attribute_enum {
+# 652 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_MAX_THREADS_PER_BLOCK,
+# 659 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_SHARED_SIZE_BYTES,
+# 665 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_CONST_SIZE_BYTES,
+# 670 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_LOCAL_SIZE_BYTES,
+# 675 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_NUM_REGS,
+# 684 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_PTX_VERSION,
+# 693 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_BINARY_VERSION,
+# 699 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_CACHE_MODE_CA,
+# 707 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_MAX_DYNAMIC_SHARED_SIZE_BYTES,
+# 716 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_PREFERRED_SHARED_MEMORY_CARVEOUT,
+# 718 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_MAX};
+# 724 "/usr/local/cuda-10.1/include/cuda.h" 3
+enum CUfunc_cache_enum {
+# 725 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_CACHE_PREFER_NONE = 0,
+# 726 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_CACHE_PREFER_SHARED = 1,
+# 727 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_CACHE_PREFER_L1 = 2,
+# 728 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_CACHE_PREFER_EQUAL = 3};
+# 734 "/usr/local/cuda-10.1/include/cuda.h" 3
+enum CUsharedconfig_enum {
+# 735 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_SHARED_MEM_CONFIG_DEFAULT_BANK_SIZE = 0,
+# 736 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_SHARED_MEM_CONFIG_FOUR_BYTE_BANK_SIZE = 1,
+# 737 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_SHARED_MEM_CONFIG_EIGHT_BYTE_BANK_SIZE = 2};
+# 790 "/usr/local/cuda-10.1/include/cuda.h" 3
+enum CUjit_option_enum {
+# 797 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_MAX_REGISTERS,
+# 812 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_THREADS_PER_BLOCK,
+# 820 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_WALL_TIME,
+# 829 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_INFO_LOG_BUFFER,
+# 838 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_INFO_LOG_BUFFER_SIZE_BYTES,
+# 847 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_ERROR_LOG_BUFFER,
+# 856 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_ERROR_LOG_BUFFER_SIZE_BYTES,
+# 864 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_OPTIMIZATION_LEVEL,
+# 872 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_TARGET_FROM_CUCONTEXT,
+# 880 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_TARGET,
+# 889 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_FALLBACK_STRATEGY,
+# 897 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_GENERATE_DEBUG_INFO,
+# 904 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_LOG_VERBOSE,
+# 911 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_GENERATE_LINE_INFO,
+# 919 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_CACHE_MODE,
+# 924 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_NEW_SM3X_OPT,
+# 925 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_FAST_COMPILE,
+# 939 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_GLOBAL_SYMBOL_NAMES,
+# 948 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_GLOBAL_SYMBOL_ADDRESSES,
+# 956 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_GLOBAL_SYMBOL_COUNT,
+# 958 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_NUM_OPTIONS};
+# 1194 "/usr/local/cuda-10.1/include/cuda.h" 3
+enum cudaError_enum {
+# 1200 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_SUCCESS,
+# 1206 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_INVALID_VALUE,
+# 1212 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_OUT_OF_MEMORY,
+# 1218 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_NOT_INITIALIZED,
+# 1223 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_DEINITIALIZED,
+# 1230 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_PROFILER_DISABLED,
+# 1238 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_PROFILER_NOT_INITIALIZED,
+# 1245 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_PROFILER_ALREADY_STARTED,
+# 1252 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_PROFILER_ALREADY_STOPPED,
+# 1258 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_NO_DEVICE = 100,
+# 1264 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_INVALID_DEVICE,
+# 1271 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_INVALID_IMAGE = 200,
+# 1281 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_INVALID_CONTEXT,
+# 1290 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_CONTEXT_ALREADY_CURRENT,
+# 1295 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_MAP_FAILED = 205,
+# 1300 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_UNMAP_FAILED,
+# 1306 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_ARRAY_IS_MAPPED,
+# 1311 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_ALREADY_MAPPED,
+# 1319 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_NO_BINARY_FOR_GPU,
+# 1324 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_ALREADY_ACQUIRED,
+# 1329 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_NOT_MAPPED,
+# 1335 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_NOT_MAPPED_AS_ARRAY,
+# 1341 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_NOT_MAPPED_AS_POINTER,
+# 1347 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_ECC_UNCORRECTABLE,
+# 1353 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_UNSUPPORTED_LIMIT,
+# 1360 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_CONTEXT_ALREADY_IN_USE,
+# 1366 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_PEER_ACCESS_UNSUPPORTED,
+# 1371 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_INVALID_PTX,
+# 1376 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_INVALID_GRAPHICS_CONTEXT,
+# 1382 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_NVLINK_UNCORRECTABLE,
+# 1387 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_JIT_COMPILER_NOT_FOUND,
+# 1392 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_INVALID_SOURCE = 300,
+# 1397 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_FILE_NOT_FOUND,
+# 1402 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_SHARED_OBJECT_SYMBOL_NOT_FOUND,
+# 1407 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_SHARED_OBJECT_INIT_FAILED,
+# 1412 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_OPERATING_SYSTEM,
+# 1418 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_INVALID_HANDLE = 400,
+# 1424 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_ILLEGAL_STATE,
+# 1430 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_NOT_FOUND = 500,
+# 1438 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_NOT_READY = 600,
+# 1447 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_ILLEGAL_ADDRESS = 700,
+# 1458 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_LAUNCH_OUT_OF_RESOURCES,
+# 1468 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_LAUNCH_TIMEOUT,
+# 1474 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_LAUNCH_INCOMPATIBLE_TEXTURING,
+# 1481 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_PEER_ACCESS_ALREADY_ENABLED,
+# 1488 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_PEER_ACCESS_NOT_ENABLED,
+# 1494 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_PRIMARY_CONTEXT_ACTIVE = 708,
+# 1501 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_CONTEXT_IS_DESTROYED,
+# 1509 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_ASSERT,
+# 1516 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_TOO_MANY_PEERS,
+# 1522 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_HOST_MEMORY_ALREADY_REGISTERED,
+# 1528 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_HOST_MEMORY_NOT_REGISTERED,
+# 1537 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_HARDWARE_STACK_ERROR,
+# 1545 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_ILLEGAL_INSTRUCTION,
+# 1554 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_MISALIGNED_ADDRESS,
+# 1565 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_INVALID_ADDRESS_SPACE,
+# 1573 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_INVALID_PC,
+# 1584 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_LAUNCH_FAILED,
+# 1593 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_COOPERATIVE_LAUNCH_TOO_LARGE,
+# 1598 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_NOT_PERMITTED = 800,
+# 1604 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_NOT_SUPPORTED,
+# 1613 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_SYSTEM_NOT_READY,
+# 1620 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_SYSTEM_DRIVER_MISMATCH,
+# 1629 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_COMPAT_NOT_SUPPORTED_ON_DEVICE,
+# 1635 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_STREAM_CAPTURE_UNSUPPORTED = 900,
+# 1641 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_STREAM_CAPTURE_INVALIDATED,
+# 1647 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_STREAM_CAPTURE_MERGE,
+# 1652 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_STREAM_CAPTURE_UNMATCHED,
+# 1658 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_STREAM_CAPTURE_UNJOINED,
+# 1665 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_STREAM_CAPTURE_ISOLATION,
+# 1671 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_STREAM_CAPTURE_IMPLICIT,
+# 1677 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_CAPTURED_EVENT,
+# 1684 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_STREAM_CAPTURE_WRONG_THREAD,
+# 1689 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_UNKNOWN = 999};
+# 45 "/opt/rocm-3.3.0/hip/include/hip/nvcc_detail/hip_runtime_api.h" 3
+enum hipMemcpyKind {
+# 46 "/opt/rocm-3.3.0/hip/include/hip/nvcc_detail/hip_runtime_api.h" 3
+hipMemcpyHostToHost,
+# 47 "/opt/rocm-3.3.0/hip/include/hip/nvcc_detail/hip_runtime_api.h" 3
+hipMemcpyHostToDevice,
+# 48 "/opt/rocm-3.3.0/hip/include/hip/nvcc_detail/hip_runtime_api.h" 3
+hipMemcpyDeviceToHost,
+# 49 "/opt/rocm-3.3.0/hip/include/hip/nvcc_detail/hip_runtime_api.h" 3
+hipMemcpyDeviceToDevice,
+# 50 "/opt/rocm-3.3.0/hip/include/hip/nvcc_detail/hip_runtime_api.h" 3
+hipMemcpyDefault};
+# 22 "../.././src/coords.h"
+struct coords_s;
+# 26 "../.././src/coords.h"
+enum cartesian_directions {
+# 26 "../.././src/coords.h"
+X,
+# 26 "../.././src/coords.h"
+Y,
+# 26 "../.././src/coords.h"
+Z};
+# 212 "/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stddef.h" 3
+typedef unsigned long size_t;
+#include "crt/device_runtime.h"
+# 25 "../.././mpi_s/mpi.h"
+typedef int MPI_Handle;
+# 28 "../.././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Datatype;
+# 22 "../.././src/coords.h"
+typedef struct coords_s cs_t;
+# 23 "test_coords_field.h"
+typedef int (*halo_ft)(cs_t *, int, int, int, int, void *);
+# 68 "/usr/include/assert.h" 3
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__noreturn__)) void __assert_fail(const char *, const char *, unsigned, const char *);
+#if !defined(__CUDABE__)
+# 182 "/usr/include/bits/mathcalls.h" 3
+ __device_builtin__ ___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__const__)) double fabs(double);
+#endif
+#if !defined(__CUDABE__)
+# 63 "/usr/include/bits/mathcalls.h" 3
+ __device_builtin__ ___device__(extern  __no_sc__) __attribute__((__nothrow__)) double cos(double);
+#endif
+# 57 "../.././src/coords.h"
+___device__(extern  __no_sc__) int _Z7cs_ltotP8coords_sPd(cs_t *, double *);
+# 59 "../.././src/coords.h"
+___device__(extern  __no_sc__) int _Z9cs_nlocalP8coords_sPi(cs_t *, int *);
+# 60 "../.././src/coords.h"
+___device__(extern  __no_sc__) int _Z16cs_nlocal_offsetP8coords_sPi(cs_t *, int *);
+# 62 "../.././src/coords.h"
+___device__(extern  __no_sc__) int _Z8cs_indexP8coords_siii(cs_t *, int, int, int);
+# 63 "../.././src/coords.h"
+___device__(extern  __no_sc__) int _Z9cs_ntotalP8coords_sPi(cs_t *, int *);
+# 64 "../.././src/coords.h"
+___device__(extern  __no_sc__) int _Z9cs_nsitesP8coords_sPi(cs_t *, int *);
+# 62 "../.././src/memory.h"
+___device__(extern  __no_sc__) int _Z14mem_addr_rank1iiii(int, int, int, int);
+# 18 "tests.h"
+___device__(extern  __no_sc__) void _Z16test_assert_infoiiPKc(const int, int, const char *);
+#include "common_functions.h"
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif

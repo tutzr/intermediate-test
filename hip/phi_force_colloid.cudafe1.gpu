@@ -1,0 +1,1763 @@
+typedef char __nv_bool;
+# 2074 "/usr/local/cuda-10.1/include/driver_types.h" 3
+struct CUstream_st;
+# 185 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+enum hipError_t {
+# 186 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipSuccess,
+# 187 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidValue,
+# 189 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorOutOfMemory,
+# 191 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorMemoryAllocation = 2,
+# 192 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorNotInitialized,
+# 194 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInitializationError = 3,
+# 195 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorDeinitialized,
+# 196 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorProfilerDisabled,
+# 197 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorProfilerNotInitialized,
+# 198 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorProfilerAlreadyStarted,
+# 199 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorProfilerAlreadyStopped,
+# 200 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidConfiguration,
+# 201 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidSymbol = 13,
+# 202 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidDevicePointer = 17,
+# 203 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidMemcpyDirection = 21,
+# 204 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInsufficientDriver = 35,
+# 205 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorMissingConfiguration = 52,
+# 206 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorPriorLaunchFailure,
+# 207 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidDeviceFunction = 98,
+# 208 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorNoDevice = 100,
+# 209 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidDevice,
+# 210 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidImage = 200,
+# 211 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidContext,
+# 212 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorContextAlreadyCurrent,
+# 213 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorMapFailed = 205,
+# 215 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorMapBufferObjectFailed = 205,
+# 216 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorUnmapFailed,
+# 217 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorArrayIsMapped,
+# 218 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorAlreadyMapped,
+# 219 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorNoBinaryForGpu,
+# 220 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorAlreadyAcquired,
+# 221 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorNotMapped,
+# 222 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorNotMappedAsArray,
+# 223 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorNotMappedAsPointer,
+# 224 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorECCNotCorrectable,
+# 225 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorUnsupportedLimit,
+# 226 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorContextAlreadyInUse,
+# 227 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorPeerAccessUnsupported,
+# 228 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidKernelFile,
+# 229 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidGraphicsContext,
+# 230 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidSource = 300,
+# 231 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorFileNotFound,
+# 232 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorSharedObjectSymbolNotFound,
+# 233 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorSharedObjectInitFailed,
+# 234 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorOperatingSystem,
+# 235 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidHandle = 400,
+# 237 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorInvalidResourceHandle = 400,
+# 238 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorNotFound = 500,
+# 239 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorNotReady = 600,
+# 243 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorIllegalAddress = 700,
+# 244 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorLaunchOutOfResources,
+# 245 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorLaunchTimeOut,
+# 246 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorPeerAccessAlreadyEnabled = 704,
+# 248 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorPeerAccessNotEnabled,
+# 250 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorSetOnActiveProcess = 708,
+# 251 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorAssert = 710,
+# 252 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorHostMemoryAlreadyRegistered = 712,
+# 254 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorHostMemoryNotRegistered,
+# 256 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorLaunchFailure = 719,
+# 258 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorCooperativeLaunchTooLarge,
+# 262 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorNotSupported = 801,
+# 263 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorUnknown = 999,
+# 265 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorRuntimeMemory = 1052,
+# 267 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorRuntimeOther,
+# 269 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+hipErrorTbd};
+# 646 "/usr/local/cuda-10.1/include/cuda.h" 3
+enum CUfunction_attribute_enum {
+# 652 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_MAX_THREADS_PER_BLOCK,
+# 659 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_SHARED_SIZE_BYTES,
+# 665 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_CONST_SIZE_BYTES,
+# 670 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_LOCAL_SIZE_BYTES,
+# 675 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_NUM_REGS,
+# 684 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_PTX_VERSION,
+# 693 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_BINARY_VERSION,
+# 699 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_CACHE_MODE_CA,
+# 707 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_MAX_DYNAMIC_SHARED_SIZE_BYTES,
+# 716 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_PREFERRED_SHARED_MEMORY_CARVEOUT,
+# 718 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_ATTRIBUTE_MAX};
+# 724 "/usr/local/cuda-10.1/include/cuda.h" 3
+enum CUfunc_cache_enum {
+# 725 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_CACHE_PREFER_NONE = 0,
+# 726 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_CACHE_PREFER_SHARED = 1,
+# 727 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_CACHE_PREFER_L1 = 2,
+# 728 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_FUNC_CACHE_PREFER_EQUAL = 3};
+# 734 "/usr/local/cuda-10.1/include/cuda.h" 3
+enum CUsharedconfig_enum {
+# 735 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_SHARED_MEM_CONFIG_DEFAULT_BANK_SIZE = 0,
+# 736 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_SHARED_MEM_CONFIG_FOUR_BYTE_BANK_SIZE = 1,
+# 737 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_SHARED_MEM_CONFIG_EIGHT_BYTE_BANK_SIZE = 2};
+# 790 "/usr/local/cuda-10.1/include/cuda.h" 3
+enum CUjit_option_enum {
+# 797 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_MAX_REGISTERS,
+# 812 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_THREADS_PER_BLOCK,
+# 820 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_WALL_TIME,
+# 829 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_INFO_LOG_BUFFER,
+# 838 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_INFO_LOG_BUFFER_SIZE_BYTES,
+# 847 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_ERROR_LOG_BUFFER,
+# 856 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_ERROR_LOG_BUFFER_SIZE_BYTES,
+# 864 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_OPTIMIZATION_LEVEL,
+# 872 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_TARGET_FROM_CUCONTEXT,
+# 880 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_TARGET,
+# 889 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_FALLBACK_STRATEGY,
+# 897 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_GENERATE_DEBUG_INFO,
+# 904 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_LOG_VERBOSE,
+# 911 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_GENERATE_LINE_INFO,
+# 919 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_CACHE_MODE,
+# 924 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_NEW_SM3X_OPT,
+# 925 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_FAST_COMPILE,
+# 939 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_GLOBAL_SYMBOL_NAMES,
+# 948 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_GLOBAL_SYMBOL_ADDRESSES,
+# 956 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_GLOBAL_SYMBOL_COUNT,
+# 958 "/usr/local/cuda-10.1/include/cuda.h" 3
+CU_JIT_NUM_OPTIONS};
+# 1194 "/usr/local/cuda-10.1/include/cuda.h" 3
+enum cudaError_enum {
+# 1200 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_SUCCESS,
+# 1206 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_INVALID_VALUE,
+# 1212 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_OUT_OF_MEMORY,
+# 1218 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_NOT_INITIALIZED,
+# 1223 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_DEINITIALIZED,
+# 1230 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_PROFILER_DISABLED,
+# 1238 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_PROFILER_NOT_INITIALIZED,
+# 1245 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_PROFILER_ALREADY_STARTED,
+# 1252 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_PROFILER_ALREADY_STOPPED,
+# 1258 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_NO_DEVICE = 100,
+# 1264 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_INVALID_DEVICE,
+# 1271 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_INVALID_IMAGE = 200,
+# 1281 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_INVALID_CONTEXT,
+# 1290 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_CONTEXT_ALREADY_CURRENT,
+# 1295 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_MAP_FAILED = 205,
+# 1300 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_UNMAP_FAILED,
+# 1306 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_ARRAY_IS_MAPPED,
+# 1311 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_ALREADY_MAPPED,
+# 1319 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_NO_BINARY_FOR_GPU,
+# 1324 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_ALREADY_ACQUIRED,
+# 1329 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_NOT_MAPPED,
+# 1335 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_NOT_MAPPED_AS_ARRAY,
+# 1341 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_NOT_MAPPED_AS_POINTER,
+# 1347 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_ECC_UNCORRECTABLE,
+# 1353 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_UNSUPPORTED_LIMIT,
+# 1360 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_CONTEXT_ALREADY_IN_USE,
+# 1366 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_PEER_ACCESS_UNSUPPORTED,
+# 1371 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_INVALID_PTX,
+# 1376 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_INVALID_GRAPHICS_CONTEXT,
+# 1382 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_NVLINK_UNCORRECTABLE,
+# 1387 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_JIT_COMPILER_NOT_FOUND,
+# 1392 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_INVALID_SOURCE = 300,
+# 1397 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_FILE_NOT_FOUND,
+# 1402 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_SHARED_OBJECT_SYMBOL_NOT_FOUND,
+# 1407 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_SHARED_OBJECT_INIT_FAILED,
+# 1412 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_OPERATING_SYSTEM,
+# 1418 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_INVALID_HANDLE = 400,
+# 1424 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_ILLEGAL_STATE,
+# 1430 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_NOT_FOUND = 500,
+# 1438 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_NOT_READY = 600,
+# 1447 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_ILLEGAL_ADDRESS = 700,
+# 1458 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_LAUNCH_OUT_OF_RESOURCES,
+# 1468 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_LAUNCH_TIMEOUT,
+# 1474 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_LAUNCH_INCOMPATIBLE_TEXTURING,
+# 1481 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_PEER_ACCESS_ALREADY_ENABLED,
+# 1488 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_PEER_ACCESS_NOT_ENABLED,
+# 1494 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_PRIMARY_CONTEXT_ACTIVE = 708,
+# 1501 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_CONTEXT_IS_DESTROYED,
+# 1509 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_ASSERT,
+# 1516 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_TOO_MANY_PEERS,
+# 1522 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_HOST_MEMORY_ALREADY_REGISTERED,
+# 1528 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_HOST_MEMORY_NOT_REGISTERED,
+# 1537 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_HARDWARE_STACK_ERROR,
+# 1545 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_ILLEGAL_INSTRUCTION,
+# 1554 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_MISALIGNED_ADDRESS,
+# 1565 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_INVALID_ADDRESS_SPACE,
+# 1573 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_INVALID_PC,
+# 1584 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_LAUNCH_FAILED,
+# 1593 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_COOPERATIVE_LAUNCH_TOO_LARGE,
+# 1598 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_NOT_PERMITTED = 800,
+# 1604 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_NOT_SUPPORTED,
+# 1613 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_SYSTEM_NOT_READY,
+# 1620 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_SYSTEM_DRIVER_MISMATCH,
+# 1629 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_COMPAT_NOT_SUPPORTED_ON_DEVICE,
+# 1635 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_STREAM_CAPTURE_UNSUPPORTED = 900,
+# 1641 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_STREAM_CAPTURE_INVALIDATED,
+# 1647 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_STREAM_CAPTURE_MERGE,
+# 1652 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_STREAM_CAPTURE_UNMATCHED,
+# 1658 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_STREAM_CAPTURE_UNJOINED,
+# 1665 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_STREAM_CAPTURE_ISOLATION,
+# 1671 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_STREAM_CAPTURE_IMPLICIT,
+# 1677 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_CAPTURED_EVENT,
+# 1684 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_STREAM_CAPTURE_WRONG_THREAD,
+# 1689 "/usr/local/cuda-10.1/include/cuda.h" 3
+CUDA_ERROR_UNKNOWN = 999};
+# 45 "/opt/rocm-3.3.0/hip/include/hip/nvcc_detail/hip_runtime_api.h" 3
+enum hipMemcpyKind {
+# 46 "/opt/rocm-3.3.0/hip/include/hip/nvcc_detail/hip_runtime_api.h" 3
+hipMemcpyHostToHost,
+# 47 "/opt/rocm-3.3.0/hip/include/hip/nvcc_detail/hip_runtime_api.h" 3
+hipMemcpyHostToDevice,
+# 48 "/opt/rocm-3.3.0/hip/include/hip/nvcc_detail/hip_runtime_api.h" 3
+hipMemcpyDeviceToHost,
+# 49 "/opt/rocm-3.3.0/hip/include/hip/nvcc_detail/hip_runtime_api.h" 3
+hipMemcpyDeviceToDevice,
+# 50 "/opt/rocm-3.3.0/hip/include/hip/nvcc_detail/hip_runtime_api.h" 3
+hipMemcpyDefault};
+# 22 "pe.h"
+struct pe_s;
+# 22 "coords.h"
+struct coords_s;
+# 26 "coords.h"
+enum cartesian_directions {
+# 26 "coords.h"
+X,
+# 26 "coords.h"
+Y,
+# 26 "coords.h"
+Z};
+# 23 "kernel.h"
+struct kernel_param_s;
+# 28 "kernel.h"
+struct kernel_ctxt_s;
+# 37 "kernel.h"
+struct kernel_info_s;
+# 22 "d3q19.h"
+enum _ZUt2_ {
+# 22 "d3q19.h"
+NVEL19 = 19};
+# 73 "io_harness.h"
+struct io_info_s;
+# 24 "map.h"
+enum map_status {
+# 24 "map.h"
+MAP_FLUID,
+# 24 "map.h"
+MAP_BOUNDARY,
+# 24 "map.h"
+MAP_COLLOID,
+# 24 "map.h"
+MAP_STATUS_MAX};
+# 25 "wall.h"
+struct wall_s;
+# 44 "colloid.h"
+struct colloid_state_type;
+# 24 "colloid_link.h"
+struct colloid_link_type;
+# 37 "colloid_link.h"
+enum link_status {
+# 37 "colloid_link.h"
+LINK_FLUID,
+# 37 "colloid_link.h"
+LINK_COLLOID,
+# 37 "colloid_link.h"
+LINK_BOUNDARY,
+# 37 "colloid_link.h"
+LINK_UNUSED};
+# 26 "colloids.h"
+struct colloid;
+# 24 "colloids_s.h"
+struct colloids_info_s;
+# 22 "map_s.h"
+struct map_s;
+# 66 "free_energy.h"
+struct fe_s;
+# 26 "phi_force_stress.h"
+enum _ZUt9_ {
+# 26 "phi_force_stress.h"
+PTH_METHOD_NO_FORCE,
+# 26 "phi_force_stress.h"
+PTH_METHOD_DIVERGENCE,
+# 26 "phi_force_stress.h"
+PTH_METHOD_GRADMU};
+# 10 "pth_s.h"
+struct pth_s;
+# 23 "halo_swap.h"
+struct halo_swap_s;
+# 22 "leesedwards.h"
+struct lees_edw_s;
+# 32 "hydro.h"
+struct hydro_s;
+# 30 "timer.h"
+enum timer_id {
+# 30 "timer.h"
+TIMER_TOTAL,
+# 31 "timer.h"
+TIMER_STEPS,
+# 32 "timer.h"
+TIMER_PROPAGATE,
+# 33 "timer.h"
+TIMER_PROP_KERNEL,
+# 34 "timer.h"
+TIMER_COLLIDE,
+# 35 "timer.h"
+TIMER_COLLIDE_KERNEL,
+# 36 "timer.h"
+TIMER_HALO_LATTICE,
+# 37 "timer.h"
+TIMER_PHI_GRADIENTS,
+# 38 "timer.h"
+TIMER_PHI_GRAD_KERNEL,
+# 39 "timer.h"
+TIMER_PHI_HALO,
+# 40 "timer.h"
+TIMER_LE,
+# 41 "timer.h"
+TIMER_IO,
+# 42 "timer.h"
+TIMER_FORCES,
+# 43 "timer.h"
+TIMER_REBUILD,
+# 44 "timer.h"
+TIMER_BBL,
+# 45 "timer.h"
+TIMER_PARTICLE_UPDATE,
+# 46 "timer.h"
+TIMER_PARTICLE_HALO,
+# 47 "timer.h"
+TIMER_FLUCTUATIONS,
+# 48 "timer.h"
+TIMER_EWALD_TOTAL,
+# 49 "timer.h"
+TIMER_EWALD_REAL_SPACE,
+# 50 "timer.h"
+TIMER_EWALD_FOURIER_SPACE,
+# 51 "timer.h"
+TIMER_FORCE_CALCULATION,
+# 52 "timer.h"
+TIMER_CHEMICAL_STRESS_KERNEL,
+# 53 "timer.h"
+TIMER_PHI_FORCE_CALC,
+# 54 "timer.h"
+TIMER_ORDER_PARAMETER_UPDATE,
+# 55 "timer.h"
+TIMER_U_HALO,
+# 56 "timer.h"
+TIMER_BE_MOL_FIELD,
+# 57 "timer.h"
+BP_BE_UPDATE_KERNEL,
+# 58 "timer.h"
+ADVECTION_X_KERNEL,
+# 59 "timer.h"
+ADVECTION_BCS_KERNEL,
+# 60 "timer.h"
+ADVECTION_BCS_MEM,
+# 61 "timer.h"
+TIMER_ELECTRO_TOTAL,
+# 62 "timer.h"
+TIMER_ELECTRO_POISSON,
+# 63 "timer.h"
+TIMER_ELECTRO_NPEQ,
+# 64 "timer.h"
+TIMER_FREE1,
+# 65 "timer.h"
+TIMER_FREE2,
+# 66 "timer.h"
+TIMER_FREE3,
+# 67 "timer.h"
+TIMER_NTIMERS};
+# 212 "/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stddef.h" 3
+typedef unsigned long size_t;
+#include "crt/device_runtime.h"
+# 25 ".././mpi_s/mpi.h"
+typedef int MPI_Handle;
+# 28 ".././mpi_s/mpi.h"
+typedef MPI_Handle MPI_Datatype;
+# 270 "/opt/rocm-3.3.0/hip/include/hip/hip_runtime_api.h" 3
+typedef enum hipError_t hipError_t;
+# 51 "/opt/rocm-3.3.0/hip/include/hip/nvcc_detail/hip_runtime_api.h" 3
+typedef enum hipMemcpyKind hipMemcpyKind;
+# 26 ".././target/target_hip.h"
+typedef hipMemcpyKind tdpMemcpyKind;
+# 45 ".././target/target_hip.h"
+typedef hipError_t tdpError_t;
+# 22 "pe.h"
+typedef struct pe_s pe_t;
+# 22 "coords.h"
+typedef struct coords_s cs_t;
+# 21 "kernel.h"
+typedef struct kernel_ctxt_s kernel_ctxt_t;
+# 22 "kernel.h"
+typedef struct kernel_info_s kernel_info_t;
+# 23 "kernel.h"
+typedef struct kernel_param_s kernel_param_t;
+# 28 "kernel.h"
+struct kernel_ctxt_s {
+# 29 "kernel.h"
+kernel_param_t *param;
+# 30 "kernel.h"
+kernel_ctxt_t *target;};
+# 37 "kernel.h"
+struct kernel_info_s {
+# 38 "kernel.h"
+int imin;
+# 39 "kernel.h"
+int imax;
+# 40 "kernel.h"
+int jmin;
+# 41 "kernel.h"
+int jmax;
+# 42 "kernel.h"
+int kmin;
+# 43 "kernel.h"
+int kmax;};
+# 36 "io_harness.h"
+typedef struct io_info_s io_info_t;
+# 26 "map.h"
+typedef struct map_s map_t;
+# 25 "wall.h"
+typedef struct wall_s wall_t;
+# 42 "colloid.h"
+typedef struct colloid_state_type colloid_state_t;
+# 44 "colloid.h"
+struct colloid_state_type {
+# 46 "colloid.h"
+int index;
+# 47 "colloid.h"
+int rebuild;
+# 48 "colloid.h"
+int nbonds;
+# 49 "colloid.h"
+int nangles;
+# 51 "colloid.h"
+int isfixedr;
+# 52 "colloid.h"
+int isfixedv;
+# 53 "colloid.h"
+int isfixedw;
+# 54 "colloid.h"
+int isfixeds;
+# 56 "colloid.h"
+int type;
+# 57 "colloid.h"
+int bond[2];
+# 59 "colloid.h"
+int rng;
+# 61 "colloid.h"
+int isfixedrxyz[3];
+# 62 "colloid.h"
+int isfixedvxyz[3];
+# 67 "colloid.h"
+int intpad[14];
+# 71 "colloid.h"
+double a0;
+# 72 "colloid.h"
+double ah;
+# 73 "colloid.h"
+double r[3];
+# 74 "colloid.h"
+double v[3];
+# 75 "colloid.h"
+double w[3];
+# 76 "colloid.h"
+double s[3];
+# 77 "colloid.h"
+double m[3];
+# 78 "colloid.h"
+double b1;
+# 79 "colloid.h"
+double b2;
+# 80 "colloid.h"
+double c;
+# 81 "colloid.h"
+double h;
+# 82 "colloid.h"
+double dr[3];
+# 83 "colloid.h"
+double deltaphi;
+# 92 "colloid.h"
+double q0;
+# 93 "colloid.h"
+double q1;
+# 94 "colloid.h"
+double epsilon;
+# 96 "colloid.h"
+double deltaq0;
+# 97 "colloid.h"
+double deltaq1;
+# 98 "colloid.h"
+double sa;
+# 99 "colloid.h"
+double saf;
+# 101 "colloid.h"
+double dpad[16];};
+# 22 "colloid_link.h"
+typedef struct colloid_link_type colloid_link_t;
+# 24 "colloid_link.h"
+struct colloid_link_type {
+# 26 "colloid_link.h"
+int i;
+# 27 "colloid_link.h"
+int j;
+# 28 "colloid_link.h"
+int p;
+# 29 "colloid_link.h"
+int status;
+# 30 "colloid_link.h"
+double rb[3];
+# 33 "colloid_link.h"
+colloid_link_t *spare;
+# 34 "colloid_link.h"
+colloid_link_t *next;};
+# 24 "colloids.h"
+typedef struct colloid colloid_t;
+# 26 "colloids.h"
+struct colloid {
+# 28 "colloids.h"
+colloid_state_t s;
+# 32 "colloids.h"
+double random[6];
+# 33 "colloids.h"
+double force[3];
+# 34 "colloids.h"
+double torque[3];
+# 35 "colloids.h"
+double f0[3];
+# 36 "colloids.h"
+double t0[3];
+# 37 "colloids.h"
+double cbar[3];
+# 38 "colloids.h"
+double rxcbar[3];
+# 39 "colloids.h"
+double deltam;
+# 40 "colloids.h"
+double sumw;
+# 41 "colloids.h"
+double zeta[21];
+# 42 "colloids.h"
+double stats[3];
+# 43 "colloids.h"
+double fc0[3];
+# 44 "colloids.h"
+double tc0[3];
+# 45 "colloids.h"
+double sump;
+# 46 "colloids.h"
+double dq[2];
+# 48 "colloids.h"
+double fsub[3];
+# 49 "colloids.h"
+double fex[3];
+# 50 "colloids.h"
+double tex[3];
+# 54 "colloids.h"
+colloid_link_t *lnk;
+# 55 "colloids.h"
+colloid_t *next;
+# 57 "colloids.h"
+colloid_t *nextall;
+# 58 "colloids.h"
+colloid_t *nextlocal;
+# 62 "colloids.h"
+colloid_t *bonded[2];};
+# 65 "colloids.h"
+typedef struct colloids_info_s colloids_info_t;
+# 22 "map_s.h"
+struct map_s {
+# 23 "map_s.h"
+int nsite;
+# 24 "map_s.h"
+int is_porous_media;
+# 25 "map_s.h"
+int ndata;
+# 26 "map_s.h"
+char *status;
+# 27 "map_s.h"
+double *data;
+# 29 "map_s.h"
+pe_t *pe;
+# 30 "map_s.h"
+cs_t *cs;
+# 31 "map_s.h"
+MPI_Datatype halostatus[3];
+# 32 "map_s.h"
+MPI_Datatype halodata[3];
+# 33 "map_s.h"
+io_info_t *info;
+# 35 "map_s.h"
+map_t *target;};
+# 32 "free_energy.h"
+typedef struct fe_s fe_t;
+# 28 "phi_force_stress.h"
+typedef struct pth_s pth_t;
+# 10 "pth_s.h"
+struct pth_s {
+# 11 "pth_s.h"
+pe_t *pe;
+# 12 "pth_s.h"
+cs_t *cs;
+# 13 "pth_s.h"
+int method;
+# 14 "pth_s.h"
+int nsites;
+# 15 "pth_s.h"
+double *str;
+# 16 "pth_s.h"
+pth_t *target;};
+# 23 "halo_swap.h"
+typedef struct halo_swap_s halo_swap_t;
+# 22 "leesedwards.h"
+typedef struct lees_edw_s lees_edw_t;
+# 26 "hydro.h"
+typedef struct hydro_s hydro_t;
+# 32 "hydro.h"
+struct hydro_s {
+# 33 "hydro.h"
+int nsite;
+# 34 "hydro.h"
+int nhcomm;
+# 35 "hydro.h"
+double *u;
+# 36 "hydro.h"
+double *f;
+# 37 "hydro.h"
+double *eta;
+# 39 "hydro.h"
+pe_t *pe;
+# 40 "hydro.h"
+cs_t *cs;
+# 41 "hydro.h"
+lees_edw_t *le;
+# 42 "hydro.h"
+io_info_t *info;
+# 43 "hydro.h"
+halo_swap_t *halo;
+# 44 "hydro.h"
+hydro_t *target;};
+# 68 "/usr/include/assert.h" 3
+___device__(extern  __no_sc__) __attribute__((__nothrow__)) __attribute__((__noreturn__)) void __assert_fail(const char *, const char *, unsigned, const char *);
+# 3296 "/usr/local/cuda-10.1/include/crt/device_functions.h" 3
+___device__(extern  __no_sc__) unsigned __cudaPushCallConfiguration(struct dim3, struct dim3, size_t, struct CUstream_st *);
+# 47 ".././target/target.h"
+___device__(extern  __no_sc__) tdpError_t _Z20tdpDeviceSynchronizev(void);
+# 109 ".././target/target.h"
+___device__(extern  __no_sc__) double _Z18tdpAtomicAddDoublePdd(double *, double);
+# 116 ".././target/target.h"
+___device__(extern  __no_sc__) double _Z23tdpAtomicBlockAddDoublePd(double *);
+# 120 ".././target/target.h"
+___device__(extern  __no_sc__) void _Z15tdpErrorHandler10hipError_tPKcii(tdpError_t, const char *, int, int);
+# 59 "coords.h"
+___device__(extern  __no_sc__) int _Z9cs_nlocalP8coords_sPi(cs_t *, int *);
+# 203 "memory.h"
+___device__(extern  __no_sc__) int _Z25reverse_addr_rank1_assertiPKciiii(int, const char *, int, int, int, int);
+# 206 "memory.h"
+___device__(extern  __no_sc__) int _Z25reverse_addr_rank2_assertiPKciiiiii(int, const char *, int, int, int, int, int, int);
+# 53 "kernel.h"
+___device__(extern  __no_sc__) int _Z17kernel_iterationsP13kernel_ctxt_s(kernel_ctxt_t *);
+# 54 "kernel.h"
+___device__(extern  __no_sc__) int _Z24kernel_vector_iterationsP13kernel_ctxt_s(kernel_ctxt_t *);
+# 55 "kernel.h"
+___device__(extern  __no_sc__) int _Z16kernel_baseindexP13kernel_ctxt_si(kernel_ctxt_t *, int);
+# 56 "kernel.h"
+___device__(extern  __no_sc__) int _Z16kernel_coords_icP13kernel_ctxt_si(kernel_ctxt_t *, int);
+# 57 "kernel.h"
+___device__(extern  __no_sc__) int _Z16kernel_coords_jcP13kernel_ctxt_si(kernel_ctxt_t *, int);
+# 58 "kernel.h"
+___device__(extern  __no_sc__) int _Z16kernel_coords_kcP13kernel_ctxt_si(kernel_ctxt_t *, int);
+# 59 "kernel.h"
+___device__(extern  __no_sc__) int _Z15kernel_coords_vP13kernel_ctxt_siPiS1_S1_(kernel_ctxt_t *, int, int *, int *, int *);
+# 66 "kernel.h"
+___device__(extern  __no_sc__) int _Z13kernel_mask_vP13kernel_ctxt_sPiS1_S1_S1_(kernel_ctxt_t *, int *, int *, int *, int *);
+# 70 "kernel.h"
+___device__(extern  __no_sc__) int _Z19kernel_coords_indexP13kernel_ctxt_siii(kernel_ctxt_t *, int, int, int);
+# 72 "kernel.h"
+___device__(extern  __no_sc__) int _Z21kernel_coords_index_vP13kernel_ctxt_sPiS1_S1_S1_(kernel_ctxt_t *, int *, int *, int *, int *);
+# 320 "phi_force_colloid.c"
+__global__ __var_used__ extern void _Z24pth_force_fluid_kernel_vP13kernel_ctxt_sP5pth_sP7hydro_s(kernel_ctxt_t *, pth_t *, hydro_t *);
+# 488 "phi_force_colloid.c"
+__global__ __var_used__ extern void _Z20pth_force_map_kernelP13kernel_ctxt_sP5pth_sP7hydro_sP5map_s(kernel_ctxt_t *, pth_t *, hydro_t *, map_t *);
+# 673 "phi_force_colloid.c"
+__global__ __var_used__ extern void _Z21pth_force_wall_kernelP13kernel_ctxt_sP5pth_sP5map_sP6wall_sPd(kernel_ctxt_t *, pth_t *, map_t *, wall_t *, double *);
+# 117 "phi_force_colloid.c"
+static  __device__  __var_used__ double __nv_static_38__25_phi_force_colloid_cpp1_ii_ca3cfde1_fs[3];
+static  __device__  __var_used__ const char __T4[67];
+static  __device__  __var_used__ const char __T5[72];
+static  __device__  __var_used__ const char __T6[82];
+# 687 "phi_force_colloid.c"
+static  __shared__  __var_used__ double _ZZ21pth_force_wall_kernelP13kernel_ctxt_sP5pth_sP5map_sP6wall_sPdE2fx[128];
+# 688 "phi_force_colloid.c"
+static  __shared__  __var_used__ double _ZZ21pth_force_wall_kernelP13kernel_ctxt_sP5pth_sP5map_sP6wall_sPdE2fy[128];
+# 689 "phi_force_colloid.c"
+static  __shared__  __var_used__ double _ZZ21pth_force_wall_kernelP13kernel_ctxt_sP5pth_sP5map_sP6wall_sPdE2fz[128];
+#include "common_functions.h"
+static  __device__  __var_used__ const char __T4[67] = "void pth_force_fluid_kernel_v(kernel_ctxt_s *, pth_s *, hydro_s *)";
+static  __device__  __var_used__ const char __T5[72] = "void pth_force_map_kernel(kernel_ctxt_s *, pth_s *, hydro_s *, map_s *)";
+static  __device__  __var_used__ const char __T6[82] = "void pth_force_wall_kernel(kernel_ctxt_s *, pth_s *, map_s *, wall_s *, double *)";
+# 320 "phi_force_colloid.c"
+__global__ __var_used__ void _Z24pth_force_fluid_kernel_vP13kernel_ctxt_sP5pth_sP7hydro_s(
+# 320 "phi_force_colloid.c"
+kernel_ctxt_t *ktx, 
+# 320 "phi_force_colloid.c"
+pth_t *pth, 
+# 321 "phi_force_colloid.c"
+hydro_t *hydro){
+# 321 "phi_force_colloid.c"
+{
+# 322 "phi_force_colloid.c"
+ int __cuda_local_var_20194_7_non_const_kindex;
+# 323 "phi_force_colloid.c"
+ int __cuda_local_var_20195_7_non_const_kiterations;
+# 325 "phi_force_colloid.c"
+(ktx) ? ((void)0) : (__assert_fail(((const char *)"ktx"), ((const char *)"phi_force_colloid.c"), 325U, __T4));
+# 326 "phi_force_colloid.c"
+(pth) ? ((void)0) : (__assert_fail(((const char *)"pth"), ((const char *)"phi_force_colloid.c"), 326U, __T4));
+# 327 "phi_force_colloid.c"
+(hydro) ? ((void)0) : (__assert_fail(((const char *)"hydro"), ((const char *)"phi_force_colloid.c"), 327U, __T4));
+# 329 "phi_force_colloid.c"
+__cuda_local_var_20195_7_non_const_kiterations = (_Z24kernel_vector_iterationsP13kernel_ctxt_s(ktx));
+# 331 "phi_force_colloid.c"
+__cuda_local_var_20194_7_non_const_kindex = ((int)(1U * (((blockIdx.x) * (blockDim.x)) + (threadIdx.x))));
+# 331 "phi_force_colloid.c"
+if (__cuda_local_var_20194_7_non_const_kindex < __cuda_local_var_20195_7_non_const_kiterations)
+# 331 "phi_force_colloid.c"
+{
+# 333 "phi_force_colloid.c"
+ int __cuda_local_var_20205_9_non_const_iv;
+# 334 "phi_force_colloid.c"
+ int __cuda_local_var_20206_9_non_const_ia;
+# 334 "phi_force_colloid.c"
+ int __cuda_local_var_20206_13_non_const_ib;
+# 335 "phi_force_colloid.c"
+ int __cuda_local_var_20207_9_non_const_index;
+# 336 "phi_force_colloid.c"
+ int __cuda_local_var_20208_9_non_const_ic[1];
+# 337 "phi_force_colloid.c"
+ int __cuda_local_var_20209_9_non_const_jc[1];
+# 338 "phi_force_colloid.c"
+ int __cuda_local_var_20210_9_non_const_kc[1];
+# 339 "phi_force_colloid.c"
+ int __cuda_local_var_20211_9_non_const_pm[1];
+# 340 "phi_force_colloid.c"
+ int __cuda_local_var_20212_9_non_const_maskv[1];
+# 341 "phi_force_colloid.c"
+ int __cuda_local_var_20213_9_non_const_index1[1];
+# 342 "phi_force_colloid.c"
+ double __cuda_local_var_20214_12_non_const_pth0[3][3][1];
+# 343 "phi_force_colloid.c"
+ double __cuda_local_var_20215_12_non_const_pth1[3][3][1];
+# 344 "phi_force_colloid.c"
+ double __cuda_local_var_20216_12_non_const_force[3][1];
+# 347 "phi_force_colloid.c"
+__cuda_local_var_20207_9_non_const_index = (_Z16kernel_baseindexP13kernel_ctxt_si(ktx, __cuda_local_var_20194_7_non_const_kindex));
+# 348 "phi_force_colloid.c"
+_Z15kernel_coords_vP13kernel_ctxt_siPiS1_S1_(ktx, __cuda_local_var_20194_7_non_const_kindex, (__cuda_local_var_20208_9_non_const_ic), (__cuda_local_var_20209_9_non_const_jc), (__cuda_local_var_20210_9_non_const_kc));
+# 350 "phi_force_colloid.c"
+_Z13kernel_mask_vP13kernel_ctxt_sPiS1_S1_S1_(ktx, (__cuda_local_var_20208_9_non_const_ic), (__cuda_local_var_20209_9_non_const_jc), (__cuda_local_var_20210_9_non_const_kc), (__cuda_local_var_20212_9_non_const_maskv));
+# 353 "phi_force_colloid.c"
+for (__cuda_local_var_20206_9_non_const_ia = 0; (__cuda_local_var_20206_9_non_const_ia < 3); __cuda_local_var_20206_9_non_const_ia++)
+# 353 "phi_force_colloid.c"
+{
+# 354 "phi_force_colloid.c"
+for (__cuda_local_var_20206_13_non_const_ib = 0; (__cuda_local_var_20206_13_non_const_ib < 3); __cuda_local_var_20206_13_non_const_ib++)
+# 354 "phi_force_colloid.c"
+{
+# 355 "phi_force_colloid.c"
+for (__cuda_local_var_20205_9_non_const_iv = 0; (__cuda_local_var_20205_9_non_const_iv < 1); __cuda_local_var_20205_9_non_const_iv++)
+# 355 "phi_force_colloid.c"
+{
+# 356 "phi_force_colloid.c"
+((((((__cuda_local_var_20214_12_non_const_pth0)[__cuda_local_var_20206_9_non_const_ia]))[__cuda_local_var_20206_13_non_const_ib]))[__cuda_local_var_20205_9_non_const_iv]) = ((pth->str)[(_Z25reverse_addr_rank2_assertiPKciiiiii(356, ((const char *)"phi_force_colloid.c"), (pth->nsites), 3, 3, (__cuda_local_var_20207_9_non_const_index + __cuda_local_var_20205_9_non_const_iv), __cuda_local_var_20206_9_non_const_ia, __cuda_local_var_20206_13_non_const_ib))]);
+# 357 "phi_force_colloid.c"
+}
+# 358 "phi_force_colloid.c"
+}
+# 359 "phi_force_colloid.c"
+}
+# 363 "phi_force_colloid.c"
+for (__cuda_local_var_20205_9_non_const_iv = 0; (__cuda_local_var_20205_9_non_const_iv < 1); __cuda_local_var_20205_9_non_const_iv++) {
+# 363 "phi_force_colloid.c"
+((__cuda_local_var_20211_9_non_const_pm)[__cuda_local_var_20205_9_non_const_iv]) = (((__cuda_local_var_20208_9_non_const_ic)[__cuda_local_var_20205_9_non_const_iv]) + ((__cuda_local_var_20212_9_non_const_maskv)[__cuda_local_var_20205_9_non_const_iv])); }
+# 364 "phi_force_colloid.c"
+_Z21kernel_coords_index_vP13kernel_ctxt_sPiS1_S1_S1_(ktx, (__cuda_local_var_20211_9_non_const_pm), (__cuda_local_var_20209_9_non_const_jc), (__cuda_local_var_20210_9_non_const_kc), (__cuda_local_var_20213_9_non_const_index1));
+# 366 "phi_force_colloid.c"
+for (__cuda_local_var_20206_9_non_const_ia = 0; (__cuda_local_var_20206_9_non_const_ia < 3); __cuda_local_var_20206_9_non_const_ia++)
+# 366 "phi_force_colloid.c"
+{
+# 367 "phi_force_colloid.c"
+for (__cuda_local_var_20206_13_non_const_ib = 0; (__cuda_local_var_20206_13_non_const_ib < 3); __cuda_local_var_20206_13_non_const_ib++)
+# 367 "phi_force_colloid.c"
+{
+# 368 "phi_force_colloid.c"
+for (__cuda_local_var_20205_9_non_const_iv = 0; (__cuda_local_var_20205_9_non_const_iv < 1); __cuda_local_var_20205_9_non_const_iv++)
+# 368 "phi_force_colloid.c"
+{
+# 369 "phi_force_colloid.c"
+((((((__cuda_local_var_20215_12_non_const_pth1)[__cuda_local_var_20206_9_non_const_ia]))[__cuda_local_var_20206_13_non_const_ib]))[__cuda_local_var_20205_9_non_const_iv]) = ((pth->str)[(_Z25reverse_addr_rank2_assertiPKciiiiii(369, ((const char *)"phi_force_colloid.c"), (pth->nsites), 3, 3, ((__cuda_local_var_20213_9_non_const_index1)[__cuda_local_var_20205_9_non_const_iv]), __cuda_local_var_20206_9_non_const_ia, __cuda_local_var_20206_13_non_const_ib))]);
+# 370 "phi_force_colloid.c"
+}
+# 371 "phi_force_colloid.c"
+}
+# 372 "phi_force_colloid.c"
+}
+# 374 "phi_force_colloid.c"
+for (__cuda_local_var_20206_9_non_const_ia = 0; (__cuda_local_var_20206_9_non_const_ia < 3); __cuda_local_var_20206_9_non_const_ia++)
+# 374 "phi_force_colloid.c"
+{
+# 375 "phi_force_colloid.c"
+for (__cuda_local_var_20205_9_non_const_iv = 0; (__cuda_local_var_20205_9_non_const_iv < 1); __cuda_local_var_20205_9_non_const_iv++)
+# 375 "phi_force_colloid.c"
+{
+# 376 "phi_force_colloid.c"
+((((__cuda_local_var_20216_12_non_const_force)[__cuda_local_var_20206_9_non_const_ia]))[__cuda_local_var_20205_9_non_const_iv]) = ((-0.5) * (((((((__cuda_local_var_20215_12_non_const_pth1)[__cuda_local_var_20206_9_non_const_ia]))[X]))[__cuda_local_var_20205_9_non_const_iv]) + ((((((__cuda_local_var_20214_12_non_const_pth0)[__cuda_local_var_20206_9_non_const_ia]))[X]))[__cuda_local_var_20205_9_non_const_iv])));
+# 377 "phi_force_colloid.c"
+}
+# 378 "phi_force_colloid.c"
+}
+# 381 "phi_force_colloid.c"
+for (__cuda_local_var_20205_9_non_const_iv = 0; (__cuda_local_var_20205_9_non_const_iv < 1); __cuda_local_var_20205_9_non_const_iv++) {
+# 381 "phi_force_colloid.c"
+((__cuda_local_var_20211_9_non_const_pm)[__cuda_local_var_20205_9_non_const_iv]) = (((__cuda_local_var_20208_9_non_const_ic)[__cuda_local_var_20205_9_non_const_iv]) - ((__cuda_local_var_20212_9_non_const_maskv)[__cuda_local_var_20205_9_non_const_iv])); }
+# 382 "phi_force_colloid.c"
+_Z21kernel_coords_index_vP13kernel_ctxt_sPiS1_S1_S1_(ktx, (__cuda_local_var_20211_9_non_const_pm), (__cuda_local_var_20209_9_non_const_jc), (__cuda_local_var_20210_9_non_const_kc), (__cuda_local_var_20213_9_non_const_index1));
+# 384 "phi_force_colloid.c"
+for (__cuda_local_var_20206_9_non_const_ia = 0; (__cuda_local_var_20206_9_non_const_ia < 3); __cuda_local_var_20206_9_non_const_ia++)
+# 384 "phi_force_colloid.c"
+{
+# 385 "phi_force_colloid.c"
+for (__cuda_local_var_20206_13_non_const_ib = 0; (__cuda_local_var_20206_13_non_const_ib < 3); __cuda_local_var_20206_13_non_const_ib++)
+# 385 "phi_force_colloid.c"
+{
+# 386 "phi_force_colloid.c"
+for (__cuda_local_var_20205_9_non_const_iv = 0; (__cuda_local_var_20205_9_non_const_iv < 1); __cuda_local_var_20205_9_non_const_iv++)
+# 386 "phi_force_colloid.c"
+{
+# 387 "phi_force_colloid.c"
+((((((__cuda_local_var_20215_12_non_const_pth1)[__cuda_local_var_20206_9_non_const_ia]))[__cuda_local_var_20206_13_non_const_ib]))[__cuda_local_var_20205_9_non_const_iv]) = ((pth->str)[(_Z25reverse_addr_rank2_assertiPKciiiiii(387, ((const char *)"phi_force_colloid.c"), (pth->nsites), 3, 3, ((__cuda_local_var_20213_9_non_const_index1)[__cuda_local_var_20205_9_non_const_iv]), __cuda_local_var_20206_9_non_const_ia, __cuda_local_var_20206_13_non_const_ib))]);
+# 388 "phi_force_colloid.c"
+}
+# 389 "phi_force_colloid.c"
+}
+# 390 "phi_force_colloid.c"
+}
+# 392 "phi_force_colloid.c"
+for (__cuda_local_var_20206_9_non_const_ia = 0; (__cuda_local_var_20206_9_non_const_ia < 3); __cuda_local_var_20206_9_non_const_ia++)
+# 392 "phi_force_colloid.c"
+{
+# 393 "phi_force_colloid.c"
+for (__cuda_local_var_20205_9_non_const_iv = 0; (__cuda_local_var_20205_9_non_const_iv < 1); __cuda_local_var_20205_9_non_const_iv++)
+# 393 "phi_force_colloid.c"
+{
+# 394 "phi_force_colloid.c"
+((((__cuda_local_var_20216_12_non_const_force)[__cuda_local_var_20206_9_non_const_ia]))[__cuda_local_var_20205_9_non_const_iv]) += ((0.5) * (((((((__cuda_local_var_20215_12_non_const_pth1)[__cuda_local_var_20206_9_non_const_ia]))[X]))[__cuda_local_var_20205_9_non_const_iv]) + ((((((__cuda_local_var_20214_12_non_const_pth0)[__cuda_local_var_20206_9_non_const_ia]))[X]))[__cuda_local_var_20205_9_non_const_iv])));
+# 395 "phi_force_colloid.c"
+}
+# 396 "phi_force_colloid.c"
+}
+# 398 "phi_force_colloid.c"
+for (__cuda_local_var_20205_9_non_const_iv = 0; (__cuda_local_var_20205_9_non_const_iv < 1); __cuda_local_var_20205_9_non_const_iv++) {
+# 398 "phi_force_colloid.c"
+((__cuda_local_var_20211_9_non_const_pm)[__cuda_local_var_20205_9_non_const_iv]) = (((__cuda_local_var_20209_9_non_const_jc)[__cuda_local_var_20205_9_non_const_iv]) + ((__cuda_local_var_20212_9_non_const_maskv)[__cuda_local_var_20205_9_non_const_iv])); }
+# 399 "phi_force_colloid.c"
+_Z21kernel_coords_index_vP13kernel_ctxt_sPiS1_S1_S1_(ktx, (__cuda_local_var_20208_9_non_const_ic), (__cuda_local_var_20211_9_non_const_pm), (__cuda_local_var_20210_9_non_const_kc), (__cuda_local_var_20213_9_non_const_index1));
+# 401 "phi_force_colloid.c"
+for (__cuda_local_var_20206_9_non_const_ia = 0; (__cuda_local_var_20206_9_non_const_ia < 3); __cuda_local_var_20206_9_non_const_ia++)
+# 401 "phi_force_colloid.c"
+{
+# 402 "phi_force_colloid.c"
+for (__cuda_local_var_20206_13_non_const_ib = 0; (__cuda_local_var_20206_13_non_const_ib < 3); __cuda_local_var_20206_13_non_const_ib++)
+# 402 "phi_force_colloid.c"
+{
+# 403 "phi_force_colloid.c"
+for (__cuda_local_var_20205_9_non_const_iv = 0; (__cuda_local_var_20205_9_non_const_iv < 1); __cuda_local_var_20205_9_non_const_iv++)
+# 403 "phi_force_colloid.c"
+{
+# 404 "phi_force_colloid.c"
+((((((__cuda_local_var_20215_12_non_const_pth1)[__cuda_local_var_20206_9_non_const_ia]))[__cuda_local_var_20206_13_non_const_ib]))[__cuda_local_var_20205_9_non_const_iv]) = ((pth->str)[(_Z25reverse_addr_rank2_assertiPKciiiiii(404, ((const char *)"phi_force_colloid.c"), (pth->nsites), 3, 3, ((__cuda_local_var_20213_9_non_const_index1)[__cuda_local_var_20205_9_non_const_iv]), __cuda_local_var_20206_9_non_const_ia, __cuda_local_var_20206_13_non_const_ib))]);
+# 405 "phi_force_colloid.c"
+}
+# 406 "phi_force_colloid.c"
+}
+# 407 "phi_force_colloid.c"
+}
+# 409 "phi_force_colloid.c"
+for (__cuda_local_var_20206_9_non_const_ia = 0; (__cuda_local_var_20206_9_non_const_ia < 3); __cuda_local_var_20206_9_non_const_ia++)
+# 409 "phi_force_colloid.c"
+{
+# 410 "phi_force_colloid.c"
+for (__cuda_local_var_20205_9_non_const_iv = 0; (__cuda_local_var_20205_9_non_const_iv < 1); __cuda_local_var_20205_9_non_const_iv++)
+# 410 "phi_force_colloid.c"
+{
+# 411 "phi_force_colloid.c"
+((((__cuda_local_var_20216_12_non_const_force)[__cuda_local_var_20206_9_non_const_ia]))[__cuda_local_var_20205_9_non_const_iv]) -= ((0.5) * (((((((__cuda_local_var_20215_12_non_const_pth1)[__cuda_local_var_20206_9_non_const_ia]))[Y]))[__cuda_local_var_20205_9_non_const_iv]) + ((((((__cuda_local_var_20214_12_non_const_pth0)[__cuda_local_var_20206_9_non_const_ia]))[Y]))[__cuda_local_var_20205_9_non_const_iv])));
+# 412 "phi_force_colloid.c"
+}
+# 413 "phi_force_colloid.c"
+}
+# 415 "phi_force_colloid.c"
+for (__cuda_local_var_20205_9_non_const_iv = 0; (__cuda_local_var_20205_9_non_const_iv < 1); __cuda_local_var_20205_9_non_const_iv++) {
+# 415 "phi_force_colloid.c"
+((__cuda_local_var_20211_9_non_const_pm)[__cuda_local_var_20205_9_non_const_iv]) = (((__cuda_local_var_20209_9_non_const_jc)[__cuda_local_var_20205_9_non_const_iv]) - ((__cuda_local_var_20212_9_non_const_maskv)[__cuda_local_var_20205_9_non_const_iv])); }
+# 416 "phi_force_colloid.c"
+_Z21kernel_coords_index_vP13kernel_ctxt_sPiS1_S1_S1_(ktx, (__cuda_local_var_20208_9_non_const_ic), (__cuda_local_var_20211_9_non_const_pm), (__cuda_local_var_20210_9_non_const_kc), (__cuda_local_var_20213_9_non_const_index1));
+# 418 "phi_force_colloid.c"
+for (__cuda_local_var_20206_9_non_const_ia = 0; (__cuda_local_var_20206_9_non_const_ia < 3); __cuda_local_var_20206_9_non_const_ia++)
+# 418 "phi_force_colloid.c"
+{
+# 419 "phi_force_colloid.c"
+for (__cuda_local_var_20206_13_non_const_ib = 0; (__cuda_local_var_20206_13_non_const_ib < 3); __cuda_local_var_20206_13_non_const_ib++)
+# 419 "phi_force_colloid.c"
+{
+# 420 "phi_force_colloid.c"
+for (__cuda_local_var_20205_9_non_const_iv = 0; (__cuda_local_var_20205_9_non_const_iv < 1); __cuda_local_var_20205_9_non_const_iv++)
+# 420 "phi_force_colloid.c"
+{
+# 421 "phi_force_colloid.c"
+((((((__cuda_local_var_20215_12_non_const_pth1)[__cuda_local_var_20206_9_non_const_ia]))[__cuda_local_var_20206_13_non_const_ib]))[__cuda_local_var_20205_9_non_const_iv]) = ((pth->str)[(_Z25reverse_addr_rank2_assertiPKciiiiii(421, ((const char *)"phi_force_colloid.c"), (pth->nsites), 3, 3, ((__cuda_local_var_20213_9_non_const_index1)[__cuda_local_var_20205_9_non_const_iv]), __cuda_local_var_20206_9_non_const_ia, __cuda_local_var_20206_13_non_const_ib))]);
+# 422 "phi_force_colloid.c"
+}
+# 423 "phi_force_colloid.c"
+}
+# 424 "phi_force_colloid.c"
+}
+# 426 "phi_force_colloid.c"
+for (__cuda_local_var_20206_9_non_const_ia = 0; (__cuda_local_var_20206_9_non_const_ia < 3); __cuda_local_var_20206_9_non_const_ia++)
+# 426 "phi_force_colloid.c"
+{
+# 427 "phi_force_colloid.c"
+for (__cuda_local_var_20205_9_non_const_iv = 0; (__cuda_local_var_20205_9_non_const_iv < 1); __cuda_local_var_20205_9_non_const_iv++)
+# 427 "phi_force_colloid.c"
+{
+# 428 "phi_force_colloid.c"
+((((__cuda_local_var_20216_12_non_const_force)[__cuda_local_var_20206_9_non_const_ia]))[__cuda_local_var_20205_9_non_const_iv]) += ((0.5) * (((((((__cuda_local_var_20215_12_non_const_pth1)[__cuda_local_var_20206_9_non_const_ia]))[Y]))[__cuda_local_var_20205_9_non_const_iv]) + ((((((__cuda_local_var_20214_12_non_const_pth0)[__cuda_local_var_20206_9_non_const_ia]))[Y]))[__cuda_local_var_20205_9_non_const_iv])));
+# 429 "phi_force_colloid.c"
+}
+# 430 "phi_force_colloid.c"
+}
+# 432 "phi_force_colloid.c"
+for (__cuda_local_var_20205_9_non_const_iv = 0; (__cuda_local_var_20205_9_non_const_iv < 1); __cuda_local_var_20205_9_non_const_iv++) {
+# 432 "phi_force_colloid.c"
+((__cuda_local_var_20211_9_non_const_pm)[__cuda_local_var_20205_9_non_const_iv]) = (((__cuda_local_var_20210_9_non_const_kc)[__cuda_local_var_20205_9_non_const_iv]) + ((__cuda_local_var_20212_9_non_const_maskv)[__cuda_local_var_20205_9_non_const_iv])); }
+# 433 "phi_force_colloid.c"
+_Z21kernel_coords_index_vP13kernel_ctxt_sPiS1_S1_S1_(ktx, (__cuda_local_var_20208_9_non_const_ic), (__cuda_local_var_20209_9_non_const_jc), (__cuda_local_var_20211_9_non_const_pm), (__cuda_local_var_20213_9_non_const_index1));
+# 435 "phi_force_colloid.c"
+for (__cuda_local_var_20206_9_non_const_ia = 0; (__cuda_local_var_20206_9_non_const_ia < 3); __cuda_local_var_20206_9_non_const_ia++)
+# 435 "phi_force_colloid.c"
+{
+# 436 "phi_force_colloid.c"
+for (__cuda_local_var_20206_13_non_const_ib = 0; (__cuda_local_var_20206_13_non_const_ib < 3); __cuda_local_var_20206_13_non_const_ib++)
+# 436 "phi_force_colloid.c"
+{
+# 437 "phi_force_colloid.c"
+for (__cuda_local_var_20205_9_non_const_iv = 0; (__cuda_local_var_20205_9_non_const_iv < 1); __cuda_local_var_20205_9_non_const_iv++)
+# 437 "phi_force_colloid.c"
+{
+# 438 "phi_force_colloid.c"
+((((((__cuda_local_var_20215_12_non_const_pth1)[__cuda_local_var_20206_9_non_const_ia]))[__cuda_local_var_20206_13_non_const_ib]))[__cuda_local_var_20205_9_non_const_iv]) = ((pth->str)[(_Z25reverse_addr_rank2_assertiPKciiiiii(438, ((const char *)"phi_force_colloid.c"), (pth->nsites), 3, 3, ((__cuda_local_var_20213_9_non_const_index1)[__cuda_local_var_20205_9_non_const_iv]), __cuda_local_var_20206_9_non_const_ia, __cuda_local_var_20206_13_non_const_ib))]);
+# 439 "phi_force_colloid.c"
+}
+# 440 "phi_force_colloid.c"
+}
+# 441 "phi_force_colloid.c"
+}
+# 443 "phi_force_colloid.c"
+for (__cuda_local_var_20206_9_non_const_ia = 0; (__cuda_local_var_20206_9_non_const_ia < 3); __cuda_local_var_20206_9_non_const_ia++)
+# 443 "phi_force_colloid.c"
+{
+# 444 "phi_force_colloid.c"
+for (__cuda_local_var_20205_9_non_const_iv = 0; (__cuda_local_var_20205_9_non_const_iv < 1); __cuda_local_var_20205_9_non_const_iv++)
+# 444 "phi_force_colloid.c"
+{
+# 445 "phi_force_colloid.c"
+((((__cuda_local_var_20216_12_non_const_force)[__cuda_local_var_20206_9_non_const_ia]))[__cuda_local_var_20205_9_non_const_iv]) -= ((0.5) * (((((((__cuda_local_var_20215_12_non_const_pth1)[__cuda_local_var_20206_9_non_const_ia]))[Z]))[__cuda_local_var_20205_9_non_const_iv]) + ((((((__cuda_local_var_20214_12_non_const_pth0)[__cuda_local_var_20206_9_non_const_ia]))[Z]))[__cuda_local_var_20205_9_non_const_iv])));
+# 446 "phi_force_colloid.c"
+}
+# 447 "phi_force_colloid.c"
+}
+# 449 "phi_force_colloid.c"
+for (__cuda_local_var_20205_9_non_const_iv = 0; (__cuda_local_var_20205_9_non_const_iv < 1); __cuda_local_var_20205_9_non_const_iv++) {
+# 449 "phi_force_colloid.c"
+((__cuda_local_var_20211_9_non_const_pm)[__cuda_local_var_20205_9_non_const_iv]) = (((__cuda_local_var_20210_9_non_const_kc)[__cuda_local_var_20205_9_non_const_iv]) - ((__cuda_local_var_20212_9_non_const_maskv)[__cuda_local_var_20205_9_non_const_iv])); }
+# 450 "phi_force_colloid.c"
+_Z21kernel_coords_index_vP13kernel_ctxt_sPiS1_S1_S1_(ktx, (__cuda_local_var_20208_9_non_const_ic), (__cuda_local_var_20209_9_non_const_jc), (__cuda_local_var_20211_9_non_const_pm), (__cuda_local_var_20213_9_non_const_index1));
+# 452 "phi_force_colloid.c"
+for (__cuda_local_var_20206_9_non_const_ia = 0; (__cuda_local_var_20206_9_non_const_ia < 3); __cuda_local_var_20206_9_non_const_ia++)
+# 452 "phi_force_colloid.c"
+{
+# 453 "phi_force_colloid.c"
+for (__cuda_local_var_20206_13_non_const_ib = 0; (__cuda_local_var_20206_13_non_const_ib < 3); __cuda_local_var_20206_13_non_const_ib++)
+# 453 "phi_force_colloid.c"
+{
+# 454 "phi_force_colloid.c"
+for (__cuda_local_var_20205_9_non_const_iv = 0; (__cuda_local_var_20205_9_non_const_iv < 1); __cuda_local_var_20205_9_non_const_iv++)
+# 454 "phi_force_colloid.c"
+{
+# 455 "phi_force_colloid.c"
+((((((__cuda_local_var_20215_12_non_const_pth1)[__cuda_local_var_20206_9_non_const_ia]))[__cuda_local_var_20206_13_non_const_ib]))[__cuda_local_var_20205_9_non_const_iv]) = ((pth->str)[(_Z25reverse_addr_rank2_assertiPKciiiiii(455, ((const char *)"phi_force_colloid.c"), (pth->nsites), 3, 3, ((__cuda_local_var_20213_9_non_const_index1)[__cuda_local_var_20205_9_non_const_iv]), __cuda_local_var_20206_9_non_const_ia, __cuda_local_var_20206_13_non_const_ib))]);
+# 456 "phi_force_colloid.c"
+}
+# 457 "phi_force_colloid.c"
+}
+# 458 "phi_force_colloid.c"
+}
+# 460 "phi_force_colloid.c"
+for (__cuda_local_var_20206_9_non_const_ia = 0; (__cuda_local_var_20206_9_non_const_ia < 3); __cuda_local_var_20206_9_non_const_ia++)
+# 460 "phi_force_colloid.c"
+{
+# 461 "phi_force_colloid.c"
+for (__cuda_local_var_20205_9_non_const_iv = 0; (__cuda_local_var_20205_9_non_const_iv < 1); __cuda_local_var_20205_9_non_const_iv++)
+# 461 "phi_force_colloid.c"
+{
+# 462 "phi_force_colloid.c"
+((((__cuda_local_var_20216_12_non_const_force)[__cuda_local_var_20206_9_non_const_ia]))[__cuda_local_var_20205_9_non_const_iv]) += ((0.5) * (((((((__cuda_local_var_20215_12_non_const_pth1)[__cuda_local_var_20206_9_non_const_ia]))[Z]))[__cuda_local_var_20205_9_non_const_iv]) + ((((((__cuda_local_var_20214_12_non_const_pth0)[__cuda_local_var_20206_9_non_const_ia]))[Z]))[__cuda_local_var_20205_9_non_const_iv])));
+# 463 "phi_force_colloid.c"
+}
+# 464 "phi_force_colloid.c"
+}
+# 468 "phi_force_colloid.c"
+for (__cuda_local_var_20206_9_non_const_ia = 0; (__cuda_local_var_20206_9_non_const_ia < 3); __cuda_local_var_20206_9_non_const_ia++)
+# 468 "phi_force_colloid.c"
+{
+# 469 "phi_force_colloid.c"
+for (__cuda_local_var_20205_9_non_const_iv = 0; (__cuda_local_var_20205_9_non_const_iv < 1); __cuda_local_var_20205_9_non_const_iv++)
+# 469 "phi_force_colloid.c"
+{
+# 470 "phi_force_colloid.c"
+((hydro->f)[(_Z25reverse_addr_rank1_assertiPKciiii(470, ((const char *)"phi_force_colloid.c"), (hydro->nsite), 3, (__cuda_local_var_20207_9_non_const_index + __cuda_local_var_20205_9_non_const_iv), __cuda_local_var_20206_9_non_const_ia))]) += (((((__cuda_local_var_20216_12_non_const_force)[__cuda_local_var_20206_9_non_const_ia]))[__cuda_local_var_20205_9_non_const_iv]) * ((double)((__cuda_local_var_20212_9_non_const_maskv)[__cuda_local_var_20205_9_non_const_iv])));
+# 472 "phi_force_colloid.c"
+}
+# 473 "phi_force_colloid.c"
+}
+# 475 "phi_force_colloid.c"
+}
+# 477 "phi_force_colloid.c"
+return;
+# 478 "phi_force_colloid.c"
+}}
+# 488 "phi_force_colloid.c"
+__global__ __var_used__ void _Z20pth_force_map_kernelP13kernel_ctxt_sP5pth_sP7hydro_sP5map_s(
+# 488 "phi_force_colloid.c"
+kernel_ctxt_t *ktx, 
+# 488 "phi_force_colloid.c"
+pth_t *pth, 
+# 489 "phi_force_colloid.c"
+hydro_t *hydro, 
+# 489 "phi_force_colloid.c"
+map_t *map){
+# 489 "phi_force_colloid.c"
+{
+# 491 "phi_force_colloid.c"
+ int __cuda_local_var_20355_7_non_const_kindex;
+# 492 "phi_force_colloid.c"
+ int __cuda_local_var_20356_7_non_const_kiterations;
+# 494 "phi_force_colloid.c"
+(ktx) ? ((void)0) : (__assert_fail(((const char *)"ktx"), ((const char *)"phi_force_colloid.c"), 494U, __T5));
+# 495 "phi_force_colloid.c"
+(pth) ? ((void)0) : (__assert_fail(((const char *)"pth"), ((const char *)"phi_force_colloid.c"), 495U, __T5));
+# 496 "phi_force_colloid.c"
+(hydro) ? ((void)0) : (__assert_fail(((const char *)"hydro"), ((const char *)"phi_force_colloid.c"), 496U, __T5));
+# 497 "phi_force_colloid.c"
+(map) ? ((void)0) : (__assert_fail(((const char *)"map"), ((const char *)"phi_force_colloid.c"), 497U, __T5));
+# 499 "phi_force_colloid.c"
+__cuda_local_var_20356_7_non_const_kiterations = (_Z17kernel_iterationsP13kernel_ctxt_s(ktx));
+# 501 "phi_force_colloid.c"
+__cuda_local_var_20355_7_non_const_kindex = ((int)(1U * (((blockIdx.x) * (blockDim.x)) + (threadIdx.x))));
+# 501 "phi_force_colloid.c"
+if (__cuda_local_var_20355_7_non_const_kindex < __cuda_local_var_20356_7_non_const_kiterations)
+# 501 "phi_force_colloid.c"
+{
+# 503 "phi_force_colloid.c"
+ int __cuda_local_var_20367_9_non_const_ic;
+# 503 "phi_force_colloid.c"
+ int __cuda_local_var_20367_13_non_const_jc;
+# 503 "phi_force_colloid.c"
+ int __cuda_local_var_20367_17_non_const_kc;
+# 504 "phi_force_colloid.c"
+ int __cuda_local_var_20368_9_non_const_ia;
+# 504 "phi_force_colloid.c"
+ int __cuda_local_var_20368_13_non_const_ib;
+# 505 "phi_force_colloid.c"
+ int __cuda_local_var_20369_9_non_const_index;
+# 505 "phi_force_colloid.c"
+ int __cuda_local_var_20369_16_non_const_index1;
+# 507 "phi_force_colloid.c"
+ double __cuda_local_var_20371_12_non_const_pth0[3][3];
+# 508 "phi_force_colloid.c"
+ double __cuda_local_var_20372_12_non_const_pth1[3][3];
+# 509 "phi_force_colloid.c"
+ double __cuda_local_var_20373_12_non_const_force[3];
+# 511 "phi_force_colloid.c"
+__cuda_local_var_20367_9_non_const_ic = (_Z16kernel_coords_icP13kernel_ctxt_si(ktx, __cuda_local_var_20355_7_non_const_kindex));
+# 512 "phi_force_colloid.c"
+__cuda_local_var_20367_13_non_const_jc = (_Z16kernel_coords_jcP13kernel_ctxt_si(ktx, __cuda_local_var_20355_7_non_const_kindex));
+# 513 "phi_force_colloid.c"
+__cuda_local_var_20367_17_non_const_kc = (_Z16kernel_coords_kcP13kernel_ctxt_si(ktx, __cuda_local_var_20355_7_non_const_kindex));
+# 514 "phi_force_colloid.c"
+__cuda_local_var_20369_9_non_const_index = (_Z19kernel_coords_indexP13kernel_ctxt_siii(ktx, __cuda_local_var_20367_9_non_const_ic, __cuda_local_var_20367_13_non_const_jc, __cuda_local_var_20367_17_non_const_kc));
+# 516 "phi_force_colloid.c"
+if (((int)((map->status)[__cuda_local_var_20369_9_non_const_index])) == 0)
+# 516 "phi_force_colloid.c"
+{
+# 520 "phi_force_colloid.c"
+for (__cuda_local_var_20368_9_non_const_ia = 0; (__cuda_local_var_20368_9_non_const_ia < 3); __cuda_local_var_20368_9_non_const_ia++)
+# 520 "phi_force_colloid.c"
+{
+# 521 "phi_force_colloid.c"
+for (__cuda_local_var_20368_13_non_const_ib = 0; (__cuda_local_var_20368_13_non_const_ib < 3); __cuda_local_var_20368_13_non_const_ib++)
+# 521 "phi_force_colloid.c"
+{
+# 522 "phi_force_colloid.c"
+((((__cuda_local_var_20371_12_non_const_pth0)[__cuda_local_var_20368_9_non_const_ia]))[__cuda_local_var_20368_13_non_const_ib]) = ((pth->str)[(_Z25reverse_addr_rank2_assertiPKciiiiii(522, ((const char *)"phi_force_colloid.c"), (pth->nsites), 3, 3, __cuda_local_var_20369_9_non_const_index, __cuda_local_var_20368_9_non_const_ia, __cuda_local_var_20368_13_non_const_ib))]);
+# 523 "phi_force_colloid.c"
+}
+# 524 "phi_force_colloid.c"
+}
+# 528 "phi_force_colloid.c"
+__cuda_local_var_20369_16_non_const_index1 = (_Z19kernel_coords_indexP13kernel_ctxt_siii(ktx, (__cuda_local_var_20367_9_non_const_ic + 1), __cuda_local_var_20367_13_non_const_jc, __cuda_local_var_20367_17_non_const_kc));
+# 530 "phi_force_colloid.c"
+if (((int)((map->status)[__cuda_local_var_20369_16_non_const_index1])) != 0)
+# 530 "phi_force_colloid.c"
+{
+# 532 "phi_force_colloid.c"
+for (__cuda_local_var_20368_9_non_const_ia = 0; (__cuda_local_var_20368_9_non_const_ia < 3); __cuda_local_var_20368_9_non_const_ia++)
+# 532 "phi_force_colloid.c"
+{
+# 533 "phi_force_colloid.c"
+((__cuda_local_var_20373_12_non_const_force)[__cuda_local_var_20368_9_non_const_ia]) = (-((((__cuda_local_var_20371_12_non_const_pth0)[__cuda_local_var_20368_9_non_const_ia]))[X]));
+# 534 "phi_force_colloid.c"
+}
+# 535 "phi_force_colloid.c"
+}
+# 536 "phi_force_colloid.c"
+else 
+# 536 "phi_force_colloid.c"
+{
+# 538 "phi_force_colloid.c"
+for (__cuda_local_var_20368_9_non_const_ia = 0; (__cuda_local_var_20368_9_non_const_ia < 3); __cuda_local_var_20368_9_non_const_ia++)
+# 538 "phi_force_colloid.c"
+{
+# 539 "phi_force_colloid.c"
+for (__cuda_local_var_20368_13_non_const_ib = 0; (__cuda_local_var_20368_13_non_const_ib < 3); __cuda_local_var_20368_13_non_const_ib++)
+# 539 "phi_force_colloid.c"
+{
+# 540 "phi_force_colloid.c"
+((((__cuda_local_var_20372_12_non_const_pth1)[__cuda_local_var_20368_9_non_const_ia]))[__cuda_local_var_20368_13_non_const_ib]) = ((pth->str)[(_Z25reverse_addr_rank2_assertiPKciiiiii(540, ((const char *)"phi_force_colloid.c"), (pth->nsites), 3, 3, __cuda_local_var_20369_16_non_const_index1, __cuda_local_var_20368_9_non_const_ia, __cuda_local_var_20368_13_non_const_ib))]);
+# 541 "phi_force_colloid.c"
+}
+# 542 "phi_force_colloid.c"
+}
+# 543 "phi_force_colloid.c"
+for (__cuda_local_var_20368_9_non_const_ia = 0; (__cuda_local_var_20368_9_non_const_ia < 3); __cuda_local_var_20368_9_non_const_ia++)
+# 543 "phi_force_colloid.c"
+{
+# 544 "phi_force_colloid.c"
+((__cuda_local_var_20373_12_non_const_force)[__cuda_local_var_20368_9_non_const_ia]) = ((-0.5) * (((((__cuda_local_var_20372_12_non_const_pth1)[__cuda_local_var_20368_9_non_const_ia]))[X]) + ((((__cuda_local_var_20371_12_non_const_pth0)[__cuda_local_var_20368_9_non_const_ia]))[X])));
+# 545 "phi_force_colloid.c"
+}
+# 546 "phi_force_colloid.c"
+}
+# 548 "phi_force_colloid.c"
+__cuda_local_var_20369_16_non_const_index1 = (_Z19kernel_coords_indexP13kernel_ctxt_siii(ktx, (__cuda_local_var_20367_9_non_const_ic - 1), __cuda_local_var_20367_13_non_const_jc, __cuda_local_var_20367_17_non_const_kc));
+# 550 "phi_force_colloid.c"
+if (((int)((map->status)[__cuda_local_var_20369_16_non_const_index1])) != 0)
+# 550 "phi_force_colloid.c"
+{
+# 552 "phi_force_colloid.c"
+for (__cuda_local_var_20368_9_non_const_ia = 0; (__cuda_local_var_20368_9_non_const_ia < 3); __cuda_local_var_20368_9_non_const_ia++)
+# 552 "phi_force_colloid.c"
+{
+# 553 "phi_force_colloid.c"
+((__cuda_local_var_20373_12_non_const_force)[__cuda_local_var_20368_9_non_const_ia]) += ((((__cuda_local_var_20371_12_non_const_pth0)[__cuda_local_var_20368_9_non_const_ia]))[X]);
+# 554 "phi_force_colloid.c"
+}
+# 555 "phi_force_colloid.c"
+}
+# 556 "phi_force_colloid.c"
+else 
+# 556 "phi_force_colloid.c"
+{
+# 558 "phi_force_colloid.c"
+for (__cuda_local_var_20368_9_non_const_ia = 0; (__cuda_local_var_20368_9_non_const_ia < 3); __cuda_local_var_20368_9_non_const_ia++)
+# 558 "phi_force_colloid.c"
+{
+# 559 "phi_force_colloid.c"
+for (__cuda_local_var_20368_13_non_const_ib = 0; (__cuda_local_var_20368_13_non_const_ib < 3); __cuda_local_var_20368_13_non_const_ib++)
+# 559 "phi_force_colloid.c"
+{
+# 560 "phi_force_colloid.c"
+((((__cuda_local_var_20372_12_non_const_pth1)[__cuda_local_var_20368_9_non_const_ia]))[__cuda_local_var_20368_13_non_const_ib]) = ((pth->str)[(_Z25reverse_addr_rank2_assertiPKciiiiii(560, ((const char *)"phi_force_colloid.c"), (pth->nsites), 3, 3, __cuda_local_var_20369_16_non_const_index1, __cuda_local_var_20368_9_non_const_ia, __cuda_local_var_20368_13_non_const_ib))]);
+# 561 "phi_force_colloid.c"
+}
+# 562 "phi_force_colloid.c"
+}
+# 563 "phi_force_colloid.c"
+for (__cuda_local_var_20368_9_non_const_ia = 0; (__cuda_local_var_20368_9_non_const_ia < 3); __cuda_local_var_20368_9_non_const_ia++)
+# 563 "phi_force_colloid.c"
+{
+# 564 "phi_force_colloid.c"
+((__cuda_local_var_20373_12_non_const_force)[__cuda_local_var_20368_9_non_const_ia]) += ((0.5) * (((((__cuda_local_var_20372_12_non_const_pth1)[__cuda_local_var_20368_9_non_const_ia]))[X]) + ((((__cuda_local_var_20371_12_non_const_pth0)[__cuda_local_var_20368_9_non_const_ia]))[X])));
+# 565 "phi_force_colloid.c"
+}
+# 566 "phi_force_colloid.c"
+}
+# 568 "phi_force_colloid.c"
+__cuda_local_var_20369_16_non_const_index1 = (_Z19kernel_coords_indexP13kernel_ctxt_siii(ktx, __cuda_local_var_20367_9_non_const_ic, (__cuda_local_var_20367_13_non_const_jc + 1), __cuda_local_var_20367_17_non_const_kc));
+# 570 "phi_force_colloid.c"
+if (((int)((map->status)[__cuda_local_var_20369_16_non_const_index1])) != 0)
+# 570 "phi_force_colloid.c"
+{
+# 572 "phi_force_colloid.c"
+for (__cuda_local_var_20368_9_non_const_ia = 0; (__cuda_local_var_20368_9_non_const_ia < 3); __cuda_local_var_20368_9_non_const_ia++)
+# 572 "phi_force_colloid.c"
+{
+# 573 "phi_force_colloid.c"
+((__cuda_local_var_20373_12_non_const_force)[__cuda_local_var_20368_9_non_const_ia]) -= ((((__cuda_local_var_20371_12_non_const_pth0)[__cuda_local_var_20368_9_non_const_ia]))[Y]);
+# 574 "phi_force_colloid.c"
+}
+# 575 "phi_force_colloid.c"
+}
+# 576 "phi_force_colloid.c"
+else 
+# 576 "phi_force_colloid.c"
+{
+# 578 "phi_force_colloid.c"
+for (__cuda_local_var_20368_9_non_const_ia = 0; (__cuda_local_var_20368_9_non_const_ia < 3); __cuda_local_var_20368_9_non_const_ia++)
+# 578 "phi_force_colloid.c"
+{
+# 579 "phi_force_colloid.c"
+for (__cuda_local_var_20368_13_non_const_ib = 0; (__cuda_local_var_20368_13_non_const_ib < 3); __cuda_local_var_20368_13_non_const_ib++)
+# 579 "phi_force_colloid.c"
+{
+# 580 "phi_force_colloid.c"
+((((__cuda_local_var_20372_12_non_const_pth1)[__cuda_local_var_20368_9_non_const_ia]))[__cuda_local_var_20368_13_non_const_ib]) = ((pth->str)[(_Z25reverse_addr_rank2_assertiPKciiiiii(580, ((const char *)"phi_force_colloid.c"), (pth->nsites), 3, 3, __cuda_local_var_20369_16_non_const_index1, __cuda_local_var_20368_9_non_const_ia, __cuda_local_var_20368_13_non_const_ib))]);
+# 581 "phi_force_colloid.c"
+}
+# 582 "phi_force_colloid.c"
+}
+# 583 "phi_force_colloid.c"
+for (__cuda_local_var_20368_9_non_const_ia = 0; (__cuda_local_var_20368_9_non_const_ia < 3); __cuda_local_var_20368_9_non_const_ia++)
+# 583 "phi_force_colloid.c"
+{
+# 584 "phi_force_colloid.c"
+((__cuda_local_var_20373_12_non_const_force)[__cuda_local_var_20368_9_non_const_ia]) -= ((0.5) * (((((__cuda_local_var_20372_12_non_const_pth1)[__cuda_local_var_20368_9_non_const_ia]))[Y]) + ((((__cuda_local_var_20371_12_non_const_pth0)[__cuda_local_var_20368_9_non_const_ia]))[Y])));
+# 585 "phi_force_colloid.c"
+}
+# 586 "phi_force_colloid.c"
+}
+# 588 "phi_force_colloid.c"
+__cuda_local_var_20369_16_non_const_index1 = (_Z19kernel_coords_indexP13kernel_ctxt_siii(ktx, __cuda_local_var_20367_9_non_const_ic, (__cuda_local_var_20367_13_non_const_jc - 1), __cuda_local_var_20367_17_non_const_kc));
+# 590 "phi_force_colloid.c"
+if (((int)((map->status)[__cuda_local_var_20369_16_non_const_index1])) != 0)
+# 590 "phi_force_colloid.c"
+{
+# 592 "phi_force_colloid.c"
+for (__cuda_local_var_20368_9_non_const_ia = 0; (__cuda_local_var_20368_9_non_const_ia < 3); __cuda_local_var_20368_9_non_const_ia++)
+# 592 "phi_force_colloid.c"
+{
+# 593 "phi_force_colloid.c"
+((__cuda_local_var_20373_12_non_const_force)[__cuda_local_var_20368_9_non_const_ia]) += ((((__cuda_local_var_20371_12_non_const_pth0)[__cuda_local_var_20368_9_non_const_ia]))[Y]);
+# 594 "phi_force_colloid.c"
+}
+# 595 "phi_force_colloid.c"
+}
+# 596 "phi_force_colloid.c"
+else 
+# 596 "phi_force_colloid.c"
+{
+# 598 "phi_force_colloid.c"
+for (__cuda_local_var_20368_9_non_const_ia = 0; (__cuda_local_var_20368_9_non_const_ia < 3); __cuda_local_var_20368_9_non_const_ia++)
+# 598 "phi_force_colloid.c"
+{
+# 599 "phi_force_colloid.c"
+for (__cuda_local_var_20368_13_non_const_ib = 0; (__cuda_local_var_20368_13_non_const_ib < 3); __cuda_local_var_20368_13_non_const_ib++)
+# 599 "phi_force_colloid.c"
+{
+# 600 "phi_force_colloid.c"
+((((__cuda_local_var_20372_12_non_const_pth1)[__cuda_local_var_20368_9_non_const_ia]))[__cuda_local_var_20368_13_non_const_ib]) = ((pth->str)[(_Z25reverse_addr_rank2_assertiPKciiiiii(600, ((const char *)"phi_force_colloid.c"), (pth->nsites), 3, 3, __cuda_local_var_20369_16_non_const_index1, __cuda_local_var_20368_9_non_const_ia, __cuda_local_var_20368_13_non_const_ib))]);
+# 601 "phi_force_colloid.c"
+}
+# 602 "phi_force_colloid.c"
+}
+# 603 "phi_force_colloid.c"
+for (__cuda_local_var_20368_9_non_const_ia = 0; (__cuda_local_var_20368_9_non_const_ia < 3); __cuda_local_var_20368_9_non_const_ia++)
+# 603 "phi_force_colloid.c"
+{
+# 604 "phi_force_colloid.c"
+((__cuda_local_var_20373_12_non_const_force)[__cuda_local_var_20368_9_non_const_ia]) += ((0.5) * (((((__cuda_local_var_20372_12_non_const_pth1)[__cuda_local_var_20368_9_non_const_ia]))[Y]) + ((((__cuda_local_var_20371_12_non_const_pth0)[__cuda_local_var_20368_9_non_const_ia]))[Y])));
+# 605 "phi_force_colloid.c"
+}
+# 606 "phi_force_colloid.c"
+}
+# 608 "phi_force_colloid.c"
+__cuda_local_var_20369_16_non_const_index1 = (_Z19kernel_coords_indexP13kernel_ctxt_siii(ktx, __cuda_local_var_20367_9_non_const_ic, __cuda_local_var_20367_13_non_const_jc, (__cuda_local_var_20367_17_non_const_kc + 1)));
+# 610 "phi_force_colloid.c"
+if (((int)((map->status)[__cuda_local_var_20369_16_non_const_index1])) != 0)
+# 610 "phi_force_colloid.c"
+{
+# 612 "phi_force_colloid.c"
+for (__cuda_local_var_20368_9_non_const_ia = 0; (__cuda_local_var_20368_9_non_const_ia < 3); __cuda_local_var_20368_9_non_const_ia++)
+# 612 "phi_force_colloid.c"
+{
+# 613 "phi_force_colloid.c"
+((__cuda_local_var_20373_12_non_const_force)[__cuda_local_var_20368_9_non_const_ia]) -= ((((__cuda_local_var_20371_12_non_const_pth0)[__cuda_local_var_20368_9_non_const_ia]))[Z]);
+# 614 "phi_force_colloid.c"
+}
+# 615 "phi_force_colloid.c"
+}
+# 616 "phi_force_colloid.c"
+else 
+# 616 "phi_force_colloid.c"
+{
+# 618 "phi_force_colloid.c"
+for (__cuda_local_var_20368_9_non_const_ia = 0; (__cuda_local_var_20368_9_non_const_ia < 3); __cuda_local_var_20368_9_non_const_ia++)
+# 618 "phi_force_colloid.c"
+{
+# 619 "phi_force_colloid.c"
+for (__cuda_local_var_20368_13_non_const_ib = 0; (__cuda_local_var_20368_13_non_const_ib < 3); __cuda_local_var_20368_13_non_const_ib++)
+# 619 "phi_force_colloid.c"
+{
+# 620 "phi_force_colloid.c"
+((((__cuda_local_var_20372_12_non_const_pth1)[__cuda_local_var_20368_9_non_const_ia]))[__cuda_local_var_20368_13_non_const_ib]) = ((pth->str)[(_Z25reverse_addr_rank2_assertiPKciiiiii(620, ((const char *)"phi_force_colloid.c"), (pth->nsites), 3, 3, __cuda_local_var_20369_16_non_const_index1, __cuda_local_var_20368_9_non_const_ia, __cuda_local_var_20368_13_non_const_ib))]);
+# 621 "phi_force_colloid.c"
+}
+# 622 "phi_force_colloid.c"
+}
+# 623 "phi_force_colloid.c"
+for (__cuda_local_var_20368_9_non_const_ia = 0; (__cuda_local_var_20368_9_non_const_ia < 3); __cuda_local_var_20368_9_non_const_ia++)
+# 623 "phi_force_colloid.c"
+{
+# 624 "phi_force_colloid.c"
+((__cuda_local_var_20373_12_non_const_force)[__cuda_local_var_20368_9_non_const_ia]) -= ((0.5) * (((((__cuda_local_var_20372_12_non_const_pth1)[__cuda_local_var_20368_9_non_const_ia]))[Z]) + ((((__cuda_local_var_20371_12_non_const_pth0)[__cuda_local_var_20368_9_non_const_ia]))[Z])));
+# 625 "phi_force_colloid.c"
+}
+# 626 "phi_force_colloid.c"
+}
+# 628 "phi_force_colloid.c"
+__cuda_local_var_20369_16_non_const_index1 = (_Z19kernel_coords_indexP13kernel_ctxt_siii(ktx, __cuda_local_var_20367_9_non_const_ic, __cuda_local_var_20367_13_non_const_jc, (__cuda_local_var_20367_17_non_const_kc - 1)));
+# 630 "phi_force_colloid.c"
+if (((int)((map->status)[__cuda_local_var_20369_16_non_const_index1])) != 0)
+# 630 "phi_force_colloid.c"
+{
+# 632 "phi_force_colloid.c"
+for (__cuda_local_var_20368_9_non_const_ia = 0; (__cuda_local_var_20368_9_non_const_ia < 3); __cuda_local_var_20368_9_non_const_ia++)
+# 632 "phi_force_colloid.c"
+{
+# 633 "phi_force_colloid.c"
+((__cuda_local_var_20373_12_non_const_force)[__cuda_local_var_20368_9_non_const_ia]) += ((((__cuda_local_var_20371_12_non_const_pth0)[__cuda_local_var_20368_9_non_const_ia]))[Z]);
+# 634 "phi_force_colloid.c"
+}
+# 635 "phi_force_colloid.c"
+}
+# 636 "phi_force_colloid.c"
+else 
+# 636 "phi_force_colloid.c"
+{
+# 638 "phi_force_colloid.c"
+for (__cuda_local_var_20368_9_non_const_ia = 0; (__cuda_local_var_20368_9_non_const_ia < 3); __cuda_local_var_20368_9_non_const_ia++)
+# 638 "phi_force_colloid.c"
+{
+# 639 "phi_force_colloid.c"
+for (__cuda_local_var_20368_13_non_const_ib = 0; (__cuda_local_var_20368_13_non_const_ib < 3); __cuda_local_var_20368_13_non_const_ib++)
+# 639 "phi_force_colloid.c"
+{
+# 640 "phi_force_colloid.c"
+((((__cuda_local_var_20372_12_non_const_pth1)[__cuda_local_var_20368_9_non_const_ia]))[__cuda_local_var_20368_13_non_const_ib]) = ((pth->str)[(_Z25reverse_addr_rank2_assertiPKciiiiii(640, ((const char *)"phi_force_colloid.c"), (pth->nsites), 3, 3, __cuda_local_var_20369_16_non_const_index1, __cuda_local_var_20368_9_non_const_ia, __cuda_local_var_20368_13_non_const_ib))]);
+# 641 "phi_force_colloid.c"
+}
+# 642 "phi_force_colloid.c"
+}
+# 643 "phi_force_colloid.c"
+for (__cuda_local_var_20368_9_non_const_ia = 0; (__cuda_local_var_20368_9_non_const_ia < 3); __cuda_local_var_20368_9_non_const_ia++)
+# 643 "phi_force_colloid.c"
+{
+# 644 "phi_force_colloid.c"
+((__cuda_local_var_20373_12_non_const_force)[__cuda_local_var_20368_9_non_const_ia]) += ((0.5) * (((((__cuda_local_var_20372_12_non_const_pth1)[__cuda_local_var_20368_9_non_const_ia]))[Z]) + ((((__cuda_local_var_20371_12_non_const_pth0)[__cuda_local_var_20368_9_non_const_ia]))[Z])));
+# 645 "phi_force_colloid.c"
+}
+# 646 "phi_force_colloid.c"
+}
+# 650 "phi_force_colloid.c"
+for (__cuda_local_var_20368_9_non_const_ia = 0; (__cuda_local_var_20368_9_non_const_ia < 3); __cuda_local_var_20368_9_non_const_ia++)
+# 650 "phi_force_colloid.c"
+{
+# 651 "phi_force_colloid.c"
+((hydro->f)[(_Z25reverse_addr_rank1_assertiPKciiii(651, ((const char *)"phi_force_colloid.c"), (hydro->nsite), 3, __cuda_local_var_20369_9_non_const_index, __cuda_local_var_20368_9_non_const_ia))]) += ((__cuda_local_var_20373_12_non_const_force)[__cuda_local_var_20368_9_non_const_ia]);
+# 652 "phi_force_colloid.c"
+}
+# 653 "phi_force_colloid.c"
+}
+# 655 "phi_force_colloid.c"
+}
+# 657 "phi_force_colloid.c"
+return;
+# 658 "phi_force_colloid.c"
+}}
+# 673 "phi_force_colloid.c"
+__global__ __var_used__ void _Z21pth_force_wall_kernelP13kernel_ctxt_sP5pth_sP5map_sP6wall_sPd(
+# 673 "phi_force_colloid.c"
+kernel_ctxt_t *ktx, 
+# 673 "phi_force_colloid.c"
+pth_t *pth, 
+# 674 "phi_force_colloid.c"
+map_t *map, 
+# 674 "phi_force_colloid.c"
+wall_t *wall, 
+# 675 "phi_force_colloid.c"
+double *fw){
+# 675 "phi_force_colloid.c"
+{
+# 676 "phi_force_colloid.c"
+ int __cuda_local_var_20527_7_non_const_kindex;
+# 677 "phi_force_colloid.c"
+ int __cuda_local_var_20528_7_non_const_kiterations;
+# 679 "phi_force_colloid.c"
+ int __cuda_local_var_20530_7_non_const_ic;
+# 679 "phi_force_colloid.c"
+ int __cuda_local_var_20530_11_non_const_jc;
+# 679 "phi_force_colloid.c"
+ int __cuda_local_var_20530_15_non_const_kc;
+# 680 "phi_force_colloid.c"
+ int __cuda_local_var_20531_7_non_const_ia;
+# 680 "phi_force_colloid.c"
+ int __cuda_local_var_20531_11_non_const_ib;
+# 681 "phi_force_colloid.c"
+ int __cuda_local_var_20532_7_non_const_index;
+# 681 "phi_force_colloid.c"
+ int __cuda_local_var_20532_14_non_const_index1;
+# 682 "phi_force_colloid.c"
+ int __cuda_local_var_20533_7_non_const_tid;
+# 684 "phi_force_colloid.c"
+ double __cuda_local_var_20535_10_non_const_pth0[3][3];
+# 685 "phi_force_colloid.c"
+ double __cuda_local_var_20536_10_non_const_fxb;
+# 685 "phi_force_colloid.c"
+ double __cuda_local_var_20536_15_non_const_fyb;
+# 685 "phi_force_colloid.c"
+ double __cuda_local_var_20536_20_non_const_fzb;
+# 691 "phi_force_colloid.c"
+(ktx) ? ((void)0) : (__assert_fail(((const char *)"ktx"), ((const char *)"phi_force_colloid.c"), 691U, __T6));
+# 692 "phi_force_colloid.c"
+(pth) ? ((void)0) : (__assert_fail(((const char *)"pth"), ((const char *)"phi_force_colloid.c"), 692U, __T6));
+# 693 "phi_force_colloid.c"
+(map) ? ((void)0) : (__assert_fail(((const char *)"map"), ((const char *)"phi_force_colloid.c"), 693U, __T6));
+# 694 "phi_force_colloid.c"
+(wall) ? ((void)0) : (__assert_fail(((const char *)"wall"), ((const char *)"phi_force_colloid.c"), 694U, __T6));
+# 696 "phi_force_colloid.c"
+__cuda_local_var_20528_7_non_const_kiterations = (_Z17kernel_iterationsP13kernel_ctxt_s(ktx));
+# 698 "phi_force_colloid.c"
+__cuda_local_var_20533_7_non_const_tid = ((int)(threadIdx.x));
+# 700 "phi_force_colloid.c"
+((_ZZ21pth_force_wall_kernelP13kernel_ctxt_sP5pth_sP5map_sP6wall_sPdE2fx)[__cuda_local_var_20533_7_non_const_tid]) = (0.0);
+# 701 "phi_force_colloid.c"
+((_ZZ21pth_force_wall_kernelP13kernel_ctxt_sP5pth_sP5map_sP6wall_sPdE2fy)[__cuda_local_var_20533_7_non_const_tid]) = (0.0);
+# 702 "phi_force_colloid.c"
+((_ZZ21pth_force_wall_kernelP13kernel_ctxt_sP5pth_sP5map_sP6wall_sPdE2fz)[__cuda_local_var_20533_7_non_const_tid]) = (0.0);
+# 704 "phi_force_colloid.c"
+__cuda_local_var_20527_7_non_const_kindex = ((int)(1U * (((blockIdx.x) * (blockDim.x)) + (threadIdx.x))));
+# 704 "phi_force_colloid.c"
+if (__cuda_local_var_20527_7_non_const_kindex < __cuda_local_var_20528_7_non_const_kiterations)
+# 704 "phi_force_colloid.c"
+{
+# 706 "phi_force_colloid.c"
+__cuda_local_var_20530_7_non_const_ic = (_Z16kernel_coords_icP13kernel_ctxt_si(ktx, __cuda_local_var_20527_7_non_const_kindex));
+# 707 "phi_force_colloid.c"
+__cuda_local_var_20530_11_non_const_jc = (_Z16kernel_coords_jcP13kernel_ctxt_si(ktx, __cuda_local_var_20527_7_non_const_kindex));
+# 708 "phi_force_colloid.c"
+__cuda_local_var_20530_15_non_const_kc = (_Z16kernel_coords_kcP13kernel_ctxt_si(ktx, __cuda_local_var_20527_7_non_const_kindex));
+# 709 "phi_force_colloid.c"
+__cuda_local_var_20532_7_non_const_index = (_Z19kernel_coords_indexP13kernel_ctxt_siii(ktx, __cuda_local_var_20530_7_non_const_ic, __cuda_local_var_20530_11_non_const_jc, __cuda_local_var_20530_15_non_const_kc));
+# 711 "phi_force_colloid.c"
+if (((int)((map->status)[__cuda_local_var_20532_7_non_const_index])) == 0)
+# 711 "phi_force_colloid.c"
+{
+# 715 "phi_force_colloid.c"
+for (__cuda_local_var_20531_7_non_const_ia = 0; (__cuda_local_var_20531_7_non_const_ia < 3); __cuda_local_var_20531_7_non_const_ia++)
+# 715 "phi_force_colloid.c"
+{
+# 716 "phi_force_colloid.c"
+for (__cuda_local_var_20531_11_non_const_ib = 0; (__cuda_local_var_20531_11_non_const_ib < 3); __cuda_local_var_20531_11_non_const_ib++)
+# 716 "phi_force_colloid.c"
+{
+# 717 "phi_force_colloid.c"
+((((__cuda_local_var_20535_10_non_const_pth0)[__cuda_local_var_20531_7_non_const_ia]))[__cuda_local_var_20531_11_non_const_ib]) = ((pth->str)[(_Z25reverse_addr_rank2_assertiPKciiiiii(717, ((const char *)"phi_force_colloid.c"), (pth->nsites), 3, 3, __cuda_local_var_20532_7_non_const_index, __cuda_local_var_20531_7_non_const_ia, __cuda_local_var_20531_11_non_const_ib))]);
+# 718 "phi_force_colloid.c"
+}
+# 719 "phi_force_colloid.c"
+}
+# 723 "phi_force_colloid.c"
+__cuda_local_var_20532_14_non_const_index1 = (_Z19kernel_coords_indexP13kernel_ctxt_siii(ktx, (__cuda_local_var_20530_7_non_const_ic + 1), __cuda_local_var_20530_11_non_const_jc, __cuda_local_var_20530_15_non_const_kc));
+# 725 "phi_force_colloid.c"
+if (((int)((map->status)[__cuda_local_var_20532_14_non_const_index1])) == 1)
+# 725 "phi_force_colloid.c"
+{
+# 726 "phi_force_colloid.c"
+((_ZZ21pth_force_wall_kernelP13kernel_ctxt_sP5pth_sP5map_sP6wall_sPdE2fx)[__cuda_local_var_20533_7_non_const_tid]) += (-((((__cuda_local_var_20535_10_non_const_pth0)[X]))[X]));
+# 727 "phi_force_colloid.c"
+((_ZZ21pth_force_wall_kernelP13kernel_ctxt_sP5pth_sP5map_sP6wall_sPdE2fy)[__cuda_local_var_20533_7_non_const_tid]) += (-((((__cuda_local_var_20535_10_non_const_pth0)[Y]))[X]));
+# 728 "phi_force_colloid.c"
+((_ZZ21pth_force_wall_kernelP13kernel_ctxt_sP5pth_sP5map_sP6wall_sPdE2fz)[__cuda_local_var_20533_7_non_const_tid]) += (-((((__cuda_local_var_20535_10_non_const_pth0)[Z]))[X]));
+# 729 "phi_force_colloid.c"
+}
+# 731 "phi_force_colloid.c"
+__cuda_local_var_20532_14_non_const_index1 = (_Z19kernel_coords_indexP13kernel_ctxt_siii(ktx, (__cuda_local_var_20530_7_non_const_ic - 1), __cuda_local_var_20530_11_non_const_jc, __cuda_local_var_20530_15_non_const_kc));
+# 733 "phi_force_colloid.c"
+if (((int)((map->status)[__cuda_local_var_20532_14_non_const_index1])) == 1)
+# 733 "phi_force_colloid.c"
+{
+# 734 "phi_force_colloid.c"
+((_ZZ21pth_force_wall_kernelP13kernel_ctxt_sP5pth_sP5map_sP6wall_sPdE2fx)[__cuda_local_var_20533_7_non_const_tid]) += ((((__cuda_local_var_20535_10_non_const_pth0)[X]))[X]);
+# 735 "phi_force_colloid.c"
+((_ZZ21pth_force_wall_kernelP13kernel_ctxt_sP5pth_sP5map_sP6wall_sPdE2fy)[__cuda_local_var_20533_7_non_const_tid]) += ((((__cuda_local_var_20535_10_non_const_pth0)[Y]))[X]);
+# 736 "phi_force_colloid.c"
+((_ZZ21pth_force_wall_kernelP13kernel_ctxt_sP5pth_sP5map_sP6wall_sPdE2fz)[__cuda_local_var_20533_7_non_const_tid]) += ((((__cuda_local_var_20535_10_non_const_pth0)[Z]))[X]);
+# 737 "phi_force_colloid.c"
+}
+# 739 "phi_force_colloid.c"
+__cuda_local_var_20532_14_non_const_index1 = (_Z19kernel_coords_indexP13kernel_ctxt_siii(ktx, __cuda_local_var_20530_7_non_const_ic, (__cuda_local_var_20530_11_non_const_jc + 1), __cuda_local_var_20530_15_non_const_kc));
+# 741 "phi_force_colloid.c"
+if (((int)((map->status)[__cuda_local_var_20532_14_non_const_index1])) == 1)
+# 741 "phi_force_colloid.c"
+{
+# 742 "phi_force_colloid.c"
+((_ZZ21pth_force_wall_kernelP13kernel_ctxt_sP5pth_sP5map_sP6wall_sPdE2fx)[__cuda_local_var_20533_7_non_const_tid]) += (-((((__cuda_local_var_20535_10_non_const_pth0)[X]))[Y]));
+# 743 "phi_force_colloid.c"
+((_ZZ21pth_force_wall_kernelP13kernel_ctxt_sP5pth_sP5map_sP6wall_sPdE2fy)[__cuda_local_var_20533_7_non_const_tid]) += (-((((__cuda_local_var_20535_10_non_const_pth0)[Y]))[Y]));
+# 744 "phi_force_colloid.c"
+((_ZZ21pth_force_wall_kernelP13kernel_ctxt_sP5pth_sP5map_sP6wall_sPdE2fz)[__cuda_local_var_20533_7_non_const_tid]) += (-((((__cuda_local_var_20535_10_non_const_pth0)[Z]))[Y]));
+# 745 "phi_force_colloid.c"
+}
+# 747 "phi_force_colloid.c"
+__cuda_local_var_20532_14_non_const_index1 = (_Z19kernel_coords_indexP13kernel_ctxt_siii(ktx, __cuda_local_var_20530_7_non_const_ic, (__cuda_local_var_20530_11_non_const_jc - 1), __cuda_local_var_20530_15_non_const_kc));
+# 749 "phi_force_colloid.c"
+if (((int)((map->status)[__cuda_local_var_20532_14_non_const_index1])) == 1)
+# 749 "phi_force_colloid.c"
+{
+# 750 "phi_force_colloid.c"
+((_ZZ21pth_force_wall_kernelP13kernel_ctxt_sP5pth_sP5map_sP6wall_sPdE2fx)[__cuda_local_var_20533_7_non_const_tid]) += ((((__cuda_local_var_20535_10_non_const_pth0)[X]))[Y]);
+# 751 "phi_force_colloid.c"
+((_ZZ21pth_force_wall_kernelP13kernel_ctxt_sP5pth_sP5map_sP6wall_sPdE2fy)[__cuda_local_var_20533_7_non_const_tid]) += ((((__cuda_local_var_20535_10_non_const_pth0)[Y]))[Y]);
+# 752 "phi_force_colloid.c"
+((_ZZ21pth_force_wall_kernelP13kernel_ctxt_sP5pth_sP5map_sP6wall_sPdE2fz)[__cuda_local_var_20533_7_non_const_tid]) += ((((__cuda_local_var_20535_10_non_const_pth0)[Z]))[Y]);
+# 753 "phi_force_colloid.c"
+}
+# 755 "phi_force_colloid.c"
+__cuda_local_var_20532_14_non_const_index1 = (_Z19kernel_coords_indexP13kernel_ctxt_siii(ktx, __cuda_local_var_20530_7_non_const_ic, __cuda_local_var_20530_11_non_const_jc, (__cuda_local_var_20530_15_non_const_kc + 1)));
+# 757 "phi_force_colloid.c"
+if (((int)((map->status)[__cuda_local_var_20532_14_non_const_index1])) == 1)
+# 757 "phi_force_colloid.c"
+{
+# 758 "phi_force_colloid.c"
+((_ZZ21pth_force_wall_kernelP13kernel_ctxt_sP5pth_sP5map_sP6wall_sPdE2fx)[__cuda_local_var_20533_7_non_const_tid]) += (-((((__cuda_local_var_20535_10_non_const_pth0)[X]))[Z]));
+# 759 "phi_force_colloid.c"
+((_ZZ21pth_force_wall_kernelP13kernel_ctxt_sP5pth_sP5map_sP6wall_sPdE2fy)[__cuda_local_var_20533_7_non_const_tid]) += (-((((__cuda_local_var_20535_10_non_const_pth0)[Y]))[Z]));
+# 760 "phi_force_colloid.c"
+((_ZZ21pth_force_wall_kernelP13kernel_ctxt_sP5pth_sP5map_sP6wall_sPdE2fz)[__cuda_local_var_20533_7_non_const_tid]) += (-((((__cuda_local_var_20535_10_non_const_pth0)[Z]))[Z]));
+# 761 "phi_force_colloid.c"
+}
+# 763 "phi_force_colloid.c"
+__cuda_local_var_20532_14_non_const_index1 = (_Z19kernel_coords_indexP13kernel_ctxt_siii(ktx, __cuda_local_var_20530_7_non_const_ic, __cuda_local_var_20530_11_non_const_jc, (__cuda_local_var_20530_15_non_const_kc - 1)));
+# 765 "phi_force_colloid.c"
+if (((int)((map->status)[__cuda_local_var_20532_14_non_const_index1])) == 1)
+# 765 "phi_force_colloid.c"
+{
+# 766 "phi_force_colloid.c"
+((_ZZ21pth_force_wall_kernelP13kernel_ctxt_sP5pth_sP5map_sP6wall_sPdE2fx)[__cuda_local_var_20533_7_non_const_tid]) += ((((__cuda_local_var_20535_10_non_const_pth0)[X]))[Z]);
+# 767 "phi_force_colloid.c"
+((_ZZ21pth_force_wall_kernelP13kernel_ctxt_sP5pth_sP5map_sP6wall_sPdE2fy)[__cuda_local_var_20533_7_non_const_tid]) += ((((__cuda_local_var_20535_10_non_const_pth0)[Y]))[Z]);
+# 768 "phi_force_colloid.c"
+((_ZZ21pth_force_wall_kernelP13kernel_ctxt_sP5pth_sP5map_sP6wall_sPdE2fz)[__cuda_local_var_20533_7_non_const_tid]) += ((((__cuda_local_var_20535_10_non_const_pth0)[Z]))[Z]);
+# 769 "phi_force_colloid.c"
+}
+# 770 "phi_force_colloid.c"
+}
+# 772 "phi_force_colloid.c"
+}
+# 776 "phi_force_colloid.c"
+__cuda_local_var_20536_10_non_const_fxb = (_Z23tdpAtomicBlockAddDoublePd((_ZZ21pth_force_wall_kernelP13kernel_ctxt_sP5pth_sP5map_sP6wall_sPdE2fx)));
+# 777 "phi_force_colloid.c"
+__cuda_local_var_20536_15_non_const_fyb = (_Z23tdpAtomicBlockAddDoublePd((_ZZ21pth_force_wall_kernelP13kernel_ctxt_sP5pth_sP5map_sP6wall_sPdE2fy)));
+# 778 "phi_force_colloid.c"
+__cuda_local_var_20536_20_non_const_fzb = (_Z23tdpAtomicBlockAddDoublePd((_ZZ21pth_force_wall_kernelP13kernel_ctxt_sP5pth_sP5map_sP6wall_sPdE2fz)));
+# 780 "phi_force_colloid.c"
+if (__cuda_local_var_20533_7_non_const_tid == 0)
+# 780 "phi_force_colloid.c"
+{
+# 781 "phi_force_colloid.c"
+_Z18tdpAtomicAddDoublePdd((fw + X), (-__cuda_local_var_20536_10_non_const_fxb));
+# 782 "phi_force_colloid.c"
+_Z18tdpAtomicAddDoublePdd((fw + Y), (-__cuda_local_var_20536_15_non_const_fyb));
+# 783 "phi_force_colloid.c"
+_Z18tdpAtomicAddDoublePdd((fw + Z), (-__cuda_local_var_20536_20_non_const_fzb));
+# 784 "phi_force_colloid.c"
+}
+# 786 "phi_force_colloid.c"
+return;
+# 787 "phi_force_colloid.c"
+}}
